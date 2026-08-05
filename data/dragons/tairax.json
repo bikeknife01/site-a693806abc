@@ -1,0 +1,159 @@
+{
+  "name": "Tairax",
+  "breed": "Hunter",
+  "rarity_label": "Adult",
+  "troop_affinities": {
+    "positive": [
+      "Cavalry",
+        "Shieldbearers",
+      "Siege"
+    ],
+    "negative": []
+  },
+  "command": {
+    "name": "Burning Ward",
+    "type": "Active",
+    "verbatim": [
+      "Odd-numbered Rounds: 25% chance to afflict Stagger on 1 Enemy in any lane for 2 round(s).",
+      "Rounds 2, 5, 8: Deal Fire Damage to 1 Enemy in any lane, prioritizes targets not afflicted with Burn (Damage Rate: +115%). Additionally, there is a 50% chance to afflict the target with Burn for 2 round(s).",
+      "At 6+ Stars: Odd-numbered Rounds: increase Burning Ward's chance to afflict Stagger to 50%. Each Round: deal Fire Damage to all Enemies afflicted with a Control effect (Damage Rate: +40%)."
+    ]
+  },
+  "vanguard": {
+    "name": "Hunter's Wrath",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard, increase your Fire Damage Dealt by +16%. Increase Strength and Initiative by +20 of the Ally deployed in the Right Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Whisper of Ash",
+      "verbatim": [
+        "Start of Round 1: Reduce the Strength and Initiative by -22% (enhanced by Intelligence) of 1 Enemy in the same lane for 5 round(s).",
+        "Start of Round 6: Increase your Intelligence and Initiative by +22.4% for 5 round(s)."
+      ],
+      "upgrade_levels": {
+        "1": {
+          "enemy_strength_initiative": -16,
+          "self_intelligence_initiative": 16
+        },
+        "2": {
+          "enemy_strength_initiative": -19.2,
+          "self_intelligence_initiative": 19.2
+        },
+        "3": {
+          "enemy_strength_initiative": -22.4,
+          "self_intelligence_initiative": 22.4
+        },
+        "4": {
+          "enemy_strength_initiative": -27.2,
+          "self_intelligence_initiative": 27.2
+        },
+        "5": {
+          "enemy_strength_initiative": -32,
+          "self_intelligence_initiative": 32
+        }
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Sunder",
+      "verbatim": "Start of Each Round: Increase the Damage Received by +10.5% of all enemies afflicted with a Control effect until the end of the round.",
+      "upgrade_levels": {
+        "1": 7.5,
+        "2": 9,
+        "3": 10.5,
+        "4": 12.75,
+        "5": 15
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "Gleamstrike",
+      "verbatim": [
+        "Burning Ward gains: Odd-numbered Rounds: Increase the chance to afflict Stagger to 50%.",
+        "Each Round: Deal Fire Damage to all Enemies afflicted with a Control effect (Damage Rate: +40%)."
+      ],
+      "upgrade_levels": {
+        "1": {
+          "stagger_chance": 37.5,
+          "damage_rate": 20
+        },
+        "2": {
+          "stagger_chance": 40,
+          "damage_rate": 24
+        },
+        "3": {
+          "stagger_chance": 42.5,
+          "damage_rate": 28
+        },
+        "4": {
+          "stagger_chance": 46.25,
+          "damage_rate": 34
+        },
+        "5": {
+          "stagger_chance": 50,
+          "damage_rate": 40
+        }
+      }
+    },
+    {
+      "star_unlock": 8,
+      "name": "Gift of Fire",
+      "verbatim": "Start of Each Round: For each enemy afflicted with Burn, 18% chance to apply Resistance (-15%) to 1 Ally in any lane for 2 round(s) (prioritizes targets not already affected by Resistance).",
+      "upgrade_levels": {
+        "1": 17.5,
+        "2": 21,
+        "3": 24.5,
+        "4": 29.75,
+        "5": 35
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "Moonlit Hunt",
+      "verbatim": [
+        "Start of Round 1: Grant yourself Evade for 5 round(s).",
+        "Start of Round 6: Increase your Fire Damage Dealt by +12% for 5 round(s)."
+      ],
+      "upgrade_levels": {
+        "1": {
+          "evade_rate": 5,
+          "fire_damage_dealt": 12
+        },
+        "2": {
+          "evade_rate": 6.5,
+          "fire_damage_dealt": 15.6
+        },
+        "3": {
+          "evade_rate": 8,
+          "fire_damage_dealt": 19.2
+        },
+        "4": {
+          "evade_rate": 10,
+          "fire_damage_dealt": 24
+        },
+        "5": {
+          "evade_rate": 12.5,
+          "fire_damage_dealt": 30
+        }
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "fire_damage",
+      "burn",
+      "control",
+      "control_payoff",
+      "resistance_support",
+      "evade"
+    ],
+    "preferred_troops": [
+      "Cavalry",
+      "Shieldbearers",
+      "Siege"
+    ]
+  },
+  "review": []
+}

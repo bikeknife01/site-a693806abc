@@ -1,0 +1,135 @@
+{
+  "name": "Venator",
+  "breed": "Warrior",
+  "rarity_label": "Adult",
+  "troop_affinities": {
+    "positive": [
+      "Spearmen",
+        "Shieldbearers"
+    ],
+    "negative": []
+  },
+  "command": {
+    "name": "Feral Strike",
+    "type": "Attack Modifier",
+    "verbatim": [
+      "After each Basic Attack: deal 2 instances of Physical Damage to 1 Enemy in any lane (Damage Rate: +20%). Each damage instance selects its target separately.",
+      "Rounds 4, 6, 8: 30% chance to gain Double-Strike for 2 round(s).",
+      "At 6 Stars: Basic Attacks deal Physical Damage to the Enemy with the least troops (Damage Rate: +40%); the Double-Strike chance becomes 50%."
+    ]
+  },
+  "vanguard": {
+    "name": "Warrior's Zeal",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard, increase Physical Damage Dealt by +16%. Increase Instinct and Initiative by +20 of the Ally deployed in the Left Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Hunter's Bane",
+      "verbatim": "Start of Combat: Reduce Intelligence by -36% (enhanced by Strength) of 1 Enemy in any lane (prioritizes Hunters) until the end of combat.",
+      "upgrade_levels": {
+        "1": -30,
+        "2": -36,
+        "3": -42,
+        "4": -51,
+        "5": -60
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Dragon's Might",
+      "verbatim": "Start of Combat: Increase your Physical Damage Dealt (excluding Basic Attacks) by +25% until the end of combat.",
+      "upgrade_levels": {
+        "1": 12.5,
+        "2": 15,
+        "3": 17.5,
+        "4": 21.25,
+        "5": 25
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "Feral Precision",
+      "verbatim": [
+        "Feral Strike gains: After each Basic Attack: Deal Physical Damage to the enemy with the least troops (Damage Rate: +40%).",
+        "Rounds 4, 6, 8: The chance to gain Double-Strike is increased to 50%."
+      ],
+      "upgrade_levels": {
+        "1": {
+          "double_strike_chance": 40,
+          "damage_rate": 20
+        },
+        "2": {
+          "double_strike_chance": 42,
+          "damage_rate": 24
+        },
+        "3": {
+          "double_strike_chance": 44,
+          "damage_rate": 28
+        },
+        "4": {
+          "double_strike_chance": 47,
+          "damage_rate": 34
+        },
+        "5": {
+          "double_strike_chance": 50,
+          "damage_rate": 40
+        }
+      }
+    },
+    {
+      "star_unlock": 8,
+      "name": "Armor Break",
+      "verbatim": "Start of Combat: Increase the Physical Damage Received by +8% of 1 opposing Enemy until the end of combat.",
+      "upgrade_levels": {
+        "1": 8,
+        "2": 9.6,
+        "3": 11.2,
+        "4": 13.6,
+        "5": 16
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "Desperate Ambush",
+      "verbatim": "Each Round: If you are below 50% troop capacity, deal Physical Damage to 1 Enemy in any lane (prioritizes Hunters) (Damage Rate: +60%). Additionally, there is a 12% chance to afflict the target with Overwhelm for 2 round(s).",
+      "upgrade_levels": {
+        "1": {
+          "damage_rate": 60,
+          "overwhelm_chance": 12
+        },
+        "2": {
+          "damage_rate": 78,
+          "overwhelm_chance": 15.6
+        },
+        "3": {
+          "damage_rate": 96,
+          "overwhelm_chance": 19.2
+        },
+        "4": {
+          "damage_rate": 120,
+          "overwhelm_chance": 24
+        },
+        "5": {
+          "damage_rate": 150,
+          "overwhelm_chance": 30
+        }
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "physical_damage",
+      "basic_attack",
+      "hunter_counter",
+      "overwhelm",
+      "double_strike"
+    ],
+    "preferred_troops": [
+      "Spearmen",
+      "Shieldbearers"
+    ]
+  },
+  "review": []
+}

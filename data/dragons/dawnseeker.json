@@ -1,0 +1,168 @@
+{
+  "name": "Dawnseeker",
+  "breed": "Sentinel",
+  "rarity_label": "Elder",
+  "troop_affinities": {
+    "positive": [
+      "Spearmen"
+    ],
+    "negative": [
+      "Siege"
+    ]
+  },
+  "excluded_progression_snapshot": [
+    "Strength",
+    "Instinct",
+    "Intelligence",
+    "Initiative",
+    "Stamina",
+    "Reign Level",
+    "XP",
+    "current Star Rank",
+    "current army size"
+  ],
+  "command": {
+    "name": "Radiant Wings",
+    "type": "Active",
+    "verbatim": [
+      "Each Round: 30% chance to increase your Instinct and Initiative by +20% for 1 round(s).",
+      "Rounds 1, 2, 4, 7: Deal Tactical Damage to 1 Enemy in the same lane (Damage Rate: +50%).",
+      "Rounds 2, 5, 8: Apply Recovery to 2 Allies within adjacency (Rate: +30%, enhanced by Initiative).",
+      "At 6+ Stars Rounds 1, 2: Increase the Tactical Damage Rate to +100%, and increase the Recovery Rate to +60%."
+    ],
+    "structured": {
+      "core_tags": [
+        "tactical_damage",
+        "recovery",
+        "self_buff",
+        "adjacency"
+      ],
+      "synergy_inputs": [],
+      "synergy_outputs": [
+        "Recovery"
+      ]
+    }
+  },
+  "vanguard": {
+    "name": "Sentinel's Presence",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Recovery Dealt by +15% and Instinct by +25. Increase Fire Damage Dealt by +16% of the Ally deployed in the Left Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Tactical Inferno",
+      "verbatim": "Start of Round 1: Increase the Tactical Damage Dealt of 1 Ally in any lane (prioritizes the Left Flank) and the Fire Damage Dealt of 1 Ally in any lane (prioritizes the Right Flank) by +9% for 3 round(s).",
+      "upgrade_levels": {
+        "1": 9,
+        "2": 10.8,
+        "3": 12.6,
+        "4": 15.3,
+        "5": 18
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Unbroken Devotion",
+      "verbatim": "Start of Combat: Increase Recovery Received by +15% of 2 other Allies in any lane until the end of combat.",
+      "upgrade_levels": {
+        "1": 15,
+        "2": 18,
+        "3": 21,
+        "4": 25.5,
+        "5": 30
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "Sunbreak",
+      "verbatim": "Radiant Wings gains: Rounds 1, 2: Increase the Tactical Damage Rate to +100%, and increase the Recovery Rate to +60%.",
+      "upgrade_levels": {
+        "1": {
+          "tactical_damage_rate_percent": 100,
+          "recovery_rate_percent": 60
+        },
+        "2": {
+          "tactical_damage_rate_percent": 110,
+          "recovery_rate_percent": 66
+        },
+        "3": {
+          "tactical_damage_rate_percent": 120,
+          "recovery_rate_percent": 72
+        },
+        "4": {
+          "tactical_damage_rate_percent": 135,
+          "recovery_rate_percent": 81
+        },
+        "5": {
+          "tactical_damage_rate_percent": 150,
+          "recovery_rate_percent": 90
+        }
+      }
+    },
+    {
+      "star_unlock": 8,
+      "name": "Wind's Favor",
+      "verbatim": "Start of Combat: Increase Initiative by +8% (enhanced by Initiative) of 3 Allies in any lane until the end of combat.",
+      "upgrade_levels": {
+        "1": 8,
+        "2": 9.6,
+        "3": 11.2,
+        "4": 13.6,
+        "5": 16
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "First Light",
+      "verbatim": "Start of Round 1: Increase Intelligence and Instinct (enhanced by Initiative) by +5% of 3 Allies in any lane for 3 round(s). Start of Rounds 1-3: 20% chance to grant First-Strike to 2 other Allies in any lane until the end of the round.",
+      "upgrade_levels": {
+        "1": {
+          "intelligence_and_instinct_percent": 5,
+          "first_strike_chance_percent": 20
+        },
+        "2": {
+          "intelligence_and_instinct_percent": 6.5,
+          "first_strike_chance_percent": 26
+        },
+        "3": {
+          "intelligence_and_instinct_percent": 8,
+          "first_strike_chance_percent": 32
+        },
+        "4": {
+          "intelligence_and_instinct_percent": 10,
+          "first_strike_chance_percent": 40
+        },
+        "5": {
+          "intelligence_and_instinct_percent": 12.5,
+          "first_strike_chance_percent": 50
+        }
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "recovery_support",
+      "initiative_buffer",
+      "first_strike_provider",
+      "tactical_support"
+    ],
+    "preferred_position": "vanguard",
+    "preferred_troops": [
+      "Spearmen"
+    ],
+    "avoid_troops": [
+      "Siege"
+    ],
+    "formation_needs": [
+      "Fire Left Flank",
+      "tactical Left Flank"
+    ],
+    "scenario_bias": {
+      "attack": 0.7,
+      "defense": 0.75,
+      "crowd_control": 0.45
+    }
+  },
+  "review": []
+}

@@ -1,0 +1,164 @@
+{
+  "name": "Jagadrix",
+  "breed": "Hunter",
+  "rarity_label": "Elder",
+  "troop_affinities": {
+    "positive": [
+      "Spearmen"
+    ],
+    "negative": [],
+    "review_required": false
+  },
+  "excluded_progression_snapshot": [
+    "Strength",
+    "Instinct",
+    "Intelligence",
+    "Initiative",
+    "Stamina",
+    "Reign Level",
+    "XP",
+    "current Star Rank",
+    "current army size"
+  ],
+  "command": {
+    "name": "Cunning Whispers",
+    "type": "Active",
+    "verbatim": [
+      "Each Round: 30% chance to reduce Instinct and Initiative by -15% (enhanced by Initiative) of 1 Enemy in the same lane for 2 round(s).",
+      "Rounds 2, 5, 8: Deal Fire Damage to 1 Enemy in the same lane (Damage Rate: +120%).",
+      "At 10 Stars: Round 1: reduce Instinct and Initiative by -6% (enhanced by Initiative) of the Enemy with the highest Instinct until the end of combat. Rounds 3, 6, 9: Deal Fire Damage to all Enemies that deal Tactical Damage (Damage Rate: +30%), doubled against targets afflicted with Panic."
+    ],
+    "structured": {
+      "core_tags": [
+        "stat_debuff",
+        "fire_damage",
+        "same_lane"
+      ],
+      "star_10_plus_tags": [
+        "tactical_damage_targeting",
+        "panic_payoff",
+        "multi_target"
+      ]
+    }
+  },
+  "vanguard": {
+    "name": "Hunter's Wrath",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Fire Damage Dealt by +16%. Increase Strength and Initiative by +20 of the Ally deployed in the Right Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Enervate",
+      "verbatim": "Start of Combat: Reduce Tactical Damage Dealt by -8% of 1 Enemy that deals Tactical Damage until the end of combat.",
+      "upgrade_levels": {
+        "1": -8,
+        "2": -9.6,
+        "3": -11.2,
+        "4": -13.6,
+        "5": -16
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Second Wind",
+      "verbatim": "Round 6: Increase your Damage Dealt by +10% until the end of combat. Recover your troops (Recovery Rate: +150%), then Nullify Recovery until the end of combat.",
+      "upgrade_levels": {
+        "1": {
+          "damage_dealt_percent": 10,
+          "recovery_rate_percent": 150
+        },
+        "2": {
+          "damage_dealt_percent": 12,
+          "recovery_rate_percent": 180
+        },
+        "3": {
+          "damage_dealt_percent": 14,
+          "recovery_rate_percent": 210
+        },
+        "4": {
+          "damage_dealt_percent": 17,
+          "recovery_rate_percent": 255
+        },
+        "5": {
+          "damage_dealt_percent": 20,
+          "recovery_rate_percent": 300
+        }
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "Whispering Sabotage",
+      "verbatim": "Each Round: 25% chance to afflict Weakened (-10%) on 1 Enemy in the same lane for 2 round(s).",
+      "upgrade_levels": {
+        "1": 25,
+        "2": 30,
+        "3": 35,
+        "4": 42.5,
+        "5": 50
+      },
+      "value_unit": "percent_chance"
+    },
+    {
+      "star_unlock": 8,
+      "name": "Quick-Witted",
+      "verbatim": "Start of Combat: Increase your Intelligence and Initiative by +12.5% until the end of combat.",
+      "upgrade_levels": {
+        "1": 12.5,
+        "2": 15,
+        "3": 17.5,
+        "4": 21.25,
+        "5": 25
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "Echoes of Deceit",
+      "verbatim": "Cunning Whispers gains: Round 1: reduce Instinct and Initiative by -6% (enhanced by Initiative) of the Enemy with the highest Instinct until the end of combat. Rounds 3, 6, 9: Deal Fire Damage to all Enemies that deal Tactical Damage (Damage Rate: +30%), doubled against targets afflicted with Panic.",
+      "upgrade_levels": {
+        "1": {
+          "instinct_and_initiative_percent": -6,
+          "fire_damage_rate_percent": 30
+        },
+        "2": {
+          "instinct_and_initiative_percent": -7.8,
+          "fire_damage_rate_percent": 39
+        },
+        "3": {
+          "instinct_and_initiative_percent": -9.6,
+          "fire_damage_rate_percent": 48
+        },
+        "4": {
+          "instinct_and_initiative_percent": -12,
+          "fire_damage_rate_percent": 60
+        },
+        "5": {
+          "instinct_and_initiative_percent": -15,
+          "fire_damage_rate_percent": 75
+        }
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "fire_damage",
+      "initiative_debuffer",
+      "panic_payoff"
+    ],
+    "preferred_position": "vanguard",
+    "preferred_troops": [
+      "Spearmen"
+    ],
+    "avoid_troops": [],
+    "formation_needs": [
+      "Panic source",
+      "high-Strength Right Flank ally"
+    ],
+    "scenario_bias": {
+      "attack": 0.75,
+      "defense": 0.35,
+      "crowd_control": 0.55
+    }
+  },
+  "review": []
+}

@@ -1,0 +1,166 @@
+{
+  "name": "Kalspire",
+  "breed": "Champion",
+  "rarity_label": "Adult",
+  "troop_affinities": {
+    "positive": [
+      "Cavalry",
+      "Shieldbearers",
+      "Siege"
+    ],
+    "negative": [],
+    "review_required": false
+  },
+  "excluded_progression_snapshot": [
+    "Strength",
+    "Instinct",
+    "Intelligence",
+    "Initiative",
+    "Stamina",
+    "Reign Level",
+    "XP",
+    "current Star Rank",
+    "current army size"
+  ],
+  "command": {
+    "name": "Tactical Strike",
+    "type": "Attack Modifier",
+    "verbatim": [
+      "After each Basic Attack: Deal Tactical Damage to the target (Damage Rate: +50%). 30% chance to afflict Bleed on the target and 1 adjacent Enemy for 2 round(s).",
+      "At 6+ Stars: Deal Physical Damage to 1 Enemy adjacent to the target (excluding the original target) (Damage Rate: +30%). 18% chance to afflict Panic on the target and adjacent Enemy for 2 round(s)."
+    ],
+    "structured": {
+      "core_tags": [
+        "tactical_damage",
+        "bleed",
+        "basic_attack_trigger"
+      ],
+      "star_6_plus_tags": [
+        "physical_damage",
+        "panic",
+        "adjacency"
+      ]
+    }
+  },
+  "vanguard": {
+    "name": "Champion's Brilliance",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Strength, Intelligence, and Instinct by +15. Reduce Damage Received by -8% of the Ally deployed in the Right Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Robust Insight",
+      "verbatim": "Start of Combat: Increase your Strength and Instinct by +20 until the end of combat.",
+      "upgrade_levels": {
+        "1": 20,
+        "2": 24,
+        "3": 28,
+        "4": 34,
+        "5": 40
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Battle Cunning",
+      "verbatim": "Start of Combat: Reduce Strength and Intelligence by -6% (enhanced by Instinct) of 3 Enemies until the end of combat.",
+      "upgrade_levels": {
+        "1": -6.5,
+        "2": -7.8,
+        "3": -9.1,
+        "4": -11.05,
+        "5": -13
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "Tactical Assault",
+      "verbatim": "Tactical Strike gains: after each Basic Attack, deal Physical Damage to 1 Enemy adjacent to the target (excluding the original target) (Damage Rate: +30%). 18% chance to afflict Panic on the target and an adjacent Enemy for 2 round(s).",
+      "upgrade_levels": {
+        "1": {
+          "panic_chance_percent": 15,
+          "physical_damage_rate_percent": 25
+        },
+        "2": {
+          "panic_chance_percent": 18,
+          "physical_damage_rate_percent": 30
+        },
+        "3": {
+          "panic_chance_percent": 21,
+          "physical_damage_rate_percent": 35
+        },
+        "4": {
+          "panic_chance_percent": 25.5,
+          "physical_damage_rate_percent": 42.5
+        },
+        "5": {
+          "panic_chance_percent": 30,
+          "physical_damage_rate_percent": 50
+        }
+      }
+    },
+    {
+      "star_unlock": 8,
+      "name": "Dragon's Insight",
+      "verbatim": "Start of Combat: Reduce your Damage Received by -6% and increase your Instinct by +12% until the end of combat.",
+      "upgrade_levels": {
+        "1": {
+          "damage_received_percent": -6,
+          "instinct_percent": 12
+        },
+        "2": {
+          "damage_received_percent": -7.2,
+          "instinct_percent": 14.4
+        },
+        "3": {
+          "damage_received_percent": -8.4,
+          "instinct_percent": 16.8
+        },
+        "4": {
+          "damage_received_percent": -10.2,
+          "instinct_percent": 20.4
+        },
+        "5": {
+          "damage_received_percent": -12,
+          "instinct_percent": 24
+        }
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "Radiant Conqueror",
+      "verbatim": "Start of Round 1: Reduce your Damage Received by -50% for 1 round, then afflict Stun on yourself for 1 round. Start of Round 2: Reduce Physical Damage Dealt (excluding Basic Attacks) of the Enemy with the highest Strength and Fire Damage Dealt of the Enemy with the highest Intelligence by -10% for 5 round(s).",
+      "upgrade_levels": {
+        "1": -10,
+        "2": -13,
+        "3": -16,
+        "4": -20,
+        "5": -25
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "hybrid_damage",
+      "bleed",
+      "panic",
+      "stat_debuffer"
+    ],
+    "preferred_position": "vanguard",
+    "preferred_troops": [
+      "Cavalry",
+      "Shieldbearers",
+      "Siege"
+    ],
+    "avoid_troops": [],
+    "formation_needs": [
+      "Right Flank ally needing mitigation"
+    ],
+    "scenario_bias": {
+      "attack": 0.7,
+      "defense": 0.6,
+      "crowd_control": 0.65
+    }
+  },
+  "review": []
+}

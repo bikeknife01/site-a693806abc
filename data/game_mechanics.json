@@ -1,0 +1,94 @@
+{
+  "metadata": {
+    "last_web_audit": "2026-08-05",
+    "source_policy": "Official WB Games support and news guides are authoritative for system-level rules. Newest supplied in-game screenshots remain authoritative for exact dragon ability text. Community sources are discovery and strategy aids only.",
+    "primary_official_sources": [
+      "https://hbogamessupport.wbgames.com/hc/en-us/articles/46520226701459-A-Guide-to-Dragons",
+      "https://hbogamessupport.wbgames.com/hc/en-us/articles/46519226411027-Dragonfire-Guide-Hub-Glossary",
+      "https://hbogamessupport.wbgames.com/hc/en-us/articles/46843383089555-The-Map-of-Westeros",
+      "https://hbogamessupport.wbgames.com/hc/en-us/articles/46842392115987-Stronghold-Guide",
+      "https://hbogamessupport.wbgames.com/hc/en-us/articles/46838575242643-A-Guide-to-Campaigns",
+      "https://news.gotdragonfire.com/a-guide-to-upgrades-heirlooms/"
+    ]
+  },
+  "formation": {
+    "dragon_count": 3,
+    "positions": ["left_flank", "vanguard", "right_flank"],
+    "troops_are_configurable": true,
+    "vanguard_abilities_require_vanguard_deployment": true,
+    "saved_formations": "The Army Builder can save custom formations and quickly swap configurations even when a dragon is assigned to another army or its health or stamina is depleted.",
+    "simultaneous_army_limit": "The official worldwide-release announcement says players can field up to five dragon-led armies simultaneously; this is an account-level march limit, not the number of dragons in one formation."
+  },
+  "troop_types": {
+    "Cavalry": {"advantaged_against": "Shieldbearers", "disadvantaged_against": "Spearmen"},
+    "Shieldbearers": {"advantaged_against": "Archers", "disadvantaged_against": "Cavalry"},
+    "Archers": {"advantaged_against": "Spearmen", "disadvantaged_against": "Shieldbearers"},
+    "Spearmen": {"advantaged_against": "Cavalry", "disadvantaged_against": "Archers"},
+    "Siege": {"advantaged_against": null, "disadvantaged_against": "all_combat_troops", "specialization": "massive damage to POI Durability"}
+  },
+  "troop_affinity": {
+    "Positive": "Boosts dragon stats and Siege damage.",
+    "Neutral": "No effect.",
+    "Negative": "Reduces stats and Siege damage output."
+  },
+  "troop_combat": {
+    "advantage": "The advantaged army deals more damage and the disadvantaged enemy deals less.",
+    "neutral": "No troop-type adjustment to damage dealt or received.",
+    "disadvantage": "The disadvantaged army deals less damage and the advantaged enemy deals more.",
+    "retreat": "When a dragon runs out of troops, it is forced to retreat to its Stronghold or current garrison.",
+    "generic_troops": "Troops are trained and stored generically in the Barracks; their troop type is selected when assigned to an army.",
+    "exact_modifiers_known": false
+  },
+  "damage_types": {
+    "Physical Damage": {"attacking_stat": "Strength", "mitigating_stat": "Instinct"},
+    "Tactical Damage": {"attacking_stat": "Instinct", "mitigating_stat": "Intelligence"},
+    "Fire Damage": {"attacking_stat": "Intelligence", "mitigating_stat": "Initiative"}
+  },
+  "breeds": {
+    "Champion": {"role": "Suppressor", "primary_stat": "Varied", "damage_profile": "Mixed", "summary": "Adaptable protectors focused on reducing enemy threats and strengthening allies."},
+    "Hunter": {"role": "Debuffer", "primary_stat": "Intelligence", "damage_profile": "Fire-focused, with some Physical", "summary": "Intelligence-based dragons using fire attacks to dismantle enemy defenses and slow reactions."},
+    "Sentinel": {"role": "Buffer", "primary_stat": "Instinct", "damage_profile": "Tactical-focused, with some Fire", "summary": "Instinct-based support specialists using Tactical damage, healing, and battlefield control."},
+    "Warrior": {"role": "Enhancer", "primary_stat": "Strength", "damage_profile": "Physical-focused, with some Tactical", "summary": "Strength-based frontline dragons that amplify the army's offensive potential."}
+  },
+  "abilities": {
+    "command": "A dragon's unique core battlefield ability. Official generic guidance says Commands have a chance to activate during each combat round; exact dragon text controls actual timing, chance, targets, and guaranteed clauses.",
+    "habits": "Passive abilities unlocked by Star Rank and upgraded with Breedmarks and Rarity Cores determined by the dragon's Breed and Rarity. Habit upgrades are permanent.",
+    "vanguard": "A position-specific ability represented in the supplied dragon records. The official general guides reviewed on 2026-08-05 do not add a universal Vanguard rule beyond the in-game text.",
+    "basic_attack": "The normal attack. No official system-level damage formula or universal targeting rule was found in the reviewed public guides."
+  },
+  "progression": {
+    "star_rank": "Permanent between campaigns; increased with dragon-specific Relics. Higher Star Rank improves stats and unlocks Habits.",
+    "reign_level": "Campaign-specific and resets at the start of each new Reign. Combat experience and Meat increase it; higher levels increase maximum army size plus Strength, Instinct, Intelligence, and Initiative.",
+    "habit_upgrades": "Permanent and persist into the next Reign. Breedmarks and Rarity Cores are both required.",
+    "rarity": "Rarity reflects Hatchery drop rate and affects a dragon's maximum power and overall combat impact. The public guides do not provide a numeric rarity multiplier.",
+    "stronghold_upgrades": "Seasonal and reset at the start of each campaign. War Tactics can modify troop offense, defense, PvE damage, Siege damage, march speed, reinforcement speed, and dragon experience; Dragon Care can modify dragon stats, army size, and breed offense/defense.",
+    "heirlooms": "Permanent upgrade trees. Unlocked upgrades persist, but most require the current seasonal House Level to be active. House Level and House XP reset each Reign. Mastery bonuses from purchased Heirloom ranks are always active regardless of House Level.",
+    "recommendation_inputs": "For comparisons across players or Reigns, ask about Reign Level and relevant Stronghold, Heirloom, realm, and stage modifiers when the matchup is close; do not infer these values from dragon identity."
+  },
+  "pve_and_objectives": {
+    "tile_conquest": "Every tile has one or more Defenders and Durability. Defenders must be defeated before Siege damage can reduce Durability. A tile is conquered when Durability reaches zero.",
+    "defender_return": "If a tile is attacked but not conquered, a timer indicates when its Defenders return.",
+    "encounters": "Encounters are non-player enemies attacked using regenerating Resolve. They do not require tile connection and do not grant tile ownership. Some require multiple armies.",
+    "wild_dragons": "Wild Dragon encounters are a primary Breedmark source. Each breed drops its corresponding Breedmark and has a weakness to a specific breed; the reviewed official guide does not enumerate the weakness cycle.",
+    "points_of_interest": "Ruins, Towns, Castles, and Seats of Power can function as garrisons. Garrison access changes march, reinforcement, recall, and defeat destinations but does not alter the three-dragon combat formation rule.",
+    "poi_assault_guidance": "Official guidance recommends clearing Defenders with at least one combat army before deploying a Siege army to reduce Durability.",
+    "protection_after_conquest_minutes": 3
+  },
+  "campaign_context": {
+    "reign_length_weeks": 8,
+    "stage_modifiers": "Campaign Stages can add temporary realm effects such as shorter Stalemates, greater Tile Capacity, or cheaper troops. These may alter scenario assumptions and are not durable account traits.",
+    "world_transition": "Worlds may be recombined between Reigns. Alliances remain intact, but World and Faction groups may change.",
+    "known_campaigns_as_of_audit": ["Heirs of the Dragon", "Shadow of the Greens"],
+    "campaign_locked_dragons": ["Starshower", "Vermithor"]
+  },
+  "unresolved_public_rules": {
+    "combat_resolution_order": "No official public formula or complete proc-order specification was found.",
+    "damage_formula": "No official public numeric formula was found for stat scaling, troop advantage, affinity, or final damage.",
+    "adjacency_geometry": "The reviewed public guides do not formally define same-lane and within-adjacency geometry; preserve exact ability wording.",
+    "effect_stacking_and_cleanse_priority": "No universal public rule was found for status stacking, conflicting control effects, or Cleanse selection priority.",
+    "recovery_formula": "No official public ordering was found for Recovery Dealt, Recovery Received, and Recovery Rate modifiers.",
+    "battle_length_and_tiebreaks": "No universal public rule was found in the reviewed sources.",
+    "wild_dragon_breed_weakness_cycle": "The official guide confirms breed weaknesses exist but does not publish the mapping."
+  }
+}
+

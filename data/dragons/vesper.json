@@ -1,0 +1,117 @@
+{
+  "name": "Vesper",
+  "breed": "Sentinel",
+  "rarity_label": "Elder",
+  "troop_affinities": {
+    "positive": [
+        "Shieldbearers"
+    ],
+    "negative": [
+      "Siege"
+    ]
+  },
+  "command": {
+    "name": "Eventide Strike",
+    "type": "Active",
+    "verbatim": [
+      "Each Round: 20% chance to afflict Slow on 1 Enemy in the same lane for 2 round(s).",
+      "Rounds 1, 3, 6, 8: Deal Tactical Damage to 1 Enemy in the same lane (Damage Rate: +70%)."
+    ]
+  },
+  "vanguard": {
+    "name": "Sentinel's Wit",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard, increase Tactical Damage Dealt by +16%. Increase Instinct and Initiative by +20 of the Ally deployed in the Left Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Strategic Leader",
+      "verbatim": "Start of Combat: Increase Tactical Damage Dealt by +8% of 1 Ally in any lane (prioritizes the Vanguard) until the end of combat.",
+      "upgrade_levels": {
+        "1": 8,
+        "2": 9.6,
+        "3": 11.2,
+        "4": 13.6,
+        "5": 16
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Dragon's Insight",
+      "verbatim": "Start of Combat: Reduce your Damage Received by -4% and increase your Instinct by +5% until the end of combat.",
+      "upgrade_levels": {
+        "1": {
+          "damage_received": -4,
+          "instinct": 5
+        },
+        "2": {
+          "damage_received": -4.8,
+          "instinct": 6
+        },
+        "3": {
+          "damage_received": -5.6,
+          "instinct": 7
+        },
+        "4": {
+          "damage_received": -6.8,
+          "instinct": 8.5
+        },
+        "5": {
+          "damage_received": -8,
+          "instinct": 10
+        }
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "Savior's Waltz",
+      "verbatim": "Each Round: 13% chance to apply Resistance (-10%) to yourself and 1 other Ally within adjacency for 2 round(s).",
+      "upgrade_levels": {
+        "1": 12.5,
+        "2": 15,
+        "3": 17.5,
+        "4": 21.25,
+        "5": 25
+      }
+    },
+    {
+      "star_unlock": 8,
+      "name": "Insightful Allies",
+      "verbatim": "Start of Combat: Increase Instinct by +8% (enhanced by Instinct) of 3 Allies in any lane until the end of combat.",
+      "upgrade_levels": {
+        "1": 8,
+        "2": 9.6,
+        "3": 11.2,
+        "4": 13.6,
+        "5": 16
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "Midnight Onslaught",
+      "verbatim": "Rounds 6-10: 24% chance to afflict Confusion on 1 Enemy within adjacency for 2 round(s).",
+      "upgrade_levels": {
+        "1": 24,
+        "2": 31.2,
+        "3": 38.4,
+        "4": 48,
+        "5": 60
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "tactical_damage",
+      "slow",
+      "damage_mitigation",
+      "instinct_support",
+      "confusion",
+      "resistance_support"
+    ],
+    "preferred_troops": [
+      "Shieldbearers"
+    ]
+  },
+  "review": []
+}

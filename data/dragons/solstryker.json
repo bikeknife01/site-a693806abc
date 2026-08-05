@@ -1,0 +1,98 @@
+{
+  "name": "Solstryker",
+  "breed": "Champion",
+  "rarity_label": "Elder",
+  "troop_affinities": {
+    "positive": [
+      "Archers"
+    ],
+    "negative": []
+  },
+  "command": {
+    "name": "Tactical Onslaught",
+    "type": "Active",
+    "verbatim": [
+      "Odd-numbered Rounds: After each Basic Attack, deal Physical Damage to target (+30%) and 20% chance reduce its Physical Damage Dealt by -12% for 2 rounds.",
+      "Even-numbered Rounds: After each Basic Attack, deal Tactical Damage to 3 Enemies in any lane (+12.5%), doubled against Vulnerable."
+    ]
+  },
+  "vanguard": {
+    "name": "Champion's Brilliance",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Strength, Intelligence, and Instinct by +15. Reduce Damage Received by -8% of the Ally deployed in the Right Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Steady Erosion",
+      "verbatim": "At the start of each round, add 1 Stack of Steady Erosion (Max 10 Stacks) to all enemies. Each Stack of Steady Erosion reduces the target's Strength by -2% (enhanced by Strength) until the end of combat.",
+      "upgrade_levels": {
+        "1": -2,
+        "2": -2.4,
+        "3": -2.8,
+        "4": -3.4,
+        "5": -4
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Energy Drain",
+      "verbatim": "Round 1: Reduce Strength and Initiative by -15% of 2 Enemies within adjacency (enhanced by Instinct) for 3 round(s).",
+      "upgrade_levels": {
+        "1": -15,
+        "2": -18,
+        "3": -21,
+        "4": -25.5,
+        "5": -30
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "Oppressive Onslaught",
+      "verbatim": "Each Round: 10% chance to afflict Overwhelm on 1 Enemy in any lane for 2 round(s).",
+      "upgrade_levels": {
+        "1": 10,
+        "2": 12,
+        "3": 14,
+        "4": 17,
+        "5": 20
+      }
+    },
+    {
+      "star_unlock": 8,
+      "name": "Robust Insight",
+      "verbatim": "Start of Combat: Increase your Strength and Instinct by +12.5% until the end of combat.",
+      "upgrade_levels": {
+        "1": 12.5,
+        "2": 15,
+        "3": 17.5,
+        "4": 21.25,
+        "5": 25
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "Amplified Drain",
+      "verbatim": "Round 4: Reduce Strength and Initiative by -15% of 2 Enemies within adjacency (enhanced by Instinct) for 5 round(s).",
+      "upgrade_levels": {
+        "1": -15,
+        "2": -19.5,
+        "3": -24,
+        "4": -30,
+        "5": -37.5
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "hybrid_damage",
+      "strength_debuffer",
+      "overwhelm_control",
+      "vulnerable_payoff"
+    ],
+    "preferred_troops": [
+      "Archers"
+    ]
+  },
+  "review": []
+}

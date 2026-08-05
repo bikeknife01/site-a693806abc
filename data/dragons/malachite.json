@@ -1,0 +1,154 @@
+{
+  "name": "Malachite",
+  "breed": "Sentinel",
+  "rarity_label": "Juvenile",
+  "troop_affinities": {
+    "positive": [
+      "Cavalry",
+      "Shieldbearers"
+    ],
+    "negative": [
+      "Siege"
+    ],
+    "review_required": false
+  },
+  "excluded_progression_snapshot": [
+    "Strength",
+    "Instinct",
+    "Intelligence",
+    "Initiative",
+    "Stamina",
+    "Reign Level",
+    "XP",
+    "current Star Rank",
+    "current army size"
+  ],
+  "command": {
+    "name": "Warden's Rally",
+    "type": "Active",
+    "verbatim": [
+      "Each Round: 30% chance to increase your Instinct and Initiative by +20% for 1 round.",
+      "Rounds 1, 2, 4, 7: Deal Tactical Damage to 1 Enemy in the same lane (Damage Rate: +50%).",
+      "Rounds 2, 5, 8: Recover troops of 2 adjacent Allies (Recovery Rate: +30%, enhanced by Initiative).",
+      "At 6+ Stars: Rounds 1, 2: increase Tactical Damage Rate by +100% and Recovery Rate by +60%."
+    ],
+    "structured": {
+      "core_tags": [
+        "tactical_damage",
+        "recovery",
+        "self_stat_buff"
+      ],
+      "star_6_plus_tags": [
+        "command_upgrade"
+      ]
+    }
+  },
+  "vanguard": {
+    "name": "Sentinel's Presence",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Recovery Dealt by +15% and Instinct by +25. Increase Fire Damage Dealt by +16% of the Ally deployed in the Left Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Forest's Instinct",
+      "verbatim": "Each Round: 35% chance to increase Physical Damage Dealt (excluding Basic Attacks) by +8% and reduce Tactical Damage Received by -8% of 2 other Allies in any lane for 2 round(s).",
+      "upgrade_levels": {
+        "1": {
+          "physical_damage_dealt_percent": 8,
+          "tactical_damage_received_percent": -8
+        },
+        "2": {
+          "physical_damage_dealt_percent": 9.6,
+          "tactical_damage_received_percent": -9.6
+        },
+        "3": {
+          "physical_damage_dealt_percent": 11.2,
+          "tactical_damage_received_percent": -11.2
+        },
+        "4": {
+          "physical_damage_dealt_percent": 13.6,
+          "tactical_damage_received_percent": -13.6
+        },
+        "5": {
+          "physical_damage_dealt_percent": 16,
+          "tactical_damage_received_percent": -16
+        }
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Wise Vigor",
+      "verbatim": "Start of Combat: Increase your Instinct and Recovery Dealt by +24% until the end of combat.",
+      "upgrade_levels": {
+        "1": 20,
+        "2": 24,
+        "3": 28,
+        "4": 34,
+        "5": 40
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "Thunderous Roar",
+      "verbatim": "Each Round: 10% chance to grant Advantage (+20%) to 2 other Allies in any lane for 2 round(s).",
+      "upgrade_levels": {
+        "1": 10,
+        "2": 12,
+        "3": 14,
+        "4": 17,
+        "5": 20
+      }
+    },
+    {
+      "star_unlock": 8,
+      "name": "Collective Might",
+      "verbatim": "Start of Combat: Increase Strength by +12.5% (enhanced by Strength) of 3 Allies in any lane until the end of combat.",
+      "upgrade_levels": {
+        "1": 12.5,
+        "2": 15,
+        "3": 17.5,
+        "4": 21.25,
+        "5": 25
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "Lightning Strike",
+      "verbatim": "Start of Round 1: 40% chance to grant First-Strike and Double-Strike, and increase Strength by +25% (enhanced by Instinct), of 1 other adjacent Ally for 3 round(s).",
+      "upgrade_levels": {
+        "1": 40,
+        "2": 52,
+        "3": 64,
+        "4": 80,
+        "5": 100
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "recovery_support",
+      "tactical_damage",
+      "ally_buff",
+      "advantage_support"
+    ],
+    "preferred_position": "vanguard",
+    "preferred_troops": [
+      "Cavalry",
+      "Shieldbearers"
+    ],
+    "avoid_troops": [
+      "Siege"
+    ],
+    "formation_needs": [
+      "Fire-damage Left Flank ally",
+      "adjacent allies benefiting from First-Strike and Double-Strike"
+    ],
+    "scenario_bias": {
+      "attack": 0.55,
+      "defense": 0.65,
+      "crowd_control": 0.2
+    }
+  },
+  "review": []
+}

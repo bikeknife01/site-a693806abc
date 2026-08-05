@@ -1,0 +1,68 @@
+{
+  "metadata": {
+    "last_checked": "2026-08-05",
+    "purpose": "Track official dragon additions that do not yet have screenshot-complete records under data/dragons.",
+    "evidence_limit": "Official profile summaries omit exact numeric scaling, Habit upgrade tracks, explicit Star unlock labels, and Vanguard text. These entries support discovery and conditional strategy only; they are not substitutes for audited dragon JSON."
+  },
+  "dragons_pending_full_extraction": [
+    {
+      "name": "Starshower",
+      "title": "The Wishkeeper",
+      "availability": "Shadow of the Greens campaign",
+      "rarity": "Epic",
+      "breed": "Sentinel",
+      "affinities": {
+        "positive": ["Shieldbearers"],
+        "neutral": ["Spearmen", "Cavalry", "Archers", "Siege"],
+        "negative": []
+      },
+      "roles": ["Tactical damage", "Solar Flare marks", "Cleanse", "Evade", "ally mitigation"],
+      "command_summary": [
+        "Start of Combat: Mark each enemy dragon with Solar Flare.",
+        "Each Round: 50% chance to deal Tactical Damage and remove Solar Flare on 1 enemy with Solar Flare.",
+        "Rounds 1, 3, 7, 9: Deal Tactical Damage to 1 enemy in the same lane."
+      ],
+      "habit_summaries": [
+        "Night Guardian: Each Round, chance to Cleanse 1 Negative effect from 2 other allies and grant Evade for 1 round.",
+        "Battle Subversion: Start of Combat, reduce Intelligence and Initiative of 3 enemies until combat ends.",
+        "Ill Portents: Raises Solar Flare consumption damage and can re-mark all enemies once during Rounds 6-10 if no enemy has Solar Flare.",
+        "Tactical Breach: Start of Combat, increase Tactical Damage Received of 1 same-lane enemy until combat ends.",
+        "Wishkeeper's Grace: Consuming Solar Flare reduces Damage Received for adjacent allies; Resistance strengthens it, while Advantage broadens it to all lanes."
+      ],
+      "synergy_inputs": ["Resistance", "Advantage"],
+      "synergy_outputs": ["Tactical Damage", "Cleanse", "Evade", "Damage Received reduction"],
+      "source": "https://news.gotdragonfire.com/starshower-the-wishkeeper/",
+      "published": "2026-07-30",
+      "missing_for_full_recommendations": ["Vanguard ability", "exact numeric values", "Habit upgrade levels", "screenshot verification"]
+    },
+    {
+      "name": "Vermithor",
+      "title": "The Bronze Fury",
+      "availability": "Shadow of the Greens campaign",
+      "rarity": "Legendary",
+      "breed": "Champion",
+      "affinities": {
+        "positive": ["Spearmen", "Shieldbearers"],
+        "neutral": ["Cavalry", "Archers", "Siege"],
+        "negative": []
+      },
+      "roles": ["Protect", "Physical suppression", "Fire suppression", "Physical damage", "Tactical damage", "low-troop payoff"],
+      "command_summary": [
+        "Rounds 2, 4, 6, 8: Deal Physical Damage and Tactical Damage to 2 enemies within adjacency.",
+        "Odd-numbered Rounds: Chance to apply Protect to the other adjacent ally with the least troops for 2 rounds."
+      ],
+      "habit_summaries": [
+        "Noble Sacrifice: Opening self Tactical vulnerability traded for five-round Physical suppression prioritizing a Warrior and Fire suppression prioritizing a Hunter.",
+        "Nimble Resilience: Start of Combat, reduce Damage Received and increase Initiative until combat ends.",
+        "Bronze Bulwark: Improves Command damage and Protect chance; applying Protect temporarily reduces Vermithor's Physical and Fire Damage Received.",
+        "Fury's Poise: Gains combat-long Physical mitigation per enemy Warrior and Fire mitigation per enemy Hunter.",
+        "Vengeful Fury: Once per combat while below 50% Max Troop Capacity, attacks the lowest-Instinct enemy with Physical Damage and the lowest-Intelligence enemy with Tactical Damage."
+      ],
+      "synergy_inputs": ["Enemy Warriors", "Enemy Hunters", "extended combat", "ally with low troops"],
+      "synergy_outputs": ["Protect", "Physical Damage Dealt reduction", "Fire Damage Dealt reduction", "Physical and Tactical Damage"],
+      "source": "https://news.gotdragonfire.com/vermithor-the-bronze-fury/",
+      "published": "2026-07-30",
+      "missing_for_full_recommendations": ["Vanguard ability", "exact numeric values", "Habit upgrade levels", "screenshot verification"]
+    }
+  ]
+}

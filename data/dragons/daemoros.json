@@ -1,0 +1,126 @@
+{
+  "name": "Daemoros",
+  "breed": "Warrior",
+  "rarity_label": "Adult",
+  "troop_affinities": {
+    "positive": [
+      "Archers"
+    ],
+    "negative": []
+  },
+  "excluded_progression_snapshot": [
+    "Strength",
+    "Instinct",
+    "Intelligence",
+    "Initiative",
+    "Stamina",
+    "Reign Level",
+    "XP",
+    "current Star Rank",
+    "current army size"
+  ],
+  "command": {
+    "name": "Shadowflame",
+    "type": "Active",
+    "verbatim": "Odd-numbered Rounds: Deal Physical Damage to 1 Enemy within adjacency (Damage Rate: +125%). Additionally, there is a 20% chance to afflict the target with Burn (Damage Rate: +20%) for 2 round(s).",
+    "structured": {
+      "core_tags": [
+        "physical_damage",
+        "burn",
+        "adjacency"
+      ],
+      "synergy_inputs": [],
+      "synergy_outputs": [
+        "Burn"
+      ]
+    }
+  },
+  "vanguard": {
+    "name": "Warrior's Zeal",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Physical Damage (Active Commands and Habits) Dealt by +16%. Increase Instinct and Initiative by +20 of the Ally deployed in the Left Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Instill Fear",
+      "verbatim": "Each Round: 50% chance to reduce Intelligence and Instinct by -25% (enhanced by Strength) and afflict Panic (Damage Rate: +20%) on 1 Enemy in any lane (prioritizes the Right Flank). Each effect lasts for 2 round(s).",
+      "upgrade_levels": {
+        "1": 25,
+        "2": 30,
+        "3": 35,
+        "4": 42.5,
+        "5": 50
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Powerful Reflexes",
+      "verbatim": "Start of Combat: Increase your Strength and Initiative by +27.2% until the end of combat.",
+      "upgrade_levels": {
+        "1": 16,
+        "2": 19.2,
+        "3": 22.4,
+        "4": 27.2,
+        "5": 32
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "Shroud of Shadows",
+      "verbatim": "Odd-numbered Rounds: 30% chance to afflict Confusion on 1 Enemy within adjacency for 2 round(s).",
+      "upgrade_levels": {
+        "1": 15,
+        "2": 18,
+        "3": 21,
+        "4": 25.5,
+        "5": 30
+      }
+    },
+    {
+      "star_unlock": 8,
+      "name": "Darkening Fear",
+      "verbatim": "Each Round: 25% chance to reduce Intelligence and Instinct by -25% (enhanced by Strength) and afflict Panic (Damage Rate: +20%) on 1 Enemy in any lane (prioritizes the Left Flank). Each effect lasts for 2 round(s).",
+      "upgrade_levels": {
+        "1": 25,
+        "2": 30,
+        "3": 35,
+        "4": 42.5,
+        "5": 50
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "Phantom's Veil",
+      "verbatim": "Start of Each Round Reduce either your Physical, Tactical, OR Fire Damage Received by -15% until the end of the round.",
+      "upgrade_levels": {
+        "1": -15,
+        "2": -19.5,
+        "3": -24,
+        "4": -30,
+        "5": -37.5
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "physical_damage",
+      "panic",
+      "confusion_control"
+    ],
+    "preferred_position": "vanguard",
+    "preferred_troops": [
+      "Archers"
+    ],
+    "avoid_troops": [],
+    "formation_needs": [
+      "Tactical Left Flank"
+    ],
+    "scenario_bias": {
+      "attack": 0.75,
+      "defense": 0.45,
+      "crowd_control": 0.8
+    }
+  },
+  "review": []
+}

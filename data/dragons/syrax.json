@@ -1,0 +1,136 @@
+{
+  "name": "Syrax",
+  "breed": "Sentinel",
+  "rarity_label": "Adult",
+  "troop_affinities": {
+    "positive": [
+      "Spearmen",
+      "Archers"
+    ],
+    "negative": [
+      "Siege"
+    ]
+  },
+  "command": {
+    "name": "Blazing Fury",
+    "type": "Active",
+    "verbatim": [
+      "Each Round: 20% chance to increase Fire Damage Dealt by +10% and First-Strike to 1 Ally in any lane, prioritizing Fire Damage allies, for 2 round(s).",
+      "Rounds 1, 4, 6, 9: Deal Tactical Damage to 1 Enemy within adjacency (Damage Rate: +110%).",
+      "At 6+ Stars: Rounds 2, 5, 8: Recover the Ally with the fewest troops (Recovery Rate: +60%, enhanced by Initiative); increased to +90% if any Enemy is afflicted with Slow. 30% chance to grant Resistance (-20%) for 2 round(s)."
+    ]
+  },
+  "vanguard": {
+    "name": "Sentinel's Wit",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard, increase your Tactical Damage Dealt by +16%. Increase Instinct and Initiative by +20 of the Ally deployed in the Left Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Mindful Synergy",
+      "verbatim": "Start of Combat: Increase the Intelligence and Instinct (enhanced by Initiative) of 3 Allies in any lane by +7.8% until the end of combat.",
+      "upgrade_levels": {
+        "1": 6.5,
+        "2": 7.8,
+        "3": 9.1,
+        "4": 11.05,
+        "5": 13
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Flight Mastery",
+      "verbatim": "Start of Combat: Increase Initiative by +7.2% (enhanced by Instinct) of 3 Allies in any lane and reduce Initiative by -7% (enhanced by Instinct) of 3 Enemies in any lane until the end of combat.",
+      "upgrade_levels": {
+        "1": {
+          "allies_initiative": 6,
+          "enemies_initiative": -6
+        },
+        "2": {
+          "allies_initiative": 7.2,
+          "enemies_initiative": -7.2
+        },
+        "3": {
+          "allies_initiative": 8.4,
+          "enemies_initiative": -8.4
+        },
+        "4": {
+          "allies_initiative": 10.2,
+          "enemies_initiative": -10.2
+        },
+        "5": {
+          "allies_initiative": 12,
+          "enemies_initiative": -12
+        }
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "Strategic Revival",
+      "verbatim": "Blazing Fury gains: Rounds 2, 5, 8: Apply Recovery to the Ally with the least troops (Recovery Rate: +60%, enhanced by Initiative). The amount of Recovery is increased by 1.5x (+90%) if an Enemy is afflicted with Slow. Additionally, there is a 30% chance to grant the target Resistance (-20%) for 2 round(s).",
+      "upgrade_levels": {
+        "1": {
+          "resistance_chance": 25,
+          "recovery_rate": 50
+        },
+        "2": {
+          "resistance_chance": 30,
+          "recovery_rate": 60
+        },
+        "3": {
+          "resistance_chance": 35,
+          "recovery_rate": 70
+        },
+        "4": {
+          "resistance_chance": 42.5,
+          "recovery_rate": 85
+        },
+        "5": {
+          "resistance_chance": 50,
+          "recovery_rate": 100
+        }
+      }
+    },
+    {
+      "star_unlock": 8,
+      "name": "Tactical Inferno",
+      "verbatim": "Start of Round 1: Increase the Tactical Damage Dealt of 1 Ally in any lane (prioritizes the Left Flank) and the Fire Damage Dealt of 1 Ally in any lane (prioritizes the Right Flank) by +18% for 3 round(s).",
+      "upgrade_levels": {
+        "1": 18,
+        "2": 21.6,
+        "3": 25.2,
+        "4": 30.6,
+        "5": 36
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "Mother's Mercy",
+      "verbatim": "Each Round: 14% chance to Cleanse 2 Negative and 1 Control effects from 1 Ally in any lane (prioritizes allies afflicted with a Control effect).",
+      "upgrade_levels": {
+        "1": 14,
+        "2": 18.2,
+        "3": 22.4,
+        "4": 28,
+        "5": 35
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "tactical_damage",
+      "fire_support",
+      "recovery",
+      "cleanse",
+      "first_strike_support",
+      "slow_payoff",
+      "resistance_support"
+    ],
+    "preferred_troops": [
+      "Spearmen",
+      "Archers"
+    ]
+  },
+  "review": []
+}

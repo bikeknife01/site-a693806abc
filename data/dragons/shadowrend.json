@@ -1,0 +1,138 @@
+{
+  "name": "Shadowrend",
+  "breed": "Warrior",
+  "rarity_label": "Elder",
+  "troop_affinities": {
+    "positive": [
+      "Shieldbearers",
+      "Siege"
+    ],
+    "negative": [],
+    "review_required": false
+  },
+  "excluded_progression_snapshot": [
+    "Strength",
+    "Instinct",
+    "Intelligence",
+    "Initiative",
+    "Stamina",
+    "Reign Level",
+    "XP",
+    "current Star Rank",
+    "current army size"
+  ],
+  "command": {
+    "name": "Eclipse Fervor",
+    "type": "Active",
+    "verbatim": [
+      "Each Round: 25% chance to afflict Panic (Damage Rate: +20%) on 1 Enemy within adjacency for 2 rounds.",
+      "Rounds 4, 7, 9, 10: Deal Physical Damage to 2 Enemies within adjacency (Damage Rate: +80%).",
+      "At 10 Stars: On Round 9: Deal Physical and Tactical Damage to 3 Enemies in any lane (Damage Rate: +100% per type)."
+    ]
+  },
+  "vanguard": {
+    "name": "Warrior's Zeal",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Physical Damage Dealt by +16%. Increase Instinct and Initiative by +20 of the Ally deployed in the Left Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Midnight Aura",
+      "verbatim": "Start of Rounds 7-10: Increase Strength and Instinct (enhanced by Initiative) of 3 Allies in any lane until the end of the round.",
+      "upgrade_levels": {
+        "1": 40,
+        "2": 48,
+        "3": 56,
+        "4": 68,
+        "5": 80
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Nimble Resilience",
+      "verbatim": "Start of Combat: Reduce your Damage Received and increase your Initiative until the end of combat.",
+      "upgrade_levels": {
+        "1": {
+          "damage_received_percent": -4,
+          "initiative_percent": 5
+        },
+        "2": {
+          "damage_received_percent": -4.8,
+          "initiative_percent": 6
+        },
+        "3": {
+          "damage_received_percent": -5.6,
+          "initiative_percent": 7
+        },
+        "4": {
+          "damage_received_percent": -6.8,
+          "initiative_percent": 8.5
+        },
+        "5": {
+          "damage_received_percent": -8,
+          "initiative_percent": 10
+        }
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "Fueled by Darkness",
+      "verbatim": "Each Round: chance to grant Advantage to 2 Allies in any lane for 2 rounds, doubled while Midnight Aura is active.",
+      "upgrade_levels": {
+        "1": 10,
+        "2": 12,
+        "3": 14,
+        "4": 17,
+        "5": 20
+      }
+    },
+    {
+      "star_unlock": 8,
+      "name": "Midnight Mastery",
+      "verbatim": "Start of Rounds 7-10: Increase Physical and Tactical Damage Dealt of 3 Allies in any lane until the end of the round.",
+      "upgrade_levels": {
+        "1": 7,
+        "2": 8.4,
+        "3": 9.8,
+        "4": 11.9,
+        "5": 14
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "Event Horizon",
+      "verbatim": "Eclipse Fervor gains: On Round 9: Deal Physical and Tactical Damage to 3 Enemies in any lane (Damage Rate: +100% per type).",
+      "upgrade_levels": {
+        "1": 100,
+        "2": 130,
+        "3": 160,
+        "4": 200,
+        "5": 250
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "physical_damage",
+      "panic",
+      "late_round_ally_support",
+      "hybrid_burst"
+    ],
+    "preferred_position": "vanguard",
+    "preferred_troops": [
+      "Shieldbearers",
+      "Siege"
+    ],
+    "avoid_troops": [],
+    "formation_needs": [
+      "Left Flank ally benefiting from Instinct and Initiative"
+    ],
+    "scenario_bias": {
+      "attack": 0.8,
+      "defense": 0.5,
+      "crowd_control": 0.55
+    }
+  },
+  "review": []
+}

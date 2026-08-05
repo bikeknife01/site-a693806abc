@@ -1,0 +1,139 @@
+{
+  "name": "Feskar",
+  "breed": "Champion",
+  "rarity_label": "Elder",
+  "troop_affinities": {
+    "positive": [
+      "Cavalry"
+    ],
+    "negative": [
+      "Siege"
+    ]
+  },
+  "excluded_progression_snapshot": [
+    "Strength",
+    "Instinct",
+    "Intelligence",
+    "Initiative",
+    "Stamina",
+    "Reign Level",
+    "XP",
+    "current Star Rank",
+    "current army size"
+  ],
+  "command": {
+    "name": "Calculated Assault",
+    "type": "Active",
+    "verbatim": [
+      "Each Round: 20% chance to reduce the Physical Damage Dealt (excluding Basic Attacks) by -12% of the Enemy with the highest Strength for 2 rounds(s).",
+      "Rounds 2, 4, 7, 9: Deal Tactical Damage to the Enemy with the least troops (Damage Rate: +100%).",
+      "At 6+ Stars: Rounds 3, 5, 8, 10: Deal Fire Damage to all Enemies that deal Physical Damage (excluding Basic Attacks) (Damage Rate: +40%). This damage is increased by 1.5x against targets afflicted with Burn (Damage Rate: +60%)."
+    ],
+    "structured": {
+      "core_tags": [
+        "physical_debuff",
+        "tactical_damage",
+        "fire_damage",
+        "burn_payoff"
+      ],
+      "synergy_inputs": [
+        "Burn"
+      ],
+      "synergy_outputs": [
+        "reduced_physical_damage_dealt"
+      ]
+    }
+  },
+  "vanguard": {
+    "name": "Champion's Brilliance",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Strength, Intelligence, and Instinct by +15. Reduce Damage Received by -8% of the Ally deployed in the Right Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Resilient Bond",
+      "verbatim": "Start of Combat: Grant yourself and 1 other Ally within adjacency 1 stack of Resilient Bond. At the start of each round, if the target Ally retreated in the previous round, grant yourself 1 stack of Resilient Bond. Each stack of Resilient Bond reduces the target's Physical Damage Received (excluding Basic Attacks) by -6% until the end of combat.",
+      "upgrade_levels": {
+        "1": -6.5,
+        "2": -7.8,
+        "3": -9.1,
+        "4": -11.05,
+        "5": -13
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Insightful Allies",
+      "verbatim": "Start of Combat: Increase Instinct by +10% (enhanced by Instinct) of 3 Allies in any lane until the end of combat.",
+      "upgrade_levels": {
+        "1": 10,
+        "2": 12,
+        "3": 14,
+        "4": 17,
+        "5": 20
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "Emerald Inferno",
+      "verbatim": "Calculated Assault gains: Rounds 3, 5, 8, 10: Deal Fire Damage to all Enemies that deal Physical Damage (excluding Basic Attacks) (Damage Rate: +40%). This damage is increased by 1.5x against targets afflicted with Burn (Damage Rate: +60%).",
+      "upgrade_levels": {
+        "1": 40,
+        "2": 48,
+        "3": 56,
+        "4": 68,
+        "5": 80
+      }
+    },
+    {
+      "star_unlock": 8,
+      "name": "Quick-Witted",
+      "verbatim": "Start of Combat: Increase your Intelligence and Initiative by +16% until the end of combat.",
+      "upgrade_levels": {
+        "1": 16,
+        "2": 19.2,
+        "3": 22.4,
+        "4": 27.2,
+        "5": 32
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "Unyielding Grasp",
+      "verbatim": "Each Round: 10% chance to Stagger 1 Enemy in any lane (prioritizes Warriors) for 3 round(s).",
+      "upgrade_levels": {
+        "1": 10,
+        "2": 13,
+        "3": 16,
+        "4": 20,
+        "5": 25
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "physical_debuffer",
+      "burn_payoff",
+      "finisher",
+      "stagger_control"
+    ],
+    "preferred_position": "vanguard",
+    "preferred_troops": [
+      "Cavalry"
+    ],
+    "avoid_troops": [
+      "Siege"
+    ],
+    "formation_needs": [
+      "Burn source",
+      "durable Right Flank"
+    ],
+    "scenario_bias": {
+      "attack": 0.7,
+      "defense": 0.65,
+      "crowd_control": 0.55
+    }
+  },
+  "review": []
+}

@@ -1,0 +1,131 @@
+{
+  "name": "Vaeldra",
+  "breed": "Warrior",
+  "rarity_label": "Elder",
+  "troop_affinities": {
+    "positive": [
+      "Spearmen"
+    ],
+    "negative": []
+  },
+  "command": {
+    "name": "Lure",
+    "type": "Active",
+    "verbatim": [
+      "Each Round: 25% chance to Taunt 3 Enemies in any lane for 2 round(s).",
+      "Odd-numbered Rounds: Deal Physical Damage to 2 Enemies within adjacency (Damage Rate: +45%)."
+    ]
+  },
+  "vanguard": {
+    "name": "Warrior's Resilience",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard, reduce your Damage Received by -8%. Increase Tactical Damage Dealt by +16% of the Ally deployed in the Left Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Dragon's Valor",
+      "verbatim": "Start of Combat: Reduce your Damage Received by -6% and increase your Strength by +10.2% until the end of combat.",
+      "upgrade_levels": {
+        "1": {
+          "damage_received": -5,
+          "strength": 8.5
+        },
+        "2": {
+          "damage_received": -6,
+          "strength": 10.2
+        },
+        "3": {
+          "damage_received": -7,
+          "strength": 11.9
+        },
+        "4": {
+          "damage_received": -8.5,
+          "strength": 14.45
+        },
+        "5": {
+          "damage_received": -10,
+          "strength": 17
+        }
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Ensnare",
+      "verbatim": "Round 1: Reduce Instinct and Initiative by -18% (enhanced by Intelligence) of 2 Enemies within adjacency for 3 round(s).",
+      "upgrade_levels": {
+        "1": -18,
+        "2": -21.6,
+        "3": -25.2,
+        "4": -30.6,
+        "5": -36
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "Tempting Distraction",
+      "verbatim": "When you afflict an Enemy with Taunt: Increase their Physical Damage Received (excluding Basic Attacks) and Fire Damage Received by +6% for 2 round(s).",
+      "upgrade_levels": {
+        "1": 6,
+        "2": 7.2,
+        "3": 8.4,
+        "4": 10.2,
+        "5": 12
+      }
+    },
+    {
+      "star_unlock": 8,
+      "name": "Infernal Force",
+      "verbatim": "Start of Round 1: Increase the Fire Damage Dealt of 1 Ally in any lane (prioritizes the Left Flank) and the Physical Damage Dealt (excluding Basic Attacks) of 1 Ally in any lane (prioritizes the Right Flank) by +14.4%. Each effect lasts for 3 rounds.",
+      "upgrade_levels": {
+        "1": 12,
+        "2": 14.4,
+        "3": 16.8,
+        "4": 20.4,
+        "5": 24
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "Siren's Call",
+      "verbatim": [
+        "Start of Round 1: Reduce your Physical Damage Received by -10% for 3 round(s).",
+        "Start of Rounds 1-3: 40% chance to Taunt all Enemies until the end of the round. Targets that are already afflicted with Taunt will be afflicted with Stagger instead."
+      ],
+      "upgrade_levels": {
+        "1": {
+          "damage_received": -10,
+          "taunt_stagger_chance": 40
+        },
+        "2": {
+          "damage_received": -13,
+          "taunt_stagger_chance": 52
+        },
+        "3": {
+          "damage_received": -16,
+          "taunt_stagger_chance": 64
+        },
+        "4": {
+          "damage_received": -20,
+          "taunt_stagger_chance": 80
+        },
+        "5": {
+          "damage_received": -25,
+          "taunt_stagger_chance": 100
+        }
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "taunt",
+      "physical_damage",
+      "tactical_support",
+      "damage_amplification"
+    ],
+    "preferred_troops": [
+      "Spearmen"
+    ]
+  },
+  "review": []
+}

@@ -1,0 +1,62 @@
+# Online source audit
+
+Last reviewed: 2026-08-05
+
+This page records public sources checked for game rules and live additions. It is a
+source-quality ledger, not a claim that every public strategy opinion is correct.
+Exact dragon ability screenshots in this repository remain authoritative for the
+audited dragon records.
+
+## Source priority
+
+1. Current in-game text and screenshots.
+2. Official WB Games support guides and official Dragonfire news/profile pages.
+3. Repeated, reproducible player observations with enough battle context.
+4. Fan databases and guides for discovery or strategic hypotheses.
+5. Tier lists, unsourced summaries, and search snippets only as leads.
+
+When sources conflict, prefer the newest direct evidence and record the conflict rather
+than merging incompatible claims.
+
+## Official sources reviewed
+
+| Source | Coverage | Result |
+| --- | --- | --- |
+| [Official site](https://gotdragonfire.com/) | Current portal and official channel links | No detailed mechanics on the landing page. Links to official news, support, Discord, and social channels. |
+| [Official guide hub and glossary](https://news.gotdragonfire.com/dragonfire-guide-hub-glossary/) | Core terminology and guide index | Confirmed troops retreat at zero, Reign/Campaign terminology, map terminology, and progression currencies. |
+| [A Guide to Dragons](https://hbogamessupport.wbgames.com/hc/en-us/articles/46520226701459-A-Guide-to-Dragons) | Dragon progression, abilities, troops, breeds | Added Star Rank stat growth, Reign Level stat/army growth, Command activation guidance, troop advantage outcomes, and formation-preset behavior. |
+| [The Map of Westeros](https://hbogamessupport.wbgames.com/hc/en-us/articles/46843383089555-The-Map-of-Westeros) | PvE/PvP map, Defenders, Durability, encounters, POIs | Added Defender-before-Durability sequencing, Siege role, garrison behavior, encounter rules, and Wild Dragon breed-weakness caveat. |
+| [Stronghold Guide](https://hbogamessupport.wbgames.com/hc/en-us/articles/46842392115987-Stronghold-Guide) | Seasonal upgrades, armies, rarity, barracks | Added generic troop assignment, rarity impact, and account/season modifiers that can make equal dragon formations perform differently. |
+| [A Guide to Campaigns](https://hbogamessupport.wbgames.com/hc/en-us/articles/46838575242643-A-Guide-to-Campaigns) | Reigns, stages, resets, durable progress | Added the eight-week Reign model, stage modifiers, reset/durable distinctions, and known campaign names. |
+| [Heirloom Guide](https://news.gotdragonfire.com/a-guide-to-upgrades-heirlooms/) | Persistent account upgrades | Added permanent Heirloom ranks, seasonal House Level activation, Amplifiers, and always-active Mastery. |
+| [Worldwide release announcement](https://news.gotdragonfire.com/game-of-thrones-dragonfire-is-now-available/) | High-level game model | Confirmed up to five simultaneous dragon-led armies and seasonal Reigns with permanent dragon growth. |
+| [World Health dev log](https://news.gotdragonfire.com/dev-log-1/) | World transitions and matchmaking direction | Confirmed Alliances survive transitions while Worlds/Factions may change. Matchmaking statements are dated plans, not combat rules. |
+| [Starshower profile](https://news.gotdragonfire.com/starshower-the-wishkeeper/) | New official dragon | Added an incomplete live record and Solar Flare. Exact values and Vanguard text remain unavailable. |
+| [Vermithor profile](https://news.gotdragonfire.com/vermithor-the-bronze-fury/) | New official dragon | Added an incomplete live record and Protect. Exact values and Vanguard text remain unavailable. |
+
+No official patch-note archive, combat formula, universal proc order, or published
+errata list was found during this audit. Official profile prose can omit values and
+Vanguard text, so it must not silently replace complete in-game records.
+
+## Community sources reviewed
+
+| Source | Assessment | Use |
+| --- | --- | --- |
+| [Dragonfire Hub](https://dragonfire-hub.com/) | Active fan database and lineup builder. Its public guide largely mirrors the in-game effect glossary; detailed blog analysis is commonly Patreon-gated. | Useful for discovery, filtering, and candidate combinations. Verify mechanics against official or in-game text. |
+| [Dragonfire Hub guide](https://dragonfire-hub.com/guide) | Repeats damage types, status definitions, and named stack mechanics. | Corroboration only; it did not resolve combat formulas, proc order, adjacency, or Cleanse priority. |
+| [Game of Thrones Dragonfire Wiki tier list](https://www.gameofthronesdragonfire.wiki/tier-list) | Launch-stage, explicitly confidence-weighted, but stale enough to mark dragons with complete repository data as pending. | Do not import rankings. Its advice to avoid spreading rare resources is a strategic opinion, not a combat rule. |
+| Reddit communities `r/GOTDragonfire` and `r/GOT_DragonFire` | Search surfaced formation posts that primarily link to videos; accessible post text did not provide auditable mechanics. | Leads for testing and meta discussion, not rule authority. |
+| RTS Mobile formation videos surfaced through web search | Potential player-tested strategy, but no battle reports or transcripts were available in the inspected results. | Do not encode claims without reproducible matchup context. |
+
+## Still unknown
+
+- Exact damage, affinity, troop-advantage, rarity, and stat-scaling formulas.
+- Complete round/action/proc resolution order and battle tiebreak rules.
+- Formal geometry for `same lane` and `within adjacency` beyond individual ability text.
+- Universal stacking, control-conflict, Cleanse-priority, and Recovery-order rules.
+- The Wild Dragon breed-weakness mapping mentioned by the official map guide.
+- Full in-game records for Starshower and Vermithor, especially Vanguard abilities,
+  exact values, and Habit upgrade tracks.
+
+These gaps should be answered with current in-game screenshots or controlled battle
+tests. Until then, recommendations must state assumptions and avoid false precision.

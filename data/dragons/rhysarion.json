@@ -1,0 +1,141 @@
+{
+  "name": "Rhysarion",
+  "breed": "Champion",
+  "rarity_label": "Adult",
+  "troop_affinities": {
+    "positive": [
+      "Spearmen",
+      "Shieldbearers",
+      "Siege"
+    ],
+    "negative": [],
+    "review_required": false
+  },
+  "excluded_progression_snapshot": [
+    "Strength",
+    "Instinct",
+    "Intelligence",
+    "Initiative",
+    "Stamina",
+    "Reign Level",
+    "XP",
+    "current Star Rank",
+    "current army size"
+  ],
+  "command": {
+    "name": "Dawnsong",
+    "type": "Active",
+    "verbatim": [
+      "Rounds 1, 4, 7: Deal Physical Damage to 2 Enemies within adjacency (Damage Rate: +70%).",
+      "Rounds 2, 5, 8: Deal Fire Damage to 3 Enemies in any lane (Damage Rate: +20%). This damage is increased by 1.5x if the target is afflicted with a Control effect (Damage Rate: +30%).",
+      "At 6+ Stars: Rounds 2, 5, 8: Apply Recovery to 2 other Allies in any lane (Recovery Rate: +120%, enhanced by Intelligence)."
+    ]
+  },
+  "vanguard": {
+    "name": "Champion's Vigor",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Recovery Dealt by +15% and Initiative by +25. Increase the Damage Dealt by +8% of the Ally deployed in the Right Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Ebbing Fury",
+      "verbatim": "Start of Round 1: Reduce Damage Dealt of all Enemies AND Allies for 3 rounds. Start of Round 4: Apply Recovery to 3 Allies in any lane.",
+      "upgrade_levels": {
+        "1": {
+          "damage_dealt_percent": -27.5,
+          "recovery_rate_percent": 25
+        },
+        "2": {
+          "damage_dealt_percent": -33,
+          "recovery_rate_percent": 30
+        },
+        "3": {
+          "damage_dealt_percent": -38.5,
+          "recovery_rate_percent": 35
+        },
+        "4": {
+          "damage_dealt_percent": -46.75,
+          "recovery_rate_percent": 42.5
+        },
+        "5": {
+          "damage_dealt_percent": -55,
+          "recovery_rate_percent": 50
+        }
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Sharp Resolve",
+      "verbatim": "Start of Combat: Increase your Strength and Intelligence until the end of combat.",
+      "upgrade_levels": {
+        "1": 16,
+        "2": 19.2,
+        "3": 22.4,
+        "4": 27.2,
+        "5": 32
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "Echoing Melody",
+      "verbatim": "Dawnsong gains: Rounds 2, 5, 8: Apply Recovery to 2 other Allies in any lane, enhanced by Intelligence.",
+      "upgrade_levels": {
+        "1": 60,
+        "2": 72,
+        "3": 84,
+        "4": 102,
+        "5": 120
+      }
+    },
+    {
+      "star_unlock": 8,
+      "name": "Unbroken Devotion",
+      "verbatim": "Start of Combat Increase Recovery Received of 2 other Allies in any lane until the end of combat.",
+      "upgrade_levels": {
+        "1": 20,
+        "2": 24,
+        "3": 28,
+        "4": 34,
+        "5": 40
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "Inspiring Melody",
+      "verbatim": "Each Round: chance to increase Initiative and grant Resistance to 1 other Ally within adjacency for 3 rounds.",
+      "upgrade_levels": {
+        "1": 20,
+        "2": 26,
+        "3": 32,
+        "4": 40,
+        "5": 50
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "hybrid_damage",
+      "recovery_support",
+      "control_payoff",
+      "vanguard_support"
+    ],
+    "preferred_position": "vanguard",
+    "preferred_troops": [
+      "Spearmen",
+      "Shieldbearers",
+      "Siege"
+    ],
+    "avoid_troops": [],
+    "formation_needs": [
+      "Control-effect source",
+      "Right Flank damage ally"
+    ],
+    "scenario_bias": {
+      "attack": 0.65,
+      "defense": 0.55,
+      "crowd_control": 0.45
+    }
+  },
+  "review": []
+}

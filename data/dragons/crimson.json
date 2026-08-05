@@ -1,0 +1,180 @@
+{
+  "name": "Crimson",
+  "breed": "Hunter",
+  "rarity_label": "Adult",
+  "troop_affinities": {
+    "positive": [
+      "Spearmen",
+      "Archers",
+      "Siege"
+    ],
+    "negative": []
+  },
+  "excluded_progression_snapshot": [
+    "Strength",
+    "Instinct",
+    "Intelligence",
+    "Initiative",
+    "Stamina",
+    "Reign Level",
+    "XP",
+    "current Star Rank",
+    "current army size"
+  ],
+  "command": {
+    "name": "Bloodscale Terror",
+    "type": "Active",
+    "verbatim": [
+      "Odd-numbered Rounds: 20% chance to afflict Stun on 1 Enemy in any lane for 2 round(s).",
+      "Rounds 2, 5, 8: Deal Fire Damage to 1 Enemy in any lane (Damage Rate: +140%).",
+      "At 10 Stars: Round 1: The chance to Stun is increased to 40%. Even-numbered Rounds: 50% chance to reduce Instinct and Initiative by -12% (enhanced by Intelligence) of 1 Enemy in any lane for 2 round(s)."
+    ],
+    "structured": {
+      "core_tags": [
+        "stun",
+        "fire_damage",
+        "stat_debuff"
+      ],
+      "synergy_inputs": [],
+      "synergy_outputs": [
+        "Stun"
+      ]
+    }
+  },
+  "vanguard": {
+    "name": "Hunter's Cunning",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Recovery Received by +20% and Intelligence by +25. Increase Physical Damage Dealt by +10% of the Ally deployed in the Right Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Enervate",
+      "verbatim": "At the start of combat, reduce Tactical Damage Dealt by -13% of 1 Enemy that deals Tactical Damage until the end of combat.",
+      "upgrade_levels": {
+        "1": -13.5,
+        "2": -16.2,
+        "3": -18.9,
+        "4": -22.95,
+        "5": -27
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Dragon's Intellect",
+      "verbatim": "Start of Combat: Reduce your Damage Received by -6% and increase your Intelligence by +12% until the end of combat.",
+      "upgrade_levels": {
+        "1": {
+          "damage_received_percent": -6,
+          "intelligence_percent": 12
+        },
+        "2": {
+          "damage_received_percent": -7.2,
+          "intelligence_percent": 14.4
+        },
+        "3": {
+          "damage_received_percent": -8.4,
+          "intelligence_percent": 16.8
+        },
+        "4": {
+          "damage_received_percent": -10.2,
+          "intelligence_percent": 20.4
+        },
+        "5": {
+          "damage_received_percent": -12,
+          "intelligence_percent": 24
+        }
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "Bloodscale Fury",
+      "verbatim": "Each Round: 18% chance to afflict Weakened (-20%) on 1 Enemy in any lane (prioritize targets NOT afflicted with Stun) for 2 round(s). This chance is doubled (35%) against targets afflicted with Taunt.",
+      "upgrade_levels": {
+        "1": 17.5,
+        "2": 21,
+        "3": 24.5,
+        "4": 29.75,
+        "5": 35
+      }
+    },
+    {
+      "star_unlock": 8,
+      "name": "Unlikely Hero",
+      "verbatim": "Start of Each Round: Increase Physical Damage Received (excluding Basic Attacks) and Fire Damage Received by +10% for all Enemies above 75% max troop capacity until the end of the round. Start of Each Round: Reduce Recovery Received by -20% for all Enemies below 25% max troop capacity until the end of the round.",
+      "upgrade_levels": {
+        "1": {
+          "damage_received_percent": 10,
+          "recovery_received_percent": -20
+        },
+        "2": {
+          "damage_received_percent": 12,
+          "recovery_received_percent": -24
+        },
+        "3": {
+          "damage_received_percent": 14,
+          "recovery_received_percent": -28
+        },
+        "4": {
+          "damage_received_percent": 17,
+          "recovery_received_percent": -34
+        },
+        "5": {
+          "damage_received_percent": 20,
+          "recovery_received_percent": -40
+        }
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "Vermin's Bane",
+      "verbatim": "Bloodscale Terror gains: Even-numbered Rounds: 50% chance to reduce Instinct and Initiative by -12% (enhanced by Intelligence) of the enemy with the highest Instinct for 2 round(s). Round 1: The chance to Stun is increased to 40%.",
+      "upgrade_levels": {
+        "1": {
+          "stun_chance_percent": 40,
+          "instinct_and_initiative_percent": -12
+        },
+        "2": {
+          "stun_chance_percent": 52,
+          "instinct_and_initiative_percent": -15.6
+        },
+        "3": {
+          "stun_chance_percent": 64,
+          "instinct_and_initiative_percent": -19.2
+        },
+        "4": {
+          "stun_chance_percent": 80,
+          "instinct_and_initiative_percent": -24
+        },
+        "5": {
+          "stun_chance_percent": 100,
+          "instinct_and_initiative_percent": -30
+        }
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "stun_control",
+      "fire_damage",
+      "debuffer"
+    ],
+    "preferred_position": "vanguard",
+    "preferred_troops": [
+      "Spearmen",
+      "Archers",
+      "Siege"
+    ],
+    "avoid_troops": [],
+    "formation_needs": [
+      "Taunt source",
+      "physical Right Flank"
+    ],
+    "scenario_bias": {
+      "attack": 0.7,
+      "defense": 0.4,
+      "crowd_control": 0.8
+    }
+  },
+  "review": []
+}

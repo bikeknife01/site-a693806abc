@@ -1,0 +1,207 @@
+{
+  "name": "Arulix",
+  "breed": "Champion",
+  "rarity_label": "Elder",
+  "troop_affinities": {
+    "positive": [
+      "Cavalry"
+    ],
+    "negative": [],
+    "review_required": false
+  },
+  "excluded_progression_snapshot": [
+    "Strength",
+    "Instinct",
+    "Intelligence",
+    "Initiative",
+    "Stamina",
+    "Reign Level",
+    "XP",
+    "current Star Rank",
+    "current army size"
+  ],
+  "command": {
+    "name": "Gleaming Spiral",
+    "type": "Active",
+    "verbatim": [
+      "Each Round: 25% chance to reduce the Fire Damage Dealt of all enemies that deal Fire Damage by -15% for 1 round(s).",
+      "Rounds 1, 2, 3, 5, 8: Deal Tactical Damage to all enemies that deal Physical Damage (excluding Basic Attacks) (Damage Rate: +45%).",
+      "At 6+ Stars: Rounds 1, 2, 3, 5, 8: Deal Physical Damage to 2 Enemies in any lane (Damage Rate: +28%). This damage is increased by 1.5x (+42%) on Round 5 and by 2x (+56%) on Round 8."
+    ],
+    "structured": {
+      "core_tags": [
+        "anti_fire",
+        "tactical_damage",
+        "anti_physical",
+        "conditional_targeting",
+        "multi_target"
+      ],
+      "star_6_plus_tags": [
+        "physical_damage",
+        "scaling_damage"
+      ],
+      "synergy_inputs": [],
+      "synergy_outputs": [
+        "reduced_fire_damage_dealt",
+        "Tactical Damage",
+        "Physical Damage"
+      ]
+    }
+  },
+  "vanguard": {
+    "name": "Champion's Brilliance",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Strength, Intelligence, and Instinct by +15. Reduce Damage Received by -8% of the Ally deployed in the Right Flank.",
+    "structured": {
+      "self": [
+        {
+          "stat": "Strength",
+          "operation": "increase_flat",
+          "value": 15
+        },
+        {
+          "stat": "Intelligence",
+          "operation": "increase_flat",
+          "value": 15
+        },
+        {
+          "stat": "Instinct",
+          "operation": "increase_flat",
+          "value": 15
+        }
+      ],
+      "right_flank_ally": [
+        {
+          "stat": "Damage Received",
+          "operation": "reduce_percent",
+          "value": 8
+        }
+      ]
+    }
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Hypnotic Helix",
+      "verbatim": [
+        "Rounds 1, 3, 6, 8: 25% chance to Overwhelm 1 Enemy in any lane for 2 round(s) (prioritize Fire Damage dealers).",
+        "Rounds 2, 4, 7, 9: 25% chance to Stagger 1 Enemy in any lane for 2 round(s) (prioritize Physical Damage dealers)."
+      ],
+      "upgrade_levels": {
+        "1": 12.5,
+        "2": 15,
+        "3": 17.5,
+        "4": 21.3,
+        "5": 25
+      },
+      "value_unit": "percent_stagger_and_overwhelm_chance",
+      "tags": [
+        "overwhelm",
+        "stagger",
+        "control",
+        "priority_targeting"
+      ]
+    },
+    {
+      "star_unlock": 4,
+      "name": "Battle Cunning",
+      "verbatim": "Start of Combat: Reduce Strength and Intelligence by -6% (enhanced by Instinct) of 3 Enemies in any lane until the end of combat.",
+      "upgrade_levels": {
+        "1": -4,
+        "2": -4.8,
+        "3": -5.6,
+        "4": -6.8,
+        "5": -8
+      },
+      "value_unit": "percent_strength_and_intelligence",
+      "tags": [
+        "enemy_debuff",
+        "strength",
+        "intelligence"
+      ]
+    },
+    {
+      "star_unlock": 6,
+      "name": "Spiral Surge",
+      "verbatim": "Rounds 1, 2, 3, 5, 8: Deal Physical Damage to 2 Enemies in any lane (Damage Rate: +28%). This damage is increased by 1.5x (+42%) on Round 5 and by 2x (+56%) on Round 8.",
+      "upgrade_levels": {
+        "1": 20,
+        "2": 24,
+        "3": 28,
+        "4": 34,
+        "5": 40
+      },
+      "value_unit": "percent_damage_rate",
+      "tags": [
+        "command_upgrade",
+        "physical_damage",
+        "multi_target"
+      ]
+    },
+    {
+      "star_unlock": 8,
+      "name": "Iron Shell",
+      "verbatim": "Start of Combat: Reduce Physical Damage Received (excluding Basic Attacks) and Fire Damage Received of 2 other Allies in any lane by -2% until the end of combat.",
+      "upgrade_levels": {
+        "1": -2.5,
+        "2": -3,
+        "3": -3.5,
+        "4": -4.25,
+        "5": -5
+      },
+      "value_unit": "percent_physical_non_basic_and_fire_damage_received",
+      "tags": [
+        "ally_defense",
+        "physical_resistance",
+        "fire_resistance"
+      ]
+    },
+    {
+      "star_unlock": 10,
+      "name": "Mimicry",
+      "verbatim": [
+        "Start of each Round: If any ally is afflicted with Weakened or Vulnerable, there is a 25% chance to apply that same effect to 1 Enemy in any lane for 2 round(s).",
+        "Start of each Round: If any enemy is enhanced by Advantage or Resistance, there is a 25% chance to apply that same effect to 1 Ally in any lane for 2 round(s)."
+      ],
+      "upgrade_levels": {
+        "1": 25,
+        "2": 32.5,
+        "3": 40,
+        "4": 50,
+        "5": 62.5
+      },
+      "value_unit": "percent_mimicry_chance",
+      "tags": [
+        "effect_mimicry",
+        "weakened",
+        "vulnerable",
+        "advantage",
+        "resistance"
+      ]
+    }
+  ],
+  "derived": {
+    "roles": [
+      "crowd_control",
+      "anti_damage",
+      "stat_debuffer",
+      "adaptive_support"
+    ],
+    "preferred_position": "vanguard",
+    "preferred_troops": [
+      "Cavalry"
+    ],
+    "avoid_troops": [],
+    "formation_needs": [
+      "A durable Right-Flank ally",
+      "Allies that can expose Weakened or Vulnerable for Mimicry"
+    ],
+    "scenario_bias": {
+      "attack": 0.55,
+      "defense": 0.75,
+      "crowd_control": 0.85
+    },
+    "notes": "A flexible Vanguard controller that counters opposing damage types and protects the Right Flank."
+  },
+  "review": []
+}

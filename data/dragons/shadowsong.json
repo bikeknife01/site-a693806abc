@@ -1,0 +1,138 @@
+{
+  "name": "Shadowsong",
+  "breed": "Hunter",
+  "rarity_label": "Elder",
+  "troop_affinities": {
+    "positive": [
+      "Cavalry"
+    ],
+    "negative": []
+  },
+  "command": {
+    "name": "Breath of Fire",
+    "type": "Active",
+    "verbatim": [
+      "Rounds 2, 5, 8: Deal Fire Damage to 2 Enemies within adjacency (Damage Rate: +100%), increased to +150% against Panic.",
+      "At 10 Stars: deal Fire Damage to one Enemy in any lane (+60%) with 40% Burn chance, then a different Enemy (+30%) with 20% Burn chance."
+    ]
+  },
+  "vanguard": {
+    "name": "Hunter's Wrath",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Fire Damage Dealt by +16%. Increase Strength and Initiative by +20 of the Ally deployed in the Right Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Ensnare",
+      "verbatim": "Round 1: Reduce Instinct and Initiative by -18% (enhanced by Intelligence) of 2 Enemies within adjacency for 3 round(s).",
+      "upgrade_levels": {
+        "1": -18,
+        "2": -21.6,
+        "3": -25.2,
+        "4": -30.6,
+        "5": -36
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Blazing Onslaught",
+      "verbatim": "Start of Round 1: Increase Fire Damage Received of 1 Enemy in any lane (prioritizes the Left Flank) and Physical Damage Received (excluding Basic Attacks) of 1 Enemy in any lane (prioritizes the Right Flank) by +15% for 3 round(s).",
+      "upgrade_levels": {
+        "1": 15,
+        "2": 18,
+        "3": 21,
+        "4": 25.5,
+        "5": 30
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "Scorched Earth",
+      "verbatim": "Each Round: 10% chance to afflict Vulnerable (+15%) on 2 Enemies within adjacency for 2 round(s). This chance is doubled (20%) against targets afflicted with Panic.",
+      "upgrade_levels": {
+        "1": 10,
+        "2": 12,
+        "3": 14,
+        "4": 17,
+        "5": 20
+      }
+    },
+    {
+      "star_unlock": 8,
+      "name": "Dragon's Intellect",
+      "verbatim": "Start of Combat: Reduce your Damage Received by -5% and increase your Intelligence by +8.5% until the end of combat.",
+      "upgrade_levels": {
+        "1": {
+          "damage_received": -5,
+          "intelligence": 8.5
+        },
+        "2": {
+          "damage_received": -6,
+          "intelligence": 10.2
+        },
+        "3": {
+          "damage_received": -7,
+          "intelligence": 11.9
+        },
+        "4": {
+          "damage_received": -8.5,
+          "intelligence": 14.45
+        },
+        "5": {
+          "damage_received": -10,
+          "intelligence": 17
+        }
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "Blazing Conductor",
+      "verbatim": "Breath of Fire gains: Rounds 2, 5, 8: Deal Fire Damage to 1 Enemy in any lane (Damage Rate: +60%) and there is a 40% chance to afflict the target with Burn for 2 round(s). Then deal Fire Damage to a different Enemy in any lane (Damage Rate: +30%) and there is a 20% chance to afflict the target with Burn for 2 round(s).",
+      "upgrade_levels": {
+        "1": {
+          "burn1": 40,
+          "burn2": 20,
+          "damage1": 60,
+          "damage2": 30
+        },
+        "2": {
+          "burn1": 52,
+          "burn2": 26,
+          "damage1": 78,
+          "damage2": 39
+        },
+        "3": {
+          "burn1": 64,
+          "burn2": 32,
+          "damage1": 96,
+          "damage2": 48
+        },
+        "4": {
+          "burn1": 80,
+          "burn2": 40,
+          "damage1": 120,
+          "damage2": 60
+        },
+        "5": {
+          "burn1": 100,
+          "burn2": 50,
+          "damage1": 150,
+          "damage2": 75
+        }
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "fire_damage",
+      "burn",
+      "panic_payoff",
+      "vulnerable_debuffer"
+    ],
+    "preferred_troops": [
+      "Cavalry"
+    ]
+  },
+  "review": []
+}

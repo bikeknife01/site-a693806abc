@@ -1,0 +1,26 @@
+{
+  "effects": [
+    {"name": "Bleed", "game_section": "Positive Effects", "behavior": "Deals Physical Damage to the target each round for 2 rounds.", "effect_on_target": "harmful"},
+    {"name": "Panic", "game_section": "Positive Effects", "behavior": "Deals Tactical Damage to the target each round.", "effect_on_target": "harmful"},
+    {"name": "Burn", "game_section": "Positive Effects", "behavior": "Deals Fire Damage to the target each round.", "effect_on_target": "harmful"},
+    {"name": "First-Strike", "game_section": "Positive Effects", "behavior": "Enables the dragon to act before all other combatants each round.", "effect_on_target": "beneficial"},
+    {"name": "Double-Strike", "game_section": "Positive Effects", "behavior": "Grants the target a second Basic Attack each round.", "effect_on_target": "beneficial"},
+    {"name": "Recovery", "game_section": "Positive Effects", "behavior": "Healing effect that restores troops over time.", "effect_on_target": "beneficial"},
+    {"name": "Advantage", "game_section": "Positive Effects", "behavior": "Increases Damage Dealt.", "effect_on_target": "beneficial"},
+    {"name": "Resistance", "game_section": "Positive Effects", "behavior": "Reduces Damage Received.", "effect_on_target": "beneficial"},
+    {"name": "Slow", "game_section": "Negative Effects", "behavior": "Causes the target to attack after all other combatant each round.", "effect_on_target": "harmful"},
+    {"name": "Weakened", "game_section": "Negative Effects", "behavior": "Reduces Damage Dealt.", "effect_on_target": "harmful"},
+    {"name": "Vulnerable", "game_section": "Negative Effects", "behavior": "Increases Damage Received.", "effect_on_target": "harmful"},
+    {"name": "Prey", "game_section": "Negative Effects", "behavior": "Modify the target's Recovery Received.", "effect_on_target": "context_dependent", "review_required": true},
+    {"name": "Evade", "game_section": "Control Effects", "behavior": "Causes each instance of damage against the target to have a chance to be ignored.", "effect_on_target": "beneficial"},
+    {"name": "Cleanse", "game_section": "Control Effects", "behavior": "Removes negative effects for Ally or removes positive effects for Enemy.", "effect_on_target": "context_dependent"},
+    {"name": "Taunt", "game_section": "Control Effects", "behavior": "Forces the target to launch their Basic Attack against this dragon.", "effect_on_target": "harmful"},
+    {"name": "Stun", "game_section": "Control Effects", "behavior": "Prevents the target from taking actions to activating Command and Habits, or launching Basic Attack on their turn.", "effect_on_target": "harmful"},
+    {"name": "Overwhelm", "game_section": "Control Effects", "behavior": "Prevents the target from using Commands and Habits on their turn.", "effect_on_target": "harmful"},
+    {"name": "Stagger", "game_section": "Control Effects", "behavior": "Prevents the target from using Attack Modifier Commands or launching Basic Attack on their turn.", "effect_on_target": "harmful"},
+    {"name": "Confusion", "game_section": "Control Effects", "behavior": "Causes the target to have a 50% chance to mistake Allies for Enemies and vice versa each time they activate a Command or Habits or launch a Basic Attack on their turn.", "effect_on_target": "harmful"},
+    {"name": "Protect", "game_section": "Dragon-specific named effects", "behavior": "Damage dealt to the protected target by Commands and Habits is split between that target and the dragon that applied Protect.", "effect_on_target": "beneficial", "source": "https://news.gotdragonfire.com/vermithor-the-bronze-fury/", "source_checked": "2026-08-05", "scope_note": "The official Vermithor profile defines Command and Habit damage only; do not extend Protect to Basic Attacks or other damage without in-game evidence."},
+    {"name": "Solar Flare", "game_section": "Dragon-specific named effects", "behavior": "A mark Starshower applies to enemy dragons at the start of combat and can consume when dealing Tactical Damage.", "effect_on_target": "harmful", "source": "https://news.gotdragonfire.com/starshower-the-wishkeeper/", "source_checked": "2026-08-05", "scope_note": "The public profile does not state an independent effect while the mark remains; treat it as a Starshower resource, not a generic debuff."}
+  ]
+}
+

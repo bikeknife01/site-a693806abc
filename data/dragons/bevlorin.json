@@ -1,0 +1,208 @@
+{
+  "name": "Bevlorin",
+  "breed": "Champion",
+  "rarity_label": "Elder",
+  "troop_affinities": {
+    "positive": [
+      "Spearmen"
+    ],
+    "negative": [],
+    "review_required": false
+  },
+  "excluded_progression_snapshot": [
+    "Strength",
+    "Instinct",
+    "Intelligence",
+    "Initiative",
+    "Stamina",
+    "Reign Level",
+    "XP",
+    "current Star Rank",
+    "current army size"
+  ],
+  "command": {
+    "name": "Nature's Reckoning",
+    "type": "Active",
+    "verbatim": [
+      "Each Round: 20% chance to reduce the Fire Damage Dealt of 3 Enemies in any lane that deal Fire Damage by -10% for 2 round(s).",
+      "Rounds 1, 5, 9: Deal Physical Damage to 3 Enemies in any lane (Damage Rate: +30%).",
+      "Rounds 3, 7: Deal Fire Damage to 1 Enemy in the same lane (Damage Rate: +90%).",
+      "At 6+ Stars: Odd-numbered Rounds: Apply Recovery (enhanced by Strength) to 3 Allies in any lane (Recovery Rate: +17.5%)."
+    ],
+    "structured": {
+      "core_tags": [
+        "anti_fire",
+        "physical_damage",
+        "fire_damage",
+        "recovery",
+        "multi_target"
+      ],
+      "star_6_plus_tags": [
+        "recovery",
+        "strength_scaling"
+      ],
+      "synergy_inputs": [],
+      "synergy_outputs": [
+        "reduced_fire_damage_dealt",
+        "Recovery"
+      ]
+    }
+  },
+  "vanguard": {
+    "name": "Champion's Vigor",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Recovery Dealt by +15% and Initiative by +25. Increase the Damage Dealt by +8% of the ally deployed in the Right Flank.",
+    "structured": {
+      "self": [
+        {
+          "stat": "Recovery Dealt",
+          "operation": "increase_percent",
+          "value": 15
+        },
+        {
+          "stat": "Initiative",
+          "operation": "increase_flat",
+          "value": 25
+        }
+      ],
+      "right_flank_ally": [
+        {
+          "stat": "Damage Dealt",
+          "operation": "increase_percent",
+          "value": 8
+        }
+      ]
+    }
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Fire Ward",
+      "verbatim": "Start of Combat: Grant yourself and 1 other Ally within adjacency 1 stack of Fire Ward. At the start of each round, if the target Ally retreated in the previous round, grant yourself 1 stack of Fire Ward. Each stack of Fire Ward reduces the target's Fire Damage Received by -5% until the end of combat.",
+      "upgrade_levels": {
+        "1": -5,
+        "2": -6,
+        "3": -7,
+        "4": -8.5,
+        "5": -10
+      },
+      "value_unit": "percent_fire_damage_received_per_stack",
+      "tags": [
+        "fire_ward",
+        "ally_defense",
+        "adjacency",
+        "stacking"
+      ]
+    },
+    {
+      "star_unlock": 4,
+      "name": "Dragon's Fury",
+      "verbatim": "At the start of combat, increase your Physical (Active Commands and Habits) and Fire Damage Dealt by +4% until the end of combat.",
+      "upgrade_levels": {
+        "1": 4,
+        "2": 4.8,
+        "3": 5.6,
+        "4": 6.8,
+        "5": 8
+      },
+      "value_unit": "percent_physical_active_command_habit_and_fire_damage_dealt",
+      "tags": [
+        "self_buff",
+        "physical_damage",
+        "fire_damage"
+      ]
+    },
+    {
+      "star_unlock": 6,
+      "name": "Renewal",
+      "verbatim": "Nature's Reckoning gains: Odd-numbered rounds: Apply Recovery (enhanced by Strength) to 3 Allies in any lane (Recovery Rate: +17.5%).",
+      "upgrade_levels": {
+        "1": 17.5,
+        "2": 21,
+        "3": 24.5,
+        "4": 29.75,
+        "5": 35
+      },
+      "value_unit": "percent_recovery_rate",
+      "tags": [
+        "command_upgrade",
+        "recovery",
+        "ally_support"
+      ]
+    },
+    {
+      "star_unlock": 8,
+      "name": "Vital Essence",
+      "verbatim": "At the start of combat, increase your Strength by +10% and your Recovery Dealt by +15% until the end of combat.",
+      "upgrade_levels": {
+        "1": {
+          "strength_percent": 10,
+          "recovery_dealt_percent": 15
+        },
+        "2": {
+          "strength_percent": 12,
+          "recovery_dealt_percent": 18
+        },
+        "3": {
+          "strength_percent": 14,
+          "recovery_dealt_percent": 21
+        },
+        "4": {
+          "strength_percent": 17,
+          "recovery_dealt_percent": 25.5
+        },
+        "5": {
+          "strength_percent": 20,
+          "recovery_dealt_percent": 30
+        }
+      },
+      "tags": [
+        "self_buff",
+        "strength",
+        "recovery"
+      ]
+    },
+    {
+      "star_unlock": 10,
+      "name": "Bountiful Gifts",
+      "verbatim": "Each round, 20% chance to increase the Strength of the Ally with the highest Strength, the Intelligence of the Ally with the highest Intelligence, the Instinct of the Ally with the highest Instinct, and the Initiative of the Ally with the highest Initiative by +16% (enhanced by Intelligence) for 2 round(s). The chance is checked separately per target.",
+      "upgrade_levels": {
+        "1": 16,
+        "2": 20.8,
+        "3": 25.6,
+        "4": 32,
+        "5": 40
+      },
+      "value_unit": "percent_highest_ally_stat",
+      "tags": [
+        "ally_buff",
+        "stat_buff",
+        "independent_chance"
+      ]
+    }
+  ],
+  "derived": {
+    "roles": [
+      "recovery_support",
+      "anti_fire",
+      "damage_support",
+      "hybrid_damage"
+    ],
+    "preferred_position": "vanguard",
+    "preferred_troops": [
+      "Spearmen"
+    ],
+    "avoid_troops": [],
+    "formation_needs": [
+      "A damage-focused Right-Flank ally",
+      "A formation that benefits from Recovery and Fire resistance"
+    ],
+    "scenario_bias": {
+      "attack": 0.7,
+      "defense": 0.75,
+      "crowd_control": 0.2
+    },
+    "notes": "A likely Vanguard support-damage hybrid: its sustained Recovery and right-flank damage boost are especially valuable in longer fights."
+  },
+  "review": []
+}

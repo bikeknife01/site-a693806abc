@@ -1,0 +1,204 @@
+{
+  "name": "Caraxes",
+  "breed": "Hunter",
+  "rarity_label": "Juvenile",
+  "troop_affinities": {
+    "positive": [
+      "Spearmen",
+      "Cavalry"
+    ],
+    "negative": [],
+    "review_required": false
+  },
+  "excluded_progression_snapshot": [
+    "Strength",
+    "Instinct",
+    "Intelligence",
+    "Initiative",
+    "Stamina",
+    "Reign Level",
+    "XP",
+    "current Star Rank",
+    "current army size"
+  ],
+  "command": {
+    "name": "Infernal Burst",
+    "type": "Active",
+    "verbatim": "Rounds 3, 6, 9: Deal Fire Damage to 3 Enemies in any lane (Damage Rate: +100%). This damage is increased by 1.5x when you have First-Strike (Damage Rate: +150%).",
+    "structured": {
+      "core_tags": [
+        "fire_damage",
+        "multi_target",
+        "first_strike_payoff"
+      ],
+      "synergy_inputs": [
+        "First-Strike"
+      ],
+      "synergy_outputs": [
+        "Fire Damage"
+      ]
+    }
+  },
+  "vanguard": {
+    "name": "Hunter's Wrath",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Fire Damage Dealt by +16%. Increase Strength and Initiative by +20 of the Ally deployed in the Right Flank.",
+    "structured": {
+      "self": [
+        {
+          "stat": "Fire Damage Dealt",
+          "operation": "increase_percent",
+          "value": 16
+        }
+      ],
+      "right_flank_ally": [
+        {
+          "stat": "Strength",
+          "operation": "increase_flat",
+          "value": 20
+        },
+        {
+          "stat": "Initiative",
+          "operation": "increase_flat",
+          "value": 20
+        }
+      ]
+    }
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Battle Dread",
+      "verbatim": "Start of Combat: Reduce the Strength and Initiative (enhanced by Intelligence) of 3 Enemies in any lane by -7% until the end of combat.",
+      "upgrade_levels": {
+        "1": -6.5,
+        "2": -7.8,
+        "3": -9.1,
+        "4": -11.05,
+        "5": -13
+      },
+      "value_unit": "percent_strength_and_initiative",
+      "tags": [
+        "enemy_debuff",
+        "strength",
+        "initiative"
+      ]
+    },
+    {
+      "star_unlock": 4,
+      "name": "Dragon's Flair",
+      "verbatim": "Start of Combat: Increase your Fire Damage Dealt by +12.5% until the end of combat.",
+      "upgrade_levels": {
+        "1": 12.5,
+        "2": 15,
+        "3": 17.5,
+        "4": 21.25,
+        "5": 25
+      },
+      "value_unit": "percent_fire_damage_dealt",
+      "tags": [
+        "self_buff",
+        "fire_damage"
+      ]
+    },
+    {
+      "star_unlock": 6,
+      "name": "Crippling Inferno",
+      "verbatim": "Each Round: 10% chance to afflict Slow and Burn (Damage Rate: +20%) on 3 Enemies in any lane. Each effect is checked separately for each target and last for 2 round(s).",
+      "upgrade_levels": {
+        "1": 10,
+        "2": 12,
+        "3": 14,
+        "4": 17,
+        "5": 20
+      },
+      "value_unit": "percent_slow_and_burn_chance",
+      "tags": [
+        "slow",
+        "burn",
+        "control",
+        "multi_target",
+        "independent_chance"
+      ]
+    },
+    {
+      "star_unlock": 8,
+      "name": "Mass Enfeeble",
+      "verbatim": "Start of Combat: Reduce Physical Damage Dealt (excluding Basic Attacks) by -5% of 3 Enemies in any lane until the end of combat.",
+      "upgrade_levels": {
+        "1": -5.5,
+        "2": -6.6,
+        "3": -7.7,
+        "4": -9.35,
+        "5": -11
+      },
+      "value_unit": "percent_physical_non_basic_damage_dealt",
+      "tags": [
+        "enemy_debuff",
+        "physical_damage"
+      ]
+    },
+    {
+      "star_unlock": 10,
+      "name": "Blood Wyrm",
+      "verbatim": [
+        "Start of each Round: For each Enemy that is below 50% max troop capacity, increase your Fire Damage Dealt by +8%.",
+        "Start of each Round: For each Enemy that retreated in the previous round, apply Recovery (Recovery Rate: +40%, enhanced by Initiative) to yourself."
+      ],
+      "upgrade_levels": {
+        "1": {
+          "recovery_rate_percent": 40,
+          "fire_damage_dealt_percent": 8
+        },
+        "2": {
+          "recovery_rate_percent": 52,
+          "fire_damage_dealt_percent": 10.4
+        },
+        "3": {
+          "recovery_rate_percent": 64,
+          "fire_damage_dealt_percent": 12.8
+        },
+        "4": {
+          "recovery_rate_percent": 80,
+          "fire_damage_dealt_percent": 16
+        },
+        "5": {
+          "recovery_rate_percent": 100,
+          "fire_damage_dealt_percent": 20
+        }
+      },
+      "tags": [
+        "execute_scaling",
+        "fire_damage",
+        "self_recovery",
+        "retreat_payoff"
+      ]
+    }
+  ],
+  "derived": {
+    "roles": [
+      "fire_damage",
+      "first_strike_payoff",
+      "slow_control",
+      "burn",
+      "finisher"
+    ],
+    "preferred_position": "vanguard",
+    "preferred_troops": [
+      "Spearmen",
+      "Cavalry"
+    ],
+    "avoid_troops": [],
+    "formation_needs": [
+      "A reliable First-Strike source",
+      "A high-Strength right-flank ally"
+    ],
+    "scenario_bias": {
+      "attack": 0.9,
+      "defense": 0.35,
+      "crowd_control": 0.6
+    },
+    "notes": "An offensive Vanguard Fire attacker whose six-star Slow can supply its own control; First-Strike substantially improves the recurring command burst."
+  },
+  "review": []
+}

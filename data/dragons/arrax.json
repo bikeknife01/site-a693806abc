@@ -1,0 +1,204 @@
+{
+  "name": "Arrax",
+  "breed": "Warrior",
+  "rarity_label": "Elder",
+  "troop_affinities": {
+    "positive": [
+      "Shieldbearers",
+      "Archers"
+    ],
+    "negative": [],
+    "review_required": false
+  },
+  "excluded_progression_snapshot": [
+    "Strength",
+    "Instinct",
+    "Intelligence",
+    "Initiative",
+    "Stamina",
+    "Reign Level",
+    "XP",
+    "current Star Rank",
+    "current army size"
+  ],
+  "command": {
+    "name": "Sudden Strike",
+    "type": "Active",
+    "verbatim": [
+      "Rounds 2, 4, 6, 8: 25% chance to afflict Weakened on 1 Enemy within adjacency. This chance is doubled (50%) against targets afflicted with Bleed.",
+      "Rounds 2, 4, 5, 6, 8: Deal Physical Damage to 2 Enemies within adjacency (Damage Rate: +40%)."
+    ],
+    "structured": {
+      "core_tags": [
+        "weakened",
+        "bleed_payoff",
+        "physical_damage",
+        "adjacency",
+        "multi_target"
+      ],
+      "synergy_inputs": [
+        "Bleed"
+      ],
+      "synergy_outputs": [
+        "Weakened",
+        "Physical Damage"
+      ]
+    }
+  },
+  "vanguard": {
+    "name": "Warrior's Resilience",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Reduce your Damage Received by -8%. Increase Tactical Damage Dealt by +16% of the Ally deployed in the Left Flank.",
+    "structured": {
+      "self": [
+        {
+          "stat": "Damage Received",
+          "operation": "reduce_percent",
+          "value": 8
+        }
+      ],
+      "left_flank_ally": [
+        {
+          "stat": "Tactical Damage Dealt",
+          "operation": "increase_percent",
+          "value": 16
+        }
+      ]
+    }
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Headlong Into Danger",
+      "verbatim": "Start of Round 4: Increase your Strength by +25%, Initiative by +10%, and Physical Damage Dealt by +25% for 4 round(s). However, also increase your Physical Damage Received by +10% and reduce your Instinct by -40% for 4 round(s).",
+      "upgrade_levels": {
+        "1": {
+          "physical_damage_received_percent": 10,
+          "instinct_percent": -40
+        },
+        "2": {
+          "physical_damage_received_percent": 8,
+          "instinct_percent": -32
+        },
+        "3": {
+          "physical_damage_received_percent": 6,
+          "instinct_percent": -24
+        },
+        "4": {
+          "physical_damage_received_percent": 3,
+          "instinct_percent": -12
+        },
+        "5": {
+          "physical_damage_received_percent": 0,
+          "instinct_percent": 0
+        }
+      },
+      "tags": [
+        "self_buff",
+        "physical_damage",
+        "risk_tradeoff",
+        "round_4"
+      ]
+    },
+    {
+      "star_unlock": 4,
+      "name": "Stone Bulwark",
+      "verbatim": "Start of Combat: Reduce the Tactical and Fire Damage Received of 2 other Allies in any lane by -2% until the end of combat.",
+      "upgrade_levels": {
+        "1": -2.5,
+        "2": -3,
+        "3": -3.5,
+        "4": -4.25,
+        "5": -5
+      },
+      "value_unit": "percent_tactical_and_fire_damage_received",
+      "tags": [
+        "ally_defense",
+        "tactical_resistance",
+        "fire_resistance"
+      ]
+    },
+    {
+      "star_unlock": 6,
+      "name": "Adaptive Guard",
+      "verbatim": [
+        "When leading Archers Start of Round 4: Reduce the Tactical Damage Received of 3 Allies in any lane by -9% for 4 round(s).",
+        "When leading Shieldbearers Start of Round 4: Reduce the Fire Damage Received of 3 Allies in any lane by -9% for 4 round(s)."
+      ],
+      "upgrade_levels": {
+        "1": -9,
+        "2": -10.8,
+        "3": -12.6,
+        "4": -15.3,
+        "5": -18
+      },
+      "value_unit": "percent_damage_received",
+      "tags": [
+        "troop_conditional",
+        "ally_defense",
+        "round_4"
+      ]
+    },
+    {
+      "star_unlock": 8,
+      "name": "Fire Ward",
+      "verbatim": "Start of Combat: Grant yourself and 1 other Ally within adjacency 1 stack of Fire Ward. At the start of each round, if the target Ally retreated in the previous round, grant yourself 1 stack of Fire Ward. Each stack of Fire Ward reduces the target's Fire Damage Received by -5% until the end of combat.",
+      "upgrade_levels": {
+        "1": -5,
+        "2": -6,
+        "3": -7,
+        "4": -8.5,
+        "5": -10
+      },
+      "value_unit": "percent_fire_damage_received_per_stack",
+      "tags": [
+        "fire_ward",
+        "ally_defense",
+        "adjacency",
+        "stacking"
+      ]
+    },
+    {
+      "star_unlock": 10,
+      "name": "Turn the Line",
+      "verbatim": "Start of Round 4: Increase the Physical Damage Received of 2 Enemies within adjacency by +9% for 4 round(s).",
+      "upgrade_levels": {
+        "1": 9,
+        "2": 11.7,
+        "3": 14.4,
+        "4": 18,
+        "5": 22.5
+      },
+      "value_unit": "percent_physical_damage_received",
+      "tags": [
+        "physical_amplification",
+        "adjacency",
+        "round_4"
+      ]
+    }
+  ],
+  "derived": {
+    "roles": [
+      "physical_damage",
+      "weakened_debuffer",
+      "defensive_support"
+    ],
+    "preferred_position": "vanguard",
+    "preferred_troops": [
+      "Shieldbearers",
+      "Archers"
+    ],
+    "avoid_troops": [],
+    "formation_needs": [
+      "A Left Flank Tactical-damage ally",
+      "A Bleed source to double the command's Weakened chance"
+    ],
+    "scenario_bias": {
+      "attack": 0.65,
+      "defense": 0.7,
+      "crowd_control": 0.35
+    },
+    "notes": "Likely best in Vanguard to protect itself and enhance a Left-Flank Tactical attacker; its troop-conditioned six-star defense favors the listed affinities."
+  },
+  "review": []
+}

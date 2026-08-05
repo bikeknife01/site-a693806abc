@@ -1,0 +1,170 @@
+{
+  "name": "Sunfyre",
+  "breed": "Sentinel",
+  "rarity_label": "Adult",
+  "troop_affinities": {
+    "positive": [
+      "Spearmen",
+      "Cavalry"
+    ],
+    "negative": []
+  },
+  "command": {
+    "name": "Golden Wrath",
+    "type": "Active",
+    "verbatim": [
+      "Rounds 1, 4, 7, 10: Deal Tactical Damage to 1 Enemy in the same lane (Damage Rate: +110%). If Sunfyre is below 75% troop capacity, deal damage to a second Enemy within adjacency. If below 50%, also deal Fire Damage (Damage Rate: +55%) to the same targets and have a 50% chance to afflict Burn for 2 round(s)."
+    ]
+  },
+  "vanguard": {
+    "name": "Sentinel's Wit",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard, increase your Tactical Damage Dealt by +16%. Increase Instinct and Initiative by +20 of the Ally deployed in the Left Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Radiant Majesty",
+      "verbatim": [
+        "Start of Each Round: Increase the Damage Dealt by +5% of the other Ally with the most troops until the end of the round.",
+        "If you are below 75% Troop Capacity, apply this effect to both other allies instead.",
+        "If you are below 50% Troop Capacity, also apply this effect to yourself."
+      ],
+      "upgrade_levels": {
+        "1": 5,
+        "2": 6,
+        "3": 7,
+        "4": 8.5,
+        "5": 10
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Extinguish",
+      "verbatim": "Start of Combat: Reduce Fire Damage Dealt by -13% of 1 Enemy that deals Fire Damage until the end of combat.",
+      "upgrade_levels": {
+        "1": -13.5,
+        "2": -16.2,
+        "3": -18.9,
+        "4": -22.95,
+        "5": -27
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "The King's Ire",
+      "verbatim": "Each Round: The first time any ally receives Fire Damage, deal Tactical Damage to 1 Enemy in any lane that deals Fire Damage (Damage Rate: +50%). Additionally, reduce the target's Intelligence by -15% (enhanced by Instinct) for 2 round(s). This effect can only trigger once per round.",
+      "upgrade_levels": {
+        "1": {
+          "tactical_damage": 50,
+          "intelligence": -15
+        },
+        "2": {
+          "tactical_damage": 60,
+          "intelligence": -18
+        },
+        "3": {
+          "tactical_damage": 70,
+          "intelligence": -21
+        },
+        "4": {
+          "tactical_damage": 85,
+          "intelligence": -25.5
+        },
+        "5": {
+          "tactical_damage": 100,
+          "intelligence": -30
+        }
+      }
+    },
+    {
+      "star_unlock": 8,
+      "name": "Unbroken Splendor",
+      "verbatim": [
+        "Start of Combat: Reduce your Fire Damage Received by -7% until the end of combat.",
+        "Start of Each Round: If you are below 50% troop capacity, reduce your Damage Received by -7% until the end of the round. Additionally, there is a 25% chance to Cleanse yourself of 1 Negative effect that increases your Damage Received (prioritizes the Vulnerable condition)."
+      ],
+      "upgrade_levels": {
+        "1": {
+          "fire_damage_received": -7.5,
+          "damage_received": -7.5,
+          "cleanse_chance": 25
+        },
+        "2": {
+          "fire_damage_received": -9,
+          "damage_received": -9,
+          "cleanse_chance": 30
+        },
+        "3": {
+          "fire_damage_received": -10.5,
+          "damage_received": -10.5,
+          "cleanse_chance": 35
+        },
+        "4": {
+          "fire_damage_received": -12.75,
+          "damage_received": -12.75,
+          "cleanse_chance": 42.5
+        },
+        "5": {
+          "fire_damage_received": -15,
+          "damage_received": -15,
+          "cleanse_chance": 50
+        }
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "Adaptive Glory",
+      "verbatim": [
+        "Each Round: The first time you Receive Damage, activate one of the following effects based on the type of damage received.",
+        "Fire Damage: Apply Recovery to yourself (Recovery Rate: +30% enhanced by Instinct).",
+        "Tactical Damage: Increase the Damage Dealt of the Ally with the most troops by +12% for 1 round(s).",
+        "Physical Damage (excluding Basic Attacks): Reduce the Damage Dealt of the Enemy with the most troops by -12% for 1 round(s).",
+        "Basic Attack: Increase your Instinct by +12% and Initiative by +6% for 1 round(s)."
+      ],
+      "upgrade_levels": {
+        "1": {
+          "recovery_rate": 30,
+          "ally_damage_dealt": 12,
+          "enemy_damage_dealt": -12
+        },
+        "2": {
+          "recovery_rate": 39,
+          "ally_damage_dealt": 15.6,
+          "enemy_damage_dealt": -15.6
+        },
+        "3": {
+          "recovery_rate": 48,
+          "ally_damage_dealt": 19.2,
+          "enemy_damage_dealt": -19.2
+        },
+        "4": {
+          "recovery_rate": 60,
+          "ally_damage_dealt": 24,
+          "enemy_damage_dealt": -24
+        },
+        "5": {
+          "recovery_rate": 75,
+          "ally_damage_dealt": 30,
+          "enemy_damage_dealt": -30
+        }
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "tactical_damage",
+      "fire_damage",
+      "defensive_support",
+      "burn",
+      "anti_fire",
+      "cleanse",
+      "low_troop_payoff"
+    ],
+    "preferred_troops": [
+      "Spearmen",
+      "Cavalry"
+    ]
+  },
+  "review": []
+}

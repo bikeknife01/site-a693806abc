@@ -1,0 +1,169 @@
+{
+  "name": "Vermax",
+  "breed": "Warrior",
+  "rarity_label": "Epic",
+  "troop_affinities": {
+    "positive": [
+      "Cavalry",
+        "Shieldbearers"
+    ],
+    "negative": []
+  },
+  "command": {
+    "name": "Spreading Blaze",
+    "type": "Active",
+    "verbatim": [
+      "After each Basic Attack: deal Physical Damage to 1 Enemy in the same lane (Damage Rate: +50%).",
+      "20% chance to grant 1 stack of Spreading Blaze (max 10 stacks) to 1 Ally that deals Tactical Damage until the end of combat; repeat this chance for each Enemy that deals Fire Damage."
+    ]
+  },
+  "vanguard": {
+    "name": "Warrior's Zeal",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard, increase Physical Damage Dealt by +16%. Increase Instinct and Initiative by +20 of the Ally deployed in the Left Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Trial by Flame",
+      "verbatim": "Start of Each Round: Reduce the Fire Damage Received of all allies below 75% troop capacity by -5% until the end of the round. This effect is doubled (-10%) for targets below 50% troop capacity, and tripled (-15%) for targets below 25% troop capacity.",
+      "upgrade_levels": {
+        "1": {
+          "below_75": -5,
+          "below_50": -10,
+          "below_25": -15
+        },
+        "2": {
+          "below_75": -6,
+          "below_50": -12,
+          "below_25": -18
+        },
+        "3": {
+          "below_75": -7,
+          "below_50": -14,
+          "below_25": -21
+        },
+        "4": {
+          "below_75": -8.5,
+          "below_50": -17,
+          "below_25": -25.5
+        },
+        "5": {
+          "below_75": -10,
+          "below_50": -20,
+          "below_25": -30
+        }
+      }
+    },
+    {
+      "star_unlock": 4,
+      "name": "Reactive Instincts",
+      "verbatim": "Start of Combat: Increase Instinct by +18% and Initiative by +9% of the Ally with the highest Instinct until the end of combat. Both effects are enhanced by Strength.",
+      "upgrade_levels": {
+        "1": {
+          "instinct": 18,
+          "initiative": 9
+        },
+        "2": {
+          "instinct": 21.6,
+          "initiative": 10.8
+        },
+        "3": {
+          "instinct": 25.2,
+          "initiative": 12.6
+        },
+        "4": {
+          "instinct": 30.6,
+          "initiative": 15.3
+        },
+        "5": {
+          "instinct": 36,
+          "initiative": 18
+        }
+      }
+    },
+    {
+      "star_unlock": 6,
+      "name": "Rallying Flame",
+      "verbatim": [
+        "Start of Combat: 50% chance to grant yourself 1 stack of Rallying Flame (Max 4 Stacks) until the end of combat. Repeat this chance for each enemy that deals Fire Damage. Each stack of Rallying Flame increases your Physical Damage Dealt by +5%.",
+        "Start of Combat: 50% chance to grant 1 stack of Spreading Blaze (Max 10 Stacks) to 1 Ally that deals Tactical Damage until the end of combat. Repeat this chance for each enemy that deals Fire Damage. Each stack of Spreading Blaze increases the target's Tactical Damage Dealt by +2.5% until the end of combat."
+      ],
+      "upgrade_levels": {
+        "1": {
+          "rallying_flame_chance": 50,
+          "spreading_blaze_chance": 50
+        },
+        "2": {
+          "rallying_flame_chance": 60,
+          "spreading_blaze_chance": 60
+        },
+        "3": {
+          "rallying_flame_chance": 70,
+          "spreading_blaze_chance": 70
+        },
+        "4": {
+          "rallying_flame_chance": 85,
+          "spreading_blaze_chance": 85
+        },
+        "5": {
+          "rallying_flame_chance": 100,
+          "spreading_blaze_chance": 100
+        }
+      }
+    },
+    {
+      "star_unlock": 8,
+      "name": "Dragon's Valor",
+      "verbatim": "Start of Combat: Reduce your Damage Received by -5% and increase your Strength by +8.5% until the end of combat.",
+      "upgrade_levels": {
+        "1": {
+          "damage_received": -5,
+          "strength": 8.5
+        },
+        "2": {
+          "damage_received": -6,
+          "strength": 10.2
+        },
+        "3": {
+          "damage_received": -7,
+          "strength": 11.9
+        },
+        "4": {
+          "damage_received": -8.5,
+          "strength": 14.45
+        },
+        "5": {
+          "damage_received": -10,
+          "strength": 17
+        }
+      }
+    },
+    {
+      "star_unlock": 10,
+      "name": "Unyielding Resolve",
+      "verbatim": "Start of Combat: 20% chance to grant yourself Advantage (+15%) for 2 round(s). This chance is increased by 1.5x (30%) if you are afflicted with Weakened, and if successful removes the Weakened effect.",
+      "upgrade_levels": {
+        "1": 20,
+        "2": 26,
+        "3": 32,
+        "4": 40,
+        "5": 50
+      }
+    }
+  ],
+  "derived": {
+    "roles": [
+      "physical_damage",
+      "fire_reactive",
+      "tactical_support",
+      "survivability",
+      "stacking_buffer"
+    ],
+    "preferred_troops": [
+      "Cavalry",
+      "Shieldbearers"
+    ]
+  },
+  "review": []
+}
