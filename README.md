@@ -27,6 +27,10 @@ This repository contains an AI-oriented reference for dragon army formation reco
 ## Formation model
 
 A formation has three positions: `left_flank`, `vanguard`, and `right_flank`.
-Each position contains one dragon and configurable troops. Vanguard abilities apply
-only when their dragon occupies the vanguard unless their text says otherwise.
+Each position contains one dragon, while one troop-type choice applies to the complete
+three-dragon formation. Vanguard abilities apply only when their dragon occupies the
+vanguard unless their text says otherwise. Opposing lanes align by matching position
+name rather than mirroring: left targets left, vanguard targets vanguard, and right
+targets right for default and same-lane attacks unless explicit targeting or another
+mechanic redirects them.
 See [`wiki/Game-Mechanics.md`](wiki/Game-Mechanics.md) for the source-audited system rules.

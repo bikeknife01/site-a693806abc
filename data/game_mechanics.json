@@ -14,7 +14,18 @@
   "formation": {
     "dragon_count": 3,
     "positions": ["left_flank", "vanguard", "right_flank"],
+    "lane_alignment": {
+      "observed_mapping": {
+        "left_flank": "enemy_left_flank",
+        "vanguard": "enemy_vanguard",
+        "right_flank": "enemy_right_flank"
+      },
+      "same_lane_interpretation": "Same-lane and default Basic Attack targeting use matching named positions across the two formations: Left Flank targets Left Flank, Vanguard targets Vanguard, and Right Flank targets Right Flank. The formations are not mirrored for targeting purposes.",
+      "exceptions": "Explicit ability targeting and mechanics such as any-lane scope, lane priorities, adjacency, Taunt, or Confusion can override or redirect the matching-lane target.",
+      "evidence": "Confirmed from a current in-game damage report supplied on 2026-08-05 showing a Right Flank dragon using Basic Attack against the enemy Right Flank. No equivalent published official wording was found."
+    },
     "troops_are_configurable": true,
+    "troop_type_scope": "A formation makes one troop-type choice shared by all three dragons. Individual dragons within the formation cannot use different troop types.",
     "vanguard_abilities_require_vanguard_deployment": true,
     "saved_formations": "The Army Builder can save custom formations and quickly swap configurations even when a dragon is assigned to another army or its health or stamina is depleted.",
     "simultaneous_army_limit": "The official worldwide-release announcement says players can field up to five dragon-led armies simultaneously; this is an account-level march limit, not the number of dragons in one formation."
@@ -27,12 +38,14 @@
     "Siege": {"advantaged_against": null, "disadvantaged_against": "all_combat_troops", "specialization": "massive damage to POI Durability"}
   },
   "troop_affinity": {
-    "Positive": "Boosts dragon stats and Siege damage.",
+    "Positive": "Boosts the matching dragon's combat stats, increasing the stat-dependent damage and effectiveness of that dragon's abilities, and also boosts Siege damage.",
     "Neutral": "No effect.",
-    "Negative": "Reduces stats and Siege damage output."
+    "Negative": "Reduces the matching dragon's combat stats and Siege damage output.",
+    "formation_interpretation": "Because one troop type is shared by the formation, a type with Positive affinity on all three dragons maximizes affinity-derived combat-stat and damage benefit for that fixed trio. This is a strong optimization signal, not proof of the best overall formation or troop choice.",
+    "tradeoff_rule": "Evaluate affinity coverage independently from troop-type advantage and dragon synergy. Enemy troop counters, Commands, Habits, Vanguard effects, control, mitigation, recovery, timing, and scenario objectives can outweigh perfect three-dragon affinity overlap."
   },
   "troop_combat": {
-    "advantage": "The advantaged army deals more damage and the disadvantaged enemy deals less.",
+    "advantage": "Separately from affinity, the advantaged troop type deals more damage to the troop type weak to it, while the disadvantaged enemy deals less damage in return.",
     "neutral": "No troop-type adjustment to damage dealt or received.",
     "disadvantage": "The disadvantaged army deals less damage and the advantaged enemy deals more.",
     "retreat": "When a dragon runs out of troops, it is forced to retreat to its Stronghold or current garrison.",
@@ -54,13 +67,41 @@
     "command": "A dragon's unique core battlefield ability. Official generic guidance says Commands have a chance to activate during each combat round; exact dragon text controls actual timing, chance, targets, and guaranteed clauses.",
     "habits": "Passive abilities unlocked by Star Rank and upgraded with Breedmarks and Rarity Cores determined by the dragon's Breed and Rarity. Habit upgrades are permanent.",
     "vanguard": "A position-specific ability represented in the supplied dragon records. The official general guides reviewed on 2026-08-05 do not add a universal Vanguard rule beyond the in-game text.",
-    "basic_attack": "The normal attack. No official system-level damage formula or universal targeting rule was found in the reviewed public guides."
+    "basic_attack": "The normal attack. Current in-game damage-report evidence shows default Basic Attacks use matching named lanes: Left Flank to Left Flank, Vanguard to Vanguard, and Right Flank to Right Flank, unless another mechanic redirects targeting. No equivalent universal targeting rule was found in the reviewed public guides."
+  },
+  "combat_lifecycle": {
+    "engagement": "When an army enters a tile containing an enemy army, the armies fight.",
+    "automation": "Combat is automated. Once the engagement begins, rounds and ability activations resolve without player choices or manual commands during the fight.",
+    "combat_rounds_per_cycle": 10,
+    "stalemate_trigger": "If both armies are still fighting after Round 10, combat enters a Stalemate, also described as a regrouping phase.",
+    "stalemate_duration_seconds": 60,
+    "stalemate_player_option": "During the 60-second Stalemate, the player may recall the army. A recalled army returns to the tile it occupied immediately before the contested tile.",
+    "cycle_continuation": "If neither army is defeated, retreats, or is recalled before the Stalemate ends, another 10-round automated combat cycle begins. Combat and Stalemate cycles repeat until one army is defeated or retreats/is recalled.",
+    "observed_pvp_horizon": "Most PvP fights include one Stalemate, while some include two. This is an observed common duration, not a maximum; the cycle can continue as long as both armies remain.",
+    "recommendation_impact": "Evaluate opening performance in the first 10 automated rounds and sustained performance across later 10-round cycles. Most PvP analysis should consider one Stalemate and, when relevant, a second, while recognizing that combat has no fixed one- or two-Stalemate limit. Do not recommend manual mid-combat tactics; player agency resumes only through available map actions such as retreat or recall during Stalemate."
   },
   "progression": {
-    "star_rank": "Permanent between campaigns; increased with dragon-specific Relics. Higher Star Rank improves stats and unlocks Habits.",
+    "star_rank": "Permanent between campaigns; increased with dragon-specific Relics. Higher Star Rank improves stats and unlocks Habits, but a higher-Star dragon is not automatically stronger or more suitable than a lower-Star dragon with a stronger kit, rarity tendency, Habit investment, formation synergy, or matchup advantage.",
+    "star_display": {
+      "yellow_stars": "One through five yellow stars represent Star Ranks 1 through 5.",
+      "red_stars": "After five yellow stars, each displayed red star represents one additional Star Rank: one red star is Rank 6, two red stars is Rank 7, continuing through five red stars at Rank 10.",
+      "normalization_rule": "Convert displayed star color/count to the numeric Star Rank before determining unlocked Habits. Never interpret one red star as Rank 1."
+    },
     "reign_level": "Campaign-specific and resets at the start of each new Reign. Combat experience and Meat increase it; higher levels increase maximum army size plus Strength, Instinct, Intelligence, and Initiative.",
-    "habit_upgrades": "Permanent and persist into the next Reign. Breedmarks and Rarity Cores are both required.",
-    "rarity": "Rarity reflects Hatchery drop rate and affects a dragon's maximum power and overall combat impact. The public guides do not provide a numeric rarity multiplier.",
+    "habit_upgrades": {
+      "levels": [1, 2, 3, 4, 5],
+      "currencies": "Breedmarks and rarity-matched Cores are both required. Core types include Rare, Epic, and Legendary.",
+      "persistence": "Habit skill levels are permanent and persist into the next Reign.",
+      "effect": "The five levels modify the values in habits[].upgrade_levels. Depending on the Habit, investment may increase damage, mitigation, Recovery, stat changes, activation chance, or other displayed values.",
+      "reliability": "Chance-based Habits may require investment before their activation rate is reliable enough to anchor a formation plan. Other Habits can be strategically valuable at Level 1.",
+      "recommendation_weight": "Habit level is a secondary but meaningful consideration. Use it to refine reliability and expected effectiveness, especially for pivotal chance-based or threshold effects, but do not let it override explicit kit synergy, role fit, troop matchup, or scenario needs by itself."
+    },
+    "rarity": {
+      "general_tendency": "Legendary dragons tend to have more advanced abilities and stronger kit elements, followed by Epic and then Rare dragons.",
+      "not_absolute": "Rarity is not a strict power ranking. Rare dragons can have exceptional output or unique mechanics that make them the best fit for a formation; Thunderstrike is a known example of a highly effective Rare dragon. Epic and Legendary dragons must likewise be evaluated by actual unlocked abilities and matchup fit.",
+      "official_context": "Rarity reflects Hatchery drop rate and affects maximum power and overall combat impact, but no public numeric rarity multiplier is available.",
+      "recommendation_rule": "Use rarity as a prior and tie-breaking context, never as a substitute for comparing Commands, Habits, Vanguard effects, Star unlocks, Habit levels, affinities, and enemy counters."
+    },
     "stronghold_upgrades": "Seasonal and reset at the start of each campaign. War Tactics can modify troop offense, defense, PvE damage, Siege damage, march speed, reinforcement speed, and dragon experience; Dragon Care can modify dragon stats, army size, and breed offense/defense.",
     "heirlooms": "Permanent upgrade trees. Unlocked upgrades persist, but most require the current seasonal House Level to be active. House Level and House XP reset each Reign. Mastery bonuses from purchased Heirloom ranks are always active regardless of House Level.",
     "recommendation_inputs": "For comparisons across players or Reigns, ask about Reign Level and relevant Stronghold, Heirloom, realm, and stage modifiers when the matchup is close; do not infer these values from dragon identity."
@@ -84,10 +125,9 @@
   "unresolved_public_rules": {
     "combat_resolution_order": "No official public formula or complete proc-order specification was found.",
     "damage_formula": "No official public numeric formula was found for stat scaling, troop advantage, affinity, or final damage.",
-    "adjacency_geometry": "The reviewed public guides do not formally define same-lane and within-adjacency geometry; preserve exact ability wording.",
+    "adjacency_geometry": "The reviewed public guides do not formally define within-adjacency geometry. Matching named positions for same-lane targeting are confirmed by current in-game damage-report evidence, but preserve exact ability wording for adjacency and other scopes.",
     "effect_stacking_and_cleanse_priority": "No universal public rule was found for status stacking, conflicting control effects, or Cleanse selection priority.",
     "recovery_formula": "No official public ordering was found for Recovery Dealt, Recovery Received, and Recovery Rate modifiers.",
-    "battle_length_and_tiebreaks": "No universal public rule was found in the reviewed sources.",
     "wild_dragon_breed_weakness_cycle": "The official guide confirms breed weaknesses exist but does not publish the mapping."
   }
 }

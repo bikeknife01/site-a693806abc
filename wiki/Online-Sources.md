@@ -52,11 +52,39 @@ Vanguard text, so it must not silently replace complete in-game records.
 
 - Exact damage, affinity, troop-advantage, rarity, and stat-scaling formulas.
 - Complete round/action/proc resolution order and battle tiebreak rules.
-- Formal geometry for `same lane` and `within adjacency` beyond individual ability text.
+- Formal geometry for `within adjacency` beyond individual ability text. Current
+    in-game damage-report evidence establishes matching named positions for `same lane`,
+    but equivalent published official wording has not been found.
 - Universal stacking, control-conflict, Cleanse-priority, and Recovery-order rules.
 - The Wild Dragon breed-weakness mapping mentioned by the official map guide.
 - Full in-game records for Starshower and Vermithor, especially Vanguard abilities,
   exact values, and Habit upgrade tracks.
+
+## User-confirmed in-game clarifications
+
+The following mechanics were confirmed from current gameplay on 2026-08-05 and are
+treated as direct observations pending equivalent published official wording:
+
+- Combat starts when an army enters an enemy-occupied tile and resolves automatically
+    without player choices during the rounds.
+- An unresolved fight enters a 60-second Stalemate/regrouping phase after each
+    10-round combat cycle; recall during that phase returns the army to its previous
+    tile. If neither army is defeated or leaves, another 10-round cycle begins. The
+    cycle repeats until defeat or retreat/recall.
+- Most observed PvP fights include one Stalemate and sometimes two. This observation
+    describes a common planning horizon, not a maximum number of cycles.
+- Opposing lanes align by matching position names for default Basic Attacks and
+    `same lane` targeting: Left Flank to Left Flank, Vanguard to Vanguard, and Right
+    Flank to Right Flank. Explicit targeting and redirection mechanics can override
+    that alignment. A supplied damage report shows a Right Flank Basic Attack hitting
+    the enemy Right Flank.
+- Stars, rarity, and Habit skill level are distinct progression/selection dimensions.
+    Higher Stars do not automatically identify the strongest dragon. Legendary kits tend
+    to be more advanced than Epic and Rare, but lower-rarity dragons can be uniquely or
+    exceptionally effective.
+- Habits have skill levels 1-5 and use Breedmarks plus rarity-matched Rare, Epic, or
+    Legendary Cores. Investment changes displayed Habit values and can be especially
+    important for activation reliability.
 
 These gaps should be answered with current in-game screenshots or controlled battle
 tests. Until then, recommendations must state assumptions and avoid false precision.
