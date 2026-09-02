@@ -1,0 +1,823 @@
+key,name,description,icon,rarity,affinity,breed,shard_item,unique_command,habit_slot_1_key,habit_slot_1_name,habit_slot_2_key,habit_slot_2_name,habit_slot_3_key,habit_slot_3_name,habit_slot_4_key,habit_slot_4_name,habit_slot_5_key,habit_slot_5_name,habit_slot_6_key,habit_slot_6_name
+dragon_generic_solstryker,Solstryker,"Solstryker, the Dark Wing, prefers to soar high above the tempestuous seas of Westeros, where his presence is heralded by a chill that creeps into the hearts of those below. Born during a dark eclipse over Dragonstone, his scales glisten like the darkened star itself, casting a pall over those who dare look upon him. 
+
+It is widely whispered amongst the smallfolk and nobles alike that to meet Solstryker’s gaze is to invite a curse upon one’s valor and wit. This chilling effect, they say, left many a dragonrider suddenly drained, their once steady hands trembling and minds clouded as the mighty dragon circled.",Icon_Dragon_Thumb_Solstryker.png,rarity_dragon_rare,affinity_generic_solstryker,breed_champion,item_shard_generic_solstryker,command_unique_solstryker_01,habit_dragon_solstryker_slot1_01,Champion's Brilliance,habit_dragon_solstryker_slot2_01,Steady Erosion,habit_dragon_solstryker_slot3_01,Energy Drain,habit_dragon_solstryker_slot4_01,Oppressive Onslaught,habit_dragon_solstryker_slot5_01,Robust Insight,habit_dragon_solstryker_slot6_01,Amplified Drain
+dragon_generic_bevlorin,Bevlorin,"Bevlorin, the Verdant Rejuvenator, is a dragon whose loyalty and determination are the stuff of legend. When a severe drought left the village of Greenfield on the brink of despair, it was Bevlorin who came to their rescue in the most unexpected way. 
+
+To everyone’s astonishment, Bevlorin’s droppings, yes, his droppings, turned out to be the saving grace they so desperately needed, reviving the barren fields. The villagers, overjoyed, celebrated Bevlorin’s contribution with a grand feast, honoring him every year with a festival known as the “Greenfield Renewal.”",Icon_Dragon_Thumb_Bevlorin.png,rarity_dragon_rare,affinity_generic_bevlorin,breed_champion,item_shard_generic_bevlorin,command_unique_bevlorin_01,habit_dragon_bevlorin_slot1_01,Champion's Vigor,habit_dragon_bevlorin_slot2_01,Fire Ward,habit_dragon_bevlorin_slot3_01,Dragon's Fury,habit_dragon_bevlorin_slot4_01,Renewal,habit_dragon_bevlorin_slot5_01,Vital Essence,habit_dragon_bevlorin_slot6_01,Bountiful Gifts
+dragon_generic_arulix,Arulix,"Arulix, the Gleaming Spiral, is a dragon of mesmerizing symmetry—his wings curl like seashells from the shores of Lys, and his coiling flight stirs both wonder and unease. Tales tell of him mimicking a windmill for three days straight, drawing a starving village’s gaze. When they emerged, their granaries were mysteriously full again. Some say Arulix rerouted passing ships with hypnotic aerial dances. Whether summoned by wind or whimsy, Arulix remains a symbol of unexpected salvation, his patterns a source of both distraction and strange fortune.",Icon_Dragon_Thumb_Arulix.png,rarity_dragon_rare,affinity_generic_arulix,breed_champion,item_shard_generic_arulix,command_unique_arulix_01,habit_dragon_arulix_slot1_01,Champion's Brilliance,habit_dragon_arulix_slot2_01,Hypnotic Helix,habit_dragon_arulix_slot3_01,Battle Cunning,habit_dragon_arulix_slot4_01,Spiral Surge,habit_dragon_arulix_slot5_01,Iron Shell,habit_dragon_arulix_slot6_01,Mimicry
+dragon_generic_nyrena,Nyrena,"Nyrena, the Stillfire, first proved her worth during the fall of a river stronghold whose defenders believed themselves unassailable. Rather than shatter the walls outright, Nyrena circled patiently for days, scorching only the banners, the bridges, and the roads that led away. Smoke hung low over the river like a closing fist, and with every passing hour, hope drained from the garrison. 
+
+When the gates finally opened, not a tower had fallen and scarcely a life was lost. The keep was taken intact, its strength turned rather than broken. Ever after, Nyrena has been remembered as a dragon who wins by endurance, not fury—a champion whose fire is measured, whose resolve outlasts steel.",Icon_Dragon_Thumb_Nyrena.png,rarity_dragon_rare,affinity_generic_nyrena,breed_champion,item_shard_generic_nyrena,command_unique_nyrena_01,habit_dragon_nyrena_slot1_01,Champion's Brilliance,habit_dragon_nyrena_slot2_01,Battle Dread,habit_dragon_nyrena_slot3_01,Mindful Synergy,habit_dragon_nyrena_slot4_01,Deepen The Breach,habit_dragon_nyrena_slot5_01,Dragon's Ire,habit_dragon_nyrena_slot6_01,The Long Siege
+dragon_generic_antares,Antares,"Antares, the dragon whose scales shimmer with the light of a thousand stars, once took under his wing a dragonrider so bereft of honor he was dubbed the Starless Knight. Together, they soared across the skies, hunting traitors, ravagers, and thieves, all in a bid to restore the Knight’s faded glory. The wicked trembled at the mere whisper of their approach! 
+
+Yet, upon their return, though the Knight shone with renewed valor, the shadows of his past deeds persisted, casting doubt upon his redemption. Thus, the tale of Antares and his Starless Knight lives on—a legend woven with the threads of honor, shame, and the endless pursuit of redemption.",Icon_Dragon_Thumb_Antares.png,rarity_dragon_rare,affinity_generic_antares,breed_hunter,item_shard_generic_antares,command_unique_antares_01,habit_dragon_antares_slot1_01,Hunter's Wrath,habit_dragon_antares_slot2_01,Blazing Onslaught,habit_dragon_antares_slot3_01,Dragon's Flair,habit_dragon_antares_slot4_01,Fiery Precision,habit_dragon_antares_slot5_01,Dragon's Intellect,habit_dragon_antares_slot6_01,Redemption
+dragon_generic_jagadrix,Jagadrix,"Jagadrix, the Whispering Wyrm, they call her—and rightly so! For she possesses a most curious knack, able to echo the very whispers of the woods. 'Twas her cunning that led Ser Mayhew the Just straight into her maw, under the guise of a child’s cry. 
+
+A grand feast ensued, though it was only Jagadrix who left the encounter rather satisfied. Her tales, like her whispers, are carried on the wind, a reminder of the dangers that lurk in the shadows.",Icon_Dragon_Thumb_Jagadrix.png,rarity_dragon_rare,affinity_generic_jagadrix,breed_hunter,item_shard_generic_jagadrix,command_unique_jagadrix_01,habit_dragon_jagadrix_slot1_01,Hunter's Wrath,habit_dragon_jagadrix_slot2_01,Enervate,habit_dragon_jagadrix_slot3_01,Second Wind,habit_dragon_jagadrix_slot4_01,Whispering Sabotage,habit_dragon_jagadrix_slot5_01,Quick-Witted,habit_dragon_jagadrix_slot6_01,Echoes of Deceit
+dragon_generic_shimmer,Shimmer,"Shimmer’s scales gleam like the lustrous pearls nestled within a Braavosi oyster. Gentle and sweet in nature, Shimmer embodies the grace of a courtly dance, with but a singular lapse into mischief. It was on a day as bright as her scales that Shimmer, perhaps irked by a fly or simply in a momentary huff, snapped at the Dragonkeeper tending to her. 
+
+Alas, in this rare display of temper, an arm was lost—snipped clean off. Yet, such is the sweetness of Shimmer, so deep the bond she shared with her keeper, that this very same attendant continues to care for her with undiminished devotion.",Icon_Dragon_Thumb_Shimmer.png,rarity_dragon_rare,affinity_generic_shimmer,breed_sentinel,item_shard_generic_shimmer,command_unique_shimmer_01,habit_dragon_shimmer_slot1_01,Sentinel's Presence,habit_dragon_shimmer_slot2_01,Crushing Force,habit_dragon_shimmer_slot3_01,Dragon's Insight,habit_dragon_shimmer_slot4_01,Loyal Shield,habit_dragon_shimmer_slot5_01,Unbroken Devotion,habit_dragon_shimmer_slot6_01,Sneak Attack
+dragon_generic_vesper,Vesper,"Vesper, the Silent Shadow, who takes to the skies as the sun sets and the sky turns into a tapestry of violet and gold, is a dragon of unmatched stealth. Her scales shimmer like the evening star itself, a beacon that guides her through the darkest nights. On the infamous Night of the Silent Strike, raiders thought they’d have easy pickings at the little village of Duskendale, but Vesper had other plans. 
+
+With a breath that confounds, she swooped down silently, turning the raiders into bumbling fools. She cut through them with the grace of a dancer, leaving the village untouched and the raiders in disarray. Her eyes, they say, can see through the darkest night, ensuring that no evil escapes her watch.",Icon_Dragon_Thumb_Vesper.png,rarity_dragon_rare,affinity_generic_vesper,breed_sentinel,item_shard_generic_vesper,command_unique_vesper_01,habit_dragon_vesper_slot1_01,Sentinel's Wit,habit_dragon_vesper_slot2_01,Strategic Leader,habit_dragon_vesper_slot3_01,Dragon's Insight,habit_dragon_vesper_slot4_01,Savior's Waltz,habit_dragon_vesper_slot5_01,Insightful Allies,habit_dragon_vesper_slot6_01,Midnight Onslaught
+dragon_generic_dawnseeker,Dawnseeker,"Dawnseeker, the Horizon’s Wing, is said to chase the first light of every morning, her radiant wings igniting the skies in hues of rose and gold. She is a dragon of ritual and purpose, gliding silently eastward before each sunrise as though guiding the sun itself across the sky. During the Glooming of Gildenshore, when storm clouds smothered the land and hope waned, it was Dawnseeker who pierced the dark. With a cry that shook the air and summoned the winds, she parted the heavens, letting the first rays of dawn flood the land. Her watchful presence is not one of wrath, but of renewal. Where Dawnseeker flies, the morning follows: a harbinger of clarity, able to dispel shadow, storm, and fear alike.",Icon_Dragon_Thumb_Dawnseeker.png,rarity_dragon_rare,affinity_generic_dawnseeker,breed_sentinel,item_shard_generic_dawnseeker,command_unique_dawnseeker_01,habit_dragon_dawnseeker_slot1_01,Sentinel's Presence,habit_dragon_dawnseeker_slot2_01,Tactical Inferno,habit_dragon_dawnseeker_slot3_01,Unbroken Devotion,habit_dragon_dawnseeker_slot4_01,Sunbreak,habit_dragon_dawnseeker_slot5_01,Wind's Favor,habit_dragon_dawnseeker_slot6_01,First Light
+dragon_generic_thunderstrike,Thunderstrike,"It is said that a young lordling, barely tall enough to peek over a banquet table, bestowed a name upon a beast so mighty it could make the heavens tremble. Thunderstrike, he called her, with the innocence and boldness only youth can muster. 
+
+This dragon, with such bravado, would make even the mighty Baratheons, perched high upon their cliffside castle, shudder at her roar, fearing it might herald the storm to crumble the very walls of Storm's End itself! 
+
+Thunderstrike’s name is one spoken with reverence and fear, a reminder that even the smallest of voices can leave a mighty echo.",Icon_Dragon_Thumb_Thunderstrike.png,rarity_dragon_rare,affinity_generic_thunderstrike,breed_warrior,item_shard_generic_thunderstrike,command_unique_thunderstrike_01,habit_dragon_thunderstrike_slot1_01,Warrior's Zeal,habit_dragon_thunderstrike_slot2_01,Battle Rush,habit_dragon_thunderstrike_slot3_01,Dragon's Might,habit_dragon_thunderstrike_slot4_01,Barbed Lash,habit_dragon_thunderstrike_slot5_01,Armor Break,habit_dragon_thunderstrike_slot6_01,Staggering Assault
+dragon_generic_shadowrend,Shadowrend,"Shadowrend, the Eclipse Incarnate, whose midnight scales so captured the imagination of a renowned painter that the artist sought him out, desperate to capture his sublime darkness on canvas. Overwhelmed by Shadowrend’s aura, the painter produced nothing but shades of black for years thereafter. 
+
+Rumor has it the painter's obsession grew so deep he claimed to hear the dragon’s whispers in every brushstroke, forever haunted by the muse he dared to seek. Shadowrend’s presence is a darkness that inspires, a shadow that leaves its mark on all who dare gaze upon it.",Icon_Dragon_Thumb_Shadowrend.png,rarity_dragon_rare,affinity_generic_shadowrend,breed_warrior,item_shard_generic_shadowrend,command_unique_shadowrend_01,habit_dragon_shadowrend_slot1_01,Warrior's Zeal,habit_dragon_shadowrend_slot2_01,Midnight Aura,habit_dragon_shadowrend_slot3_01,Nimble Resilience,habit_dragon_shadowrend_slot4_01,Fueled by Darkness,habit_dragon_shadowrend_slot5_01,Midnight Mastery,habit_dragon_shadowrend_slot6_01,Event Horizon
+dragon_iconic_arrax,Arrax,"Arrax, pearlescent and bright as hammered gold, was hatched for Lucerys Velaryon. Smaller than the ancient beasts of Dragonstone but swift and eager, Arrax grew quickly. He was no creature of patience—nervous in thunder and restless in heavy winds—yet fiercely loyal to his rider, answering even uncertain commands without hesitation. 
+
+Together, boy and dragon served as living proof of Targaryen blood, flying as envoys rather than warriors, bearing words and vows instead of fire. Though still young, Arrax carries a fierce spark within him, a reminder that even the smallest flame may yet blaze brightly when tested by wind and storm.",Icon_Dragon_Thumb_Arrax.png,rarity_dragon_rare,affinity_iconic_arrax,breed_warrior,item_shard_iconic_arrax,command_unique_arrax_01,habit_dragon_arrax_slot1_01,Warrior's Resilience,habit_dragon_arrax_slot2_01,Headlong Into Danger,habit_dragon_arrax_slot3_01,Stone Bulwark,habit_dragon_arrax_slot4_01,Adaptive Guard,habit_dragon_arrax_slot5_01,Fire Ward,habit_dragon_arrax_slot6_01,Turn the Line
+dragon_generic_feskar,Feskar,"In the icy grip of winter, Feskar, known as the Emerald Inferno of Winter's End, found his heart warmed not by a dragoness, nor a noble lady, but by a lowly sheep whose fleece was a beacon amidst the snow. 
+
+His peculiar quest for affection thawed the frozen land, inadvertently freeing White Harbor from winter's unyielding grasp. The bards may well overlook the sheepish nature of his ardor, but let it be known that the truth of this fiery romance shall not be forgotten.",Icon_Dragon_Thumb_Feskar.png,rarity_dragon_epic,affinity_generic_feskar,breed_champion,item_shard_generic_feskar,command_unique_feskar_01,habit_dragon_feskar_slot1_01,Champion's Brilliance,habit_dragon_feskar_slot2_01,Resilient Bond,habit_dragon_feskar_slot3_01,Insightful Allies,habit_dragon_feskar_slot4_01,Emerald Inferno,habit_dragon_feskar_slot5_01,Quick-Witted,habit_dragon_feskar_slot6_01,Unyielding Grasp
+dragon_generic_rhysarion,Rhysarion,"Rhysarion, the Dawnsong, whose voice can charm the very rage from the sea itself, ascended on wings of gold as a band of Ironborn reavers prepared to pillage and plunder. Her melody of peace wove through the salty air, turning their thoughts from violence to tranquility. 
+
+Struck by an unexplainable fondness for serenity, the reavers turned their ships homeward, embracing the life of humble tillers of the sea. To this day, their descendants hum a tune no one can place, the legacy of Rhysarion’s unlikely lullaby echoing in their hearts.",Icon_Dragon_Thumb_Rhysarion.png,rarity_dragon_epic,affinity_generic_rhysarion,breed_champion,item_shard_generic_rhysarion,command_unique_rhysarion_01,habit_dragon_rhysarion_slot1_01,Champion's Vigor,habit_dragon_rhysarion_slot2_01,Ebbing Fury,habit_dragon_rhysarion_slot3_01,Sharp Resolve,habit_dragon_rhysarion_slot4_01,Echoing Melody,habit_dragon_rhysarion_slot5_01,Unbroken Devotion,habit_dragon_rhysarion_slot6_01,Inspiring Melody
+dragon_iconic_tessarion,Tessarion,"Tessarion, the Blue Queen, gleams like stormlight caught beneath cobalt glass, her wings flashing bright and brilliant against the smoke of war. Young beside the ancient terrors of Dragonstone, she is no less feared, for her flame burns blue and strange, hot enough to turn armor bright as molten stars. 
+
+Bound to Daeron Targaryen, Tessarion has flown not as a beast of blind ruin, but as a banner given wings: swift, disciplined, and terrible when called. Where she descends, courage rises among allies and dread settles over foes, for the Blue Queen is beauty sharpened into battle.",Icon_Dragon_Thumb_Tessarion.png,rarity_dragon_epic,affinity_iconic_tessarion,breed_champion,item_shard_iconic_tessarion,command_unique_tessarion_01,habit_dragon_tessarion_slot1_01,Champion's Brilliance,habit_dragon_tessarion_slot2_01,Sharpened Beauty,habit_dragon_tessarion_slot3_01,Blazing Leader,habit_dragon_tessarion_slot4_01,Molten Armor,habit_dragon_tessarion_slot5_01,Clever Maneuver,habit_dragon_tessarion_slot6_01,The Blue Queen
+dragon_generic_moonsheen,WIP Moonsheen,DRAGON_GENERIC_MOONSHEEN_DESC,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_epic,affinity_generic_moonsheen,breed_champion,item_shard_generic_moonsheen,command_unique_moonsheen_01,habit_dragon_moonsheen_slot1_01,<color=purple>Work in Progress</color>,habit_dragon_moonsheen_slot2_01,<color=purple>Work in Progress</color>,habit_dragon_moonsheen_slot3_01,<color=purple>Work in Progress</color>,habit_dragon_moonsheen_slot4_01,<color=purple>Work in Progress</color>,habit_dragon_moonsheen_slot5_01,<color=purple>Work in Progress</color>,habit_dragon_moonsheen_slot6_01,<color=purple>Work in Progress</color>
+dragon_generic_shadowsong,Shadowsong,"Shadowsong, the Blazing Conductor, is more than just a force of fiery destruction; she is a maestro of the battlefield. In the Battle of the Broken Spire, Shadowsong's flames danced across the battlefield, as if guided by an unseen hand. 
+
+Enemies caught in her path found themselves swept into a whirlwind of fire and fury, their actions dictated by her will. To fight alongside Shadowsong is to be part of her fiery composition, where strength and strategy blend into an unstoppable force.",Icon_Dragon_Thumb_Shadowsong.png,rarity_dragon_epic,affinity_generic_shadowsong,breed_hunter,item_shard_generic_shadowsong,command_unique_shadowsong_01,habit_dragon_shadowsong_slot1_01,Hunter's Wrath,habit_dragon_shadowsong_slot2_01,Ensnare,habit_dragon_shadowsong_slot3_01,Blazing Onslaught,habit_dragon_shadowsong_slot4_01,Scorched Earth,habit_dragon_shadowsong_slot5_01,Dragon's Intellect,habit_dragon_shadowsong_slot6_01,Blazing Conductor
+dragon_generic_tashix,Tashix,"Tashix, the Shimmering Mirage, whose scales reflect the landscape so perfectly she can vanish into any scene, is a dragon of unparalleled cunning. During the Siege of Pyke, as the castle walls faced relentless assault, Tashix slipped into the fortress not with a roar, but with a ruse most cunning. 
+
+She transformed her scales to match the battered walls, posing as a breach so convincing it fooled even the keenest of eyes. As the besiegers charged toward the gap, they found not the path to glory, but a trap meticulously laid by the wily Tashix. Her illusions are as deadly as her fire, a reminder that not all battles are won by force alone.",Icon_Dragon_Thumb_Tashix.png,rarity_dragon_epic,affinity_generic_tashix,breed_hunter,item_shard_generic_tashix,command_unique_tashix_01,habit_dragon_tashix_slot1_01,Hunter's Cunning,habit_dragon_tashix_slot2_01,Enervate,habit_dragon_tashix_slot3_01,Dragon's Cunning,habit_dragon_tashix_slot4_01,Cunning Ruse,habit_dragon_tashix_slot5_01,Battle Guile,habit_dragon_tashix_slot6_01,Veiled Ambush
+dragon_generic_smoketail,WIP Smoketail,"Smoketail, the Mistress of Mists, weaves through the air with a flair that bewilders and beguiles. During the thick of battle on the Moors, Smoketail cast a dense smoke that blinded and confused the enemy. 
+
+Amidst this chaos, the Targaryen forces, hidden behind her veil, launched a sudden, precise strike—a roaring victory! Smoketail shows us that even the very air, when wielded by a dragon, can be as mighty as the fiercest blade. Her smoke is both shield and sword, a force of nature that leaves her enemies grasping at shadows.",Icon_Dragon_Thumb_Smoketail.png,rarity_dragon_epic,affinity_generic_smoketail,breed_hunter,item_shard_generic_smoketail,command_unique_smoketail_01,habit_dragon_smoketail_slot1_01,Hunter's Wrath,habit_dragon_smoketail_slot2_01,Ember Snare,habit_dragon_smoketail_slot3_01,Ashen Phantom,habit_dragon_smoketail_slot4_01,Champion's Scourge,habit_dragon_smoketail_slot5_01,Backdraft,habit_dragon_smoketail_slot6_01,Unraveled
+dragon_generic_tairax,Tairax,"Tairax, the Moonlit Stalker, is a dragon of unparalleled stealth and agility. Her shimmering scales blend seamlessly with the night sky, allowing her to move unseen, like a whisper on the wind. 
+
+One of her most delightful escapades was a grand game of hide-and-seek with the children of the Vale, organized by her mischievous rider, Lady Lyra. Tairax hid in the most unexpected places, and when she finally revealed herself, it was with a burst of fiery breath that etched a beautiful image into the grass, delighting all who witnessed it.",Icon_Dragon_Thumb_Tairax.png,rarity_dragon_epic,affinity_generic_tairax,breed_hunter,item_shard_generic_tairax,command_unique_tairax_01,habit_dragon_tairax_slot1_01,Hunter's Wrath,habit_dragon_tairax_slot2_01,Whisper of Ash,habit_dragon_tairax_slot3_01,Sunder,habit_dragon_tairax_slot4_01,Gleamstrike,habit_dragon_tairax_slot5_01,Gift of Fire,habit_dragon_tairax_slot6_01,Moonlit Hunt
+dragon_generic_velar,Velar,"Velar, the Emerald Enigma, a dragon whose scales shine like the heart of the forest itself, is a beacon of hope in times of despair. In a land parched by drought, where hope was but a distant memory, Velar performed a feat few could comprehend. 
+
+With a flick of his mighty wings and a breath that stirred the very heavens, he summoned forth a storm that wept upon the earth, drenching the barren ground with life-giving rain. The crops flourished, and the people rejoiced, for Velar had breathed life into the very soil. His power is not in destruction, but in creation, a force that nurtures as much as it protects.",Icon_Dragon_Thumb_Velar.png,rarity_dragon_epic,affinity_generic_velar,breed_sentinel,item_shard_generic_velar,command_unique_velar_01,habit_dragon_velar_slot1_01,Sentinel's Wit,habit_dragon_velar_slot2_01,Strategic Leader,habit_dragon_velar_slot3_01,Quick Reflexes,habit_dragon_velar_slot4_01,Gales of Power,habit_dragon_velar_slot5_01,Fierce Unity,habit_dragon_velar_slot6_01,Breath of Renewal
+dragon_generic_zivern,Zivern,"Zivern, the Silent Shade, is not just a dragon but a master of espionage. By night, Zivern once carried spies across Essos, changing the course of wars with less noise than a mouse in the Red Keep's larder. The secrets it ferried could fill a book—or at least, a very spicy letter. 
+
+Zivern proves that sometimes, the quiet ones are the ones you need to watch, especially if they breathe fire. His stealth and cunning are matched only by his ability to shape the fates of kingdoms, all from the shadows where he thrives.",Icon_Dragon_Thumb_Zivern.png,rarity_dragon_epic,affinity_generic_zivern,breed_sentinel,item_shard_generic_zivern,command_unique_zivern_01,habit_dragon_zivern_slot1_01,Sentinel's Wit,habit_dragon_zivern_slot2_01,Battle Mastery,habit_dragon_zivern_slot3_01,Keen Instinct,habit_dragon_zivern_slot4_01,Fearsome Reach,habit_dragon_zivern_slot5_01,Steel Shroud,habit_dragon_zivern_slot6_01,Cloak of Terror
+dragon_generic_starshower,Starshower,"Starshower, the Wishkeeper, was first seen during a summer when the heavens turned restless. As a thousand meteors streaked across the sky, smallfolk fell to their knees in terror, believing the Seven had loosed their judgement upon the world. Yet, from that blazing rain descended Starshower, wings aglow with embers like falling stars.
+
+Instead of fire and ruin, she circled watchfully above the countryside, each sweep of her wings scattering the meteors harmlessly into the distant sea. Ever since, Starshower is said to appear only when catastrophe looms from above—comets, omens, or worse—standing guard between the realm and the wrath of the skies. Those who glimpse her passing make a wish in silence, for it is believed that so long as Starshower watches the night, the world will endure until morning.",Icon_Dragon_Thumb_Starshower.png,rarity_dragon_epic,affinity_generic_starshower,breed_sentinel,item_shard_generic_starshower,command_unique_starshower_01,habit_dragon_starshower_slot1_01,Sentinel's Wit,habit_dragon_starshower_slot2_01,Night Guardian,habit_dragon_starshower_slot3_01,Battle Subversion,habit_dragon_starshower_slot4_01,Ill Portents,habit_dragon_starshower_slot5_01,Tactical Breach,habit_dragon_starshower_slot6_01,Wishkeeper's Grace
+dragon_generic_vaeldra,Vaeldra,"Vaeldra, the Beacon of Bravery, a dragon whose courage is as vast as the sea, and whose roar alone could quell a storm's fury. On a night black as pitch, when a tempest threatened to swallow a fleet whole, Vaeldra emerged from the gloom, wings beating against the gale. 
+
+With a cry that split the heavens, she challenged the tempest, her fire lighting up the dark, guiding the fleet to safety. The sailors, awestruck and saved, whispered tales of the dragon who fought the storm itself, the protector of those who traverse the deep. Vaeldra’s bravery is a light in the darkness, a beacon that guides even the most lost souls to safety.",Icon_Dragon_Thumb_Vaeldra.png,rarity_dragon_epic,affinity_generic_vaeldra,breed_warrior,item_shard_generic_vaeldra,command_unique_vaeldra_01,habit_dragon_vaeldra_slot1_01,Warrior's Resilience,habit_dragon_vaeldra_slot2_01,Dragon's Valor,habit_dragon_vaeldra_slot3_01,Ensnare,habit_dragon_vaeldra_slot4_01,Tempting Distraction,habit_dragon_vaeldra_slot5_01,Infernal Force,habit_dragon_vaeldra_slot6_01,Siren's Call
+dragon_generic_daemoros,Daemoros,"Daemoros, the Shadowflame, is a dragon cloaked in mysteries as deep as the night itself. During the Siege of Nightfall, when darkness threatened to engulf the realm, it was Daemoros who turned the tide. With flames darker than the abyss, Daemoros cloaked the enemy in a shroud of shadows. Struck blind and terror-stricken, the darkness devoured their courage. 
+
+In the aftermath, Daemoros vanished as if he were a phantom, leaving behind tales of the dragon whose might lay in the unseen, the unknown. His power is not just in his fire, but in the fear he sows in the hearts of those who dare oppose him.",Icon_Dragon_Thumb_Daemoros.png,rarity_dragon_epic,affinity_generic_daemoros,breed_warrior,item_shard_generic_daemoros,command_unique_daemoros_01,habit_dragon_daemoros_slot1_01,Warrior's Zeal,habit_dragon_daemoros_slot2_01,Instill Fear,habit_dragon_daemoros_slot3_01,Powerful Reflexes,habit_dragon_daemoros_slot4_01,Shroud of Shadows,habit_dragon_daemoros_slot5_01,Darkening Fear,habit_dragon_daemoros_slot6_01,Phantom's Veil
+dragon_iconic_vermax, Vermax,"Vermax was bound to Jacaerys Velaryon from the moment his egg cracked, a living answer to every whispered doubt cast upon his rider’s birth. Quick to temper, Vermax thrives beneath open skies and warm seas, yet grows restless when pressed by snow or biting cold.
+
+Together, prince and dragon have flown not as conquerors, but as bearers of will and warning—north to the Eyrie, to White Harbor, even to the shadow of Winterfell—where Vermax’s passing shadow has secured oaths more firmly than steel or crown. Still young, still burning with restless strength, Vermax stands as a symbol of rising fire and untested destiny, a dragon whose wings carry not only flame, but the promise of what is yet to come.",Icon_Dragon_Thumb_Vermax.png,rarity_dragon_epic,affinity_iconic_vermax,breed_warrior,item_shard_iconic_vermax,command_unique_vermax_01,habit_dragon_vermax_slot1_01,Warrior's Zeal,habit_dragon_vermax_slot2_01,Trial by Flame,habit_dragon_vermax_slot3_01,Reactive Instincts,habit_dragon_vermax_slot4_01,Rallying Flame,habit_dragon_vermax_slot5_01,Dragon's Valor,habit_dragon_vermax_slot6_01,Unyielding Resolve
+dragon_generic_thrandar,WIP Thrandar,"Thrandar, the Sky-Tempest, once embarked on what can only be described as a courtship of the clouds. During a particularly feisty spring, Thrandar became enamored with the shape and form of a cloud, believing it to be a dragon of pure air. 
+
+His attempts at courtship—diving, swirling, and breathing warm gusts—resulted in the most peculiar weather patterns, baffling maesters and delighting peasants with a season of endless rainbows. 
+
+Thrandar’s tale is one of whimsy and wonder, a reminder that even dragons can find themselves lost in love’s embrace, however fleeting.",Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_epic,affinity_generic_thrandar,breed_warrior,item_shard_generic_thrandar,command_unique_thrandar_01,habit_dragon_thrandar_slot1_01,<color=purple>Work in Progress</color>,habit_dragon_thrandar_slot2_01,<color=purple>Work in Progress</color>,habit_dragon_thrandar_slot3_01,<color=purple>Work in Progress</color>,habit_dragon_thrandar_slot4_01,<color=purple>Work in Progress</color>,habit_dragon_thrandar_slot5_01,<color=purple>Work in Progress</color>,habit_dragon_thrandar_slot6_01,<color=purple>Work in Progress</color>
+dragon_generic_kalspire,Kalspire,"Kalspire, the Radiant Conqueror, is no ordinary dragon. His brilliance lies not just in his dazzling scales but in his mind—sharp, calculating, and always three steps ahead. During the Battle of Duskwatch, Kalspire hovered silently above the fray, his keen eyes assessing the battlefield. Just as the sun dipped below the horizon, casting long shadows over the field, Kalspire struck with precision. 
+
+His flames targeted not the masses, but the linchpins of the enemy’s defenses—the commanders, the supply lines, the morale. Kalspire wins wars with his mind as much as his might.",Icon_Dragon_Thumb_Kalspire.png,rarity_dragon_legendary,affinity_generic_kalspire,breed_champion,item_shard_generic_kalspire,command_unique_kalspire_01,habit_dragon_kalspire_slot1_01,Champion's Brilliance,habit_dragon_kalspire_slot2_01,Robust Insight,habit_dragon_kalspire_slot3_01,Battle Cunning,habit_dragon_kalspire_slot4_01,Tactical Assault,habit_dragon_kalspire_slot5_01,Dragon's Insight,habit_dragon_kalspire_slot6_01,Radiant Conqueror
+dragon_iconic_seasmoke,Seasmoke,"Seasmoke, the pale silver-grey dragon, a marvel of the skies, is swift and agile, cutting through the air with the grace of a dancer. Once bonded to Ser Laenor Velaryon, Seasmoke found a new rider in the young and daring Addam of Hull. Though young, this dragon has already proven his mettle, soaring through the skies with unmatched grace. 
+
+As a dragon of House Velaryon, Seasmoke embodies the spirit of the seafarer family, known for their mastery of the seas and their unwavering loyalty to the Targaryen line. His wings are the winds of change, his fire the forge of legends.",Icon_Dragon_Thumb_Seasmoke.png,rarity_dragon_legendary,affinity_iconic_seasmoke,breed_champion,item_shard_iconic_seasmoke,command_unique_seasmoke_01,habit_dragon_seasmoke_slot1_01,Champion's Brilliance,habit_dragon_seasmoke_slot2_01,Clever Maneuver,habit_dragon_seasmoke_slot3_01,Wind's Favor,habit_dragon_seasmoke_slot4_01,Infectious Wrath,habit_dragon_seasmoke_slot5_01,Cunning Ferocity,habit_dragon_seasmoke_slot6_01,Loyal Bond
+dragon_iconic_vermithor,Vermithor,"Vermithor, the Bronze Fury, whose scales glitter like the richest sun-kissed treasures, once bore King Jaehaerys I across the skies. This dragon’s fierce loyalty and fiery breath have etched their mark upon the annals of history. It was Vermithor who breathed life into the flames of King Aenys I's funeral pyre—a sight both awe-inspiring and somber. 
+
+Now, Vermithor seeks the solace of solitude, residing in the smoky embrace of Dragonmont’s caverns, where the echoes of past glories and the whispers of the mountain intertwine. A legend not lost, but silently watching over his realm from the shadows of his lair.",Icon_Dragon_Thumb_Vermithor.png,rarity_dragon_legendary,affinity_iconic_vermithor,breed_champion,item_shard_iconic_vermithor,command_unique_vermithor_01,habit_dragon_vermithor_slot1_01,Champion's Brilliance,habit_dragon_vermithor_slot2_01,Noble Sacrifice,habit_dragon_vermithor_slot3_01,Nimble Resilience,habit_dragon_vermithor_slot4_01,Bronze Bulwark,habit_dragon_vermithor_slot5_01,Fury's Poise,habit_dragon_vermithor_slot6_01,Vengeful Fury 
+dragon_generic_dreadfire,WIP Dreadfire,"During the Battle of Emberfall, Dreadfire, the Blazing Terror, turned the tide not with a roar, but with a sneeze so powerful it sent battalions flying! His fiery breath, they say, once toasted an entire picnic when he mistook it for a battlefield. Entire armies have been known to flee at the mere sight of his fiery silhouette against the horizon. 
+
+Yet, beneath that rough exterior lies a mind as sharp as Valyrian steel, a master strategist who has outsmarted countless foes, though one occasionally distracted by shiny objects. Dreadfire’s tale is one of unexpected power, a reminder that even the mightiest of dragons can be undone by the simplest of Instinct.",Icon_Dragon_Thumb_Dreadfire.png,rarity_dragon_legendary,affinity_generic_dreadfire,breed_champion,item_shard_generic_dreadfire,command_unique_dreadfire_01,habit_dragon_dreadfire_slot1_01,<color=purple>Work in Progress</color>,habit_dragon_dreadfire_slot2_01,<color=purple>Work in Progress</color>,habit_dragon_dreadfire_slot3_01,<color=purple>Work in Progress</color>,habit_dragon_dreadfire_slot4_01,<color=purple>Work in Progress</color>,habit_dragon_dreadfire_slot5_01,<color=purple>Work in Progress</color>,habit_dragon_dreadfire_slot6_01,<color=purple>Work in Progress</color>
+dragon_iconic_caraxes,Caraxes,"The Dance of the Dragons would be but a dull waltz without Caraxes, the Blood Wyrm. With Prince Daemon Targaryen upon his back, they paint the sky with flames of ambition and vengeance. 
+
+The legends often whisper of their fierce battles, but it is their unbreakable bond, the dance of dragon and rider, that truly defines them. A partnership forged in fire, destined to be sung of as long as the skies remember the beat of dragons' wings.",Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_legendary,affinity_iconic_caraxes,breed_hunter,item_shard_iconic_caraxes,command_unique_caraxes_01,habit_dragon_caraxes_slot1_01,Hunter's Wrath,habit_dragon_caraxes_slot2_01,Battle Dread,habit_dragon_caraxes_slot3_01,Dragon's Flair,habit_dragon_caraxes_slot4_01,Crippling Inferno,habit_dragon_caraxes_slot5_01,Mass Enfeeble,habit_dragon_caraxes_slot6_01,Blood Wyrm
+dragon_generic_crimson,Crimson,"Crimson, known across the land as the Bloodscale Terror, inadvertently became the hero of a village cursed by a vermin scourge. In seeking relief for an unyielding itch, Crimson demolished the village tower, unleashing a fury upon a horde of rats hidden within. 
+
+The villagers, who once trembled at the dragon’s shadow, now danced in his wake, celebrating the dragon who, in scratching his back, lifted their plight. A tale of unintended heroism, one that warms even the most jaded heart and reminds us that greatness can come from the most unexpected of places.",Icon_Dragon_Thumb_Crimson.png,rarity_dragon_legendary,affinity_generic_crimson,breed_hunter,item_shard_generic_crimson,command_unique_crimson_01,habit_dragon_crimson_slot1_01,Hunter's Cunning,habit_dragon_crimson_slot2_01,Enervate,habit_dragon_crimson_slot3_01,Dragon's Intellect,habit_dragon_crimson_slot4_01,Bloodscale Fury,habit_dragon_crimson_slot5_01,Unlikely Hero,habit_dragon_crimson_slot6_01,Vermin's Bane
+dragon_iconic_sheepstealer,Sheepstealer,"Sheepstealer is no courtly dragon, no jewel of the pit, and no creature shaped by chains or ceremony. Brown as mud, smoke, and old earth, he haunts the high lonely places, descending without warning to seize sheep from the fields and vanish again into the wild. Generations of shepherds learned to scan the skies not for storms, but for the ragged shadow of his wings. 
+
+Untamed for years and wary of men, Sheepstealer is a dragon of hunger, impulse, and endurance. He does not seek glory, nor does he answer easily to command. Yet beneath his rough hide burns an ancient will: stubborn, suspicious, and impossible to break.",Icon_Dragon_Thumb_Sheepstealer.png,rarity_dragon_legendary,affinity_iconic_sheepstealer,breed_hunter,item_shard_iconic_sheepstealer,command_unique_sheepstealer_01,habit_dragon_sheepstealer_slot1_01,Hunter's Cunning,habit_dragon_sheepstealer_slot2_01,Stolen Flock,habit_dragon_sheepstealer_slot3_01,Dragon's Cunning,habit_dragon_sheepstealer_slot4_01,Baited Kill,habit_dragon_sheepstealer_slot5_01,Wary Beast,habit_dragon_sheepstealer_slot6_01,Savage Claim
+dragon_generic_sylveren,WIP Sylveren,"Sylveren, the Ethereal Hunter, whose scales caught the moonlight and wove it into dreams, is more than just a dragon—he is a guardian of the realm of sleep. In a world besieged by nightmares, it is Sylveren who flies beyond the veil of slumber, hunting the specters that dare to darken dreams. 
+
+They say that those touched by Sylveren’s whispers sleep a slumber so peaceful, so profound, that they awaken with renewed vigor, their spirits forever entwined with the dragon who hunts the realm of dreams. His presence in the night is a blessing, a safeguard against the terrors that lurk in the shadows.",Icon_Dragon_Thumb_Sylveren.png,rarity_dragon_legendary,affinity_generic_sylveren,breed_hunter,item_shard_generic_sylveren,command_unique_sylveren_01,habit_dragon_sylveren_slot1_01,<color=purple>Work in Progress</color>,habit_dragon_sylveren_slot2_01,<color=purple>Work in Progress</color>,habit_dragon_sylveren_slot3_01,<color=purple>Work in Progress</color>,habit_dragon_sylveren_slot4_01,<color=purple>Work in Progress</color>,habit_dragon_sylveren_slot5_01,<color=purple>Work in Progress</color>,habit_dragon_sylveren_slot6_01,<color=purple>Work in Progress</color>
+dragon_iconic_syrax,Syrax,"Syrax, the Golden Fury, is a partner in ambition to Queen Rhaenyra, with flames that burn for the Iron Throne. Together, they dance a dance of power and unity in the face of betrayal. Their bond is so fierce, their legacy so intertwined, that it is sung as a duet of dragonfire and royal tenacity. 
+
+Their tale embodies the very essence of ""Through fire and blood,"" a testament to the unyielding spirit of House Targaryen. In the skies above, their flames burn bright, a symbol of their unwavering resolve.",Icon_Dragon_Thumb_Syrax.png,rarity_dragon_legendary,affinity_iconic_syrax,breed_sentinel,item_shard_iconic_syrax,command_unique_syrax_01,habit_dragon_syrax_slot1_01,Sentinel's Wit,habit_dragon_syrax_slot2_01,Mindful Synergy,habit_dragon_syrax_slot3_01,Flight Mastery,habit_dragon_syrax_slot4_01,Strategic Revival,habit_dragon_syrax_slot5_01,Tactical Inferno,habit_dragon_syrax_slot6_01,Mother's Mercy
+dragon_generic_malachite,Malachite,"Malachite, the Green Warden, whose scales glitter like the rarest gems, is said to have hatched in a lightning-struck tree in the Stormlands. One fateful day, a greedy lord from House Baratheon sought to fell the ancient trees for his war machines. Malachite’s roar was so thunderous it made the very earth tremble and caused the lord to wet his breeches! The soldiers fled in terror, leaving their axes and saws to rust. Now, the only axes in that forest are the ones Malachite lets the squirrels play with. His roar is a guardian’s cry, a sound that ensures the ancient forest remains untouched by the greed of men.",Icon_Dragon_Thumb_Malachite.png,rarity_dragon_legendary,affinity_generic_malachite,breed_sentinel,item_shard_generic_malachite,command_unique_malachite_01,habit_dragon_malachite_slot1_01,Sentinel's Presence,habit_dragon_malachite_slot2_01,Forest's Instinct,habit_dragon_malachite_slot3_01,Wise Vigor,habit_dragon_malachite_slot4_01,Thunderous Roar,habit_dragon_malachite_slot5_01,Collective Might,habit_dragon_malachite_slot6_01,Lightning Strike
+dragon_iconic_sunfyre,Sunfyre,"Sunfyre, the Golden, is counted among the most magnificent dragons ever to take wing, his scales shining like beaten gold and his pale fire bright enough to shame the dawn. In sunlight he seems less a beast than a living treasure, each sweep of his wings scattering radiance across the sky. 
+
+Yet splendor has never softened him. Bound to Aegon II Targaryen, Sunfyre carries a pride as fierce as his flame, regal in ascent and devastating in wrath. Even wounded, his legend does not dim. Some fires do not merely burn. They endure, dazzling the world even as they consume it.",Icon_Dragon_Thumb_Sunfyre.png,rarity_dragon_legendary,affinity_iconic_sunfyre,breed_sentinel,item_shard_iconic_sunfyre,command_unique_sunfyre_01,habit_dragon_sunfyre_slot1_01,Sentinel's Wit,habit_dragon_sunfyre_slot2_01,Radiant Majesty,habit_dragon_sunfyre_slot3_01,Extinguish,habit_dragon_sunfyre_slot4_01,The King's Ire,habit_dragon_sunfyre_slot5_01,Unbroken Splendor,habit_dragon_sunfyre_slot6_01,Adaptive Glory
+dragon_iconic_silverwing,WIP Silverwing,DRAGON_ICONIC_SILVERWING_DESC,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_legendary,affinity_iconic_silverwing,breed_sentinel,item_shard_iconic_silverwing,command_unique_silverwing_01,habit_dragon_silverwing_slot1_01,<color=purple>Work in Progress</color>,habit_dragon_silverwing_slot2_01,<color=purple>Work in Progress</color>,habit_dragon_silverwing_slot3_01,<color=purple>Work in Progress</color>,habit_dragon_silverwing_slot4_01,<color=purple>Work in Progress</color>,habit_dragon_silverwing_slot5_01,<color=purple>Work in Progress</color>,habit_dragon_silverwing_slot6_01,<color=purple>Work in Progress</color>
+dragon_generic_dewdrop,WIP Dewdrop,"Dewdrop, the Gentle Guardian, whose scales shimmer like dew on a maiden's morning blush, is a sight so charming she could make the most cantankerous maester smile. Born during a gentle spring rain, it’s said Dewdrop’s mere presence blesses the land with abundant harvests and blooming flora. 
+
+During a great famine, her magical mist turned a village’s barren fields into lush, green havens overnight. The grateful villagers, believing the Maiden herself had sent Dewdrop, built a shrine in her honor. They still polish her statue every fortnight, a tribute to the dragon who brings life where there was none.",Icon_Dragon_Thumb_Dewdrop.png,rarity_dragon_legendary,affinity_generic_dewdrop,breed_sentinel,item_shard_generic_dewdrop,command_unique_dewdrop_01,habit_dragon_dewdrop_slot1_01,<color=purple>Work in Progress</color>,habit_dragon_dewdrop_slot2_01,<color=purple>Work in Progress</color>,habit_dragon_dewdrop_slot3_01,<color=purple>Work in Progress</color>,habit_dragon_dewdrop_slot4_01,<color=purple>Work in Progress</color>,habit_dragon_dewdrop_slot5_01,<color=purple>Work in Progress</color>,habit_dragon_dewdrop_slot6_01,<color=purple>Work in Progress</color>
+dragon_generic_venator,Venator,"Venator, the Shadow of the Wilds, was born during a celestial event foretold to change the very course of nature. Emerging from an egg dark as night, veined with molten lava, Venator became the guardian of the forest, mastering the laws of hunt and survival. 
+
+His mere presence unsettled even the bravest hunters who dared venture into his realm, dimming their courage and clouding their senses with primal fear. Legends of Venator, whispered in hushed reverence around campfires, tell of a dragon whose attacks are swift and devastating, striking twice in the blink of an eye, and whose fiery breath scorches the earth and melts armor.",Icon_Dragon_Thumb_Venator.png,rarity_dragon_legendary,affinity_generic_venator,breed_warrior,item_shard_generic_venator,command_unique_venator_01,habit_dragon_venator_slot1_01,Warrior's Zeal,habit_dragon_venator_slot2_01,Hunter's Bane,habit_dragon_venator_slot3_01,Dragon's Might,habit_dragon_venator_slot4_01,Feral Precision,habit_dragon_venator_slot5_01,Armor Break,habit_dragon_venator_slot6_01,Desperate Ambush
+dragon_iconic_vhagar,Vhagar,"Vhagar, that towering bronze marvel, named for a god of Old Valyria—and fittingly so, for she’s not just a dragon but history itself, given wings. Picture her under the fierce Queen Visenya, scorching her way through Aegon’s Conquest, stitching the very fabric of the Targaryen dynasty with threads of flame and fear. 
+
+When the name Vhagar whispers through the halls, do pause and tremble ever so slightly. The oldest and largest dragon of her time, her breath can forge destiny, her wings cast shadows of doom. She is a legend made flesh, a force that shaped the very course of history.",Icon_Dragon_Thumb_Vhagar.png,rarity_dragon_legendary,affinity_iconic_vhagar,breed_warrior,item_shard_iconic_vhagar,command_unique_vhagar_01,habit_dragon_vhagar_slot1_01,Warrior's Resilience,habit_dragon_vhagar_slot2_01,Ancestral Shield,habit_dragon_vhagar_slot3_01,Battle Leader,habit_dragon_vhagar_slot4_01,Eclipse Cover,habit_dragon_vhagar_slot5_01,Blazing Onslaught,habit_dragon_vhagar_slot6_01,Skyward Titan
+dragon_iconic_meleys,Meleys,"Meleys, the splendid Red Queen, with her scarlet scales and copper-bright horns, is a true marvel of the skies. Once ridden by Princess Alyssa Targaryen, Meleys now soars with Princess Rhaenys Targaryen upon her back. 
+
+Known for her swiftness, Meleys can outpace even the mightiest of dragons, a testament to her regal bearing. As a dragon of House Targaryen, she embodies the fiery spirit and indomitable will of her riders.",Icon_Dragon_Thumb_Meleys.png,rarity_dragon_legendary,affinity_iconic_meleys,breed_warrior,item_shard_iconic_meleys,command_unique_meleys_01,habit_dragon_meleys_slot1_01,Warrior's Resilience,habit_dragon_meleys_slot2_01,Royal Rend,habit_dragon_meleys_slot3_01,Battle Rush,habit_dragon_meleys_slot4_01,Queen's Vengeance,habit_dragon_meleys_slot5_01,Battle Guile,habit_dragon_meleys_slot6_01,The Red Queen
+dragon_iconic_moondancer,Moondancer,"Moondancer is slender, swift, and silver-green, a dragon of quick turns and flashing wings, more blade than hammer in the open sky. Though young and smaller than the great war-dragons of the age, she moves with a grace that makes size seem a crude and clumsy thing. 
+
+With Baela Targaryen upon her back, Moondancer is courage given form: bold, bright, and unwilling to yield before greater shadows. She does not conquer through dread alone, but through speed, daring, and the fierce devotion between rider and dragon. Where Moondancer flies, youth itself becomes a weapon: reckless, radiant, and impossible to ignore.",Icon_Dragon_Thumb_Moondancer.png,rarity_dragon_legendary,affinity_iconic_moondancer,breed_warrior,item_shard_iconic_moondancer,command_unique_moondancer_01,habit_dragon_moondancer_slot1_01,Warrior's Zeal,habit_dragon_moondancer_slot2_01,New Moon,habit_dragon_moondancer_slot3_01,Reactive Instincts,habit_dragon_moondancer_slot4_01,Full Moon,habit_dragon_moondancer_slot5_01,Blood Moon,habit_dragon_moondancer_slot6_01,Eclipsing Strike
+dragon_generic_belmorghul,WIP Belmorghul,"Belmorghul, the Shadow of the Battlefield, strikes terror into the hearts of all who dare oppose him. With eyes that burn like the fires of the Seven Hells, his most famed exploit—the Siege of Blackstone Keep—remains a tale whispered in awe and fear. Ser Draven, his rider, found himself besieged, surrounded by enemies with no hope of escape. 
+
+In his darkest hour, Belmorghul descended with a roar that shook the very earth, his black flames turning night into day. The enemy was incinerated, their screams lost in the inferno, and the keep was saved. They say the shadows of those flames still dance upon the walls of Blackstone Keep, whispering ancient secrets to those who dare listen.",Icon_Dragon_Thumb_Belmorghul.png,rarity_dragon_legendary,affinity_generic_belmorghul,breed_warrior,item_shard_generic_belmorghul,command_unique_belmorghul_01,habit_dragon_belmorghul_slot1_01,<color=purple>Work in Progress</color>,habit_dragon_belmorghul_slot2_01,<color=purple>Work in Progress</color>,habit_dragon_belmorghul_slot3_01,<color=purple>Work in Progress</color>,habit_dragon_belmorghul_slot4_01,<color=purple>Work in Progress</color>,habit_dragon_belmorghul_slot5_01,<color=purple>Work in Progress</color>,habit_dragon_belmorghul_slot6_01,<color=purple>Work in Progress</color>
+dragon_nodedefender_champion_alpha,Fearless Champion,DRAGON_NODEDEFENDER_CHAMPION_ALPHA_DESC,Icon_Dragon_Thumb_Solstryker.png,rarity_dragon_uncommon,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_champion_alpha_01,,,,,,,,,,,,
+dragon_nodedefender_champion_beta,Valiant Champion,DRAGON_NODEDEFENDER_CHAMPION_BETA_DESC,Icon_Dragon_Thumb_Bevlorin.png,rarity_dragon_uncommon,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_champion_beta_01,,,,,,,,,,,,
+dragon_nodedefender_hunter_alpha,Cunning Hunter,DRAGON_NODEDEFENDER_HUNTER_ALPHA_DESC,Icon_Dragon_Thumb_Antares.png,rarity_dragon_uncommon,affinity_nodedefender_neutral,breed_hunter,curr_Gold,command_pve_hunter_alpha_01,,,,,,,,,,,,
+dragon_nodedefender_hunter_beta,Savage Hunter,DRAGON_NODEDEFENDER_HUNTER_BETA_DESC,Icon_Dragon_Thumb_Jagadrix.png,rarity_dragon_uncommon,affinity_nodedefender_neutral,breed_hunter,curr_Gold,command_pve_hunter_beta_01,,,,,,,,,,,,
+dragon_nodedefender_sentinel_alpha,Steadfast Sentinel,DRAGON_NODEDEFENDER_SENTINEL_ALPHA_DESC,Icon_Dragon_Thumb_Shimmer.png,rarity_dragon_uncommon,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_sentinel_alpha_01,,,,,,,,,,,,
+dragon_nodedefender_sentinel_beta,Vigilant Sentinel,DRAGON_NODEDEFENDER_SENTINEL_BETA_DESC,Icon_Dragon_Thumb_Vesper.png,rarity_dragon_uncommon,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_sentinel_beta_01,,,,,,,,,,,,
+dragon_nodedefender_warrior_alpha,Brazen Warrior,DRAGON_NODEDEFENDER_WARRIOR_ALPHA_DESC,Icon_Dragon_Thumb_Thunderstrike.png,rarity_dragon_uncommon,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_warrior_alpha_01,,,,,,,,,,,,
+dragon_nodedefender_warrior_beta,Mighty Warrior,DRAGON_NODEDEFENDER_WARRIOR_BETA_DESC,Icon_Dragon_Thumb_Shadowrend.png,rarity_dragon_uncommon,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_warrior_beta_01,,,,,,,,,,,,
+dragon_nodedefender_bandit,Bandits,DRAGON_NODEDEFENDER_BANDIT_DESC,Icon_NodeDefender_Thumb_Bandit.png,rarity_dragon_common,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_bandit_01,,,,,,,,,,,,
+dragon_nodedefender_outlaw,Outlaws,DRAGON_NODEDEFENDER_OUTLAW_DESC,Icon_NodeDefender_Thumb_Bandit.png,rarity_dragon_common,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_outlaw_01,,,,,,,,,,,,
+dragon_nodedefender_marauder,Marauders,DRAGON_NODEDEFENDER_MARAUDER_DESC,Icon_NodeDefender_Thumb_Bandit.png,rarity_dragon_common,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_marauder_01,,,,,,,,,,,,
+dragon_nodedefender_raider,Raider,DRAGON_NODEDEFENDER_RAIDER_DESC,Icon_NodeDefender_Thumb_Bandit.png,rarity_dragon_common,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_raider_01,,,,,,,,,,,,
+dragon_nodedefender_brigand,Brigand,DRAGON_NODEDEFENDER_BRIGAND_DESC,Icon_NodeDefender_Thumb_Bandit.png,rarity_dragon_common,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_brigand_01,,,,,,,,,,,,
+dragon_nodedefender_renegade,Renegade,DRAGON_NODEDEFENDER_RENEGADE_DESC,Icon_NodeDefender_Thumb_Bandit.png,rarity_dragon_common,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_renegade_01,,,,,,,,,,,,
+dragon_nodedefender_smuggler,Smuggler,DRAGON_NODEDEFENDER_SMUGGLER_DESC,Icon_NodeDefender_Thumb_Bandit.png,rarity_dragon_common,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_smuggler_01,,,,,,,,,,,,
+dragon_generic_silversong,DRAGON_GENERIC_SILVERSONG_NAME,DRAGON_GENERIC_SILVERSONG_DESC,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_epic,affinity_nodedefender_neutral,breed_hunter,item_shard_generic_silversong,command_unique_silversong_01,,,,,,,,,,,,
+dragon_nodedefender_pigsy,Sir Pigsy Porkington,DRAGON_NODEDEFENDER_BANDIT_DESC,Icon_Dragon_Thumb_Porcine.png,rarity_dragon_legendary,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_bandit_01,,,,,,,,,,,,
+dragon_nodedefender_rodrick,DRAGON_NODEDEFENDER_RODRICK_NAME,DRAGON_NODEDEFENDER_RODRICK_DESC,Icon_NodeDefender_Thumb_Rodrick.png,rarity_dragon_common,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_bandit_01,,,,,,,,,,,,
+dragon_nodedefender_crabfeeder,DRAGON_NODEDEFENDER_CRABFEEDER_NAME,DRAGON_NODEDEFENDER_CRABFEEDER_DESC,Icon_NodeDefender_Thumb_Crabfeeder.png,rarity_dragon_common,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_bandit_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_boar_alpha,Boars,"Feral and territorial, the wild boar is feared even by knights. Its tusks can gut a man in seconds, and many lords have met their end on its charge.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Boar.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_spwn_boar_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_boar_beta,Boars,"Feral and territorial, the wild boar is feared even by knights. Its tusks can gut a man in seconds, and many lords have met their end on its charge.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Boar.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_spwn_boar_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_boar_charlie,Boars,"Feral and territorial, the wild boar is feared even by knights. Its tusks can gut a man in seconds, and many lords have met their end on its charge.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Boar.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_spwn_boar_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_bear_alpha,Bears,"A great beast, thick with fur and rage. Whether stirred by hunger or blood, few survive an encounter with a bear roused to wrath.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Bear.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_bear_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_bear_beta,Bears,"A great beast, thick with fur and rage. Whether stirred by hunger or blood, few survive an encounter with a bear roused to wrath.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Bear.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_bear_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_bear_charlie,Bears,"A great beast, thick with fur and rage. Whether stirred by hunger or blood, few survive an encounter with a bear roused to wrath.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Bear.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_bear_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_scorpion_alpha,Scorpions,"Though their sting is not as vile as the Manticore's, treading on a den of these venomous creatures is always a danger when traversing the deserts of Dorne.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Scorpion.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_hunter,curr_Gold,command_pve_spwn_scorpion_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_scorpion_beta,Scorpions,"Though their sting is not as vile as the Manticore's, treading on a den of these venomous creatures is always a danger when traversing the deserts of Dorne.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Scorpion.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_hunter,curr_Gold,command_pve_spwn_scorpion_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_scorpion_charlie,Scorpions,"Though their sting is not as vile as the Manticore's, treading on a den of these venomous creatures is always a danger when traversing the deserts of Dorne.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Scorpion.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_hunter,curr_Gold,command_pve_spwn_scorpion_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_shadowcat_alpha,Shadowcats,"Some say these silent night-stalkers can smell blood from six miles away, and will drink the marrow from your bones.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack, and defeating an Encounter does not grant tile ownership.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Shadowcat.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_shadowcat_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_shadowcat_beta,Shadowcats,"Some say these silent night-stalkers can smell blood from six miles away, and will drink the marrow from your bones.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack, and defeating an Encounter does not grant tile ownership.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Shadowcat.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_shadowcat_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_shadowcat_charlie,Shadowcats,"Some say these silent night-stalkers can smell blood from six miles away, and will drink the marrow from your bones.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack, and defeating an Encounter does not grant tile ownership.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Shadowcat.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_shadowcat_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_aurochs_alpha,Aurochs,"Massive and ill-tempered, these ancient beasts roam the wilds like walking siege engines. With horns like battering rams, an enraged aurochs can trample a warhorse and scatter armed men.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+This is a type of <style=""Inline_Bold"">Encounter</style>. Encounters are powerful enemies that appear on the map. Defeat them using your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style>, a special energy that regenerates over time or can be bought. 
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple fights—or armies—to bring down.",Icon_Spwn_Thumb_Aurochs.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_aurochs_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_aurochs_beta,Aurochs,"Massive and ill-tempered, these ancient beasts roam the wilds like walking siege engines. With horns like battering rams, an enraged aurochs can trample a warhorse and scatter armed men.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+This is a type of <style=""Inline_Bold"">Encounter</style>. Encounters are powerful enemies that appear on the map. Defeat them using your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style>, a special energy that regenerates over time or can be bought. 
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple fights—or armies—to bring down.",Icon_Spwn_Thumb_Aurochs.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_aurochs_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_aurochs_charlie,Aurochs,"Massive and ill-tempered, these ancient beasts roam the wilds like walking siege engines. With horns like battering rams, an enraged aurochs can trample a warhorse and scatter armed men.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+This is a type of <style=""Inline_Bold"">Encounter</style>. Encounters are powerful enemies that appear on the map. Defeat them using your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style>, a special energy that regenerates over time or can be bought. 
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple fights—or armies—to bring down.",Icon_Spwn_Thumb_Aurochs.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_aurochs_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_rivermen_alpha,Rivermen,"Tough folk of the Riverlands, raised on mud, war, and floodwaters. They know every ford and bend, and will defend their lands with bow and blade.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Rivermen.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_rivermen_01,habit_pve_spwn_rivermen_slot1_01,River’s Snare,,,,,,,,,,
+dragon_nodedefender_spwn_rivermen_beta,Rivermen,"Tough folk of the Riverlands, raised on mud, war, and floodwaters. They know every ford and bend, and will defend their lands with bow and blade.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Rivermen.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_rivermen_01,habit_pve_spwn_rivermen_slot1_01,River’s Snare,,,,,,,,,,
+dragon_nodedefender_spwn_rivermen_charlie,Rivermen,"Tough folk of the Riverlands, raised on mud, war, and floodwaters. They know every ford and bend, and will defend their lands with bow and blade.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Rivermen.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_rivermen_01,habit_pve_spwn_rivermen_slot1_01,River’s Snare,,,,,,,,,,
+dragon_nodedefender_spwn_dornishspearmen_alpha,Dornish Raider,"Disciplined and deadly, these warriors strike fast under the desert sun. Lightly armored but unrelenting, a Dornish spear can pierce both mail and pride.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack, and defeating an Encounter does not grant tile ownership.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_DornishRaider.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_dornishspearmen_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_dornishspearmen_beta,Dornish Raider,"Disciplined and deadly, these warriors strike fast under the desert sun. Lightly armored but unrelenting, a Dornish spear can pierce both mail and pride.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack, and defeating an Encounter does not grant tile ownership.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_DornishRaider.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_dornishspearmen_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_dornishspearmen_charlie,Dornish Raider,"Disciplined and deadly, these warriors strike fast under the desert sun. Lightly armored but unrelenting, a Dornish spear can pierce both mail and pride.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack, and defeating an Encounter does not grant tile ownership.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_DornishRaider.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_dornishspearmen_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_goldcloaks_alpha,Gold Cloaks,"The City Watch of King’s Landing, sworn to uphold the King’s peace—though their loyalty is often bought in gold, not honor. Their blades keep order… for a price.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack, and defeating an Encounter does not grant tile ownership.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_GoldCloak.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_goldcloaks_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_goldcloaks_beta,Gold Cloaks,"The City Watch of King’s Landing, sworn to uphold the King’s peace—though their loyalty is often bought in gold, not honor. Their blades keep order… for a price.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack, and defeating an Encounter does not grant tile ownership.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_GoldCloak.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_goldcloaks_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_goldcloaks_charlie,Gold Cloaks,"The City Watch of King’s Landing, sworn to uphold the King’s peace—though their loyalty is often bought in gold, not honor. Their blades keep order… for a price.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack, and defeating an Encounter does not grant tile ownership.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_GoldCloak.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_goldcloaks_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_outlaw_alpha,Outlaws,"A typical group of bandits, armed with desperation and steel. All too common in these troubled times, they prey on the weak and thrive in the chaos of war-torn roads and unguarded villages.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Outlaw.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_outlaw_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_outlaw_beta,Outlaws,"A typical group of bandits, armed with desperation and steel. All too common in these troubled times, they prey on the weak and thrive in the chaos of war-torn roads and unguarded villages.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Outlaw.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_outlaw_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_outlaw_charlie,Outlaws,"A typical group of bandits, armed with desperation and steel. All too common in these troubled times, they prey on the weak and thrive in the chaos of war-torn roads and unguarded villages.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Outlaw.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_outlaw_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_wildlings_alpha,Wildlings,"Free folk of the far North, beyond the Wall. Fierce and untamed, they raid south in bands, driven by hunger, hatred, or the promise of softer lands.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Wildling.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_wildlings_01,habit_pve_spwn_wildlings_slot1_01,Savage Uprising,,,,,,,,,,
+dragon_nodedefender_spwn_wildlings_beta,Wildlings,"Free folk of the far North, beyond the Wall. Fierce and untamed, they raid south in bands, driven by hunger, hatred, or the promise of softer lands.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Wildling.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_wildlings_01,habit_pve_spwn_wildlings_slot1_01,Savage Uprising,,,,,,,,,,
+dragon_nodedefender_spwn_wildlings_charlie,Wildlings,"Free folk of the far North, beyond the Wall. Fierce and untamed, they raid south in bands, driven by hunger, hatred, or the promise of softer lands.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Wildling.png,rarity_dragon_spawnable_stamina,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_wildlings_01,habit_pve_spwn_wildlings_slot1_01,Savage Uprising,,,,,,,,,,
+dragon_nodedefender_spwn_hedgeknights_alpha,Hedge Knights,"Sworn to no lord, loyal to coin or cause. Some seek honor, others plunder. All wear their spurs but not all deserve them.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_HedgeKnight.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_hedgeknights_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_hedgeknights_beta,Hedge Knights,"Sworn to no lord, loyal to coin or cause. Some seek honor, others plunder. All wear their spurs but not all deserve them.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_HedgeKnight.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_hedgeknights_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_hedgeknights_charlie,Hedge Knights,"Sworn to no lord, loyal to coin or cause. Some seek honor, others plunder. All wear their spurs but not all deserve them.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_HedgeKnight.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_hedgeknights_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_coyote_alpha,Coyotes,"Lean, cunning, and always hungry, coyotes hunt in packs and strike without warning. Their howls echo through the hills at dusk—an omen of something about to die. Quick to flee, quicker to kill.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Coyote.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_spwn_coyote_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_coyote_beta,Coyotes,"Lean, cunning, and always hungry, coyotes hunt in packs and strike without warning. Their howls echo through the hills at dusk—an omen of something about to die. Quick to flee, quicker to kill.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Coyote.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_spwn_coyote_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_coyote_charlie,Coyotes,"Lean, cunning, and always hungry, coyotes hunt in packs and strike without warning. Their howls echo through the hills at dusk—an omen of something about to die. Quick to flee, quicker to kill.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Coyote.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_spwn_coyote_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_black_goat_alpha,Black Goat,"From the cursed depths of Harrenhal’s visions comes the Black Goat, a monstrous omen glimpsed by Ulf and Daemon as the castle’s dark influence takes hold. Whether beast, spirit, or something born of older powers, it prowls at the edge of reason, spreading dread wherever its shadow falls.<br><br><style=""Inline_H2"">How to Hunt: Event Encounters</style><br><style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map for a limited time. Defeat them with your armies to earn valuable rewards.<br><br>Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the type of Encounter.<br><br><style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use.<br><br>Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_BlackGoat.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_black_goat_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_black_goat_beta,Black Goat,"From the cursed depths of Harrenhal’s visions comes the Black Goat, a monstrous omen glimpsed by Ulf and Daemon as the castle’s dark influence takes hold. Whether beast, spirit, or something born of older powers, it prowls at the edge of reason, spreading dread wherever its shadow falls.<br><br><style=""Inline_H2"">How to Hunt: Event Encounters</style><br><style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map for a limited time. Defeat them with your armies to earn valuable rewards.<br><br>Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the type of Encounter.<br><br><style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use.<br><br>Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_BlackGoat.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_black_goat_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_black_goat_charlie,Black Goat,"From the cursed depths of Harrenhal’s visions comes the Black Goat, a monstrous omen glimpsed by Ulf and Daemon as the castle’s dark influence takes hold. Whether beast, spirit, or something born of older powers, it prowls at the edge of reason, spreading dread wherever its shadow falls.<br><br><style=""Inline_H2"">How to Hunt: Event Encounters</style><br><style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map for a limited time. Defeat them with your armies to earn valuable rewards.<br><br>Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the type of Encounter.<br><br><style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use.<br><br>Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_BlackGoat.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_black_goat_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_triarchy_invader_alpha,Triarchy Invaders,"As battle engulfs the Gullet, Triarchy forces pour onto the land in search of blood and spoils. Hardened by the Stepstones and driven by greed, these invaders strike fast and without mercy. Wherever they land, they leave ruin behind.
+
+<style=""Inline_H2"">How to Hunt: Event Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map for a limited time. Defeat them with your armies to earn valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the type of Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_TriarchyInvader.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_spwn_triarchy_invader_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_triarchy_invader_beta,Triarchy Invaders,"As battle engulfs the Gullet, Triarchy forces pour onto the land in search of blood and spoils. Hardened by the Stepstones and driven by greed, these invaders strike fast and without mercy. Wherever they land, they leave ruin behind.
+
+<style=""Inline_H2"">How to Hunt: Event Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map for a limited time. Defeat them with your armies to earn valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the type of Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_TriarchyInvader.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_spwn_triarchy_invader_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_triarchy_invader_charlie,Triarchy Invaders,"As battle engulfs the Gullet, Triarchy forces pour onto the land in search of blood and spoils. Hardened by the Stepstones and driven by greed, these invaders strike fast and without mercy. Wherever they land, they leave ruin behind.
+
+<style=""Inline_H2"">How to Hunt: Event Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map for a limited time. Defeat them with your armies to earn valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the type of Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use.
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_TriarchyInvader.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_spwn_triarchy_invader_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_hightower_soldier_alpha,Hightower Soldiers,"Ormund Hightower’s soldiers have taken shelter in Tumbleton, forcing themselves into the homes of the very people they claim to protect. Armed, entrenched, and loyal to Oldtown, these occupiers must be driven out before the town is lost from within.<br><br><style=""Inline_H2"">How to Hunt: Event Encounters</style><br><style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map for a limited time. Defeat them with your armies to earn valuable rewards.<br>Hunting uses <style=""Inline_Resolve"">Resolve</style> / <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the type of Encounter.<br><style=""Inline_Resolve"">Resolve</style> regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost.<br><style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership; it frees the tile for future use.<br>Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Greens.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_hightower_soldier_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_hightower_soldier_beta,Hightower Soldiers,"Ormund Hightower’s soldiers have taken shelter in Tumbleton, forcing themselves into the homes of the very people they claim to protect. Armed, entrenched, and loyal to Oldtown, these occupiers must be driven out before the town is lost from within.<br><br><style=""Inline_H2"">How to Hunt: Event Encounters</style><br><style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map for a limited time. Defeat them with your armies to earn valuable rewards.<br>Hunting uses <style=""Inline_Resolve"">Resolve</style> / <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the type of Encounter.<br><style=""Inline_Resolve"">Resolve</style> regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost.<br><style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership; it frees the tile for future use.<br>Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Greens.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_hightower_soldier_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_hightower_soldier_charlie,Hightower Soldiers,"Ormund Hightower’s soldiers have taken shelter in Tumbleton, forcing themselves into the homes of the very people they claim to protect. Armed, entrenched, and loyal to Oldtown, these occupiers must be driven out before the town is lost from within.<br><br><style=""Inline_H2"">How to Hunt: Event Encounters</style><br><style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map for a limited time. Defeat them with your armies to earn valuable rewards.<br>Hunting uses <style=""Inline_Resolve"">Resolve</style> / <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the type of Encounter.<br><style=""Inline_Resolve"">Resolve</style> regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost.<br><style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership; it frees the tile for future use.<br>Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Greens.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_hightower_soldier_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_targaryen_soldier_alpha,Black Queen’s Soldiers,"Soldiers march on Tumbleton in the name of the Black Queen, but betrayal has shattered the lines between ally and enemy. With dragons overhead and rival banners burning below, these forces must be driven back before the battle consumes the realm.<br><br><style=""Inline_H2"">How to Hunt: Event Encounters</style><br><style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map for a limited time. Defeat them with your armies to earn valuable rewards.<br>Hunting uses <style=""Inline_Resolve"">Resolve</style> / <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the type of Encounter.<br><style=""Inline_Resolve"">Resolve</style> regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost.<br><style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership; it frees the tile for future use.<br>Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Blacks.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_targaryen_soldier_01,habit_pve_spwn_targaryen_soldier_slot1_01,Usurper's Demise,,,,,,,,,,
+dragon_nodedefender_spwn_targaryen_soldier_beta,Black Queen’s Soldiers,"Soldiers march on Tumbleton in the name of the Black Queen, but betrayal has shattered the lines between ally and enemy. With dragons overhead and rival banners burning below, these forces must be driven back before the battle consumes the realm.<br><br><style=""Inline_H2"">How to Hunt: Event Encounters</style><br><style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map for a limited time. Defeat them with your armies to earn valuable rewards.<br>Hunting uses <style=""Inline_Resolve"">Resolve</style> / <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the type of Encounter.<br><style=""Inline_Resolve"">Resolve</style> regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost.<br><style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership; it frees the tile for future use.<br>Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Blacks.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_targaryen_soldier_01,habit_pve_spwn_targaryen_soldier_slot1_01,Usurper's Demise,,,,,,,,,,
+dragon_nodedefender_spwn_targaryen_soldier_charlie,Black Queen’s Soldiers,"Soldiers march on Tumbleton in the name of the Black Queen, but betrayal has shattered the lines between ally and enemy. With dragons overhead and rival banners burning below, these forces must be driven back before the battle consumes the realm.<br><br><style=""Inline_H2"">How to Hunt: Event Encounters</style><br><style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map for a limited time. Defeat them with your armies to earn valuable rewards.<br>Hunting uses <style=""Inline_Resolve"">Resolve</style> / <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the type of Encounter.<br><style=""Inline_Resolve"">Resolve</style> regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost.<br><style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership; it frees the tile for future use.<br>Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Blacks.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_targaryen_soldier_01,habit_pve_spwn_targaryen_soldier_slot1_01,Usurper's Demise,,,,,,,,,,
+dragon_nodedefender_spwn_outlaw_resolve_alpha,Outlaws,"A typical group of bandits, armed with desperation and steel. All too common in these troubled times, they prey on the weak and thrive in the chaos of war-torn roads and unguarded villages.
+
+<style=""Inline_H2"">How to Hunt: Event Encounters</style>
+<style=""Inline_Bold"">Event Encounters</style> are powerful enemies that appear on the map for a limited-time. Defeat them with your armies to earn unique and valuable rewards before they disappear.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Outlaw.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_outlaw_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_outlaw_resolve_beta,Outlaws,"A typical group of bandits, armed with desperation and steel. All too common in these troubled times, they prey on the weak and thrive in the chaos of war-torn roads and unguarded villages.
+
+<style=""Inline_H2"">How to Hunt: Event Encounters</style>
+<style=""Inline_Bold"">Event Encounters</style> are powerful enemies that appear on the map for a limited-time. Defeat them with your armies to earn unique and valuable rewards before they disappear.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Outlaw.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_outlaw_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_outlaw_resolve_charlie,Outlaws,"A typical group of bandits, armed with desperation and steel. All too common in these troubled times, they prey on the weak and thrive in the chaos of war-torn roads and unguarded villages.
+
+<style=""Inline_H2"">How to Hunt: Event Encounters</style>
+<style=""Inline_Bold"">Event Encounters</style> are powerful enemies that appear on the map for a limited-time. Defeat them with your armies to earn unique and valuable rewards before they disappear.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_Outlaw.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_outlaw_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_wilddragon_champion_alpha,Wild Champion,"An apex predator of sky and flame, this wild dragon dominates with terrifying presence. It crushes threats with a mix of raw power and unshakable resilience.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_WildDragonChampion.png,rarity_dragon_spawnable_wild,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_wilddragon_champion_01,habit_pve_spwn_wilddragon_champion_slot1_01,Crownbreaker’s Wrath,,,,,,,,,,
+dragon_nodedefender_spwn_wilddragon_champion_beta,Wild Champion,"An apex predator of sky and flame, this wild dragon dominates with terrifying presence. It crushes threats with a mix of raw power and unshakable resilience.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_WildDragonChampion.png,rarity_dragon_spawnable_wild,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_wilddragon_champion_01,habit_pve_spwn_wilddragon_champion_slot1_01,Crownbreaker’s Wrath,,,,,,,,,,
+dragon_nodedefender_spwn_wilddragon_champion_charlie,Wild Champion,"An apex predator of sky and flame, this wild dragon dominates with terrifying presence. It crushes threats with a mix of raw power and unshakable resilience.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_WildDragonChampion.png,rarity_dragon_spawnable_wild,affinity_nodedefender_neutral,breed_champion,curr_Gold,command_pve_spwn_wilddragon_champion_01,habit_pve_spwn_wilddragon_champion_slot1_01,Crownbreaker’s Wrath,,,,,,,,,,
+dragon_nodedefender_spwn_wilddragon_sentinel_alpha,Wild Sentinel,"A spectral guardian of forgotten heights, this wild dragon defends its domain with sharp intellect. It shields itself with cunning, making it far more dangerous than it appears.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_WildDragonSentinel.png,rarity_dragon_spawnable_wild,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_wilddragon_sentinel_01,habit_pve_spwn_wilddragon_sentinel_slot1_01,Ironwind Ward,,,,,,,,,,
+dragon_nodedefender_spwn_wilddragon_sentinel_beta,Wild Sentinel,"A spectral guardian of forgotten heights, this wild dragon defends its domain with sharp intellect. It shields itself with cunning, making it far more dangerous than it appears.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_WildDragonSentinel.png,rarity_dragon_spawnable_wild,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_wilddragon_sentinel_01,habit_pve_spwn_wilddragon_sentinel_slot1_01,Ironwind Ward,,,,,,,,,,
+dragon_nodedefender_spwn_wilddragon_sentinel_charlie,Wild Sentinel,"A spectral guardian of forgotten heights, this wild dragon defends its domain with sharp intellect. It shields itself with cunning, making it far more dangerous than it appears.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_WildDragonSentinel.png,rarity_dragon_spawnable_wild,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_wilddragon_sentinel_01,habit_pve_spwn_wilddragon_sentinel_slot1_01,Ironwind Ward,,,,,,,,,,
+dragon_nodedefender_spwn_wilddragon_hunter_alpha,Wild Hunter,"A stalking blaze in the sky, this wild dragon burns from above, sowing weakness with every strike. It strikes not just to wound—but to unravel, using fire and fury.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_WildDragonHunter.png,rarity_dragon_spawnable_wild,affinity_nodedefender_neutral,breed_hunter,curr_Gold,command_pve_spwn_wilddragon_hunter_01,habit_pve_spwn_wilddragon_hunter_slot1_01,Burning Quarry,,,,,,,,,,
+dragon_nodedefender_spwn_wilddragon_hunter_beta,Wild Hunter,"A stalking blaze in the sky, this wild dragon burns from above, sowing weakness with every strike. It strikes not just to wound—but to unravel, using fire and fury.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_WildDragonHunter.png,rarity_dragon_spawnable_wild,affinity_nodedefender_neutral,breed_hunter,curr_Gold,command_pve_spwn_wilddragon_hunter_01,habit_pve_spwn_wilddragon_hunter_slot1_01,Burning Quarry,,,,,,,,,,
+dragon_nodedefender_spwn_wilddragon_hunter_charlie,Wild Hunter,"A stalking blaze in the sky, this wild dragon burns from above, sowing weakness with every strike. It strikes not just to wound—but to unravel, using fire and fury.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_WildDragonHunter.png,rarity_dragon_spawnable_wild,affinity_nodedefender_neutral,breed_hunter,curr_Gold,command_pve_spwn_wilddragon_hunter_01,habit_pve_spwn_wilddragon_hunter_slot1_01,Burning Quarry,,,,,,,,,,
+dragon_nodedefender_spwn_wilddragon_warrior_alpha,Wild Warrior,"A thunderclap of wings and fury, this wild dragon barrels into foes with brute strength and physical dominance.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses Resolve (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_WildDragonWarrior.png,rarity_dragon_spawnable_wild,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_spwn_wilddragon_warrior_01,habit_pve_spwn_wilddragon_warrior_slot1_01,Bloodfang Call,,,,,,,,,,
+dragon_nodedefender_spwn_wilddragon_warrior_beta,Wild Warrior,"A thunderclap of wings and fury, this wild dragon barrels into foes with brute strength and physical dominance.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses Resolve (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_WildDragonWarrior.png,rarity_dragon_spawnable_wild,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_spwn_wilddragon_warrior_01,habit_pve_spwn_wilddragon_warrior_slot1_01,Bloodfang Call,,,,,,,,,,
+dragon_nodedefender_spwn_wilddragon_warrior_charlie,Wild Warrior,"A thunderclap of wings and fury, this wild dragon barrels into foes with brute strength and physical dominance.
+
+<style=""Inline_H2"">How to Hunt: Common Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map. Defeat them with your armies to earn unique and valuable rewards.
+
+Hunting uses Resolve (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""inline_Stamina"">Stamina</style>, or a combination of both depending on the Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use. 
+
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_WildDragonWarrior.png,rarity_dragon_spawnable_wild,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_spwn_wilddragon_warrior_01,habit_pve_spwn_wilddragon_warrior_slot1_01,Bloodfang Call,,,,,,,,,,
+dragon_nodedefender_spwn_harrenhals_fallen_event_alpha,Harren's Fallen,"Harrenhal's ruin arrived in dragonfire, yet the tale does not end in ash. The chronicles whisper that Harren the Black’s slain host lingers still within its charred walls. Bound by oath and shadow, these fallen warriors are said to march at the slightest echo of war, forever guarding their lord’s cursed keep as if Aegon the Conqueror might descend once more.
+
+<style=""Inline_H2"">How to Hunt: Event Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map for a limited time. Defeat them with your armies to earn valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""Inline_Stamina"">Stamina</style>, or a combination of both depending on the type of Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use.
+ 
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_HarrensFallen.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_harrenhals_fallen_event_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_harrenhals_fallen_event_beta,Harren's Fallen,"Harrenhal's ruin arrived in dragonfire, yet the tale does not end in ash. The chronicles whisper that Harren the Black’s slain host lingers still within its charred walls. Bound by oath and shadow, these fallen warriors are said to march at the slightest echo of war, forever guarding their lord’s cursed keep as if Aegon the Conqueror might descend once more.
+
+<style=""Inline_H2"">How to Hunt: Event Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map for a limited time. Defeat them with your armies to earn valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""Inline_Stamina"">Stamina</style>, or a combination of both depending on the type of Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use.
+ 
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_HarrensFallen.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_harrenhals_fallen_event_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_harrenhals_fallen_event_charlie,Harren's Fallen,"Harrenhal's ruin arrived in dragonfire, yet the tale does not end in ash. The chronicles whisper that Harren the Black’s slain host lingers still within its charred walls. Bound by oath and shadow, these fallen warriors are said to march at the slightest echo of war, forever guarding their lord’s cursed keep as if Aegon the Conqueror might descend once more.
+
+<style=""Inline_H2"">How to Hunt: Event Encounters</style>
+<style=""Inline_Bold"">Encounters</style> are powerful enemies that appear on the map for a limited time. Defeat them with your armies to earn valuable rewards.
+
+Hunting uses <style=""Inline_Resolve"">Resolve</style> (a special energy that regenerates over time or can be refreshed daily for a <style=""Inline_Gold"">Gold</style> cost), <style=""Inline_Stamina"">Stamina</style>, or a combination of both depending on the type of Encounter.
+
+<style=""Inline_Underline"">You do not need tile adjacency</style> to attack. Unlike normal tile Defenders, defeating them does not grant tile ownership, it just frees the tile for future use.
+ 
+Some Encounters may take multiple attacks—or armies—to defeat.",Icon_Spwn_Thumb_HarrensFallen.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_sentinel,curr_Gold,command_pve_spwn_harrenhals_fallen_event_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_white_stag_alpha,White Stag,SPWN_WHITE_STAG_ALPHA_DESC,Icon_Spwn_Thumb_WhiteStag.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_spwn_white_stag_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_white_stag_beta,White Stag,SPWN_WHITE_STAG_ALPHA_DESC,Icon_Spwn_Thumb_WhiteStag.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_spwn_white_stag_01,,,,,,,,,,,,
+dragon_nodedefender_spwn_white_stag_charlie,White Stag,SPWN_WHITE_STAG_ALPHA_DESC,Icon_Spwn_Thumb_WhiteStag.png,rarity_dragon_spawnable_ap,affinity_nodedefender_neutral,breed_warrior,curr_Gold,command_pve_spwn_white_stag_01,,,,,,,,,,,,
+dragon_test__allstats_0_alpha,Dummy Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_uncommon,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_0_beta,Dummy Dragon Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_uncommon,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_0_gamma,Dummy Dragon Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_uncommon,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_20_alpha,Base_20 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_20_beta,Base_20 Dragon Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_20_gamma,Base_20 Dragon Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_50_alpha,Base_50 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_50_beta,Base_50 Dragon Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_50_gamma,Base_50 Dragon Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_70_alpha,Base_70 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_70_beta,Base_70 Dragon Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_70_gamma,Base_70 Dragon Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_80_alpha,Base_80 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_80_beta,Base_80 Dragon Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_80_gamma,Base_80 Dragon Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_90_alpha,Base_90 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_90_beta,Base_90 Dragon Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_90_gamma,Base_90 Dragon Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_100_alpha,Base_100 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_100_beta,Base_100 Dragon Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_100_gamma,Base_100 Dragon Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_100_hunter_alpha,Base_100 Dragon Hunter Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_hunter,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_100_hunter_beta,Base_100 Dragon Hunter Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_hunter,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_100_sentinel_alpha,Base_100 Dragon Sentinel Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_sentinel,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_100_sentinel_beta,Base_100 Dragon Sentinel Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_sentinel,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_100_champion_alpha,Base_100 Dragon Champion Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_100_champion_beta,Base_100 Dragon Champion Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test__instincts_50_alpha,Instincts_50 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__instincts_50_beta,Instincts_50 Dragon Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__instincts_50_gamma,Instincts_50 Dragon Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__instincts_100_alpha,Instincts_100 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__instincts_100_beta,Instincts_100 Dragon Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__instincts_100_gamma,Instincts_100 Dragon Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__intelligence_50_alpha,Intelligence_50 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__intelligence_50_beta,Intelligence_50 Dragon Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__intelligence_50_gamma,Intelligence_50 Dragon Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__intelligence_100_alpha,Intelligence_100 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__intelligence_100_beta,Intelligence_100 Dragon Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__intelligence_100_gamma,Intelligence_100 Dragon Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__strength_50_alpha,Strength_50 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__strength_50_beta,Strength_50 Dragon Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__strength_50_gamma,Strength_50 Dragon Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__strength_100_alpha,Strength_100 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__strength_100_beta,Strength_100 Dragon Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__strength_100_gamma,Strength_100 Dragon Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__str_prog_alpha,Test Dragon STR Prog Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__str_prog_beta,Test Dragon STR Prog Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__str_prog_gamma,Test Dragon STR Prog Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__int_prog_alpha,Test Dragon INT Prog Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__int_prog_beta,Test Dragon INT Prog Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__int_prog_gamma,Test Dragon INT Prog Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__ins_prog_alpha,Test Dragon INS Prog Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__ins_prog_beta,Test Dragon INS Prog Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__ins_prog_gamma,Test Dragon INS Prog Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__spd_prog_alpha,Test Dragon SPD Prog Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__spd_prog_beta,Test Dragon SPD Prog Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__spd_prog_gamma,Test Dragon SPD Prog Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_100_aff_positive,Test Dragon Positive Affinity,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullpositive,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_100_aff_negative,Test Dragon Negative Affinity,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullnegative,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__stats_100_speed_50_alpha,Base 100 Speed 50 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__stats_100_speed_60_alpha,Base 100 Speed 60 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__stats_100_speed_70_alpha,Base 100 Speed 70 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__stats_100_speed_80_alpha,Base 100 Speed 80 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__stats_100_speed_90_alpha,Base 100 Speed 90 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__stats_100_speed_100_alpha,Base 100 Speed 100 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_100_alpha__star_prog_1x,1xStarProg_100 Dragon Alpha,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_100_beta__star_prog_1x,1xStarProg_100 Dragon Beta,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test__allstats_100_gamma__star_prog_1x,1xStarProg_100 Dragon Gamma,,Icon_Dragon_Thumb_2.png,rarity_dragon_rare,affinity_testgym_fullneutral,breed_warrior,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_rare_fast_str_ins_1,Rare Balance Dragon 1,,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_rare,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_rare_slow_str_int_1,Rare Balance Dragon 2,,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_rare,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_rare_med_int_ins_1,Rare Balance Dragon 3,,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_rare,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_rare_fast_str_ins_5,Rare Balance Dragon 1 (w/ 10* Stats),,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_rare,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_rare_slow_str_int_5,Rare Balance Dragon 2 (w/ 10* Stats),,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_rare,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_rare_med_int_ins_5,Rare Balance Dragon 3 (w/ 10* Stats),,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_rare,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_epic_fast_str_ins_1,Epic Balance Dragon 1,,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_epic,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_epic_slow_str_int_1,Epic Balance Dragon 2,,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_epic,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_epic_med_int_ins_1,Epic Balance Dragon 3,,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_epic,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_epic_fast_str_ins_5,Epic Balance Dragon 1 (w/ 10* Stats),,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_epic,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_epic_slow_str_int_5,Epic Balance Dragon 2 (w/ 10* Stats),,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_epic,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_epic_med_int_ins_5,Epic Balance Dragon 3 (w/ 10* Stats),,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_epic,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_legendary_fast_str_ins_1,Legendary Balance Dragon 1,,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_legendary,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_legendary_slow_str_int_1,Legendary Balance Dragon 2,,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_legendary,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_legendary_med_int_ins_1,Legendary Balance Dragon 3,,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_legendary,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_legendary_fast_str_ins_5,Legendary Balance Dragon 1 (w/ 10* Stats),,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_legendary,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_legendary_slow_str_int_5,Legendary Balance Dragon 2 (w/ 10* Stats),,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_legendary,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_legendary_med_int_ins_5,Legendary Balance Dragon 3 (w/ 10* Stats),,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_legendary,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_legendary_fast_str_ins_1_alt_spd,Legendary Balance Dragon 1b,,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_legendary,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_legendary_slow_str_int_1_alt_spd,Legendary Balance Dragon 2b,,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_legendary,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_legendary_med_int_ins_1_alt_spd,Legendary Balance Dragon 3b,,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_legendary,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_legendary_fast_str_ins_5_alt_spd,Legendary Balance Dragon 1b (w/ 10* Stats),,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_legendary,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_legendary_slow_str_int_5_alt_spd,Legendary Balance Dragon 2b (w/ 10* Stats),,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_legendary,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,
+dragon_test_balance_legendary_med_int_ins_5_alt_spd,Legendary Balance Dragon 3b (w/ 10* Stats),,Icon_Dragon_Thumb_Caraxes.png,rarity_dragon_legendary,affinity_nodedefender_neutral,breed_champion,curr_Gold,,,,,,,,,,,,,

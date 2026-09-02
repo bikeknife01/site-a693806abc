@@ -1,0 +1,172 @@
+{
+  "1": [
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.4870478271929669e-239,
+          "_fixed64_int": -8189573798946872306
+        },
+        "2": "spwn_wilddragon_champion_alpha"
+      },
+      "2": {
+        "2": "Icon_UpgradeHabit_BreedChampion.png",
+        "3": "CURR_TOKEN_BREED_CHAMPION_DESC",
+        "4": "UI_NODE_FINDER_WILD_DRAGON_CHAMPION_WEAKNESS"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.1076104367680447e-77,
+          "_fixed64_int": 3455533294872897691
+        },
+        "2": "spwn_wilddragon_sentinel_alpha"
+      },
+      "2": {
+        "2": "Icon_UpgradeHabit_BreedSentinel.png",
+        "3": "CURR_TOKEN_BREED_SENTINEL_DESC",
+        "4": "UI_NODE_FINDER_WILD_DRAGON_SENTINEL_WEAKNESS"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.5952410438921316e-171,
+          "_fixed64_int": 2051575256115312976
+        },
+        "2": "spwn_wilddragon_hunter_alpha"
+      },
+      "2": {
+        "2": "Icon_UpgradeHabit_BreedHunter.png",
+        "3": "CURR_TOKEN_BREED_HUNTER_DESC",
+        "4": "UI_NODE_FINDER_WILD_DRAGON_HUNTER_WEAKNESS"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 4.506432946390158e-75,
+          "_fixed64_int": 3494879594230502285
+        },
+        "2": "spwn_wilddragon_warrior_alpha"
+      },
+      "2": {
+        "2": "Icon_UpgradeHabit_BreedWarrior.png",
+        "3": "CURR_TOKEN_BREED_SENTINEL_DESC",
+        "4": "UI_NODE_FINDER_WILD_DRAGON_WARRIOR_WEAKNESS"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -3.163937211476404e+34,
+          "_fixed64_int": -4100422164965311460
+        },
+        "2": "spwn_hedgeknights_alpha"
+      },
+      "2": {
+        "2": "Icon_Curr_DurableUpgrades_01.png",
+        "3": "CURR_RUNICFRAGMENTS_1_DESCRIPTION",
+        "4": "UI_NODE_FINDER_NO_WEAKNESS"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.3616017188278596e+57,
+          "_fixed64_int": 5465140212922294944
+        },
+        "2": "spwn_goat_alpha"
+      },
+      "2": {
+        "2": "Icon_Curr_CampaignFavor.png",
+        "3": "CURR_CAMPAIGN_1_DESCRIPTION",
+        "4": "UI_NODE_FINDER_NO_WEAKNESS"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.7383154942106237e+283,
+          "_fixed64_int": 8847200708158292440
+        },
+        "2": "spwn_triarchy_alpha"
+      },
+      "2": {
+        "2": "Icon_Curr_CampaignFavor.png",
+        "3": "CURR_CAMPAIGN_1_DESCRIPTION",
+        "4": "UI_NODE_FINDER_NO_WEAKNESS"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -3.8586737895544635e-81,
+          "_fixed64_int": -5819415840627085680
+        },
+        "2": "spwn_hightower_soldier_alpha"
+      },
+      "2": {
+        "2": "Icon_UpgradeHabit_RarityEpic.png",
+        "3": "CURR_TOKEN_RARITY_EPIC_DESC",
+        "4": "UI_NODE_FINDER_NO_WEAKNESS"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.552362456054043e+252,
+          "_fixed64_int": 8379820336984343985
+        },
+        "2": "spwn_targaryen_soldier_alpha"
+      },
+      "2": {
+        "2": "Icon_UpgradeHabit_RarityEpic.png",
+        "3": "CURR_TOKEN_RARITY_EPIC_DESC",
+        "4": "UI_NODE_FINDER_NO_WEAKNESS"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -7.59902303736713e-288,
+          "_fixed64_int": -8911916114295504888
+        },
+        "2": "spwn_outlaw_resolve_alpha"
+      },
+      "2": {
+        "2": "Icon_UpgradeHabit_RarityEpic.png",
+        "3": "CURR_TOKEN_RARITY_EPIC_DESC",
+        "4": "UI_NODE_FINDER_NO_WEAKNESS"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.6569937450707867e-62,
+          "_fixed64_int": 3682611966638121188
+        },
+        "2": "spwn_white_stag_alpha"
+      },
+      "2": {
+        "2": "Icon_UpgradeHabit_RarityEpic.png",
+        "3": "CURR_TOKEN_RARITY_EPIC_DESC",
+        "4": "UI_NODE_FINDER_NO_WEAKNESS"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.9830102274919733e+211,
+          "_fixed64_int": -1455180854762996772
+        },
+        "2": "spwn_harrenhals_fallen_event_alpha"
+      },
+      "2": {
+        "2": "Icon_UpgradeHabit_RarityEpic.png",
+        "3": "CURR_TOKEN_RARITY_EPIC_DESC",
+        "4": "UI_NODE_FINDER_NO_WEAKNESS"
+      }
+    }
+  ]
+}

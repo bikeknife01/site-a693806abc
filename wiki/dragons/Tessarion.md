@@ -1,6 +1,6 @@
 # Tessarion
 
-Champion Adult · Spearmen, Cavalry, and Siege affinity. Fire/Physical hybrid that suppresses Physical damage and supports Fire allies.
+Champion · Age label: Adult · Rarity tier: Epic · Spearmen, Cavalry, and Siege affinity. Fire/Physical hybrid that suppresses Physical damage and supports Fire allies.
 
 **Command — Cobalt Flame:** targeted Fire damage with a Physical-damage priority and Damage Dealt reduction, plus same-lane Physical damage on rounds 3, 6, and 9.
 

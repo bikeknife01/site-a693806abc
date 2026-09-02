@@ -1,0 +1,72 @@
+{
+  "1": [
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -4.998778485106687e+281,
+          "_fixed64_int": -402076209425719094
+        },
+        "2": "dragonStats_Strength"
+      },
+      "2": {
+        "1": "Strength"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.5048089384027057e-300,
+          "_fixed64_int": 121632137111198593
+        },
+        "2": "dragonStats_Intelligence"
+      },
+      "2": {
+        "1": "Intelligence"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.5275438229437523e-22,
+          "_fixed64_int": 4283795137218019309
+        },
+        "2": "dragonStats_Instincts"
+      },
+      "2": "\n\tInstincts"
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.157285908576683e-226,
+          "_fixed64_int": 1233400229847621915
+        },
+        "2": "dragonStats_Speed"
+      },
+      "2": {
+        "1": "Speed"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.8706453560657605e+111,
+          "_fixed64_int": -2948985582560565361
+        },
+        "2": "dragonStats_MaxArmySize"
+      },
+      "2": "\n\rMax Army Size"
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -8.47264932234074e-167,
+          "_fixed64_int": -7101055029547007185
+        },
+        "2": "dragonStats_NumBasicAttacks"
+      },
+      "2": {
+        "1": "Number of Basic Attacks"
+      }
+    }
+  ]
+}

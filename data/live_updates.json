@@ -1,8 +1,17 @@
 {
   "metadata": {
-    "last_checked": "2026-08-05",
-    "purpose": "Track official dragon additions that do not yet have screenshot-complete records under data/dragons.",
-    "evidence_limit": "Official profile summaries omit exact numeric scaling, Habit upgrade tracks, explicit Star unlock labels, and Vanguard text. These entries support discovery and conditional strategy only; they are not substitutes for audited dragon JSON."
+    "last_checked": "2026-08-31",
+    "purpose": "Track first-party dragon additions or client discoveries that do not yet have screenshot-complete records under data/dragons.",
+    "evidence_limit": "Official profile summaries and installed-client tables can supplement discovery, identity, rarity, affinity, targeting, schedules, and ability wording, but they do not replace current in-game screenshots. The installed data contains unresolved progression tokens plus WIP, test, NPC, and unreleased-looking entries; presence in the client does not prove availability.",
+    "installed_client_source": {
+      "location": "Game_Details/Resources/_extracted",
+      "source_type": "Locally extracted structured data from the installed application",
+      "ability_table_version": "1787687230",
+      "progression_source_table_version": "1787687231",
+      "localization": "locale_enUS.json",
+      "use": "First-party implementation evidence below current in-game screenshots. Use curated facts in this file for conditional recommendations; do not treat raw client presence as release confirmation.",
+      "validation_result": "For all 34 screenshot-audited dragons, installed data matched breed, Vanguard name, all five Habit names, and positive/negative troop affinities."
+    }
   },
   "dragons_pending_full_extraction": [
     {
@@ -31,9 +40,31 @@
       ],
       "synergy_inputs": ["Resistance", "Advantage"],
       "synergy_outputs": ["Tactical Damage", "Cleanse", "Evade", "Damage Received reduction"],
+      "installed_client_evidence": {
+        "dragon_key": "dragon_generic_starshower",
+        "command_name": "Starfall",
+        "vanguard": {
+          "name": "Sentinel's Wit",
+          "unlock_level": 16,
+          "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Tactical Damage Dealt by +16%. Increase Instinct and Initiative by +20 of the Ally deployed in the Left Flank."
+        },
+        "habit_names_in_slot_order": ["Night Guardian", "Battle Subversion", "Ill Portents", "Tactical Breach", "Wishkeeper's Grace"],
+        "confirmed_details": [
+          "Night Guardian grants Evade at a 10% rate after its chance-based Cleanse.",
+          "Starfall consumes Solar Flare when its each-round Tactical Damage clause triggers.",
+          "The Starfall detailed description explicitly gates Ill Portents at 6+ Stars and Wishkeeper's Grace at 10 Stars."
+        ],
+        "source_files": [
+          "Game_Details/Resources/_extracted/clean_dragons.csv",
+          "Game_Details/Resources/_extracted/clean_dragon_habits.csv",
+          "Game_Details/Resources/_extracted/dragonCommandsTable_merged.1787687230.json",
+          "Game_Details/Resources/_extracted/dragonAffinityTable_merged.1787687230.json",
+          "Game_Details/Resources/_extracted/locale_enUS.json"
+        ]
+      },
       "source": "https://news.gotdragonfire.com/starshower-the-wishkeeper/",
       "published": "2026-07-30",
-      "missing_for_full_recommendations": ["Vanguard ability", "exact numeric values", "Habit upgrade levels", "screenshot verification"]
+      "missing_for_full_recommendations": ["Most exact numeric values", "Habit upgrade levels", "current screenshot verification"]
     },
     {
       "name": "Vermithor",
@@ -60,9 +91,76 @@
       ],
       "synergy_inputs": ["Enemy Warriors", "Enemy Hunters", "extended combat", "ally with low troops"],
       "synergy_outputs": ["Protect", "Physical Damage Dealt reduction", "Fire Damage Dealt reduction", "Physical and Tactical Damage"],
+      "installed_client_evidence": {
+        "dragon_key": "dragon_iconic_vermithor",
+        "command_name": "Bronze Fury",
+        "vanguard": {
+          "name": "Champion's Brilliance",
+          "unlock_level": 16,
+          "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Strength, Intelligence, and Instinct by +15. Reduce Damage Received by -8% of the Ally deployed in the Right Flank."
+        },
+        "habit_names_in_slot_order": ["Noble Sacrifice", "Nimble Resilience", "Bronze Bulwark", "Fury's Poise", "Vengeful Fury"],
+        "confirmed_details": [
+          "Bronze Fury's Protect clause targets the other adjacent Ally with the least troops.",
+          "Nimble Resilience lasts until the end of combat.",
+          "Vengeful Fury explicitly triggers only once per combat."
+        ],
+        "source_files": [
+          "Game_Details/Resources/_extracted/clean_dragons.csv",
+          "Game_Details/Resources/_extracted/clean_dragon_habits.csv",
+          "Game_Details/Resources/_extracted/dragonCommandsTable_merged.1787687230.json",
+          "Game_Details/Resources/_extracted/dragonAffinityTable_merged.1787687230.json",
+          "Game_Details/Resources/_extracted/locale_enUS.json"
+        ]
+      },
       "source": "https://news.gotdragonfire.com/vermithor-the-bronze-fury/",
       "published": "2026-07-30",
-      "missing_for_full_recommendations": ["Vanguard ability", "exact numeric values", "Habit upgrade levels", "screenshot verification"]
+      "missing_for_full_recommendations": ["Exact numeric values", "Habit upgrade levels", "current screenshot verification"]
+    },
+    {
+      "name": "Meleys",
+      "title": "The Red Queen",
+      "availability": "Present in installed-client data; current player availability was not established by this audit.",
+      "rarity": "Legendary",
+      "breed": "Warrior",
+      "affinities": {
+        "positive": ["Cavalry", "Archers"],
+        "neutral": ["Spearmen", "Shieldbearers"],
+        "negative": ["Siege"]
+      },
+      "roles": ["Physical damage", "Laceration", "Initiative suppression", "Vulnerable", "Reflect", "Bleed payoff"],
+      "command_summary": [
+        "Scarlet Strike - Odd-numbered Rounds: Deal Physical Damage to the enemy with the highest Initiative and add 1 Laceration stack, up to 10.",
+        "Each Laceration stack reduces Initiative, enhanced by Strength.",
+        "At 2 Stars, Bleed enables a chance to apply Vulnerable; otherwise the Command can increase Physical Damage Received and add another Laceration stack."
+      ],
+      "habit_summaries": [
+        "Royal Rend: Adds the 2-Star Bleed/Vulnerable or Physical-vulnerability branch to Scarlet Strike.",
+        "Battle Rush: Start of Round 1, increase own Initiative and reduce Instinct of 2 enemies within adjacency for 3 rounds.",
+        "Queen's Vengeance: Each Round, chance to gain Reflect for 1 round and add Laceration to the enemy with the highest Initiative.",
+        "Battle Guile: Start of Combat, reduce Instinct and Initiative of 3 enemies in any lane until combat ends.",
+        "The Red Queen: Rounds 3, 6, 9, deal Physical Damage and chance to add Laceration; Bleeding targets receive an additional stack."
+      ],
+      "synergy_inputs": ["Bleed"],
+      "synergy_outputs": ["Physical Damage", "Laceration", "Vulnerable", "Reflect", "Initiative reduction"],
+      "installed_client_evidence": {
+        "dragon_key": "dragon_iconic_meleys",
+        "command_name": "Scarlet Strike",
+        "vanguard": {
+          "name": "Warrior's Resilience",
+          "unlock_level": 16,
+          "verbatim": "At Level 16+ and deployed in the Vanguard Reduce your Damage Received by -8%. Increase Tactical Damage Dealt by +16% of the Ally deployed in the Left Flank."
+        },
+        "habit_names_in_slot_order": ["Royal Rend", "Battle Rush", "Queen's Vengeance", "Battle Guile", "The Red Queen"],
+        "source_files": [
+          "Game_Details/Resources/_extracted/clean_dragons.csv",
+          "Game_Details/Resources/_extracted/clean_dragon_habits.csv",
+          "Game_Details/Resources/_extracted/dragonCommandsTable_merged.1787687230.json",
+          "Game_Details/Resources/_extracted/dragonAffinityTable_merged.1787687230.json",
+          "Game_Details/Resources/_extracted/locale_enUS.json"
+        ]
+      },
+      "missing_for_full_recommendations": ["Release and availability confirmation", "Exact numeric values", "Habit upgrade levels", "current screenshot verification"]
     }
   ]
 }

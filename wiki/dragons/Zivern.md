@@ -1,6 +1,6 @@
 # Zivern
 
-Sentinel Elder · Archers and Siege affinity. Tactical-control dragon with multi-target Panic, enemy stat reduction, ally mitigation, and Overwhelm.
+Sentinel · Age label: Elder · Rarity tier: Epic · Archers and Siege affinity. Tactical-control dragon with multi-target Panic, enemy stat reduction, ally mitigation, and Overwhelm.
 
 **Command — Silent Shade:** on rounds 1, 4, 6, and 9, can increase same-lane Tactical Damage Received and deals adjacency Tactical Damage to two enemies.
 

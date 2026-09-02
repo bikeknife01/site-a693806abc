@@ -1,6 +1,6 @@
 # Dawnseeker
 
-Sentinel Elder · Positive affinity: Spearmen · Negative affinity: Siege
+Sentinel · Age label: Elder · Rarity tier: Rare · Positive affinity: Spearmen · Negative affinity: Siege
 
 Dawnseeker is a Tactical/Recovery support dragon and a valuable First-Strike provider. It is likely strongest in Vanguard, where it improves its Recovery and supports a Fire-damage Left Flank.
 

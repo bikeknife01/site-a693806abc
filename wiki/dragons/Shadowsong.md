@@ -1,6 +1,6 @@
 # Shadowsong
 
-Hunter Elder · Positive affinity: Cavalry · No displayed negative affinity
+Hunter · Age label: Elder · Rarity tier: Epic · Positive affinity: Cavalry · No displayed negative affinity
 
 Shadowsong is a Fire attacker with Panic payoffs, Burn, Vulnerable, and opening stat/damage-received debuffs. **Breath of Fire** attacks two adjacent enemies on rounds 2, 5, and 8; Panic raises its damage, while the 10-Star upgrade adds two separately targeted Fire/Burn attempts.
 

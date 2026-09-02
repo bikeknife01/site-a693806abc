@@ -1,0 +1,1450 @@
+{
+  "1": [
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -4.6683080391658644e-99,
+          "_fixed64_int": -6087622148885846977
+        },
+        "2": "targetprioritizer_troopcount_least"
+      },
+      "2": {
+        "1": "",
+        "2": 2,
+        "3": "",
+        "4": "",
+        "5": ""
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -6.6849674565757346e-15,
+          "_fixed64_int": -4828391796787078294
+        },
+        "2": "targetprioritizer_troopcount_most"
+      },
+      "2": {
+        "1": "",
+        "2": 1,
+        "3": "",
+        "4": {
+          "1": {
+            "_fixed64_double": -4.6683080391658644e-99,
+            "_fixed64_int": -6087622148885846977
+          },
+          "2": "targetprioritizer_troopcount_least"
+        },
+        "5": ""
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.577223104725336e-138,
+          "_fixed64_int": 2545316965949666005
+        },
+        "2": "targetprioritizer_stat_strength_lowest"
+      },
+      "2": {
+        "1": "",
+        "2": 3,
+        "3": {
+          "1": {
+            "_fixed64_double": -4.998778485106687e+281,
+            "_fixed64_int": -402076209425719094
+          },
+          "2": "dragonStats_Strength"
+        },
+        "4": "",
+        "5": ""
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.3479853986012387e+57,
+          "_fixed64_int": -3761775831365713133
+        },
+        "2": "targetprioritizer_stat_strength_highest"
+      },
+      "2": {
+        "1": "",
+        "2": 1,
+        "3": "",
+        "4": {
+          "1": {
+            "_fixed64_double": 1.577223104725336e-138,
+            "_fixed64_int": 2545316965949666005
+          },
+          "2": "targetprioritizer_stat_strength_lowest"
+        },
+        "5": ""
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.1601527009000184e+74,
+          "_fixed64_int": 5721360944265343413
+        },
+        "2": "targetprioritizer_stat_intelligence_lowest"
+      },
+      "2": {
+        "1": "",
+        "2": 3,
+        "3": {
+          "1": {
+            "_fixed64_double": 1.5048089384027057e-300,
+            "_fixed64_int": 121632137111198593
+          },
+          "2": "dragonStats_Intelligence"
+        },
+        "4": "",
+        "5": ""
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -9.745485502918223e+288,
+          "_fixed64_int": -292733896527748043
+        },
+        "2": "targetprioritizer_stat_intelligence_highest"
+      },
+      "2": {
+        "1": "",
+        "2": 1,
+        "3": "",
+        "4": {
+          "1": {
+            "_fixed64_double": 3.1601527009000184e+74,
+            "_fixed64_int": 5721360944265343413
+          },
+          "2": "targetprioritizer_stat_intelligence_lowest"
+        },
+        "5": ""
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.3301429069760656e-272,
+          "_fixed64_int": 539526418722542389
+        },
+        "2": "targetprioritizer_stat_instincts_lowest"
+      },
+      "2": {
+        "1": "",
+        "2": 3,
+        "3": {
+          "1": {
+            "_fixed64_double": 2.5275438229437523e-22,
+            "_fixed64_int": 4283795137218019309
+          },
+          "2": "dragonStats_Instincts"
+        },
+        "4": "",
+        "5": ""
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 5.4886882583756235e-25,
+          "_fixed64_int": 4243863901617560642
+        },
+        "2": "targetprioritizer_stat_instincts_highest"
+      },
+      "2": {
+        "1": "",
+        "2": 1,
+        "3": "",
+        "4": {
+          "1": {
+            "_fixed64_double": 1.3301429069760656e-272,
+            "_fixed64_int": 539526418722542389
+          },
+          "2": "targetprioritizer_stat_instincts_lowest"
+        },
+        "5": ""
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -5.567018272103024e+19,
+          "_fixed64_int": -4321163565301358394
+        },
+        "2": "targetprioritizer_stat_speed_lowest"
+      },
+      "2": {
+        "1": "",
+        "2": 3,
+        "3": {
+          "1": {
+            "_fixed64_double": 3.157285908576683e-226,
+            "_fixed64_int": 1233400229847621915
+          },
+          "2": "dragonStats_Speed"
+        },
+        "4": "",
+        "5": ""
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -7.059629579815094e+264,
+          "_fixed64_int": -654140989056691822
+        },
+        "2": "targetprioritizer_stat_speed_highest"
+      },
+      "2": {
+        "1": "",
+        "2": 1,
+        "3": "",
+        "4": {
+          "1": {
+            "_fixed64_double": -5.567018272103024e+19,
+            "_fixed64_int": -4321163565301358394
+          },
+          "2": "targetprioritizer_stat_speed_lowest"
+        },
+        "5": ""
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.2225518845308157e+146,
+          "_fixed64_int": 6798692337841450680
+        },
+        "2": "targetprioritizer_indeploymentlane_target_vanguard"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -8.7958673988911e-209,
+            "_fixed64_int": -7729044702552452298
+          },
+          "2": "condition_indeploymentlane_target_vanguard"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 5.339669105680814e-179,
+          "_fixed64_int": 1939840055569917353
+        },
+        "2": "targetprioritizer_indeploymentlane_target_leftflank"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -4.923974851150433e+98,
+            "_fixed64_int": -3139905277415052186
+          },
+          "2": "condition_indeploymentlane_target_leftflank"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 5.649425652932094e+23,
+          "_fixed64_int": 4962377890338245518
+        },
+        "2": "targetprioritizer_indeploymentlane_target_rightflank"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 3.3010948435635246e-273,
+            "_fixed64_int": 530460108232962512
+          },
+          "2": "condition_indeploymentlane_target_rightflank"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 5.260705014256467e-214,
+          "_fixed64_int": 1416007417517660735
+        },
+        "2": "targetprioritizer_OR_lane_target_leftflank_rightflank"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -3.893024776095092e+259,
+            "_fixed64_int": -732888818524379936
+          },
+          "2": "condition_OR_lane_target_leftflank_rightflank"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 62914980.55730188,
+          "_fixed64_int": 4723713115604474544
+        },
+        "2": "targetprioritizer_haslabel_target_bleed"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -1.1854656875392013e-84,
+            "_fixed64_int": -5872011692349946261
+          },
+          "2": "condition_haslabel_target_bleed"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.8403026463469606e-61,
+          "_fixed64_int": 3701173808880976535
+        },
+        "2": "targetprioritizer_haslabel_target_panic"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -5.04421466950981e+136,
+            "_fixed64_int": -2571175440619446708
+          },
+          "2": "condition_haslabel_target_panic"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -5.002520406644428e+186,
+          "_fixed64_int": -1823283576455418491
+        },
+        "2": "targetprioritizer_haslabel_target_burn"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -7055572820.5801935,
+            "_fixed64_int": -4469179725280360327
+          },
+          "2": "condition_haslabel_target_burn"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.993692663907224e+275,
+          "_fixed64_int": 8725452265628210417
+        },
+        "2": "targetprioritizer_haslabel_target_negative"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -2.124738450238628e-227,
+            "_fixed64_int": -8007370045363380881
+          },
+          "2": "condition_haslabel_target_negative"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 7.4333841088108e+168,
+          "_fixed64_int": 7133565124335228662
+        },
+        "2": "targetprioritizer_haslabel_target_advantage"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -2.0231312687794867e+176,
+            "_fixed64_int": -1978892343303930416
+          },
+          "2": "condition_haslabel_target_advantage"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 5.037031746257274e+292,
+          "_fixed64_int": 8985860670338891669
+        },
+        "2": "targetprioritizer_haslabel_target_weakened"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -2.9805666395376675e-206,
+            "_fixed64_int": -7691264779627432437
+          },
+          "2": "condition_haslabel_target_weakened"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 4.820177088190719e+17,
+          "_fixed64_int": 4871419124260433678
+        },
+        "2": "targetprioritizer_haslabel_target_resistance"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 5.448280216115848e-36,
+            "_fixed64_int": 4079407837690375043
+          },
+          "2": "condition_haslabel_target_resistance"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.2679251950658187e-54,
+          "_fixed64_int": 3800781784329006859
+        },
+        "2": "targetprioritizer_haslabel_target_vulnerable"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 1.1365848438142469e+76,
+            "_fixed64_int": 5744658910117653382
+          },
+          "2": "condition_haslabel_target_vulnerable"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.8319780302169124e+77,
+          "_fixed64_int": 5762725590823710017
+        },
+        "2": "targetprioritizer_NOR_haslabel_target_burn"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -2.2354289479608026e-125,
+            "_fixed64_int": -6481168450885573409
+          },
+          "2": "condition_NOR_haslabel_target_burn"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.411435172126739e+160,
+          "_fixed64_int": 7008561401911863677
+        },
+        "2": "targetprioritizer_NOR_haslabel_target_weakened"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -1.984325172064108e-169,
+            "_fixed64_int": -7140467325507467287
+          },
+          "2": "condition_NOR_haslabel_target_weakened"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.2369938980244358e+238,
+          "_fixed64_int": 8169077736428159871
+        },
+        "2": "targetprioritizer_NOR_haslabel_target_resistance"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 4.78394206093884e-160,
+            "_fixed64_int": 2223343588253842908
+          },
+          "2": "condition_NOR_haslabel_target_resistance"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.953475973528667e-277,
+          "_fixed64_int": 467164814175142778
+        },
+        "2": "targetprioritizer_NOR_haslabel_target_vulnerable"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 3.819691006387973e+202,
+            "_fixed64_int": 7637876483169582553
+          },
+          "2": "condition_NOR_haslabel_target_vulnerable"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.528103968783516e+264,
+          "_fixed64_int": 8564723624960431083
+        },
+        "2": "targetprioritizer_NOR_haslabel_target_advantage"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 1.2972093861879674e+60,
+            "_fixed64_int": 5506166255102467365
+          },
+          "2": "condition_NOR_haslabel_target_advantage"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.4388766819404382e+151,
+          "_fixed64_int": -2351497560189993898
+        },
+        "2": "targetprioritizer_haslabel_target_recentlyrecovered"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 1.1535705533238489e-222,
+            "_fixed64_int": 1286534037433873817
+          },
+          "2": "condition_haslabel_target_recentlyrecovered"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.0601483131835887e+233,
+          "_fixed64_int": 8099903676418313550
+        },
+        "2": "targetprioritizer_NOR_haslabel_target_stun"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -2.9133374888497633e-185,
+            "_fixed64_int": -7376983326136089392
+          },
+          "2": "condition_NOR_haslabel_target_stun"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.321663821128038e+239,
+          "_fixed64_int": 8188058313784306595
+        },
+        "2": "targetprioritizer_haslabel_target_control"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -1.9376407795275762e-118,
+            "_fixed64_int": -6377302069409269773
+          },
+          "2": "condition_haslabel_target_control"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 6.729239223562591e+287,
+          "_fixed64_int": 8913095713673012921
+        },
+        "2": "targetprioritizer_haslabel_target_dpstactical"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -1372.0351327058745,
+            "_fixed64_int": -4569622947079914751
+          },
+          "2": "condition_haslabel_target_dpstactical"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 4.3009366354963355e-159,
+          "_fixed64_int": 2237791834626537057
+        },
+        "2": "targetprioritizer_haslabel_target_dpsphysical"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -1.8505410190384512e-134,
+            "_fixed64_int": -6617223122372940839
+          },
+          "2": "condition_haslabel_target_dpsphysical"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.7601036938939459e+72,
+          "_fixed64_int": 5688011952378185200
+        },
+        "2": "targetprioritizer_haslabel_target_dpsdragonfire"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 3.0032543713300196e+252,
+            "_fixed64_int": 8384074613015186238
+          },
+          "2": "condition_haslabel_target_dpsdragonfire"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -9.589048591075708e+131,
+          "_fixed64_int": -2642032468994015718
+        },
+        "2": "targetprioritizer_haslabel_target_attackmod"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 4.66036358606295e+140,
+            "_fixed64_int": 6711367561934345532
+          },
+          "2": "condition_haslabel_target_attackmod"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.2732688005424521e-77,
+          "_fixed64_int": 3456397172112677975
+        },
+        "2": "targetprioritizer_NOR_haslabel_target_dpstactical"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 3.793468699323079e-125,
+            "_fixed64_int": 2745416512535976482
+          },
+          "2": "condition_NOR_haslabel_source_dpstactical"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 4.5977920860090764e+54,
+          "_fixed64_int": 5424586200005905551
+        },
+        "2": "targetprioritizer_NOR_haslabel_target_dpsphysical"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 12221928983109.488,
+            "_fixed64_int": 4802591230788930298
+          },
+          "2": "condition_NOR_haslabel_source_dpsphysical"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -5.465540906156172e-127,
+          "_fixed64_int": -6505540200083797456
+        },
+        "2": "targetprioritizer_NOR_haslabel_target_dpsdragonfire"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 1.7184918854059338e+164,
+            "_fixed64_int": 7063860466778982378
+          },
+          "2": "condition_NOR_haslabel_source_dpsdragonfire"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -6.250336132802911e+74,
+          "_fixed64_int": -3497577160134853881
+        },
+        "2": "targetprioritizer_NOR_haslabel_target_attackmod"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -4.547993476995878e-09,
+            "_fixed64_int": -4741295820506723555
+          },
+          "2": "condition_NOR_haslabel_source_attackmod"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -15.584053020095928,
+          "_fixed64_int": -4598409376878239149
+        },
+        "2": "targetprioritizer_haslabel_target_sheepstealer"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 3.1497897346649724e-12,
+            "_fixed64_int": 4434836935360941255
+          },
+          "2": "condition_haslabel_target_sheepstealer"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.0253887936618146e+104,
+          "_fixed64_int": 6167287696893496102
+        },
+        "2": "targetprioritizer_haslabel_target_suddenstrike1"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 2.286002675223343e+227,
+            "_fixed64_int": 8008328913345365480
+          },
+          "2": "condition_haslabel_target_suddenstrike1"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 8.995126150296807e+176,
+          "_fixed64_int": 7254289398580445764
+        },
+        "2": "targetprioritizer_NOR_haslabel_target_cunningwhispers1"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 5.725731257971612e+230,
+            "_fixed64_int": 8059079895582564528
+          },
+          "2": "condition_NOR_haslabel_target_cunningwhispers1"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.3634616396540407e+147,
+          "_fixed64_int": 6808119038504434823
+        },
+        "2": "targetprioritizer_haslabel_target_cunningwhispers2"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -2.312299920916358e-209,
+            "_fixed64_int": -7737632400398892791
+          },
+          "2": "condition_haslabel_target_cunningwhispers2"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.3595711458339704e+150,
+          "_fixed64_int": 6852953539882791436
+        },
+        "2": "targetprioritizer_haslabel_target_tailwhip1"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -5.907416902939127e+122,
+            "_fixed64_int": -2779679035284448982
+          },
+          "2": "condition_haslabel_target_tailwhip1"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.3278120518576095e-161,
+          "_fixed64_int": 2206184845646726946
+        },
+        "2": "targetprioritizer_haslabel_target_silentshade1"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -9.598309271046793e+169,
+            "_fixed64_int": -2073504281746478666
+          },
+          "2": "condition_haslabel_target_silentshade1"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.673360474942485e+158,
+          "_fixed64_int": -2246319068915493873
+        },
+        "2": "targetprioritizer_NOR_haslabel_target_silentshade1"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 2.4376142307812487e-105,
+            "_fixed64_int": 3041720677897972097
+          },
+          "2": "condition_NOR_haslabel_target_silentshade1"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.4159672473622982e-180,
+          "_fixed64_int": -7307230481971514938
+        },
+        "2": "targetprioritizer_haslabel_target_bloodscaleterror1"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 9.015611862754533e+96,
+            "_fixed64_int": 6057590117427771401
+          },
+          "2": "condition_haslabel_target_bloodscaleterror1"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 6.654600205887078e-06,
+          "_fixed64_int": 4529470391122272628
+        },
+        "2": "targetprioritizer_NOR_haslabel_target_cleansingwrath1"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -1.2616370542925088e+119,
+            "_fixed64_int": -2834730177148952661
+          },
+          "2": "condition_NOR_haslabel_target_cleansingwrath1"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -3.6974839577395004e-305,
+          "_fixed64_int": -9171027651082886202
+        },
+        "2": "targetprioritizer_haslabel_target_amplifieddrain1"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -2.701555249404718e-129,
+            "_fixed64_int": -6539800282013273447
+          },
+          "2": "condition_haslabel_target_amplifieddrain1"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.4130922724011052e-180,
+          "_fixed64_int": -7307243913679713434
+        },
+        "2": "targetprioritizer_haslabel_target_tacticalonslaught1"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -1.4239393192023856e+121,
+            "_fixed64_int": -2804037577208958664
+          },
+          "2": "condition_haslabel_target_tacticalonslaught1"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 8.428863260024947e-299,
+          "_fixed64_int": 147555867410688926
+        },
+        "2": "targetprioritizer_NOR_haslabel_target_verminsbane"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 3.0022201085578165e-118,
+            "_fixed64_int": 2848590520601279169
+          },
+          "2": "condition_NOR_haslabel_target_verminsbane"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.7741501906932454e+258,
+          "_fixed64_int": -752793688937004492
+        },
+        "2": "targetprioritizer_haslabel_target_moonlithunt1"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 2.374090610811548e-269,
+            "_fixed64_int": 588024977691864224
+          },
+          "2": "condition_haslabel_target_moonlithunt1"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.984512095805407e+57,
+          "_fixed64_int": 5468583842457689882
+        },
+        "2": "targetprioritizer_haslabel_target_burningward1"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -2.300576461614275e-47,
+            "_fixed64_int": -5314019148609490546
+          },
+          "2": "condition_haslabel_target_burningward1"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.1171889661762268e-222,
+          "_fixed64_int": 1286297130257905633
+        },
+        "2": "targetprioritizer_haslabel_target_wildhunt_prey"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 1.6036771455356517e-99,
+            "_fixed64_int": 3128893053870930223
+          },
+          "2": "condition_haslabel_target_wildhunt_prey"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.610861260330009e+115,
+          "_fixed64_int": -2889846197397339829
+        },
+        "2": "targetprioritizer_haslabel_target_goldenwrath_1"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -1.7188480419647332e+16,
+            "_fixed64_int": -4373408197221668942
+          },
+          "2": "condition_haslabel_target_goldenwrath1"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 4.090249730467758e-16,
+          "_fixed64_int": 4376787650590838411
+        },
+        "2": "targetprioritizer_NOR_haslabel_target_goldenwrath_1"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 2.882557673603902e-259,
+            "_fixed64_int": 739076779586381701
+          },
+          "2": "condition_NOR_haslabel_target_goldenwrath1"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -3.0715359896606116e-140,
+          "_fixed64_int": -6703774234446154939
+        },
+        "2": "targetprioritizer_haslabel_target_goldenwrath_2"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -7.8905428149290365e-47,
+            "_fixed64_int": -5306132607696120388
+          },
+          "2": "condition_haslabel_target_goldenwrath2"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.5337401169967216e+210,
+          "_fixed64_int": 7756745962318216946
+        },
+        "2": "targetprioritizer_NOR_haslabel_target_radiantmajesty_1"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 1.9507609288447032e+74,
+            "_fixed64_int": 5718333681146528243
+          },
+          "2": "condition_NOR_haslabel_target_radiantmajesty1"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.9228162444850312e-31,
+          "_fixed64_int": -5075782107146285825
+        },
+        "2": "targetprioritizer_haslabel_target_moondancer"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -3438730188281.0557,
+            "_fixed64_int": -4429003113534338958
+          },
+          "2": "condition_haslabel_target_moondancer"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.1575243713216206e-80,
+          "_fixed64_int": 3410902460919358684
+        },
+        "2": "targetprioritizer_haslabel_target_cobaltflame1"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -3.547349885742639e+91,
+            "_fixed64_int": -3246697249115551160
+          },
+          "2": "condition_haslabel_target_cobaltflame1"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.0389350902766717e-274,
+          "_fixed64_int": 514829833235867722
+        },
+        "2": "targetprioritizer_haslabel_target_bronzefury1"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -1.208727487162746e-19,
+            "_fixed64_int": -4899399136658934286
+          },
+          "2": "condition_haslabel_target_bronzefury1"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 6.426547710557856e-196,
+          "_fixed64_int": 1686603563876258785
+        },
+        "2": "targetprioritizer_haslabel_target_solarflare"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 2.033358936628064e+214,
+            "_fixed64_int": 7813238701884725100
+          },
+          "2": "condition_haslabel_target_solarflare"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.0875898291263045e+74,
+          "_fixed64_int": -3508648156179302168
+        },
+        "2": "targetprioritizer_NOR_haslabel_source_bountifulgift"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 4.7870743530438235e-300,
+            "_fixed64_int": 128816166524612903
+          },
+          "2": "condition_NOR_haslabel_source_bountifulgift"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.2709962243366604e-115,
+          "_fixed64_int": -6331527297784943029
+        },
+        "2": "targetprioritizer_isbreed_target_champion"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": 5.391945727088156e+303,
+            "_fixed64_int": 9151159819429081627
+          },
+          "2": "condition_isbreed_target_champion"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 4.124714415539337e-79,
+          "_fixed64_int": 3434122391834000673
+        },
+        "2": "targetprioritizer_isbreed_target_hunter"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -2572.2068215946174,
+            "_fixed64_int": -4565497279162277382
+          },
+          "2": "condition_isbreed_target_hunter"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.3092964814358064e-209,
+          "_fixed64_int": 1482027027673988821
+        },
+        "2": "targetprioritizer_isbreed_target_sentinel"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -271709615220.26968,
+            "_fixed64_int": -4445156650797882747
+          },
+          "2": "condition_isbreed_target_sentinel"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 6.820507900239309e-53,
+          "_fixed64_int": 3826407705179513863
+        },
+        "2": "targetprioritizer_isbreed_target_warrior"
+      },
+      "2": {
+        "1": "",
+        "2": 4,
+        "3": "",
+        "4": "",
+        "5": {
+          "1": {
+            "_fixed64_double": -9.229109655951047e-243,
+            "_fixed64_int": -8237222092620090311
+          },
+          "2": "condition_isbreed_target_warrior"
+        }
+      }
+    }
+  ]
+}

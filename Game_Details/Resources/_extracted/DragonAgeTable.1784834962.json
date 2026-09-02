@@ -1,0 +1,32 @@
+{
+  "1": [
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.2531008783182424e-217,
+          "_fixed64_int": -7857688181585097713
+        },
+        "2": "age_Whelp"
+      },
+      "2": {
+        "1": "DRAGON_AGE_WHELP_NAME",
+        "2": "DRAGON_AGE_WHELP_DESCRIPTION",
+        "4": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 5.407646790024708e+157,
+          "_fixed64_int": 6966930540783722191
+        },
+        "2": "age_Adult"
+      },
+      "2": {
+        "1": "DRAGON_AGE_ADULT_NAME",
+        "2": "DRAGON_AGE_ADULT_DESCRIPTION",
+        "4": 6
+      }
+    }
+  ]
+}

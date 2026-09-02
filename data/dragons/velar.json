@@ -2,6 +2,7 @@
   "name": "Velar",
   "breed": "Sentinel",
   "rarity_label": "Elder",
+  "rarity_tier": "Epic",
   "troop_affinities": {
     "positive": [
         "Shieldbearers"

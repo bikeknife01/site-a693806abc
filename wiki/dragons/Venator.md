@@ -1,6 +1,6 @@
 # Venator
 
-Warrior Adult · Spearmen and Shieldbearer affinity. Physical Basic-Attack attacker that counters Hunters and gains late-round Double-Strike.
+Warrior · Age label: Adult · Rarity tier: Legendary · Spearmen and Shieldbearer affinity. Physical Basic-Attack attacker that counters Hunters and gains late-round Double-Strike.
 
 **Command — Feral Strike:** adds two separately targeted Physical hits after each Basic Attack; at 6 Stars, Basic Attacks also hit the Enemy with the fewest troops.
 

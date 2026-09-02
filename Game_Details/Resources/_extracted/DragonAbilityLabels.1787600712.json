@@ -1,0 +1,2027 @@
+{
+  "1": [
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.6870772601694513e+181,
+          "_fixed64_int": -1902235318554670336
+        },
+        "2": "ability_label_test09"
+      },
+      "2": {
+        "1": 9,
+        "2": "ABILITY_LABEL_TEST09",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 8.349263115791003e-109,
+          "_fixed64_int": 2990213881667578610
+        },
+        "2": "ability_label_test10"
+      },
+      "2": {
+        "1": 10,
+        "2": "ABILITY_LABEL_TEST10",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.880811087253058e-65,
+          "_fixed64_int": -5582135518812408709
+        },
+        "2": "ability_label_dps_physical"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_DPS_PHYSICAL",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.185925074457041e+107,
+          "_fixed64_int": -3010704931276577629
+        },
+        "2": "ability_label_dps_tactical"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_DPS_TACTICAL",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -6.673437389900935e+36,
+          "_fixed64_int": -4065601441802243550
+        },
+        "2": "ability_label_dps_dragonfire"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_DPS_DRAGONFIRE",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 9.796459606980378e-228,
+          "_fixed64_int": 1210822436066382549
+        },
+        "2": "ability_label_cmd_attack_mod"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_CMD_ATTACK_MOD",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.2603606265480526e-120,
+          "_fixed64_int": -6406554198838593483
+        },
+        "2": "ability_label_protect"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_PROTECT",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 4.341785763374119e+110,
+          "_fixed64_int": 6262004469856187849
+        },
+        "2": "ability_label_statuseffect"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_STATUSEFFECT",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 6.417660906696973e-281,
+          "_fixed64_int": 415073979435692424
+        },
+        "2": "ability_label_bleed"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_BLEED",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.544363198168847e+265,
+          "_fixed64_int": 8579804107901266351
+        },
+        "2": "ability_label_panic"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_PANIC",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 4.3920221755165895e+220,
+          "_fixed64_int": 7908068974658433485
+        },
+        "2": "ability_label_burn"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_BURN",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.6756172909177948e+76,
+          "_fixed64_int": -3472957308317847970
+        },
+        "2": "ability_label_control"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_CONTROL",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 7.68694132729716e+87,
+          "_fixed64_int": 5921927619957182914
+        },
+        "2": "ability_label_stun"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_STUN",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.7268174371889786e-86,
+          "_fixed64_int": 3326787144144334014
+        },
+        "2": "StunLabelDef"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_STUN"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -4.761092032214704e-24,
+          "_fixed64_int": -4965493525953625822
+        },
+        "2": "ability_label_stagger"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_STAGGER",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 6.702559637095032e+86,
+          "_fixed64_int": 5905785134763372744
+        },
+        "2": "StaggerLabelDef"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_STAGGER"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -4.933936787476543e+239,
+          "_fixed64_int": -1030496077994925301
+        },
+        "2": "ability_label_overwhelm"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_OVERWHELM",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.0477175980990075e+64,
+          "_fixed64_int": 5571662471937149681
+        },
+        "2": "OverwhelmLabelDef"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_OVERWHELM"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -6.615522532257655e-128,
+          "_fixed64_int": -6519262110724018043
+        },
+        "2": "ability_label_subdue"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_SUBDUE",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -7.251611860633166e-06,
+          "_fixed64_int": -4693196818775439312
+        },
+        "2": "SubdueLabelDef"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_SUBDUE",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.2480932267320865e-117,
+          "_fixed64_int": 2857865771068648479
+        },
+        "2": "ability_label_confuse"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_CONFUSE",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.5146689760754804e-193,
+          "_fixed64_int": 1727596790648932947
+        },
+        "2": "ability_label_taunt"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_TAUNT",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.3532249120716484e-212,
+          "_fixed64_int": 1441064174304706349
+        },
+        "2": "ability_label_positive"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_POSITIVE",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -3.946791426218927e-27,
+          "_fixed64_int": -5011508960518991696
+        },
+        "2": "ability_label_negative"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_NEGATIVE",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -8.367144256674424e+117,
+          "_fixed64_int": -2852314247453375296
+        },
+        "2": "ability_label_negative_dmg_dealt"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_NEGATIVE_DMG_DEALT",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.31067147617246e+154,
+          "_fixed64_int": 6916283230737448736
+        },
+        "2": "ability_label_negative_dmg_received"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_NEGATIVE_DMG_RECEIVED",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -7.2523120642635765e+227,
+          "_fixed64_int": -1207354831076588841
+        },
+        "2": "ability_label_advantage"
+      },
+      "2": {
+        "1": 3,
+        "2": "ABILITY_LABEL_ADVANTAGE",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.523388023607288e+300,
+          "_fixed64_int": -125482093626955110
+        },
+        "2": "ability_label_resistance"
+      },
+      "2": {
+        "1": 3,
+        "2": "ABILITY_LABEL_RESISTANCE",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -0.26093090908574124,
+          "_fixed64_int": -4624999903557157932
+        },
+        "2": "ability_label_weakened"
+      },
+      "2": {
+        "1": 3,
+        "2": "ABILITY_LABEL_WEAKENED",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.3716048171731407e-263,
+          "_fixed64_int": -8545609205286720865
+        },
+        "2": "ability_label_vulnerable"
+      },
+      "2": {
+        "1": 3,
+        "2": "ABILITY_LABEL_VULNERABLE",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.6267878496422992e-125,
+          "_fixed64_int": 2739884220165566509
+        },
+        "2": "ability_label_evade"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_EVADE",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.7445655985396886e-12,
+          "_fixed64_int": 4431173504500195652
+        },
+        "2": "ability_label_doublestrike"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_DOUBLESTRIKE",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.691385114946056e-119,
+          "_fixed64_int": 2829903787357500841
+        },
+        "2": "ability_label_firststrike"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_FIRSTSTRIKE",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.4269334929746135e-193,
+          "_fixed64_int": 1721735414352782092
+        },
+        "2": "ability_label_slow"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_SLOW",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -8.278539858947144e-160,
+          "_fixed64_int": -6996545309882962895
+        },
+        "2": "ability_label_immunity"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_IMMUNITY",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -4.004793245480327e+261,
+          "_fixed64_int": -702482945703590609
+        },
+        "2": "ability_label_nullifyrecovery"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_NULLIFYRECOVERY",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.4982553022072165e-139,
+          "_fixed64_int": -6693320917798493064
+        },
+        "2": "ability_label_recentlyrecovered"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_RECENTLYRECOVERED",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -7.584752946204259e-57,
+          "_fixed64_int": -5456165798760376549
+        },
+        "2": "ability_label_least_troops_all"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_LEAST_TROOPS_ALL",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -5.899807976140768e+105,
+          "_fixed64_int": -3034137206718647990
+        },
+        "2": "ability_label_spawnable_beast"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_SPAWNABLE_BEAST",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.7060765999577294e-232,
+          "_fixed64_int": 1142475374431566439
+        },
+        "2": "ability_label_sheepstealer"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_SHEEPSTEALER",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 9.748685728013667e-288,
+          "_fixed64_int": 312930087087638891
+        },
+        "2": "ability_label_moondancer"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_MOONDANCER",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -6.511044725276255e-297,
+          "_fixed64_int": -9047440940193459971
+        },
+        "2": "ability_label_amplifieddrain1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_AMPLIFIEDDRAIN1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.116935678368793e+135,
+          "_fixed64_int": -2596159886896214326
+        },
+        "2": "ability_label_blazingonslaught1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_BLAZINGONSLAUGHT1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.1033049141705191e-82,
+          "_fixed64_int": -5842634651975598908
+        },
+        "2": "ability_label_blazingonslaught2"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_BLAZINGONSLAUGHT2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.475495658344202e+187,
+          "_fixed64_int": -1813048578291078680
+        },
+        "2": "ability_label_bloodscaleterror1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_BLOODSCALETERROR1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -7.785407711878614e-169,
+          "_fixed64_int": -7131589208061680342
+        },
+        "2": "ability_label_bloodscalefury1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_BLOODSCALEFURY1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -3.2059244623871643e-217,
+          "_fixed64_int": -7855321340220237222
+        },
+        "2": "ability_label_bloodwyrm1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_BLOODWYRM1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -4.289662339353871e+192,
+          "_fixed64_int": -1734424377147692972
+        },
+        "2": "ability_label_bloodwyrm2"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_BLOODWYRM2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -7.630271018414468e+53,
+          "_fixed64_int": -3810083143532791378
+        },
+        "2": "ability_label_bloodwyrm3"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_BLOODWYRM3",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.1267526649684023e-242,
+          "_fixed64_int": 993800045834701896
+        },
+        "2": "ability_label_bloodwyrm4"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_BLOODWYRM4",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.3388787308275027e-148,
+          "_fixed64_int": 2394617882495278514
+        },
+        "2": "ability_label_bloodwyrm5"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_BLOODWYRM5",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.69362845506558e+97,
+          "_fixed64_int": 6064440689903022012
+        },
+        "2": "ability_label_bloodwyrm6"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_BLOODWYRM6",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -6.181029945981592e-186,
+          "_fixed64_int": -7387340552031093813
+        },
+        "2": "ability_label_breathoffire1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_BREATHOFFIRE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.6643108224918844e+214,
+          "_fixed64_int": -1411676157057906235
+        },
+        "2": "ability_label_breathoffire2"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_BREATHOFFIRE2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1628.911193841617,
+          "_fixed64_int": -4568493194215450561
+        },
+        "2": "ability_label_breathoffire3"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_BREATHOFFIRE3",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 8.484799338794655e+17,
+          "_fixed64_int": 4875019946670939500
+        },
+        "2": "ability_label_bulwark1"
+      },
+      "2": {
+        "1": 5,
+        "2": "ABILITY_LABEL_BULWARK1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.968197433353939e+60,
+          "_fixed64_int": 5511717405657089589
+        },
+        "2": "ability_label_calculatedassault1"
+      },
+      "2": {
+        "1": 3,
+        "2": "ABILITY_LABEL_CALCULATEDASSAULT1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -9.117667997014443e-139,
+          "_fixed64_int": -6681733049581538856
+        },
+        "2": "ability_label_cleansingwrath1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_CLEANSINGWRATH1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.8241291760018936e-115,
+          "_fixed64_int": 2890396093812256679
+        },
+        "2": "ability_label_crucible1"
+      },
+      "2": {
+        "1": 3,
+        "2": "ABILITY_LABEL_CRUCIBLE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 9.052884932291138e-88,
+          "_fixed64_int": 3304745387806658969
+        },
+        "2": "ability_label_cunningferocity1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_CUNNINGFEROCITY1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.5617015785857506e+165,
+          "_fixed64_int": 7078284853277848872
+        },
+        "2": "ability_label_cunningwhispers1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_CUNNINGWHISPERS1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 4.223966483792147e-197,
+          "_fixed64_int": 1668938226579179302
+        },
+        "2": "ability_label_cunningwhispers2"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_CUNNINGWHISPERS2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.8072312486860564e+245,
+          "_fixed64_int": 8276058928865895733
+        },
+        "2": "ability_label_darkeningfear1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_DARKENINGFEAR1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.8596633048581366e+38,
+          "_fixed64_int": -4043813577224780092
+        },
+        "2": "ability_label_embersnare1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_EMBERSNARE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -3.9458392761771444e-150,
+          "_fixed64_int": -6851711017073801750
+        },
+        "2": "ability_label_enervate1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_ENERVATE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -7.818611254216934e-145,
+          "_fixed64_int": -6772421305126070348
+        },
+        "2": "ability_label_enfeeble1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_ENFEEBLE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.1119692310553898e+98,
+          "_fixed64_int": 6073675322905912960
+        },
+        "2": "ability_label_fireward1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_FIREWARD1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 4.7622076033943294e-148,
+          "_fixed64_int": 2402770925434508430
+        },
+        "2": "ability_label_fireward2"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_FIREWARD2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 866525.7102427715,
+          "_fixed64_int": 4695690611265958088
+        },
+        "2": "ability_label_crushingforce1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_CRUSHINGFORCE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.8516203179116113e-57,
+          "_fixed64_int": 3762807313280336582
+        },
+        "2": "ability_label_crushingforce2"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_CRUSHINGFORCE2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 5.5810592086497805e-188,
+          "_fixed64_int": 1805685357821002267
+        },
+        "2": "ability_label_infernalforce1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_INFERNALFORCE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 6.162320334416019e+212,
+          "_fixed64_int": 7790463949626830869
+        },
+        "2": "ability_label_infernalforce2"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_INFERNALFORCE2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.849524776646061e+58,
+          "_fixed64_int": -3741883805564483529
+        },
+        "2": "ability_label_instillfear1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_INSTILLFEAR1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -5.623474683727689e-28,
+          "_fixed64_int": -5024250399970234093
+        },
+        "2": "ability_label_loyalbond1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_LOYALBOND1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.281097465977595e-151,
+          "_fixed64_int": 2355716012733014779
+        },
+        "2": "ability_label_mirage1"
+      },
+      "2": {
+        "1": 10,
+        "2": "ABILITY_LABEL_MIRAGE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 4.899137199210085e-27,
+          "_fixed64_int": 4213190452612307456
+        },
+        "2": "ability_label_moonlithunt1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_MOONLITHUNT1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.03582615974257e-247,
+          "_fixed64_int": 916137698607932665
+        },
+        "2": "ability_label_phatomsveil1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_PHATOMSVEIL1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 9.130835245773088e+277,
+          "_fixed64_int": 8765300691513857783
+        },
+        "2": "ability_label_phatomsveil2"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_PHATOMSVEIL2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -4.4081712713929584e+303,
+          "_fixed64_int": -73827392808725468
+        },
+        "2": "ability_label_resilientbond1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_RESILIENTBOND1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -3.0461391418110768e-251,
+          "_fixed64_int": -8364333999031278038
+        },
+        "2": "ability_label_resilientbond2"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_RESILIENTBOND2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.4705573019503392e+84,
+          "_fixed64_int": -3357370671409094890
+        },
+        "2": "ability_label_silentshade1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_SILENTSHADE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.8542605189620302e-210,
+          "_fixed64_int": -7754211334206908985
+        },
+        "2": "ability_label_skywardtitan1"
+      },
+      "2": {
+        "1": 5,
+        "2": "ABILITY_LABEL_SKYWARDTITAN1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -5.154351392298729e-175,
+          "_fixed64_int": -7223684350728528651
+        },
+        "2": "ability_label_steadyerosion1"
+      },
+      "2": {
+        "1": 10,
+        "2": "ABILITY_LABEL_STEADYEROSION1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.318406717948766e-136,
+          "_fixed64_int": 2580245340335523578
+        },
+        "2": "ability_label_tacticalinferno1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_TACTICALINFERNO1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.6786640812003073e+110,
+          "_fixed64_int": 6259022291296564468
+        },
+        "2": "ability_label_tacticalinferno2"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_TACTICALINFERNO2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.2894614742606551e-287,
+          "_fixed64_int": 315087456698348195
+        },
+        "2": "ability_label_tacticalonslaught1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_TACTICALONSLAUGHT1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.402536528137553e+91,
+          "_fixed64_int": -3252854103424768467
+        },
+        "2": "ability_label_tailwhip1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_TAILWHIP1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -4.579039426650111e+265,
+          "_fixed64_int": -642122795115389634
+        },
+        "2": "ability_label_unraveled1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_UNRAVELED1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -6.239248204724655e-299,
+          "_fixed64_int": -9077879901205123280
+        },
+        "2": "ability_label_unraveled2"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_UNRAVELED2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.7450083574858077e-82,
+          "_fixed64_int": -5839708611960242486
+        },
+        "2": "ability_label_unraveled3"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_UNRAVELED3",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.733284926822034e+193,
+          "_fixed64_int": 7503099801335581484
+        },
+        "2": "ability_label_unraveled4"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_UNRAVELED4",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.3219893343793476e+23,
+          "_fixed64_int": 4958909739963128534
+        },
+        "2": "ability_label_unraveled5"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_UNRAVELED5",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 5.735398825589806e-69,
+          "_fixed64_int": 3585932694201034968
+        },
+        "2": "ability_label_unraveled6"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_UNRAVELED6",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -3.1693888380327947e-187,
+          "_fixed64_int": -7406714400218387406
+        },
+        "2": "ability_label_veiledambush1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_VEILEDAMBUSH1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.3418066378126348e-188,
+          "_fixed64_int": 1796342945370547146
+        },
+        "2": "ability_label_undermine1"
+      },
+      "2": {
+        "1": 3,
+        "2": "ABILITY_LABEL_UNDERMINE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.0739027139439472e+294,
+          "_fixed64_int": 9010007759635696543
+        },
+        "2": "ability_label_infectiouswrath1"
+      },
+      "2": {
+        "1": 3,
+        "2": "ABILITY_LABEL_INFECTIOUSWRATH1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.5668653790191056e+137,
+          "_fixed64_int": 6664953383021183924
+        },
+        "2": "ability_label_scorchedearth1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_SCORCHEDEARTH1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 0.7740723971480944,
+          "_fixed64_int": 4605147443863984305
+        },
+        "2": "ability_label_suddenstrike1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_SUDDENSTRIKE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -4.51365278865842e-289,
+          "_fixed64_int": -8930189168862656722
+        },
+        "2": "ability_label_burningward1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_BURNINGWARD1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 8.793667734462218e+111,
+          "_fixed64_int": 6281748102187791224
+        },
+        "2": "ability_label_giftoffire1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_GIFTOFFIRE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 9.965946573291029e-144,
+          "_fixed64_int": 2467722415004107126
+        },
+        "2": "ability_label_giftoffire2"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_GIFTOFFIRE2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.3682656004149474e-237,
+          "_fixed64_int": 1067027452397981836
+        },
+        "2": "ability_label_giftoffire3"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_GIFTOFFIRE3",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -9.574872823286529e-300,
+          "_fixed64_int": -9090051724713246556
+        },
+        "2": "ability_label_spreadingblaze1"
+      },
+      "2": {
+        "1": 10,
+        "2": "ABILITY_LABEL_SPREADINGBLAZE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.94560115524634e-08,
+          "_fixed64_int": -4728884274766601842
+        },
+        "2": "ability_label_rallyingflame1"
+      },
+      "2": {
+        "1": 4,
+        "2": "ABILITY_LABEL_RALLYINGFLAME1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 8.7498234408482e+82,
+          "_fixed64_int": 5847659696484377936
+        },
+        "2": "ability_label_rallyingflame_t1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_RALLYINGFLAME_T1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.9340509694421066e-134,
+          "_fixed64_int": 2609083268924184414
+        },
+        "2": "ability_label_rallyingflame_t2"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_RALLYINGFLAME_T2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.996161637096918e-266,
+          "_fixed64_int": 631797860131096228
+        },
+        "2": "ability_label_rallyingflame_t3"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_RALLYINGFLAME_T3",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 4.477511532340726e+287,
+          "_fixed64_int": 8910237875570123894
+        },
+        "2": "ability_label_wildhunt_prey"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_WILDHUNT_PREY"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.0114409111487606e+43,
+          "_fixed64_int": 5250360320872980237
+        },
+        "2": "ability_label_stolenflock1"
+      },
+      "2": {
+        "1": 10,
+        "2": "ABILITY_LABEL_STOLENFLOCK1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.9476004380301354e-246,
+          "_fixed64_int": -8292468161244929119
+        },
+        "2": "ability_label_stolenflock_watch"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_STOLENFLOCK_WATCH",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.18375195713558e-42,
+          "_fixed64_int": 3986178254329312587
+        },
+        "2": "ability_label_baitedkill1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_BAITEDKILL1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.0472876440882688e-192,
+          "_fixed64_int": 1734762017980501634
+        },
+        "2": "ability_label_warybeast1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_WARYBEAST1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 8.708179079624531e-302,
+          "_fixed64_int": 102980109672413336
+        },
+        "2": "ability_label_savageclaim1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_SAVAGECLAIM1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.4446921159515398e+253,
+          "_fixed64_int": 8394576900432956054
+        },
+        "2": "ability_label_savageclaim2"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_SAVAGECLAIM2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -8.107453666087548e+236,
+          "_fixed64_int": -1071892356930383598
+        },
+        "2": "ability_label_goldenwrath1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_GOLDENWRATH1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -3.7856220603361434e-289,
+          "_fixed64_int": -8931337903410207972
+        },
+        "2": "ability_label_goldenwrath2"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_GOLDENWRATH2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 9.454916691971908e-55,
+          "_fixed64_int": 3798556429919760256
+        },
+        "2": "ability_label_radiantmajesty1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_RADIANTMAJESTY1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.9797629246455766e-46,
+          "_fixed64_int": -5297579089992067629
+        },
+        "2": "ability_label_thekingsire1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_THEKINGSIRE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.0589255474214026e-266,
+          "_fixed64_int": 634884477131823718
+        },
+        "2": "ability_label_adaptiveglory1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_ADAPTIVEGLORY1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 0.9931992714518024,
+          "_fixed64_int": 4607121163282906387
+        },
+        "2": "ability_label_risingtide1"
+      },
+      "2": {
+        "1": 8,
+        "2": "ABILITY_LABEL_RISINGTIDE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 5.03855504114021e+41,
+          "_fixed64_int": 5230687747508076148
+        },
+        "2": "ability_label_crescentblade"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_CRESCENTBLADE"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.2176315523394127e-07,
+          "_fixed64_int": 4507474002874422963
+        },
+        "2": "ability_label_crescentblade1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_CRESCENTBLADE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.787450170218159e+157,
+          "_fixed64_int": -2260738897503994648
+        },
+        "2": "ability_label_cobaltflame1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_COBALTFLAME1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.0660802776983337e+209,
+          "_fixed64_int": 7734018572366402842
+        },
+        "2": "ability_label_furyspoise1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_FURYSPOISE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 7.85238288599247e-163,
+          "_fixed64_int": 2181602601472730900
+        },
+        "2": "ability_label_furyspoise2"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_FURYSPOISE2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.2164931099565842e-64,
+          "_fixed64_int": 3654485998790440686
+        },
+        "2": "ability_label_furyspoise3"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_FURYSPOISE3",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -4.1578652094508615e+252,
+          "_fixed64_int": -837064978238127352
+        },
+        "2": "ability_label_furyspoise4"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_FURYSPOISE4",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -5.026160237393769e+118,
+          "_fixed64_int": -2840664771355667726
+        },
+        "2": "ability_label_furyspoise5"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_FURYSPOISE5",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.737591401470894e-89,
+          "_fixed64_int": -5944273653413388036
+        },
+        "2": "ability_label_furyspoise6"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_FURYSPOISE6",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 6.049066607192745e-11,
+          "_fixed64_int": 4454236670437892591
+        },
+        "2": "ability_label_bronzefury1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_BRONZEFURY1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.3077497962196936e+42,
+          "_fixed64_int": 5243030324644795361
+        },
+        "2": "ability_label_bronzefury2"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_BRONZEFURY2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 5.361964837298806e-290,
+          "_fixed64_int": 279426201965589122
+        },
+        "2": "ability_label_vengefulfury1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_VENGEFULFURY1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -4.733285342710558e-103,
+          "_fixed64_int": -6147142666964986251
+        },
+        "2": "ability_label_solarflare"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_SOLARFLARE"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -7.067311595736567e+156,
+          "_fixed64_int": -2269681354428181484
+        },
+        "2": "ability_label_illportents1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_ILLPORTENTS1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -9.041032629517163e-205,
+          "_fixed64_int": -7669027364569946598
+        },
+        "2": "ability_label_illportents2"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_ILLPORTENTS2",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.3763565597500766e-94,
+          "_fixed64_int": -6020644410238278604
+        },
+        "2": "ability_label_wishkeepersgrace1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_WISHKEEPERSGRACE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -8.56565667609248e-122,
+          "_fixed64_int": -6427674778269296120
+        },
+        "2": "ability_label_laceration"
+      },
+      "2": {
+        "1": 10,
+        "2": "ABILITY_LABEL_LACERATION"
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 5.479448144225735e-52,
+          "_fixed64_int": 3839949564378979264
+        },
+        "2": "ability_label_queensvengeance1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_QUEENSVENGEANCE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.0720146478758045e-241,
+          "_fixed64_int": 1001734052056601814
+        },
+        "2": "ability_label_scarletstrike1"
+      },
+      "2": {
+        "1": 1,
+        "2": "ABILITY_LABEL_SCARLETSTRIKE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -7.345777334633276e-27,
+          "_fixed64_int": -5007387125618837107
+        },
+        "2": "ability_label_wildlingfireresistance"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_WILDLINGFIRERESISTANCE",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.9023026728788095e+69,
+          "_fixed64_int": 5648103075708595224
+        },
+        "2": "ability_label_wildlingfireresistance1"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_WILDLINGFIRERESISTANCE1",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 8.092084538331656e+172,
+          "_fixed64_int": 7193638904083365758
+        },
+        "2": "ability_label_amplifieddrain"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_AMPLIFIEDDRAIN",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 6.598074788418984e+35,
+          "_fixed64_int": 5143045633977147562
+        },
+        "2": "ability_label_bountifulgift"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_BOUNTIFULGIFT",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 6.821639018777925e+215,
+          "_fixed64_int": 7836168079221741781
+        },
+        "2": "ability_label_verminsbane"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_VERMINSBANE",
+        "3": 1
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -4.2063101850845306e-243,
+          "_fixed64_int": -8242510307550314822
+        },
+        "2": "ability_label_recoveryblock"
+      },
+      "2": {
+        "1": 1000000,
+        "2": "ABILITY_LABEL_RECOVERYBLOCK",
+        "3": 1
+      }
+    }
+  ]
+}

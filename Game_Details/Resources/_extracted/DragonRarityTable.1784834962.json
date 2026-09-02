@@ -1,0 +1,899 @@
+{
+  "1": [
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.4121311031615533e-225,
+          "_fixed64_int": 1243197952815386294
+        },
+        "2": "rarity_dragon_common"
+      },
+      "2": {
+        "1": "Common",
+        "3": "Icon_GachaToken_Rarity_01.png",
+        "4": {
+          "1": {
+            "_fixed64_double": 8.14015406881982e-163,
+            "_fixed64_int": 2181835826278085858
+          },
+          "2": "prog_dragon_star_cost"
+        },
+        "5": {
+          "1": {
+            "_fixed64_double": -5.230704306916213e+229,
+            "_fixed64_int": -1179591209887277273
+          },
+          "2": "curr_Gold"
+        },
+        "7": {
+          "1": {
+            "_fixed64_double": -1.4344434356120174e-121,
+            "_fixed64_int": -6424467570049455832
+          },
+          "2": "prog_dragon_power_level_common"
+        },
+        "8": {
+          "1": {
+            "_fixed64_double": 4.150196730436078e+72,
+            "_fixed64_int": 5693335645241629301
+          },
+          "2": "prog_dragon_power_star_common"
+        },
+        "9": {
+          "1": {
+            "_fixed64_double": 1.8892364359251106e-220,
+            "_fixed64_int": 1319856639219937187
+          },
+          "2": "prog_dragon_habit_rank_power"
+        },
+        "10": "Icon_Info_Egg_Rarity_01.png",
+        "11": "Icon_Info_EggUndiscovered_Rarity_01.png",
+        "12": "Bg_Dragon_Frame_Rarity_Generic.png",
+        "13": "Bg_Dragon_Stars_Rarity_Generic.png",
+        "14": 1,
+        "15": 7777,
+        "16": {
+          "_fixed32_float": 1.7000000476837158,
+          "_fixed32_int": 1071225242
+        },
+        "18": {
+          "1": {
+            "_fixed64_double": 1.257841238547047e+163,
+            "_fixed64_int": 7046995913455457801
+          },
+          "2": "prog_dragon_challengerating_level_common"
+        },
+        "19": {
+          "1": {
+            "_fixed64_double": 8.95201966685343e-287,
+            "_fixed64_int": 327429306443092569
+          },
+          "2": "prog_dragon_challengerating_star_common"
+        },
+        "20": {
+          "1": {
+            "_fixed64_double": 1.7775510584542773e-08,
+            "_fixed64_int": 4490957547286635738
+          },
+          "2": "prog_habit_challengerating_common_rank"
+        },
+        "21": {
+          "_fixed32_float": 0.42500001192092896,
+          "_fixed32_int": 1054448026
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.0321424579392023e-219,
+          "_fixed64_int": 1335023202959202394
+        },
+        "2": "rarity_dragon_uncommon"
+      },
+      "2": {
+        "1": "Uncommon",
+        "3": "Icon_GachaToken_Rarity_02.png",
+        "4": {
+          "1": {
+            "_fixed64_double": 8.14015406881982e-163,
+            "_fixed64_int": 2181835826278085858
+          },
+          "2": "prog_dragon_star_cost"
+        },
+        "5": {
+          "1": {
+            "_fixed64_double": -5.230704306916213e+229,
+            "_fixed64_int": -1179591209887277273
+          },
+          "2": "curr_Gold"
+        },
+        "7": {
+          "1": {
+            "_fixed64_double": -1.673840492883092e+266,
+            "_fixed64_int": -633666508277639474
+          },
+          "2": "prog_dragon_power_level_uncommon"
+        },
+        "8": {
+          "1": {
+            "_fixed64_double": -7.17835920135518e+287,
+            "_fixed64_int": -309944240449526202
+          },
+          "2": "prog_dragon_power_star_uncommon"
+        },
+        "9": {
+          "1": {
+            "_fixed64_double": 1.8892364359251106e-220,
+            "_fixed64_int": 1319856639219937187
+          },
+          "2": "prog_dragon_habit_rank_power"
+        },
+        "10": "Icon_Info_Egg_Rarity_02.png",
+        "11": "Icon_Info_EggUndiscovered_Rarity_02.png",
+        "12": "Bg_Dragon_Frame_Rarity_Generic.png",
+        "13": "Bg_Dragon_Stars_Rarity_Generic.png",
+        "14": 1,
+        "15": 7777,
+        "16": {
+          "_fixed32_float": 1.7999999523162842,
+          "_fixed32_int": 1072064102
+        },
+        "18": {
+          "1": {
+            "_fixed64_double": -2.783559411005928e-92,
+            "_fixed64_int": -5986119469269594836
+          },
+          "2": "prog_dragon_challengerating_level_uncommon"
+        },
+        "19": {
+          "1": {
+            "_fixed64_double": 6.717883991982461e+29,
+            "_fixed64_int": 5053308525952508217
+          },
+          "2": "prog_dragon_challengerating_star_uncommon"
+        },
+        "20": {
+          "1": {
+            "_fixed64_double": -4.662538882763802e+98,
+            "_fixed64_int": -3140335919560085314
+          },
+          "2": "prog_habit_challengerating_uncommon_rank"
+        },
+        "21": {
+          "_fixed32_float": 0.46000000834465027,
+          "_fixed32_int": 1055622431
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -7.220229615893046e+161,
+          "_fixed64_int": -2195032467955512623
+        },
+        "2": "rarity_dragon_rare"
+      },
+      "2": {
+        "1": "Rare",
+        "3": "Icon_GachaToken_Rarity_03.png",
+        "4": {
+          "1": {
+            "_fixed64_double": 8.14015406881982e-163,
+            "_fixed64_int": 2181835826278085858
+          },
+          "2": "prog_dragon_star_cost"
+        },
+        "5": {
+          "1": {
+            "_fixed64_double": -7.383501885289141e+223,
+            "_fixed64_int": -1267331897405960398
+          },
+          "2": "curr_HabitUpgrade_Rarity_Rare"
+        },
+        "7": {
+          "1": {
+            "_fixed64_double": 7.613179779241232e-163,
+            "_fixed64_int": 2181408738774373680
+          },
+          "2": "prog_dragon_power_level_rare"
+        },
+        "8": {
+          "1": {
+            "_fixed64_double": -1.0442117828716402e-112,
+            "_fixed64_int": -6291508444119247062
+          },
+          "2": "prog_dragon_power_star_rare"
+        },
+        "9": {
+          "1": {
+            "_fixed64_double": 1.8892364359251106e-220,
+            "_fixed64_int": 1319856639219937187
+          },
+          "2": "prog_dragon_habit_rank_power"
+        },
+        "10": "Icon_Info_Egg_Rarity_03.png",
+        "11": "Icon_Info_EggUndiscovered_Rarity_03.png",
+        "12": "Bg_Dragon_Frame_Rarity_03.png",
+        "13": "Bg_Dragon_Stars_Rarity_03.png",
+        "14": 18,
+        "15": 120,
+        "16": {
+          "_fixed32_float": 2.0,
+          "_fixed32_int": 1073741824
+        },
+        "17": "Icon_GachaToken_Large_Rarity_03.png",
+        "18": {
+          "1": {
+            "_fixed64_double": 10354.123368767305,
+            "_fixed64_int": 4666917853848156790
+          },
+          "2": "prog_dragon_challengerating_level_rare"
+        },
+        "19": {
+          "1": {
+            "_fixed64_double": 12463690718219.342,
+            "_fixed64_int": 4802715012797306543
+          },
+          "2": "prog_dragon_challengerating_star_rare"
+        },
+        "20": {
+          "1": {
+            "_fixed64_double": -9.873544189323622e+91,
+            "_fixed64_int": -3240273763985713845
+          },
+          "2": "prog_habit_challengerating_rare_rank"
+        },
+        "21": {
+          "_fixed32_float": 0.5,
+          "_fixed32_int": 1056964608
+        },
+        "22": [
+          "",
+          {
+            "1": {
+              "_fixed64_double": -6.796095646167545e-229,
+              "_fixed64_int": -8029781329330123046
+            },
+            "2": "prog_habit_rank_cost_rare_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": -6.796095646167545e-229,
+              "_fixed64_int": -8029781329330123046
+            },
+            "2": "prog_habit_rank_cost_rare_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": -6.796095646167545e-229,
+              "_fixed64_int": -8029781329330123046
+            },
+            "2": "prog_habit_rank_cost_rare_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": -6.796095646167545e-229,
+              "_fixed64_int": -8029781329330123046
+            },
+            "2": "prog_habit_rank_cost_rare_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": -9.402317916953804e+180,
+              "_fixed64_int": -1908927526101369644
+            },
+            "2": "prog_habit_rank_cost_rare_02"
+          }
+        ]
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 4.051258130296243e-248,
+          "_fixed64_int": 905822697029175812
+        },
+        "2": "rarity_dragon_epic"
+      },
+      "2": {
+        "1": "Epic",
+        "3": "Icon_GachaToken_Rarity_04.png",
+        "4": {
+          "1": {
+            "_fixed64_double": 8.14015406881982e-163,
+            "_fixed64_int": 2181835826278085858
+          },
+          "2": "prog_dragon_star_cost"
+        },
+        "5": {
+          "1": {
+            "_fixed64_double": 4.514465475737177e-292,
+            "_fixed64_int": 248266644623822823
+          },
+          "2": "curr_HabitUpgrade_Rarity_Epic"
+        },
+        "7": {
+          "1": {
+            "_fixed64_double": -5.314163541476954e+247,
+            "_fixed64_int": -910176994494425627
+          },
+          "2": "prog_dragon_power_level_epic"
+        },
+        "8": {
+          "1": {
+            "_fixed64_double": 4.2741934473534296e+27,
+            "_fixed64_int": 5020281097852803071
+          },
+          "2": "prog_dragon_power_star_epic"
+        },
+        "9": {
+          "1": {
+            "_fixed64_double": 1.8892364359251106e-220,
+            "_fixed64_int": 1319856639219937187
+          },
+          "2": "prog_dragon_habit_rank_power"
+        },
+        "10": "Icon_Info_Egg_Rarity_04.png",
+        "11": "Icon_Info_EggUndiscovered_Rarity_04.png",
+        "12": "Bg_Dragon_Frame_Rarity_04.png",
+        "13": "Bg_Dragon_Stars_Rarity_04.png",
+        "14": 54,
+        "15": 360,
+        "16": {
+          "_fixed32_float": 2.200000047683716,
+          "_fixed32_int": 1074580685
+        },
+        "17": "Icon_GachaToken_Large_Rarity_04.png",
+        "18": {
+          "1": {
+            "_fixed64_double": -9.961049117109369e-88,
+            "_fixed64_int": -5917813026664924509
+          },
+          "2": "prog_dragon_challengerating_level_epic"
+        },
+        "19": {
+          "1": {
+            "_fixed64_double": -9.834159274055285e-79,
+            "_fixed64_int": -5783423793955268998
+          },
+          "2": "prog_dragon_challengerating_star_epic"
+        },
+        "20": {
+          "1": {
+            "_fixed64_double": -2.5457112307923782e+17,
+            "_fixed64_int": -4356032691325784442
+          },
+          "2": "prog_habit_challengerating_epic_rank"
+        },
+        "21": {
+          "_fixed32_float": 0.625,
+          "_fixed32_int": 1059061760
+        },
+        "22": [
+          "",
+          {
+            "1": {
+              "_fixed64_double": 2.3702231884475592e+159,
+              "_fixed64_int": 6991157113286713661
+            },
+            "2": "prog_habit_rank_cost_epic_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": 2.3702231884475592e+159,
+              "_fixed64_int": 6991157113286713661
+            },
+            "2": "prog_habit_rank_cost_epic_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": 2.3702231884475592e+159,
+              "_fixed64_int": 6991157113286713661
+            },
+            "2": "prog_habit_rank_cost_epic_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": 2.3702231884475592e+159,
+              "_fixed64_int": 6991157113286713661
+            },
+            "2": "prog_habit_rank_cost_epic_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": 7.064918258389055e-212,
+              "_fixed64_int": 1447846469025633075
+            },
+            "2": "prog_habit_rank_cost_epic_02"
+          }
+        ]
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -3.190584855450149e-59,
+          "_fixed64_int": -5491679432396299185
+        },
+        "2": "rarity_dragon_legendary"
+      },
+      "2": {
+        "1": "Legendary",
+        "3": "Icon_GachaToken_Rarity_05.png",
+        "4": {
+          "1": {
+            "_fixed64_double": 8.14015406881982e-163,
+            "_fixed64_int": 2181835826278085858
+          },
+          "2": "prog_dragon_star_cost"
+        },
+        "5": {
+          "1": {
+            "_fixed64_double": 4.382782124518469e+49,
+            "_fixed64_int": 5349710089394743482
+          },
+          "2": "curr_HabitUpgrade_Rarity_Legendary"
+        },
+        "7": {
+          "1": {
+            "_fixed64_double": -2.023509076904696e-263,
+            "_fixed64_int": -8546596495195222047
+          },
+          "2": "prog_dragon_power_level_legendary"
+        },
+        "8": {
+          "1": {
+            "_fixed64_double": -6.848955264553077e-92,
+            "_fixed64_int": -5980257322560915457
+          },
+          "2": "prog_dragon_power_star_legendary"
+        },
+        "9": {
+          "1": {
+            "_fixed64_double": 1.8892364359251106e-220,
+            "_fixed64_int": 1319856639219937187
+          },
+          "2": "prog_dragon_habit_rank_power"
+        },
+        "10": "Icon_Info_Egg_Rarity_05.png",
+        "11": "Icon_Info_EggUndiscovered_Rarity_05.png",
+        "12": "Bg_Dragon_Frame_Rarity_05.png",
+        "13": "Bg_Dragon_Stars_Rarity_05.png",
+        "14": 135,
+        "15": 900,
+        "16": {
+          "_fixed32_float": 2.4000000953674316,
+          "_fixed32_int": 1075419546
+        },
+        "17": "Icon_GachaToken_Large_Rarity_05.png",
+        "18": {
+          "1": {
+            "_fixed64_double": 1.114482217810665e-145,
+            "_fixed64_int": 2438211248059419710
+          },
+          "2": "prog_dragon_challengerating_level_legendary"
+        },
+        "19": {
+          "1": {
+            "_fixed64_double": -3.0308047276791896e+264,
+            "_fixed64_int": -659759737646240739
+          },
+          "2": "prog_dragon_challengerating_star_legendary"
+        },
+        "20": {
+          "1": {
+            "_fixed64_double": 8.566652076657772e-243,
+            "_fixed64_int": 985513347572296570
+          },
+          "2": "prog_habit_challengerating_legendary_rank"
+        },
+        "21": {
+          "_fixed32_float": 0.75,
+          "_fixed32_int": 1061158912
+        },
+        "22": [
+          "",
+          {
+            "1": {
+              "_fixed64_double": 27301.19285525237,
+              "_fixed64_int": 4673233708704960115
+            },
+            "2": "prog_habit_rank_cost_legendary_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": 27301.19285525237,
+              "_fixed64_int": 4673233708704960115
+            },
+            "2": "prog_habit_rank_cost_legendary_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": 27301.19285525237,
+              "_fixed64_int": 4673233708704960115
+            },
+            "2": "prog_habit_rank_cost_legendary_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": 27301.19285525237,
+              "_fixed64_int": 4673233708704960115
+            },
+            "2": "prog_habit_rank_cost_legendary_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": 1.334222116944401e-49,
+              "_fixed64_int": 3875617579347770493
+            },
+            "2": "prog_habit_rank_cost_legendary_02"
+          }
+        ]
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.3498075239019141e-30,
+          "_fixed64_int": -5063347141722833889
+        },
+        "2": "rarity_dragon_spawnable_wild"
+      },
+      "2": {
+        "1": "Uncommon",
+        "3": "Icon_GachaToken_Rarity_02.png",
+        "4": {
+          "1": {
+            "_fixed64_double": 8.14015406881982e-163,
+            "_fixed64_int": 2181835826278085858
+          },
+          "2": "prog_dragon_star_cost"
+        },
+        "5": {
+          "1": {
+            "_fixed64_double": -5.230704306916213e+229,
+            "_fixed64_int": -1179591209887277273
+          },
+          "2": "curr_Gold"
+        },
+        "7": {
+          "1": {
+            "_fixed64_double": -1.673840492883092e+266,
+            "_fixed64_int": -633666508277639474
+          },
+          "2": "prog_dragon_power_level_uncommon"
+        },
+        "8": {
+          "1": {
+            "_fixed64_double": -7.17835920135518e+287,
+            "_fixed64_int": -309944240449526202
+          },
+          "2": "prog_dragon_power_star_uncommon"
+        },
+        "9": {
+          "1": {
+            "_fixed64_double": 1.8892364359251106e-220,
+            "_fixed64_int": 1319856639219937187
+          },
+          "2": "prog_dragon_habit_rank_power"
+        },
+        "10": "Icon_Info_Egg_Rarity_02.png",
+        "11": "Icon_Info_EggUndiscovered_Rarity_02.png",
+        "12": "Bg_Dragon_Frame_Rarity_Generic.png",
+        "13": "Bg_Dragon_Stars_Rarity_Generic.png",
+        "14": 1,
+        "15": 7777,
+        "16": {
+          "_fixed32_float": 1.0,
+          "_fixed32_int": 1065353216
+        },
+        "18": {
+          "1": {
+            "_fixed64_double": -5.095318849726637e-253,
+            "_fixed64_int": -8390801339162528006
+          },
+          "2": "prog_dragon_challengerating_level_spawnable"
+        },
+        "19": {
+          "1": {
+            "_fixed64_double": 3.8501102557926634e-43,
+            "_fixed64_int": 3972504778467020213
+          },
+          "2": "prog_dragon_challengerating_star_spawnable_wild"
+        },
+        "20": {
+          "1": {
+            "_fixed64_double": -8.088276666470003e+204,
+            "_fixed64_int": -1550984098484234046
+          },
+          "2": "prog_habit_challengerating_spawnable_rank"
+        },
+        "21": {
+          "_fixed32_float": 0.75,
+          "_fixed32_int": 1061158912
+        },
+        "22": [
+          "",
+          {
+            "1": {
+              "_fixed64_double": -6.796095646167545e-229,
+              "_fixed64_int": -8029781329330123046
+            },
+            "2": "prog_habit_rank_cost_rare_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": -6.796095646167545e-229,
+              "_fixed64_int": -8029781329330123046
+            },
+            "2": "prog_habit_rank_cost_rare_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": -6.796095646167545e-229,
+              "_fixed64_int": -8029781329330123046
+            },
+            "2": "prog_habit_rank_cost_rare_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": -6.796095646167545e-229,
+              "_fixed64_int": -8029781329330123046
+            },
+            "2": "prog_habit_rank_cost_rare_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": -9.402317916953804e+180,
+              "_fixed64_int": -1908927526101369644
+            },
+            "2": "prog_habit_rank_cost_rare_02"
+          }
+        ]
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.0561959947787684e-216,
+          "_fixed64_int": 1375653340284269116
+        },
+        "2": "rarity_dragon_spawnable_ap"
+      },
+      "2": {
+        "1": "Uncommon",
+        "3": "Icon_GachaToken_Rarity_02.png",
+        "4": {
+          "1": {
+            "_fixed64_double": 8.14015406881982e-163,
+            "_fixed64_int": 2181835826278085858
+          },
+          "2": "prog_dragon_star_cost"
+        },
+        "5": {
+          "1": {
+            "_fixed64_double": -5.230704306916213e+229,
+            "_fixed64_int": -1179591209887277273
+          },
+          "2": "curr_Gold"
+        },
+        "7": {
+          "1": {
+            "_fixed64_double": -1.673840492883092e+266,
+            "_fixed64_int": -633666508277639474
+          },
+          "2": "prog_dragon_power_level_uncommon"
+        },
+        "8": {
+          "1": {
+            "_fixed64_double": -7.17835920135518e+287,
+            "_fixed64_int": -309944240449526202
+          },
+          "2": "prog_dragon_power_star_uncommon"
+        },
+        "9": {
+          "1": {
+            "_fixed64_double": 1.8892364359251106e-220,
+            "_fixed64_int": 1319856639219937187
+          },
+          "2": "prog_dragon_habit_rank_power"
+        },
+        "10": "Icon_Info_Egg_Rarity_02.png",
+        "11": "Icon_Info_EggUndiscovered_Rarity_02.png",
+        "12": "Bg_Dragon_Frame_Rarity_Generic.png",
+        "13": "Bg_Dragon_Stars_Rarity_Generic.png",
+        "14": 1,
+        "15": 7777,
+        "16": {
+          "_fixed32_float": 1.0,
+          "_fixed32_int": 1065353216
+        },
+        "18": {
+          "1": {
+            "_fixed64_double": -5.095318849726637e-253,
+            "_fixed64_int": -8390801339162528006
+          },
+          "2": "prog_dragon_challengerating_level_spawnable"
+        },
+        "19": {
+          "1": {
+            "_fixed64_double": -1.9155660939967712e+155,
+            "_fixed64_int": -2293296574776744380
+          },
+          "2": "prog_dragon_challengerating_star_spawnable_ap"
+        },
+        "20": {
+          "1": {
+            "_fixed64_double": -8.088276666470003e+204,
+            "_fixed64_int": -1550984098484234046
+          },
+          "2": "prog_habit_challengerating_spawnable_rank"
+        },
+        "21": {
+          "_fixed32_float": 0.625,
+          "_fixed32_int": 1059061760
+        },
+        "22": [
+          "",
+          {
+            "1": {
+              "_fixed64_double": -6.796095646167545e-229,
+              "_fixed64_int": -8029781329330123046
+            },
+            "2": "prog_habit_rank_cost_rare_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": -6.796095646167545e-229,
+              "_fixed64_int": -8029781329330123046
+            },
+            "2": "prog_habit_rank_cost_rare_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": -6.796095646167545e-229,
+              "_fixed64_int": -8029781329330123046
+            },
+            "2": "prog_habit_rank_cost_rare_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": -6.796095646167545e-229,
+              "_fixed64_int": -8029781329330123046
+            },
+            "2": "prog_habit_rank_cost_rare_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": -9.402317916953804e+180,
+              "_fixed64_int": -1908927526101369644
+            },
+            "2": "prog_habit_rank_cost_rare_02"
+          }
+        ]
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.328786590373545e-82,
+          "_fixed64_int": 3385658533274214962
+        },
+        "2": "rarity_dragon_spawnable_stamina"
+      },
+      "2": {
+        "1": "Uncommon",
+        "3": "Icon_GachaToken_Rarity_02.png",
+        "4": {
+          "1": {
+            "_fixed64_double": 8.14015406881982e-163,
+            "_fixed64_int": 2181835826278085858
+          },
+          "2": "prog_dragon_star_cost"
+        },
+        "5": {
+          "1": {
+            "_fixed64_double": -5.230704306916213e+229,
+            "_fixed64_int": -1179591209887277273
+          },
+          "2": "curr_Gold"
+        },
+        "7": {
+          "1": {
+            "_fixed64_double": -1.673840492883092e+266,
+            "_fixed64_int": -633666508277639474
+          },
+          "2": "prog_dragon_power_level_uncommon"
+        },
+        "8": {
+          "1": {
+            "_fixed64_double": -7.17835920135518e+287,
+            "_fixed64_int": -309944240449526202
+          },
+          "2": "prog_dragon_power_star_uncommon"
+        },
+        "9": {
+          "1": {
+            "_fixed64_double": 1.8892364359251106e-220,
+            "_fixed64_int": 1319856639219937187
+          },
+          "2": "prog_dragon_habit_rank_power"
+        },
+        "10": "Icon_Info_Egg_Rarity_02.png",
+        "11": "Icon_Info_EggUndiscovered_Rarity_02.png",
+        "12": "Bg_Dragon_Frame_Rarity_Generic.png",
+        "13": "Bg_Dragon_Stars_Rarity_Generic.png",
+        "14": 1,
+        "15": 7777,
+        "16": {
+          "_fixed32_float": 1.0,
+          "_fixed32_int": 1065353216
+        },
+        "18": {
+          "1": {
+            "_fixed64_double": -5.095318849726637e-253,
+            "_fixed64_int": -8390801339162528006
+          },
+          "2": "prog_dragon_challengerating_level_spawnable"
+        },
+        "19": {
+          "1": {
+            "_fixed64_double": -8.05501247819363e-75,
+            "_fixed64_int": -5724878150538689593
+          },
+          "2": "prog_dragon_challengerating_star_spawnable_stamina"
+        },
+        "20": {
+          "1": {
+            "_fixed64_double": -8.088276666470003e+204,
+            "_fixed64_int": -1550984098484234046
+          },
+          "2": "prog_habit_challengerating_spawnable_rank"
+        },
+        "21": {
+          "_fixed32_float": 0.5,
+          "_fixed32_int": 1056964608
+        },
+        "22": [
+          "",
+          {
+            "1": {
+              "_fixed64_double": -6.796095646167545e-229,
+              "_fixed64_int": -8029781329330123046
+            },
+            "2": "prog_habit_rank_cost_rare_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": -6.796095646167545e-229,
+              "_fixed64_int": -8029781329330123046
+            },
+            "2": "prog_habit_rank_cost_rare_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": -6.796095646167545e-229,
+              "_fixed64_int": -8029781329330123046
+            },
+            "2": "prog_habit_rank_cost_rare_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": -6.796095646167545e-229,
+              "_fixed64_int": -8029781329330123046
+            },
+            "2": "prog_habit_rank_cost_rare_01"
+          },
+          {
+            "1": {
+              "_fixed64_double": -9.402317916953804e+180,
+              "_fixed64_int": -1908927526101369644
+            },
+            "2": "prog_habit_rank_cost_rare_02"
+          }
+        ]
+      }
+    }
+  ]
+}

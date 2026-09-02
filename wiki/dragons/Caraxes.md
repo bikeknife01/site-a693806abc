@@ -1,6 +1,6 @@
 # Caraxes
 
-Hunter Juvenile · Positive affinities: Spearmen, Cavalry
+Hunter · Age label: Juvenile · Rarity tier: Legendary · Positive affinities: Spearmen, Cavalry
 
 ## Strategic summary
 

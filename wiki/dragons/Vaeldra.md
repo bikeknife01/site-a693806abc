@@ -1,6 +1,6 @@
 # Vaeldra
 
-Warrior Elder · Spearmen affinity. Taunt-focused frontline dragon with Physical Damage amplification and tactical support.
+Warrior · Age label: Elder · Rarity tier: Epic · Spearmen affinity. Taunt-focused frontline dragon with Physical Damage amplification and tactical support.
 
 **Command — Lure:** can Taunt three enemies each round and deals adjacent two-target Physical Damage on odd rounds.
 

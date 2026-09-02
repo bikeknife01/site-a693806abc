@@ -1,0 +1,65 @@
+
+General gameplay:
+
+Use the tile search! Enemy/friendly/neutral resources level 1-13, ruins/towns/castles, resolve hunting - they are all options you should be using fairly often.
+
+Stam is the lifeblood of gameplay. Try not to waste it.
+
+Save your keys for event chest rotations you care about!! i.e. dragons you want stars for. Use https://dragonfire-hub.com for a lot of good resources but it also has an event chest rotation section.
+
+Don't waste heirloom resources on the center circle until you have the outer ones mostly filled in. The inner booster bonuses are weak applied to the outer until they are higher level.
+
+Heirlooms don't activate in later seasons until the house level they are in is unlocked again. Keep that in mind when you are spending on them at the end of a season. Improving resource gathering speed and defense/damage to RSS defenders are lower house levels so are unlocked earlier. It's when they make biggest difference, early in the season. 
+
+Use Discord! The in-game chat client sucks so if a Discord server is available to you, use it for faction or alliance chat. Organization and communication make factions and alliances a lot more effective.
+
+If you have a PC with 8 or more GB of RAM, consider using Mumu or Bluestacks (android phone emulators) to play GoT: Dragonfire. Mouse and Keyboard do a lot for gameplay and better communications
+
+
+
+Leveling and early game:
+
+DO YOUR CHAPTER QUESTS!! Early in the season focus on that more than anything else. They guide you through a lot of what you should be doing anyways and the rewards are immensely useful at that point. They also unlock higher level skills and your heirlooms.
+
+Resource gathering is a core fundamental to every other aspect of the game. More & faster resource intake gets you ahead of the curve the general player base is at. It'll give you access to higher level tiles before others therefore you have less competition. It's a multiplicative advantage. Acceleration leads to even more acceleration.
+
+Aside from resource efficiency, investments in dragon and troop type defense should be a priority in both stronghold skills and heirlooms. The offbeat and usually boring skills/activities are often more impactful that most players realize. Staying alive when taking tiles net's the XP for progression. You also lose less troops.
+
+Garrisons: They provide a forward operating base, have increased march speed to get to, and increased reinforcement speed for the armies garrisoned there. Use them, especially when heading to PVP. Getting bounced is a lot harder when you are landing on something that takes siege to take down. Towns have 2 slots, castles have up to 3 based on level. Ruins can be upgraded in your SH skills to have 5!
+
+Once established at a ruins (upgraded to hold 5 armies) a good roster for leveling should be your highest level tile taking army, a mid level army, a lower level army, and 2 single army pathers. Ruins speed up reinforcing your leveling armies. If the march for fresh pathers is long, garrison them to get them there otherwise just send them right to the next tile.
+
+March speed can be a deciding factor in fights but skills that improve them also speed up leveling substantially. If you garrison a lot (and you absolutely always should), the "send armies to garrison" and "reinforce garrisoned armies" are amazing to have. Really any march speed skills help a lot.
+
+Push your limits and don't believe the attack assessment shown. Worst thing that could happen is you recall to your previous tile and reinforce. You still get XP.
+
+Towns, crossings, and other structures that have multiple armies give XP even if you recall and have no intention of taking them. If you know you're going to make it into a stalemate so you can recall, consider them as a source of XP
+
+
+
+Player versus player:
+
+Take screenshots of all the dragon portraits from the dragon pit or find them online and combine them in paint or something like that. What you want is a single image with all of them on it. Keep it handy and open when tracking enemy movement or when you're in a bigger fight. You can only see an enemy army's vanguard dragon when you click on it but identifying it can tell you a lot. If it's a lower level or low star dragon not used for PVP it might just be a pather and you can better ascertain their strength/purpose.
+
+Clicking on a moving army (enemy or friendly) opens a panel with their origin and destination tile cords. They are links that take you to that tile.
+
+Reacting to enemy movements with emotions rather that considering the actual risk those actions pose wastes a lot of time and resources. Retaking a castle in a region your faction/alliance are already resigned to losing/is far away/is unlikely to succeed is a waste of resources. Make a few token gestures by sending lower level dragons to generate incoming lines. They can throw the enemy off by getting them to assume a response is happening, while you actually counter with taking their assets elsewhere. Keep them focused and spending stam while taking something they are forced to deal with.
+
+If you have weak armies in general, a full roster of pathers is a bigger contribution in a group fight than attacking other players. Bouncing an attacking army is better than beating them in a fight. It nullifies their impact on a situation entirely. Our side doesn't lose troops and it wastes a lot of the enemy's time.
+
+Bring pathers to fights alongside your attacking armies and send the pathers first. They can offensively counter any enemy attempts to bounce your incoming armies. Freshly taken tiles are protected for 90 seconds; use that fact.
+
+If she's available, Dawnseeker is the only dragon with the movement speed "very fast" (at this time). She's a great first responder.
+
+Getting bounced sucks too so trying to land an attacking army on a level 3 tile right near enemies is going almost certainly going to have that happen, especially with competent or several enemy players present. If a really high level shared tile is even remotely close, land there first. Showing up nearby beats not showing up by miles (kilometers :D)
+
+Don't send siege directly at a target unless they only have 10 stam for the attack. They hit and then go home; huge waste of potential. Land them on a safe nearby tile for multiple attacks.
+
+
+Pathing:
+
+Pathers and their stam are a crucial resource for leveling AND PVP.
+
+In a full roster, sometimes a second pather with 2 armies is useful for taking higher level tiles. It can save a lot of stam when you don't have to path around level 6-10 tiles depending on pather level.
+
+Higher level 3 tile resources are great for pathing faster with less stam drain on your pathers. Even tiles that aren't the best XP for the army you're are leveling are worth taking with the army if it lets you path further. Adjacent, 3 tile resources are awesome for that. That can sometimes save 50 stam for a pather. 

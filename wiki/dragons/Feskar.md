@@ -1,6 +1,6 @@
 # Feskar
 
-Champion Elder · Positive affinity: Cavalry · Negative affinity: Siege
+Champion · Age label: Elder · Rarity tier: Epic · Positive affinity: Cavalry · Negative affinity: Siege
 
 Feskar suppresses high-Strength Physical attackers, targets low-troop enemies, and becomes a Burn payoff at six stars. Vanguard placement increases all three core stats and protects the Right Flank.
 

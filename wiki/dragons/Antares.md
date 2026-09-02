@@ -1,6 +1,6 @@
 # Antares
 
-Hunter Elder · Positive affinity: Archers · Negative affinity: Siege
+Hunter · Age label: Elder · Rarity tier: Rare · Positive affinity: Archers · Negative affinity: Siege
 
 ## Strategic summary
 
@@ -38,4 +38,3 @@ increases the Right Flank ally's Strength and Initiative by 20.
 
 Exact wording and all five displayed Habit levels are available in
 [`data/dragons/antares.json`](../../data/dragons/antares.json).
-

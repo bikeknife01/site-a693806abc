@@ -1,6 +1,6 @@
 # Kalspire
 
-Champion Adult · Positive affinities: Cavalry, Shieldbearers, Siege
+Champion · Age label: Adult · Rarity tier: Legendary · Positive affinities: Cavalry, Shieldbearers, Siege
 
 Kalspire is a hybrid damage/control Vanguard. **Tactical Strike** follows Basic
 Attacks with Tactical Damage and Bleed; its 6-Star upgrade adds adjacent Physical

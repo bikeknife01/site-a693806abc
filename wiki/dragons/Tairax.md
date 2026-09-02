@@ -1,6 +1,6 @@
 # Tairax
 
-Hunter Adult · Cavalry, Shieldbearers, and Siege affinity. Fire/control attacker that pays off controlled enemies.
+Hunter · Age label: Adult · Rarity tier: Epic · Cavalry, Shieldbearers, and Siege affinity. Fire/control attacker that pays off controlled enemies.
 
 **Command — Burning Ward:** odd rounds can Stagger; rounds 2, 5, and 8 deal Fire Damage and can Burn; at 6 Stars, Stagger becomes 50% and all controlled enemies take Fire Damage each round.
 

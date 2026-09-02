@@ -2,6 +2,7 @@
   "name": "Malachite",
   "breed": "Sentinel",
   "rarity_label": "Juvenile",
+  "rarity_tier": "Legendary",
   "troop_affinities": {
     "positive": [
       "Cavalry",

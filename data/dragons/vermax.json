@@ -2,6 +2,7 @@
   "name": "Vermax",
   "breed": "Warrior",
   "rarity_label": "Epic",
+  "rarity_tier": "Epic",
   "troop_affinities": {
     "positive": [
       "Cavalry",

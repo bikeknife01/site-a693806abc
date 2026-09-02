@@ -1,6 +1,6 @@
 # Shimmer
 
-Sentinel Elder · Positive affinities: Cavalry and Siege · No displayed negative affinity
+Sentinel · Age label: Elder · Rarity tier: Rare · Positive affinities: Cavalry and Siege · No displayed negative affinity
 
 Shimmer is Tactical/Recovery support. **Unbreakable Loyalty** buffs the other ally with the highest Strength, attacks two adjacent enemies on rounds 2, 4, 7, and 9, and at 6+ Stars recovers two other allies in any lane; Recovery doubles for targets with Resistance.
 

@@ -1,6 +1,6 @@
 # Crimson
 
-Hunter Adult · Positive affinities: Spearmen, Archers, Siege
+Hunter · Age label: Adult · Rarity tier: Legendary · Positive affinities: Spearmen, Archers, Siege
 
 Crimson is a Fire attacker and Stun/Weakened controller. In Vanguard, it gains Recovery Received and Intelligence while strengthening the Right Flank's Physical Damage. Taunt enables its stronger Weakened chance.
 

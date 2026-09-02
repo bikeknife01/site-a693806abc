@@ -2,6 +2,7 @@
   "name": "Thunderstrike",
   "breed": "Warrior",
   "rarity_label": "Elder",
+  "rarity_tier": "Rare",
   "troop_affinities": {
     "positive": [
       "Cavalry"

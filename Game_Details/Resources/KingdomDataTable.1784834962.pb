@@ -1,0 +1,46 @@
+
+0
+	˚D≥W0ù¨kingdom_Dorne
+KINGDOM_DORNE_NAME
+<
+	A≥gYtH'ìkingdom_IronIslands
+KINGDOM_IRONISLANDS_NAME
+:
+	J“ªŸVZ]kingdom_Stormlands
+KINGDOM_STORMLANDS_NAME
+@
+ 	*ªí_Âó8kingdom_TheCrownlands
+KINGDOM_THECROWNLANDS_NAME
+6
+	{˜î§j&÷Ìkingdom_TheNorth
+KINGDOM_THENORTH_NAME
+6
+	S≤Ö@;#Ò[kingdom_TheReach
+KINGDOM_THEREACH_NAME
+4
+	:‚P›-'ëÖkingdom_TheVale
+KINGDOM_THEVALE_NAME
+<
+	8&Jˇ „gÃkingdom_Westerlands
+KINGDOM_WESTERLANDS_NAME
+:
+	l9æQaÄÉ˘kingdom_Riverlands
+KINGDOM_RIVERLANDS_NAME
+(
+	<’óπËMë·	kingdom_1
+KINGDOM_1_NAME
+(
+	2'b`Éî	kingdom_2
+KINGDOM_2_NAME
+(
+	»v1◊•⁄r∏	kingdom_3
+KINGDOM_3_NAME
+(
+	.√â”‘®ß~	kingdom_4
+KINGDOM_4_NAME
+(
+	‘í⁄drcVR	kingdom_5
+KINGDOM_5_NAME
+2
+	À»ùH_˝Fkingdom_FTUE_1
+KINGDOM_FTUE_1_NAME

@@ -1,6 +1,6 @@
 # Nyrena
 
-Champion Elder · Positive affinities: Shieldbearers, Siege
+Champion · Age label: Elder · Rarity tier: Rare · Positive affinities: Shieldbearers, Siege
 
 Nyrena weakens enemy Physical Damage, benefits from Burn, and combines Fire and
 Tactical damage. Its late-game habits add Fire support, Tile Damage, and defensive

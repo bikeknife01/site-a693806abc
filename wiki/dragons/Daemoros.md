@@ -1,6 +1,6 @@
 # Daemoros
 
-Warrior Adult · Positive affinity: Archers
+Warrior · Age label: Adult · Rarity tier: Epic · Positive affinity: Archers
 
 Daemoros is an adjacent Physical attacker with Burn, Panic, and Confusion control. Derived recommendation: Vanguard placement rewards a Tactical-damage Left Flank with Instinct and Initiative.
 

@@ -1,6 +1,6 @@
 # Tashix
 
-Hunter Elder · Archers affinity; Siege penalty. Stacking Fire attacker with broad tactical and initiative debuffs.
+Hunter · Age label: Elder · Rarity tier: Epic · Archers affinity; Siege penalty. Stacking Fire attacker with broad tactical and initiative debuffs.
 
 **Command — Shimmering Mirage:** each round can gain Mirage (up to 10 stacks); rounds 3, 6, and 9 deal +200% Fire Damage. Each Mirage stack grants +2.5% Fire Damage Dealt.
 

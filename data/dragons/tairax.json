@@ -2,6 +2,7 @@
   "name": "Tairax",
   "breed": "Hunter",
   "rarity_label": "Adult",
+  "rarity_tier": "Epic",
   "troop_affinities": {
     "positive": [
       "Cavalry",

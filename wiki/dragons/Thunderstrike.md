@@ -1,6 +1,6 @@
 # Thunderstrike
 
-Warrior Elder · Cavalry affinity. Same-lane Physical attacker with Bleed and Stagger control.
+Warrior · Age label: Elder · Rarity tier: Rare · Cavalry affinity. Same-lane Physical attacker with Bleed and Stagger control.
 
 **Command — Tail Whip:** physical damage on odd rounds; at 6 Stars, an even-round attack can Bleed.
 

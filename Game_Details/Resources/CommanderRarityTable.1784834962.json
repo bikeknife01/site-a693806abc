@@ -1,0 +1,54 @@
+{
+  "Objects": {
+    "-3511502653689136016": {
+      "DID": {
+        "ID": "-3511502653689136016",
+        "Name": "rarity_commander_common"
+      },
+      "Name": "COMMANDER_RARITY_NAME_COMMON",
+      "FrameSpriteName": "Bg_Dragon_Frame_Rarity_Generic.png",
+      "FrameBackgroundSpriteName": "Bg_Dragon_Frame_Rarity_Generic.png",
+      "HtmlColor": "#222222"
+    },
+    "-7954264595112931735": {
+      "DID": {
+        "ID": "-7954264595112931735",
+        "Name": "rarity_commander_uncommon"
+      },
+      "Name": "COMMANDER_RARITY_NAME_UNCOMMON",
+      "FrameSpriteName": "Bg_Dragon_Frame_Rarity_Generic.png",
+      "FrameBackgroundSpriteName": "Bg_Dragon_Frame_Rarity_Generic.png",
+      "HtmlColor": "#A9CC85"
+    },
+    "-4957150692442322962": {
+      "DID": {
+        "ID": "-4957150692442322962",
+        "Name": "rarity_commander_rare"
+      },
+      "Name": "COMMANDER_RARITY_NAME_RARE",
+      "FrameSpriteName": "Bg_Dragon_Frame_Rarity_03.png",
+      "FrameBackgroundSpriteName": "Bg_Dragon_Frame_Rarity_03.png",
+      "HtmlColor": "#36A0FF"
+    },
+    "6210222945560545083": {
+      "DID": {
+        "ID": "6210222945560545083",
+        "Name": "rarity_commander_epic"
+      },
+      "Name": "COMMANDER_RARITY_NAME_EPIC",
+      "FrameSpriteName": "Bg_Dragon_Frame_Rarity_04.png",
+      "FrameBackgroundSpriteName": "Bg_Dragon_Frame_Rarity_04.png",
+      "HtmlColor": "#E777FF"
+    },
+    "2246840345477128048": {
+      "DID": {
+        "ID": "2246840345477128048",
+        "Name": "rarity_commander_legendary"
+      },
+      "Name": "COMMANDER_RARITY_NAME_LEGENDARY",
+      "FrameSpriteName": "Bg_Dragon_Frame_Rarity_05.png",
+      "FrameBackgroundSpriteName": "Bg_Dragon_Frame_Rarity_05.png",
+      "HtmlColor": "#F0CA77"
+    }
+  }
+}

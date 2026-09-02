@@ -1,6 +1,6 @@
 # Sunfyre
 
-Sentinel Adult · Spearmen and Cavalry affinity. Tactical/fire hybrid that becomes stronger at lower troop capacity.
+Sentinel · Age label: Adult · Rarity tier: Legendary · Spearmen and Cavalry affinity. Tactical/fire hybrid that becomes stronger at lower troop capacity.
 
 **Command — Golden Wrath:** rounds 1, 4, 7, and 10 deal +110% Tactical Damage in the same lane; below 75% capacity it hits an adjacent second enemy, and below 50% it adds +55% Fire Damage with 50% Burn for two rounds.
 

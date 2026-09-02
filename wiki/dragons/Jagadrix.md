@@ -1,6 +1,6 @@
 # Jagadrix
 
-Hunter Elder · Positive affinity: Spearmen
+Hunter · Age label: Elder · Rarity tier: Rare · Positive affinity: Spearmen
 
 Jagadrix is a Vanguard-oriented Fire attacker that weakens enemy Instinct and
 Initiative in its lane. At 10 Stars, **Cunning Whispers** gains a combat-long

@@ -1,6 +1,6 @@
 # Seasmoke
 
-Champion Juvenile · Positive affinities: Cavalry, Archers · Negative affinity: Siege
+Champion · Age label: Juvenile · Rarity tier: Legendary · Positive affinities: Cavalry, Archers · Negative affinity: Siege
 
 Seasmoke removes enemy Positive effects, then turns cleanses into stacking Recovery
 suppression. It also offers adjacent Fire support and a Panic-powered Physical

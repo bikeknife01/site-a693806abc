@@ -1,11 +1,41 @@
 # Online source audit
 
-Last reviewed: 2026-08-05
+Last reviewed: 2026-08-31
 
 This page records public sources checked for game rules and live additions. It is a
 source-quality ledger, not a claim that every public strategy opinion is correct.
 Exact dragon ability screenshots in this repository remain authoritative for the
 audited dragon records.
+
+## Installed-client source reviewed
+
+The locally installed application data under `Game_Details/Resources/` and its
+structured extraction under `Game_Details/Resources/_extracted/` were reviewed on
+2026-08-31. This is first-party implementation evidence, but it is not a clean list of
+released content: the tables also contain WIP dragons, test/balance dragons, NPCs, and
+unresolved localization keys. Presence in the client therefore does not establish
+release status or player availability.
+
+The useful joined sources are `clean_dragons.csv`, `clean_dragon_habits.csv`,
+`dragonCommandsTable_merged.1787687230.json`,
+`dragonAffinityTable_merged.1787687230.json`, and `locale_enUS.json`. For all 34
+screenshot-audited dragons, the extraction matched breed, Vanguard name, all five
+Habit names, and positive/negative troop affinities. It also established a separate
+Rare/Epic/Legendary `rarity_tier` for each dragon without replacing screenshot labels
+such as Juvenile, Adult, or Elder.
+
+Starshower and Vermithor are complete enough in the client to fill their Vanguard
+names/text and several nonnumeric details previously absent from their official
+profiles. Meleys is also present with identity, Legendary rarity, Warrior breed,
+affinities, Vanguard, Command/Habit names, schedules, targeting, Laceration, and
+Reflect behavior. The extraction does not expose resolved Habit upgrade tracks, and
+many detailed descriptions retain progression placeholders, so these three remain in
+`data/live_updates.json` rather than becoming screenshot-complete dragon records.
+
+`WildDragonTable.1786045129.json` joined to Node Finder strings in `locale_enUS.json`
+also resolves the PvE breed weaknesses: Champion Wild Dragons are weak to Warriors,
+Sentinels to Hunters, Hunters to Champions, and Warriors to Sentinels. This mapping is
+specific to Wild Dragon encounters and is not evidence of a universal PvP breed cycle.
 
 ## Source priority
 
@@ -56,9 +86,8 @@ Vanguard text, so it must not silently replace complete in-game records.
     in-game damage-report evidence establishes matching named positions for `same lane`,
     but equivalent published official wording has not been found.
 - Universal stacking, control-conflict, Cleanse-priority, and Recovery-order rules.
-- The Wild Dragon breed-weakness mapping mentioned by the official map guide.
-- Full in-game records for Starshower and Vermithor, especially Vanguard abilities,
-  exact values, and Habit upgrade tracks.
+- Full in-game records for Starshower, Vermithor, and Meleys, especially exact values,
+  Habit upgrade tracks, current screenshot verification, and Meleys availability.
 
 ## User-confirmed in-game clarifications
 

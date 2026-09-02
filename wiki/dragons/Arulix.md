@@ -1,6 +1,6 @@
 # Arulix
 
-Champion Elder · Positive affinity: Cavalry
+Champion · Age label: Elder · Rarity tier: Rare · Positive affinity: Cavalry
 
 ## Strategic summary
 

@@ -109,6 +109,9 @@ stronger than another.
   advanced and stronger elements than Epic, followed by Rare, but actual abilities,
   unlocks, synergy, and matchup remain decisive. Rare/blue dragons can be exceptional;
   Thunderstrike is a known example. No public numeric rarity multiplier is available.
+  Installed-client rarity (`Rare`, `Epic`, or `Legendary`) is recorded separately from
+  screenshot labels such as `Juvenile`, `Adult`, and `Elder`; do not substitute one for
+  the other.
 - **Habit skill level** runs from 1 through 5 and is separate from Star Rank. Breedmarks
   and rarity-matched Rare, Epic, or Legendary Cores upgrade Habits permanently. The
   five values under `upgrade_levels` are these skill levels.
@@ -133,9 +136,10 @@ guidance therefore separates combat formations from Siege formations: clear the
 Defenders first, then use Siege troops against the structure.
 
 Encounters use Resolve, do not require tile connection, and do not grant ownership.
-Some require multiple armies. Wild Dragons are a primary Breedmark source; the
-official guide says each breed has a weakness to another breed but does not publish
-the mapping.
+Some require multiple armies. Wild Dragons are a primary Breedmark source. Installed
+Node Finder text gives the PvE weakness mapping: Champion Wild Dragons are weak to
+Warriors, Sentinels to Hunters, Hunters to Champions, and Warriors to Sentinels. This
+does not establish a universal PvP breed-advantage system.
 
 ## Public-rule limits
 

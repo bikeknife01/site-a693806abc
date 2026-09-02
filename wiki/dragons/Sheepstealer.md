@@ -1,6 +1,6 @@
 # Sheepstealer
 
-Hunter Legendary · Positive affinities: Cavalry and Archers · No displayed negative affinity
+Hunter · Displayed label: Legendary · Rarity tier: Legendary · Positive affinities: Cavalry and Archers · No displayed negative affinity
 
 Sheepstealer is a Prey-focused Fire attacker and Recovery suppressor. **Wild Hunt** marks a Prey, prioritizing enemies that recently received Recovery; Prey reduces Recovery Received by 30%. Its scheduled Fire attack prioritizes Prey and doubles against it. At 10 Stars it damages the Prey and recovers itself each round, tripling both effects when the Prey received Recovery in the prior round.
 

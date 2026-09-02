@@ -1,6 +1,6 @@
 # Solstryker
 
-Champion Elder · Positive affinity: Archers · No displayed negative affinity
+Champion · Age label: Elder · Rarity tier: Rare · Positive affinity: Archers · No displayed negative affinity
 
 Solstryker alternates Basic-Attack-triggered damage: odd rounds add Physical Damage to the Basic Attack target and may reduce its Physical Damage Dealt; even rounds deal Tactical Damage to three enemies, doubled against Vulnerable targets. **Oppressive Onslaught** adds recurring Overwhelm.
 

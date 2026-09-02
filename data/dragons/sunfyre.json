@@ -2,6 +2,7 @@
   "name": "Sunfyre",
   "breed": "Sentinel",
   "rarity_label": "Adult",
+  "rarity_tier": "Legendary",
   "troop_affinities": {
     "positive": [
       "Spearmen",

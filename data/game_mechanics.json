@@ -100,7 +100,8 @@
       "general_tendency": "Legendary dragons tend to have more advanced abilities and stronger kit elements, followed by Epic and then Rare dragons.",
       "not_absolute": "Rarity is not a strict power ranking. Rare dragons can have exceptional output or unique mechanics that make them the best fit for a formation; Thunderstrike is a known example of a highly effective Rare dragon. Epic and Legendary dragons must likewise be evaluated by actual unlocked abilities and matchup fit.",
       "official_context": "Rarity reflects Hatchery drop rate and affects maximum power and overall combat impact, but no public numeric rarity multiplier is available.",
-      "recommendation_rule": "Use rarity as a prior and tie-breaking context, never as a substitute for comparing Commands, Habits, Vanguard effects, Star unlocks, Habit levels, affinities, and enemy counters."
+      "recommendation_rule": "Use rarity as a prior and tie-breaking context, never as a substitute for comparing Commands, Habits, Vanguard effects, Star unlocks, Habit levels, affinities, and enemy counters.",
+      "recording_rule": "Installed-client dragon records identify Rare, Epic, or Legendary rarity separately from screenshot labels such as Juvenile, Adult, and Elder. Canonical dragon records preserve the screenshot label in rarity_label and the installed tier in rarity_tier; never substitute one dimension for the other."
     },
     "stronghold_upgrades": "Seasonal and reset at the start of each campaign. War Tactics can modify troop offense, defense, PvE damage, Siege damage, march speed, reinforcement speed, and dragon experience; Dragon Care can modify dragon stats, army size, and breed offense/defense.",
     "heirlooms": "Permanent upgrade trees. Unlocked upgrades persist, but most require the current seasonal House Level to be active. House Level and House XP reset each Reign. Mastery bonuses from purchased Heirloom ranks are always active regardless of House Level.",
@@ -110,7 +111,17 @@
     "tile_conquest": "Every tile has one or more Defenders and Durability. Defenders must be defeated before Siege damage can reduce Durability. A tile is conquered when Durability reaches zero.",
     "defender_return": "If a tile is attacked but not conquered, a timer indicates when its Defenders return.",
     "encounters": "Encounters are non-player enemies attacked using regenerating Resolve. They do not require tile connection and do not grant tile ownership. Some require multiple armies.",
-    "wild_dragons": "Wild Dragon encounters are a primary Breedmark source. Each breed drops its corresponding Breedmark and has a weakness to a specific breed; the reviewed official guide does not enumerate the weakness cycle.",
+    "wild_dragons": {
+      "purpose": "Wild Dragon encounters are a primary Breedmark source. Each Wild Dragon breed drops its corresponding Breedmark.",
+      "breed_weaknesses": {
+        "Champion": "Warrior",
+        "Sentinel": "Hunter",
+        "Hunter": "Champion",
+        "Warrior": "Sentinel"
+      },
+      "scope": "The installed Node Finder localization states which attacking dragon breed each Wild Dragon breed is weak to. This is PvE encounter guidance, not evidence of a universal PvP breed-advantage system.",
+      "source": "Game_Details/Resources/_extracted/WildDragonTable.1786045129.json joined to locale_enUS.json -> UI_NODE_FINDER_WILD_DRAGON_*_WEAKNESS"
+    },
     "points_of_interest": "Ruins, Towns, Castles, and Seats of Power can function as garrisons. Garrison access changes march, reinforcement, recall, and defeat destinations but does not alter the three-dragon combat formation rule.",
     "poi_assault_guidance": "Official guidance recommends clearing Defenders with at least one combat army before deploying a Siege army to reduce Durability.",
     "protection_after_conquest_minutes": 3
@@ -127,8 +138,6 @@
     "damage_formula": "No official public numeric formula was found for stat scaling, troop advantage, affinity, or final damage.",
     "adjacency_geometry": "The reviewed public guides do not formally define within-adjacency geometry. Matching named positions for same-lane targeting are confirmed by current in-game damage-report evidence, but preserve exact ability wording for adjacency and other scopes.",
     "effect_stacking_and_cleanse_priority": "No universal public rule was found for status stacking, conflicting control effects, or Cleanse selection priority.",
-    "recovery_formula": "No official public ordering was found for Recovery Dealt, Recovery Received, and Recovery Rate modifiers.",
-    "wild_dragon_breed_weakness_cycle": "The official guide confirms breed weaknesses exist but does not publish the mapping."
+    "recovery_formula": "No official public ordering was found for Recovery Dealt, Recovery Received, and Recovery Rate modifiers."
   }
 }
-

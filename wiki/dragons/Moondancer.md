@@ -1,6 +1,6 @@
 # Moondancer
 
-Warrior Juvenile · Positive affinities: Shieldbearers, Archers · Negative affinity: Siege
+Warrior · Age label: Juvenile · Rarity tier: Legendary · Positive affinities: Shieldbearers, Archers · Negative affinity: Siege
 
 Moondancer is a Sentinel-linked Physical attacker built around **Rising Tide**.
 Its command lets another Sentinel generate stacks whenever it deals Tactical Damage

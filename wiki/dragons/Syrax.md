@@ -1,6 +1,6 @@
 # Syrax
 
-Sentinel Adult · Spearmen and Archers affinity; Siege penalty. Tactical/fire support with recovery, Resistance, and cleansing.
+Sentinel · Age label: Adult · Rarity tier: Legendary · Spearmen and Archers affinity; Siege penalty. Tactical/fire support with recovery, Resistance, and cleansing.
 
 **Command — Blazing Fury:** buffs a Fire ally with Fire Damage Dealt and First-Strike, deals adjacent Tactical Damage, and at 6 Stars recovers the lowest-troop ally with a Slow payoff and possible Resistance.
 

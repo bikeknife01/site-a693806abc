@@ -1,6 +1,6 @@
 # Malachite
 
-Sentinel Juvenile · Positive affinities: Cavalry, Shieldbearers · Negative affinity: Siege
+Sentinel · Age label: Juvenile · Rarity tier: Legendary · Positive affinities: Cavalry, Shieldbearers · Negative affinity: Siege
 
 Malachite is a recovery and ally-buff support dragon. **Warden's Rally** provides
 recurring self Instinct/Initiative, same-lane Tactical

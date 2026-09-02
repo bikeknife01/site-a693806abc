@@ -1,6 +1,6 @@
 # Arrax
 
-Warrior Elder · Positive affinities: Shieldbearers, Archers
+Warrior · Age label: Elder · Rarity tier: Rare · Positive affinities: Shieldbearers, Archers
 
 ## Strategic summary
 

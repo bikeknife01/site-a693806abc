@@ -1,0 +1,5047 @@
+{
+  "1000": {
+    "1001": ""
+  },
+  "1": [
+    {
+      "1": 2698694485316433657,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.840412318700598e-128,
+            "_fixed64_int": 2698694485316433657
+          },
+          "2": "prog_dragonprefab_dragon_iconic_caraxes_highlod"
+        }
+      }
+    },
+    {
+      "1": 8280626505757992741,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.9",
+              "1.05",
+              "1.05",
+              "1.15",
+              "1.15",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 3.645501828929557e+245,
+            "_fixed64_int": 8280626505757992741
+          },
+          "2": "prog_dragonprefab_dragon_iconic_caraxes_scale"
+        }
+      }
+    },
+    {
+      "1": 7892017678075018223,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-40",
+              "-40",
+              "-40",
+              "-40",
+              "-40",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 3.8969906903166455e+219,
+            "_fixed64_int": 7892017678075018223
+          },
+          "2": "prog_dragonprefab_dragon_iconic_caraxes_rotation"
+        }
+      }
+    },
+    {
+      "1": 9743065392545685033,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -6.447199303504099e-274,
+            "_fixed64_int": -8703678681163866583
+          },
+          "2": "prog_dragonprefab_dragon_iconic_caraxes_lowlod"
+        }
+      }
+    },
+    {
+      "1": 8706032057377783986,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Syrax_Whelp_Pf.prefab",
+              "Chr_Dragon_Syrax_Whelp_Pf.prefab",
+              "Chr_Dragon_Syrax_Whelp_Pf.prefab",
+              "Chr_Dragon_Syrax_Whelp_Pf.prefab",
+              "Chr_Dragon_Syrax_Whelp_Pf.prefab",
+              "Chr_Dragon_Syrax_Adult_Pf.prefab",
+              "Chr_Dragon_Syrax_Adult_Pf.prefab",
+              "Chr_Dragon_Syrax_Adult_Pf.prefab",
+              "Chr_Dragon_Syrax_Adult_Pf.prefab",
+              "Chr_Dragon_Syrax_Adult_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 9.758719235631218e+273,
+            "_fixed64_int": 8706032057377783986
+          },
+          "2": "prog_dragonprefab_dragon_iconic_syrax_highlod"
+        }
+      }
+    },
+    {
+      "1": 13187920254910417280,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.97",
+              "0.97",
+              "1.15",
+              "1.15",
+              "1.15"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.1717480943084106e-43,
+            "_fixed64_int": -5258823818799134336
+          },
+          "2": "prog_dragonprefab_dragon_iconic_syrax_scale"
+        }
+      }
+    },
+    {
+      "1": 6633318419747979443,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-5",
+              "-5",
+              "-5",
+              "-5",
+              "-5",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.75118321055766e+135,
+            "_fixed64_int": 6633318419747979443
+          },
+          "2": "prog_dragonprefab_dragon_iconic_syrax_rotation"
+        }
+      }
+    },
+    {
+      "1": 5205178082986495226,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Syrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Syrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Syrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Syrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Syrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Syrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Syrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Syrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Syrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Syrax_Adult_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 9.700557386345227e+39,
+            "_fixed64_int": 5205178082986495226
+          },
+          "2": "prog_dragonprefab_dragon_iconic_syrax_lowlod"
+        }
+      }
+    },
+    {
+      "1": 15357147249609538693,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Vhagar_Whelp_Pf.prefab",
+              "Chr_Dragon_Vhagar_Whelp_Pf.prefab",
+              "Chr_Dragon_Vhagar_Whelp_Pf.prefab",
+              "Chr_Dragon_Vhagar_Whelp_Pf.prefab",
+              "Chr_Dragon_Vhagar_Whelp_Pf.prefab",
+              "Chr_Dragon_Vhagar_Adult_Pf.prefab",
+              "Chr_Dragon_Vhagar_Adult_Pf.prefab",
+              "Chr_Dragon_Vhagar_Adult_Pf.prefab",
+              "Chr_Dragon_Vhagar_Adult_Pf.prefab",
+              "Chr_Dragon_Vhagar_Adult_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.1040227138781435e+102,
+            "_fixed64_int": -3089596824100012923
+          },
+          "2": "prog_dragonprefab_dragon_iconic_vhagar_highlod"
+        }
+      }
+    },
+    {
+      "1": 3107783918792726534,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 6.095851452983077e-101,
+            "_fixed64_int": 3107783918792726534
+          },
+          "2": "prog_dragonprefab_dragon_iconic_vhagar_scale"
+        }
+      }
+    },
+    {
+      "1": 4827996375970011982,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 580146882026345.8,
+            "_fixed64_int": 4827996375970011982
+          },
+          "2": "prog_dragonprefab_dragon_iconic_vhagar_rotation"
+        }
+      }
+    },
+    {
+      "1": 7194848919467924962,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Vhagar_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vhagar_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vhagar_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vhagar_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vhagar_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vhagar_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vhagar_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vhagar_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vhagar_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vhagar_Adult_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 9.753386694460469e+172,
+            "_fixed64_int": 7194848919467924962
+          },
+          "2": "prog_dragonprefab_dragon_iconic_vhagar_lowlod"
+        }
+      }
+    },
+    {
+      "1": 11700944611572582688,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Vermithor_Whelp_Pf.prefab",
+              "Chr_Dragon_Vermithor_Whelp_Pf.prefab",
+              "Chr_Dragon_Vermithor_Whelp_Pf.prefab",
+              "Chr_Dragon_Vermithor_Whelp_Pf.prefab",
+              "Chr_Dragon_Vermithor_Whelp_Pf.prefab",
+              "Chr_Dragon_Vermithor_Adult_Pf.prefab",
+              "Chr_Dragon_Vermithor_Adult_Pf.prefab",
+              "Chr_Dragon_Vermithor_Adult_Pf.prefab",
+              "Chr_Dragon_Vermithor_Adult_Pf.prefab",
+              "Chr_Dragon_Vermithor_Adult_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -4.639957672208007e-143,
+            "_fixed64_int": -6745799462136968928
+          },
+          "2": "prog_dragonprefab_dragon_iconic_vermithor_highlod"
+        }
+      }
+    },
+    {
+      "1": 10183996761201208189,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.92",
+              "0.92",
+              "1.02",
+              "1.02",
+              "1.02"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.906163564479897e-244,
+            "_fixed64_int": -8262747312508343427
+          },
+          "2": "prog_dragonprefab_dragon_iconic_vermithor_scale"
+        }
+      }
+    },
+    {
+      "1": 10139922075633446534,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "25",
+              "25",
+              "25",
+              "25",
+              "25",
+              "10",
+              "10",
+              "10",
+              "10",
+              "10"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -2.1667743278994125e-247,
+            "_fixed64_int": -8306821998076105082
+          },
+          "2": "prog_dragonprefab_dragon_iconic_vermithor_rotation"
+        }
+      }
+    },
+    {
+      "1": 10077998424303298460,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Vermithor_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermithor_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermithor_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermithor_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermithor_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermithor_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermithor_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermithor_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermithor_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermithor_Adult_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.5408922112895798e-251,
+            "_fixed64_int": -8368745649406253156
+          },
+          "2": "prog_dragonprefab_dragon_iconic_vermithor_lowlod"
+        }
+      }
+    },
+    {
+      "1": 6649236244857643251,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Seasmoke_Whelp_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Whelp_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Whelp_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Whelp_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Whelp_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Adult_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Adult_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Adult_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Adult_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Adult_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 3.319117855676108e+136,
+            "_fixed64_int": 6649236244857643251
+          },
+          "2": "prog_dragonprefab_dragon_iconic_seasmoke_highlod"
+        }
+      }
+    },
+    {
+      "1": 5323521469505259576,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.85",
+              "1",
+              "1",
+              "1.2",
+              "1.2",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 7.740269828164666e+47,
+            "_fixed64_int": 5323521469505259576
+          },
+          "2": "prog_dragonprefab_dragon_iconic_seasmoke_scale"
+        }
+      }
+    },
+    {
+      "1": 15071482156753103862,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -9.356993001734755e+82,
+            "_fixed64_int": -3375261916956447754
+          },
+          "2": "prog_dragonprefab_dragon_iconic_seasmoke_rotation"
+        }
+      }
+    },
+    {
+      "1": 13104875208450777970,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Seasmoke_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Seasmoke_Adult_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -3.1933564161098983e-49,
+            "_fixed64_int": -5341868865258773646
+          },
+          "2": "prog_dragonprefab_dragon_iconic_seasmoke_lowlod"
+        }
+      }
+    },
+    {
+      "1": 3392583583719250509,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Meleys_Whelp_Pf.prefab",
+              "Chr_Dragon_Meleys_Whelp_Pf.prefab",
+              "Chr_Dragon_Meleys_Whelp_Pf.prefab",
+              "Chr_Dragon_Meleys_Whelp_Pf.prefab",
+              "Chr_Dragon_Meleys_Whelp_Pf.prefab",
+              "Chr_Dragon_Meleys_Adult_Pf.prefab",
+              "Chr_Dragon_Meleys_Adult_Pf.prefab",
+              "Chr_Dragon_Meleys_Adult_Pf.prefab",
+              "Chr_Dragon_Meleys_Adult_Pf.prefab",
+              "Chr_Dragon_Meleys_Adult_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 6.878159649157059e-82,
+            "_fixed64_int": 3392583583719250509
+          },
+          "2": "prog_dragonprefab_dragon_iconic_meleys_highlod"
+        }
+      }
+    },
+    {
+      "1": 11266049674587761493,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.85",
+              "1",
+              "1",
+              "1.2",
+              "1.2",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -4.0510644554298973e-172,
+            "_fixed64_int": -7180694399121790123
+          },
+          "2": "prog_dragonprefab_dragon_iconic_meleys_scale"
+        }
+      }
+    },
+    {
+      "1": 14294699745718630361,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "35",
+              "35",
+              "35",
+              "35",
+              "35",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.0759387902398681e+31,
+            "_fixed64_int": -4152044327990921255
+          },
+          "2": "prog_dragonprefab_dragon_iconic_meleys_rotation"
+        }
+      }
+    },
+    {
+      "1": 18401098248300113885,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Meleys_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Meleys_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Meleys_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Meleys_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Meleys_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Meleys_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Meleys_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Meleys_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Meleys_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Meleys_Adult_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -3.2734003471872998e+305,
+            "_fixed64_int": -45645825409437731
+          },
+          "2": "prog_dragonprefab_dragon_iconic_meleys_lowlod"
+        }
+      }
+    },
+    {
+      "1": 17708498541414559971,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Arrax_Whelp_Pf.prefab",
+              "Chr_Dragon_Arrax_Whelp_Pf.prefab",
+              "Chr_Dragon_Arrax_Whelp_Pf.prefab",
+              "Chr_Dragon_Arrax_Whelp_Pf.prefab",
+              "Chr_Dragon_Arrax_Whelp_Pf.prefab",
+              "Chr_Dragon_Arrax_Adult_Pf.prefab",
+              "Chr_Dragon_Arrax_Adult_Pf.prefab",
+              "Chr_Dragon_Arrax_Adult_Pf.prefab",
+              "Chr_Dragon_Arrax_Adult_Pf.prefab",
+              "Chr_Dragon_Arrax_Adult_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.6552572241421975e+259,
+            "_fixed64_int": -738245532294991645
+          },
+          "2": "prog_dragonprefab_dragon_iconic_arrax_highlod"
+        }
+      }
+    },
+    {
+      "1": 14947449448694030738,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -4.525423847538834e+74,
+            "_fixed64_int": -3499294625015520878
+          },
+          "2": "prog_dragonprefab_dragon_iconic_arrax_scale"
+        }
+      }
+    },
+    {
+      "1": 11048264691126372603,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-17",
+              "-17",
+              "-17",
+              "-17",
+              "-17",
+              "-19.5",
+              "-19.5",
+              "-19.5",
+              "-19.5",
+              "-19.5"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.1101315277474275e-186,
+            "_fixed64_int": -7398479382583179013
+          },
+          "2": "prog_dragonprefab_dragon_iconic_arrax_rotation"
+        }
+      }
+    },
+    {
+      "1": 6446092248027953339,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Arrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Arrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Arrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Arrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Arrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Arrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Arrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Arrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Arrax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Arrax_Adult_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 8.725981913166482e+122,
+            "_fixed64_int": 6446092248027953339
+          },
+          "2": "prog_dragonprefab_dragon_iconic_arrax_lowlod"
+        }
+      }
+    },
+    {
+      "1": 2623868715297765362,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Tessarion_Whelp_Pf.prefab",
+              "Chr_Dragon_Tessarion_Whelp_Pf.prefab",
+              "Chr_Dragon_Tessarion_Whelp_Pf.prefab",
+              "Chr_Dragon_Tessarion_Whelp_Pf.prefab",
+              "Chr_Dragon_Tessarion_Whelp_Pf.prefab",
+              "Chr_Dragon_Tessarion_Adult_Pf.prefab",
+              "Chr_Dragon_Tessarion_Adult_Pf.prefab",
+              "Chr_Dragon_Tessarion_Adult_Pf.prefab",
+              "Chr_Dragon_Tessarion_Adult_Pf.prefab",
+              "Chr_Dragon_Tessarion_Adult_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.8456685480123868e-133,
+            "_fixed64_int": 2623868715297765362
+          },
+          "2": "prog_dragonprefab_dragon_iconic_tessarion_highlod"
+        }
+      }
+    },
+    {
+      "1": 2087807031332564391,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 4.2032411915620283e-169,
+            "_fixed64_int": 2087807031332564391
+          },
+          "2": "prog_dragonprefab_dragon_iconic_tessarion_scale"
+        }
+      }
+    },
+    {
+      "1": 18275973985664600859,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "17",
+              "17",
+              "17",
+              "17",
+              "17",
+              "17",
+              "17",
+              "17",
+              "17",
+              "17"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.4144950422990555e+297,
+            "_fixed64_int": -170770088044950757
+          },
+          "2": "prog_dragonprefab_dragon_iconic_tessarion_rotation"
+        }
+      }
+    },
+    {
+      "1": 2298797329202289154,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Tessarion_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Tessarion_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Tessarion_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Tessarion_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Tessarion_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Tessarion_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Tessarion_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Tessarion_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Tessarion_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Tessarion_Adult_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 5.3533909977690796e-155,
+            "_fixed64_int": 2298797329202289154
+          },
+          "2": "prog_dragonprefab_dragon_iconic_tessarion_lowlod"
+        }
+      }
+    },
+    {
+      "1": 7559076673754069724,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Vermax_Whelp_Pf.prefab",
+              "Chr_Dragon_Vermax_Whelp_Pf.prefab",
+              "Chr_Dragon_Vermax_Whelp_Pf.prefab",
+              "Chr_Dragon_Vermax_Whelp_Pf.prefab",
+              "Chr_Dragon_Vermax_Whelp_Pf.prefab",
+              "Chr_Dragon_Vermax_Adult_Pf.prefab",
+              "Chr_Dragon_Vermax_Adult_Pf.prefab",
+              "Chr_Dragon_Vermax_Adult_Pf.prefab",
+              "Chr_Dragon_Vermax_Adult_Pf.prefab",
+              "Chr_Dragon_Vermax_Adult_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.1710592948595733e+197,
+            "_fixed64_int": 7559076673754069724
+          },
+          "2": "prog_dragonprefab_dragon_iconic_vermax_highlod"
+        }
+      }
+    },
+    {
+      "1": 5705212861024362270,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "1.06",
+              "1.06",
+              "1.25",
+              "1.25",
+              "1.25"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.560847978596776e+73,
+            "_fixed64_int": 5705212861024362270
+          },
+          "2": "prog_dragonprefab_dragon_iconic_vermax_scale"
+        }
+      }
+    },
+    {
+      "1": 7158924722363673163,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "25",
+              "25",
+              "25",
+              "25",
+              "25",
+              "12.5",
+              "12.5",
+              "12.5",
+              "12.5",
+              "12.5"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 3.8660149001615863e+170,
+            "_fixed64_int": 7158924722363673163
+          },
+          "2": "prog_dragonprefab_dragon_iconic_vermax_rotation"
+        }
+      }
+    },
+    {
+      "1": 14869569447902250179,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Vermax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermax_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Vermax_Adult_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -2.9464822742486926e+69,
+            "_fixed64_int": -3577174625807301437
+          },
+          "2": "prog_dragonprefab_dragon_iconic_vermax_lowlod"
+        }
+      }
+    },
+    {
+      "1": 7534172886408724053,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sheepstealer_Whelp_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Whelp_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Whelp_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Whelp_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Whelp_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Adult_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Adult_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Adult_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Adult_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Adult_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 4.4907660613518026e+195,
+            "_fixed64_int": 7534172886408724053
+          },
+          "2": "prog_dragonprefab_dragon_iconic_sheepstealer_highlod"
+        }
+      }
+    },
+    {
+      "1": 400280304941256316,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.9",
+              "1.05",
+              "1.05",
+              "1.15",
+              "1.15",
+              "0.93",
+              "0.93",
+              "1.1",
+              "1.1",
+              "1.1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 6.473376768802005e-282,
+            "_fixed64_int": 400280304941256316
+          },
+          "2": "prog_dragonprefab_dragon_iconic_sheepstealer_scale"
+        }
+      }
+    },
+    {
+      "1": 7764487474816308443,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "10",
+              "10",
+              "10",
+              "10",
+              "10",
+              "8",
+              "8",
+              "8",
+              "8",
+              "8"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.117835468611212e+211,
+            "_fixed64_int": 7764487474816308443
+          },
+          "2": "prog_dragonprefab_dragon_iconic_sheepstealer_rotation"
+        }
+      }
+    },
+    {
+      "1": 12080113573069819331,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sheepstealer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sheepstealer_Adult_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.0501097450444638e-117,
+            "_fixed64_int": -6366630500639732285
+          },
+          "2": "prog_dragonprefab_dragon_iconic_sheepstealer_lowlod"
+        }
+      }
+    },
+    {
+      "1": 2169040699330832217,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sunfyre_Whelp_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Whelp_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Whelp_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Whelp_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Whelp_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Adult_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Adult_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Adult_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Adult_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Adult_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.1279008274159522e-163,
+            "_fixed64_int": 2169040699330832217
+          },
+          "2": "prog_dragonprefab_dragon_iconic_sunfyre_highlod"
+        }
+      }
+    },
+    {
+      "1": 9342681240084875342,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.91",
+              "0.91",
+              "1.05",
+              "1.05",
+              "1.05"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.1139172453802695e-300,
+            "_fixed64_int": -9104062833624676274
+          },
+          "2": "prog_dragonprefab_dragon_iconic_sunfyre_scale"
+        }
+      }
+    },
+    {
+      "1": 4414836994756439057,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "14",
+              "14",
+              "14",
+              "14",
+              "14",
+              "23",
+              "23",
+              "23",
+              "23",
+              "23"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.4673972931473453e-13,
+            "_fixed64_int": 4414836994756439057
+          },
+          "2": "prog_dragonprefab_dragon_iconic_sunfyre_rotation"
+        }
+      }
+    },
+    {
+      "1": 2860934555333169558,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sunfyre_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Sunfyre_Adult_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.990829872132571e-117,
+            "_fixed64_int": 2860934555333169558
+          },
+          "2": "prog_dragonprefab_dragon_iconic_sunfyre_lowlod"
+        }
+      }
+    },
+    {
+      "1": 906285803407067756,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 4.418933511875933e-248,
+            "_fixed64_int": 906285803407067756
+          },
+          "2": "prog_dragonprefab_dragon_iconic_silverwing_highlod"
+        }
+      }
+    },
+    {
+      "1": 8356688668557546041,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.9",
+              "1.05",
+              "1.05",
+              "1.15",
+              "1.15",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 4.460892735442444e+250,
+            "_fixed64_int": 8356688668557546041
+          },
+          "2": "prog_dragonprefab_dragon_iconic_silverwing_scale"
+        }
+      }
+    },
+    {
+      "1": 8869360936473156873,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-40",
+              "-40",
+              "-40",
+              "-40",
+              "-40",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 8.290089980569832e+284,
+            "_fixed64_int": 8869360936473156873
+          },
+          "2": "prog_dragonprefab_dragon_iconic_silverwing_rotation"
+        }
+      }
+    },
+    {
+      "1": 11031018811281675218,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -7.91879889392098e-188,
+            "_fixed64_int": -7415725262427876398
+          },
+          "2": "prog_dragonprefab_dragon_iconic_silverwing_lowlod"
+        }
+      }
+    },
+    {
+      "1": 5757858094245765218,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Moondancer_Whelp_Pf.prefab",
+              "Chr_Dragon_Moondancer_Whelp_Pf.prefab",
+              "Chr_Dragon_Moondancer_Whelp_Pf.prefab",
+              "Chr_Dragon_Moondancer_Whelp_Pf.prefab",
+              "Chr_Dragon_Moondancer_Whelp_Pf.prefab",
+              "Chr_Dragon_Moondancer_Adult_Pf.prefab",
+              "Chr_Dragon_Moondancer_Adult_Pf.prefab",
+              "Chr_Dragon_Moondancer_Adult_Pf.prefab",
+              "Chr_Dragon_Moondancer_Adult_Pf.prefab",
+              "Chr_Dragon_Moondancer_Adult_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 8.692082267830417e+76,
+            "_fixed64_int": 5757858094245765218
+          },
+          "2": "prog_dragonprefab_dragon_iconic_moondancer_highlod"
+        }
+      }
+    },
+    {
+      "1": 10914227106864649608,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "1.05",
+              "1.05",
+              "1.25",
+              "1.25",
+              "1.25"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.2373842606219286e-195,
+            "_fixed64_int": -7532516966844902008
+          },
+          "2": "prog_dragonprefab_dragon_iconic_moondancer_scale"
+        }
+      }
+    },
+    {
+      "1": 8378262745278895940,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-50",
+              "-50",
+              "-50",
+              "-50",
+              "-50",
+              "-22",
+              "-22",
+              "-22",
+              "-22",
+              "-22"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.2354055477147634e+252,
+            "_fixed64_int": 8378262745278895940
+          },
+          "2": "prog_dragonprefab_dragon_iconic_moondancer_rotation"
+        }
+      }
+    },
+    {
+      "1": 12477483745765771805,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Moondancer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Moondancer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Moondancer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Moondancer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Moondancer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Moondancer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Moondancer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Moondancer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Moondancer_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Moondancer_Adult_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -3.8240581049138263e-91,
+            "_fixed64_int": -5969260327943779811
+          },
+          "2": "prog_dragonprefab_dragon_iconic_moondancer_lowlod"
+        }
+      }
+    },
+    {
+      "1": 5236216076749500971,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Champion_Whelp_Epic_Feskar_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Epic_Feskar_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Epic_Feskar_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Epic_Feskar_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Epic_Feskar_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Feskar_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Feskar_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Feskar_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Feskar_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Feskar_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.1662802355629552e+42,
+            "_fixed64_int": 5236216076749500971
+          },
+          "2": "prog_dragonprefab_dragon_generic_feskar_highlod"
+        }
+      }
+    },
+    {
+      "1": 14354535570366942679,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.1191930284798502e+35,
+            "_fixed64_int": -4092208503342608937
+          },
+          "2": "prog_dragonprefab_dragon_generic_feskar_scale"
+        }
+      }
+    },
+    {
+      "1": 2050463917522896264,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "15",
+              "15",
+              "15",
+              "15",
+              "15",
+              "15",
+              "15",
+              "15",
+              "15",
+              "15"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.3398244645768972e-171,
+            "_fixed64_int": 2050463917522896264
+          },
+          "2": "prog_dragonprefab_dragon_generic_feskar_rotation"
+        }
+      }
+    },
+    {
+      "1": 7473740798762447002,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Champion_Adult_Epic_Feskar_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Feskar_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Feskar_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Feskar_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Feskar_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Feskar_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Feskar_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Feskar_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Feskar_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Feskar_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 4.288189384422871e+191,
+            "_fixed64_int": 7473740798762447002
+          },
+          "2": "prog_dragonprefab_dragon_generic_feskar_lowlod"
+        }
+      }
+    },
+    {
+      "1": 9417846840678045392,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Champion_Whelp_Epic_Rhysarion_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Epic_Rhysarion_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Epic_Rhysarion_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Epic_Rhysarion_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Epic_Rhysarion_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Rhysarion_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Rhysarion_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Rhysarion_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Rhysarion_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Rhysarion_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.1567818870692587e-295,
+            "_fixed64_int": -9028897233031506224
+          },
+          "2": "prog_dragonprefab_dragon_generic_rhysarion_highlod"
+        }
+      }
+    },
+    {
+      "1": 13574611295846939340,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -8.112969998592499e-18,
+            "_fixed64_int": -4872132777862612276
+          },
+          "2": "prog_dragonprefab_dragon_generic_rhysarion_scale"
+        }
+      }
+    },
+    {
+      "1": 3837339652513695348,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-30",
+              "-30",
+              "-30",
+              "-30",
+              "-30",
+              "-10",
+              "-10",
+              "-10",
+              "-10",
+              "-10"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 3.5433079155330985e-52,
+            "_fixed64_int": 3837339652513695348
+          },
+          "2": "prog_dragonprefab_dragon_generic_rhysarion_rotation"
+        }
+      }
+    },
+    {
+      "1": 13778595711538894021,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Champion_Adult_Epic_Rhysarion_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Rhysarion_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Rhysarion_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Rhysarion_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Rhysarion_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Rhysarion_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Rhysarion_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Rhysarion_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Rhysarion_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Epic_Rhysarion_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -0.0003571389624961836,
+            "_fixed64_int": -4668148362170657595
+          },
+          "2": "prog_dragonprefab_dragon_generic_rhysarion_lowlod"
+        }
+      }
+    },
+    {
+      "1": 5883464732666925041,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Hunter_Whelp_Rare_Antares_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Rare_Antares_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Rare_Antares_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Rare_Antares_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Rare_Antares_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Antares_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Antares_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Antares_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Antares_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Antares_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.162737774092395e+85,
+            "_fixed64_int": 5883464732666925041
+          },
+          "2": "prog_dragonprefab_dragon_generic_antares_highlod"
+        }
+      }
+    },
+    {
+      "1": 2666462560897819718,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.9360868772435048e-130,
+            "_fixed64_int": 2666462560897819718
+          },
+          "2": "prog_dragonprefab_dragon_generic_antares_scale"
+        }
+      }
+    },
+    {
+      "1": 9855809987310504685,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-10",
+              "-10",
+              "-10",
+              "-10",
+              "-10",
+              "-10",
+              "-10",
+              "-10",
+              "-10",
+              "-10"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -2.2165533786726076e-266,
+            "_fixed64_int": -8590934086399046931
+          },
+          "2": "prog_dragonprefab_dragon_generic_antares_rotation"
+        }
+      }
+    },
+    {
+      "1": 13989496985643783937,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Hunter_Adult_Rare_Antares_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Antares_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Antares_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Antares_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Antares_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Antares_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Antares_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Antares_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Antares_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Antares_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -44404164569.04493,
+            "_fixed64_int": -4457247088065767679
+          },
+          "2": "prog_dragonprefab_dragon_generic_antares_lowlod"
+        }
+      }
+    },
+    {
+      "1": 15879101162627270133,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Hunter_Whelp_Rare_Jagadrix_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Rare_Jagadrix_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Rare_Jagadrix_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Rare_Jagadrix_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Rare_Jagadrix_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Jagadrix_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Jagadrix_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Jagadrix_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Jagadrix_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Jagadrix_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -8.692964256183132e+136,
+            "_fixed64_int": -2567642911082281483
+          },
+          "2": "prog_dragonprefab_dragon_generic_jagadrix_highlod"
+        }
+      }
+    },
+    {
+      "1": 8069339281030168879,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.721956478719385e+231,
+            "_fixed64_int": 8069339281030168879
+          },
+          "2": "prog_dragonprefab_dragon_generic_jagadrix_scale"
+        }
+      }
+    },
+    {
+      "1": 4290817531597770639,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-20",
+              "-20",
+              "-20",
+              "-20",
+              "-20",
+              "15",
+              "15",
+              "15",
+              "15",
+              "15"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 7.423750847731099e-22,
+            "_fixed64_int": 4290817531597770639
+          },
+          "2": "prog_dragonprefab_dragon_generic_jagadrix_rotation"
+        }
+      }
+    },
+    {
+      "1": 4322555054778070592,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Hunter_Adult_Rare_Jagadrix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Jagadrix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Jagadrix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Jagadrix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Jagadrix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Jagadrix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Jagadrix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Jagadrix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Jagadrix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Rare_Jagadrix_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 9.757978956617962e-20,
+            "_fixed64_int": 4322555054778070592
+          },
+          "2": "prog_dragonprefab_dragon_generic_jagadrix_lowlod"
+        }
+      }
+    },
+    {
+      "1": 419192109729024037,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Hunter_Whelp_Legendary_Crimson_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Legendary_Crimson_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Legendary_Crimson_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Legendary_Crimson_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Legendary_Crimson_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Crimson_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Crimson_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Crimson_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Crimson_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Crimson_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.1892273176877272e-280,
+            "_fixed64_int": 419192109729024037
+          },
+          "2": "prog_dragonprefab_dragon_generic_crimson_highlod"
+        }
+      }
+    },
+    {
+      "1": 16026409982630660880,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -6.304924959805063e+146,
+            "_fixed64_int": -2420334091078890736
+          },
+          "2": "prog_dragonprefab_dragon_generic_crimson_scale"
+        }
+      }
+    },
+    {
+      "1": 1380752430851407125,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "45",
+              "45",
+              "45",
+              "45",
+              "45",
+              "40",
+              "40",
+              "40",
+              "40",
+              "40"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.3041742762570246e-216,
+            "_fixed64_int": 1380752430851407125
+          },
+          "2": "prog_dragonprefab_dragon_generic_crimson_rotation"
+        }
+      }
+    },
+    {
+      "1": 13968672855785931120,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Hunter_Adult_Legendary_Crimson_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Crimson_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Crimson_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Crimson_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Crimson_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Crimson_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Crimson_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Crimson_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Crimson_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Crimson_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1791479811.0469627,
+            "_fixed64_int": -4478071217923620496
+          },
+          "2": "prog_dragonprefab_dragon_generic_crimson_lowlod"
+        }
+      }
+    },
+    {
+      "1": 12625921340138922992,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Hunter_Whelp_Legendary_Sylveren_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Legendary_Sylveren_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Legendary_Sylveren_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Legendary_Sylveren_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Legendary_Sylveren_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Sylveren_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Sylveren_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Sylveren_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Sylveren_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Sylveren_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -3.200012046817633e-81,
+            "_fixed64_int": -5820822733570628624
+          },
+          "2": "prog_dragonprefab_dragon_generic_sylveren_highlod"
+        }
+      }
+    },
+    {
+      "1": 18322676682791318693,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.9441253932751304e+300,
+            "_fixed64_int": -124067390918232923
+          },
+          "2": "prog_dragonprefab_dragon_generic_sylveren_scale"
+        }
+      }
+    },
+    {
+      "1": 11874175124975828155,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-1.5",
+              "-1.5",
+              "-1.5",
+              "-1.5",
+              "-1.5",
+              "-1.5",
+              "-1.5",
+              "-1.5",
+              "-1.5",
+              "-1.5"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.799398923262141e-131,
+            "_fixed64_int": -6572568948733723461
+          },
+          "2": "prog_dragonprefab_dragon_generic_sylveren_rotation"
+        }
+      }
+    },
+    {
+      "1": 5109297392779559407,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Hunter_Adult_Legendary_Sylveren_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Sylveren_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Sylveren_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Sylveren_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Sylveren_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Sylveren_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Sylveren_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Sylveren_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Sylveren_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Legendary_Sylveren_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 3.8732484236451706e+33,
+            "_fixed64_int": 5109297392779559407
+          },
+          "2": "prog_dragonprefab_dragon_generic_sylveren_lowlod"
+        }
+      }
+    },
+    {
+      "1": 17091255623532719999,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sentinel_Whelp_Epic_Velar_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Epic_Velar_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Epic_Velar_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Epic_Velar_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Epic_Velar_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Velar_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Velar_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Velar_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Velar_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Velar_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -9.011274986853447e+217,
+            "_fixed64_int": -1355488450176831617
+          },
+          "2": "prog_dragonprefab_dragon_generic_velar_highlod"
+        }
+      }
+    },
+    {
+      "1": 8597630130437187828,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 5.455185860776214e+266,
+            "_fixed64_int": 8597630130437187828
+          },
+          "2": "prog_dragonprefab_dragon_generic_velar_scale"
+        }
+      }
+    },
+    {
+      "1": 5059740617074769855,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-8",
+              "-8",
+              "-8",
+              "-8",
+              "-8",
+              "10",
+              "10",
+              "10",
+              "10",
+              "10"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.8863988970076746e+30,
+            "_fixed64_int": 5059740617074769855
+          },
+          "2": "prog_dragonprefab_dragon_generic_velar_rotation"
+        }
+      }
+    },
+    {
+      "1": 9493253553229239819,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sentinel_Adult_Epic_Velar_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Velar_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Velar_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Velar_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Velar_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Velar_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Velar_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Velar_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Velar_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Velar_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.2350388848960629e-290,
+            "_fixed64_int": -8953490520480311797
+          },
+          "2": "prog_dragonprefab_dragon_generic_velar_lowlod"
+        }
+      }
+    },
+    {
+      "1": 18031931708151607739,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sentinel_Whelp_Epic_Zivern_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Epic_Zivern_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Epic_Zivern_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Epic_Zivern_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Epic_Zivern_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Zivern_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Zivern_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Zivern_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Zivern_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Zivern_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -6.872923070294856e+280,
+            "_fixed64_int": -414812365557943877
+          },
+          "2": "prog_dragonprefab_dragon_generic_zivern_highlod"
+        }
+      }
+    },
+    {
+      "1": 3531803651301216622,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.3786664960891203e-72,
+            "_fixed64_int": 3531803651301216622
+          },
+          "2": "prog_dragonprefab_dragon_generic_zivern_scale"
+        }
+      }
+    },
+    {
+      "1": 10757269179967832451,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-40",
+              "-40",
+              "-40",
+              "-40",
+              "-40",
+              "-10",
+              "-10",
+              "-10",
+              "-10",
+              "-10"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -3.970893435835188e-206,
+            "_fixed64_int": -7689474893741719165
+          },
+          "2": "prog_dragonprefab_dragon_generic_zivern_rotation"
+        }
+      }
+    },
+    {
+      "1": 13159599041316603829,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sentinel_Adult_Epic_Zivern_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Zivern_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Zivern_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Zivern_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Zivern_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Zivern_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Zivern_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Zivern_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Zivern_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Zivern_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.426479939212306e-45,
+            "_fixed64_int": -5287145032392947787
+          },
+          "2": "prog_dragonprefab_dragon_generic_zivern_lowlod"
+        }
+      }
+    },
+    {
+      "1": 17167075741122375765,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Warrior_Whelp_Epic_Daemoros_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Epic_Daemoros_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Epic_Daemoros_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Epic_Daemoros_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Epic_Daemoros_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Daemoros_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Daemoros_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Daemoros_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Daemoros_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Daemoros_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.0737510331357141e+223,
+            "_fixed64_int": -1279668332587175851
+          },
+          "2": "prog_dragonprefab_dragon_generic_daemoros_highlod"
+        }
+      }
+    },
+    {
+      "1": 8727983488179219069,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.7743423044720477e+275,
+            "_fixed64_int": 8727983488179219069
+          },
+          "2": "prog_dragonprefab_dragon_generic_daemoros_scale"
+        }
+      }
+    },
+    {
+      "1": 7730344434530402965,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-65",
+              "-65",
+              "-65",
+              "-65",
+              "-65",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 6.087275422034665e+208,
+            "_fixed64_int": 7730344434530402965
+          },
+          "2": "prog_dragonprefab_dragon_generic_daemoros_rotation"
+        }
+      }
+    },
+    {
+      "1": 10027347027172532829,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Warrior_Adult_Epic_Daemoros_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Daemoros_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Daemoros_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Daemoros_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Daemoros_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Daemoros_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Daemoros_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Daemoros_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Daemoros_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Daemoros_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -6.471632650143105e-255,
+            "_fixed64_int": -8419397046537018787
+          },
+          "2": "prog_dragonprefab_dragon_generic_daemoros_lowlod"
+        }
+      }
+    },
+    {
+      "1": 3620190128278240675,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Warrior_Whelp_Epic_Vaeldra_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Epic_Vaeldra_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Epic_Vaeldra_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Epic_Vaeldra_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Epic_Vaeldra_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Vaeldra_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Vaeldra_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Vaeldra_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Vaeldra_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Vaeldra_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.0941782992689987e-66,
+            "_fixed64_int": 3620190128278240675
+          },
+          "2": "prog_dragonprefab_dragon_generic_vaeldra_highlod"
+        }
+      }
+    },
+    {
+      "1": 12532941082542872358,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.8820267030352777e-87,
+            "_fixed64_int": -5913802991166679258
+          },
+          "2": "prog_dragonprefab_dragon_generic_vaeldra_scale"
+        }
+      }
+    },
+    {
+      "1": 4064252178105471849,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "30",
+              "30",
+              "30",
+              "30",
+              "30"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 5.436498507820086e-37,
+            "_fixed64_int": 4064252178105471849
+          },
+          "2": "prog_dragonprefab_dragon_generic_vaeldra_rotation"
+        }
+      }
+    },
+    {
+      "1": 17508598916550824343,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Warrior_Adult_Epic_Vaeldra_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Vaeldra_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Vaeldra_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Vaeldra_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Vaeldra_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Vaeldra_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Vaeldra_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Vaeldra_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Vaeldra_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Epic_Vaeldra_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -7.384906075489648e+245,
+            "_fixed64_int": -938145157158727273
+          },
+          "2": "prog_dragonprefab_dragon_generic_vaeldra_lowlod"
+        }
+      }
+    },
+    {
+      "1": 6998500640079756007,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Champion_Whelp_Legendary_Dreadfire_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Legendary_Dreadfire_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Legendary_Dreadfire_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Legendary_Dreadfire_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Legendary_Dreadfire_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Dreadfire_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Dreadfire_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Dreadfire_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Dreadfire_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Dreadfire_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 6.956831005004894e+159,
+            "_fixed64_int": 6998500640079756007
+          },
+          "2": "prog_dragonprefab_dragon_generic_dreadfire_highlod"
+        }
+      }
+    },
+    {
+      "1": 3139474257544410513,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 8.070926126599079e-99,
+            "_fixed64_int": 3139474257544410513
+          },
+          "2": "prog_dragonprefab_dragon_generic_dreadfire_scale"
+        }
+      }
+    },
+    {
+      "1": 3026597325212977817,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "10",
+              "10",
+              "10",
+              "10",
+              "10",
+              "7",
+              "7",
+              "7",
+              "7",
+              "7"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.266422436063633e-106,
+            "_fixed64_int": 3026597325212977817
+          },
+          "2": "prog_dragonprefab_dragon_generic_dreadfire_rotation"
+        }
+      }
+    },
+    {
+      "1": 3207587618605687905,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Champion_Adult_Legendary_Dreadfire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Dreadfire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Dreadfire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Dreadfire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Dreadfire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Dreadfire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Dreadfire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Dreadfire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Dreadfire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Dreadfire_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.942401164989664e-94,
+            "_fixed64_int": 3207587618605687905
+          },
+          "2": "prog_dragonprefab_dragon_generic_dreadfire_lowlod"
+        }
+      }
+    },
+    {
+      "1": 6064820535844807835,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Champion_Whelp_Legendary_Kalspire_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Legendary_Kalspire_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Legendary_Kalspire_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Legendary_Kalspire_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Legendary_Kalspire_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Kalspire_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Kalspire_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Kalspire_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Kalspire_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Kalspire_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.8377524579846235e+97,
+            "_fixed64_int": 6064820535844807835
+          },
+          "2": "prog_dragonprefab_dragon_generic_kalspire_highlod"
+        }
+      }
+    },
+    {
+      "1": 18360992008213336866,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -6.7178154820771626e+302,
+            "_fixed64_int": -85752065496214750
+          },
+          "2": "prog_dragonprefab_dragon_generic_kalspire_scale"
+        }
+      }
+    },
+    {
+      "1": 307250149235351724,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-50",
+              "-50",
+              "-50",
+              "-50",
+              "-50",
+              "-16",
+              "-16",
+              "-16",
+              "-16",
+              "-16"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 4.016660310593251e-288,
+            "_fixed64_int": 307250149235351724
+          },
+          "2": "prog_dragonprefab_dragon_generic_kalspire_rotation"
+        }
+      }
+    },
+    {
+      "1": 4714993668262125563,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Champion_Adult_Legendary_Kalspire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Kalspire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Kalspire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Kalspire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Kalspire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Kalspire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Kalspire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Kalspire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Kalspire_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Legendary_Kalspire_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 16264724.84312438,
+            "_fixed64_int": 4714993668262125563
+          },
+          "2": "prog_dragonprefab_dragon_generic_kalspire_lowlod"
+        }
+      }
+    },
+    {
+      "1": 12290378596571864400,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Champion_Whelp_Rare_Bevlorin_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Rare_Bevlorin_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Rare_Bevlorin_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Rare_Bevlorin_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Rare_Bevlorin_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Bevlorin_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Bevlorin_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Bevlorin_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Bevlorin_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Bevlorin_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.1298830574283575e-103,
+            "_fixed64_int": -6156365477137687216
+          },
+          "2": "prog_dragonprefab_dragon_generic_bevlorin_highlod"
+        }
+      }
+    },
+    {
+      "1": 16155980248059505993,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -2.8923352377125444e+155,
+            "_fixed64_int": -2290763825650045623
+          },
+          "2": "prog_dragonprefab_dragon_generic_bevlorin_scale"
+        }
+      }
+    },
+    {
+      "1": 17597248146165087594,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-55",
+              "-55",
+              "-55",
+              "-55",
+              "-55",
+              "-10",
+              "-10",
+              "-10",
+              "-10",
+              "-10"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -6.296033378971425e+251,
+            "_fixed64_int": -849495927544464022
+          },
+          "2": "prog_dragonprefab_dragon_generic_bevlorin_rotation"
+        }
+      }
+    },
+    {
+      "1": 16213227959868818197,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Champion_Adult_Rare_Bevlorin_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Bevlorin_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Bevlorin_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Bevlorin_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Bevlorin_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Bevlorin_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Bevlorin_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Bevlorin_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Bevlorin_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Bevlorin_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.8624745825229575e+159,
+            "_fixed64_int": -2233516113840733419
+          },
+          "2": "prog_dragonprefab_dragon_generic_bevlorin_lowlod"
+        }
+      }
+    },
+    {
+      "1": 4935382141443904801,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Champion_Whelp_Rare_Solstryker_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Rare_Solstryker_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Rare_Solstryker_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Rare_Solstryker_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Rare_Solstryker_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Solstryker_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Solstryker_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Solstryker_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Solstryker_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Solstryker_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 8.854332087292057e+21,
+            "_fixed64_int": 4935382141443904801
+          },
+          "2": "prog_dragonprefab_dragon_generic_solstryker_highlod"
+        }
+      }
+    },
+    {
+      "1": 8384651694816108033,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 3.2381170286480633e+252,
+            "_fixed64_int": 8384651694816108033
+          },
+          "2": "prog_dragonprefab_dragon_generic_solstryker_scale"
+        }
+      }
+    },
+    {
+      "1": 11578729512232837984,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-15",
+              "-15",
+              "-15",
+              "-15",
+              "-15",
+              "8",
+              "8",
+              "8",
+              "8",
+              "8"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -3.0464132094868092e-151,
+            "_fixed64_int": -6868014561476713632
+          },
+          "2": "prog_dragonprefab_dragon_generic_solstryker_rotation"
+        }
+      }
+    },
+    {
+      "1": 11912922462079747010,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Champion_Adult_Rare_Solstryker_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Solstryker_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Solstryker_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Solstryker_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Solstryker_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Solstryker_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Solstryker_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Solstryker_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Solstryker_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Solstryker_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -6.925666465492196e-129,
+            "_fixed64_int": -6533821611629804606
+          },
+          "2": "prog_dragonprefab_dragon_generic_solstryker_lowlod"
+        }
+      }
+    },
+    {
+      "1": 10912092461614374336,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Hunter_Whelp_Epic_Shadowsong_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Epic_Shadowsong_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Epic_Shadowsong_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Epic_Shadowsong_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Epic_Shadowsong_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Shadowsong_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Shadowsong_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Shadowsong_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Shadowsong_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Shadowsong_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -8.43872089672651e-196,
+            "_fixed64_int": -7534651612095177280
+          },
+          "2": "prog_dragonprefab_dragon_generic_shadowsong_highlod"
+        }
+      }
+    },
+    {
+      "1": 4590343037785111591,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 0.07880664346019782,
+            "_fixed64_int": 4590343037785111591
+          },
+          "2": "prog_dragonprefab_dragon_generic_shadowsong_scale"
+        }
+      }
+    },
+    {
+      "1": 9045296791805776098,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "32",
+              "32",
+              "32",
+              "32",
+              "32",
+              "46",
+              "46",
+              "46",
+              "46",
+              "46"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 4.772060655416898e+296,
+            "_fixed64_int": 9045296791805776098
+          },
+          "2": "prog_dragonprefab_dragon_generic_shadowsong_rotation"
+        }
+      }
+    },
+    {
+      "1": 16039741092833640454,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Hunter_Adult_Epic_Shadowsong_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Shadowsong_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Shadowsong_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Shadowsong_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Shadowsong_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Shadowsong_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Shadowsong_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Shadowsong_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Shadowsong_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Shadowsong_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -4.916396324962602e+147,
+            "_fixed64_int": -2407002980875911162
+          },
+          "2": "prog_dragonprefab_dragon_generic_shadowsong_lowlod"
+        }
+      }
+    },
+    {
+      "1": 8863621708417290437,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Hunter_Whelp_Epic_Tashix_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Epic_Tashix_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Epic_Tashix_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Epic_Tashix_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Epic_Tashix_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tashix_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tashix_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tashix_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tashix_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tashix_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 3.329075313672214e+284,
+            "_fixed64_int": 8863621708417290437
+          },
+          "2": "prog_dragonprefab_dragon_generic_tashix_highlod"
+        }
+      }
+    },
+    {
+      "1": 5142944986396073918,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 6.523809981630846e+35,
+            "_fixed64_int": 5142944986396073918
+          },
+          "2": "prog_dragonprefab_dragon_generic_tashix_scale"
+        }
+      }
+    },
+    {
+      "1": 16311425271054294973,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "20",
+              "20",
+              "20",
+              "20",
+              "20",
+              "10",
+              "10",
+              "10",
+              "10",
+              "10"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -6.869717544200278e+165,
+            "_fixed64_int": -2135318802655256643
+          },
+          "2": "prog_dragonprefab_dragon_generic_tashix_rotation"
+        }
+      }
+    },
+    {
+      "1": 11433225376638297516,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Hunter_Adult_Epic_Tashix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tashix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tashix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tashix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tashix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tashix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tashix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tashix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tashix_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tashix_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -5.9961558775828575e-161,
+            "_fixed64_int": -7013518697071254100
+          },
+          "2": "prog_dragonprefab_dragon_generic_tashix_lowlod"
+        }
+      }
+    },
+    {
+      "1": 13066451674838459423,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sentinel_Whelp_Legendary_Dewdrop_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Legendary_Dewdrop_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Legendary_Dewdrop_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Legendary_Dewdrop_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Legendary_Dewdrop_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Dewdrop_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Dewdrop_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Dewdrop_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Dewdrop_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Dewdrop_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -8.921019819890472e-52,
+            "_fixed64_int": -5380292398871092193
+          },
+          "2": "prog_dragonprefab_dragon_generic_dewdrop_highlod"
+        }
+      }
+    },
+    {
+      "1": 15962490139799759909,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -3.3773824700940683e+142,
+            "_fixed64_int": -2484253933909791707
+          },
+          "2": "prog_dragonprefab_dragon_generic_dewdrop_scale"
+        }
+      }
+    },
+    {
+      "1": 8518807239819594513,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 3.0606885044169284e+261,
+            "_fixed64_int": 8518807239819594513
+          },
+          "2": "prog_dragonprefab_dragon_generic_dewdrop_rotation"
+        }
+      }
+    },
+    {
+      "1": 9770909875284888866,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sentinel_Adult_Legendary_Dewdrop_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Dewdrop_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Dewdrop_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Dewdrop_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Dewdrop_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Dewdrop_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Dewdrop_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Dewdrop_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Dewdrop_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Dewdrop_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -4.6666174203297307e-272,
+            "_fixed64_int": -8675834198424662750
+          },
+          "2": "prog_dragonprefab_dragon_generic_dewdrop_lowlod"
+        }
+      }
+    },
+    {
+      "1": 6838157161256961153,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sentinel_Whelp_Legendary_Malachite_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Legendary_Malachite_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Legendary_Malachite_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Legendary_Malachite_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Legendary_Malachite_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Malachite_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Malachite_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Malachite_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Malachite_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Malachite_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.4074610757596998e+149,
+            "_fixed64_int": 6838157161256961153
+          },
+          "2": "prog_dragonprefab_dragon_generic_malachite_highlod"
+        }
+      }
+    },
+    {
+      "1": 4466271836360689126,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 3.985048719922307e-10,
+            "_fixed64_int": 4466271836360689126
+          },
+          "2": "prog_dragonprefab_dragon_generic_malachite_scale"
+        }
+      }
+    },
+    {
+      "1": 17315401629948627102,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "10",
+              "10",
+              "10",
+              "10",
+              "10",
+              "30",
+              "30",
+              "30",
+              "30",
+              "30"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -8.900345471998737e+232,
+            "_fixed64_int": -1131342443760924514
+          },
+          "2": "prog_dragonprefab_dragon_generic_malachite_rotation"
+        }
+      }
+    },
+    {
+      "1": 10576017627289583631,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sentinel_Adult_Legendary_Malachite_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Malachite_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Malachite_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Malachite_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Malachite_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Malachite_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Malachite_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Malachite_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Malachite_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Legendary_Malachite_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -3.0541621992244055e-218,
+            "_fixed64_int": -7870726446419967985
+          },
+          "2": "prog_dragonprefab_dragon_generic_malachite_lowlod"
+        }
+      }
+    },
+    {
+      "1": 15918897629137340865,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sentinel_Whelp_Rare_Shimmer_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Rare_Shimmer_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Rare_Shimmer_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Rare_Shimmer_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Rare_Shimmer_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Shimmer_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Shimmer_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Shimmer_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Shimmer_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Shimmer_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -4.061604891813955e+139,
+            "_fixed64_int": -2527846444572210751
+          },
+          "2": "prog_dragonprefab_dragon_generic_shimmer_highlod"
+        }
+      }
+    },
+    {
+      "1": 586045050702040017,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.708352723590413e-269,
+            "_fixed64_int": 586045050702040017
+          },
+          "2": "prog_dragonprefab_dragon_generic_shimmer_scale"
+        }
+      }
+    },
+    {
+      "1": 5853860276053554444,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-58",
+              "-58",
+              "-58",
+              "-58",
+              "-58",
+              "10",
+              "10",
+              "10",
+              "10",
+              "10"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.2074695754327848e+83,
+            "_fixed64_int": 5853860276053554444
+          },
+          "2": "prog_dragonprefab_dragon_generic_shimmer_rotation"
+        }
+      }
+    },
+    {
+      "1": 10183661293837320768,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sentinel_Adult_Rare_Shimmer_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Shimmer_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Shimmer_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Shimmer_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Shimmer_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Shimmer_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Shimmer_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Shimmer_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Shimmer_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Shimmer_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.7970712856955987e-244,
+            "_fixed64_int": -8263082779872230848
+          },
+          "2": "prog_dragonprefab_dragon_generic_shimmer_lowlod"
+        }
+      }
+    },
+    {
+      "1": 17058422177006013377,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sentinel_Whelp_Rare_Vesper_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Rare_Vesper_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Rare_Vesper_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Rare_Vesper_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Rare_Vesper_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Vesper_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Vesper_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Vesper_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Vesper_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Vesper_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -5.96591197896154e+215,
+            "_fixed64_int": -1388321896703538239
+          },
+          "2": "prog_dragonprefab_dragon_generic_vesper_highlod"
+        }
+      }
+    },
+    {
+      "1": 3577441225211353174,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.5665872683986432e-69,
+            "_fixed64_int": 3577441225211353174
+          },
+          "2": "prog_dragonprefab_dragon_generic_vesper_scale"
+        }
+      }
+    },
+    {
+      "1": 5840401388386953678,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-20",
+              "-20",
+              "-20",
+              "-20",
+              "-20",
+              "-6",
+              "-6",
+              "-6",
+              "-6",
+              "-6"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.7768310143109313e+82,
+            "_fixed64_int": 5840401388386953678
+          },
+          "2": "prog_dragonprefab_dragon_generic_vesper_rotation"
+        }
+      }
+    },
+    {
+      "1": 10007690125443229472,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sentinel_Adult_Rare_Vesper_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Vesper_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Vesper_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Vesper_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Vesper_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Vesper_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Vesper_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Vesper_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Vesper_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Vesper_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -3.07318689384162e-256,
+            "_fixed64_int": -8439053948266322144
+          },
+          "2": "prog_dragonprefab_dragon_generic_vesper_lowlod"
+        }
+      }
+    },
+    {
+      "1": 4083309918888966281,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Warrior_Whelp_Legendary_Belmorghul_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Legendary_Belmorghul_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Legendary_Belmorghul_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Legendary_Belmorghul_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Legendary_Belmorghul_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Belmorghul_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Belmorghul_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Belmorghul_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Belmorghul_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Belmorghul_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.0092701817776043e-35,
+            "_fixed64_int": 4083309918888966281
+          },
+          "2": "prog_dragonprefab_dragon_generic_belmorghul_highlod"
+        }
+      }
+    },
+    {
+      "1": 3463568023623296157,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 3.684512278624885e-77,
+            "_fixed64_int": 3463568023623296157
+          },
+          "2": "prog_dragonprefab_dragon_generic_belmorghul_scale"
+        }
+      }
+    },
+    {
+      "1": 1521928178323373849,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 6.029969424705308e-207,
+            "_fixed64_int": 1521928178323373849
+          },
+          "2": "prog_dragonprefab_dragon_generic_belmorghul_rotation"
+        }
+      }
+    },
+    {
+      "1": 8821164756607925859,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Warrior_Adult_Legendary_Belmorghul_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Belmorghul_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Belmorghul_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Belmorghul_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Belmorghul_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Belmorghul_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Belmorghul_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Belmorghul_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Belmorghul_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Belmorghul_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 4.914252120366829e+281,
+            "_fixed64_int": 8821164756607925859
+          },
+          "2": "prog_dragonprefab_dragon_generic_belmorghul_lowlod"
+        }
+      }
+    },
+    {
+      "1": 891704408302256446,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Warrior_Whelp_Legendary_Venator_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Legendary_Venator_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Legendary_Venator_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Legendary_Venator_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Legendary_Venator_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Venator_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Venator_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Venator_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Venator_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Venator_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 4.4653173757127346e-249,
+            "_fixed64_int": 891704408302256446
+          },
+          "2": "prog_dragonprefab_dragon_generic_venator_highlod"
+        }
+      }
+    },
+    {
+      "1": 9798746356171878858,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -3.3291342482652136e-270,
+            "_fixed64_int": -8647997717537672758
+          },
+          "2": "prog_dragonprefab_dragon_generic_venator_scale"
+        }
+      }
+    },
+    {
+      "1": 14687604974080215860,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-70",
+              "-70",
+              "-70",
+              "-70",
+              "-70",
+              "8",
+              "8",
+              "8",
+              "8",
+              "8"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -2.045462279134418e+57,
+            "_fixed64_int": -3759139099629335756
+          },
+          "2": "prog_dragonprefab_dragon_generic_venator_rotation"
+        }
+      }
+    },
+    {
+      "1": 6136225468544958930,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Warrior_Adult_Legendary_Venator_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Venator_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Venator_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Venator_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Venator_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Venator_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Venator_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Venator_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Venator_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Legendary_Venator_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.6974576264734431e+102,
+            "_fixed64_int": 6136225468544958930
+          },
+          "2": "prog_dragonprefab_dragon_generic_venator_lowlod"
+        }
+      }
+    },
+    {
+      "1": 14126690923405580937,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Warrior_Whelp_Rare_Shadowrend_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Rare_Shadowrend_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Rare_Shadowrend_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Rare_Shadowrend_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Rare_Shadowrend_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Shadowrend_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Shadowrend_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Shadowrend_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Shadowrend_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Shadowrend_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -6.47667023796304e+19,
+            "_fixed64_int": -4320053150303970679
+          },
+          "2": "prog_dragonprefab_dragon_generic_shadowrend_highlod"
+        }
+      }
+    },
+    {
+      "1": 4165010409259046946,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.8684415599072935e-30,
+            "_fixed64_int": 4165010409259046946
+          },
+          "2": "prog_dragonprefab_dragon_generic_shadowrend_scale"
+        }
+      }
+    },
+    {
+      "1": 1576927682944129211,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "20",
+              "20",
+              "20",
+              "20",
+              "20",
+              "15",
+              "15",
+              "15",
+              "15",
+              "15"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.929964549717257e-203,
+            "_fixed64_int": 1576927682944129211
+          },
+          "2": "prog_dragonprefab_dragon_generic_shadowrend_rotation"
+        }
+      }
+    },
+    {
+      "1": 4731039708844800240,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Warrior_Adult_Rare_Shadowrend_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Shadowrend_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Shadowrend_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Shadowrend_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Shadowrend_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Shadowrend_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Shadowrend_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Shadowrend_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Shadowrend_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Shadowrend_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 201573959.98090315,
+            "_fixed64_int": 4731039708844800240
+          },
+          "2": "prog_dragonprefab_dragon_generic_shadowrend_lowlod"
+        }
+      }
+    },
+    {
+      "1": 9974087945236931914,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Warrior_Whelp_Rare_Thunderstrike_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Rare_Thunderstrike_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Rare_Thunderstrike_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Rare_Thunderstrike_Pf.prefab",
+              "Chr_Dragon_Warrior_Whelp_Rare_Thunderstrike_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Thunderstrike_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Thunderstrike_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Thunderstrike_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Thunderstrike_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Thunderstrike_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.7611695533002513e-258,
+            "_fixed64_int": -8472656128472619702
+          },
+          "2": "prog_dragonprefab_dragon_generic_thunderstrike_highlod"
+        }
+      }
+    },
+    {
+      "1": 8963472202996364670,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.6099496636375963e+291,
+            "_fixed64_int": 8963472202996364670
+          },
+          "2": "prog_dragonprefab_dragon_generic_thunderstrike_scale"
+        }
+      }
+    },
+    {
+      "1": 4772066381295616,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-45",
+              "-45",
+              "-45",
+              "-45",
+              "-45",
+              "6",
+              "6",
+              "6",
+              "6",
+              "6"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.357714058672119e-308,
+            "_fixed64_int": 4772066381295616
+          },
+          "2": "prog_dragonprefab_dragon_generic_thunderstrike_rotation"
+        }
+      }
+    },
+    {
+      "1": 18320452748203137612,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Warrior_Adult_Rare_Thunderstrike_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Thunderstrike_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Thunderstrike_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Thunderstrike_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Thunderstrike_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Thunderstrike_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Thunderstrike_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Thunderstrike_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Thunderstrike_LOD_Pf.prefab",
+              "Chr_Dragon_Warrior_Adult_Rare_Thunderstrike_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.311052742531598e+300,
+            "_fixed64_int": -126291325506414004
+          },
+          "2": "prog_dragonprefab_dragon_generic_thunderstrike_lowlod"
+        }
+      }
+    },
+    {
+      "1": 9363818130284066878,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Hunter_Whelp_Epic_Smoketail_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Epic_Smoketail_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Epic_Smoketail_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Epic_Smoketail_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Epic_Smoketail_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Smoketail_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Smoketail_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Smoketail_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Smoketail_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Smoketail_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -2.83185887757055e-299,
+            "_fixed64_int": -9082925943425484738
+          },
+          "2": "prog_dragonprefab_dragon_generic_smoketail_highlod"
+        }
+      }
+    },
+    {
+      "1": 10575878786964621231,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -2.9842957001383095e-218,
+            "_fixed64_int": -7870865286744930385
+          },
+          "2": "prog_dragonprefab_dragon_generic_smoketail_scale"
+        }
+      }
+    },
+    {
+      "1": 14652874706517932813,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -9.757553736012597e+54,
+            "_fixed64_int": -3793869367191618803
+          },
+          "2": "prog_dragonprefab_dragon_generic_smoketail_rotation"
+        }
+      }
+    },
+    {
+      "1": 18040528188254151827,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Hunter_Adult_Epic_Smoketail_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Smoketail_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Smoketail_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Smoketail_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Smoketail_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Smoketail_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Smoketail_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Smoketail_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Smoketail_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Smoketail_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -2.6167347298645848e+281,
+            "_fixed64_int": -406215885455399789
+          },
+          "2": "prog_dragonprefab_dragon_generic_smoketail_lowlod"
+        }
+      }
+    },
+    {
+      "1": 10639799943125957169,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Hunter_Whelp_Epic_Tairax_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Epic_Tairax_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Epic_Tairax_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Epic_Tairax_Pf.prefab",
+              "Chr_Dragon_Hunter_Whelp_Epic_Tairax_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tairax_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tairax_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tairax_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tairax_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tairax_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -5.607384133279675e-214,
+            "_fixed64_int": -7806944130583594447
+          },
+          "2": "prog_dragonprefab_dragon_generic_tairax_highlod"
+        }
+      }
+    },
+    {
+      "1": 17159627038055571786,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -3.4776853005006335e+222,
+            "_fixed64_int": -1287117035653979830
+          },
+          "2": "prog_dragonprefab_dragon_generic_tairax_scale"
+        }
+      }
+    },
+    {
+      "1": 16765282965617639890,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-9",
+              "-9",
+              "-9",
+              "-9",
+              "-9",
+              "-9",
+              "-9",
+              "-9",
+              "-9",
+              "-9"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.5329871086208989e+196,
+            "_fixed64_int": -1681461108091911726
+          },
+          "2": "prog_dragonprefab_dragon_generic_tairax_rotation"
+        }
+      }
+    },
+    {
+      "1": 10672614853572484311,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Hunter_Adult_Epic_Tairax_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tairax_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tairax_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tairax_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tairax_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tairax_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tairax_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tairax_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tairax_LOD_Pf.prefab",
+              "Chr_Dragon_Hunter_Adult_Epic_Tairax_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -8.538508852947653e-212,
+            "_fixed64_int": -7774129220137067305
+          },
+          "2": "prog_dragonprefab_dragon_generic_tairax_lowlod"
+        }
+      }
+    },
+    {
+      "1": 12946132577216364593,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -8.059518764242457e-60,
+            "_fixed64_int": -5500611496493187023
+          },
+          "2": "prog_dragonprefab_dragon_generic_thrandar_highlod"
+        }
+      }
+    },
+    {
+      "1": 925686721851294530,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 8.831579648861651e-247,
+            "_fixed64_int": 925686721851294530
+          },
+          "2": "prog_dragonprefab_dragon_generic_thrandar_scale"
+        }
+      }
+    },
+    {
+      "1": 16756277694011746216,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -3.8334676226651574e+195,
+            "_fixed64_int": -1690466379697805400
+          },
+          "2": "prog_dragonprefab_dragon_generic_thrandar_rotation"
+        }
+      }
+    },
+    {
+      "1": 8199465473967873934,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.3728372864851725e+240,
+            "_fixed64_int": 8199465473967873934
+          },
+          "2": "prog_dragonprefab_dragon_generic_thrandar_lowlod"
+        }
+      }
+    },
+    {
+      "1": 2238678098717152322,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Champion_Whelp_Rare_Arulix_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Rare_Arulix_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Rare_Arulix_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Rare_Arulix_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Rare_Arulix_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Arulix_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Arulix_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Arulix_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Arulix_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Arulix_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 4.945493469712367e-159,
+            "_fixed64_int": 2238678098717152322
+          },
+          "2": "prog_dragonprefab_dragon_generic_arulix_highlod"
+        }
+      }
+    },
+    {
+      "1": 3104222864272061832,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 3.645956891457983e-101,
+            "_fixed64_int": 3104222864272061832
+          },
+          "2": "prog_dragonprefab_dragon_generic_arulix_scale"
+        }
+      }
+    },
+    {
+      "1": 16551169664675975434,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "5",
+              "5",
+              "5",
+              "5",
+              "5"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -7.289399160784169e+181,
+            "_fixed64_int": -1895574409033576182
+          },
+          "2": "prog_dragonprefab_dragon_generic_arulix_rotation"
+        }
+      }
+    },
+    {
+      "1": 12507778394153960893,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Champion_Adult_Rare_Arulix_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Arulix_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Arulix_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Arulix_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Arulix_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Arulix_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Arulix_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Arulix_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Arulix_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Arulix_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -4.036333683831824e-89,
+            "_fixed64_int": -5938965679555590723
+          },
+          "2": "prog_dragonprefab_dragon_generic_arulix_lowlod"
+        }
+      }
+    },
+    {
+      "1": 14956267143744299337,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sentinel_Whelp_Rare_Dawnseeker_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Rare_Dawnseeker_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Rare_Dawnseeker_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Rare_Dawnseeker_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Rare_Dawnseeker_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Dawnseeker_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Dawnseeker_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Dawnseeker_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Dawnseeker_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Dawnseeker_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.7716452772100842e+75,
+            "_fixed64_int": -3490476929965252279
+          },
+          "2": "prog_dragonprefab_dragon_generic_dawnseeker_highlod"
+        }
+      }
+    },
+    {
+      "1": 15775524206704560446,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -1.0370006264310347e+130,
+            "_fixed64_int": -2671219867004991170
+          },
+          "2": "prog_dragonprefab_dragon_generic_dawnseeker_scale"
+        }
+      }
+    },
+    {
+      "1": 8450807342952309194,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-40",
+              "-40",
+              "-40",
+              "-40",
+              "-40",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 8.745823251559686e+256,
+            "_fixed64_int": 8450807342952309194
+          },
+          "2": "prog_dragonprefab_dragon_generic_dawnseeker_rotation"
+        }
+      }
+    },
+    {
+      "1": 6875424738582589999,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sentinel_Adult_Rare_Dawnseeker_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Dawnseeker_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Dawnseeker_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Dawnseeker_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Dawnseeker_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Dawnseeker_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Dawnseeker_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Dawnseeker_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Dawnseeker_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Rare_Dawnseeker_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 4.323415152167888e+151,
+            "_fixed64_int": 6875424738582589999
+          },
+          "2": "prog_dragonprefab_dragon_generic_dawnseeker_lowlod"
+        }
+      }
+    },
+    {
+      "1": 17299538615387178486,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Champion_Whelp_Rare_Nyrena_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Rare_Nyrena_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Rare_Nyrena_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Rare_Nyrena_Pf.prefab",
+              "Chr_Dragon_Champion_Whelp_Rare_Nyrena_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Nyrena_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Nyrena_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Nyrena_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Nyrena_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Nyrena_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -7.881930906238469e+231,
+            "_fixed64_int": -1147205458322373130
+          },
+          "2": "prog_dragonprefab_dragon_generic_nyrena_highlod"
+        }
+      }
+    },
+    {
+      "1": 6206965776331449076,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 8.977770712608698e+106,
+            "_fixed64_int": 6206965776331449076
+          },
+          "2": "prog_dragonprefab_dragon_generic_nyrena_scale"
+        }
+      }
+    },
+    {
+      "1": 5670628470174521281,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-30",
+              "-30",
+              "-30",
+              "-30",
+              "-30",
+              "-20",
+              "-20",
+              "-20",
+              "-20",
+              "-20"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 1.2505504299330644e+71,
+            "_fixed64_int": 5670628470174521281
+          },
+          "2": "prog_dragonprefab_dragon_generic_nyrena_rotation"
+        }
+      }
+    },
+    {
+      "1": 9484506831663157057,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Champion_Adult_Rare_Nyrena_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Nyrena_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Nyrena_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Nyrena_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Nyrena_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Nyrena_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Nyrena_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Nyrena_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Nyrena_LOD_Pf.prefab",
+              "Chr_Dragon_Champion_Adult_Rare_Nyrena_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -3.180330347561406e-291,
+            "_fixed64_int": -8962237242046394559
+          },
+          "2": "prog_dragonprefab_dragon_generic_nyrena_lowlod"
+        }
+      }
+    },
+    {
+      "1": 15035712777743007507,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Whelp_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -3.7916749163723506e+80,
+            "_fixed64_int": -3411031295966544109
+          },
+          "2": "prog_dragonprefab_dragon_generic_moonsheen_highlod"
+        }
+      }
+    },
+    {
+      "1": 8623452578534625270,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.9569980344832826e+268,
+            "_fixed64_int": 8623452578534625270
+          },
+          "2": "prog_dragonprefab_dragon_generic_moonsheen_scale"
+        }
+      }
+    },
+    {
+      "1": 2354871467154222489,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.8815757107286662e-151,
+            "_fixed64_int": 2354871467154222489
+          },
+          "2": "prog_dragonprefab_dragon_generic_moonsheen_rotation"
+        }
+      }
+    },
+    {
+      "1": 15734913822594246936,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab",
+              "Chr_Dragon_Caraxes_Adult_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -2.006636583978196e+127,
+            "_fixed64_int": -2711830251115304680
+          },
+          "2": "prog_dragonprefab_dragon_generic_moonsheen_lowlod"
+        }
+      }
+    },
+    {
+      "1": 8518047036019488895,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sentinel_Whelp_Epic_Starshower_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Epic_Starshower_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Epic_Starshower_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Epic_Starshower_Pf.prefab",
+              "Chr_Dragon_Sentinel_Whelp_Epic_Starshower_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Starshower_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Starshower_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Starshower_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Starshower_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Starshower_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.72848324944738e+261,
+            "_fixed64_int": 8518047036019488895
+          },
+          "2": "prog_dragonprefab_dragon_generic_starshower_highlod"
+        }
+      }
+    },
+    {
+      "1": 10977585757745904853,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "0.75",
+              "0.87",
+              "0.87",
+              "1",
+              "1",
+              "0.85",
+              "0.85",
+              "1",
+              "1",
+              "1"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": -2.1233443921126993e-191,
+            "_fixed64_int": -7469158315963646763
+          },
+          "2": "prog_dragonprefab_dragon_generic_starshower_scale"
+        }
+      }
+    },
+    {
+      "1": 5092666488018922920,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "-55",
+              "-55",
+              "-55",
+              "-55",
+              "-55",
+              "-25",
+              "-25",
+              "-25",
+              "-25",
+              "-25"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 2.919236419319831e+32,
+            "_fixed64_int": 5092666488018922920
+          },
+          "2": "prog_dragonprefab_dragon_generic_starshower_rotation"
+        }
+      }
+    },
+    {
+      "1": 4468966470759246303,
+      "2": {
+        "1000": {
+          "1003": {
+            "2": [
+              "Chr_Dragon_Sentinel_Adult_Epic_Starshower_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Starshower_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Starshower_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Starshower_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Starshower_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Starshower_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Starshower_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Starshower_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Starshower_LOD_Pf.prefab",
+              "Chr_Dragon_Sentinel_Adult_Epic_Starshower_LOD_Pf.prefab"
+            ]
+          }
+        },
+        "1": {
+          "1": {
+            "_fixed64_double": 6.099671232273453e-10,
+            "_fixed64_int": 4468966470759246303
+          },
+          "2": "prog_dragonprefab_dragon_generic_starshower_lowlod"
+        }
+      }
+    }
+  ]
+}

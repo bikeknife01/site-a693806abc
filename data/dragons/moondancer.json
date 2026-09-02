@@ -2,6 +2,7 @@
   "name": "Moondancer",
   "breed": "Warrior",
   "rarity_label": "Juvenile",
+  "rarity_tier": "Legendary",
   "troop_affinities": {
     "positive": [
       "Shieldbearers",

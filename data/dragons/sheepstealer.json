@@ -2,6 +2,7 @@
   "name": "Sheepstealer",
   "breed": "Hunter",
   "rarity_label": "Legendary",
+  "rarity_tier": "Legendary",
   "troop_affinities": {
     "positive": [
       "Cavalry",

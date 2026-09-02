@@ -1,6 +1,6 @@
 # Bevlorin
 
-Champion Elder · Positive affinity: Spearmen
+Champion · Age label: Elder · Rarity tier: Rare · Positive affinity: Spearmen
 
 ## Strategic summary
 

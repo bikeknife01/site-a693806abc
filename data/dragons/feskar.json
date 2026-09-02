@@ -2,6 +2,7 @@
   "name": "Feskar",
   "breed": "Champion",
   "rarity_label": "Elder",
+  "rarity_tier": "Epic",
   "troop_affinities": {
     "positive": [
       "Cavalry"

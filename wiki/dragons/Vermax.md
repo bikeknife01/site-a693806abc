@@ -1,6 +1,6 @@
 # Vermax
 
-Warrior Epic · Cavalry and Shieldbearer affinity. Physical attacker that reacts to enemy Fire damage and builds support stacks for Tactical allies.
+Warrior · Displayed label: Epic · Rarity tier: Epic · Cavalry and Shieldbearer affinity. Physical attacker that reacts to enemy Fire damage and builds support stacks for Tactical allies.
 
 **Command — Spreading Blaze:** hits the same-lane enemy after Basic Attacks and can stack a Tactical-Damage buff on an ally, with extra attempts against Fire-damage enemies.
 

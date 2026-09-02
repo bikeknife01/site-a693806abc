@@ -1,6 +1,6 @@
 # Shadowrend
 
-Warrior Elder · Positive affinities: Shieldbearers, Siege
+Warrior · Age label: Elder · Rarity tier: Rare · Positive affinities: Shieldbearers, Siege
 
 Shadowrend is a Vanguard Physical attacker with recurring Panic and a Round-9
 hybrid burst. Its late-round habits provide allied stats, Advantage, and Physical/

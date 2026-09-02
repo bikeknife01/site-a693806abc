@@ -1,6 +1,6 @@
 # Vhagar
 
-Warrior Elder · Shieldbearers, Archers, and Siege affinity. Durable Physical attacker with broad Taunt, recovery support, Advantage/Weakened control, and Bulwark stacking.
+Warrior · Age label: Elder · Rarity tier: Legendary · Shieldbearers, Archers, and Siege affinity. Durable Physical attacker with broad Taunt, recovery support, Advantage/Weakened control, and Bulwark stacking.
 
 **Command — Fiery Bonds:** can Taunt three enemies every round—at double chance against Burn targets—and deals adjacency Physical Damage on even rounds.
 

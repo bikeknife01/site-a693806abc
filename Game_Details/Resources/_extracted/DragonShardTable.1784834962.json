@@ -1,0 +1,832 @@
+{
+  "1": [
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.2665742083004464e+106,
+          "_fixed64_int": 6200467446684370908
+        },
+        "2": "item_shard_generic_solstryker"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 1.94096796824486e-17,
+            "_fixed64_int": 4356776041217420707
+          },
+          "2": "dragon_generic_solstryker"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.1233730075242116e+30,
+          "_fixed64_int": 5056517227582779065
+        },
+        "2": "item_shard_generic_bevlorin"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -8.827493241337642e-62,
+            "_fixed64_int": -5529813172612625715
+          },
+          "2": "dragon_generic_bevlorin"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.0658229524144113e-47,
+          "_fixed64_int": 3908615580009891193
+        },
+        "2": "item_shard_generic_arulix"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 3.4776543454006003e-102,
+            "_fixed64_int": 3089231844837668393
+          },
+          "2": "dragon_generic_arulix"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.406409137102717e+71,
+          "_fixed64_int": 5676978136097631763
+        },
+        "2": "item_shard_generic_nyrena"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 6.398540238797232e+87,
+            "_fixed64_int": 5920469201609399619
+          },
+          "2": "dragon_generic_nyrena"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.623274309177073e-252,
+          "_fixed64_int": 839865672782848578
+        },
+        "2": "item_shard_generic_antares"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -9.90645430824918e+166,
+            "_fixed64_int": -2118133127243969677
+          },
+          "2": "dragon_generic_antares"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.6462553610977375e+200,
+          "_fixed64_int": 7602415519979668304
+        },
+        "2": "item_shard_generic_jagadrix"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -2.5899639500739165e-169,
+            "_fixed64_int": -7138408587811952860
+          },
+          "2": "dragon_generic_jagadrix"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 5.9129551627067424e+203,
+          "_fixed64_int": 7655605679016305060
+        },
+        "2": "item_shard_generic_shimmer"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -3.7190786746998865e-294,
+            "_fixed64_int": -9006354244607145835
+          },
+          "2": "dragon_generic_shimmer"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 4.672644595120586e-93,
+          "_fixed64_int": 3225560685972808987
+        },
+        "2": "item_shard_generic_vesper"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 7.948904308503895e-77,
+            "_fixed64_int": 3468449618743547467
+          },
+          "2": "dragon_generic_vesper"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.594564827290717e+106,
+          "_fixed64_int": -3024554068600871716
+        },
+        "2": "item_shard_generic_dawnseeker"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -2.4926195197791683e-17,
+            "_fixed64_int": -4864805784001081693
+          },
+          "2": "dragon_generic_dawnseeker"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -3.5954024603475876e+85,
+          "_fixed64_int": -3336461513774486954
+        },
+        "2": "item_shard_generic_thunderstrike"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -4.1796578842662785e-63,
+            "_fixed64_int": -5549698399075729454
+          },
+          "2": "dragon_generic_thunderstrike"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.6835538869022486e-185,
+          "_fixed64_int": 1847611404050924242
+        },
+        "2": "item_shard_generic_shadowrend"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 1.3459849176799757e+250,
+            "_fixed64_int": 8349133003148372141
+          },
+          "2": "dragon_generic_shadowrend"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.043513614709307e+84,
+          "_fixed64_int": -3354947938725456737
+        },
+        "2": "item_shard_iconic_arrax"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -5.98441860205391e-277,
+            "_fixed64_int": -8749025703670689919
+          },
+          "2": "dragon_iconic_arrax"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.050916854562367e-150,
+          "_fixed64_int": 2363128934647445224
+        },
+        "2": "item_shard_generic_feskar"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 7.203922066188933e-19,
+            "_fixed64_int": 4335440222285727160
+          },
+          "2": "dragon_generic_feskar"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.36988769136476e+156,
+          "_fixed64_int": 6942733063487961933
+        },
+        "2": "item_shard_generic_rhysarion"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -4.5346521996485226e-97,
+            "_fixed64_int": -6057624362420155527
+          },
+          "2": "dragon_generic_rhysarion"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -5.1921906221921414e+293,
+          "_fixed64_int": -222360992472770793
+        },
+        "2": "item_shard_iconic_tessarion"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 8.11347404496255e-263,
+            "_fixed64_int": 685796523531907939
+          },
+          "2": "dragon_iconic_tessarion"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -6.11689681236822e+213,
+          "_fixed64_int": -1418023090304089109
+        },
+        "2": "item_shard_generic_moonsheen"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 1.6952082376574524e-116,
+            "_fixed64_int": 2874809285842400223
+          },
+          "2": "dragon_generic_moonsheen"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.1018745394400727e-125,
+          "_fixed64_int": 2741694646416971078
+        },
+        "2": "item_shard_generic_shadowsong"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 2.2504180042336037e+60,
+            "_fixed64_int": 5509705759233589049
+          },
+          "2": "dragon_generic_shadowsong"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.6746471831195502e+81,
+          "_fixed64_int": -3401274055030686720
+        },
+        "2": "item_shard_generic_tashix"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -9.152767817863782e+58,
+            "_fixed64_int": -3734282804272885936
+          },
+          "2": "dragon_generic_tashix"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.6085817893365125e-284,
+          "_fixed64_int": -8858852923043058413
+        },
+        "2": "item_shard_generic_smoketail"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 1.6899512486615578e+71,
+            "_fixed64_int": 5672420485253078311
+          },
+          "2": "dragon_generic_smoketail"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -7.665792862506031e-221,
+          "_fixed64_int": -7909528520673152038
+        },
+        "2": "item_shard_generic_tairax"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -4.090798186873654e-237,
+            "_fixed64_int": -8153024542317018998
+          },
+          "2": "dragon_generic_tairax"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -0.07568419441338685,
+          "_fixed64_int": -4633253995235483437
+        },
+        "2": "item_shard_generic_velar"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -5.90982007213992e+270,
+            "_fixed64_int": -565659656226132046
+          },
+          "2": "dragon_generic_velar"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.7085714075859424e+200,
+          "_fixed64_int": -1620773195734547690
+        },
+        "2": "item_shard_generic_zivern"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -2.522959138213581e+257,
+            "_fixed64_int": -765385944053895098
+          },
+          "2": "dragon_generic_zivern"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.5225393434855122e+108,
+          "_fixed64_int": 6225310372853157647
+        },
+        "2": "item_shard_generic_starshower"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 4.1516493523202065e-19,
+            "_fixed64_int": 4332078280631592304
+          },
+          "2": "dragon_generic_starshower"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.6023889010938375e+284,
+          "_fixed64_int": -364442152631507865
+        },
+        "2": "item_shard_generic_vaeldra"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 2.605514796242105e-213,
+            "_fixed64_int": 1426534485865696598
+          },
+          "2": "dragon_generic_vaeldra"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.3339685650392976e-176,
+          "_fixed64_int": -7247691309239160948
+        },
+        "2": "item_shard_generic_daemoros"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 9.694644522713053e+221,
+            "_fixed64_int": 7927871020290919416
+          },
+          "2": "dragon_generic_daemoros"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -3.1670685258593684e-281,
+          "_fixed64_int": -8812869937479738302
+        },
+        "2": "item_shard_iconic_vermax"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -50155362531.16238,
+            "_fixed64_int": -4456493267046477021
+          },
+          "2": "dragon_iconic_vermax"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.4691417855984101e+19,
+          "_fixed64_int": -4329792897282795411
+        },
+        "2": "item_shard_generic_thrandar"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 5.0494800744666575e-46,
+            "_fixed64_int": 3929126636748012569
+          },
+          "2": "dragon_generic_thrandar"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 8.170692744638452e+254,
+          "_fixed64_int": 8420566383529017366
+        },
+        "2": "item_shard_generic_kalspire"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -2.023679415707185e-300,
+            "_fixed64_int": -9100174971543018398
+          },
+          "2": "dragon_generic_kalspire"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 4.719361833971105e-79,
+          "_fixed64_int": 3435114703690808558
+        },
+        "2": "item_shard_iconic_seasmoke"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -1.1580889983419404e+32,
+            "_fixed64_int": -4136882971828234785
+          },
+          "2": "dragon_iconic_seasmoke"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.0240263447105867e+295,
+          "_fixed64_int": 9020719556042141611
+        },
+        "2": "item_shard_iconic_vermithor"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -2.3078985101780634e-268,
+            "_fixed64_int": -8620317175772656673
+          },
+          "2": "dragon_iconic_vermithor"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.4811295774054725e+205,
+          "_fixed64_int": -1547093339157687952
+        },
+        "2": "item_shard_generic_dreadfire"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 8.26859440478869e-149,
+            "_fixed64_int": 2391669363265298756
+          },
+          "2": "dragon_generic_dreadfire"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 3.604979123707917e+99,
+          "_fixed64_int": 6096289431264157189
+        },
+        "2": "item_shard_iconic_caraxes"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 1.4853655031567162e+41,
+            "_fixed64_int": 5222847528162323797
+          },
+          "2": "dragon_iconic_caraxes"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 1.8484662419554257e-211,
+          "_fixed64_int": 1454413345631421459
+        },
+        "2": "item_shard_generic_crimson"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -2.904880536533874e+294,
+            "_fixed64_int": -211051811403715294
+          },
+          "2": "dragon_generic_crimson"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.3663726446712767e+27,
+          "_fixed64_int": 5016611599166987225
+        },
+        "2": "item_shard_iconic_sheepstealer"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 1.8573218999237622e-161,
+            "_fixed64_int": 2202460589189612886
+          },
+          "2": "dragon_iconic_sheepstealer"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.9015485184383322e-164,
+          "_fixed64_int": 2160245634852549237
+        },
+        "2": "item_shard_generic_sylveren"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -6.068485418324684e+195,
+            "_fixed64_int": -1687503634467023359
+          },
+          "2": "dragon_generic_sylveren"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 2.7570792629825274e+220,
+          "_fixed64_int": 7904809815709805034
+        },
+        "2": "item_shard_iconic_syrax"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 1.1307329576269041e-27,
+            "_fixed64_int": 4203658899603206900
+          },
+          "2": "dragon_iconic_syrax"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": 6.998601711880638e+136,
+          "_fixed64_int": 6654088732100021985
+        },
+        "2": "item_shard_generic_malachite"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -2.150640523929581e-193,
+            "_fixed64_int": -7498662562083455275
+          },
+          "2": "dragon_generic_malachite"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.372535242489115e+187,
+          "_fixed64_int": -1816854617537605582
+        },
+        "2": "item_shard_iconic_sunfyre"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -2.741668752781315e+280,
+            "_fixed64_int": -421039774049557662
+          },
+          "2": "dragon_iconic_sunfyre"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -6.302444460087003e+303,
+          "_fixed64_int": -71387470620385196
+        },
+        "2": "item_shard_iconic_silverwing"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 8.598178629498864e-55,
+            "_fixed64_int": 3797965131040477280
+          },
+          "2": "dragon_iconic_silverwing"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.869106033503963e+192,
+          "_fixed64_int": -1740016653406363882
+        },
+        "2": "item_shard_generic_dewdrop"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 7.088575054901039e-237,
+            "_fixed64_int": 1073849400324126247
+          },
+          "2": "dragon_generic_dewdrop"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -4.4737788947936665e-105,
+          "_fixed64_int": -6177666080876856643
+        },
+        "2": "item_shard_generic_venator"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 1.1556606445205728e+17,
+            "_fixed64_int": 4862103277333648268
+          },
+          "2": "dragon_generic_venator"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -542025285692342.94,
+          "_fixed64_int": -4395848030997267601
+        },
+        "2": "item_shard_iconic_vhagar"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -1.5030105630285393e-282,
+            "_fixed64_int": -8832702353904372722
+          },
+          "2": "dragon_iconic_vhagar"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.3914881146142601e+29,
+          "_fixed64_int": -4180437959280675838
+        },
+        "2": "item_shard_iconic_meleys"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -4.80692330857702e-297,
+            "_fixed64_int": -9049659837854549149
+          },
+          "2": "dragon_iconic_meleys"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -2.0426901502365116e+238,
+          "_fixed64_int": -1051282156271481479
+        },
+        "2": "item_shard_iconic_moondancer"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": 3.9320015625335124e-25,
+            "_fixed64_int": 4241946790838254925
+          },
+          "2": "dragon_iconic_moondancer"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.158651715053533e-203,
+          "_fixed64_int": -7652442844615732713
+        },
+        "2": "item_shard_generic_belmorghul"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -1.6203841070943524e+307,
+            "_fixed64_int": -20526552647223192
+          },
+          "2": "dragon_generic_belmorghul"
+        }
+      }
+    },
+    {
+      "1": {
+        "1": {
+          "_fixed64_double": -1.1002845661774757e-243,
+          "_fixed64_int": -8251143061982908951
+        },
+        "2": "item_shard_generic_silversong"
+      },
+      "2": {
+        "1": {
+          "1": {
+            "_fixed64_double": -1.7465231454512507e+188,
+            "_fixed64_int": -1800294252142868586
+          },
+          "2": "dragon_generic_silversong"
+        }
+      }
+    }
+  ]
+}

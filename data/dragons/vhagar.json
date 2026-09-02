@@ -2,6 +2,7 @@
   "name": "Vhagar",
   "breed": "Warrior",
   "rarity_label": "Elder",
+  "rarity_tier": "Legendary",
   "troop_affinities": {
     "positive": [
         "Shieldbearers",

@@ -1,6 +1,6 @@
 # Rhysarion
 
-Champion Adult · Positive affinities: Spearmen, Shieldbearers, Siege
+Champion · Age label: Adult · Rarity tier: Epic · Positive affinities: Spearmen, Shieldbearers, Siege
 
 Rhysarion is a hybrid attacker/recovery support. **Dawnsong** rewards Control
 effects with stronger Fire Damage and gains two-target Recovery at 6 Stars.

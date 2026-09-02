@@ -1,6 +1,6 @@
 # Velar
 
-Sentinel Elder · Shieldbearer affinity. Tactical team-support dragon with Advantage, Recovery, Cleanse, First-Strike, and Slow.
+Sentinel · Age label: Elder · Rarity tier: Epic · Shieldbearer affinity. Tactical team-support dragon with Advantage, Recovery, Cleanse, First-Strike, and Slow.
 
 **Command — Whirlwind:** grants ally Advantage, deals three-target Tactical Damage, and at 10 Stars adds teamwide Bleed/Panic/Burn cleanse plus Recovery.
 

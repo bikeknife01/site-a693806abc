@@ -2,6 +2,7 @@
   "name": "Kalspire",
   "breed": "Champion",
   "rarity_label": "Adult",
+  "rarity_tier": "Legendary",
   "troop_affinities": {
     "positive": [
       "Cavalry",

@@ -1,6 +1,6 @@
 # Vesper
 
-Sentinel Elder · Shieldbearer affinity; Siege weakness. Tactical support dragon with Slow, Instinct scaling, mitigation, Resistance, and late-round Confusion.
+Sentinel · Age label: Elder · Rarity tier: Rare · Shieldbearer affinity; Siege weakness. Tactical support dragon with Slow, Instinct scaling, mitigation, Resistance, and late-round Confusion.
 
 **Command — Eventide Strike:** may Slow a same-lane enemy each round and strikes that lane with Tactical Damage on rounds 1, 3, 6, and 8.
 
