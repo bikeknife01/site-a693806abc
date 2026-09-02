@@ -1,0 +1,61 @@
+name: Deploy interactive map
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Game_Details/Resources/_extracted/interactive_map.html"
+      - "Game_Details/Resources/_extracted/worldmap_background.jpg"
+      - "Game_Details/Resources/_extracted/region_color_overlay.png"
+      - "Game_Details/Resources/_extracted/mountain_overlay.png"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out map assets
+        uses: actions/checkout@v6
+        with:
+          sparse-checkout: |
+            Game_Details/Resources/_extracted/interactive_map.html
+            Game_Details/Resources/_extracted/worldmap_background.jpg
+            Game_Details/Resources/_extracted/region_color_overlay.png
+            Game_Details/Resources/_extracted/mountain_overlay.png
+          sparse-checkout-cone-mode: false
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare site
+        shell: bash
+        run: |
+          mkdir -p _site
+          cp Game_Details/Resources/_extracted/interactive_map.html _site/index.html
+          cp Game_Details/Resources/_extracted/worldmap_background.jpg _site/
+          cp Game_Details/Resources/_extracted/region_color_overlay.png _site/
+          cp Game_Details/Resources/_extracted/mountain_overlay.png _site/
+          touch _site/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
