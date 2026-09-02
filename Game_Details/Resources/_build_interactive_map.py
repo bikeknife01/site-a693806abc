@@ -352,7 +352,9 @@ html = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Westeros Atlas · Dragonfire</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+<title>Interactive Atlas</title>
 <style>
   :root { --bg:#0f1115; --panel:#171a21; --border:#2a2f3a; --text:#e7e9ee; --muted:#9aa3b2; --accent:#4C9AFF; }
   * { box-sizing: border-box; }
@@ -547,7 +549,7 @@ html = """<!DOCTYPE html>
 <div id="app">
   <div id="filtersPanel">
     <div class="brand-block">
-      <div class="brand-kicker">Dragonfire cartography</div>
+      <div class="brand-kicker">Strategic cartography</div>
       <h1>Westeros Atlas</h1>
       <p>Explore territories, inspect map nodes, and evaluate routes around mountain barriers.</p>
     </div>
