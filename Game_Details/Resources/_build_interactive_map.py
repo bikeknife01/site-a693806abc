@@ -348,19 +348,19 @@ if _Image.open(region_overlay_path).size != (BG_W, BG_H):
 if _Image.open(mountain_overlay_path).size != (BG_W, BG_H):
     raise ValueError('mountain_overlay.png dimensions do not match worldmap_background.jpg')
 
-# Browser-side route finding uses a 4x4-world-tile navigation cell.  This is fine
-# enough to follow narrow passes without embedding the full 6.9-million-cell source
-# rasters in the generated HTML.  A cell is walkable when either the political raster
-# or the background's independently-derived land mask identifies land, and no pixel in
-# it belongs to the reconstructed mountain barrier.  Transit structures are punched
-# out here and selectively reopened in JavaScript according to the user's level range.
-ROUTE_CELL = 4
+# Browser-side route finding uses a 2x2-world-tile navigation cell. Rivers in the
+# authoritative region-index raster are often only a few pixels wide, so the former
+# 4x4 grid could collapse them out of existence. A cell is walkable only when every
+# source pixel belongs to land and none belongs to the reconstructed mountain barrier.
+# In particular, do not infer land from the bright background image: its pale rivers
+# are bright too, which allowed routes to cross them anywhere. Transit structures are
+# punched out here and selectively reopened in JavaScript according to the requested
+# level range.
+ROUTE_CELL = 2
 ROUTE_W = math.ceil(BG_W / ROUTE_CELL)
 ROUTE_H = math.ceil(BG_H / ROUTE_CELL)
-_route_bg = _Image.open(_bg_path).convert('RGB')
 _route_region = _Image.open(region_overlay_path).convert('P')
 _route_mountain = _Image.open(mountain_overlay_path).convert('P')
-_route_bg_px = _route_bg.load()
 _route_region_px = _route_region.load()
 _route_mountain_px = _route_mountain.load()
 route_grid = bytearray(ROUTE_W * ROUTE_H)
@@ -373,12 +373,11 @@ for gy in range(ROUTE_H):
         mountain = False
         for yy in range(y0, y1):
             for xx in range(x0, x1):
-                r, g, b = _route_bg_px[xx, yy]
-                if _route_region_px[xx, yy] or max(r, g, b) > 108:
+                if _route_region_px[xx, yy]:
                     land += 1
                 if _route_mountain_px[xx, yy]:
                     mountain = True
-        if land >= max(1, math.ceil(samples * 0.25)) and not mountain:
+        if land == samples and not mountain:
             route_grid[gy * ROUTE_W + gx] = 1
 
 TRANSIT_TYPES = {'Crossing', 'Tunnel', 'Bridge', 'Harbor/Dock'}
