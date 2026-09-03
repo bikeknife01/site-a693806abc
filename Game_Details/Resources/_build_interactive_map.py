@@ -348,6 +348,81 @@ if _Image.open(region_overlay_path).size != (BG_W, BG_H):
 if _Image.open(mountain_overlay_path).size != (BG_W, BG_H):
     raise ValueError('mountain_overlay.png dimensions do not match worldmap_background.jpg')
 
+# Browser-side route finding uses a 4x4-world-tile navigation cell.  This is fine
+# enough to follow narrow passes without embedding the full 6.9-million-cell source
+# rasters in the generated HTML.  A cell is walkable when either the political raster
+# or the background's independently-derived land mask identifies land, and no pixel in
+# it belongs to the reconstructed mountain barrier.  Transit structures are punched
+# out here and selectively reopened in JavaScript according to the user's level range.
+ROUTE_CELL = 4
+ROUTE_W = math.ceil(BG_W / ROUTE_CELL)
+ROUTE_H = math.ceil(BG_H / ROUTE_CELL)
+_route_bg = _Image.open(_bg_path).convert('RGB')
+_route_region = _Image.open(region_overlay_path).convert('P')
+_route_mountain = _Image.open(mountain_overlay_path).convert('P')
+_route_bg_px = _route_bg.load()
+_route_region_px = _route_region.load()
+_route_mountain_px = _route_mountain.load()
+route_grid = bytearray(ROUTE_W * ROUTE_H)
+for gy in range(ROUTE_H):
+    y0, y1 = gy * ROUTE_CELL, min(BG_H, (gy + 1) * ROUTE_CELL)
+    for gx in range(ROUTE_W):
+        x0, x1 = gx * ROUTE_CELL, min(BG_W, (gx + 1) * ROUTE_CELL)
+        samples = (x1 - x0) * (y1 - y0)
+        land = 0
+        mountain = False
+        for yy in range(y0, y1):
+            for xx in range(x0, x1):
+                r, g, b = _route_bg_px[xx, yy]
+                if _route_region_px[xx, yy] or max(r, g, b) > 108:
+                    land += 1
+                if _route_mountain_px[xx, yy]:
+                    mountain = True
+        if land >= max(1, math.ceil(samples * 0.25)) and not mountain:
+            route_grid[gy * ROUTE_W + gx] = 1
+
+TRANSIT_TYPES = {'Crossing', 'Tunnel', 'Bridge', 'Harbor/Dock'}
+for d in data:
+    if d['t'] not in TRANSIT_TYPES:
+        continue
+    gx = round(d['x'] / ROUTE_CELL)
+    gy = round((BG_H - d['y']) / ROUTE_CELL)
+    for yy in range(max(0, gy - 1), min(ROUTE_H, gy + 2)):
+        for xx in range(max(0, gx - 1), min(ROUTE_W, gx + 2)):
+            route_grid[yy * ROUTE_W + xx] = 0
+
+# Compact alternating-value run lengths (far smaller than JSON-ing every cell).
+route_runs = []
+route_first = route_grid[0] if route_grid else 0
+run_value = route_first
+run_length = 0
+for value in route_grid:
+    if value == run_value:
+        run_length += 1
+    else:
+        route_runs.append(run_length)
+        run_value = value
+        run_length = 1
+if route_grid:
+    route_runs.append(run_length)
+route_runs_json = json.dumps(route_runs, separators=(',', ':'))
+
+# Tunnels are stored as paired portal mouths rather than explicit graph edges.  The
+# same conservative mutual-nearest rule used by _build_terrain_data.py recovers those
+# pairs and avoids connecting unrelated nearby tunnels.
+tunnel_indices = [i for i, d in enumerate(data) if d['t'] == 'Tunnel']
+tunnel_edges = []
+if len(tunnel_indices) > 1:
+    nearest = {}
+    for i in tunnel_indices:
+        nearest[i] = min(
+            (math.hypot(data[i]['x'] - data[j]['x'], data[i]['y'] - data[j]['y']), j)
+            for j in tunnel_indices if j != i
+        )
+    tunnel_edges = [[i, j] for i, (distance, j) in nearest.items()
+                    if i < j and nearest[j][1] == i and distance <= 20]
+tunnel_edges_json = json.dumps(tunnel_edges, separators=(',', ':'))
+
 html = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -455,8 +530,20 @@ html = """<!DOCTYPE html>
   #clusterPopup { position:absolute; display:none; background:#1a1e28; border:1px solid var(--border); border-radius:6px; max-height:220px; overflow-y:auto; z-index:6; box-shadow:0 8px 20px rgba(0,0,0,.5); min-width:160px; max-width:280px; }
   #clusterPopup.open { display:block; }
   #clusterPopup .place-header { padding:6px 10px; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; border-bottom:1px solid var(--border); }
-  .ping-ring { fill:none; stroke:#fff; stroke-width:2; opacity:0.9; pointer-events:none; animation: ping-anim 1.1s ease-out 2; }
+  .ping-ring { fill:none; stroke:#fff; stroke-width:2; opacity:0.9; pointer-events:none; animation: ping-anim 1.1s ease-out 5; }
   @keyframes ping-anim { from { r:6; opacity:0.95; stroke-width:3; } to { r:34; opacity:0; stroke-width:0.5; } }
+  .ping-dot { fill:#fff4bf; stroke:#3a2600; stroke-width:1.5; pointer-events:none; animation:dot-pulse .85s ease-in-out infinite alternate; }
+  @keyframes dot-pulse { from { opacity:.6; r:4; } to { opacity:1; r:7; } }
+  .route-line { fill:none; stroke:#50e3c2; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; pointer-events:none; filter:drop-shadow(0 0 3px rgba(22,126,108,.95)); }
+  .route-endpoint { fill:#fff; stroke:#087d6b; stroke-width:3; vector-effect:non-scaling-stroke; pointer-events:none; }
+  .route-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .route-grid .wide { grid-column:1 / -1; }
+  .route-field label { display:block; color:var(--muted); font-size:9px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; margin:0 0 5px; }
+  .route-actions { display:flex; gap:7px; margin-top:9px; }
+  .route-actions button { flex:1; }
+  #routeSummary { min-height:16px; margin-top:9px; color:var(--muted); font-size:11px; line-height:1.45; }
+  #routeSummary strong { color:#77ead3; }
+  #routeSummary.error { color:#ee8a8a; }
   #selectedInfo { font-size:12px; line-height:1.5; margin-bottom:8px; min-height:16px; }
   #selectedInfo .si-name { font-weight:700; color:var(--text); font-size:13px; }
   #selectedInfo .si-sub { color:var(--muted); }
@@ -556,9 +643,33 @@ html = """<!DOCTYPE html>
     <div class="side-section">
       <h3>Find a Place</h3>
       <div id="placeSearchWrap">
-        <input type="text" id="placeSearch" placeholder="Search places and regions…" autocomplete="off">
+        <input type="text" id="placeSearch" placeholder="Place, region, or 1234, 1234…" autocomplete="off">
         <div id="placeResults"></div>
       </div>
+    </div>
+
+    <div class="side-section">
+      <h3>Route Calculator</h3>
+      <div class="route-grid">
+        <div class="route-field wide">
+          <label for="routeStart">Start coordinates</label>
+          <input type="text" id="routeStart" placeholder="1234, 1234">
+        </div>
+        <div class="route-field wide">
+          <label for="routeEnd">End coordinates</label>
+          <input type="text" id="routeEnd" placeholder="(1500, 900)">
+        </div>
+        <div class="route-field">
+          <label for="routeMinLevel">Minimum transit level</label>
+          <select id="routeMinLevel"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>
+        </div>
+        <div class="route-field">
+          <label for="routeMaxLevel">Maximum transit level</label>
+          <select id="routeMaxLevel"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5" selected>5</option></select>
+        </div>
+      </div>
+      <div class="route-actions"><button id="routeCalc" class="primary" type="button">Find route</button><button id="routeClear" type="button">Clear</button></div>
+      <div id="routeSummary">Uses eligible crossings, tunnels, bridges, docks, and harbors.</div>
     </div>
 
     <div class="side-section">
@@ -636,6 +747,7 @@ html = """<!DOCTYPE html>
                width="BG_W_PLACEHOLDER" height="BG_H_PLACEHOLDER"
                preserveAspectRatio="none" opacity="0.62"></image>
         <g id="chainLayer"></g>
+        <g id="routeLayer"></g>
         <g id="dotsLayer"></g>
         <g id="pingLayer"></g>
         <g id="regionLabelLayer"></g>
@@ -700,6 +812,11 @@ const TYPES = TYPES_PLACEHOLDER;
 // from spatial proximity (see _build_crossing_chains.py) since the game's own data has no
 // explicit adjacency field. Used to draw the sea/ford route a selected node belongs to.
 const CHAIN_EDGES = CHAIN_EDGES_PLACEHOLDER;
+const TUNNEL_EDGES = TUNNEL_EDGES_PLACEHOLDER;
+const ROUTE_CELL = ROUTE_CELL_PLACEHOLDER;
+const ROUTE_W = ROUTE_W_PLACEHOLDER, ROUTE_H = ROUTE_H_PLACEHOLDER;
+const ROUTE_FIRST = ROUTE_FIRST_PLACEHOLDER;
+const ROUTE_RUNS = ROUTE_RUNS_PLACEHOLDER;
 const chainAdj = new Map();
 CHAIN_EDGES.forEach(([a, b]) => {
   if (!chainAdj.has(a)) chainAdj.set(a, []);
@@ -933,6 +1050,7 @@ const currentScale = () => vbState.w / (svg.clientWidth || 1000);
 
 const dotsLayer = document.getElementById('dotsLayer');
 const chainLayer = document.getElementById('chainLayer');
+const routeLayer = document.getElementById('routeLayer');
 const pingLayer = document.getElementById('pingLayer');
 // Background image / mountain shading are now always on - the toggles for these were
 // removed from the UI (per user request) since they added little value; no JS needed.
@@ -1322,14 +1440,250 @@ function flyToWorld(x, y, targetW) {
 
 function showPing(x, y) {
   pingLayer.innerHTML = '';
+  const dot = document.createElementNS(svgNS, 'circle');
+  dot.setAttribute('cx', x);
+  dot.setAttribute('cy', BG_H - y);
+  dot.setAttribute('r', 4);
+  dot.setAttribute('class', 'ping-dot');
   const c = document.createElementNS(svgNS, 'circle');
   c.setAttribute('cx', x);
   c.setAttribute('cy', BG_H - y);
   c.setAttribute('r', 6);
   c.setAttribute('class', 'ping-ring');
+  pingLayer.appendChild(dot);
   pingLayer.appendChild(c);
-  setTimeout(() => { if (pingLayer.contains(c)) pingLayer.removeChild(c); }, 2300);
+  setTimeout(() => {
+    if (pingLayer.contains(c)) pingLayer.removeChild(c);
+    if (pingLayer.contains(dot)) pingLayer.removeChild(dot);
+  }, 6000);
 }
+
+// ---------- terrain-aware route calculator ----------
+// The static land/mountain grid is decoded once. Each route calculation clones it,
+// reopens only transit structures inside the requested level range, then runs A* with
+// eight-direction movement. Crossing/harbor chains and paired tunnel mouths are graph
+// portal edges; their cost remains their real world-coordinate distance, so they do
+// not make the distance estimate artificially cheap.
+const ROUTE_BASE = new Uint8Array(ROUTE_W * ROUTE_H);
+{
+  let pos = 0, value = ROUTE_FIRST;
+  for (const count of ROUTE_RUNS) {
+    ROUTE_BASE.fill(value, pos, pos + count);
+    pos += count;
+    value = value ? 0 : 1;
+  }
+}
+const TRANSIT_TYPES = new Set(['Crossing', 'Tunnel', 'Bridge', 'Harbor/Dock']);
+
+function routeCellFor(d) {
+  const gx = Math.max(0, Math.min(ROUTE_W - 1, Math.round(d.x / ROUTE_CELL)));
+  const gy = Math.max(0, Math.min(ROUTE_H - 1, Math.round((BG_H - d.y) / ROUTE_CELL)));
+  return gy * ROUTE_W + gx;
+}
+
+function buildRouteWorld(minLevel, maxLevel) {
+  const passable = ROUTE_BASE.slice();
+  const eligible = new Set();
+  DATA.forEach((d, i) => {
+    if (!TRANSIT_TYPES.has(d.t)) return;
+    const level = Number(d.lvl);
+    if (!Number.isFinite(level) || level < minLevel || level > maxLevel) return;
+    eligible.add(i);
+    const center = routeCellFor(d), cy = Math.floor(center / ROUTE_W), cx = center % ROUTE_W;
+    // Reopen a compact 3x3 patch at an eligible structure. For bridges this is the
+    // actual pass through a narrow water barrier; crossings/harbors/tunnels also gain
+    // explicit portal edges below.
+    for (let y = Math.max(0, cy - 1); y <= Math.min(ROUTE_H - 1, cy + 1); y++) {
+      for (let x = Math.max(0, cx - 1); x <= Math.min(ROUTE_W - 1, cx + 1); x++) {
+        passable[y * ROUTE_W + x] = 1;
+      }
+    }
+  });
+
+  const portals = new Map();
+  const portalLabels = new Map();
+  function addPortal(aData, bData, kind) {
+    if (!eligible.has(aData) || !eligible.has(bData)) return;
+    const a = routeCellFor(DATA[aData]), b = routeCellFor(DATA[bData]);
+    if (a === b) return;
+    const cost = Math.hypot(DATA[aData].x - DATA[bData].x, DATA[aData].y - DATA[bData].y);
+    if (!portals.has(a)) portals.set(a, []);
+    if (!portals.has(b)) portals.set(b, []);
+    portals.get(a).push([b, cost]);
+    portals.get(b).push([a, cost]);
+    portalLabels.set(`${Math.min(a,b)}:${Math.max(a,b)}`, kind);
+  }
+  CHAIN_EDGES.forEach(([a, b]) => addPortal(a, b, 'crossing/harbor'));
+  TUNNEL_EDGES.forEach(([a, b]) => addPortal(a, b, 'tunnel'));
+  return { passable, portals, portalLabels, eligible };
+}
+
+function nearestRouteCell(x, y, passable) {
+  const baseX = Math.max(0, Math.min(ROUTE_W - 1, Math.round(x / ROUTE_CELL)));
+  const baseY = Math.max(0, Math.min(ROUTE_H - 1, Math.round((BG_H - y) / ROUTE_CELL)));
+  // Small shoreline/rounding tolerance only; never jump an endpoint across a bay or
+  // an entire mountain range just to manufacture a route.
+  for (let radius = 0; radius <= 8; radius++) {
+    let best = -1, bestD = Infinity;
+    const y0 = Math.max(0, baseY - radius), y1 = Math.min(ROUTE_H - 1, baseY + radius);
+    const x0 = Math.max(0, baseX - radius), x1 = Math.min(ROUTE_W - 1, baseX + radius);
+    for (let yy = y0; yy <= y1; yy++) {
+      for (let xx = x0; xx <= x1; xx++) {
+        if (radius && xx !== x0 && xx !== x1 && yy !== y0 && yy !== y1) continue;
+        const idx = yy * ROUTE_W + xx;
+        if (!passable[idx]) continue;
+        const d = Math.hypot(xx - baseX, yy - baseY);
+        if (d < bestD) { bestD = d; best = idx; }
+      }
+    }
+    if (best >= 0) return best;
+  }
+  return -1;
+}
+
+class MinHeap {
+  constructor() { this.a = []; }
+  push(item) {
+    const a = this.a; a.push(item); let i = a.length - 1;
+    while (i) { const p = (i - 1) >> 1; if (a[p][0] <= item[0]) break; a[i] = a[p]; i = p; }
+    a[i] = item;
+  }
+  pop() {
+    const a = this.a, root = a[0], last = a.pop();
+    if (a.length) {
+      let i = 0;
+      while (true) {
+        let child = i * 2 + 1;
+        if (child >= a.length) break;
+        if (child + 1 < a.length && a[child + 1][0] < a[child][0]) child++;
+        if (a[child][0] >= last[0]) break;
+        a[i] = a[child]; i = child;
+      }
+      a[i] = last;
+    }
+    return root;
+  }
+  get length() { return this.a.length; }
+}
+
+function findRoute(start, end, world) {
+  const startIdx = nearestRouteCell(start.x, start.y, world.passable);
+  const goalIdx = nearestRouteCell(end.x, end.y, world.passable);
+  if (startIdx < 0 || goalIdx < 0) return null;
+  const total = ROUTE_W * ROUTE_H;
+  const score = new Float64Array(total); score.fill(Infinity);
+  const parent = new Int32Array(total); parent.fill(-1);
+  const closed = new Uint8Array(total);
+  const goalY = Math.floor(goalIdx / ROUTE_W), goalX = goalIdx % ROUTE_W;
+  const heap = new MinHeap();
+  score[startIdx] = 0;
+  heap.push([0, startIdx]);
+  const directions = [[-1,0,ROUTE_CELL],[1,0,ROUTE_CELL],[0,-1,ROUTE_CELL],[0,1,ROUTE_CELL],
+    [-1,-1,ROUTE_CELL*Math.SQRT2],[1,-1,ROUTE_CELL*Math.SQRT2],[-1,1,ROUTE_CELL*Math.SQRT2],[1,1,ROUTE_CELL*Math.SQRT2]];
+  while (heap.length) {
+    const [, current] = heap.pop();
+    if (closed[current]) continue;
+    if (current === goalIdx) break;
+    closed[current] = 1;
+    const cy = Math.floor(current / ROUTE_W), cx = current % ROUTE_W;
+    function relax(next, cost) {
+      if (closed[next]) return;
+      const candidate = score[current] + cost;
+      if (candidate >= score[next]) return;
+      score[next] = candidate; parent[next] = current;
+      const ny = Math.floor(next / ROUTE_W), nx = next % ROUTE_W;
+      heap.push([candidate + Math.hypot(nx - goalX, ny - goalY) * ROUTE_CELL, next]);
+    }
+    for (const [dx, dy, cost] of directions) {
+      const nx = cx + dx, ny = cy + dy;
+      if (nx < 0 || nx >= ROUTE_W || ny < 0 || ny >= ROUTE_H) continue;
+      const next = ny * ROUTE_W + nx;
+      if (!world.passable[next]) continue;
+      // Do not squeeze diagonally between two blocked corner cells.
+      if (dx && dy && (!world.passable[cy * ROUTE_W + nx] || !world.passable[ny * ROUTE_W + cx])) continue;
+      relax(next, cost);
+    }
+    for (const [next, cost] of (world.portals.get(current) || [])) relax(next, cost);
+  }
+  if (!Number.isFinite(score[goalIdx])) return null;
+  const indices = [];
+  for (let p = goalIdx; p >= 0; p = parent[p]) { indices.push(p); if (p === startIdx) break; }
+  indices.reverse();
+  const used = [];
+  for (let i = 1; i < indices.length; i++) {
+    const a = indices[i - 1], b = indices[i];
+    const ay = Math.floor(a / ROUTE_W), ax = a % ROUTE_W;
+    const by = Math.floor(b / ROUTE_W), bx = b % ROUTE_W;
+    if (Math.abs(ax - bx) > 1 || Math.abs(ay - by) > 1) {
+      const label = world.portalLabels.get(`${Math.min(a,b)}:${Math.max(a,b)}`);
+      if (label) used.push(label);
+    }
+  }
+  const points = [{ x:start.x, y:BG_H-start.y }];
+  indices.forEach(idx => points.push({ x:(idx % ROUTE_W + .5) * ROUTE_CELL, y:(Math.floor(idx / ROUTE_W) + .5) * ROUTE_CELL }));
+  points.push({ x:end.x, y:BG_H-end.y });
+  const startCell = points[1], endCell = points[points.length - 2];
+  const distance = score[goalIdx] + Math.hypot(points[0].x-startCell.x, points[0].y-startCell.y)
+    + Math.hypot(points[points.length-1].x-endCell.x, points[points.length-1].y-endCell.y);
+  return { points, distance, used:[...new Set(used)] };
+}
+
+function drawRoute(result) {
+  routeLayer.innerHTML = '';
+  const line = document.createElementNS(svgNS, 'polyline');
+  line.setAttribute('points', result.points.map(p => `${p.x},${p.y}`).join(' '));
+  line.setAttribute('class', 'route-line');
+  routeLayer.appendChild(line);
+  [result.points[0], result.points[result.points.length - 1]].forEach(p => {
+    const c = document.createElementNS(svgNS, 'circle');
+    c.setAttribute('cx', p.x); c.setAttribute('cy', p.y); c.setAttribute('r', 7);
+    c.setAttribute('class', 'route-endpoint'); routeLayer.appendChild(c);
+  });
+  const xs = result.points.map(p => p.x), ys = result.points.map(p => p.y);
+  const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+  const aspect = vbState.h / vbState.w;
+  let width = Math.max(80, (maxX - minX) * 1.16, (maxY - minY) * 1.16 / aspect);
+  width = Math.min(vb.w, width);
+  vbState.w = width; vbState.h = width * aspect;
+  vbState.x = (minX + maxX) / 2 - vbState.w / 2;
+  vbState.y = (minY + maxY) / 2 - vbState.h / 2;
+  applyViewBox();
+}
+
+const routeSummaryEl = document.getElementById('routeSummary');
+function setRouteMessage(message, error) {
+  routeSummaryEl.innerHTML = message;
+  routeSummaryEl.classList.toggle('error', !!error);
+}
+function calculateRoute() {
+  const start = parseCoordinates(document.getElementById('routeStart').value);
+  const end = parseCoordinates(document.getElementById('routeEnd').value);
+  if (!start || !end) { setRouteMessage('Enter two numbers in both coordinate fields.', true); return; }
+  if ([start, end].some(p => p.x < 0 || p.x > BG_W || p.y < 0 || p.y > BG_H)) {
+    setRouteMessage(`Coordinates must be inside 0–${BG_W} X and 0–${BG_H} Y.`, true); return;
+  }
+  const minLevel = Number(document.getElementById('routeMinLevel').value);
+  const maxLevel = Number(document.getElementById('routeMaxLevel').value);
+  if (minLevel > maxLevel) { setRouteMessage('Minimum level cannot exceed maximum level.', true); return; }
+  setRouteMessage('Calculating…', false);
+  requestAnimationFrame(() => {
+    const result = findRoute(start, end, buildRouteWorld(minLevel, maxLevel));
+    if (!result) { routeLayer.innerHTML = ''; setRouteMessage('No traversable route was found with this level range.', true); return; }
+    drawRoute(result);
+    const via = result.used.length ? ` · uses ${result.used.join(' and ')}` : '';
+    setRouteMessage(`<strong>${Math.round(result.distance).toLocaleString()} tiles</strong> · transit levels ${minLevel}–${maxLevel}${via}<br>Estimated on a ${ROUTE_CELL}-tile navigation grid.`, false);
+  });
+}
+document.getElementById('routeCalc').onclick = calculateRoute;
+document.getElementById('routeClear').onclick = () => {
+  routeLayer.innerHTML = '';
+  document.getElementById('routeStart').value = '';
+  document.getElementById('routeEnd').value = '';
+  setRouteMessage('Uses eligible crossings, tunnels, bridges, docks, and harbors.', false);
+};
+['routeStart','routeEnd'].forEach(id => document.getElementById(id).addEventListener('keydown', ev => {
+  if (ev.key === 'Enter') { ev.preventDefault(); calculateRoute(); }
+}));
 
 // ---------- "Find a Place" search (nodes + region names + kingdom names) ----------
 // A separate, non-filtering locator: unlike the coordinate-range/type/instance-id
@@ -1354,9 +1708,22 @@ const placeResultsEl = document.getElementById('placeResults');
 let searchMatches = [];
 let searchActiveIdx = -1;
 
+function parseCoordinates(value) {
+  const matches = String(value).match(/[-+]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)/g);
+  if (!matches || matches.length < 2) return null;
+  const x = Number(matches[0]), y = Number(matches[1]);
+  if (!Number.isFinite(x) || !Number.isFinite(y)) return null;
+  return { x, y };
+}
+
 function runSearch(q) {
-  q = q.trim().toLowerCase();
+  q = q.trim();
   if (!q) { searchMatches = []; return; }
+  const coord = parseCoordinates(q);
+  const coordinateMatches = coord && coord.x >= 0 && coord.x <= BG_W && coord.y >= 0 && coord.y <= BG_H
+    ? [{ name: `(${coord.x}, ${coord.y})`, sub: 'Coordinates', x: coord.x, y: coord.y, coordinate: true }]
+    : [];
+  q = q.toLowerCase();
   const starts = [], contains = [];
   for (const item of SEARCH_INDEX) {
     const nl = item.name.toLowerCase();
@@ -1365,7 +1732,7 @@ function runSearch(q) {
   }
   const cmp = (a, b) => a.name.length - b.name.length;
   starts.sort(cmp); contains.sort(cmp);
-  searchMatches = starts.concat(contains).slice(0, 12);
+  searchMatches = coordinateMatches.concat(starts, contains).slice(0, 12);
 }
 
 function renderSearchResults() {
@@ -1430,6 +1797,11 @@ render();
 html = html.replace('DATA_PLACEHOLDER', data_json)
 html = html.replace('COLOR_PLACEHOLDER', color_json)
 html = html.replace('CHAIN_EDGES_PLACEHOLDER', chain_edges_json)
+html = html.replace('TUNNEL_EDGES_PLACEHOLDER', tunnel_edges_json)
+html = html.replace('ROUTE_CELL_PLACEHOLDER', str(ROUTE_CELL))
+html = html.replace('ROUTE_W_PLACEHOLDER', str(ROUTE_W)).replace('ROUTE_H_PLACEHOLDER', str(ROUTE_H))
+html = html.replace('ROUTE_FIRST_PLACEHOLDER', str(route_first))
+html = html.replace('ROUTE_RUNS_PLACEHOLDER', route_runs_json)
 html = html.replace('REGION_LABELS_PLACEHOLDER', region_labels_json)
 html = html.replace('KINGDOM_LABELS_PLACEHOLDER', kingdom_labels_json)
 html = html.replace('KINGDOM_COLORS_PLACEHOLDER', kingdom_colors_json)
