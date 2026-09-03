@@ -340,7 +340,7 @@ minx, maxx, miny, maxy = min(xs), max(xs), min(ys), max(ys)
 # node x/y coordinates (confirmed by overlaying all 7,694 nodes on it and checking they
 # fall on land / avoid water / cluster on roads), so it's placed at x=0,y=0 with its
 # native pixel dimensions, no scaling needed.
-from PIL import Image as _Image
+from PIL import Image as _Image, ImageFilter as _ImageFilter
 _bg_path = os.path.join(EXT, 'worldmap_background.jpg')
 BG_W, BG_H = _Image.open(_bg_path).size
 if _Image.open(region_overlay_path).size != (BG_W, BG_H):
@@ -348,21 +348,37 @@ if _Image.open(region_overlay_path).size != (BG_W, BG_H):
 if _Image.open(mountain_overlay_path).size != (BG_W, BG_H):
     raise ValueError('mountain_overlay.png dimensions do not match worldmap_background.jpg')
 
-# Browser-side route finding uses a 2x2-world-tile navigation cell. Rivers in the
-# authoritative region-index raster are often only a few pixels wide, so the former
-# 4x4 grid could collapse them out of existence. A cell is walkable only when every
-# source pixel belongs to land and none belongs to the reconstructed mountain barrier.
-# In particular, do not infer land from the bright background image: its pale rivers
-# are bright too, which allowed routes to cross them anywhere. Transit structures are
-# punched out here and selectively reopened in JavaScript according to the requested
-# level range.
+# Browser-side route finding uses a 2x2-world-tile navigation cell. Rivers are often
+# only a few pixels wide, so the former 4x4 grid could collapse them out of existence.
+# The region-index raster identifies open water, but internal rivers remain assigned
+# to their surrounding region. Those rivers are the distinctive pale mauve/cyan lines
+# in the aligned diffuse map, so detect them separately and dilate by one pixel to
+# close anti-aliased diagonal gaps. A cell is walkable only when every source pixel is
+# land and none belongs to a river or reconstructed mountain barrier. Transit
+# structures are punched out here and selectively reopened in JavaScript according to
+# the requested level range.
 ROUTE_CELL = 2
 ROUTE_W = math.ceil(BG_W / ROUTE_CELL)
 ROUTE_H = math.ceil(BG_H / ROUTE_CELL)
+_route_bg = _Image.open(_bg_path).convert('RGB')
 _route_region = _Image.open(region_overlay_path).convert('P')
 _route_mountain = _Image.open(mountain_overlay_path).convert('P')
+_route_bg_px = _route_bg.load()
 _route_region_px = _route_region.load()
 _route_mountain_px = _route_mountain.load()
+
+# The four broad land palettes are brown, green, tan, and orange. Their blue channel
+# is either low or their red channel is below this threshold; the waterway stroke is
+# consistently light and nearly neutral after the background's cosmetic shading pass.
+_river_pixels = bytearray(BG_W * BG_H)
+for _y in range(BG_H):
+    for _x in range(BG_W):
+        _r, _g, _b = _route_bg_px[_x, _y]
+        if _r >= 170 and _g >= 145 and _b >= 155 and abs(_r - _b) <= 55:
+            _river_pixels[_y * BG_W + _x] = 255
+_route_river = _Image.frombytes('L', (BG_W, BG_H), bytes(_river_pixels)).filter(
+    _ImageFilter.MaxFilter(3))
+_route_river_px = _route_river.load()
 route_grid = bytearray(ROUTE_W * ROUTE_H)
 for gy in range(ROUTE_H):
     y0, y1 = gy * ROUTE_CELL, min(BG_H, (gy + 1) * ROUTE_CELL)
@@ -371,13 +387,16 @@ for gy in range(ROUTE_H):
         samples = (x1 - x0) * (y1 - y0)
         land = 0
         mountain = False
+        river = False
         for yy in range(y0, y1):
             for xx in range(x0, x1):
                 if _route_region_px[xx, yy]:
                     land += 1
                 if _route_mountain_px[xx, yy]:
                     mountain = True
-        if land == samples and not mountain:
+                if _route_river_px[xx, yy]:
+                    river = True
+        if land == samples and not mountain and not river:
             route_grid[gy * ROUTE_W + gx] = 1
 
 TRANSIT_TYPES = {'Crossing', 'Tunnel', 'Bridge', 'Harbor/Dock'}
@@ -386,8 +405,8 @@ for d in data:
         continue
     gx = round(d['x'] / ROUTE_CELL)
     gy = round((BG_H - d['y']) / ROUTE_CELL)
-    for yy in range(max(0, gy - 1), min(ROUTE_H, gy + 2)):
-        for xx in range(max(0, gx - 1), min(ROUTE_W, gx + 2)):
+    for yy in range(max(0, gy - 2), min(ROUTE_H, gy + 3)):
+        for xx in range(max(0, gx - 2), min(ROUTE_W, gx + 3)):
             route_grid[yy * ROUTE_W + xx] = 0
 
 # Compact alternating-value run lengths (far smaller than JSON-ing every cell).
@@ -1489,11 +1508,11 @@ function buildRouteWorld(minLevel, maxLevel) {
     if (!Number.isFinite(level) || level < minLevel || level > maxLevel) return;
     eligible.add(i);
     const center = routeCellFor(d), cy = Math.floor(center / ROUTE_W), cx = center % ROUTE_W;
-    // Reopen a compact 3x3 patch at an eligible structure. For bridges this is the
+    // Reopen a compact 5x5 patch at an eligible structure. For bridges this is the
     // actual pass through a narrow water barrier; crossings/harbors/tunnels also gain
     // explicit portal edges below.
-    for (let y = Math.max(0, cy - 1); y <= Math.min(ROUTE_H - 1, cy + 1); y++) {
-      for (let x = Math.max(0, cx - 1); x <= Math.min(ROUTE_W - 1, cx + 1); x++) {
+    for (let y = Math.max(0, cy - 2); y <= Math.min(ROUTE_H - 1, cy + 2); y++) {
+      for (let x = Math.max(0, cx - 2); x <= Math.min(ROUTE_W - 1, cx + 2); x++) {
         passable[y * ROUTE_W + x] = 1;
       }
     }
