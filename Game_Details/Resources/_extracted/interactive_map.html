@@ -119,6 +119,15 @@
   #routeSummary { min-height:16px; margin-top:9px; color:var(--muted); font-size:11px; line-height:1.45; }
   #routeSummary strong { color:#77ead3; }
   #routeSummary.error { color:#ee8a8a; }
+  #routeItinerary { margin-top:10px; padding-top:9px; border-top:1px solid var(--border-soft); }
+  #routeItinerary[hidden] { display:none; }
+  .route-itinerary-title { margin-bottom:6px; color:#aebdc7; font-size:9px; font-weight:800; letter-spacing:.11em; text-transform:uppercase; }
+  #routeStops { max-height:190px; margin:0; padding:0 0 0 24px; overflow-y:auto; scrollbar-color:#3b4c5b transparent; }
+  #routeStops li { padding:0 0 5px 2px; color:var(--muted); font-size:10px; }
+  .route-stop { width:100%; padding:6px 7px; border:1px solid #283a48; background:#101a23; text-align:left; }
+  .route-stop:hover { background:#192834; border-color:#436073; }
+  .route-stop-name { display:block; overflow:hidden; color:#e5edf1; font-size:11px; font-weight:700; text-overflow:ellipsis; white-space:nowrap; }
+  .route-stop-meta { display:block; margin-top:2px; color:var(--muted); font-size:9.5px; line-height:1.35; }
   #selectedInfo { font-size:12px; line-height:1.5; margin-bottom:8px; min-height:16px; }
   #selectedInfo .si-name { font-weight:700; color:var(--text); font-size:13px; }
   #selectedInfo .si-sub { color:var(--muted); }
@@ -255,6 +264,10 @@
         </div>
         <div class="route-actions"><button id="routeCalc" class="primary" type="button">Find route</button><button id="routeClear" type="button">Clear</button></div>
         <div id="routeSummary">Uses eligible crossings, tunnels, bridges, docks, and harbors.</div>
+        <div id="routeItinerary" hidden>
+          <div class="route-itinerary-title">Transit itinerary</div>
+          <ol id="routeStops"></ol>
+        </div>
       </div>
     </div>
 
@@ -1085,6 +1098,10 @@ function routeCellFor(d) {
 function buildRouteWorld(minLevel, maxLevel) {
   const passable = ROUTE_BASE.slice();
   const eligible = new Set();
+  // A route cell can be reopened by more than one nearby structure. Retain every
+  // responsible node so the selected path can report the exact transit points it
+  // relies on, rather than guessing from markers near the finished polyline.
+  const transitCells = new Map();
   DATA.forEach((d, i) => {
     if (!TRANSIT_TYPES.has(d.t)) return;
     const level = Number(d.lvl);
@@ -1096,13 +1113,19 @@ function buildRouteWorld(minLevel, maxLevel) {
     // explicit portal edges below.
     for (let y = Math.max(0, cy - 2); y <= Math.min(ROUTE_H - 1, cy + 2); y++) {
       for (let x = Math.max(0, cx - 2); x <= Math.min(ROUTE_W - 1, cx + 2); x++) {
-        passable[y * ROUTE_W + x] = 1;
+        const cell = y * ROUTE_W + x;
+        if (!ROUTE_BASE[cell]) {
+          if (!transitCells.has(cell)) transitCells.set(cell, []);
+          transitCells.get(cell).push(i);
+        }
+        passable[cell] = 1;
       }
     }
   });
 
   const portals = new Map();
   const portalLabels = new Map();
+  const portalDetails = new Map();
   function addPortal(aData, bData, kind) {
     if (!eligible.has(aData) || !eligible.has(bData)) return;
     const a = routeCellFor(DATA[aData]), b = routeCellFor(DATA[bData]);
@@ -1112,11 +1135,13 @@ function buildRouteWorld(minLevel, maxLevel) {
     if (!portals.has(b)) portals.set(b, []);
     portals.get(a).push([b, cost]);
     portals.get(b).push([a, cost]);
-    portalLabels.set(`${Math.min(a,b)}:${Math.max(a,b)}`, kind);
+    const key = `${Math.min(a,b)}:${Math.max(a,b)}`;
+    portalLabels.set(key, kind);
+    portalDetails.set(key, { aData, bData, kind });
   }
   CHAIN_EDGES.forEach(([a, b]) => addPortal(a, b, 'crossing/harbor'));
   TUNNEL_EDGES.forEach(([a, b]) => addPortal(a, b, 'tunnel'));
-  return { passable, portals, portalLabels, eligible };
+  return { passable, portals, portalLabels, portalDetails, transitCells, eligible };
 }
 
 function nearestRouteCell(x, y, passable) {
@@ -1211,22 +1236,41 @@ function findRoute(start, end, world) {
   for (let p = goalIdx; p >= 0; p = parent[p]) { indices.push(p); if (p === startIdx) break; }
   indices.reverse();
   const used = [];
-  for (let i = 1; i < indices.length; i++) {
-    const a = indices[i - 1], b = indices[i];
-    const ay = Math.floor(a / ROUTE_W), ax = a % ROUTE_W;
-    const by = Math.floor(b / ROUTE_W), bx = b % ROUTE_W;
-    if (Math.abs(ax - bx) > 1 || Math.abs(ay - by) > 1) {
-      const label = world.portalLabels.get(`${Math.min(a,b)}:${Math.max(a,b)}`);
-      if (label) used.push(label);
-    }
+  const stops = [];
+  const seenStops = new Set();
+  function addStop(dataIndex) {
+    if (seenStops.has(dataIndex)) return;
+    seenStops.add(dataIndex);
+    stops.push(dataIndex);
   }
+  indices.forEach((cell, i) => {
+    if (i) {
+      const a = indices[i - 1], b = cell;
+      const ay = Math.floor(a / ROUTE_W), ax = a % ROUTE_W;
+      const by = Math.floor(b / ROUTE_W), bx = b % ROUTE_W;
+      if (Math.abs(ax - bx) > 1 || Math.abs(ay - by) > 1) {
+        const key = `${Math.min(a,b)}:${Math.max(a,b)}`;
+        const label = world.portalLabels.get(key);
+        if (label) used.push(label);
+        const detail = world.portalDetails.get(key);
+        if (detail) {
+          const aCell = routeCellFor(DATA[detail.aData]);
+          if (aCell === a) { addStop(detail.aData); addStop(detail.bData); }
+          else { addStop(detail.bData); addStop(detail.aData); }
+        }
+      }
+    }
+    // Ordinary grid movement through a cell that was blocked in the base terrain
+    // means this path is using the structure whose opening made it traversable.
+    (world.transitCells.get(cell) || []).forEach(addStop);
+  });
   const points = [{ x:start.x, y:BG_H-start.y }];
   indices.forEach(idx => points.push({ x:(idx % ROUTE_W + .5) * ROUTE_CELL, y:(Math.floor(idx / ROUTE_W) + .5) * ROUTE_CELL }));
   points.push({ x:end.x, y:BG_H-end.y });
   const startCell = points[1], endCell = points[points.length - 2];
   const distance = score[goalIdx] + Math.hypot(points[0].x-startCell.x, points[0].y-startCell.y)
     + Math.hypot(points[points.length-1].x-endCell.x, points[points.length-1].y-endCell.y);
-  return { points, distance, used:[...new Set(used)] };
+  return { points, distance, used:[...new Set(used)], stops };
 }
 
 function drawRoute(result) {
@@ -1252,9 +1296,38 @@ function drawRoute(result) {
 }
 
 const routeSummaryEl = document.getElementById('routeSummary');
+const routeItineraryEl = document.getElementById('routeItinerary');
+const routeStopsEl = document.getElementById('routeStops');
 function setRouteMessage(message, error) {
   routeSummaryEl.innerHTML = message;
   routeSummaryEl.classList.toggle('error', !!error);
+}
+function clearRouteItinerary() {
+  routeStopsEl.innerHTML = '';
+  routeItineraryEl.hidden = true;
+}
+function renderRouteItinerary(stops) {
+  clearRouteItinerary();
+  if (!stops.length) return;
+  stops.forEach(dataIndex => {
+    const d = DATA[dataIndex];
+    const li = document.createElement('li');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'route-stop';
+    const name = document.createElement('span');
+    name.className = 'route-stop-name';
+    name.textContent = d.hn ? d.n : (d.rg ? `${typeLabel(d.t)} · ${d.rg}` : typeLabel(d.t));
+    const meta = document.createElement('span');
+    meta.className = 'route-stop-meta';
+    const region = d.hn && d.rg && d.rg !== d.n ? ` · ${d.rg}` : '';
+    meta.textContent = `${typeLabel(d.t)} · Level ${d.lvl} · (${d.x}, ${d.y})${region}`;
+    button.append(name, meta);
+    button.addEventListener('click', () => selectNode(d, { zoom:true }));
+    li.appendChild(button);
+    routeStopsEl.appendChild(li);
+  });
+  routeItineraryEl.hidden = false;
 }
 function calculateRoute() {
   const start = parseCoordinates(document.getElementById('routeStart').value);
@@ -1269,8 +1342,9 @@ function calculateRoute() {
   setRouteMessage('Calculating…', false);
   requestAnimationFrame(() => {
     const result = findRoute(start, end, buildRouteWorld(minLevel, maxLevel));
-    if (!result) { routeLayer.innerHTML = ''; setRouteMessage('No traversable route was found with this level range.', true); return; }
+    if (!result) { routeLayer.innerHTML = ''; clearRouteItinerary(); setRouteMessage('No traversable route was found with this level range.', true); return; }
     drawRoute(result);
+    renderRouteItinerary(result.stops);
     const via = result.used.length ? ` · uses ${result.used.join(' and ')}` : '';
     setRouteMessage(`<strong>${Math.round(result.distance).toLocaleString()} tiles</strong> · transit levels ${minLevel}–${maxLevel}${via}<br>Estimated on a ${ROUTE_CELL}-tile navigation grid.`, false);
   });
@@ -1278,6 +1352,7 @@ function calculateRoute() {
 document.getElementById('routeCalc').onclick = calculateRoute;
 document.getElementById('routeClear').onclick = () => {
   routeLayer.innerHTML = '';
+  clearRouteItinerary();
   document.getElementById('routeStart').value = '';
   document.getElementById('routeEnd').value = '';
   setRouteMessage('Uses eligible crossings, tunnels, bridges, docks, and harbors.', false);
