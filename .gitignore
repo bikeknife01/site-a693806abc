@@ -1,0 +1,52 @@
+# Operating-system and editor noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Logs and disposable working files
+*.log
+*.tmp
+*.temp
+*.bak
+*.orig
+.tmp*/
+tmp/
+temp/
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# JavaScript dependency/build caches
+node_modules/
+.parcel-cache/
+.cache/
+coverage/
+
+# Local Android/MuMu client payloads. Existing historical files remain tracked;
+# these rules prevent newly copied campaign resources from being added by accident.
+Game_Details/Resources/*.pb
+Game_Details/Resources/*.unity3d
+Game_Details/Resources/*.astc
+Game_Details/Resources/*.r8
+Game_Details/Resources/*_Client.description.*.json
+Game_Details/Resources/Deltas_*.txt
+
+# Local extraction/snapshot scratch space (published map assets are not ignored).
+Game_Details/Resources/_files/
+Game_Details/Resources/_snapshots/
+Game_Details/Resources/_extracted/*.log
+Game_Details/Resources/_extracted/*.tmp
