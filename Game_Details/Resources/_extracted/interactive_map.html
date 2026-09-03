@@ -142,8 +142,15 @@
   .brand-block h1, .results-header h2 { margin:5px 0 3px; font-family:Georgia,"Times New Roman",serif; font-weight:600; letter-spacing:.02em; color:#f4ead8; }
   .brand-block h1 { font-size:24px; }
   .brand-block p { margin:0; color:var(--muted); font-size:12px; line-height:1.45; }
-  .side-section { padding:15px 16px; border-bottom:1px solid var(--border-soft); }
-  .side-section h3 { color:#c9d4dc; font-size:10px; font-weight:800; letter-spacing:.13em; margin-bottom:10px; }
+  .side-section { padding:0; border-bottom:1px solid var(--border-soft); }
+  .section-toggle { width:100%;display:flex;align-items:center;justify-content:space-between;padding:15px 16px 10px;border:0;border-radius:0;background:transparent;color:#c9d4dc;font-size:10px;font-weight:800;letter-spacing:.13em;text-align:left;text-transform:uppercase; }
+  .section-toggle::after { content:"▾";font-size:12px;color:#738793;transition:transform .16s ease; }
+  .section-toggle:hover { background:rgba(255,255,255,.025);border-color:transparent; }
+  .section-toggle:focus-visible { outline:2px solid var(--accent-cool);outline-offset:-3px; }
+  .side-section.collapsed .section-toggle { padding-bottom:15px; }
+  .side-section.collapsed .section-toggle::after { transform:rotate(-90deg); }
+  .side-section.collapsed .section-body { display:none; }
+  .section-body { padding:0 16px 15px; }
   .facet-label { color:#8496a4; text-transform:uppercase; letter-spacing:.08em; font-size:9px; font-weight:700; margin:6px 0; }
   input[type=text], input[type=number], select { background:#0a1118; border-color:#2c3c4b; border-radius:8px; padding:8px 10px; font-size:12px; transition:border-color .15s,box-shadow .15s; }
   input:focus, select:focus { outline:none; border-color:var(--accent-cool); box-shadow:0 0 0 3px rgba(88,183,201,.12); }
@@ -216,74 +223,84 @@
       <p>Explore territories, inspect map nodes, and evaluate routes around mountain barriers.</p>
     </div>
     <div class="side-section">
-      <h3>Find a Place</h3>
-      <div id="placeSearchWrap">
-        <input type="text" id="placeSearch" placeholder="Place, region, or 1234, 1234…" autocomplete="off">
-        <div id="placeResults"></div>
+      <button class="section-toggle" type="button" aria-expanded="true">Find a Place</button>
+      <div class="section-body">
+        <div id="placeSearchWrap">
+          <input type="text" id="placeSearch" placeholder="Place, region, or 1234, 1234…" autocomplete="off">
+          <div id="placeResults"></div>
+        </div>
       </div>
     </div>
 
     <div class="side-section">
-      <h3>Route Calculator</h3>
-      <div class="route-grid">
-        <div class="route-field wide">
-          <label for="routeStart">Start coordinates</label>
-          <input type="text" id="routeStart" placeholder="1234, 1234">
+      <button class="section-toggle" type="button" aria-expanded="true">Route Calculator</button>
+      <div class="section-body">
+        <div class="route-grid">
+          <div class="route-field wide">
+            <label for="routeStart">Start coordinates</label>
+            <input type="text" id="routeStart" placeholder="1234, 1234">
+          </div>
+          <div class="route-field wide">
+            <label for="routeEnd">End coordinates</label>
+            <input type="text" id="routeEnd" placeholder="(1500, 900)">
+          </div>
+          <div class="route-field">
+            <label for="routeMinLevel">Minimum transit level</label>
+            <select id="routeMinLevel"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>
+          </div>
+          <div class="route-field">
+            <label for="routeMaxLevel">Maximum transit level</label>
+            <select id="routeMaxLevel"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5" selected>5</option></select>
+          </div>
         </div>
-        <div class="route-field wide">
-          <label for="routeEnd">End coordinates</label>
-          <input type="text" id="routeEnd" placeholder="(1500, 900)">
-        </div>
-        <div class="route-field">
-          <label for="routeMinLevel">Minimum transit level</label>
-          <select id="routeMinLevel"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>
-        </div>
-        <div class="route-field">
-          <label for="routeMaxLevel">Maximum transit level</label>
-          <select id="routeMaxLevel"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5" selected>5</option></select>
-        </div>
+        <div class="route-actions"><button id="routeCalc" class="primary" type="button">Find route</button><button id="routeClear" type="button">Clear</button></div>
+        <div id="routeSummary">Uses eligible crossings, tunnels, bridges, docks, and harbors.</div>
       </div>
-      <div class="route-actions"><button id="routeCalc" class="primary" type="button">Find route</button><button id="routeClear" type="button">Clear</button></div>
-      <div id="routeSummary">Uses eligible crossings, tunnels, bridges, docks, and harbors.</div>
     </div>
 
     <div class="side-section">
-      <h3>Filter by Region</h3>
-      <div class="btn-row compact-actions">
-        <button id="regionAll" type="button">All</button>
-        <button id="regionNone" type="button">None</button>
+      <button class="section-toggle" type="button" aria-expanded="true">Filter by Region</button>
+      <div class="section-body">
+        <div class="btn-row compact-actions">
+          <button id="regionAll" type="button">All</button>
+          <button id="regionNone" type="button">None</button>
+        </div>
+        <div id="regionList" class="scroll-list"></div>
+        <div class="legend-note" style="margin-top:7px;">Region colors are assigned for maximum contrast between touching territories.</div>
       </div>
-      <div id="regionList" class="scroll-list"></div>
-      <div class="legend-note" style="margin-top:7px;">Region colors are assigned for maximum contrast between touching territories.</div>
     </div>
 
     <div class="side-section">
-      <h3>Filter by Type</h3>
-      <div class="btn-row compact-actions">
-        <button id="typeAll" type="button">All</button>
-        <button id="typeNone" type="button">None</button>
+      <button class="section-toggle" type="button" aria-expanded="true">Filter by Type</button>
+      <div class="section-body">
+        <div class="btn-row compact-actions">
+          <button id="typeAll" type="button">All</button>
+          <button id="typeNone" type="button">None</button>
+        </div>
+        <div id="typeList"></div>
+        <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;margin-top:8px;" title="Hides nodes with no real name of their own (mostly generic Ruin/Tunnel/Crossing dots) - keeps Castles, Settlements, and other landmarks with an actual place name.">
+          <input type="checkbox" id="namedOnlyToggle"> Only named places
+        </label>
       </div>
-      <div id="typeList"></div>
-      <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;margin-top:8px;" title="Hides nodes with no real name of their own (mostly generic Ruin/Tunnel/Crossing dots) - keeps Castles, Settlements, and other landmarks with an actual place name.">
-        <input type="checkbox" id="namedOnlyToggle"> Only named places
-      </label>
     </div>
 
     <div class="side-section">
-      <h3>Map Layers</h3>
-      <div class="btn-row layer-list" style="flex-direction:column;align-items:flex-start;gap:5px;">
-        <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;">
-          <input type="checkbox" id="regionBorderToggle" checked> Region colors
-        </label>
-        <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;" title="Dark brown is decoded Mountain terrain; warm brown connects nearby ridge fragments, fills enclosed ranges, and bridges only tunnel-supported gaps attached to known mountains.">
-          <input type="checkbox" id="mountainToggle" checked> Mountain barriers
-        </label>
-        <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;">
-          <input type="checkbox" id="kingdomLabelToggle"> Kingdom names
-        </label>
-        <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;">
-          <input type="checkbox" id="regionLabelToggle" checked> Region names
-        </label>
+      <button class="section-toggle" type="button" aria-expanded="true">Map Layers</button>
+      <div class="section-body">
+        <div class="btn-row layer-list" style="flex-direction:column;align-items:flex-start;gap:5px;">
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;">
+            <input type="checkbox" id="regionBorderToggle" checked> Region colors
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;" title="Dark brown is decoded Mountain terrain; warm brown connects nearby ridge fragments, fills enclosed ranges, and bridges only tunnel-supported gaps attached to known mountains.">
+            <input type="checkbox" id="mountainToggle" checked> Mountain barriers
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;">
+            <input type="checkbox" id="kingdomLabelToggle"> Kingdom names
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;">
+            <input type="checkbox" id="regionLabelToggle" checked> Region names
+          </label>
+        </div>
       </div>
     </div>
   </div>
@@ -430,6 +447,16 @@ KINGDOM_LABELS.forEach(k => {
   const el = makeLabel(k.x, k.y, k.name.toUpperCase(), 'kingdom-label');
   if (KINGDOM_COLORS[k.name]) el.style.fill = KINGDOM_COLORS[k.name];
   kingdomLabelLayer.appendChild(el);
+});
+
+// Each left-panel tool group can be collapsed independently without changing the
+// active filters or clearing values inside it.
+document.querySelectorAll('.section-toggle').forEach(toggle => {
+  toggle.addEventListener('click', () => {
+    const section = toggle.closest('.side-section');
+    const collapsed = section.classList.toggle('collapsed');
+    toggle.setAttribute('aria-expanded', String(!collapsed));
+  });
 });
 
 document.getElementById('regionBorderToggle').onchange = (e) => {
@@ -912,11 +939,10 @@ function screenToSvg(clientX, clientY) {
 svg.addEventListener('wheel', (ev) => {
   ev.preventDefault();
   const [sx, sy] = screenToSvg(ev.clientX, ev.clientY);
-  // Small per-tick factor (was 1.15 - far too large a jump per scroll notch, per user
-  // report). Max zoom-out is capped at vb.w (the dynamically-fitted default view from
-  // Task 3, top/bottom-flush against #mapwrap) rather than the old vb.w*3, so the wheel
-  // can never pull the map out past its already-optimal fitted view into empty space.
-  const factor = ev.deltaY > 0 ? 1.05 : 1/1.05;
+  // Half the prior per-tick change (2.5% instead of 5%) for finer wheel control.
+  // Max zoom-out is capped at vb.w (the dynamically-fitted default view) so the map
+  // cannot be pulled beyond its fitted extent into empty space.
+  const factor = ev.deltaY > 0 ? 1.025 : 1/1.025;
   const newW = Math.max(20, Math.min(vb.w, vbState.w * factor));
   const newH = newW * (vbState.h / vbState.w);
   vbState.x = sx - (sx - vbState.x) * (newW / vbState.w);
