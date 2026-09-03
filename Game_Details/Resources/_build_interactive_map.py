@@ -665,8 +665,8 @@ html = """<!DOCTYPE html>
       <h1>Westeros Atlas</h1>
       <p>Explore territories, inspect map nodes, and evaluate routes around mountain barriers.</p>
     </div>
-    <div class="side-section">
-      <button class="section-toggle" type="button" aria-expanded="true">Find a Place</button>
+    <div class="side-section collapsed">
+      <button class="section-toggle" type="button" aria-expanded="false">Find a Place</button>
       <div class="section-body">
         <div id="placeSearchWrap">
           <input type="text" id="placeSearch" placeholder="Place, region, or 1234, 1234…" autocomplete="off">
@@ -675,8 +675,8 @@ html = """<!DOCTYPE html>
       </div>
     </div>
 
-    <div class="side-section">
-      <button class="section-toggle" type="button" aria-expanded="true">Route Calculator</button>
+    <div class="side-section collapsed">
+      <button class="section-toggle" type="button" aria-expanded="false">Route Calculator</button>
       <div class="section-body">
         <div class="route-grid">
           <div class="route-field wide">
@@ -701,8 +701,8 @@ html = """<!DOCTYPE html>
       </div>
     </div>
 
-    <div class="side-section">
-      <button class="section-toggle" type="button" aria-expanded="true">Filter by Region</button>
+    <div class="side-section collapsed">
+      <button class="section-toggle" type="button" aria-expanded="false">Filter by Region</button>
       <div class="section-body">
         <div class="btn-row compact-actions">
           <button id="regionAll" type="button">All</button>
@@ -713,8 +713,8 @@ html = """<!DOCTYPE html>
       </div>
     </div>
 
-    <div class="side-section">
-      <button class="section-toggle" type="button" aria-expanded="true">Filter by Type</button>
+    <div class="side-section collapsed">
+      <button class="section-toggle" type="button" aria-expanded="false">Filter by Type</button>
       <div class="section-body">
         <div class="btn-row compact-actions">
           <button id="typeAll" type="button">All</button>
@@ -727,8 +727,8 @@ html = """<!DOCTYPE html>
       </div>
     </div>
 
-    <div class="side-section">
-      <button class="section-toggle" type="button" aria-expanded="true">Map Layers</button>
+    <div class="side-section collapsed">
+      <button class="section-toggle" type="button" aria-expanded="false">Map Layers</button>
       <div class="section-body">
         <div class="btn-row layer-list" style="flex-direction:column;align-items:flex-start;gap:5px;">
           <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;">
