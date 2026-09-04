@@ -1,5 +1,7 @@
 # Operating-system and editor noise
 .DS_Store
+__MACOSX/
+._*
 Thumbs.db
 Desktop.ini
 *.swp
@@ -50,3 +52,8 @@ Game_Details/Resources/_files/
 Game_Details/Resources/_snapshots/
 Game_Details/Resources/_extracted/*.log
 Game_Details/Resources/_extracted/*.tmp
+Game_Details/Resources/_extracted/_crop_*.png
+Game_Details/Resources/_extracted/_diag_*.png
+
+# Local dragon reference screenshots and extraction folders.
+dragon_stars/

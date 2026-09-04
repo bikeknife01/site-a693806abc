@@ -1,3 +1,0 @@
-
-
-	?CbÛcOfferControl
