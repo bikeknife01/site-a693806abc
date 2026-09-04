@@ -27,6 +27,9 @@ from _build_region_data import (
 BASE = os.path.dirname(os.path.abspath(__file__))
 EXT = os.path.join(BASE, '_extracted')
 MOUNTAIN_CONFIRMED_COLOR = '#5b4636'
+# Visual context only. Palette index 2 must remain distinct from the confirmed
+# index 1 because the route builder deliberately treats this inferred envelope
+# as passable terrain.
 MOUNTAIN_DERIVED_COLOR = '#7a583b'
 
 

@@ -354,7 +354,10 @@ if _Image.open(mountain_overlay_path).size != (BG_W, BG_H):
 # to their surrounding region. Those rivers are the distinctive pale mauve/cyan lines
 # in the aligned diffuse map, so detect them separately and dilate by one pixel to
 # close anti-aliased diagonal gaps. A cell is walkable only when every source pixel is
-# land and none belongs to a river or reconstructed mountain barrier. Transit
+# land and none belongs to a river or directly decoded mountain barrier. The
+# mountain overlay's palette value 2 is only a light-brown inferred range
+# envelope; it is useful visual context, but the game evidence does not support
+# treating it as impassable. Transit
 # structures are punched out here and selectively reopened in JavaScript according to
 # the requested level range.
 ROUTE_CELL = 2
@@ -392,7 +395,7 @@ for gy in range(ROUTE_H):
             for xx in range(x0, x1):
                 if _route_region_px[xx, yy]:
                     land += 1
-                if _route_mountain_px[xx, yy]:
+                if _route_mountain_px[xx, yy] == 1:
                     mountain = True
                 if _route_river_px[xx, yy]:
                     river = True
@@ -747,7 +750,7 @@ html = """<!DOCTYPE html>
           <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;">
             <input type="checkbox" id="regionBorderToggle" checked> Region colors
           </label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;" title="Dark brown is decoded Mountain terrain; warm brown connects nearby ridge fragments, fills enclosed ranges, and bridges only tunnel-supported gaps attached to known mountains.">
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;" title="Dark brown is decoded impassable Mountain terrain. Light brown is an inferred range envelope shown for context, but remains passable to the route calculator.">
             <input type="checkbox" id="mountainToggle" checked> Mountain barriers
           </label>
           <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;">
