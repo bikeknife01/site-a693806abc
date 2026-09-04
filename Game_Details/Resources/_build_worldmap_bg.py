@@ -30,6 +30,7 @@ mask) to make coasts and mountain ridgelines read more clearly, softening the
 "flat color blob" look. This is a modest cosmetic improvement, not a claim of
 matching the live 3D render.
 """
+import glob
 import math
 import os
 import texture2ddecoder
@@ -37,6 +38,7 @@ from PIL import Image, ImageEnhance, ImageOps, ImageChops, ImageFilter
 
 BASE = os.path.dirname(__file__)
 EXT = os.path.join(BASE, '_extracted')
+MAP_PREFIX = 'Westeros_Bravo_4_L4Sanctums'
 
 
 def soften_warm_band(rgb_img, center_deg=33, half_width_deg=22, desat_strength=0.42, value_lift=0.05):
@@ -89,8 +91,14 @@ def decode_astc_rgba(path):
 
 
 def main():
-    diffuse_path = os.path.join(BASE, 'Westeros_Alpha_6_WorldMap_DiffuseAndSmoothness_Bitmap.1785525681.astc')
-    shadow_path = os.path.join(BASE, 'Westeros_Alpha_6_WorldMap_NormalsAndShadow_Bitmap.1785525681.astc')
+    def one(suffix):
+        matches = glob.glob(os.path.join(BASE, f'{MAP_PREFIX}_{suffix}.*.astc'))
+        if len(matches) != 1:
+            raise RuntimeError(f'expected one {MAP_PREFIX}_{suffix} ASTC, found {len(matches)}')
+        return matches[0]
+
+    diffuse_path = one('WorldMap_DiffuseAndSmoothness_Bitmap')
+    shadow_path = one('WorldMap_NormalsAndShadow_Bitmap')
 
     diffuse = decode_astc_rgba(diffuse_path).convert('RGB')
     diffuse = ImageEnhance.Brightness(diffuse).enhance(3.2)

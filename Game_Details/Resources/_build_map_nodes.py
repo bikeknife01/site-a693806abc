@@ -1,8 +1,9 @@
-import json, csv, os, re
+import json, csv, glob, os, re
 from _pbdump import dump_file
 
 BASE = os.path.dirname(__file__)
 EXT = os.path.join(BASE, '_extracted')
+MAP_PREFIX = 'Westeros_Bravo_4_L4Sanctums'
 
 def as_text(v):
     if isinstance(v, dict):
@@ -102,7 +103,10 @@ def classify(key, type_code_int):
     return (type_name, name, level)
 
 # ---------- Rtree spatial leaves ----------
-rtree = dump_file(os.path.join(BASE, 'Westeros_Alpha_6_Poi_Rtree_Client.1784834687.pb'))
+rtree_paths = glob.glob(os.path.join(BASE, f'{MAP_PREFIX}_Poi_Rtree_Client.*.pb'))
+if len(rtree_paths) != 1:
+    raise RuntimeError(f'expected one {MAP_PREFIX} POI Rtree, found {len(rtree_paths)}')
+rtree = dump_file(rtree_paths[0])
 leaves = rtree.get('1', [])
 
 rows = []

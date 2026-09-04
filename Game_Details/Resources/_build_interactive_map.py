@@ -335,7 +335,7 @@ xs = [d['x'] for d in data]
 ys = [d['y'] for d in data]
 minx, maxx, miny, maxy = min(xs), max(xs), min(ys), max(ys)
 
-# Real decoded world-map texture (Westeros_Alpha_6_WorldMap_DiffuseAndSmoothness_Bitmap,
+# Real decoded world-map texture (the active campaign's WorldMap diffuse bitmap,
 # ASTC-decoded), used purely as a visual backdrop. Its pixel space lines up 1:1 with the
 # node x/y coordinates (confirmed by overlaying all 7,694 nodes on it and checking they
 # fall on land / avoid water / cluster on roads), so it's placed at x=0,y=0 with its
@@ -766,8 +766,8 @@ html = """<!DOCTYPE html>
 
   <div id="main">
     <div id="toolbar">
-      <span class="map-title">Interactive world map</span>
-      <span class="status-pill"><span class="status-dot"></span> Showing <span class="stat" id="shownCount">0</span> / TOTAL_COUNT_PLACEHOLDER nodes</span>
+      <span class="map-title">Interactive world map · Bravo</span>
+      <span class="status-pill"><span class="status-dot"></span> Bravo campaign · Showing <span class="stat" id="shownCount">0</span> / TOTAL_COUNT_PLACEHOLDER nodes</span>
       <span style="margin-left:auto;">Scroll to zoom · Drag to pan · Esc to clear selection</span>
     </div>
     <div id="mapwrap">

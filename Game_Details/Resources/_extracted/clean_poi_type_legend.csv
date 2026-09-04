@@ -1,11 +1,11 @@
 type_name,count,has_static_level,has_place_name
-Ruin,4747,yes,no
-Settlement (Town),839,yes,no
+Ruin,4830,yes,no
+Settlement (Town),851,yes,no
 Crossing,626,yes,no
 Tunnel,506,yes,no
-Castle,404,yes,no
+Castle,485,yes,no
 Bridge,300,yes,no
-Dragon Sanctum,133,yes,no
+Dragon Sanctum,175,yes,no
 Seat of Power,83,no,yes
 Harbor/Dock,45,yes,no
 Great House Capital,10,no,yes

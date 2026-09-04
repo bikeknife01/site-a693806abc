@@ -7,8 +7,8 @@ field 1.2, e.g. kingdom_TheNorth, kingdom_Dorne). 9 rows are real kingdoms;
 a handful of others (region_1..5 / kingdom_1..5, region_FTUE_1_alpha /
 kingdom_FTUE_1) are unused placeholder/tutorial data and are filtered out.
 
-The authoritative per-cell assignment is
-Westeros_Alpha_6_WorldMapRegionIndex_Bitmap.<hash>.r8: a complete 2080x3312
+The authoritative per-cell assignment is the active campaign's
+WorldMapRegionIndex_Bitmap resource: a complete 2080x3312
 one-byte region-index texture. Its values are the numeric ids stored in field
 6 of RegionDataTable, so no inference or gap filling is required.
 
@@ -78,7 +78,8 @@ from _pbdump import dump_file
 BASE = os.path.dirname(os.path.abspath(__file__))
 EXT = os.path.join(BASE, '_extracted')
 
-REGION_INDEX_GLOB = 'Westeros_Alpha_6_WorldMapRegionIndex_Bitmap.*.r8'
+MAP_PREFIX = 'Westeros_Bravo_4_L4Sanctums'
+REGION_INDEX_GLOB = f'{MAP_PREFIX}_WorldMapRegionIndex_Bitmap.*.r8'
 REGION_TEXTURE_X_OFFSET = 800
 REGION_FILL_COLORS = [
     # Saturated, widely separated hues. Region color is deliberately independent
@@ -113,7 +114,10 @@ def prettify(raw):
 # "region_Pyke_alpha" - verified against a tile sitting right next to the
 # real Pyke capital coordinate. So this table is keyed by that key string.
 def load_region_table():
-    d = dump_file(os.path.join(BASE, 'RegionDataTable.1787687106.pb'))
+    matches = sorted(glob.glob(os.path.join(BASE, 'RegionDataTable.*.pb')))
+    if not matches:
+        raise FileNotFoundError('RegionDataTable.*.pb')
+    d = dump_file(matches[-1])
     lookup = {}
     for r in d.get('1', []):
         key = r.get('1', {}).get('2', '')
@@ -260,7 +264,7 @@ def decode_tile_raster(raw10, width, height):
 
 def load_all_tiles():
     tiles = []
-    for fn in sorted(glob.glob(os.path.join(BASE, 'Westeros_Alpha_6_Region_Array2DPacked_Client_*.pb'))):
+    for fn in sorted(glob.glob(os.path.join(BASE, f'{MAP_PREFIX}_Region_Array2DPacked_Client_*.pb'))):
         with open(fn, 'rb') as f:
             buf = f.read()
         top = parse_top_level(buf)

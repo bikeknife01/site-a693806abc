@@ -21,7 +21,7 @@ from collections import deque
 from PIL import Image, ImageDraw, ImageFilter
 from _pbdump import dump_file
 from _build_region_data import (
-    parse_top_level, decode_tile_raster, load_region_index_texture, resolve_hash,
+    MAP_PREFIX, parse_top_level, decode_tile_raster, load_region_index_texture, resolve_hash,
 )
 
 BASE = os.path.dirname(os.path.abspath(__file__))
@@ -35,9 +35,10 @@ MOUNTAIN_DERIVED_COLOR = '#7a583b'
 
 def load_terrain_category_names():
     """Return {terrain asset key: Default/Coast/Mountain/...}."""
-    path = next(iter(glob.glob(os.path.join(BASE, 'TerrainDataTable.*.pb'))), None)
-    if not path:
+    matches = sorted(glob.glob(os.path.join(BASE, 'TerrainDataTable.*.pb')))
+    if not matches:
         raise FileNotFoundError('TerrainDataTable.*.pb')
+    path = matches[-1]
     result = {}
     for row in dump_file(path).get('1', []):
         inner = row.get('2', {})
@@ -49,7 +50,7 @@ def load_terrain_category_names():
 def load_terrain_tiles(name_to_category):
     """Decode terrain rasters to category strings at world-cell resolution."""
     tiles = []
-    pattern = os.path.join(BASE, 'Westeros_Alpha_6_Terrain_Array2DPacked_*.pb')
+    pattern = os.path.join(BASE, f'{MAP_PREFIX}_Terrain_Array2DPacked_*.pb')
     for filename in sorted(glob.glob(pattern)):
         with open(filename, 'rb') as f:
             top = parse_top_level(f.read())
