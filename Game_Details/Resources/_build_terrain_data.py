@@ -30,7 +30,7 @@ MOUNTAIN_CONFIRMED_COLOR = '#5b4636'
 # Visual context only. Palette index 2 must remain distinct from the confirmed
 # index 1 because the route builder deliberately treats this inferred envelope
 # as passable terrain.
-MOUNTAIN_DERIVED_COLOR = '#7a583b'
+MOUNTAIN_DERIVED_COLOR = '#9a8067'
 
 
 def load_terrain_category_names():
@@ -301,7 +301,10 @@ def main():
         palette.extend(int(color[i:i + 2], 16) for i in (1, 3, 5))
     palette.extend([0] * (768 - len(palette)))
     overlay.putpalette(palette)
-    overlay.info['transparency'] = 0
+    # Preserve the semantic difference in the image itself. Confirmed mountain
+    # geometry is prominent; the inferred connected envelope is intentionally faint
+    # because it is geographic context, not a routing barrier.
+    overlay.info['transparency'] = bytes([0, 210, 70] + [255] * 253)
     overlay.save(os.path.join(EXT, 'mountain_overlay.png'), optimize=True)
 
     segments = extract_boundaries(mask, max_x, max_y)

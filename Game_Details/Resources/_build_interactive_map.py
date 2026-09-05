@@ -353,8 +353,11 @@ if _Image.open(mountain_overlay_path).size != (BG_W, BG_H):
 # The region-index raster identifies open water, but internal rivers remain assigned
 # to their surrounding region. Those rivers are the distinctive pale mauve/cyan lines
 # in the aligned diffuse map, so detect them separately and dilate by one pixel to
-# close anti-aliased diagonal gaps. A cell is walkable only when every source pixel is
-# land and none belongs to a river or directly decoded mountain barrier. The
+# close anti-aliased diagonal gaps. A navigation cell is walkable when at least half
+# of its source pixels are genuinely passable. Requiring all four pixels in a 2x2
+# cell erased legitimate one-world-tile corridors whenever the grid happened to
+# straddle a mountain edge. Requiring two pixels preserves those corridors without
+# allowing an isolated passable corner to punch through a barrier. The
 # mountain overlay's palette value 2 is only a light-brown inferred range
 # envelope; it is useful visual context, but the game evidence does not support
 # treating it as impassable. Transit
@@ -388,21 +391,29 @@ for gy in range(ROUTE_H):
     for gx in range(ROUTE_W):
         x0, x1 = gx * ROUTE_CELL, min(BG_W, (gx + 1) * ROUTE_CELL)
         samples = (x1 - x0) * (y1 - y0)
-        land = 0
-        mountain = False
-        river = False
+        passable_samples = 0
         for yy in range(y0, y1):
             for xx in range(x0, x1):
-                if _route_region_px[xx, yy]:
-                    land += 1
-                if _route_mountain_px[xx, yy] == 1:
-                    mountain = True
-                if _route_river_px[xx, yy]:
-                    river = True
-        if land == samples and not mountain and not river:
+                if (_route_region_px[xx, yy]
+                        and _route_mountain_px[xx, yy] != 1
+                        and not _route_river_px[xx, yy]):
+                    passable_samples += 1
+        if passable_samples * 2 >= samples:
             route_grid[gy * ROUTE_W + gx] = 1
 
+# Placed resources and POIs are authoritative positive evidence of an occupiable
+# tile. Reopen their exact navigation cell after raster reduction; otherwise a
+# one-pixel terrain disagreement can make a real level-bearing tile impossible to
+# select as a route endpoint. Transit structures remain closed below and are only
+# reopened when their level is eligible for the requested route.
 TRANSIT_TYPES = {'Crossing', 'Tunnel', 'Bridge', 'Harbor/Dock'}
+for d in data:
+    if d['t'] in TRANSIT_TYPES:
+        continue
+    gx = max(0, min(ROUTE_W - 1, round(d['x'] / ROUTE_CELL)))
+    gy = max(0, min(ROUTE_H - 1, round((BG_H - d['y']) / ROUTE_CELL)))
+    route_grid[gy * ROUTE_W + gx] = 1
+
 for d in data:
     if d['t'] not in TRANSIT_TYPES:
         continue
@@ -750,9 +761,13 @@ html = """<!DOCTYPE html>
           <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;">
             <input type="checkbox" id="regionBorderToggle" checked> Region colors
           </label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;" title="Dark brown is decoded impassable Mountain terrain. Light brown is an inferred range envelope shown for context, but remains passable to the route calculator.">
-            <input type="checkbox" id="mountainToggle" checked> Mountain barriers
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;" title="Dark brown is decoded impassable Mountain terrain. Faint brown is an inferred range envelope shown for geographic context and remains passable to routing.">
+            <input type="checkbox" id="mountainToggle" checked> Mountain terrain
           </label>
+          <div class="legend-note" style="margin:2px 7px 5px;">
+            <span style="color:#5b4636;">&#9632;</span> confirmed barrier &nbsp;
+            <span style="color:#9a8067;">&#9632;</span> inferred context (passable)
+          </div>
           <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;">
             <input type="checkbox" id="kingdomLabelToggle"> Kingdom names
           </label>
@@ -793,10 +808,11 @@ html = """<!DOCTYPE html>
         <image id="regionColorLayer" href="region_color_overlay.png" x="0" y="0"
                width="BG_W_PLACEHOLDER" height="BG_H_PLACEHOLDER"
                preserveAspectRatio="none" opacity="0.38"></image>
-        <!-- Mountains sit above political shading so route barriers stay legible. -->
+        <!-- Per-class PNG alpha keeps confirmed barriers prominent while inferred
+             range context stays deliberately faint. -->
         <image id="mountainLayer" href="mountain_overlay.png" x="0" y="0"
                width="BG_W_PLACEHOLDER" height="BG_H_PLACEHOLDER"
-               preserveAspectRatio="none" opacity="0.62"></image>
+               preserveAspectRatio="none"></image>
         <g id="chainLayer"></g>
         <g id="routeLayer"></g>
         <g id="dotsLayer"></g>

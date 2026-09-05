@@ -1,0 +1,380 @@
+{
+  "scope": "Ground-only local routes; transit portals are intentionally excluded so this isolates terrain-grid corridor loss. Unroutable or long samples may legitimately require a bridge, crossing, harbor, dock, or tunnel.",
+  "seed": 7404,
+  "pairs_tested": 500,
+  "grid": {
+    "width": 1040,
+    "height": 1656,
+    "cell_size": 2
+  },
+  "legacy_walkable_cells": 816858,
+  "current_walkable_cells": 864331,
+  "one_tile_corridor_cells_recovered": 46682,
+  "known_occupiable_node_cells_recovered": 791,
+  "legacy_routes_recovered": 25,
+  "routes_shortened_over_10_percent": 52,
+  "ground_only_unroutable_samples": 152,
+  "ground_only_detours_over_2_5x_direct": 28,
+  "examples": [
+    {
+      "from": [
+        930,
+        1223,
+        "Settlement (Town)",
+        ""
+      ],
+      "to": [
+        915,
+        1136,
+        "Ruin",
+        ""
+      ],
+      "direct": 88.3,
+      "legacy": 121.8,
+      "current": 95.0,
+      "current_ratio": 1.08
+    },
+    {
+      "from": [
+        1047,
+        593,
+        "Ruin",
+        ""
+      ],
+      "to": [
+        1151,
+        714,
+        "Ruin",
+        ""
+      ],
+      "direct": 159.6,
+      "legacy": 545.1,
+      "current": 533.1,
+      "current_ratio": 3.34
+    },
+    {
+      "from": [
+        893,
+        1454,
+        "Castle",
+        ""
+      ],
+      "to": [
+        975,
+        1402,
+        "Castle",
+        ""
+      ],
+      "direct": 97.1,
+      "legacy": 380.0,
+      "current": 214.2,
+      "current_ratio": 2.21
+    },
+    {
+      "from": [
+        1110,
+        264,
+        "Ruin",
+        ""
+      ],
+      "to": [
+        1087,
+        331,
+        "Castle",
+        ""
+      ],
+      "direct": 70.8,
+      "legacy": 168.3,
+      "current": 111.1,
+      "current_ratio": 1.57
+    },
+    {
+      "from": [
+        1517,
+        829,
+        "Castle",
+        ""
+      ],
+      "to": [
+        1469,
+        887,
+        "Ruin",
+        ""
+      ],
+      "direct": 75.3,
+      "legacy": 228.7,
+      "current": 104.6,
+      "current_ratio": 1.39
+    },
+    {
+      "from": [
+        1214,
+        1100,
+        "Dragon Sanctum",
+        ""
+      ],
+      "to": [
+        1408,
+        1187,
+        "Settlement (Town)",
+        ""
+      ],
+      "direct": 212.6,
+      "legacy": null,
+      "current": 946.4,
+      "current_ratio": 4.45
+    },
+    {
+      "from": [
+        1746,
+        774,
+        "Castle",
+        ""
+      ],
+      "to": [
+        1679,
+        855,
+        "Ruin",
+        ""
+      ],
+      "direct": 105.1,
+      "legacy": 312.9,
+      "current": 131.6,
+      "current_ratio": 1.25
+    },
+    {
+      "from": [
+        1545,
+        133,
+        "Ruin",
+        ""
+      ],
+      "to": [
+        1375,
+        227,
+        "Ruin",
+        ""
+      ],
+      "direct": 194.3,
+      "legacy": 645.5,
+      "current": 626.2,
+      "current_ratio": 3.22
+    },
+    {
+      "from": [
+        918,
+        520,
+        "Castle",
+        ""
+      ],
+      "to": [
+        777,
+        540,
+        "Ruin",
+        ""
+      ],
+      "direct": 142.4,
+      "legacy": null,
+      "current": 180.0,
+      "current_ratio": 1.26
+    },
+    {
+      "from": [
+        982,
+        191,
+        "Ruin",
+        ""
+      ],
+      "to": [
+        924,
+        365,
+        "Ruin",
+        ""
+      ],
+      "direct": 183.4,
+      "legacy": 263.0,
+      "current": 234.0,
+      "current_ratio": 1.28
+    },
+    {
+      "from": [
+        1107,
+        631,
+        "Ruin",
+        ""
+      ],
+      "to": [
+        968,
+        688,
+        "Ruin",
+        ""
+      ],
+      "direct": 150.2,
+      "legacy": 503.0,
+      "current": 407.7,
+      "current_ratio": 2.71
+    },
+    {
+      "from": [
+        855,
+        489,
+        "Ruin",
+        ""
+      ],
+      "to": [
+        1018,
+        478,
+        "Ruin",
+        ""
+      ],
+      "direct": 163.4,
+      "legacy": null,
+      "current": 267.1,
+      "current_ratio": 1.63
+    },
+    {
+      "from": [
+        1094,
+        1679,
+        "Ruin",
+        ""
+      ],
+      "to": [
+        990,
+        1579,
+        "Ruin",
+        ""
+      ],
+      "direct": 144.3,
+      "legacy": 230.7,
+      "current": 170.0,
+      "current_ratio": 1.18
+    },
+    {
+      "from": [
+        1469,
+        887,
+        "Ruin",
+        ""
+      ],
+      "to": [
+        1679,
+        855,
+        "Ruin",
+        ""
+      ],
+      "direct": 212.4,
+      "legacy": 377.9,
+      "current": 310.1,
+      "current_ratio": 1.46
+    },
+    {
+      "from": [
+        1866,
+        112,
+        "Ruin",
+        ""
+      ],
+      "to": [
+        1653,
+        142,
+        "Settlement (Town)",
+        ""
+      ],
+      "direct": 215.1,
+      "legacy": 343.0,
+      "current": 283.6,
+      "current_ratio": 1.32
+    },
+    {
+      "from": [
+        1641,
+        48,
+        "Ruin",
+        ""
+      ],
+      "to": [
+        1658,
+        112,
+        "Castle",
+        ""
+      ],
+      "direct": 66.2,
+      "legacy": 104.7,
+      "current": 71.5,
+      "current_ratio": 1.08
+    },
+    {
+      "from": [
+        1816,
+        840,
+        "Ruin",
+        ""
+      ],
+      "to": [
+        1665,
+        827,
+        "Ruin",
+        ""
+      ],
+      "direct": 151.6,
+      "legacy": 265.9,
+      "current": 192.9,
+      "current_ratio": 1.27
+    },
+    {
+      "from": [
+        1579,
+        806,
+        "Settlement (Town)",
+        ""
+      ],
+      "to": [
+        1470,
+        842,
+        "Ruin",
+        ""
+      ],
+      "direct": 114.8,
+      "legacy": 181.4,
+      "current": 124.9,
+      "current_ratio": 1.09
+    },
+    {
+      "from": [
+        816,
+        399,
+        "Settlement (Town)",
+        ""
+      ],
+      "to": [
+        962,
+        420,
+        "Ruin",
+        ""
+      ],
+      "direct": 147.5,
+      "legacy": null,
+      "current": 407.4,
+      "current_ratio": 2.76
+    },
+    {
+      "from": [
+        1749,
+        995,
+        "Castle",
+        ""
+      ],
+      "to": [
+        1722,
+        889,
+        "Dragon Sanctum",
+        ""
+      ],
+      "direct": 109.4,
+      "legacy": 140.6,
+      "current": 122.3,
+      "current_ratio": 1.12
+    }
+  ]
+}
