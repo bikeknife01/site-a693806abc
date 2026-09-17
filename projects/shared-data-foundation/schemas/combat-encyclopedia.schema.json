@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dragonfire.local/schemas/combat-encyclopedia.schema.json",
+  "title": "Dragonfire combat encyclopedia dataset",
+  "type": "object",
+  "required": ["metadata", "facets", "mechanics", "dragons", "effects", "relationships", "graph"],
+  "properties": {
+    "metadata": {"type": "object", "required": ["schema_version", "dataset_id", "source_manifest"]},
+    "facets": {"type": "object"},
+    "mechanics": {"type": "object"},
+    "dragons": {"type": "array", "items": {"$ref": "#/$defs/dragon"}},
+    "effects": {"type": "array", "items": {"$ref": "#/$defs/effect"}},
+    "relationships": {"type": "array", "items": {"$ref": "#/$defs/relationship"}},
+    "graph": {
+      "type": "object",
+      "required": ["schedules", "conditions", "targeters", "prioritizers", "status_operations"],
+      "properties": {
+        "schedules": {"type": "array", "items": {"$ref": "#/$defs/graphRecord"}},
+        "conditions": {"type": "array", "items": {"$ref": "#/$defs/graphRecord"}},
+        "targeters": {"type": "array", "items": {"$ref": "#/$defs/graphRecord"}},
+        "prioritizers": {"type": "array", "items": {"$ref": "#/$defs/graphRecord"}},
+        "status_operations": {"type": "array", "items": {"$ref": "#/$defs/graphRecord"}}
+      }
+    }
+  },
+  "$defs": {
+    "evidence": {"$ref": "evidence.schema.json"},
+    "dragon": {
+      "type": "object",
+      "required": ["id", "slug", "name", "lifecycle", "abilities", "evidence"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^dragon:"},
+        "slug": {"type": "string"},
+        "name": {"type": "string"},
+        "lifecycle": {"enum": ["live", "staged", "removed", "superseded"]},
+        "abilities": {"type": "array", "minItems": 7},
+        "evidence": {"$ref": "#/$defs/evidence"}
+      }
+    },
+    "effect": {
+      "type": "object",
+      "required": ["id", "slug", "name", "lifecycle", "exact_text", "evidence", "relationships"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^effect:"},
+        "slug": {"type": "string"},
+        "name": {"type": "string"},
+        "lifecycle": {"enum": ["live", "staged", "removed", "superseded"]},
+        "exact_text": {"type": "string"},
+        "evidence": {"$ref": "#/$defs/evidence"},
+        "relationships": {"type": "object"}
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "required": ["from", "to", "type", "dragon_id"],
+      "properties": {
+        "from": {"type": "string", "pattern": "^ability:"},
+        "to": {"type": "string", "pattern": "^effect:"},
+        "type": {"enum": ["applies", "consumes", "counters", "mentions"]},
+        "dragon_id": {"type": "string", "pattern": "^dragon:"}
+      },
+      "additionalProperties": false
+    },
+    "graphRecord": {
+      "type": "object",
+      "required": ["id", "ability_id"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "ability_id": {"type": "string", "pattern": "^ability:"},
+        "evidence_class": {"enum": ["derived", "screenshot_confirmed", "client_confirmed", "observed", "staged", "unknown"]}
+      }
+    }
+  }
+}

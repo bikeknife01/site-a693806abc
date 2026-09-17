@@ -29,8 +29,9 @@ names/text and several nonnumeric details previously absent from their official
 profiles. Meleys is also present with identity, Legendary rarity, Warrior breed,
 affinities, Vanguard, Command/Habit names, schedules, targeting, Laceration, and
 Reflect behavior. The extraction does not expose resolved Habit upgrade tracks, and
-many detailed descriptions retain progression placeholders, so these three remain in
-`data/live_updates.json` rather than becoming screenshot-complete dragon records.
+many detailed descriptions retain progression placeholders. They are included as
+client-discovered entries in `data/dragon_application_knowledge.json`, rather than
+being promoted to screenshot-complete dragon records.
 
 `WildDragonTable.1786045129.json` joined to Node Finder strings in `locale_enUS.json`
 also resolves the PvE breed weaknesses: Champion Wild Dragons are weak to Warriors,

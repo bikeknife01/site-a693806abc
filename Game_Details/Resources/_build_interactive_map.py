@@ -17,8 +17,9 @@ with open(os.path.join(EXT, 'node_place_names.json'), encoding='utf-8') as f:
 assert len(node_place_names) == len(rows)
 
 data = []
-for r, region_name in zip(rows, node_place_names):
+for row_index, (r, region_name) in enumerate(zip(rows, node_place_names)):
     data.append({
+        'sid': f'map-node:{row_index:06d}',
         'x': int(r['x']),
         'y': int(r['y']),
         'w': int(r['bbox_w']) if r['bbox_w'] else 1,
@@ -589,6 +590,8 @@ html = """<!DOCTYPE html>
   #selectedInfo .si-name { font-weight:700; color:var(--text); font-size:13px; }
   #selectedInfo .si-sub { color:var(--muted); }
   #selectedInfo .si-empty { color:var(--muted); font-style:italic; }
+  #selectedInfo .si-link { display:inline-block;margin-top:6px;color:#7ed7ea;text-decoration:none;font-weight:700; }
+  #selectedInfo .si-link:hover { text-decoration:underline; }
 
   /* 2026 interface refresh: a restrained cartographer's workbench rather than
      three unrelated utility columns. Existing IDs stay intact so functionality
@@ -634,6 +637,11 @@ html = """<!DOCTYPE html>
   #toolbar .map-title { color:#dce5ea; font-weight:650; }
   #toolbar .status-pill { display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border:1px solid #2b3d4c;border-radius:999px;background:#111b24; }
   #toolbar .status-dot { width:6px;height:6px;border-radius:50%;background:#69c58c;box-shadow:0 0 0 3px rgba(105,197,140,.12); }
+  #toolbar .tool-switcher { display:flex;align-items:center;gap:6px;margin-left:auto;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase; }
+  #toolbar .tool-switcher select { min-width:145px;padding:7px 9px; }
+  #toolbar .encyclopedia-nav { display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border:1px solid rgba(214,168,79,.62);border-radius:7px;background:linear-gradient(180deg,rgba(214,168,79,.18),rgba(214,168,79,.08));color:#f2d18e;font-weight:800;text-decoration:none;white-space:nowrap; }
+  #toolbar .encyclopedia-nav:hover { border-color:var(--accent-strong);background:rgba(214,168,79,.24);color:#fff0c9; }
+  #toolbar .toolbar-help { white-space:nowrap; }
   #mapwrap { margin:10px; border:1px solid #2b3a48; border-radius:12px; box-shadow:var(--shadow); background:#080c11; }
   #mapwrap::after { content:"";position:absolute;inset:0;pointer-events:none;border-radius:11px;box-shadow:inset 0 0 45px rgba(0,0,0,.42);z-index:3; }
   .zoom-controls { right:16px;bottom:16px;gap:7px; }
@@ -783,7 +791,9 @@ html = """<!DOCTYPE html>
     <div id="toolbar">
       <span class="map-title">Interactive world map · Bravo</span>
       <span class="status-pill"><span class="status-dot"></span> Bravo campaign · Showing <span class="stat" id="shownCount">0</span> / TOTAL_COUNT_PLACEHOLDER nodes</span>
-      <span style="margin-left:auto;">Scroll to zoom · Drag to pan · Esc to clear selection</span>
+      <label class="tool-switcher">Tool <select id="toolSwitcher"><option value="../">Player tools</option><option selected>Strategic Atlas</option><option value="../encyclopedia/">Encyclopedia</option><option value="../combat/">Combat Explorer</option><option value="../counter/">Counter Picker</option></select></label>
+      <a id="encyclopediaNav" class="encyclopedia-nav" href="../encyclopedia/#/map-nodes">Encyclopedia &#8599;</a>
+      <span class="toolbar-help">Scroll to zoom · Drag to pan · Esc to clear selection</span>
     </div>
     <div id="mapwrap">
       <svg id="svg" viewBox="VIEWBOX_PLACEHOLDER">
@@ -1295,18 +1305,35 @@ function renderTable() {
 
 function renderSelectedInfo(d) {
   const box = document.getElementById('selectedInfo');
+  const nav = document.getElementById('encyclopediaNav');
   if (!d) {
     box.innerHTML = '<span class="si-empty">click a node, table row, or search result to select it</span>';
+    nav.href = '../encyclopedia/#/map-nodes';
+    nav.innerHTML = 'Encyclopedia &#8599;';
+    nav.title = 'Open the Dragonfire encyclopedia';
     return;
   }
+  const recordHref = `../encyclopedia/#/map-nodes/${encodeURIComponent(d.sid.split(':')[1])}`;
+  nav.href = recordHref;
+  nav.innerHTML = 'View selected node in encyclopedia &#8599;';
+  nav.title = `Open ${d.n || typeLabel(d.t)} in the Dragonfire encyclopedia`;
   const bits = [`<span class="si-name">${d.n || typeLabel(d.t)}</span> <span class="si-sub">- ${typeLabel(d.t)}</span>`];
   if (d.rg && d.rg !== d.n) bits.push(`<span class="si-sub">Region: ${d.rg}</span>`);
   if (d.lvl) bits.push(`<span class="si-sub">Lvl ${d.lvl}</span>`);
+  bits.push(`<a class="si-link" href="${recordHref}">Open encyclopedia record &#8599;</a>`);
   box.innerHTML = bits.join('<br>');
+}
+
+function syncSelectedNodeUrl(d) {
+  const url = new URL(location.href);
+  if (d) url.searchParams.set('node', d.sid);
+  else url.searchParams.delete('node');
+  history.replaceState(null, '', url);
 }
 
 function selectNode(d, opts) {
   selected = d;
+  syncSelectedNodeUrl(d);
   document.getElementById('selectedCoord').value = `${d.x}, ${d.y}`;
   renderSelectedInfo(d);
   renderMap();
@@ -1454,6 +1481,7 @@ window.addEventListener('keydown', (ev) => {
     if (clusterPopupEl.classList.contains('open')) { hideClusterPopup(); return; }
     if (selected) {
       selected = null;
+      syncSelectedNodeUrl(null);
       document.getElementById('selectedCoord').value = '';
       renderSelectedInfo(null);
       pingLayer.innerHTML = '';
@@ -1926,7 +1954,13 @@ placeSearchEl.addEventListener('keydown', (ev) => {
 placeSearchEl.addEventListener('focus', () => { if (placeSearchEl.value.trim()) renderSearchResults(); });
 placeSearchEl.addEventListener('blur', () => { placeResultsEl.classList.remove('open'); });
 
+document.getElementById('toolSwitcher').addEventListener('change', event => { if (event.target.value) location.href = event.target.value; });
 render();
+const initialNodeId = new URL(location.href).searchParams.get('node');
+if (initialNodeId) {
+  const initialNode = DATA.find(d => d.sid === initialNodeId);
+  if (initialNode) selectNode(initialNode, { flyTo: true });
+}
 </script>
 </body>
 </html>

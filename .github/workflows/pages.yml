@@ -1,13 +1,25 @@
-name: Deploy interactive map
+name: Deploy Dragonfire tools
 
 on:
   push:
     branches: [main]
     paths:
       - "Game_Details/Resources/_extracted/interactive_map.html"
+      - "Game_Details/Resources/_extracted/clean_map_nodes.csv"
+      - "Game_Details/Resources/_extracted/node_place_names.json"
+      - "Game_Details/Resources/_extracted/crossing_chains.json"
       - "Game_Details/Resources/_extracted/worldmap_background.jpg"
       - "Game_Details/Resources/_extracted/region_color_overlay.png"
       - "Game_Details/Resources/_extracted/mountain_overlay.png"
+      - "projects/game-data-encyclopedia/**"
+      - "projects/combat-interaction-explorer/**"
+      - "projects/counter-picking-assistant/**"
+      - "projects/player-tools-index/**"
+      - "projects/shared-data-foundation/src/normalize/build_encyclopedia_data.py"
+      - "data/dragons/**"
+      - "data/effects.json"
+      - "data/game_mechanics.json"
+      - "data/dragon_application_knowledge.json"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -28,27 +40,52 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out map assets
+      - name: Check out published sources
         uses: actions/checkout@v6
         with:
           sparse-checkout: |
             Game_Details/Resources/_extracted/interactive_map.html
+            Game_Details/Resources/_extracted/clean_map_nodes.csv
+            Game_Details/Resources/_extracted/node_place_names.json
+            Game_Details/Resources/_extracted/crossing_chains.json
             Game_Details/Resources/_extracted/worldmap_background.jpg
             Game_Details/Resources/_extracted/region_color_overlay.png
             Game_Details/Resources/_extracted/mountain_overlay.png
+            projects/game-data-encyclopedia
+            projects/combat-interaction-explorer
+            projects/counter-picking-assistant
+            projects/player-tools-index
+            projects/shared-data-foundation/src/normalize/build_encyclopedia_data.py
+            data/dragons
+            data/effects.json
+            data/game_mechanics.json
+            data/dragon_application_knowledge.json
           sparse-checkout-cone-mode: false
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Build encyclopedia
+        run: python projects/game-data-encyclopedia/scripts/build.py
+
+      - name: Build player tools
+        run: |
+          python projects/combat-interaction-explorer/scripts/build.py
+          python projects/counter-picking-assistant/scripts/build.py
+          python projects/player-tools-index/scripts/build.py
+
       - name: Prepare site
         shell: bash
         run: |
-          mkdir -p _site
-          cp Game_Details/Resources/_extracted/interactive_map.html _site/index.html
-          cp Game_Details/Resources/_extracted/worldmap_background.jpg _site/
-          cp Game_Details/Resources/_extracted/region_color_overlay.png _site/
-          cp Game_Details/Resources/_extracted/mountain_overlay.png _site/
+          mkdir -p _site/map _site/encyclopedia _site/combat _site/counter
+          cp -R projects/player-tools-index/dist/. _site/
+          cp Game_Details/Resources/_extracted/interactive_map.html _site/map/index.html
+          cp Game_Details/Resources/_extracted/worldmap_background.jpg _site/map/
+          cp Game_Details/Resources/_extracted/region_color_overlay.png _site/map/
+          cp Game_Details/Resources/_extracted/mountain_overlay.png _site/map/
+          cp -R projects/game-data-encyclopedia/dist/. _site/encyclopedia/
+          cp -R projects/combat-interaction-explorer/dist/. _site/combat/
+          cp -R projects/counter-picking-assistant/dist/. _site/counter/
           touch _site/.nojekyll
 
       - name: Upload Pages artifact

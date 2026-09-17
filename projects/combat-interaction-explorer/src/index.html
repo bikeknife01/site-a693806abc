@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explainable Dragonfire combat timing and interactions.">
+  <title>Dragonfire Combat Interaction Explorer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to combat timeline</a>
+  <header class="topbar">
+    <a class="brand" href="./"><span class="brand-mark">D</span><span><strong>Dragonfire</strong><small>Combat Interaction Explorer</small></span></a>
+    <label class="tool-switcher">Tool <select id="tool-switcher"><option value="../">Player tools</option><option value="../map/">Strategic Atlas</option><option value="../encyclopedia/">Encyclopedia</option><option value="./" selected>Combat Explorer</option><option value="../counter/">Counter Picker</option></select></label>
+    <span class="evidence-note">Evidence-first · no invented damage totals</span>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div><p class="eyebrow">First implementation slice</p><h1>See when every ability enters the fight.</h1><p>Build two formations and inspect an evidence-linked ten-round schedule. Target resolution and state transitions are added only when the source rules support them.</p></div>
+      <button id="copy-link" type="button">Copy scenario link</button>
+    </section>
+
+    <section class="workspace" aria-label="Scenario editor">
+      <div class="formation-card"><div class="section-heading"><div><p class="eyebrow">Your formation</p><h2>Allied dragons</h2></div><span class="side allied">Allied</span></div><div id="allies" class="slots"></div></div>
+      <div class="formation-card"><div class="section-heading"><div><p class="eyebrow">Opposition</p><h2>Enemy dragons</h2></div><span class="side enemy">Enemy</span></div><div id="enemies" class="slots"></div></div>
+    </section>
+
+    <section class="scenario-controls">
+      <label>Shared troop type <select id="troop"></select></label>
+      <button id="generate" class="primary" type="button">Generate timeline</button>
+      <span id="summary" aria-live="polite"></span>
+    </section>
+
+    <section class="assumptions"><strong>Current scope</strong><span>Schedules, Star/level/Vanguard eligibility and lane candidates are evaluated. Only deterministic, persistent status applications with one unambiguous resolved target group enter guaranteed state. Recovery is shown as an instant interaction and never stacked as an active status. Chance effects remain branches; ambiguous operations, exact action order and damage totals remain unresolved.</span></section>
+
+    <section aria-labelledby="timeline-title"><div class="timeline-heading"><div><p class="eyebrow">Combat cycle</p><h2 id="timeline-title">Ten-round timeline</h2></div><div class="legend"><span class="dot allied"></span> Allied <span class="dot enemy"></span> Enemy</div></div><div id="timeline" class="timeline"><p class="loading">Loading normalized combat records…</p></div></section>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

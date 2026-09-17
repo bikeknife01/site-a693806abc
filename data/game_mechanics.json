@@ -87,7 +87,7 @@
       "red_stars": "After five yellow stars, each displayed red star represents one additional Star Rank: one red star is Rank 6, two red stars is Rank 7, continuing through five red stars at Rank 10.",
       "normalization_rule": "Convert displayed star color/count to the numeric Star Rank before determining unlocked Habits. Never interpret one red star as Rank 1."
     },
-    "reign_level": "Campaign-specific and resets at the start of each new Reign. Combat experience and Meat increase it; higher levels increase maximum army size plus Strength, Instinct, Intelligence, and Initiative.",
+    "dragon_level": "Seasonal dragon progression. Combat experience and Meat increase Dragon Level; higher levels increase maximum army size plus Strength, Instinct, Intelligence, and Initiative. Use data/dragon_application_knowledge.json for the current client-derived per-dragon level curves rather than treating a Basics screenshot as a universal stat profile.",
     "habit_upgrades": {
       "levels": [1, 2, 3, 4, 5],
       "currencies": "Breedmarks and rarity-matched Cores are both required. Core types include Rare, Epic, and Legendary.",
@@ -105,7 +105,7 @@
     },
     "stronghold_upgrades": "Seasonal and reset at the start of each campaign. War Tactics can modify troop offense, defense, PvE damage, Siege damage, march speed, reinforcement speed, and dragon experience; Dragon Care can modify dragon stats, army size, and breed offense/defense.",
     "heirlooms": "Permanent upgrade trees. Unlocked upgrades persist, but most require the current seasonal House Level to be active. House Level and House XP reset each Reign. Mastery bonuses from purchased Heirloom ranks are always active regardless of House Level.",
-    "recommendation_inputs": "For comparisons across players or Reigns, ask about Reign Level and relevant Stronghold, Heirloom, realm, and stage modifiers when the matchup is close; do not infer these values from dragon identity."
+    "recommendation_inputs": "For close comparisons, ask for every candidate dragon's Level, Star Rank, and unlocked Habit levels, plus relevant Stronghold, Heirloom, realm, and stage modifiers. Dragon Level curves and Star scalars are distinct; do not infer either from dragon identity or a historical Basics screenshot."
   },
   "pve_and_objectives": {
     "tile_conquest": "Every tile has one or more Defenders and Durability. Defenders must be defeated before Siege damage can reduce Durability. A tile is conquered when Durability reaches zero.",

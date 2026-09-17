@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dragonfire.local/schemas/change-manifest.schema.json",
+  "title": "Dragonfire semantic change manifest",
+  "type": "object",
+  "required": ["schema_version", "baseline", "current", "comparison_state", "summary", "changes", "source_changes"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "baseline": {"$ref": "#/$defs/version"},
+    "current": {"$ref": "#/$defs/version"},
+    "comparison_state": {"enum": ["unchanged", "changes_detected"]},
+    "summary": {
+      "type": "object",
+      "required": ["added", "changed", "removed", "source_files_changed"],
+      "properties": {
+        "added": {"type": "integer", "minimum": 0},
+        "changed": {"type": "integer", "minimum": 0},
+        "removed": {"type": "integer", "minimum": 0},
+        "source_files_changed": {"type": "integer", "minimum": 0}
+      }
+    },
+    "changes": {"type": "array", "items": {"$ref": "#/$defs/change"}},
+    "source_changes": {"type": "array", "items": {"$ref": "#/$defs/sourceChange"}}
+  },
+  "$defs": {
+    "version": {
+      "type": "object",
+      "required": ["label", "dataset_schema_version", "client_versions", "inventory"],
+      "properties": {
+        "label": {"type": "string"},
+        "dataset_schema_version": {"type": "string"},
+        "client_versions": {"type": "object"},
+        "inventory": {"type": "object"}
+      }
+    },
+    "change": {
+      "type": "object",
+      "required": ["entity_id", "entity_type", "name", "change_type", "changed_fields"],
+      "properties": {
+        "entity_id": {"type": "string"},
+        "entity_type": {"enum": ["dragon", "ability", "status"]},
+        "name": {"type": "string"},
+        "parent_id": {"type": ["string", "null"]},
+        "change_type": {"enum": ["added", "changed", "removed"]},
+        "changed_fields": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "sourceChange": {
+      "type": "object",
+      "required": ["path", "change_type"],
+      "properties": {
+        "path": {"type": "string"},
+        "change_type": {"enum": ["added", "changed", "removed"]}
+      }
+    }
+  }
+}

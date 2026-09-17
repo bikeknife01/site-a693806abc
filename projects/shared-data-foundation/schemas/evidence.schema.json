@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dragonfire.local/schemas/evidence.schema.json",
+  "title": "Dragonfire evidence record",
+  "type": "object",
+  "required": ["class", "confidence", "source", "source_version", "uncertainty"],
+  "properties": {
+    "class": {
+      "enum": ["screenshot_confirmed", "client_confirmed", "observed", "derived", "staged", "unknown"]
+    },
+    "confidence": {"enum": ["confirmed", "limited", "unknown"]},
+    "source": {"type": "string", "minLength": 1},
+    "source_version": {"type": "string", "minLength": 1},
+    "uncertainty": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

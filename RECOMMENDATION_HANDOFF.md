@@ -1,6 +1,17 @@
 # Recommendation handoff
 
-This handoff describes the screenshot-audited dragon records in `data/dragons/`. Screenshots remain the sole authority for game facts. A recommendation agent should use this catalog for discovery, then cite the exact JSON fields that support each formation choice.
+This handoff describes the recommendation data set. Use `data/dragon_application_knowledge.json` first to discover the complete production-named client roster and obtain level-specific base stats. For screenshot-audited dragons, `data/dragons/<name>.json` remains primary for exact current mechanics. Client-only records must be labeled as such and their evidence limitations disclosed.
+
+## Required recommendation inputs and level handling
+
+Ask for each candidate dragon's **level**, **Star Rank**, and unlocked Habit levels before making a close power comparison. Read `level_model.base_stats_by_level.<stat>.values_by_level[level - 1]` from `data/dragon_application_knowledge.json`; the index is zero-based while the game level is one-based. These are client-derived base values for Strength, Intelligence, Instinct, Initiative, and Max Army Size.
+
+- Dragon Level is separate from Star Rank and Habit level. Do not substitute one for another.
+- The client provides separate `star_scalars` but does not establish a complete public final-stat formula. Do not manufacture one; compare raw level curves only when the candidates share the same Star Rank, or qualify the comparison.
+- Base stats are strategically meaningful: Strength enhances Physical damage and mitigates Physical damage through the defender's Instinct; Instinct enhances Tactical damage and mitigates it through the defender's Intelligence; Intelligence enhances Fire damage and mitigates it through the defender's Initiative. Troop Capacity affects staying power and any explicit troop-capacity threshold.
+- If levels are unknown, make a kit-and-synergy recommendation only, label it level-agnostic, and say that the choice may change with actual levels and Stars.
+
+The 37 included production-named client rows are 34 screenshot-audited dragons plus Starshower, Vermithor, and Meleys. WIP, test, NPC, wild, and balance-test records are deliberately excluded.
 
 ## Canonical JSON schema
 
@@ -39,6 +50,19 @@ Each `data/dragons/<name>.json` record uses the following keys:
 | `derived.scenario_bias` | Optional heuristic scores, not source facts. Do not cite them as mechanics. |
 | `derived.notes` | Optional qualified strategic interpretation. |
 | `review` | Precise unresolved source conflicts, crops, or missing required facts. A non-empty array must be disclosed in recommendations that depend on the affected fact. |
+
+## Client knowledge schema
+
+`data/dragon_application_knowledge.json` is the canonical application-data index:
+
+| Key | Meaning |
+|---|---|
+| `dragons[].recommendation_status` | `screenshot_audited` permits use of the matching `data/dragons` mechanics record. `client_discovered` is usable only with the documented caveats. |
+| `dragons[].level_model.max_level` | Maximum level exposed by the current client row. |
+| `level_model.base_stats_by_level` | Exact client curve per stat, ordered levels 1–50. Use the player-reported level. |
+| `level_model.star_scalars` | Separate client Star scaling curves. Never treat them as a complete final-stat formula unless that formula is established. |
+| `client_ability_slots` | Client command and six ability slots, including the Breed/Vanguard ability in slot 1. `description_template` can contain unresolved progression tokens, so it supplements but never overrides screenshot wording. |
+| `recommendation_evidence` | Availability and missing-evidence disclosures required for client-discovered dragons. |
 
 ## Mechanics glossary
 
@@ -126,6 +150,20 @@ The game's effect menu places Bleed, Panic, and Burn under “Positive Effects,�
   meaningful: chance-based Habits may need levels before they are reliable, while
   some Habits are strategically valuable at Level 1.
 
+## Recommendation decision order
+
+Use this order rather than a generic “best dragon” ranking:
+
+1. **Eligibility:** exclude dragons the player does not own, Habits not unlocked at the reported Star Rank, and Vanguard effects unavailable below level 16. Keep client-discovered dragons conditional.
+2. **Objective and enemy:** distinguish PvP, defender-clearing, POI Durability/Siege, campaign, and Wild Dragon targets. Apply enemy troop matchup and explicit counters before broad role labels.
+3. **Comparable progression:** compare the three candidates' level curves only at their reported level and only with Star Rank called out. A high-level stat advantage is meaningful only for the damage type or mitigation relation the kit actually uses.
+4. **Mechanics chain:** prefer explicit producer → payoff chains (for example Burn → a Burn payoff, Bleed → a Bleed payoff, or Tactical damage/Recovery → a named stack) over two dragons merely sharing a broad role. Respect trigger rounds, target scope, duration, stack cap, and chance.
+5. **Position:** select one Vanguard by comparing the trio's active Vanguard effects, then put the named Left/Right Flank beneficiary in the correct flank. Do not optimize three individual Vanguard effects simultaneously.
+6. **Shared troops:** choose one troop type for all three dragons. Score positive/negative affinity coverage separately from the troop counter cycle and scenario objective; explain any deliberate compromise.
+7. **Confidence:** cite the facts used, distinguish transcribed facts from derived judgment, and state the missing input most likely to change the result.
+
+Do not turn level, rarity, affinity, or derived role labels into a universal numeric score. They are decision factors whose value depends on the exact damage type, Star/Habit gate, enemy, timing, and formation context.
+
 ## Compact dragon catalog
 
 “Counters/pressure” below is derived only from explicit effects; a dash means no direct counter clause is asserted.
@@ -171,18 +209,17 @@ The game's effect menu places Bleed, Panic, and Burn under “Positive Effects,�
 
 There are no unresolved dragon review items. User confirmation established Dawnseeker's 10-Star Habit as `First Light`, Malachite's Command as `Warden's Rally`, Sheepstealer as Legendary, Vermax as Epic, and Vhagar's 10-Star Habit as `Skyward Titan`.
 
-`data/live_updates.json` contains three dragons without screenshot-complete records:
-the official `Shadow of the Greens` additions Starshower and Vermithor, plus Meleys,
-which is present in installed-client data but whose current availability was not
-established. The installed tables add rarity, affinity, Vanguard text, ability names,
-targeting, schedules, and some explicit Star gates. Most numeric values, Habit upgrade
-tracks, and current screenshot verification remain missing, so use these dragons only
-for conditional strategy and disclose the missing evidence. Their named effects Solar
-Flare, Protect, Laceration, and Reflect are defined in `data/effects.json`.
+`data/dragon_application_knowledge.json` includes three client-discovered dragons
+without screenshot-complete records: the released Shadow of the Greens additions
+Starshower and Vermithor, plus Meleys, whose player availability was not established.
+Use their client ability templates only conditionally, disclose the fields named in
+`recommendation_evidence.missing_for_full_recommendations`, and do not invent resolved
+progression-token values. Their named effects Solar Flare, Protect, Laceration, and
+Reflect are defined in `data/effects.json`.
 
 Some Habit description text shows rounded values while the five-column table shows more precision (for example `-7%` in prose and `-7.5%` at level 1). Records preserve the displayed prose and all five table values; recommendations needing an upgrade value should cite `upgrade_levels`.
 
-Player-specific Basics values are intentionally excluded. This repository does not establish live balance changes, hidden formulas, proc ordering beyond displayed wording, or mechanics absent from the supplied screenshots.
+Basics screenshots are historical player snapshots and are not used as cross-player facts. The client level curves replace them for level-aware comparisons. This repository still does not establish live balance changes, the formula combining base values and Star scalars, proc ordering beyond displayed wording, or mechanics absent from the supplied screenshots.
 
 System-level official rules and source freshness are documented in
 `data/game_mechanics.json` and `wiki/Online-Sources.md`. Account-level Reign Level,
@@ -191,7 +228,7 @@ request them when a close comparison cannot be resolved from dragon kits and Sta
 
 ## Recommendation evidence rules
 
-- Cite the relevant dragon file and fields, for example: `data/dragons/antares.json → command.verbatim[2]`, `vanguard.verbatim`, or `habits[0].upgrade_levels["5"]`.
+- Cite the relevant dragon file and fields, for example: `data/dragons/antares.json → command.verbatim[2]`, `vanguard.verbatim`, or `habits[0].upgrade_levels["5"]`. For level-sensitive claims, also cite `data/dragon_application_knowledge.json → dragons[name=Antares].level_model.base_stats_by_level.strength.values_by_level[level - 1]`.
 - State whether a claim is transcribed or derived. Roles, scenario bias, synergies, counters, and preferred position are derived; timings, values, targets, affinities, and effect text are transcribed.
 - Never infer an unstated lane, target count, duration, stack cap, cleanse scope, Basic Attack interaction, status interaction, or damage type.
 - For default and “same lane” targeting, map Left Flank to enemy Left Flank, Vanguard
@@ -202,8 +239,9 @@ request them when a close comparison cannot be resolved from dragon kits and Sta
 - Cite all three dragons' positive/negative affinity fields when choosing the one shared
   formation troop type, and separately cite `data/game_mechanics.json` when using troop
   matchup advantage.
-- Check `data/live_updates.json` when a named dragon has no record under `data/dragons/`.
-  Use only explicitly recorded official-profile or installed-client evidence. Never
-  infer missing Star gates, values, upgrade tracks, release status, or availability.
+- Check `data/dragon_application_knowledge.json` when a named dragon has no record
+  under `data/dragons/`. Use only explicitly recorded client evidence and disclose
+  its `recommendation_evidence` limitations. Never infer missing Star gates, values,
+  upgrade tracks, release status, availability, or a final-stat formula.
 - For POI assaults, distinguish the combat formation that clears Defenders from the
   Siege formation that reduces Durability.
