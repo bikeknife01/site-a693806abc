@@ -748,8 +748,8 @@ html = """<!DOCTYPE html>
       </div>
     </div>
 
-    <div class="side-section collapsed">
-      <button class="section-toggle" type="button" aria-expanded="false">Filter by Type</button>
+    <div class="side-section">
+      <button class="section-toggle" type="button" aria-expanded="true">Filter by Type</button>
       <div class="section-body">
         <div class="btn-row compact-actions">
           <button id="typeAll" type="button">All</button>
@@ -1035,7 +1035,9 @@ const vb = { x: (BG_W - vbW) / 2, y: 0, w: vbW, h: BG_H };
 const svg = document.getElementById('svg');
 svg.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.w} ${vb.h}`);
 
-const activeTypes = new Set(TYPES);
+// Start with no POI types visible so the map opens as a clean geographic canvas.
+// The expanded Filter by Type section makes the opt-in controls immediately visible.
+const activeTypes = new Set();
 let selected = null;
 let filtered = [];
 
@@ -1055,7 +1057,7 @@ TYPES.forEach(t => {
   const row = document.createElement('div');
   row.className = 'type-row';
   row.title = `${t} (${counts[t]||0})`;
-  row.innerHTML = `<input type="checkbox" checked><span class="swatch" style="background:${COLORS[t]}"></span><span class="type-name">${typeLabel(t)} <span class="count">${counts[t]||0}</span></span>`;
+  row.innerHTML = `<input type="checkbox"><span class="swatch" style="background:${COLORS[t]}"></span><span class="type-name">${typeLabel(t)} <span class="count">${counts[t]||0}</span></span>`;
   row.dataset.type = t;
   const checkbox = row.querySelector('input');
   typeRowEls.set(t, { row, checkbox });
@@ -1065,6 +1067,7 @@ TYPES.forEach(t => {
     render();
   });
   typeListEl.appendChild(row);
+  syncTypeRow(t);
 });
 
 function syncTypeRow(t) {
