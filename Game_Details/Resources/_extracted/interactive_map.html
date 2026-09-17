@@ -582,6 +582,10 @@ svg.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.w} ${vb.h}`);
 const activeTypes = new Set();
 let selected = null;
 let filtered = [];
+// While a calculated route is active, this set temporarily overrides the normal
+// POI facets so only the exact transit structures used by that route are visible.
+// The user's type/level/territory selections remain untouched and return on Clear.
+let routeFocusedStops = null;
 
 // Display-only shortening for the (verbose, CSV-sourced) type name - the underlying
 // value is still 'Settlement (Town)' everywhere (TYPES/activeTypes/COLORS/d.t all
@@ -660,7 +664,8 @@ const levelFacet = buildFacetList(document.getElementById('levelList'), LEVEL_VA
 let dotEls = new Map(); // data index -> circle element
 
 function render() {
-  filtered = DATA.filter(d => {
+  filtered = DATA.filter((d, dataIndex) => {
+    if (routeFocusedStops !== null) return routeFocusedStops.has(dataIndex);
     if (!activeTypes.has(d.t)) return false;
     if (namedOnly && !d.hn) return false;
     if (!activeLevels.has(d.lvl)) return false;
@@ -1377,17 +1382,22 @@ function calculateRoute() {
   setRouteMessage('Calculating…', false);
   requestAnimationFrame(() => {
     const result = findRoute(start, end, buildRouteWorld(minLevel, maxLevel));
-    if (!result) { routeLayer.innerHTML = ''; clearRouteItinerary(); setRouteMessage('No traversable route was found with this level range.', true); return; }
+    if (!result) { routeLayer.innerHTML = ''; clearRouteItinerary(); routeFocusedStops = null; render(); setRouteMessage('No traversable route was found with this level range.', true); return; }
+    routeFocusedStops = new Set(result.stops);
+    render();
     drawRoute(result);
     renderRouteItinerary(result.stops);
     const via = result.used.length ? ` · uses ${result.used.join(' and ')}` : '';
-    setRouteMessage(`<strong>${Math.round(result.distance).toLocaleString()} tiles</strong> · transit levels ${minLevel}–${maxLevel}${via}<br>Estimated on a ${ROUTE_CELL}-tile navigation grid.`, false);
+    const focus = result.stops.length ? `<br>Showing only the ${result.stops.length} transit node${result.stops.length === 1 ? '' : 's'} used by this route.` : '<br>This route does not use a transit node.';
+    setRouteMessage(`<strong>${Math.round(result.distance).toLocaleString()} tiles</strong> · transit levels ${minLevel}–${maxLevel}${via}<br>Estimated on a ${ROUTE_CELL}-tile navigation grid.${focus}`, false);
   });
 }
 document.getElementById('routeCalc').onclick = calculateRoute;
 document.getElementById('routeClear').onclick = () => {
   routeLayer.innerHTML = '';
   clearRouteItinerary();
+  routeFocusedStops = null;
+  render();
   document.getElementById('routeStart').value = '';
   document.getElementById('routeEnd').value = '';
   setRouteMessage('Uses eligible crossings, tunnels, bridges, docks, and harbors.', false);
