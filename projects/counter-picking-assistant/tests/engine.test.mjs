@@ -33,6 +33,18 @@ test("formation recommendation covers explicit Fire mitigation and exports scena
   assert.match(combatExplorerQuery(result.recommendations[0], enemies, "Cavalry"), /a2=anti-fire|a1=anti-fire|a3=anti-fire/);
 });
 
+test("owned progression controls eligibility and is preserved in Combat export", () => {
+  antiFire.abilities[0].unlock = { level: 30 };
+  const enemies = [{ dragon: "enemy", lane: "Vanguard", stars: 10, level: 50 }];
+  const low = recommendFormations(data, enemies, [{ slug: "anti-fire", owned: true, level: 20, stars: 4 }, { slug: "a", owned: true, level: 20, stars: 4 }, { slug: "b", owned: true, level: 20, stars: 4 }], "Shieldbearers");
+  assert.equal(low.recommendations[0].covered.includes("damage:Fire Damage"), false);
+  const ready = recommendFormations(data, enemies, [{ slug: "anti-fire", owned: true, level: 35, stars: 6 }, { slug: "a", owned: true, level: 20, stars: 4 }, { slug: "b", owned: true, level: 20, stars: 4 }], "Shieldbearers");
+  const query = combatExplorerQuery(ready.recommendations[0], enemies, "Cavalry");
+  assert.match(query, /a[123]l=35/);
+  assert.match(query, /a[123]s=6/);
+  antiFire.abilities[0].unlock = {};
+});
+
 test("an increased damage-received clause is never classified as mitigation", async () => {
   const risky = dragon("risky", "Risky", [ability("risk", "Risk", [], [], "Increase your Physical Damage Received by +10% and reduce your Instinct by -40%.")]);
   const local = { ...data, dragons: [...data.dragons, risky] };

@@ -1,9 +1,11 @@
 import { LANES, buildTimeline, scenarioFromQuery, scenarioToQuery } from "./engine.mjs";
+import { loadProfile, mountProfileManager, rosterEntries } from "./player-profile.mjs";
 
 const $ = selector => document.querySelector(selector);
 const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
 let data;
 let scenario;
+let profile;
 
 function dragonName(slug) {
   return data.dragons.find(dragon => dragon.slug === slug)?.name || slug;
@@ -36,6 +38,19 @@ function dragonOptions(selected) {
 function renderFormation(side) {
   const root = $(`#${side}`);
   root.innerHTML = scenario[side].map((slot, index) => `<article class="slot" data-side="${side}" data-index="${index}"><div class="lane">${LANES[index]}</div><label>Dragon<select class="dragon">${dragonOptions(slot.dragon)}</select></label><div class="progression"><label>Level<input class="level" type="number" min="1" max="50" value="${slot.level}"></label><label>Stars<input class="stars" type="number" min="1" max="10" value="${slot.stars}"></label></div></article>`).join("");
+  if (side === "allies") root.querySelectorAll(".slot").forEach(node => node.querySelector(".dragon").addEventListener("change", event => {
+    const entry = profile.dragons[event.target.value];
+    if (entry) { node.querySelector(".level").value = entry.level; node.querySelector(".stars").value = entry.stars; }
+  }));
+}
+
+function applyProfileToAllies(useOwnedSelection = false) {
+  const owned = rosterEntries(profile);
+  scenario.allies.forEach((slot, index) => {
+    const slug = useOwnedSelection ? (owned[index]?.slug || slot.dragon) : slot.dragon;
+    const entry = profile.dragons[slug];
+    scenario.allies[index] = { ...slot, dragon: slug, level: entry?.level || slot.level, stars: entry?.stars || slot.stars };
+  });
 }
 
 function readScenario() {
@@ -60,10 +75,13 @@ async function init() {
   const response = await fetch("data/encyclopedia.json");
   if (!response.ok) throw new Error(`Dataset request failed (${response.status})`);
   data = await response.json();
+  profile = loadProfile(data.dragons);
   scenario = scenarioFromQuery(location.search, data.dragons.filter(dragon => dragon.lifecycle !== "staged"));
+  if (!new URLSearchParams(location.search).has("a1")) applyProfileToAllies(true);
   $("#troop").innerHTML = data.facets.troop_affinities.map(troop => `<option ${troop === scenario.troop ? "selected" : ""}>${escapeHtml(troop)}</option>`).join("");
   renderFormation("allies");
   renderFormation("enemies");
+  mountProfileManager({ dragons: data.dragons, getProfile: () => profile, setProfile: value => { profile = value; }, onSave: () => { applyProfileToAllies(); renderFormation("allies"); renderTimeline(); } });
   renderTimeline();
 }
 

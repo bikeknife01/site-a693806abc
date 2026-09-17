@@ -96,7 +96,7 @@ Each event records source, target candidates, chosen target, selection reason, c
 - [x] CIE-011 Convert commands, habits, effects, conditions and targeters into normalized graph nodes.
 - [x] CIE-012 Normalize exact round schedules and start-of-combat/start-of-round timing.
 - [ ] CIE-013 Normalize lane scopes, adjacency, same-lane behavior and priority/fallback rules.
-- [ ] CIE-014 Model Star and Habit-level eligibility.
+- [x] CIE-014 Model verified Star/level eligibility and retain Habit investment as profile context pending numeric-formula validation.
 - [ ] CIE-015 Model shared troop affinity and troop-counter context separately.
 
 ### Phase C2 — Status and targeting engine
@@ -118,7 +118,7 @@ Each event records source, target candidates, chosen target, selection reason, c
 
 ### Phase C4 — User interface
 
-- [ ] CIE-041 Formation editor with lanes, shared troop type, levels, Stars and Habit levels.
+- [x] CIE-041 Formation editor with lanes, shared troop type, levels and Stars plus shared-profile Habit context.
 - [x] CIE-042 Round scrubber and expandable event timeline.
 - [x] CIE-043 Formation-state view showing active effects and stacks at each step.
 - [ ] CIE-044 Filters for allied, enemy, damage, control, recovery and targeting events.

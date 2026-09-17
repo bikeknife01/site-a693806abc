@@ -112,7 +112,7 @@ Candidate evidence includes:
 ### Phase P3 — Formation generation
 
 - [x] CPA-031 Import or create a player roster.
-- [ ] CPA-032 Enforce level, Star, Habit and Vanguard eligibility.
+- [x] CPA-032 Enforce verified level, Star and Vanguard eligibility; retain Habit levels as context pending numeric-formula validation.
 - [x] CPA-033 Generate legal trios, lanes and shared troop types.
 - [x] CPA-034 Track threat coverage and new vulnerabilities for each candidate.
 - [x] CPA-035 Return best-fit, safer alternative and accessible alternative.

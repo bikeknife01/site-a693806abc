@@ -11,12 +11,16 @@ PROJECT = Path(__file__).resolve().parents[1]
 ROOT = PROJECT.parents[1]
 DIST = PROJECT / "dist"
 DATA = ROOT / "projects" / "game-data-encyclopedia" / "public" / "data" / "encyclopedia.json"
+PROFILE_MODULE = ROOT / "projects" / "shared-data-foundation" / "src" / "profile" / "player-profile.mjs"
+PROFILE_STYLES = ROOT / "projects" / "shared-data-foundation" / "src" / "profile" / "player-profile.css"
 
 
 def main() -> int:
     if DIST.exists():
         shutil.rmtree(DIST)
     shutil.copytree(PROJECT / "src", DIST)
+    shutil.copy2(PROFILE_MODULE, DIST / "player-profile.mjs")
+    shutil.copy2(PROFILE_STYLES, DIST / "player-profile.css")
     (DIST / "data").mkdir()
     shutil.copy2(DATA, DIST / "data" / DATA.name)
     (DIST / ".nojekyll").touch()

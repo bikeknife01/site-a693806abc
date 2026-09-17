@@ -5,6 +5,9 @@ formations, fixed lanes, level/Star/Vanguard eligibility, shared troop context, 
 scenario URLs, a ten-round schedule, lane-aware target candidates, conservative status
 state/expiry projections, probability branches, instant Recovery interactions that stay
 out of persistent status state, and links to Encyclopedia evidence.
+The shared browser-local player profile supplies owned allied dragons and their saved
+level, Star Rank, and per-Habit progression. Scenario links retain explicit progression
+and therefore remain portable without exposing the rest of the profile.
 
 It deliberately does not claim exact damage, action order, target selection, chance
 outcomes or status state before those mechanics are implemented and validated.

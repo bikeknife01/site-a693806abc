@@ -125,7 +125,7 @@ Exit gate: a user can complete the selected project's primary task locally.
 - [x] Send a formation from Counter Picking to Combat Explorer.
 - [ ] Send a map node/encounter from Atlas to the appropriate combat context.
 - [ ] Send a dragon or item from Shop Evaluator to Encyclopedia and roster/investment context.
-- [ ] Reuse one player-profile format across tools.
+- [x] Reuse one browser-local player-profile format across Combat Explorer and Counter Picking; extend it to map/shop tools when built.
 
 ### M4 — Update automation and publication
 
@@ -196,3 +196,4 @@ Add dated entries when a project changes state.
 | 2026-09-16 | CPA | not started | not started | Scheduled directly after CIE so counter recommendations reuse the combat scenario and rules engine. |
 | 2026-09-17 | CPA | not started | in progress | First evidence-first threat extraction, roster filtering, formation alternatives, troop selection and Combat Explorer export built and browser-validated. |
 | 2026-09-17 | Portfolio | not started | in progress | Added a shared landing page and tool switcher across Atlas, Encyclopedia, Combat Explorer and Counter Picker; combined Pages workflow prepared. |
+| 2026-09-17 | Portfolio | in progress | in progress | Added a shared browser-local roster/progression profile with JSON portability, verified level/Star eligibility, per-Habit context, and progression-preserving Counter-to-Combat export. |

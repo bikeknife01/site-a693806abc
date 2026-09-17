@@ -15,7 +15,7 @@ on:
       - "projects/combat-interaction-explorer/**"
       - "projects/counter-picking-assistant/**"
       - "projects/player-tools-index/**"
-      - "projects/shared-data-foundation/src/normalize/build_encyclopedia_data.py"
+      - "projects/shared-data-foundation/**"
       - "data/dragons/**"
       - "data/effects.json"
       - "data/game_mechanics.json"
@@ -55,7 +55,7 @@ jobs:
             projects/combat-interaction-explorer
             projects/counter-picking-assistant
             projects/player-tools-index
-            projects/shared-data-foundation/src/normalize/build_encyclopedia_data.py
+            projects/shared-data-foundation
             data/dragons
             data/effects.json
             data/game_mechanics.json

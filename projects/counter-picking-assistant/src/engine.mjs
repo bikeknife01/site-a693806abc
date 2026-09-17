@@ -70,7 +70,7 @@ export function candidateEvidence(data, dragon, threats, progression = { stars: 
       if (relation.type === "applies" && effect?.game_section === "Control Effects" && effect.effect_on_target === "harmful") controls.push({ name: effect.name, ability: ability.name, ability_id: ability.id, exact_text: ability.exact_text.find(line => line.toLowerCase().includes(effect.name.toLowerCase())) || ability.exact_text[0] });
     }
   }
-  return { dragon, counters, controls, covered: [...new Set(counters.map(item => item.threat_id))] };
+  return { dragon, progression, counters, controls, covered: [...new Set(counters.map(item => item.threat_id))] };
 }
 
 function evidence(threat, ability, reason, exactText = null) {
@@ -89,9 +89,10 @@ export function chooseTroop(data, trio, enemyTroop, objective = "pvp") {
   }).sort((a, b) => b.value - a.value || a.troop.localeCompare(b.troop))[0];
 }
 
-export function recommendFormations(data, enemySlots, ownedSlugs, enemyTroop, objective = "pvp") {
+export function recommendFormations(data, enemySlots, ownedRoster, enemyTroop, objective = "pvp") {
   const threats = extractThreats(data, enemySlots);
-  const pool = data.dragons.filter(item => item.lifecycle !== "staged" && ownedSlugs.includes(item.slug)).map(dragon => candidateEvidence(data, dragon, threats));
+  const roster = new Map((ownedRoster || []).map(item => typeof item === "string" ? [item, { slug: item, owned: true, level: 50, stars: 10, habit_levels: {} }] : [item.slug, item]));
+  const pool = data.dragons.filter(item => item.lifecycle !== "staged" && roster.get(item.slug)?.owned !== false && roster.has(item.slug)).map(dragon => candidateEvidence(data, dragon, threats, roster.get(dragon.slug)));
   pool.sort((a, b) => b.covered.length - a.covered.length || b.controls.length - a.controls.length || a.dragon.name.localeCompare(b.dragon.name));
   const recommendations = [];
   const seeds = [...new Set([0, Math.min(3, pool.length - 1), Math.min(6, pool.length - 1)])].filter(index => index >= 0);
@@ -120,11 +121,11 @@ export function recommendFormations(data, enemySlots, ownedSlugs, enemyTroop, ob
 }
 
 function newCoverage(candidate, covered) { return candidate.covered.filter(id => !covered.has(id)).length; }
-function hasVanguardEvidence(candidate) { return candidate.dragon.abilities.some(ability => ability.kind === "vanguard" && abilityEligible(ability, { stars: 10, level: 50, lane: "Vanguard" })); }
+function hasVanguardEvidence(candidate) { return candidate.dragon.abilities.some(ability => ability.kind === "vanguard" && abilityEligible(ability, { ...candidate.progression, lane: "Vanguard" })); }
 
 export function combatExplorerQuery(recommendation, enemies, troop) {
   const params = new URLSearchParams();
-  recommendation.formation.forEach((item, index) => { params.set(`a${index + 1}`, item.dragon.slug); params.set(`a${index + 1}s`, "10"); params.set(`a${index + 1}l`, "50"); });
+  recommendation.formation.forEach((item, index) => { params.set(`a${index + 1}`, item.dragon.slug); params.set(`a${index + 1}s`, String(item.progression.stars)); params.set(`a${index + 1}l`, String(item.progression.level)); });
   enemies.forEach((item, index) => { params.set(`e${index + 1}`, item.dragon); params.set(`e${index + 1}s`, String(item.stars)); params.set(`e${index + 1}l`, String(item.level)); });
   params.set("troop", troop);
   return params.toString();
