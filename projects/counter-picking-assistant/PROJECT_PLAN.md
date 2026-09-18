@@ -96,17 +96,17 @@ Candidate evidence includes:
 
 - [x] CPA-011 Define normalized threat categories with source evidence.
 - [x] CPA-012 Extract threats from dragon commands, Habits, Vanguard and troop choice.
-- [ ] CPA-013 Represent timing, lane and probability.
-- [ ] CPA-014 Represent missing enemy information and confidence loss.
+- [x] CPA-013 Represent timing, lane and probability.
+- [x] CPA-014 Represent missing enemy information and confidence loss.
 - [x] CPA-015 Exclude staged Commander effects from live threat extraction.
 
 ### Phase P2 — Counter rule library
 
 - [x] CPA-021 Encode direct effect-to-counter relationships.
 - [ ] CPA-022 Encode status prevention, suppression, Cleanse and mitigation relationships.
-- [ ] CPA-023 Encode target-priority and lane exploitation.
+- [x] CPA-023 Encode target-priority and lane exploitation.
 - [x] CPA-024 Encode troop affinity and matchup separately.
-- [ ] CPA-025 Encode producer/payoff synergy requirements.
+- [x] CPA-025 Encode producer/payoff synergy requirements.
 - [x] CPA-026 Require source citations and explanation templates for every rule.
 
 ### Phase P3 — Formation generation
@@ -123,16 +123,16 @@ Candidate evidence includes:
 - [x] CPA-042 Recommendation cards with lane and troop placement.
 - [x] CPA-043 “Why this works” linked to exact mechanics.
 - [x] CPA-044 “What can go wrong” and missing-input section.
-- [ ] CPA-045 Compare two proposed counters side by side.
+- [x] CPA-045 Compare two proposed counters side by side.
 - [x] CPA-046 Export formation to Combat Interaction Explorer.
 
 ### Phase P5 — Validation
 
-- [ ] CPA-051 Build matchup fixtures for Fire, Physical, Tactical, Recovery, control and stack teams.
-- [ ] CPA-052 Verify recommendation eligibility against Stars/Habits.
+- [x] CPA-051 Build matchup fixtures for Fire, Physical, Tactical, Recovery, control and stack teams.
+- [x] CPA-052 Verify recommendation eligibility against Stars/Habits.
 - [ ] CPA-053 Review top recommendations for at least ten known matchups.
 - [ ] CPA-054 Record observed outcomes without fitting rules to a single anecdote.
-- [ ] CPA-055 Test partial-information behavior.
+- [x] CPA-055 Test partial-information behavior.
 
 ### Phase P6 — Portfolio integration
 
@@ -160,10 +160,13 @@ Candidate evidence includes:
 
 ## Delivery status — 2026-09-17
 
-The first working slice extracts explicit damage, harmful-status and Recovery threats,
-filters a selectable live roster, proposes three formation alternatives, selects one
-shared troop type, displays exact counter wording and uncovered risks, and exports the
-formation to Combat Explorer. Browser QA corrected false positive mitigation matching
-and qualified category-based Cleanse evidence. Candidate progression inputs, timing
-alignment, lane exploitation, synergy chains, partial enemy data and broader matchup
-fixtures remain future work.
+The working assistant extracts explicit damage, harmful-status and Recovery threats,
+filters a selectable live roster, evaluates legal lane permutations, proposes three distinct
+formation alternatives, selects one shared troop type, and exports to Combat Explorer.
+It now compares documented timing windows, same-lane and priority targeting, directional
+Vanguard support, producer/payoff status chains, and saved Habit-level activation rates.
+Transparent ranking contributions and Fire/Physical/Tactical/Recovery/control fixtures
+cover the expanded engine. Partial-information confidence and side-by-side comparison are
+implemented. Observed-match collection is available locally without affecting scores, and
+schedule attribution is scoped to individual damage/effect clauses. Ten-match expert review
+and real observed outcome collection remain pending because those require actual battle evidence.

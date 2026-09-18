@@ -105,6 +105,8 @@ def classify_effect_relations(text: str, effects: list[dict[str, Any]]) -> list[
 def schedules(text: str) -> list[str]:
     found: list[str] = []
     patterns = (
+        r"Start of Combat",
+        r"After Combat",
         r"Odd-numbered Rounds",
         r"Even-numbered Rounds",
         r"Each Round",
@@ -138,6 +140,8 @@ def target_hints(text: str) -> list[str]:
 def schedule_rules(text: str, ability_id: str) -> list[dict[str, Any]]:
     candidates: list[dict[str, Any]] = []
     patterns = (
+        (r"Start of Combat", {"phase": "start_of_combat", "rounds": [0]}),
+        (r"After Combat", {"phase": "after_combat", "rounds": [11]}),
         (r"Odd-numbered Rounds", {"phase": "round", "parity": "odd"}),
         (r"Even-numbered Rounds", {"phase": "round", "parity": "even"}),
         (r"Start of Each Round", {"phase": "start_of_round", "recurrence": "each_round"}),
@@ -154,7 +158,7 @@ def schedule_rules(text: str, ability_id: str) -> list[dict[str, Any]]:
             record: dict[str, Any] = {
                 "exact_text": match.group(0),
                 "phase": defaults["phase"],
-                "rounds": [],
+                "rounds": list(defaults.get("rounds", [])),
                 "parity": defaults.get("parity"),
                 "recurrence": defaults.get("recurrence"),
             }
@@ -178,18 +182,64 @@ def schedule_rules(text: str, ability_id: str) -> list[dict[str, Any]]:
     return unique
 
 
+def inline_schedule_rules(text: str, ability_id: str) -> list[dict[str, Any]]:
+    """Return schedule facts scoped to one sentence/clause, without graph identity fields."""
+    return [
+        {key: value for key, value in item.items() if key not in {"id", "ability_id"}}
+        for item in schedule_rules(text, ability_id)
+    ]
+
+
+def sentence_context(text: str, start: int, end: int) -> str:
+    left = max(text.rfind(".", 0, start), text.rfind("\n", 0, start)) + 1
+    right_candidates = [index for index in (text.find(".", end), text.find("\n", end)) if index >= 0]
+    right = min(right_candidates) + 1 if right_candidates else len(text)
+    return text[left:right].strip()
+
+
+def damage_event_rules(text: str, ability_id: str) -> list[dict[str, Any]]:
+    events: list[dict[str, Any]] = []
+    for match in re.finditer(r"[^.\n]+(?:[.\n]|$)", text):
+        context = match.group(0).strip()
+        for damage_type in damage_types(context):
+            events.append({
+                "damage_type": damage_type,
+                "exact_context": context,
+                "schedules": inline_schedule_rules(context, ability_id),
+                "target_hints": target_hints(context),
+            })
+    return events
+
+
 def condition_rules(text: str, ability_id: str, effects: list[dict[str, Any]]) -> list[dict[str, Any]]:
     records: list[dict[str, Any]] = []
-    for effect in effects:
-        pattern = word_pattern(effect["name"])
-        conditional = re.finditer(
-            rf"\b(?:if|when|while|against)\b[^.\n]{{0,180}}{pattern}",
-            text,
-            flags=re.IGNORECASE,
-        )
-        for match in conditional:
-            phrase = match.group(0)
-            subject = "self" if re.search(r"\b(?:you|yourself)\b", phrase, re.IGNORECASE) else "target"
+    # A status is a prerequisite only when it appears in the antecedent of the
+    # condition. Stopping at the first clause delimiter prevents text such as
+    # "If you have a Prey, ... apply Recovery" from treating Recovery as an
+    # input to the ability rather than its result.
+    for conditional in re.finditer(r"\b(?:if|when|while|against)\b", text, flags=re.IGNORECASE):
+        clause_end = len(text)
+        for delimiter in (",", ";", ":", ".", "\n"):
+            position = text.find(delimiter, conditional.end())
+            if position >= 0:
+                clause_end = min(clause_end, position)
+        clause_end = min(clause_end, conditional.start() + 180)
+        phrase = text[conditional.start():clause_end].strip()
+        if re.search(r"\bsuccessful(?:ly)?\s+removes?\b", phrase, re.IGNORECASE):
+            continue
+        for effect in effects:
+            if not re.search(word_pattern(effect["name"]), phrase, flags=re.IGNORECASE):
+                continue
+            if re.search(r"\b(?:enem(?:y|ies)|prey)\b", phrase, re.IGNORECASE):
+                subject = "enemy"
+            elif re.search(r"\ball(?:y|ies)\b", phrase, re.IGNORECASE):
+                subject = "ally"
+            elif re.search(r"\btarget\b", phrase, re.IGNORECASE) and re.search(r"\bPrey\b", text, re.IGNORECASE):
+                subject = "enemy"
+            elif re.search(r"\b(?:you|yourself)\b", phrase, re.IGNORECASE):
+                subject = "self"
+            else:
+                subject = "target"
             records.append({
                 "type": "status_present",
                 "subject": subject,
@@ -309,7 +359,7 @@ def status_operations(text: str, ability_id: str, effects: list[dict[str, Any]])
         effect_name = next(item["name"] for item in effects if effect_id(item["name"]) == relation["effect_id"])
         pattern = word_pattern(effect_name)
         match = re.search(pattern, text, flags=re.IGNORECASE)
-        context = text[max(0, match.start() - 100):min(len(text), match.end() + 120)] if match else text
+        context = sentence_context(text, match.start(), match.end()) if match else text
         chance = re.search(r"(?P<chance>\d+(?:\.\d+)?)%\s+chance", context, flags=re.IGNORECASE)
         duration = re.search(r"for\s+(?P<rounds>\d+)\s+round", context, flags=re.IGNORECASE)
         stacks = re.search(r"Max\s+(?P<stacks>\d+)\s+stacks", context, flags=re.IGNORECASE)
@@ -320,12 +370,32 @@ def status_operations(text: str, ability_id: str, effects: list[dict[str, Any]])
             "duration_rounds": int(duration.group("rounds")) if duration else None,
             "max_stacks": int(stacks.group("stacks")) if stacks else None,
             "exact_context": context.strip(),
+            "schedules": inline_schedule_rules(context, ability_id),
         })
     for index, item in enumerate(records, start=1):
         item["id"] = f"status-operation:{ability_id.split(':', 1)[1]}:{index}"
         item["ability_id"] = ability_id
         item["evidence_class"] = "derived"
     return records
+
+
+def cleanse_scope_matches(effect: dict[str, Any], text: str) -> bool:
+    """Match broad Cleanse wording without discarding an explicit category qualifier."""
+    lowered = text.lower()
+    behavior = str(effect.get("behavior") or effect.get("exact_text") or "").lower()
+    if effect["effect_on_target"] == "harmful" and "negative effect" in lowered:
+        if re.search(r"negative effect[^.]{0,100}increases?[^.]{0,60}damage received", lowered):
+            return "increases damage received" in behavior
+        if re.search(r"negative effect[^.]{0,100}reduces?[^.]{0,60}damage dealt", lowered):
+            return "reduces damage dealt" in behavior
+        return True
+    if effect["effect_on_target"] == "beneficial" and "positive effect" in lowered:
+        if re.search(r"positive effect[^.]{0,100}increases?[^.]{0,60}damage dealt", lowered):
+            return "increases damage dealt" in behavior
+        if re.search(r"positive effect[^.]{0,100}reduces?[^.]{0,60}damage received", lowered):
+            return "reduces damage received" in behavior
+        return True
+    return False
 
 
 def source_entry(path: Path) -> dict[str, str]:
@@ -345,6 +415,8 @@ def make_ability(
     effects: list[dict[str, Any]],
     unlock: dict[str, int] | None = None,
     ability_type: str | None = None,
+    upgrade_levels: dict[str, Any] | None = None,
+    value_unit: str | None = None,
     uncertainty: list[str] | None = None,
 ) -> dict[str, Any]:
     blocks = text_blocks(exact_text)
@@ -362,9 +434,12 @@ def make_ability(
         "kind": kind,
         "ability_type": ability_type,
         "unlock": unlock or {},
+        "upgrade_levels": upgrade_levels or {},
+        "value_unit": value_unit,
         "exact_text": blocks,
         "normalized": {
             "damage_types": damage_types(joined),
+            "damage_events": damage_event_rules(joined, ability_id),
             "schedules": schedules(joined),
             "target_hints": target_hints(joined),
             "effect_relations": classify_effect_relations(joined, effects),
@@ -522,6 +597,8 @@ def build_data(root: Path = ROOT) -> dict[str, Any]:
                     name=habit["name"],
                     kind="habit",
                     unlock={"star_rank": int(habit["star_unlock"])},
+                    upgrade_levels=habit.get("upgrade_levels"),
+                    value_unit=habit.get("value_unit"),
                     exact_text=habit["verbatim"],
                     source=relative_source,
                     evidence_class="screenshot_confirmed",
@@ -646,11 +723,7 @@ def build_data(root: Path = ROOT) -> dict[str, Any]:
         if effect["name"] == "Cleanse":
             continue
         for dragon, ability, text in cleanse_abilities:
-            scope_matches = (
-                effect["effect_on_target"] == "harmful" and "negative effect" in text.lower()
-            ) or (
-                effect["effect_on_target"] == "beneficial" and "positive effect" in text.lower()
-            )
+            scope_matches = cleanse_scope_matches(effect, text)
             if scope_matches:
                 effect["relationships"]["cleanses"].append({
                     "dragon_id": dragon["id"],
@@ -672,7 +745,7 @@ def build_data(root: Path = ROOT) -> dict[str, Any]:
     source_paths = [effects_path, mechanics_path, app_path, map_nodes_path, map_regions_path, crossing_chains_path, *dragon_files]
     return {
         "metadata": {
-            "schema_version": "1.2.0",
+            "schema_version": "1.3.0",
             "dataset_id": "dragonfire-encyclopedia-combat-v1",
             "source_snapshot": "installed-client-local-copy",
             "client_versions": app["metadata"]["client_versions"],

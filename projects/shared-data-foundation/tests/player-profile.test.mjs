@@ -4,7 +4,7 @@ import { habitSummary, loadProfile, normalizeProfile, rosterEntries, saveProfile
 
 const dragons = [
   { slug: "alpha", lifecycle: "live", abilities: [{ kind: "command", client_key: "command" }, { kind: "habit", client_key: "habit-a" }] },
-  { slug: "beta", lifecycle: "live", abilities: [{ kind: "vanguard", client_key: "habit-b" }] },
+  { slug: "beta", lifecycle: "live", abilities: [{ kind: "vanguard", client_key: "vanguard-b" }, { kind: "habit", client_key: "habit-b" }] },
   { slug: "future", lifecycle: "staged", abilities: [] },
 ];
 

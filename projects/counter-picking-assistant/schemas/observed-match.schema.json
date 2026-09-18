@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dragonfire.local/schemas/observed-match.schema.json",
+  "title": "Dragonfire observed match",
+  "type": "object",
+  "required": ["version", "id", "observed_at", "enemy_formation", "recommended_formation", "outcome", "stalemates", "scoring_effect"],
+  "properties": {
+    "version": {"const": 1},
+    "id": {"type": "string", "minLength": 1},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "objective": {"type": "string"},
+    "enemy_troop": {"type": "string"},
+    "enemy_formation": {"type": "array", "maxItems": 3},
+    "recommended_signature": {"type": "string"},
+    "recommended_formation": {"type": "array", "maxItems": 3},
+    "recommended_troop": {"type": "string"},
+    "outcome": {"enum": ["win", "loss", "retreat", "recalled", "unknown"]},
+    "stalemates": {"type": "integer", "minimum": 0, "maximum": 20},
+    "notes": {"type": "string", "maxLength": 1000},
+    "scoring_effect": {"const": "none"}
+  },
+  "additionalProperties": false
+}

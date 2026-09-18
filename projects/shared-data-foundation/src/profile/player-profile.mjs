@@ -7,7 +7,7 @@ const clamp = (value, min, max, fallback) => {
 };
 
 export function habitAbilities(dragon) {
-  return (dragon?.abilities || []).filter(ability => ability.kind !== "command");
+  return (dragon?.abilities || []).filter(ability => ability.kind === "habit");
 }
 
 export function defaultEntry(dragon, assumed = true) {

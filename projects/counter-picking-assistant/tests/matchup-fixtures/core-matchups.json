@@ -1,0 +1,56 @@
+[
+  {
+    "name": "fire and Burn pressure",
+    "objective": "pvp",
+    "enemyTroop": "Archers",
+    "enemies": [
+      {"dragon":"dragon_iconic_sunfyre","lane":"Left Flank","level":50,"stars":10},
+      {"dragon":"dragon_iconic_caraxes","lane":"Vanguard","level":50,"stars":10},
+      {"dragon":"dragon_generic_shadowsong","lane":"Right Flank","level":50,"stars":10}
+    ],
+    "owned": [
+      {"slug":"dragon_iconic_syrax","owned":true,"level":50,"stars":10,"habit_levels":{}},
+      {"slug":"dragon_generic_tairax","owned":true,"level":50,"stars":10,"habit_levels":{}},
+      {"slug":"dragon_generic_tashix","owned":true,"level":50,"stars":10,"habit_levels":{}},
+      {"slug":"dragon_iconic_seasmoke","owned":true,"level":50,"stars":10,"habit_levels":{}},
+      {"slug":"dragon_iconic_vhagar","owned":true,"level":50,"stars":10,"habit_levels":{}},
+      {"slug":"dragon_generic_velar","owned":true,"level":50,"stars":10,"habit_levels":{}}
+    ]
+  },
+  {
+    "name": "physical control and Recovery pressure",
+    "objective": "pvp",
+    "enemyTroop": "Cavalry",
+    "enemies": [
+      {"dragon":"dragon_generic_thunderstrike","lane":"Left Flank","level":50,"stars":10},
+      {"dragon":"dragon_iconic_vhagar","lane":"Vanguard","level":50,"stars":10},
+      {"dragon":"dragon_iconic_sheepstealer","lane":"Right Flank","level":50,"stars":10}
+    ],
+    "owned": [
+      {"slug":"dragon_generic_arulix","owned":true,"level":50,"stars":10,"habit_levels":{}},
+      {"slug":"dragon_generic_malachite","owned":true,"level":50,"stars":10,"habit_levels":{}},
+      {"slug":"dragon_iconic_moondancer","owned":true,"level":50,"stars":10,"habit_levels":{}},
+      {"slug":"dragon_generic_rhysarion","owned":true,"level":50,"stars":10,"habit_levels":{}},
+      {"slug":"dragon_generic_shimmer","owned":true,"level":50,"stars":10,"habit_levels":{}},
+      {"slug":"dragon_generic_zivern","owned":true,"level":50,"stars":10,"habit_levels":{}}
+    ]
+  },
+  {
+    "name": "tactical late-cycle control",
+    "objective": "defender",
+    "enemyTroop": "Shieldbearers",
+    "enemies": [
+      {"dragon":"dragon_generic_vesper","lane":"Left Flank","level":50,"stars":10},
+      {"dragon":"dragon_generic_zivern","lane":"Vanguard","level":50,"stars":10},
+      {"dragon":"dragon_iconic_syrax","lane":"Right Flank","level":50,"stars":10}
+    ],
+    "owned": [
+      {"slug":"dragon_generic_antares","owned":true,"level":50,"stars":10,"habit_levels":{}},
+      {"slug":"dragon_iconic_arrax","owned":true,"level":50,"stars":10,"habit_levels":{}},
+      {"slug":"dragon_generic_daemoros","owned":true,"level":50,"stars":10,"habit_levels":{}},
+      {"slug":"dragon_generic_nyrena","owned":true,"level":50,"stars":10,"habit_levels":{}},
+      {"slug":"dragon_generic_shadowrend","owned":true,"level":50,"stars":10,"habit_levels":{}},
+      {"slug":"dragon_iconic_tessarion","owned":true,"level":50,"stars":10,"habit_levels":{}}
+    ]
+  }
+]
