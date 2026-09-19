@@ -1,5 +1,5 @@
 export const PROFILE_KEY = "dragonfire.playerProfile.v1";
-export const PROFILE_VERSION = 1;
+export const PROFILE_VERSION = 2;
 
 const clamp = (value, min, max, fallback) => {
   const number = Number(value);
@@ -10,11 +10,17 @@ export function habitAbilities(dragon) {
   return (dragon?.abilities || []).filter(ability => ability.kind === "habit");
 }
 
+export function preferredTroops(dragon) {
+  const troops = dragon?.troop_affinities?.positive;
+  return Array.isArray(troops) ? [...new Set(troops.map(String))] : [];
+}
+
 export function defaultEntry(dragon, assumed = true) {
   return {
     owned: true,
     level: 50,
     stars: 10,
+    preferred_troops: preferredTroops(dragon),
     habit_levels: Object.fromEntries(habitAbilities(dragon).map(ability => [ability.client_key, 5])),
     assumed,
   };
@@ -26,7 +32,6 @@ export function normalizeProfile(raw, dragons) {
   const normalized = {
     version: PROFILE_VERSION,
     updated_at: source.updated_at || null,
-    preferred_troops: Array.isArray(source.preferred_troops) ? source.preferred_troops.map(String) : [],
     dragons: {},
   };
   for (const dragon of dragons.filter(item => item.lifecycle !== "staged")) {
@@ -37,6 +42,7 @@ export function normalizeProfile(raw, dragons) {
       owned: incoming?.owned == null ? fallback.owned : Boolean(incoming.owned),
       level: clamp(incoming?.level, 1, 50, fallback.level),
       stars: clamp(incoming?.stars, 1, 10, fallback.stars),
+      preferred_troops: fallback.preferred_troops,
       habit_levels: Object.fromEntries(habitAbilities(dragon).map(ability => [ability.client_key, clamp(habits[ability.client_key], 0, 5, fallback.habit_levels[ability.client_key])])),
       assumed: incoming?.assumed == null ? fallback.assumed : Boolean(incoming.assumed),
     };

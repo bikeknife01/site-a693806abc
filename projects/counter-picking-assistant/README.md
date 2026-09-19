@@ -5,8 +5,9 @@ harmful-status and Recovery threats, filters to the selected roster, evaluates e
 three-dragon lane permutation, and returns formations with one shared troop type, exact
 counter wording, uncovered-risk disclosure, Encyclopedia links, and Combat Explorer export.
 The shared browser-local player profile stores owned dragons, levels, Star Ranks, and
-per-Habit levels. Verified level/Star gates affect eligibility; saved Habit levels determine
-documented chance tracks. Rankings expose their contributions from threat coverage,
+per-Habit levels. Each exported dragon entry also includes its array of verified positive
+troop affinities as `preferred_troops`. Verified level/Star gates affect eligibility; saved
+Habit levels determine documented chance tracks. Rankings expose their contributions from threat coverage,
 reliability, timing, explicit producer/payoff chains, lane fit, control, and troop fit.
 
 The assistant treats same-lane pressure, lane/breed priorities, directional Vanguard support,
