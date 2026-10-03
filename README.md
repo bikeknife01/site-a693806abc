@@ -7,6 +7,7 @@ This repository contains an AI-oriented reference for dragon army formation reco
 - [`wiki/`](wiki/) — human-readable mechanics and dragon reference pages.
 - [`data/`](data/) — normalized JSON suitable for retrieval and programmatic reasoning.
 - [`data/recommendation_rules.json`](data/recommendation_rules.json) — machine-checkable formation constraints, decision flow, comparison axes, and benchmark anti-overfitting rules.
+- [`data/common_formations.json`](data/common_formations.json) — user-confirmed common formations that must be considered as equal-footing recommendation baselines when applicable.
 - [`data/dragon_application_knowledge.json`](data/dragon_application_knowledge.json) — the canonical installed-client roster, level curves, Star scalars, ability templates, and evidence status for 38 production-named dragons.
 - [`data/installed_evidence.json`](data/installed_evidence.json) — dated installed-client observations and lifecycle classifications that must not be mistaken for live or screenshot-audited behavior.
 - [`wiki/client-updates/`](wiki/client-updates/) — durable summaries of local installed-client comparisons; raw snapshots remain ignored.

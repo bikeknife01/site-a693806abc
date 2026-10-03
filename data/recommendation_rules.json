@@ -1,8 +1,8 @@
 {
   "metadata": {
     "purpose": "Canonical decision contract for three-dragon formation recommendations.",
-    "schema_version": "1.1.0",
-    "updated": "2026-10-01",
+    "schema_version": "1.2.0",
+    "updated": "2026-10-03",
     "policy": "Hard eligibility and evidence constraints are applied before comparative judgment. Strategic weights remain scenario-dependent and are not a universal tier score."
   },
   "evidence_order": [
@@ -42,7 +42,7 @@
     },
     {
       "id": "candidate_lines",
-      "rule": "Do not stop at the first plausible trio. Build a candidate ledger before choosing: retain the strongest affinity-perfect line found for each available non-Siege troop type, the strongest explicit producer/payoff line, the strongest objective-specific line, and a counter-specific line when an enemy is known. A single line may satisfy multiple categories, but every retained line must be evaluated under the same progression and evidence gates."
+      "rule": "Do not stop at the first plausible trio. Build a candidate ledger before choosing: for ordinary combat recommendations retain every legal common baseline from data/common_formations.json, the strongest affinity-perfect line found for each available non-Siege troop type, the strongest explicit producer/payoff line, the strongest objective-specific line, and a counter-specific line when an enemy is known. Applicability affects the comparison but does not remove a legal common baseline. A single line may satisfy multiple categories, but every retained line must be evaluated under the same progression and evidence gates."
     },
     {
       "id": "gated_mechanics",
@@ -62,15 +62,18 @@
     },
     {
       "id": "comparison",
-      "rule": "Compare the leading line with the strongest credible alternative. Preserve a defensible alternative when evidence does not establish one winner; state the assumption that would reverse the choice."
+      "rule": "Compare the leading line with every legal common baseline and with the strongest other credible alternative. A common baseline can itself be the leading line and final recommendation. Preserve a defensible alternative when evidence does not establish one winner; state the assumption that would reverse the choice."
     }
   ],
   "candidate_search": {
     "full_roster_ledger": "When the full roster is in scope and Power is unknown or comparable, inspect every eligible dragon before finalizing the shortlist. For each non-Siege troop type, retain the strongest credible affinity-perfect trio if one exists; separately retain the strongest explicit synergy and objective-specific trios even when they overlap.",
+    "common_baselines": "Load data/common_formations.json for every formation recommendation. For ordinary combat, retain each common formation whose three dragons and shared troop type are legal under the user's roster and progression. Treat applicability as objective and matchup evidence, not as a prefilter. Recompute each line under actual inputs rather than assuming the reference Level 50, 6-Star, Level-5 state. A specialized non-combat or Siege-only request may mark a combat baseline inapplicable only with an explicit reason.",
+    "common_baseline_eligibility": "A common formation is an ordinary fully eligible candidate, never a control group that must lose. Do not exclude, down-rank, or omit it because it is a baseline; recommend it directly when the same evidence-based comparison shows it is the best-supported line.",
+    "common_baseline_fairness": "Common status guarantees comparison, with no scoring bonus, immunity from evidence gates, or predetermined result. Apply the same mechanics, reliability, lane, troop, timing, Power, objective, and matchup tests to common and newly constructed formations.",
     "lane_permutations": "For every retained trio, compare all legal Vanguard choices and directional flank beneficiaries before selecting its best lane order.",
     "pairwise_comparison": "Compare retained lines pairwise on the objective profile, unlocked mechanics, reliability, lane value, shared affinity, timing, and known matchup. Record the decisive advantage and material reversal condition internally; do not claim a full-roster optimum from an unreported preselection heuristic.",
     "cross_objective_check": "If the same line wins materially different objectives, explicitly verify why the changed objective does not alter the ordering. A generic hybrid must not win attack and survivability prompts merely because it is broadly competent.",
-    "benchmark_safety": "These search requirements are formation-agnostic. Never seed, boost, or exempt a trio because it appears in an expert benchmark."
+    "benchmark_safety": "Evaluation-only benchmark answers must not seed, boost, or exempt a trio. Canonical common formations are included because data/common_formations.json explicitly designates them as comparison baselines, but they receive no score boost or formation-name exception."
   },
   "objective_profiles": {
     "high_damage": [
@@ -114,7 +117,7 @@
     "none": "No explicit applicable response; broad role similarity earns no counter credit."
   },
   "anti_overfitting": {
-    "benchmark_rule": "Use expert formations to diagnose general knowledge, mechanics, search, weighting, context, or presentation gaps; never add formation-name exceptions.",
+    "benchmark_rule": "Use evaluation-only expert answers to diagnose general knowledge, mechanics, search, weighting, context, or presentation gaps; never add formation-name exceptions. Canonical common baselines are independently declared in data/common_formations.json and remain subject to ordinary evidence comparison.",
     "holdout_rule": "For each meaningful rule change, test at least one variation that changes a lane, troop matchup, Star/Habit gate, Power relationship, or enemy threat.",
     "alternative_rule": "Do not force benchmark agreement when repository evidence supports a defensible alternative."
   },

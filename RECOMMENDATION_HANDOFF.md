@@ -3,9 +3,19 @@
 This handoff describes the recommendation data set. Apply the ordered contract in
 `data/recommendation_rules.json`, then use `data/dragon_application_knowledge.json` to
 discover the complete production-named client roster and obtain level-specific base
-stats. For screenshot-audited dragons, `data/dragons/<name>.json` remains primary for
+stats. Load `data/common_formations.json` for every formation recommendation so the
+user-confirmed common formations enter the candidate ledger whenever legal for an
+ordinary combat recommendation.
+For screenshot-audited dragons, `data/dragons/<name>.json` remains primary for
 exact current mechanics. Client-only records must be labeled as such and their evidence
 limitations disclosed.
+
+Common formations are comparison baselines, not fixed winners or sacrificial controls.
+Recompute them under the player's actual roster, levels, Stars, Habit levels, Power, and
+troop availability. Apply the same objective, mechanics, lane, reliability, timing, and
+matchup tests used for newly constructed candidates. Applicability tags affect the
+comparison but do not remove a legal baseline. Do not exclude or down-rank a common
+formation because it is a baseline; recommend it when it is the best-supported result.
 
 ## Required recommendation inputs and level handling
 
@@ -253,6 +263,10 @@ request them when a close comparison cannot be resolved from dragon kits and Sta
 
 ## Recommendation evidence rules
 
+- Compare the proposed leader with every legal entry in
+  `data/common_formations.json`. State briefly why each baseline wins, loses, or is
+  inapplicable. If a common formation is strongest, return it as the recommendation and
+  compare it with the strongest non-baseline challenger.
 - Cite the relevant dragon file and fields, for example: `data/dragons/antares.json → command.verbatim[2]`, `vanguard.verbatim`, or `habits[0].upgrade_levels["5"]`. For level-sensitive claims, also cite `data/dragon_application_knowledge.json → dragons[name=Antares].level_model.base_stats_by_level.strength.values_by_level[level - 1]`.
 - State whether a claim is transcribed or derived. Roles, scenario bias, synergies, counters, and preferred position are derived; timings, values, targets, affinities, and effect text are transcribed.
 - Check `data/installed_evidence.json` before using client-derived changes. Respect its

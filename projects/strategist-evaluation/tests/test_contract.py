@@ -12,6 +12,7 @@ class StrategistContractTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.rules = json.loads((ROOT / "data" / "recommendation_rules.json").read_text(encoding="utf-8"))
+        cls.common = json.loads((ROOT / "data" / "common_formations.json").read_text(encoding="utf-8"))
         cls.app = json.loads((ROOT / "data" / "dragon_application_knowledge.json").read_text(encoding="utf-8"))
         cls.installed = json.loads((ROOT / "data" / "installed_evidence.json").read_text(encoding="utf-8"))
         cls.vermithor = json.loads((ROOT / "data" / "dragons" / "vermithor.json").read_text(encoding="utf-8"))
@@ -31,6 +32,7 @@ class StrategistContractTests(unittest.TestCase):
 
     def test_agent_uses_canonical_contract_and_current_evidence(self) -> None:
         self.assertIn("data/recommendation_rules.json", self.agent)
+        self.assertIn("data/common_formations.json", self.agent)
         self.assertIn("data/installed_evidence.json", self.agent)
         self.assertNotIn("data/live_updates.json", self.agent)
         self.assertIn("Do not stop at\n\tthe first plausible trio", self.agent)
@@ -44,21 +46,78 @@ class StrategistContractTests(unittest.TestCase):
         self.assertIn("shell(node projects/strategist-simulator/simulate.mjs:*)", runner)
         self.assertNotIn('"--allow-tool=shell"', runner)
 
-    def test_full_roster_search_is_objective_specific_and_benchmark_agnostic(self) -> None:
+    def test_full_roster_search_is_objective_specific_and_baseline_fair(self) -> None:
         search = self.rules["candidate_search"]
         self.assertIn("each non-Siege troop type", search["full_roster_ledger"])
+        self.assertIn("actual inputs", search["common_baselines"])
+        self.assertIn("not as a prefilter", search["common_baselines"])
+        self.assertIn("fully eligible candidate", search["common_baseline_eligibility"])
+        self.assertIn("recommend it directly", search["common_baseline_eligibility"])
+        self.assertIn("no scoring bonus", search["common_baseline_fairness"])
         self.assertIn("every retained trio", search["lane_permutations"])
         self.assertIn("materially different objectives", search["cross_objective_check"])
-        self.assertIn("Never seed, boost, or exempt", search["benchmark_safety"])
+        self.assertIn("must not seed, boost, or exempt", search["benchmark_safety"])
         self.assertEqual(
             set(self.rules["objective_profiles"]),
             {"high_damage", "damage_and_survivability", "counter"},
         )
         self.assertIn("internal candidate\n\tledger", self.agent)
+        self.assertIn("exclude, down-rank, or omit a common formation because it is a baseline", self.agent)
+        self.assertIn("If the leader is itself a common baseline", self.agent)
+        self.assertIn("Common-baseline check", self.agent)
+        self.assertIn("every legal common baseline", self.agent)
         self.assertIn("do not let a broadly competent hybrid win every prompt", self.agent)
         shared_troops = next(item for item in self.rules["decision_flow"] if item["id"] == "shared_troops")
         self.assertIn("exact intersection", shared_troops["rule"])
         self.assertIn("exact intersection of the three canonical Positive", self.agent)
+
+    def test_common_formations_are_canonical_legal_candidates(self) -> None:
+        expected = {
+            "velar-vhagar-moondancer-shieldbearers",
+            "vermithor-rhysarion-venator-spearmen",
+            "malachite-seasmoke-kalspire-cavalry-counter",
+        }
+        formations = self.common["formations"]
+        self.assertEqual({item["id"] for item in formations}, expected)
+        self.assertIn("fully eligible", self.common["metadata"]["policy"])
+        self.assertIn("not permission to omit", self.common["metadata"]["policy"])
+
+        profiles = {}
+        for path in (ROOT / "data" / "dragons").glob("*.json"):
+            profile = json.loads(path.read_text(encoding="utf-8"))
+            profiles[profile["name"]] = profile
+
+        ids = {item["id"] for item in formations}
+        for item in formations:
+            with self.subTest(formation=item["id"]):
+                formation = item["formation"]
+                self.assertEqual(
+                    set(formation),
+                    {"troop_type", "left_flank", "vanguard", "right_flank"},
+                )
+                for lane in ("left_flank", "vanguard", "right_flank"):
+                    dragon = profiles[formation[lane]]
+                    self.assertIn(formation["troop_type"], dragon["troop_affinities"]["positive"])
+                for target in item["applicability"]["counter_targets"]:
+                    self.assertIn(target, ids)
+
+    def test_common_formations_match_the_user_benchmarks_without_becoming_fixed_answers(self) -> None:
+        benchmark_dir = ROOT / "projects" / "strategist-evaluation" / "benchmarks"
+        benchmarks = {
+            record["benchmark_id"]: record
+            for record in (
+                json.loads(path.read_text(encoding="utf-8"))
+                for path in benchmark_dir.glob("*.json")
+            )
+        }
+        for item in self.common["formations"]:
+            with self.subTest(formation=item["id"]):
+                benchmark = benchmarks[item["id"]]["our_formation"]
+                common = item["formation"]
+                self.assertEqual(common["troop_type"], benchmark["troop_type"])
+                for lane in ("left_flank", "vanguard", "right_flank"):
+                    self.assertEqual(common[lane], benchmark[lane]["dragon"])
+        self.assertIn("no score boost", self.rules["candidate_search"]["benchmark_safety"])
 
     def test_season_three_dragons_preserve_availability_and_evidence_limits(self) -> None:
         by_name = {item["name"]: item for item in self.app["dragons"]}

@@ -23,6 +23,7 @@ in *Game of Thrones: Dragonfire*.
 - Store dated installed-client observations and lifecycle state in
   `data/installed_evidence.json`; keep client-derived roster/templates in
   `data/dragon_application_knowledge.json`.
+- Store user-confirmed common comparison formations in `data/common_formations.json`.
 - Store source audits in `wiki/Online-Sources.md`.
 - Do not duplicate detailed mechanics in customization files.
 
@@ -64,6 +65,12 @@ in *Game of Thrones: Dragonfire*.
   optimal when stronger dragon synergies, control, sustain, timing, troop counters, or
   scenario mechanics outweigh the affinity benefit.
 - For POI assaults, distinguish Defender-clearing armies from Siege armies.
+- For every ordinary combat formation recommendation, retain every legal common
+  formation as a baseline candidate. Treat applicability as comparison evidence, not an
+  omission rule. Evaluate each line under the user's actual progression
+  with the same evidence rules as every other line. Common status provides neither a
+  score bonus nor a penalty: the baseline remains eligible to be recommended when it
+  is the best-supported result.
 
 ## Editing and validation
 
