@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-10-02T02:06:51.942542+00:00",
+  "agent": "dragonfire-strategist",
+  "agent_definition_sha256": "88182570fb76348acdf16f49bd306577986bc611e240fba609f47336c01e0638",
+  "cases": [
+    {
+      "id": "meta-high-damage",
+      "prompt_sha256": "da5f524454f0a09d8dd75cfa7370ecacd0ff0dca3a320b8346c213ec660810c5",
+      "response_sha256": "75e15016032056d5819859a174ac29917525649f6d4430f7567e1c920cc54fc4"
+    },
+    {
+      "id": "meta-damage-survivability",
+      "prompt_sha256": "680e8b4a2e4a00dbf9fcbe7764bfc5eb05fd84736eea6cbdf63b68049af4338d",
+      "response_sha256": "7ba90615949faa15b39867c74978407cf2a69fe49526aa3e6bd086daee7d2cbf"
+    },
+    {
+      "id": "meta-cavalry-counter",
+      "prompt_sha256": "d3d51b5614ca4906cc1c358407adf5083082eea1f7dfa952628ffff163fec9ff",
+      "response_sha256": "e5eee855052cbac500f76659ea40c1949790d67136b571e961512d1a6a3ea14f"
+    },
+    {
+      "id": "holdout-velar-five-stars",
+      "prompt_sha256": "6d403c62c2954c5d0a9656fa35bf7aa1bbf44e0faf08490a467d4a2b9ec6cbee",
+      "response_sha256": "87b256dbf2122248084b054cb7cd25c910d6e87a4b32c34f0e8bc185948099fb"
+    },
+    {
+      "id": "holdout-vermithor-five-stars",
+      "prompt_sha256": "93f41f42291dedb8f58891c8ec19d53a00dc2bc6520545a5792843b5497c8352",
+      "response_sha256": "9c7f41333d04d9779a14a6ca5e61708c29d83488538e6ed5156d1d26edf507b7"
+    },
+    {
+      "id": "holdout-low-buff-spearmen",
+      "prompt_sha256": "e8fbe260f7a65746be8aed417f062214ffeae9ccf757af956326accb95a6f5c4",
+      "response_sha256": "699c1531f783e2776f3f448494c14db58bf8008284e3e8d9d0473e68bc545f3f"
+    }
+  ]
+}

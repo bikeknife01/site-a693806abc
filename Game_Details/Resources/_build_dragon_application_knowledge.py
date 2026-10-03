@@ -1,207 +1,298 @@
-"""Build the recommendation-facing Dragonfire client knowledge file.
+"""Build the recommendation-facing installed-client dragon knowledge index.
 
-This intentionally filters NPC, test, and WIP rows from the application roster.
-It preserves the source keys and level curves so the agent can reason about a
-player's actual dragon level without treating raw client presence as release proof.
+The builder accepts a captured Resources directory so a dated snapshot can refresh
+canonical knowledge without making runtime tools depend on the ignored snapshot.
+It discovers versioned files by logical name and merges base plus delta localization.
+NPC, test, balance, unresolved, and WIP rows remain excluded.
 """
-import csv
+from __future__ import annotations
+
+import argparse
 import html
 import json
-import os
 import re
-import sys
+from pathlib import Path
+from typing import Any
 
-BASE = os.path.dirname(__file__)
-ROOT = os.path.normpath(os.path.join(BASE, "..", ".."))
-EXTRACTED = os.path.join(BASE, "_extracted")
-sys.path.insert(0, BASE)
+from _parse_locale import parse_deltas
 from _pbdump import dump_file
 
 
-def one(value):
+BASE = Path(__file__).resolve().parent
+ROOT = BASE.parents[1]
+DEFAULT_OUTPUT = ROOT / "data" / "dragon_application_knowledge.json"
+
+
+def one(value: Any) -> Any:
     if isinstance(value, list) and len(value) == 1:
         return value[0]
     return value
 
 
-def key(node):
+def key(node: Any) -> str | None:
     if isinstance(node, dict):
         value = node.get("2")
         return value if isinstance(value, str) else None
     return None
 
 
-def progression_values(node):
-    body = node.get("2", {})
-    body = one(body)
-    if not isinstance(body, dict):
-        return []
-    packed = body.get("1000", {})
-    packed = one(packed)
-    if not isinstance(packed, dict):
-        return []
-    for field in ("1001", "1002", "1003"):
-        values = packed.get(field, {})
-        values = one(values)
-        if isinstance(values, dict) and "2" in values:
-            values = values.get("2", [])
-            values = values if isinstance(values, list) else [values]
-            out = []
-            for value in values:
-                if isinstance(value, dict) and "_fixed64_double" in value:
-                    out.append(value["_fixed64_double"])
-                elif isinstance(value, (int, float, str)):
-                    out.append(value)
-            return out
-    return []
+def as_text(value: Any) -> str:
+    if isinstance(value, dict):
+        value = value.get("1", "")
+    return value.strip() if isinstance(value, str) else ""
 
 
-def clean_text(value):
+def clean_text(value: Any) -> str:
     if not value:
         return ""
-    value = html.unescape(value)
+    value = html.unescape(str(value))
     value = re.sub(r"<[^>]+>", "", value)
     return re.sub(r"\s+", " ", value).strip()
 
 
-def client_key(node):
-    return key(node.get("1", {})) if isinstance(node, dict) else None
+def progression_values(node: dict[str, Any]) -> list[Any]:
+    body = one(node.get("2", {}))
+    if not isinstance(body, dict):
+        return []
+    packed = one(body.get("1000", {}))
+    if not isinstance(packed, dict):
+        return []
+    for field in ("1001", "1002", "1003"):
+        values = one(packed.get(field, {}))
+        if isinstance(values, dict) and "2" in values:
+            raw_values = values["2"] if isinstance(values["2"], list) else [values["2"]]
+            output = []
+            for value in raw_values:
+                if isinstance(value, dict) and "_fixed64_double" in value:
+                    output.append(value["_fixed64_double"])
+                elif isinstance(value, (int, float, str)):
+                    output.append(value)
+            return output
+    return []
 
 
-locale = json.load(open(os.path.join(EXTRACTED, "locale_enUS.json"), encoding="utf-8"))
-progression_table = dump_file(os.path.join(BASE, "progressionTable_merged.1787687231.pb"))
-progression_by_key = {}
-for row in progression_table.get("1", []):
-    body = row.get("2", {})
-    body = one(body)
-    row_key = key(body.get("1", {})) if isinstance(body, dict) else None
-    if row_key:
-        progression_by_key[row_key] = progression_values(row)
+def discover(resources: Path, logical_name: str, suffix: str) -> Path:
+    matches = sorted(resources.glob(f"{logical_name}.*.{suffix}"))
+    if len(matches) != 1:
+        raise FileNotFoundError(
+            f"expected one {logical_name}.VERSION.{suffix} in {resources}, found {len(matches)}"
+        )
+    return matches[0]
 
-commands_table = json.load(open(os.path.join(EXTRACTED, "dragonCommandsTable_merged.1787687230.json"), encoding="utf-8"))
-commands_by_key = {client_key(row): row.get("2", {}) for row in commands_table.get("1", []) if client_key(row)}
-habits_table = json.load(open(os.path.join(EXTRACTED, "dragonHabitsTable_merged.1787687230.json"), encoding="utf-8"))
-habits_by_key = {client_key(row): row.get("2", {}) for row in habits_table.get("1", []) if client_key(row)}
 
-documented = {}
-for filename in os.listdir(os.path.join(ROOT, "data", "dragons")):
-    if filename.endswith(".json"):
-        record = json.load(open(os.path.join(ROOT, "data", "dragons", filename), encoding="utf-8"))
+def version_from(path: Path) -> str:
+    parts = path.name.split(".")
+    return parts[-2] if len(parts) >= 3 else "unknown"
+
+
+def load_locale(resources: Path) -> tuple[dict[str, str], list[Path]]:
+    base_path = discover(resources, "enUS", "txt")
+    delta_path = discover(resources, "Deltas_enUS", "txt")
+    locale = parse_deltas(base_path)
+    locale.update(parse_deltas(delta_path))
+    return locale, [base_path, delta_path]
+
+
+def indexed_rows(table: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    return {
+        row_key: row.get("2", {})
+        for row in table.get("1", [])
+        if (row_key := key(row.get("1", {})))
+    }
+
+
+def build(resources: Path, snapshot_manifest: Path | None = None) -> dict[str, Any]:
+    table_names = (
+        "dragonTable_merged",
+        "dragonCommandsTable_merged",
+        "dragonHabitsTable_merged",
+        "dragonAffinityTable_merged",
+        "progressionTable_merged",
+    )
+    table_paths = {name: discover(resources, name, "pb") for name in table_names}
+    locale, locale_paths = load_locale(resources)
+    tables = {name: dump_file(path) for name, path in table_paths.items()}
+
+    progression_by_key: dict[str, list[Any]] = {}
+    for row in tables["progressionTable_merged"].get("1", []):
+        body = one(row.get("2", {}))
+        row_key = key(body.get("1", {})) if isinstance(body, dict) else None
+        if row_key:
+            progression_by_key[row_key] = progression_values(row)
+
+    commands_by_key = indexed_rows(tables["dragonCommandsTable_merged"])
+    habits_by_key = indexed_rows(tables["dragonHabitsTable_merged"])
+    affinities_by_key = indexed_rows(tables["dragonAffinityTable_merged"])
+    dragons_by_key = indexed_rows(tables["dragonTable_merged"])
+
+    documented: dict[str, dict[str, Any]] = {}
+    for path in (ROOT / "data" / "dragons").glob("*.json"):
+        record = json.loads(path.read_text(encoding="utf-8"))
         documented[record["name"]] = record
 
-client_only = {
-    "Starshower": {
-        "availability": "Shadow of the Greens campaign",
-        "missing_for_full_recommendations": ["Most exact numeric values", "Habit upgrade levels", "current screenshot verification"]
-    },
-    "Vermithor": {
-        "availability": "Shadow of the Greens campaign",
-        "missing_for_full_recommendations": ["Exact numeric values", "Habit upgrade levels", "current screenshot verification"]
-    },
-    "Meleys": {
-        "availability": "Present in installed-client data; current player availability was not established by this audit.",
-        "missing_for_full_recommendations": ["Release and availability confirmation", "Exact numeric values", "Habit upgrade levels", "current screenshot verification"]
+    client_only = {
+        "Meleys": {
+            "availability_status": "user_confirmed_available",
+            "availability": "User confirmed Meleys as a Season 3 available dragon on 2026-10-01.",
+            "missing": ["Exact numeric values", "Habit upgrade levels", "current screenshot verification"],
+        },
+        "Smoketail": {
+            "availability_status": "user_confirmed_available",
+            "availability": "User confirmed Smoketail as a Season 3 available dragon on 2026-10-01.",
+            "missing": ["Exact numeric values", "Habit upgrade levels", "current screenshot verification"],
+        },
     }
-}
 
-roster = []
-with open(os.path.join(EXTRACTED, "clean_dragons.csv"), newline="", encoding="utf-8") as handle:
-    for row in csv.DictReader(handle):
-        row = {name: value.strip() for name, value in row.items()}
-        if not re.match(r"^dragon_(generic|iconic)_", row["key"]):
+    roster = []
+    for dragon_key, body in dragons_by_key.items():
+        if not re.match(r"^dragon_(generic|iconic)_", dragon_key):
             continue
-        if row["name"].startswith("WIP ") or "Work in Progress" in row["habit_slot_6_name"]:
+        name_key = as_text(body.get("1"))
+        name = clean_text(locale.get(name_key, name_key))
+        habit_refs = body.get("9", [])
+        habit_refs = [habit_refs] if isinstance(habit_refs, dict) else habit_refs
+        habit_keys = [key(item) for item in habit_refs]
+        habit_rows = [habits_by_key.get(item or "", {}) for item in habit_keys]
+        habit_names = [clean_text(locale.get(as_text(item.get("2")), as_text(item.get("2")))) for item in habit_rows]
+        if name.startswith("WIP ") or len(habit_rows) != 6 or any("Work in Progress" in item for item in habit_names):
             continue
-        if not row["habit_slot_6_name"]:
+        if not name or name.endswith("_NAME"):
             continue
 
-        raw = json.load(open(os.path.join(EXTRACTED, "dragonTable_merged.1787687230.json"), encoding="utf-8"))
-        break
+        stats = {}
+        for field, label in (("15", "strength"), ("16", "intelligence"), ("17", "instinct"), ("18", "initiative"), ("19", "max_army_size")):
+            progression_key = key(body.get(field, {}))
+            stats[label] = {"progression_key": progression_key, "values_by_level": progression_by_key.get(progression_key or "", [])}
+        star_scalars = {}
+        for field, label in (("24", "strength"), ("25", "intelligence"), ("26", "instinct"), ("27", "initiative"), ("28", "max_army_size")):
+            progression_key = key(body.get(field, {}))
+            star_scalars[label] = {"progression_key": progression_key, "values_by_star": progression_by_key.get(progression_key or "", [])}
 
-raw_rows = {client_key(item): item.get("2", {}) for item in raw.get("1", []) if client_key(item)}
-with open(os.path.join(EXTRACTED, "clean_dragons.csv"), newline="", encoding="utf-8") as handle:
-    source_rows = list(csv.DictReader(handle))
-
-for row in source_rows:
-    row = {name: value.strip() for name, value in row.items()}
-    if not re.match(r"^dragon_(generic|iconic)_", row["key"]):
-        continue
-    if row["name"].startswith("WIP ") or "Work in Progress" in row["habit_slot_6_name"] or not row["habit_slot_6_name"]:
-        continue
-    body = raw_rows[row["key"]]
-    stats = {}
-    for field, label in (("15", "strength"), ("16", "intelligence"), ("17", "instinct"), ("18", "initiative"), ("19", "max_army_size")):
-        prog_key = key(body.get(field, {}))
-        values = progression_by_key.get(prog_key, [])
-        stats[label] = {"progression_key": prog_key, "values_by_level": values}
-    star_scalars = {}
-    for field, label in (("24", "strength"), ("25", "intelligence"), ("26", "instinct"), ("27", "initiative"), ("28", "max_army_size")):
-        prog_key = key(body.get(field, {}))
-        star_scalars[label] = {"progression_key": prog_key, "values_by_star": progression_by_key.get(prog_key, [])}
-
-    command = commands_by_key.get(row["unique_command"], {})
-    command_name_key = command.get("2")
-    command_detail_key = command.get("11") or command.get("3")
-    habit_slots = []
-    for index in range(1, 7):
-        habit_key = row[f"habit_slot_{index}_key"]
-        habit = habits_by_key.get(habit_key, {})
-        habit_slots.append({
-            "slot": index,
-            "client_key": habit_key,
-            "name": row[f"habit_slot_{index}_name"],
-            "description_template": clean_text(locale.get(habit.get("3"), "")),
-            "ability_key": key(habit.get("5", {})),
-        })
-    status = "screenshot_audited" if row["name"] in documented else "client_discovered"
-    entry = {
-        "name": row["name"],
-        "client_key": row["key"],
-        "rarity_key": row["rarity"],
-        "breed_key": row["breed"],
-        "recommendation_status": status,
-        "source_record": f"data/dragons/{row['name'].lower()}.json" if status == "screenshot_audited" else None,
-        "level_model": {
-            "max_level": body.get("23"),
-            "vanguard_unlock_level": 16,
-            "base_stats_by_level": stats,
-            "star_scalars": star_scalars,
-            "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
-        },
-        "client_ability_slots": {
-            "command": {
-                "client_key": row["unique_command"],
-                "name": clean_text(locale.get(command_name_key, command_name_key)),
-                "description_template": clean_text(locale.get(command_detail_key, "")),
-                "ability_key": key(command.get("8", {}))
-            },
-            "habits_in_slot_order": habit_slots
-        },
-        "recommendation_evidence": {
-            "screenshot_record_is_primary": status == "screenshot_audited",
-            "client_templates_require_caution": True,
-            "availability": client_only.get(row["name"], {}).get("availability", "Established by screenshot-audited record."),
-            "missing_for_full_recommendations": client_only.get(row["name"], {}).get("missing_for_full_recommendations", [])
+        command_key = key(body.get("8", {}))
+        affinity_key = key(body.get("5", {}))
+        affinity = affinities_by_key.get(affinity_key or "", {})
+        troop_refs = affinity.get("4", [])
+        troop_refs = [troop_refs] if isinstance(troop_refs, dict) else troop_refs
+        affinity_values = affinity.get("5", [])
+        affinity_values = affinity_values if isinstance(affinity_values, list) else [affinity_values]
+        troop_names = {
+            "Spear": "Spearmen",
+            "Cavalry": "Cavalry",
+            "Shield": "Shieldbearers",
+            "Range": "Archers",
+            "Siege": "Siege",
         }
-    }
-    roster.append(entry)
+        affinity_pairs = [
+            (troop_names.get(key(troop) or "", key(troop) or ""), value)
+            for troop, value in zip(troop_refs, affinity_values)
+        ]
+        command = commands_by_key.get(command_key or "", {})
+        command_name_key = as_text(command.get("2"))
+        command_detail_key = as_text(command.get("11")) or as_text(command.get("3"))
+        habit_slots = []
+        for index, (habit_key, habit, habit_name) in enumerate(zip(habit_keys, habit_rows, habit_names), start=1):
+            habit_slots.append({
+                "slot": index,
+                "client_key": habit_key,
+                "name": habit_name,
+                "description_template": clean_text(locale.get(as_text(habit.get("3")), "")),
+                "ability_key": key(habit.get("5", {})),
+            })
 
-out = {
-    "metadata": {
-        "purpose": "Canonical client-derived roster, level progression, and ability-template index for formation recommendations.",
-        "source": "Locally extracted installed application tables under Game_Details/Resources.",
-        "client_versions": {"dragon_and_ability": "1787687230", "progression": "1787687231"},
-        "scope": "37 production-named client rows; WIP, test, NPC, wild, and balance-test rows are excluded.",
-        "evidence_policy": "Screenshot-audited dragon records remain primary for exact current mechanics. Client templates and level curves supplement them; client-only rows must be labeled client-discovered and their missing fields disclosed."
-    },
-    "recommendation_contract": {
-        "required_player_inputs": ["dragon name", "dragon level", "Star Rank", "unlocked Habit levels", "available dragons", "scenario", "enemy troop type or target"],
-        "level_rule": "Level affects base Strength, Intelligence, Instinct, Initiative, and Max Army Size through base_stats_by_level. Use the reported level rather than a screenshot's historical stat snapshot.",
-        "do_not_infer": ["release status from client presence", "missing numeric ability values", "Habit upgrade levels for client-only rows", "hidden combat ordering or formulas"]
-    },
-    "dragons": sorted(roster, key=lambda item: item["name"])
-}
-with open(os.path.join(ROOT, "data", "dragon_application_knowledge.json"), "w", encoding="utf-8") as handle:
-    json.dump(out, handle, indent=2, ensure_ascii=False)
-    handle.write("\n")
-print(f"wrote {len(roster)} production-named dragon records")
+        status = "screenshot_audited" if name in documented else "client_discovered"
+        availability = ({
+            "availability_status": "screenshot_observed",
+            "availability": "Established by screenshot-audited record.",
+            "missing": [],
+        } if status == "screenshot_audited" else client_only.get(name, {
+            "availability_status": "installed_unverified",
+            "availability": "Present in the installed client; player availability is not established.",
+            "missing": ["Release and availability confirmation", "Exact numeric values", "Habit upgrade levels", "current screenshot verification"],
+        }))
+        roster.append({
+            "name": name,
+            "client_key": dragon_key,
+            "rarity_key": key(body.get("4", {})),
+            "breed_key": key(body.get("6", {})),
+            "troop_affinities": {
+                "positive": [troop for troop, value in affinity_pairs if value == 2],
+                "negative": [troop for troop, value in affinity_pairs if value == 1],
+                "neutral": [troop for troop, value in affinity_pairs if value == 0],
+                "source_key": affinity_key,
+            },
+            "recommendation_status": status,
+            "availability_status": availability["availability_status"],
+            "source_record": f"data/dragons/{name.lower()}.json" if status == "screenshot_audited" else None,
+            "level_model": {
+                "max_level": body.get("23"),
+                "vanguard_unlock_level": 16,
+                "base_stats_by_level": stats,
+                "star_scalars": star_scalars,
+                "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar.",
+            },
+            "client_ability_slots": {
+                "command": {
+                    "client_key": command_key,
+                    "name": clean_text(locale.get(command_name_key, command_name_key)),
+                    "description_template": clean_text(locale.get(command_detail_key, "")),
+                    "ability_key": key(command.get("8", {})),
+                },
+                "habits_in_slot_order": habit_slots,
+            },
+            "recommendation_evidence": {
+                "screenshot_record_is_primary": status == "screenshot_audited",
+                "client_templates_require_caution": True,
+                "availability": availability["availability"],
+                "missing_for_full_recommendations": availability["missing"],
+            },
+        })
+
+    snapshot = json.loads(snapshot_manifest.read_text(encoding="utf-8")) if snapshot_manifest else {}
+    source_files = [*table_paths.values(), *locale_paths]
+    return {
+        "metadata": {
+            "purpose": "Canonical client-derived roster, level progression, and ability-template index for formation recommendations.",
+            "source": "Locally extracted installed application tables under Game_Details/Resources.",
+            "snapshot_date": snapshot.get("snapshot_date"),
+            "client_version": snapshot.get("version_name"),
+            "version_code": snapshot.get("version_code"),
+            "client_versions": {name: version_from(path) for name, path in table_paths.items()},
+            "localization_versions": {path.name.split(".")[0]: version_from(path) for path in locale_paths},
+            "source_files": [path.name for path in source_files],
+            "comparison_baseline": "2026-09-16 client 26.9.56160" if snapshot.get("snapshot_date") == "2026-10-01" else None,
+            "continuing_evidence_policy": "Unchanged logical resources in the captured installed build remain current installed-client evidence; a no-diff result does not make an older table irrelevant.",
+            "scope": f"{len(roster)} production-named client rows; WIP, test, NPC, wild, balance-test, and unresolved rows are excluded.",
+            "evidence_policy": "Screenshot-audited dragon records remain primary for exact current mechanics. Client templates and level curves supplement them; client-only rows must be labeled client-discovered and their missing fields disclosed.",
+        },
+        "recommendation_contract": {
+            "required_player_inputs": ["dragon name", "dragon level", "Star Rank", "Habit skill levels", "visible Power", "available dragons", "scenario", "enemy formation and troop type when applicable"],
+            "level_rule": "Level affects base Strength, Intelligence, Instinct, Initiative, and Max Army Size through base_stats_by_level. Use the reported level rather than a screenshot's historical stat snapshot.",
+            "do_not_infer": ["release status from client presence", "missing numeric ability values", "Habit skill levels for client-only rows", "hidden combat ordering or formulas"],
+        },
+        "dragons": sorted(roster, key=lambda item: item["name"]),
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--resources",
+        type=Path,
+        required=True,
+        help="captured Android Resources directory; required to avoid silently rebuilding from the historical working set",
+    )
+    parser.add_argument("--snapshot-manifest", type=Path, required=True)
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--check", action="store_true")
+    args = parser.parse_args()
+    output = build(args.resources, args.snapshot_manifest)
+    if args.check:
+        print(f"valid ({len(output['dragons'])} production-named dragon records)")
+        return 0
+    args.output.write_text(json.dumps(output, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(f"wrote {len(output['dragons'])} production-named dragon records to {args.output}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

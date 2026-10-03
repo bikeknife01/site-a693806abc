@@ -1,0 +1,56 @@
+{
+  "benchmark_id": "velar-vhagar-moondancer-shieldbearers",
+  "objective": "attack",
+  "scenario_notes": "Common all-around high-damage meta formation. The listed order is user-confirmed as Left Flank, Vanguard, Right Flank. All dragons are Level 50 and 6 Stars; each unlocked Habit is Level 5. Power is unknown. This is a general-purpose meta evaluation rather than a counter to one named opponent.",
+  "our_formation": {
+    "troop_type": "Shieldbearers",
+    "left_flank": {"dragon": "Velar", "level": 50, "star_rank": 6, "habit_levels": [5, 5, 5, "locked", "locked"], "power": "unknown"},
+    "vanguard": {"dragon": "Vhagar", "level": 50, "star_rank": 6, "habit_levels": [5, 5, 5, "locked", "locked"], "power": "unknown"},
+    "right_flank": {"dragon": "Moondancer", "level": 50, "star_rank": 6, "habit_levels": [5, 5, 5, "locked", "locked"], "power": "unknown"}
+  },
+  "opponent": {
+    "troop_type": "unknown",
+    "left_flank": {"dragon": "unknown", "level": "unknown", "star_rank": "unknown", "habit_levels": ["unknown", "unknown", "unknown", "unknown", "unknown"], "power": "unknown"},
+    "vanguard": {"dragon": "unknown", "level": "unknown", "star_rank": "unknown", "habit_levels": ["unknown", "unknown", "unknown", "unknown", "unknown"], "power": "unknown"},
+    "right_flank": {"dragon": "unknown", "level": "unknown", "star_rank": "unknown", "habit_levels": ["unknown", "unknown", "unknown", "unknown", "unknown"], "power": "unknown"}
+  },
+  "known_candidate_roster": ["All screenshot-audited, campaign-observed, and user-confirmed available dragons"],
+  "why_experts_use_it": "High damage with complete Shieldbearer affinity. Velar supplies Tactical pressure and potential Advantage; Vhagar protects and amplifies the flanks; Moondancer converts Velar's Tactical damage into Rising Tide attempts and strong Physical payoff.",
+  "source_or_observation": "Current expert benchmark supplied by the user on 2026-10-01.",
+  "runs": {
+    "baseline": {
+      "prompt_revision": "b02c4bc:.github/agents/dragonfire-strategist.agent.md",
+      "repository_revision": "b02c4bc",
+      "input": "Recommend a general-purpose high-damage formation from the full known roster. All candidates are Level 50 and 6 Stars with Level 5 unlocked Habits; Power is unknown. No specific opponent is supplied.",
+      "recommendation": "Velar Left Flank, Vhagar Vanguard, Moondancer Right Flank with Shieldbearers. The baseline identifies perfect shared affinity, Vhagar's Tactical Left Flank and Physical Right Flank support, and Velar-to-Moondancer Rising Tide generation.",
+      "disagreement": "None on formation. The baseline does not systematically show that it compared distinct Power-forward, synergy-forward, and affinity-perfect candidate lines.",
+      "diagnosis": "weak-search"
+    },
+    "revised": [
+      {
+        "prompt_revision": "working-tree-2026-10-01",
+        "repository_revision": "working-tree",
+        "input": "Same benchmark input and assumptions as baseline.",
+        "recommendation": "Velar Left Flank, Vhagar Vanguard, Moondancer Right Flank with Shieldbearers remains the best-supported general-purpose line. Vhagar's Vanguard boosts Velar's Tactical damage, Battle Leader prioritizes Moondancer on the Right Flank, Velar can supply Advantage for Moondancer's doubled Rising Tide chances, and Velar's Tactical damage can trigger Crescent Blade once per round. At Habit Level 5, Gales of Power reaches 24% per-target checks, Eclipse Cover reaches 35%, and Moondancer's Full Moon reaches a 50% Rising Tide chance with its maximum displayed six-Star damage track.",
+        "disagreement": "None. Revised reasoning makes the gated producer/payoff chain, placement, shared affinity, and unknown reliability explicit.",
+        "diagnosis": "none"
+      }
+    ]
+  },
+  "variations": [
+    {
+      "id": "holdout-velar-five-stars",
+      "change": "Reduce Velar from 6 Stars to 5 Stars.",
+      "expected_general_rule": "Remove Gales of Power and its First-Strike/Slow credit, while preserving Whirlwind and the Velar-Moondancer Crescent Blade interaction. Reassess rather than treating the six-Star synergy as active.",
+      "result": "Passed: the revised gate-first method removes Gales of Power while retaining the lower-Star Command/Crescent Blade chain; it does not claim the six-Star tempo package.",
+      "status": "passed"
+    },
+    {
+      "id": "holdout-cavalry-opponent",
+      "change": "Match the Shieldbearer formation into an otherwise comparable Cavalry formation.",
+      "expected_general_rule": "Apply Cavalry's troop advantage over Shieldbearers as a material matchup penalty without discarding the formation's internal synergy evidence.",
+      "result": "Passed: the revised method retains the formation's kit assessment but explicitly downgrades the matchup because Cavalry deals more damage to and receives less damage from Shieldbearers.",
+      "status": "passed"
+    }
+  ]
+}

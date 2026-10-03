@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-10-02T02:20:08.359516+00:00",
+  "agent": "dragonfire-strategist",
+  "agent_definition_sha256": "c670ce48b38fc0edeeca581ec78f69c7fe8bd881db5e515fce141f9c5a8ae977",
+  "cases": [
+    {
+      "id": "meta-high-damage",
+      "prompt_sha256": "da5f524454f0a09d8dd75cfa7370ecacd0ff0dca3a320b8346c213ec660810c5",
+      "response_sha256": "7e067560dc90272f7b821fce4f73e9500f513599318abd5141f97af0d96b58e3"
+    },
+    {
+      "id": "holdout-low-buff-spearmen",
+      "prompt_sha256": "e8fbe260f7a65746be8aed417f062214ffeae9ccf757af956326accb95a6f5c4",
+      "response_sha256": "9b458fae68af8c68f1e39388f7d8b9ad91705bcef37073ddac0b2eb512477f68"
+    }
+  ]
+}

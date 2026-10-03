@@ -1,0 +1,223 @@
+{
+  "schema_version": "1.0.0",
+  "agent": "dragonfire-strategist",
+  "cases": [
+    {
+      "id": "meta-high-damage",
+      "kind": "benchmark",
+      "benchmark_id": "velar-vhagar-moondancer-shieldbearers",
+      "prompt": "Recommend the single best-supported general-purpose high-damage formation from the full eligible known roster. Assume every eligible candidate is Level 50 and Star Rank 6, every unlocked Habit is skill level 5, and visible Power is unknown. No specific opponent is supplied. Include the strongest credible alternative.",
+      "expected_formation": {
+        "troop_type": "Shieldbearers",
+        "left_flank": "Velar",
+        "vanguard": "Vhagar",
+        "right_flank": "Moondancer"
+      },
+      "reasoning_checks": [
+        {
+          "id": "shared-affinity",
+          "label": "Identifies the trio's shared Shieldbearer affinity",
+          "critical": true,
+          "all_patterns": ["Shieldbearers?", "affinit"]
+        },
+        {
+          "id": "directional-vanguard",
+          "label": "Uses Vhagar's directional Vanguard support",
+          "critical": true,
+          "all_patterns": ["Vhagar", "Vanguard", "Left Flank", "Right Flank", "Tactical", "Physical"]
+        },
+        {
+          "id": "rising-tide-chain",
+          "label": "Traces the Velar-to-Moondancer Rising Tide chain",
+          "critical": true,
+          "all_patterns": ["Velar", "Moondancer", "Rising Tide"],
+          "any_patterns": ["Advantage", "Tactical"]
+        },
+        {
+          "id": "six-star-reliability",
+          "label": "Treats the six-Star proc package as chance-based",
+          "critical": false,
+          "all_patterns": ["Gales of Power"],
+          "any_patterns": ["24%", "chance", "probabil"]
+        },
+        {
+          "id": "troop-cycle-risk",
+          "label": "Discloses Cavalry as the troop-cycle risk",
+          "critical": true,
+          "all_patterns": ["Cavalry", "Shieldbearers?"],
+          "any_patterns": ["advantage", "counter", "risk", "disadvantage"]
+        }
+      ]
+    },
+    {
+      "id": "meta-damage-survivability",
+      "kind": "benchmark",
+      "benchmark_id": "vermithor-rhysarion-venator-spearmen",
+      "prompt": "Recommend the single best-supported general-purpose formation favoring both damage and survivability from the full eligible known roster. Assume every eligible candidate is Level 50 and Star Rank 6, every unlocked Habit is skill level 5, and visible Power is unknown. No specific opponent is supplied. Include the strongest credible alternative.",
+      "expected_formation": {
+        "troop_type": "Spearmen",
+        "left_flank": "Vermithor",
+        "vanguard": "Rhysarion",
+        "right_flank": "Venator"
+      },
+      "reasoning_checks": [
+        {
+          "id": "shared-affinity",
+          "label": "Identifies the trio's shared Spearmen affinity",
+          "critical": true,
+          "all_patterns": ["Spearmen", "affinit"]
+        },
+        {
+          "id": "vermithor-protect",
+          "label": "Uses Vermithor's screenshot-audited Protect reliability",
+          "critical": true,
+          "all_patterns": ["Vermithor", "Protect", "50%"]
+        },
+        {
+          "id": "survivability-chain",
+          "label": "Connects Rhysarion Recovery with Vermithor mitigation",
+          "critical": true,
+          "all_patterns": ["Rhysarion", "Recovery", "Vermithor"],
+          "any_patterns": ["mitigation", "Damage Received", "Nimble Resilience"]
+        },
+        {
+          "id": "vanguard-placement",
+          "label": "Explains why Rhysarion is Vanguard and Venator is Right Flank",
+          "critical": true,
+          "all_patterns": ["Rhysarion", "Vanguard", "Venator", "Right Flank"]
+        },
+        {
+          "id": "troop-cycle-risk",
+          "label": "Discloses Archers as the troop-cycle risk",
+          "critical": true,
+          "all_patterns": ["Archers", "Spearmen"],
+          "any_patterns": ["advantage", "counter", "risk", "disadvantage"]
+        }
+      ]
+    },
+    {
+      "id": "meta-cavalry-counter",
+      "kind": "benchmark",
+      "benchmark_id": "malachite-seasmoke-kalspire-cavalry-counter",
+      "prompt": "Recommend the single best-supported counter from the full eligible known roster against Velar in Left Flank, Vhagar in Vanguard, and Moondancer in Right Flank using Shieldbearers. Assume every dragon on both sides is Level 50 and Star Rank 6, every unlocked Habit is skill level 5, and visible Power is unknown. Include the strongest credible alternative and distinguish direct, partial, probabilistic, and uncovered threats.",
+      "expected_formation": {
+        "troop_type": "Cavalry",
+        "left_flank": "Malachite",
+        "vanguard": "Seasmoke",
+        "right_flank": "Kalspire"
+      },
+      "reasoning_checks": [
+        {
+          "id": "troop-counter",
+          "label": "Uses Cavalry's troop advantage against Shieldbearers",
+          "critical": true,
+          "all_patterns": ["Cavalry", "Shieldbearers?"],
+          "any_patterns": ["advantage", "counter"]
+        },
+        {
+          "id": "cleanse-source",
+          "label": "Attributes Seasmoke's removal to Cleansing Wrath",
+          "critical": true,
+          "all_patterns": ["Seasmoke", "Cleansing Wrath", "Cleanse"]
+        },
+        {
+          "id": "cleanse-reliability",
+          "label": "Treats Seasmoke's Cleanse as probabilistic rather than blanket removal",
+          "critical": true,
+          "all_patterns": ["20%"],
+          "any_patterns": ["chance", "probabil", "not guaranteed"]
+        },
+        {
+          "id": "support-and-pressure",
+          "label": "Identifies Malachite sustain and Kalspire pressure",
+          "critical": true,
+          "all_patterns": ["Malachite", "Recovery", "Kalspire"],
+          "any_patterns": ["Panic", "pressure", "damage"]
+        },
+        {
+          "id": "vanguard-placement",
+          "label": "Explains Seasmoke Vanguard support for the Right Flank",
+          "critical": true,
+          "all_patterns": ["Seasmoke", "Vanguard", "Right Flank"]
+        }
+      ]
+    },
+    {
+      "id": "holdout-velar-five-stars",
+      "kind": "holdout",
+      "benchmark_id": "velar-vhagar-moondancer-shieldbearers",
+      "prompt": "Evaluate Velar Left Flank, Vhagar Vanguard, and Moondancer Right Flank with Shieldbearers as a general-purpose formation. Velar is Level 50 and Star Rank 5; Vhagar and Moondancer are Level 50 and Star Rank 6. Every unlocked Habit is skill level 5 and Power is unknown. Explain exactly what changes from the six-Star version and whether the line remains defensible.",
+      "reasoning_checks": [
+        {
+          "id": "removes-locked-habit",
+          "label": "Removes six-Star Gales of Power credit",
+          "critical": true,
+          "all_patterns": ["Gales of Power"],
+          "any_patterns": ["locked", "not unlocked", "unavailable", "loses", "remove"]
+        },
+        {
+          "id": "retains-lower-chain",
+          "label": "Retains the lower-Star Velar/Moondancer interaction",
+          "critical": true,
+          "all_patterns": ["Velar", "Moondancer", "Crescent Blade"]
+        }
+      ]
+    },
+    {
+      "id": "holdout-vermithor-five-stars",
+      "kind": "holdout",
+      "benchmark_id": "vermithor-rhysarion-venator-spearmen",
+      "prompt": "Evaluate Vermithor Left Flank, Rhysarion Vanguard, and Venator Right Flank with Spearmen as a general-purpose formation. Vermithor is Level 50 and Star Rank 5; Rhysarion and Venator are Level 50 and Star Rank 6. Every unlocked Habit is skill level 5 and Power is unknown. Explain exactly what changes from the six-Star version and whether the line remains defensible.",
+      "reasoning_checks": [
+        {
+          "id": "base-command-values",
+          "label": "Falls back to Vermithor's base Command values",
+          "critical": true,
+          "all_patterns": ["30%", "60%", "Protect"]
+        },
+        {
+          "id": "removes-bronze-bulwark",
+          "label": "Removes six-Star Bronze Bulwark credit",
+          "critical": true,
+          "all_patterns": ["Bronze Bulwark"],
+          "any_patterns": ["locked", "not unlocked", "unavailable", "loses", "remove"]
+        },
+        {
+          "id": "no-six-star-mitigation",
+          "label": "Does not retain Bronze Bulwark's on-Protect mitigation",
+          "critical": true,
+          "all_patterns": ["mitigation"],
+          "any_patterns": ["loses", "without", "not active", "unavailable", "remove"]
+        }
+      ]
+    },
+    {
+      "id": "holdout-low-buff-spearmen",
+      "kind": "holdout",
+      "benchmark_id": "malachite-seasmoke-kalspire-cavalry-counter",
+      "prompt": "Evaluate whether Malachite Left Flank, Seasmoke Vanguard, and Kalspire Right Flank with Cavalry should remain a default counter when the opponent instead uses Spearmen and does not rely materially on positive buffs. Assume all dragons are Level 50 and Star Rank 6, every unlocked Habit is skill level 5, and Power is unknown. Do not invent unspecified enemy dragons.",
+      "reasoning_checks": [
+        {
+          "id": "troop-disadvantage",
+          "label": "Recognizes Cavalry's disadvantage against Spearmen",
+          "critical": true,
+          "all_patterns": ["Cavalry", "Spearmen"],
+          "any_patterns": ["disadvantage", "countered", "weak", "unfavorable", "advantage over Cavalry"]
+        },
+        {
+          "id": "cleanse-loses-value",
+          "label": "Downgrades Seasmoke when there are few removable buffs",
+          "critical": true,
+          "all_patterns": ["Seasmoke"],
+          "any_patterns": ["less value", "reduced value", "loses value", "Cleanse", "removal"]
+        },
+        {
+          "id": "does-not-overfit",
+          "label": "Rejects the benchmark formation as a universal default",
+          "critical": true,
+          "any_patterns": ["not.*default", "not.*universal", "reassess", "different counter", "would not retain"]
+        }
+      ]
+    }
+  ]
+}

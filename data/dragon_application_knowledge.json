@@ -2,11 +2,32 @@
   "metadata": {
     "purpose": "Canonical client-derived roster, level progression, and ability-template index for formation recommendations.",
     "source": "Locally extracted installed application tables under Game_Details/Resources.",
+    "snapshot_date": "2026-10-01",
+    "client_version": "26.9.56700",
+    "version_code": 326,
     "client_versions": {
-      "dragon_and_ability": "1787687230",
-      "progression": "1787687231"
+      "dragonTable_merged": "1790711866",
+      "dragonCommandsTable_merged": "1790711866",
+      "dragonHabitsTable_merged": "1790711866",
+      "dragonAffinityTable_merged": "1790711866",
+      "progressionTable_merged": "1790711866"
     },
-    "scope": "37 production-named client rows; WIP, test, NPC, wild, and balance-test rows are excluded.",
+    "localization_versions": {
+      "enUS": "1788464664",
+      "Deltas_enUS": "1790711701"
+    },
+    "source_files": [
+      "dragonTable_merged.1790711866.pb",
+      "dragonCommandsTable_merged.1790711866.pb",
+      "dragonHabitsTable_merged.1790711866.pb",
+      "dragonAffinityTable_merged.1790711866.pb",
+      "progressionTable_merged.1790711866.pb",
+      "enUS.1788464664.txt",
+      "Deltas_enUS.1790711701.txt"
+    ],
+    "comparison_baseline": "2026-09-16 client 26.9.56160",
+    "continuing_evidence_policy": "Unchanged logical resources in the captured installed build remain current installed-client evidence; a no-diff result does not make an older table irrelevant.",
+    "scope": "38 production-named client rows; WIP, test, NPC, wild, balance-test, and unresolved rows are excluded.",
     "evidence_policy": "Screenshot-audited dragon records remain primary for exact current mechanics. Client templates and level curves supplement them; client-only rows must be labeled client-discovered and their missing fields disclosed."
   },
   "recommendation_contract": {
@@ -14,16 +35,17 @@
       "dragon name",
       "dragon level",
       "Star Rank",
-      "unlocked Habit levels",
+      "Habit skill levels",
+      "visible Power",
       "available dragons",
       "scenario",
-      "enemy troop type or target"
+      "enemy formation and troop type when applicable"
     ],
     "level_rule": "Level affects base Strength, Intelligence, Instinct, Initiative, and Max Army Size through base_stats_by_level. Use the reported level rather than a screenshot's historical stat snapshot.",
     "do_not_infer": [
       "release status from client presence",
       "missing numeric ability values",
-      "Habit upgrade levels for client-only rows",
+      "Habit skill levels for client-only rows",
       "hidden combat ordering or formulas"
     ]
   },
@@ -33,7 +55,22 @@
       "client_key": "dragon_generic_antares",
       "rarity_key": "rarity_dragon_rare",
       "breed_key": "breed_hunter",
+      "troop_affinities": {
+        "positive": [
+          "Archers"
+        ],
+        "negative": [
+          "Siege"
+        ],
+        "neutral": [
+          "Spearmen",
+          "Cavalry",
+          "Shieldbearers"
+        ],
+        "source_key": "affinity_generic_antares"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/antares.json",
       "level_model": {
         "max_level": 50,
@@ -458,7 +495,21 @@
       "client_key": "dragon_iconic_arrax",
       "rarity_key": "rarity_dragon_rare",
       "breed_key": "breed_warrior",
+      "troop_affinities": {
+        "positive": [
+          "Shieldbearers",
+          "Archers"
+        ],
+        "negative": [],
+        "neutral": [
+          "Spearmen",
+          "Cavalry",
+          "Siege"
+        ],
+        "source_key": "affinity_iconic_arrax"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/arrax.json",
       "level_model": {
         "max_level": 50,
@@ -883,7 +934,21 @@
       "client_key": "dragon_generic_arulix",
       "rarity_key": "rarity_dragon_rare",
       "breed_key": "breed_champion",
+      "troop_affinities": {
+        "positive": [
+          "Cavalry"
+        ],
+        "negative": [],
+        "neutral": [
+          "Spearmen",
+          "Shieldbearers",
+          "Archers",
+          "Siege"
+        ],
+        "source_key": "affinity_generic_arulix"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/arulix.json",
       "level_model": {
         "max_level": 50,
@@ -1308,7 +1373,21 @@
       "client_key": "dragon_generic_bevlorin",
       "rarity_key": "rarity_dragon_rare",
       "breed_key": "breed_champion",
+      "troop_affinities": {
+        "positive": [
+          "Spearmen"
+        ],
+        "negative": [],
+        "neutral": [
+          "Cavalry",
+          "Shieldbearers",
+          "Archers",
+          "Siege"
+        ],
+        "source_key": "affinity_generic_bevlorin"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/bevlorin.json",
       "level_model": {
         "max_level": 50,
@@ -1733,7 +1812,21 @@
       "client_key": "dragon_iconic_caraxes",
       "rarity_key": "rarity_dragon_legendary",
       "breed_key": "breed_hunter",
+      "troop_affinities": {
+        "positive": [
+          "Spearmen",
+          "Cavalry"
+        ],
+        "negative": [],
+        "neutral": [
+          "Shieldbearers",
+          "Archers",
+          "Siege"
+        ],
+        "source_key": "affinity_iconic_caraxes"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/caraxes.json",
       "level_model": {
         "max_level": 50,
@@ -2158,7 +2251,21 @@
       "client_key": "dragon_generic_crimson",
       "rarity_key": "rarity_dragon_legendary",
       "breed_key": "breed_hunter",
+      "troop_affinities": {
+        "positive": [
+          "Spearmen",
+          "Archers",
+          "Siege"
+        ],
+        "negative": [],
+        "neutral": [
+          "Cavalry",
+          "Shieldbearers"
+        ],
+        "source_key": "affinity_generic_crimson"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/crimson.json",
       "level_model": {
         "max_level": 50,
@@ -2523,7 +2630,7 @@
         "command": {
           "client_key": "command_unique_crimson_01",
           "name": "Bloodscale Terror",
-          "description_template": "Odd-numbered Rounds: {effect_group=3:trigger_chance} chance to afflict Stun on {effect_group=3:number_of_targets} {effect_group=3:target_type} {effect_group=3:target_range} for {effect_group=3:duration_rounds} round(s). Rounds 2, 5, 8: Deal {effect_group=1:effect=1:damage_type} Damage to {effect_group=1:number_of_targets} {effect_group=1:target_type} {effect_group=1:target_range} (Damage Rate: {effect_group=1:effect=1:base_mod}). At 10 Stars: Round 1: The chance to Stun is increased to {effect_group=4:trigger_chance}. Even-numbered Rounds: {effect_group=5:trigger_chance} chance to reduce Instinct and Initiative by {effect_group=5:effect=1:base_mod} (enhanced by Intelligence) of {effect_group=5:number_of_targets} {effect_group=5:target_type} {effect_group=5:target_range} for {effect_group=5:duration_rounds} round(s).",
+          "description_template": "Odd-numbered Rounds: {effect_group=3:trigger_chance} chance to Stun {effect_group=3:number_of_targets} {effect_group=3:target_type} {effect_group=3:target_range} for {effect_group=3:duration_rounds} round(s). Rounds 2, 5, 8: Deal {effect_group=1:effect=1:damage_type} Damage to {effect_group=1:number_of_targets} {effect_group=1:target_type} {effect_group=1:target_range} (Damage Rate: {effect_group=1:effect=1:base_mod}). At 10 Stars: Round 1: The chance to Stun is increased to {effect_group=4:trigger_chance}. Even-numbered Rounds: {effect_group=5:trigger_chance} chance to reduce Instinct and Initiative by {effect_group=5:effect=1:base_mod} (enhanced by Intelligence) of {effect_group=5:number_of_targets} {effect_group=5:target_type} {effect_group=5:target_range} for {effect_group=5:duration_rounds} round(s).",
           "ability_key": "ability_command_legendary_bloodscaleterror_01"
         },
         "habits_in_slot_order": [
@@ -2583,7 +2690,21 @@
       "client_key": "dragon_generic_daemoros",
       "rarity_key": "rarity_dragon_epic",
       "breed_key": "breed_warrior",
+      "troop_affinities": {
+        "positive": [
+          "Archers"
+        ],
+        "negative": [],
+        "neutral": [
+          "Spearmen",
+          "Cavalry",
+          "Shieldbearers",
+          "Siege"
+        ],
+        "source_key": "affinity_generic_daemoros"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/daemoros.json",
       "level_model": {
         "max_level": 50,
@@ -3008,7 +3129,22 @@
       "client_key": "dragon_generic_dawnseeker",
       "rarity_key": "rarity_dragon_rare",
       "breed_key": "breed_sentinel",
+      "troop_affinities": {
+        "positive": [
+          "Spearmen"
+        ],
+        "negative": [
+          "Siege"
+        ],
+        "neutral": [
+          "Cavalry",
+          "Shieldbearers",
+          "Archers"
+        ],
+        "source_key": "affinity_generic_dawnseeker"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/dawnseeker.json",
       "level_model": {
         "max_level": 50,
@@ -3433,7 +3569,22 @@
       "client_key": "dragon_generic_feskar",
       "rarity_key": "rarity_dragon_epic",
       "breed_key": "breed_champion",
+      "troop_affinities": {
+        "positive": [
+          "Cavalry"
+        ],
+        "negative": [
+          "Siege"
+        ],
+        "neutral": [
+          "Spearmen",
+          "Shieldbearers",
+          "Archers"
+        ],
+        "source_key": "affinity_generic_feskar"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/feskar.json",
       "level_model": {
         "max_level": 50,
@@ -3858,7 +4009,21 @@
       "client_key": "dragon_generic_jagadrix",
       "rarity_key": "rarity_dragon_rare",
       "breed_key": "breed_hunter",
+      "troop_affinities": {
+        "positive": [
+          "Spearmen"
+        ],
+        "negative": [],
+        "neutral": [
+          "Cavalry",
+          "Shieldbearers",
+          "Archers",
+          "Siege"
+        ],
+        "source_key": "affinity_generic_jagadrix"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/jagadrix.json",
       "level_model": {
         "max_level": 50,
@@ -4283,7 +4448,21 @@
       "client_key": "dragon_generic_kalspire",
       "rarity_key": "rarity_dragon_legendary",
       "breed_key": "breed_champion",
+      "troop_affinities": {
+        "positive": [
+          "Cavalry",
+          "Shieldbearers",
+          "Siege"
+        ],
+        "negative": [],
+        "neutral": [
+          "Spearmen",
+          "Archers"
+        ],
+        "source_key": "affinity_generic_kalspire"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/kalspire.json",
       "level_model": {
         "max_level": 50,
@@ -4708,7 +4887,22 @@
       "client_key": "dragon_generic_malachite",
       "rarity_key": "rarity_dragon_legendary",
       "breed_key": "breed_sentinel",
+      "troop_affinities": {
+        "positive": [
+          "Cavalry",
+          "Shieldbearers"
+        ],
+        "negative": [
+          "Siege"
+        ],
+        "neutral": [
+          "Spearmen",
+          "Archers"
+        ],
+        "source_key": "affinity_generic_malachite"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/malachite.json",
       "level_model": {
         "max_level": 50,
@@ -5133,7 +5327,22 @@
       "client_key": "dragon_iconic_meleys",
       "rarity_key": "rarity_dragon_legendary",
       "breed_key": "breed_warrior",
+      "troop_affinities": {
+        "positive": [
+          "Cavalry",
+          "Archers"
+        ],
+        "negative": [
+          "Siege"
+        ],
+        "neutral": [
+          "Spearmen",
+          "Shieldbearers"
+        ],
+        "source_key": "affinity_iconic_meleys"
+      },
       "recommendation_status": "client_discovered",
+      "availability_status": "user_confirmed_available",
       "source_record": null,
       "level_model": {
         "max_level": 50,
@@ -5498,7 +5707,7 @@
         "command": {
           "client_key": "command_unique_meleys_01",
           "name": "Scarlet Strike",
-          "description_template": "Odd-numbered Rounds: Deal Physical Damage (Damage Rate: {effect_group=1:effect=1:base_mod}) to the enemy with the highest Initiative. Additionally, afflict the target with 1 stack of Laceration (Max 10 stacks). Each stack of Laceration reduces the target’s Initiative by {effect_group=2:effect=1:base_mod} (enhanced by Strength). At 2 Stars: If the target is afflicted with Bleed, there is a {effect_group=4:trigger_chance} chance to afflict them with Vulnerable for 2 rounds. Otherwise, there is a chance to increase their Physical Damage Received by {effect_group=5:effect=1:base_mod} for 2 rounds and apply an additional stack of Laceration.",
+          "description_template": "Odd-numbered Rounds: Deal Physical Damage (Damage Rate: {effect_group=1:effect=1:base_mod}) to the enemy with the highest Initiative. Additionally, afflict the target with 1 stack of Laceration (Max 8 stacks). Each stack of Laceration reduces the target’s Initiative by {effect_group=2:effect=1:base_mod} (enhanced by Strength). At 2 Stars: If the target is afflicted with Bleed, there is a {effect_group=4:trigger_chance} chance to afflict them with Vulnerable for 2 rounds and apply an additional stack of Laceration. Otherwise, there is a chance to increase their Physical Damage Received by {effect_group=5:effect=1:base_mod} for 2 rounds and apply an additional stack of Laceration.",
           "ability_key": "ability_command_legendary_scarletstrike_01"
         },
         "habits_in_slot_order": [
@@ -5513,29 +5722,29 @@
             "slot": 2,
             "client_key": "habit_dragon_meleys_slot2_01",
             "name": "Royal Rend",
-            "description_template": "Scarlet Strike gains: If the target is afflicted with Bleed, there is a {ability=ability_command_legendary_scarletstrike_01:effect_group=4:trigger_chance} chance to afflict them with Vulnerable for 2 rounds. Otherwise, there is a chance to increase their Physical Damage Received by {ability=ability_command_legendary_scarletstrike_01:effect_group=5:effect=1:base_mod} for 2 rounds and apply an additional stack of Laceration.",
+            "description_template": "Scarlet Strike gains: If the target is afflicted with Bleed, there is a {ability=ability_command_legendary_scarletstrike_01:effect_group=4:trigger_chance} chance to afflict them with Vulnerable for 2 rounds and apply an additional stack of Laceration. Otherwise, there is a chance to increase their Physical Damage Received by {ability=ability_command_legendary_scarletstrike_01:effect_group=5:effect=1:base_mod} for 2 rounds and apply an additional stack of Laceration.",
             "ability_key": "ability_habit_rare_null_01"
           },
           {
             "slot": 3,
             "client_key": "habit_dragon_meleys_slot3_01",
-            "name": "Battle Rush",
-            "description_template": "At the start of round 1, increase your Initiative by {effect_group=1:effect=1:base_mod} and reduce Instinct by {effect_group=2:effect=1:base_mod} (enhanced by Strength) of {effect_group=2:number_of_targets} {effect_group=2:target_type} {effect_group=2:target_range}. Each effect lasts for 3 rounds.",
-            "ability_key": "ability_habit_legendary_battlerush_01"
+            "name": "Nimble Resilience",
+            "description_template": "Start of Combat: Reduce your Damage Received by {effect_group=1:effect=1:base_mod} and increase your Initiative by {effect_group=1:effect=2:base_mod} until the end of combat.",
+            "ability_key": "ability_habit_legendary_nimbleresilience_01"
           },
           {
             "slot": 4,
             "client_key": "habit_dragon_meleys_slot4_01",
             "name": "Queen's Vengeance",
-            "description_template": "Each Round: There is a {effect_group=1:trigger_chance} chance to apply Reflect to self for 1 round. If successfully applied, Reflect each Basic Attack dealt against Meleys this round. Additionally, apply 1 stack of Laceration to the enemy dragon with the highest Initiative. Reflect causes each instance of a Basic Attack against the target to be split between the original target and the source of the attack. Each target's mitigation stats will affect the final damage they take.",
+            "description_template": "Each Round: There is a {effect_group=1:trigger_chance} chance to grant yourself Reflect (100%) versus Basic Attacks for 1 round. Reflect causes each instance of the specified damage against the target to have a chance to be split between the target and the source of the attack. Each target's mitigation stats will affect the final damage they take. Reflect (Damage) effects are limited to 1 effect per target.",
             "ability_key": "ability_habit_legendary_queensvengeance_01"
           },
           {
             "slot": 5,
             "client_key": "habit_dragon_meleys_slot5_01",
-            "name": "Battle Guile",
-            "description_template": "Start of Combat Reduce Instinct and Initiative by {effect_group=1:effect=1:base_mod} (enhanced by Initiative) of {effect_group=1:number_of_targets} {effect_group=1:target_type} {effect_group=1:target_range} until the end of combat.",
-            "ability_key": "ability_habit_legendary_battleguile_01"
+            "name": "Brisk Might",
+            "description_template": "Start of Combat: Increase Strength by {effect_group=1:effect=1:base_mod} and Initiative by {effect_group=1:effect=2:base_mod} of the Ally with the highest Strength until the end of combat. Both effects are enhanced by Intelligence.",
+            "ability_key": "ability_habit_legendary_briskmight_01"
           },
           {
             "slot": 6,
@@ -5549,9 +5758,8 @@
       "recommendation_evidence": {
         "screenshot_record_is_primary": false,
         "client_templates_require_caution": true,
-        "availability": "Present in installed-client data; current player availability was not established by this audit.",
+        "availability": "User confirmed Meleys as a Season 3 available dragon on 2026-10-01.",
         "missing_for_full_recommendations": [
-          "Release and availability confirmation",
           "Exact numeric values",
           "Habit upgrade levels",
           "current screenshot verification"
@@ -5563,7 +5771,22 @@
       "client_key": "dragon_iconic_moondancer",
       "rarity_key": "rarity_dragon_legendary",
       "breed_key": "breed_warrior",
+      "troop_affinities": {
+        "positive": [
+          "Shieldbearers",
+          "Archers"
+        ],
+        "negative": [
+          "Siege"
+        ],
+        "neutral": [
+          "Spearmen",
+          "Cavalry"
+        ],
+        "source_key": "affinity_iconic_moondancer"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/moondancer.json",
       "level_model": {
         "max_level": 50,
@@ -5988,7 +6211,21 @@
       "client_key": "dragon_generic_nyrena",
       "rarity_key": "rarity_dragon_rare",
       "breed_key": "breed_champion",
+      "troop_affinities": {
+        "positive": [
+          "Shieldbearers",
+          "Siege"
+        ],
+        "negative": [],
+        "neutral": [
+          "Spearmen",
+          "Cavalry",
+          "Archers"
+        ],
+        "source_key": "affinity_generic_nyrena"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/nyrena.json",
       "level_model": {
         "max_level": 50,
@@ -6413,7 +6650,21 @@
       "client_key": "dragon_generic_rhysarion",
       "rarity_key": "rarity_dragon_epic",
       "breed_key": "breed_champion",
+      "troop_affinities": {
+        "positive": [
+          "Spearmen",
+          "Shieldbearers",
+          "Siege"
+        ],
+        "negative": [],
+        "neutral": [
+          "Cavalry",
+          "Archers"
+        ],
+        "source_key": "affinity_generic_rhysarion"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/rhysarion.json",
       "level_model": {
         "max_level": 50,
@@ -6838,7 +7089,22 @@
       "client_key": "dragon_iconic_seasmoke",
       "rarity_key": "rarity_dragon_legendary",
       "breed_key": "breed_champion",
+      "troop_affinities": {
+        "positive": [
+          "Cavalry",
+          "Archers"
+        ],
+        "negative": [
+          "Siege"
+        ],
+        "neutral": [
+          "Spearmen",
+          "Shieldbearers"
+        ],
+        "source_key": "affinity_iconic_seasmoke"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/seasmoke.json",
       "level_model": {
         "max_level": 50,
@@ -7263,7 +7529,21 @@
       "client_key": "dragon_generic_shadowrend",
       "rarity_key": "rarity_dragon_rare",
       "breed_key": "breed_warrior",
+      "troop_affinities": {
+        "positive": [
+          "Shieldbearers",
+          "Siege"
+        ],
+        "negative": [],
+        "neutral": [
+          "Spearmen",
+          "Cavalry",
+          "Archers"
+        ],
+        "source_key": "affinity_generic_shadowrend"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/shadowrend.json",
       "level_model": {
         "max_level": 50,
@@ -7688,7 +7968,21 @@
       "client_key": "dragon_generic_shadowsong",
       "rarity_key": "rarity_dragon_epic",
       "breed_key": "breed_hunter",
+      "troop_affinities": {
+        "positive": [
+          "Cavalry"
+        ],
+        "negative": [],
+        "neutral": [
+          "Spearmen",
+          "Shieldbearers",
+          "Archers",
+          "Siege"
+        ],
+        "source_key": "affinity_generic_shadowsong"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/shadowsong.json",
       "level_model": {
         "max_level": 50,
@@ -8113,7 +8407,21 @@
       "client_key": "dragon_iconic_sheepstealer",
       "rarity_key": "rarity_dragon_legendary",
       "breed_key": "breed_hunter",
+      "troop_affinities": {
+        "positive": [
+          "Cavalry",
+          "Archers"
+        ],
+        "negative": [],
+        "neutral": [
+          "Spearmen",
+          "Shieldbearers",
+          "Siege"
+        ],
+        "source_key": "affinity_iconic_sheepstealer"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/sheepstealer.json",
       "level_model": {
         "max_level": 50,
@@ -8538,7 +8846,21 @@
       "client_key": "dragon_generic_shimmer",
       "rarity_key": "rarity_dragon_rare",
       "breed_key": "breed_sentinel",
+      "troop_affinities": {
+        "positive": [
+          "Cavalry",
+          "Siege"
+        ],
+        "negative": [],
+        "neutral": [
+          "Spearmen",
+          "Shieldbearers",
+          "Archers"
+        ],
+        "source_key": "affinity_generic_shimmer"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/shimmer.json",
       "level_model": {
         "max_level": 50,
@@ -8959,11 +9281,468 @@
       }
     },
     {
+      "name": "Smoketail",
+      "client_key": "dragon_generic_smoketail",
+      "rarity_key": "rarity_dragon_epic",
+      "breed_key": "breed_hunter",
+      "troop_affinities": {
+        "positive": [
+          "Spearmen"
+        ],
+        "negative": [],
+        "neutral": [
+          "Cavalry",
+          "Shieldbearers",
+          "Archers",
+          "Siege"
+        ],
+        "source_key": "affinity_generic_smoketail"
+      },
+      "recommendation_status": "client_discovered",
+      "availability_status": "user_confirmed_available",
+      "source_record": null,
+      "level_model": {
+        "max_level": 50,
+        "vanguard_unlock_level": 16,
+        "base_stats_by_level": {
+          "strength": {
+            "progression_key": "prog_dragonstats_dragon_generic_smoketail_strength",
+            "values_by_level": [
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              66,
+              67,
+              68,
+              69,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              78,
+              79,
+              80,
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              96,
+              97,
+              98,
+              99,
+              100,
+              101,
+              102,
+              103,
+              104
+            ]
+          },
+          "intelligence": {
+            "progression_key": "prog_dragonstats_dragon_generic_smoketail_intelligence",
+            "values_by_level": [
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              66,
+              67,
+              68,
+              69,
+              70,
+              72,
+              73,
+              74,
+              75,
+              76,
+              78,
+              79,
+              80,
+              81,
+              82,
+              83,
+              85,
+              86,
+              87,
+              88,
+              89,
+              91,
+              92,
+              93,
+              94,
+              95,
+              97,
+              98,
+              99,
+              100,
+              101,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108,
+              110,
+              111,
+              112,
+              113,
+              114,
+              116,
+              117
+            ]
+          },
+          "instinct": {
+            "progression_key": "prog_dragonstats_dragon_generic_smoketail_instincts",
+            "values_by_level": [
+              45,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63,
+              63,
+              64,
+              65,
+              66,
+              67,
+              68,
+              69,
+              70,
+              71,
+              72,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              78,
+              79,
+              80,
+              81,
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89
+            ]
+          },
+          "initiative": {
+            "progression_key": "prog_dragonstats_dragon_generic_smoketail_speed",
+            "values_by_level": [
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              66,
+              67,
+              68,
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75,
+              77,
+              78,
+              79,
+              80,
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              96,
+              97,
+              98,
+              99,
+              100,
+              101
+            ]
+          },
+          "max_army_size": {
+            "progression_key": "prog_dragonstats_dragon_maxarmysize",
+            "values_by_level": [
+              100,
+              200,
+              300,
+              400,
+              500,
+              600,
+              700,
+              800,
+              900,
+              1000,
+              1100,
+              1200,
+              1300,
+              1400,
+              1500,
+              1600,
+              1700,
+              1800,
+              1900,
+              2000,
+              2100,
+              2200,
+              2300,
+              2400,
+              2500,
+              2600,
+              2700,
+              2800,
+              2900,
+              3000,
+              3100,
+              3200,
+              3300,
+              3400,
+              3500,
+              3600,
+              3700,
+              3800,
+              3900,
+              4000,
+              4100,
+              4200,
+              4300,
+              4400,
+              4500,
+              4600,
+              4700,
+              4800,
+              4900,
+              5000
+            ]
+          }
+        },
+        "star_scalars": {
+          "strength": {
+            "progression_key": "prog_dragonstats_dragon_epic_combatstat_starscalar",
+            "values_by_star": [
+              0.0,
+              0.15,
+              0.3,
+              0.45,
+              0.6,
+              0.75,
+              0.9,
+              1.1,
+              1.3,
+              1.5
+            ]
+          },
+          "intelligence": {
+            "progression_key": "prog_dragonstats_dragon_epic_combatstat_starscalar",
+            "values_by_star": [
+              0.0,
+              0.15,
+              0.3,
+              0.45,
+              0.6,
+              0.75,
+              0.9,
+              1.1,
+              1.3,
+              1.5
+            ]
+          },
+          "instinct": {
+            "progression_key": "prog_dragonstats_dragon_epic_combatstat_starscalar",
+            "values_by_star": [
+              0.0,
+              0.15,
+              0.3,
+              0.45,
+              0.6,
+              0.75,
+              0.9,
+              1.1,
+              1.3,
+              1.5
+            ]
+          },
+          "initiative": {
+            "progression_key": "prog_dragonstats_dragon_epic_combatstat_starscalar",
+            "values_by_star": [
+              0.0,
+              0.15,
+              0.3,
+              0.45,
+              0.6,
+              0.75,
+              0.9,
+              1.1,
+              1.3,
+              1.5
+            ]
+          },
+          "max_army_size": {
+            "progression_key": "prog_dragonstats_dragon_epic_maxarmysize_starscalar",
+            "values_by_star": [
+              0.0,
+              0.0,
+              0.15,
+              0.15,
+              0.3,
+              0.3,
+              0.45,
+              0.45,
+              0.6,
+              0.6
+            ]
+          }
+        },
+        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+      },
+      "client_ability_slots": {
+        "command": {
+          "client_key": "command_unique_smoketail_01",
+          "name": "Veilflame",
+          "description_template": "Rounds 2,5,8: Deal Fire Damage to {effect_group=1:number_of_targets} {effect_group=1:target_type} {effect_group=1:target_range} (Damage Rate: {effect_group=1:effect=1:base_mod}). Additionally, grant yourself Evade (Rate: {effect_group=5:effect=1:chance}) for {effect_group=5:duration_rounds} round(s). If Veilflame dealt Fire Damage to an enemy Champion, double your chances to Evade. Evade causes each instance of damage against the target to have a chance to be ignored. At 10 Stars: Rounds: 3,6,9: Deal Fire Damage to {effect_group=3:number_of_targets} {effect_group=3:target_type} {effect_group=3:target_range} (Damage Rate: {effect_group=4:effect=1:base_mod}). Deal triple the damage to enemy Champion dragons.",
+          "ability_key": "ability_command_epic_veilflame_01"
+        },
+        "habits_in_slot_order": [
+          {
+            "slot": 1,
+            "client_key": "habit_dragon_smoketail_slot1_01",
+            "name": "Hunter's Wrath",
+            "description_template": "At Level 16+ and deployed in the Vanguard Increase your Fire Damage Dealt by +16%. Increase Strength and Initiative by +20 of the Ally deployed in the Right Flank.",
+            "ability_key": "ability_habit_rare_hunterswrath_01"
+          },
+          {
+            "slot": 2,
+            "client_key": "habit_dragon_smoketail_slot2_01",
+            "name": "Ashen Phantom",
+            "description_template": "Start of Each Round: Reduce the Tactical and Fire Damage dealt of all enemies afflicted with Weakened by {effect_group=1:effect=1:base_mod}, until the end of the round. If the enemy is a Champion, double this effect.",
+            "ability_key": "ability_habit_epic_ashenphantom_01"
+          },
+          {
+            "slot": 3,
+            "client_key": "habit_dragon_smoketail_slot3_01",
+            "name": "Ember Snare",
+            "description_template": "Each Round: {effect_group=1:trigger_chance} chance to reduce the Initiative and Intelligence by {effect_group=1:effect=1:base_mod} (enhanced by Instinct) and afflict Burn (Damage Rate: {effect_group=2:effect=1:base_mod}) on {effect_group=1:number_of_targets} {effect_group=1:target_type} {effect_group=1:target_range} (prioritizes the Left Flank). Each effect lasts for {effect_group=1:duration_rounds} round(s). Burn deals Fire Damage to the target each round.",
+            "ability_key": "ability_habit_epic_embersnare_01"
+          },
+          {
+            "slot": 4,
+            "client_key": "habit_dragon_smoketail_slot4_01",
+            "name": "Unraveled",
+            "description_template": "Start of Each Round: For each enemy that is Weakened, reduce the Intelligence, Instinct, and Initiative by {effect_group=7:effect=1:base_mod} (enhanced by Intelligence) of {effect_group=7:number_of_targets} {effect_group=7:target_type} {effect_group=7:target_range} until the end of the round. If the Weakened enemy is a Champion, increase this effect.",
+            "ability_key": "ability_habit_epic_unraveled_01"
+          },
+          {
+            "slot": 5,
+            "client_key": "habit_dragon_smoketail_slot5_01",
+            "name": "Backdraft",
+            "description_template": "Start of Combat: Increase the Fire Damage Received by {effect_group=1:effect=1:base_mod} of {effect_group=1:number_of_targets} {effect_group=1:target_type} {effect_group=1:target_range} until the end of combat.",
+            "ability_key": "ability_habit_epic_backdraft_01"
+          },
+          {
+            "slot": 6,
+            "client_key": "habit_dragon_smoketail_slot6_01",
+            "name": "Champion's Scourge",
+            "description_template": "Veilflame gains: Rounds: 3,6,9: Deal Fire Damage to {ability=ability_command_epic_veilflame_01:effect_group=3:number_of_targets} {effect_group=3:target_type} {effect_group=3:target_range} (Damage Rate: {ability=ability_command_epic_veilflame_01:effect_group=4:effect=1:base_mod}). Deal triple the damage to enemy Champion dragons.",
+            "ability_key": "ability_habit_rare_null_01"
+          }
+        ]
+      },
+      "recommendation_evidence": {
+        "screenshot_record_is_primary": false,
+        "client_templates_require_caution": true,
+        "availability": "User confirmed Smoketail as a Season 3 available dragon on 2026-10-01.",
+        "missing_for_full_recommendations": [
+          "Exact numeric values",
+          "Habit upgrade levels",
+          "current screenshot verification"
+        ]
+      }
+    },
+    {
       "name": "Solstryker",
       "client_key": "dragon_generic_solstryker",
       "rarity_key": "rarity_dragon_rare",
       "breed_key": "breed_champion",
+      "troop_affinities": {
+        "positive": [
+          "Archers"
+        ],
+        "negative": [],
+        "neutral": [
+          "Spearmen",
+          "Cavalry",
+          "Shieldbearers",
+          "Siege"
+        ],
+        "source_key": "affinity_generic_solstryker"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/solstryker.json",
       "level_model": {
         "max_level": 50,
@@ -9388,8 +10167,22 @@
       "client_key": "dragon_generic_starshower",
       "rarity_key": "rarity_dragon_epic",
       "breed_key": "breed_sentinel",
-      "recommendation_status": "client_discovered",
-      "source_record": null,
+      "troop_affinities": {
+        "positive": [
+          "Shieldbearers"
+        ],
+        "negative": [],
+        "neutral": [
+          "Spearmen",
+          "Cavalry",
+          "Archers",
+          "Siege"
+        ],
+        "source_key": "affinity_generic_starshower"
+      },
+      "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
+      "source_record": "data/dragons/starshower.json",
       "level_model": {
         "max_level": 50,
         "vanguard_unlock_level": 16,
@@ -9802,14 +10595,10 @@
         ]
       },
       "recommendation_evidence": {
-        "screenshot_record_is_primary": false,
+        "screenshot_record_is_primary": true,
         "client_templates_require_caution": true,
-        "availability": "Shadow of the Greens campaign",
-        "missing_for_full_recommendations": [
-          "Most exact numeric values",
-          "Habit upgrade levels",
-          "current screenshot verification"
-        ]
+        "availability": "Established by screenshot-audited record.",
+        "missing_for_full_recommendations": []
       }
     },
     {
@@ -9817,7 +10606,21 @@
       "client_key": "dragon_iconic_sunfyre",
       "rarity_key": "rarity_dragon_legendary",
       "breed_key": "breed_sentinel",
+      "troop_affinities": {
+        "positive": [
+          "Spearmen",
+          "Cavalry"
+        ],
+        "negative": [],
+        "neutral": [
+          "Shieldbearers",
+          "Archers",
+          "Siege"
+        ],
+        "source_key": "affinity_iconic_sunfyre"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/sunfyre.json",
       "level_model": {
         "max_level": 50,
@@ -10242,7 +11045,22 @@
       "client_key": "dragon_iconic_syrax",
       "rarity_key": "rarity_dragon_legendary",
       "breed_key": "breed_sentinel",
+      "troop_affinities": {
+        "positive": [
+          "Spearmen",
+          "Archers"
+        ],
+        "negative": [
+          "Siege"
+        ],
+        "neutral": [
+          "Cavalry",
+          "Shieldbearers"
+        ],
+        "source_key": "affinity_iconic_syrax"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/syrax.json",
       "level_model": {
         "max_level": 50,
@@ -10667,7 +11485,21 @@
       "client_key": "dragon_generic_tairax",
       "rarity_key": "rarity_dragon_epic",
       "breed_key": "breed_hunter",
+      "troop_affinities": {
+        "positive": [
+          "Cavalry",
+          "Shieldbearers",
+          "Siege"
+        ],
+        "negative": [],
+        "neutral": [
+          "Spearmen",
+          "Archers"
+        ],
+        "source_key": "affinity_generic_tairax"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/tairax.json",
       "level_model": {
         "max_level": 50,
@@ -11032,7 +11864,7 @@
         "command": {
           "client_key": "command_unique_tairax_01",
           "name": "Burning Ward",
-          "description_template": "Odd-numbered Rounds: {effect_group=3:trigger_chance} chance to afflict Stagger on {effect_group=3:number_of_targets} {effect_group=3:target_type} {effect_group=3:target_range} for {effect_group=3:duration_rounds} round(s). Rounds 2, 5, 8: Deal {effect_group=1:effect=1:damage_type} Damage to {effect_group=1:number_of_targets} {effect_group=1:target_type} {effect_group=1:target_range} (prioritizes targets not afflicted with Burn) (Damage Rate: {effect_group=1:effect=1:base_mod}). Additionally, there is a {effect_group=2:trigger_chance} chance to afflict the target with Burn for {effect_group=2:duration_rounds} round(s). At 6+ Stars: Odd-numbered Rounds: Increase Burning Ward's chance to afflict Stagger to {effect_group=4:trigger_chance}. Each Round: Deal {effect_group=5:effect=1:damage_type} Damage to all Enemies afflicted with a Control effect (Damage Rate: {effect_group=5:effect=1:base_mod}). Control effects include Stun, Stagger, Overwhelm, and Confusion.",
+          "description_template": "Odd-numbered Rounds: {effect_group=3:trigger_chance} chance to Stagger {effect_group=3:number_of_targets} {effect_group=3:target_type} {effect_group=3:target_range} for {effect_group=3:duration_rounds} round(s). Rounds 2, 5, 8: Deal {effect_group=1:effect=1:damage_type} Damage to {effect_group=1:number_of_targets} {effect_group=1:target_type} {effect_group=1:target_range} (prioritizes targets not afflicted with Burn) (Damage Rate: {effect_group=1:effect=1:base_mod}). Additionally, there is a {effect_group=2:trigger_chance} chance to afflict the target with Burn for {effect_group=2:duration_rounds} round(s). At 6+ Stars: Odd-numbered Rounds: Increase Burning Ward's chance to Stagger to {effect_group=4:trigger_chance}. Each Round: Deal {effect_group=5:effect=1:damage_type} Damage to all Enemies afflicted with a Control effect (Damage Rate: {effect_group=5:effect=1:base_mod}). Control effects include Stun, Stagger, Overwhelm, and Confusion.",
           "ability_key": "ability_command_epic_burningward_01"
         },
         "habits_in_slot_order": [
@@ -11092,7 +11924,22 @@
       "client_key": "dragon_generic_tashix",
       "rarity_key": "rarity_dragon_epic",
       "breed_key": "breed_hunter",
+      "troop_affinities": {
+        "positive": [
+          "Archers"
+        ],
+        "negative": [
+          "Siege"
+        ],
+        "neutral": [
+          "Spearmen",
+          "Cavalry",
+          "Shieldbearers"
+        ],
+        "source_key": "affinity_generic_tashix"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/tashix.json",
       "level_model": {
         "max_level": 50,
@@ -11517,7 +12364,21 @@
       "client_key": "dragon_iconic_tessarion",
       "rarity_key": "rarity_dragon_epic",
       "breed_key": "breed_champion",
+      "troop_affinities": {
+        "positive": [
+          "Spearmen",
+          "Cavalry",
+          "Siege"
+        ],
+        "negative": [],
+        "neutral": [
+          "Shieldbearers",
+          "Archers"
+        ],
+        "source_key": "affinity_iconic_tessarion"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/tessarion.json",
       "level_model": {
         "max_level": 50,
@@ -11942,7 +12803,21 @@
       "client_key": "dragon_generic_thunderstrike",
       "rarity_key": "rarity_dragon_rare",
       "breed_key": "breed_warrior",
+      "troop_affinities": {
+        "positive": [
+          "Cavalry"
+        ],
+        "negative": [],
+        "neutral": [
+          "Spearmen",
+          "Shieldbearers",
+          "Archers",
+          "Siege"
+        ],
+        "source_key": "affinity_generic_thunderstrike"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/thunderstrike.json",
       "level_model": {
         "max_level": 50,
@@ -12367,7 +13242,21 @@
       "client_key": "dragon_generic_vaeldra",
       "rarity_key": "rarity_dragon_epic",
       "breed_key": "breed_warrior",
+      "troop_affinities": {
+        "positive": [
+          "Spearmen"
+        ],
+        "negative": [],
+        "neutral": [
+          "Cavalry",
+          "Shieldbearers",
+          "Archers",
+          "Siege"
+        ],
+        "source_key": "affinity_generic_vaeldra"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/vaeldra.json",
       "level_model": {
         "max_level": 50,
@@ -12792,7 +13681,21 @@
       "client_key": "dragon_generic_velar",
       "rarity_key": "rarity_dragon_epic",
       "breed_key": "breed_sentinel",
+      "troop_affinities": {
+        "positive": [
+          "Shieldbearers"
+        ],
+        "negative": [],
+        "neutral": [
+          "Spearmen",
+          "Cavalry",
+          "Archers",
+          "Siege"
+        ],
+        "source_key": "affinity_generic_velar"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/velar.json",
       "level_model": {
         "max_level": 50,
@@ -13217,7 +14120,21 @@
       "client_key": "dragon_generic_venator",
       "rarity_key": "rarity_dragon_legendary",
       "breed_key": "breed_warrior",
+      "troop_affinities": {
+        "positive": [
+          "Spearmen",
+          "Shieldbearers"
+        ],
+        "negative": [],
+        "neutral": [
+          "Cavalry",
+          "Archers",
+          "Siege"
+        ],
+        "source_key": "affinity_generic_venator"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/venator.json",
       "level_model": {
         "max_level": 50,
@@ -13642,7 +14559,21 @@
       "client_key": "dragon_iconic_vermax",
       "rarity_key": "rarity_dragon_epic",
       "breed_key": "breed_warrior",
+      "troop_affinities": {
+        "positive": [
+          "Cavalry",
+          "Shieldbearers"
+        ],
+        "negative": [],
+        "neutral": [
+          "Spearmen",
+          "Archers",
+          "Siege"
+        ],
+        "source_key": "affinity_iconic_vermax"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/vermax.json",
       "level_model": {
         "max_level": 50,
@@ -14067,8 +14998,22 @@
       "client_key": "dragon_iconic_vermithor",
       "rarity_key": "rarity_dragon_legendary",
       "breed_key": "breed_champion",
-      "recommendation_status": "client_discovered",
-      "source_record": null,
+      "troop_affinities": {
+        "positive": [
+          "Spearmen",
+          "Shieldbearers"
+        ],
+        "negative": [],
+        "neutral": [
+          "Cavalry",
+          "Archers",
+          "Siege"
+        ],
+        "source_key": "affinity_iconic_vermithor"
+      },
+      "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
+      "source_record": "data/dragons/vermithor.json",
       "level_model": {
         "max_level": 50,
         "vanguard_unlock_level": 16,
@@ -14481,14 +15426,10 @@
         ]
       },
       "recommendation_evidence": {
-        "screenshot_record_is_primary": false,
+        "screenshot_record_is_primary": true,
         "client_templates_require_caution": true,
-        "availability": "Shadow of the Greens campaign",
-        "missing_for_full_recommendations": [
-          "Exact numeric values",
-          "Habit upgrade levels",
-          "current screenshot verification"
-        ]
+        "availability": "Established by screenshot-audited record.",
+        "missing_for_full_recommendations": []
       }
     },
     {
@@ -14496,7 +15437,22 @@
       "client_key": "dragon_generic_vesper",
       "rarity_key": "rarity_dragon_rare",
       "breed_key": "breed_sentinel",
+      "troop_affinities": {
+        "positive": [
+          "Shieldbearers"
+        ],
+        "negative": [
+          "Siege"
+        ],
+        "neutral": [
+          "Spearmen",
+          "Cavalry",
+          "Archers"
+        ],
+        "source_key": "affinity_generic_vesper"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/vesper.json",
       "level_model": {
         "max_level": 50,
@@ -14921,7 +15877,21 @@
       "client_key": "dragon_iconic_vhagar",
       "rarity_key": "rarity_dragon_legendary",
       "breed_key": "breed_warrior",
+      "troop_affinities": {
+        "positive": [
+          "Shieldbearers",
+          "Archers",
+          "Siege"
+        ],
+        "negative": [],
+        "neutral": [
+          "Spearmen",
+          "Cavalry"
+        ],
+        "source_key": "affinity_iconic_vhagar"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/vhagar.json",
       "level_model": {
         "max_level": 50,
@@ -15346,7 +16316,21 @@
       "client_key": "dragon_generic_zivern",
       "rarity_key": "rarity_dragon_epic",
       "breed_key": "breed_sentinel",
+      "troop_affinities": {
+        "positive": [
+          "Archers",
+          "Siege"
+        ],
+        "negative": [],
+        "neutral": [
+          "Spearmen",
+          "Cavalry",
+          "Shieldbearers"
+        ],
+        "source_key": "affinity_generic_zivern"
+      },
       "recommendation_status": "screenshot_audited",
+      "availability_status": "screenshot_observed",
       "source_record": "data/dragons/zivern.json",
       "level_model": {
         "max_level": 50,
@@ -15754,7 +16738,7 @@
             "slot": 6,
             "client_key": "habit_dragon_zivern_slot6_01",
             "name": "Cloak of Terror",
-            "description_template": "Odd-numbered Rounds: {effect_group=2:trigger_chance} chance to afflict Overwhelm on {effect_group=2:number_of_targets} {effect_group=2:target_type} {effect_group=2:target_range} for {effect_group=2:duration_rounds} round(s). This chance is doubled ({effect_group=3:trigger_chance}) if the target is afflicted with Vulnerable. Overwhelm prevents the target from using Active Commands and Habits on their turn.",
+            "description_template": "Odd-numbered Rounds: {effect_group=2:trigger_chance} chance to Overwhelm {effect_group=2:number_of_targets} {effect_group=2:target_type} {effect_group=2:target_range} for {effect_group=2:duration_rounds} round(s). This chance is doubled ({effect_group=3:trigger_chance}) if the target is afflicted with Vulnerable. Overwhelm prevents the target from using Active Commands and Habits on their turn.",
             "ability_key": "ability_habit_epic_cloakofterror_01"
           }
         ]

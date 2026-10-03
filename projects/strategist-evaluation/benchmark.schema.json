@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dragonfire Strategist benchmark",
+  "type": "object",
+  "required": ["benchmark_id", "objective", "scenario_notes", "our_formation", "opponent", "known_candidate_roster", "why_experts_use_it", "source_or_observation", "runs", "variations"],
+  "properties": {
+    "benchmark_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "objective": {"enum": ["attack", "defense", "pvp-counter", "pve", "poi-defenders", "poi-durability"]},
+    "scenario_notes": {"type": "string"},
+    "our_formation": {"$ref": "#/$defs/formation"},
+    "opponent": {"$ref": "#/$defs/formation"},
+    "known_candidate_roster": {"type": "array", "items": {"type": "string"}},
+    "why_experts_use_it": {"type": "string"},
+    "source_or_observation": {"type": "string"},
+    "runs": {
+      "type": "object",
+      "required": ["baseline"],
+      "properties": {
+        "baseline": {"$ref": "#/$defs/run"},
+        "revised": {"type": "array", "items": {"$ref": "#/$defs/run"}}
+      }
+    },
+    "variations": {"type": "array", "minItems": 1, "items": {"type": "object"}}
+  },
+  "$defs": {
+    "dragon_slot": {
+      "type": "object",
+      "required": ["dragon", "level", "star_rank", "habit_levels", "power"],
+      "properties": {
+        "dragon": {"type": ["string", "integer"]},
+        "level": {"type": ["string", "integer"]},
+        "star_rank": {"type": ["string", "integer"]},
+        "habit_levels": {"type": "array", "minItems": 5, "maxItems": 5, "items": {"type": ["string", "integer"]}},
+        "power": {"type": ["string", "integer"]}
+      }
+    },
+    "formation": {
+      "type": "object",
+      "required": ["troop_type", "left_flank", "vanguard", "right_flank"],
+      "properties": {
+        "troop_type": {"type": "string"},
+        "left_flank": {"$ref": "#/$defs/dragon_slot"},
+        "vanguard": {"$ref": "#/$defs/dragon_slot"},
+        "right_flank": {"$ref": "#/$defs/dragon_slot"}
+      }
+    },
+    "run": {
+      "type": "object",
+      "required": ["prompt_revision", "repository_revision", "input", "recommendation", "disagreement", "diagnosis"],
+      "properties": {
+        "prompt_revision": {"type": "string"},
+        "repository_revision": {"type": "string"},
+        "input": {"type": "string"},
+        "recommendation": {"type": "string"},
+        "disagreement": {"type": "string"},
+        "diagnosis": {"enum": ["none", "missing-knowledge", "incorrect-mechanics", "bad-weighting", "weak-search", "insufficient-context", "presentation", "defensible-alternative", "mixed"]}
+      }
+    }
+  }
+}

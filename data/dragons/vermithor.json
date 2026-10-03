@@ -1,0 +1,135 @@
+{
+  "name": "Vermithor",
+  "breed": "Champion",
+  "rarity_label": "Elder",
+  "rarity_tier": "Legendary",
+  "troop_affinities": {
+    "positive": [
+      "Spearmen",
+      "Shieldbearers"
+    ],
+    "negative": [],
+    "review_required": false
+  },
+  "excluded_progression_snapshot": [
+    "Strength",
+    "Instinct",
+    "Intelligence",
+    "Initiative",
+    "Stamina",
+    "visible Power",
+    "current level",
+    "XP",
+    "current Star Rank",
+    "current army size"
+  ],
+  "command": {
+    "name": "Bronze Fury",
+    "type": "Active",
+    "verbatim": [
+      "Rounds 2, 4, 6, 8: Deal Physical Damage (Damage Rate: +30%) and Tactical Damage (Damage Rate: +60%) to 2 Enemies within adjacency.",
+      "Odd-numbered Rounds: 30% chance to apply Protect to 1 other Ally within adjacency with the least troops for 2 round(s).",
+      "At 6+ Stars: Increase the Physical Damage dealt to +45% and the Tactical Damage dealt to +90%. Increase the chance to apply Protect to 50%. Additionally, when you apply Protect, reduce your Physical and Fire Damage Received by -10% for 2 round(s)."
+    ],
+    "structured": {
+      "damage_types": ["Physical Damage", "Tactical Damage"],
+      "damage_rounds": [2, 4, 6, 8],
+      "protect_rounds": "odd-numbered",
+      "target_scope": "within adjacency",
+      "protect_target": "1 other Ally within adjacency with the least troops",
+      "star_gate": 6
+    }
+  },
+  "vanguard": {
+    "name": "Champion's Brilliance",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Strength, Intelligence, and Instinct by +15. Reduce Damage Received by -8% of the Ally deployed in the Right Flank.",
+    "structured": {
+      "self_stats": ["Strength", "Intelligence", "Instinct"],
+      "right_flank_effect": "Damage Received -8%"
+    }
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Noble Sacrifice",
+      "verbatim": "Start of Round 1: Increase your Tactical Damage Received by 0% for 5 round(s). Additionally, reduce the Physical Damage Dealt of 1 Enemy in any lane (prioritizing Warriors) and the Fire Damage Dealt of 1 Enemy in any lane (prioritizing Hunters). Each effect reduces Damage Dealt by -15% and lasts for 5 round(s).",
+      "upgrade_levels": {
+        "1": {"tactical_damage_received_percent": 20, "physical_fire_damage_dealt_percent": -13},
+        "2": {"tactical_damage_received_percent": 16, "physical_fire_damage_dealt_percent": -13.4},
+        "3": {"tactical_damage_received_percent": 12, "physical_fire_damage_dealt_percent": -13.8},
+        "4": {"tactical_damage_received_percent": 6, "physical_fire_damage_dealt_percent": -14.4},
+        "5": {"tactical_damage_received_percent": 0, "physical_fire_damage_dealt_percent": -15}
+      },
+      "tags": ["tactical_vulnerability", "physical_suppression", "fire_suppression", "warrior_priority", "hunter_priority"]
+    },
+    {
+      "star_unlock": 4,
+      "name": "Nimble Resilience",
+      "verbatim": "Start of Combat: Reduce your Damage Received by -12% and increase your Initiative by +24% until the end of combat.",
+      "upgrade_levels": {
+        "1": {"damage_received_percent": -6, "initiative_percent": 12},
+        "2": {"damage_received_percent": -7.2, "initiative_percent": 14.4},
+        "3": {"damage_received_percent": -8.4, "initiative_percent": 16.8},
+        "4": {"damage_received_percent": -10.2, "initiative_percent": 20.4},
+        "5": {"damage_received_percent": -12, "initiative_percent": 24}
+      },
+      "tags": ["self_mitigation", "initiative"]
+    },
+    {
+      "star_unlock": 6,
+      "name": "Bronze Bulwark",
+      "verbatim": [
+        "Bronze Fury gains: Increase the amount of Physical Damage dealt to +45% and the Tactical Damage dealt to +90%.",
+        "Increase the chance to apply Protect to 50%. Additionally, when you apply Protect, reduce your Physical and Fire Damage Received by -10% for 2 round(s).",
+        "Protect causes damage dealt to the target by Commands and Habits to be split between them and the dragon that applied Protect."
+      ],
+      "upgrade_levels": {
+        "1": {"protect_chance_percent": 40, "physical_damage_rate_percent": 37.5, "tactical_damage_rate_percent": 75, "physical_fire_damage_received_percent": -5},
+        "2": {"protect_chance_percent": 42, "physical_damage_rate_percent": 39, "tactical_damage_rate_percent": 78, "physical_fire_damage_received_percent": -6},
+        "3": {"protect_chance_percent": 44, "physical_damage_rate_percent": 40.5, "tactical_damage_rate_percent": 81, "physical_fire_damage_received_percent": -7},
+        "4": {"protect_chance_percent": 47, "physical_damage_rate_percent": 42.75, "tactical_damage_rate_percent": 85.5, "physical_fire_damage_received_percent": -8.5},
+        "5": {"protect_chance_percent": 50, "physical_damage_rate_percent": 45, "tactical_damage_rate_percent": 90, "physical_fire_damage_received_percent": -10}
+      },
+      "tags": ["command_upgrade", "protect", "physical_damage", "tactical_damage", "self_mitigation"]
+    },
+    {
+      "star_unlock": 8,
+      "name": "Fury's Poise",
+      "verbatim": "Start of Combat: For each Warrior in the enemy army, reduce your Physical Damage Received by -9%. For each Hunter in the enemy army, reduce your Fire Damage Received by -9%. Each effect lasts until the end of combat.",
+      "upgrade_levels": {
+        "1": {"physical_damage_received_per_warrior_percent": -7.5, "fire_damage_received_per_hunter_percent": -7.5},
+        "2": {"physical_damage_received_per_warrior_percent": -9, "fire_damage_received_per_hunter_percent": -9},
+        "3": {"physical_damage_received_per_warrior_percent": -10.5, "fire_damage_received_per_hunter_percent": -10.5},
+        "4": {"physical_damage_received_per_warrior_percent": -12.75, "fire_damage_received_per_hunter_percent": -12.75},
+        "5": {"physical_damage_received_per_warrior_percent": -15, "fire_damage_received_per_hunter_percent": -15}
+      },
+      "tags": ["warrior_counter", "hunter_counter", "physical_mitigation", "fire_mitigation"]
+    },
+    {
+      "star_unlock": 10,
+      "name": "Vengeful Fury",
+      "verbatim": "Each Round: If you are below 50% Max Troop Capacity, deal Physical Damage (Damage Rate: +60%) to the enemy with the lowest Instinct and deal Tactical Damage (Damage Rate: +100%) to the enemy with the lowest Intelligence. This effect only triggers once per combat.",
+      "upgrade_levels": {
+        "1": {"physical_damage_rate_percent": 60, "tactical_damage_rate_percent": 100},
+        "2": {"physical_damage_rate_percent": 78, "tactical_damage_rate_percent": 130},
+        "3": {"physical_damage_rate_percent": 96, "tactical_damage_rate_percent": 160},
+        "4": {"physical_damage_rate_percent": 120, "tactical_damage_rate_percent": 200},
+        "5": {"physical_damage_rate_percent": 150, "tactical_damage_rate_percent": 250}
+      },
+      "tags": ["low_troop_capacity", "physical_damage", "tactical_damage", "once_per_combat"]
+    }
+  ],
+  "derived": {
+    "roles": ["hybrid_damage", "protect_support", "self_mitigation", "physical_suppression", "fire_suppression", "warrior_counter", "hunter_counter"],
+    "preferred_troops": ["Spearmen", "Shieldbearers"],
+    "avoid_troops": [],
+    "formation_needs": ["Adjacent ally eligible for Protect"],
+    "notes": [
+      "At 6 Stars and Bronze Bulwark Level 5, Bronze Fury reaches 45% Physical and 90% Tactical damage rates with a 50% Protect chance.",
+      "Noble Sacrifice trades early Tactical vulnerability for targeted Physical and Fire suppression; the vulnerability falls to 0% at Habit Level 5.",
+      "Champion's Brilliance supports the Right Flank only when Vermithor occupies Vanguard, so lane placement should be compared against the other two Vanguard abilities rather than assumed."
+    ]
+  },
+  "review": []
+}

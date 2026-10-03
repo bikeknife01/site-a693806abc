@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { candidateEvidence, chooseTroop, combatExplorerQuery, compareRecommendations, currentHabitValue, extractThreats, formationSynergies, recommendationConfidence, recommendFormations } from "../src/engine.mjs";
+import { candidateEvidence, chooseTroop, combatExplorerQuery, compareRecommendations, currentHabitValue, extractThreats, formationSynergies, operationRecords, recommendationConfidence, recommendFormations } from "../src/engine.mjs";
 import { loadObservations, normalizeObservation, saveObservation } from "../src/observations.mjs";
 
 const effect = (id, name, target = "harmful", section = "Negative Effects") => ({ id, name, effect_on_target: target, game_section: section, relationships: { counters: [], cleanses: [] } });
@@ -140,7 +140,49 @@ test("repository matchup fixtures return legal, distinct, explainable formations
       assert.ok(recommendation.breakdown && recommendation.combatHorizon, fixture.name);
     }
   }
-  assert.deepEqual([...observedCategories].sort(), ["damage", "status", "sustain"]);
+  assert.deepEqual([...observedCategories].sort(), ["damage", "enabler", "status", "sustain"]);
+});
+
+test("structured Habit upgrades replace base status proc rates", () => {
+  const realData = JSON.parse(fs.readFileSync(new URL("../../game-data-encyclopedia/public/data/encyclopedia.json", import.meta.url), "utf8"));
+  const progression = { level: 50, stars: 6, habit_levels: {} };
+  const chanceFor = (dragonName, abilityName, effectId) => {
+    const dragon = realData.dragons.find(item => item.name === dragonName);
+    const ability = dragon.abilities.find(item => item.name === abilityName);
+    progression.habit_levels[ability.client_key] = 5;
+    return operationRecords(realData, ability, progression).find(item => item.effect_id === effectId).chance_percent;
+  };
+  assert.equal(chanceFor("Malachite", "Thunderous Roar", "effect:advantage"), 20);
+  assert.equal(chanceFor("Kalspire", "Tactical Assault", "effect:panic"), 30);
+});
+
+test("enemy beneficial effects are threats that a documented Cleanse can cover", () => {
+  const realData = JSON.parse(fs.readFileSync(new URL("../../game-data-encyclopedia/public/data/encyclopedia.json", import.meta.url), "utf8"));
+  const enemies = [
+    { dragon: "dragon_generic_velar", lane: "Left Flank", level: 50, stars: 6, habit_levels: Object.fromEntries(realData.dragons.find(item => item.name === "Velar").abilities.filter(item => item.kind === "habit").map(item => [item.client_key, 5])) },
+    { dragon: "dragon_generic_vhagar", lane: "Vanguard", level: 50, stars: 6, habit_levels: Object.fromEntries(realData.dragons.find(item => item.name === "Vhagar").abilities.filter(item => item.kind === "habit").map(item => [item.client_key, 5])) },
+    { dragon: "dragon_generic_moondancer", lane: "Right Flank", level: 50, stars: 6, habit_levels: Object.fromEntries(realData.dragons.find(item => item.name === "Moondancer").abilities.filter(item => item.kind === "habit").map(item => [item.client_key, 5])) },
+  ];
+  const threats = extractThreats(realData, enemies);
+  const advantage = threats.find(item => item.id === "enabler:effect:advantage");
+  assert.ok(advantage);
+  const seasmoke = realData.dragons.find(item => item.name === "Seasmoke");
+  const progression = { level: 50, stars: 6, habit_levels: Object.fromEntries(seasmoke.abilities.filter(item => item.kind === "habit").map(item => [item.client_key, 5])) };
+  assert.ok(candidateEvidence(realData, seasmoke, [advantage], progression, "Vanguard", enemies).covered.includes(advantage.id));
+});
+
+test("locked command clauses do not create threats before their Star gate", () => {
+  const realData = JSON.parse(fs.readFileSync(new URL("../../game-data-encyclopedia/public/data/encyclopedia.json", import.meta.url), "utf8"));
+  const velar = realData.dragons.find(item => item.name === "Velar");
+  const slot = stars => ({
+    dragon: velar.slug,
+    lane: "Left Flank",
+    level: 50,
+    stars,
+    habit_levels: Object.fromEntries(velar.abilities.filter(item => item.kind === "habit").map(item => [item.client_key, 5])),
+  });
+  assert.equal(extractThreats(realData, [slot(6)]).some(item => item.id === "sustain:recovery"), false);
+  assert.equal(extractThreats(realData, [slot(10)]).some(item => item.id === "sustain:recovery"), true);
 });
 
 test("qualified Cleanse relationships do not claim unrelated negative effects", () => {
@@ -154,10 +196,10 @@ test("qualified Cleanse relationships do not claim unrelated negative effects", 
 
 test("unresolved client templates remain conditional instead of confirmed coverage", () => {
   const realData = JSON.parse(fs.readFileSync(new URL("../../game-data-encyclopedia/public/data/encyclopedia.json", import.meta.url), "utf8"));
-  const starshower = realData.dragons.find(item => item.name === "Starshower");
-  const threat = { id: "status:effect:vulnerable", category: "status", effect_id: "effect:vulnerable", name: "Vulnerable", sources: [] };
-  const progression = { level: 50, stars: 10, habit_levels: Object.fromEntries(starshower.abilities.filter(item => item.kind === "habit").map(item => [item.client_key, 5])) };
-  const evidence = candidateEvidence(realData, starshower, [threat], progression, "Vanguard");
+  const smoketail = realData.dragons.find(item => item.name === "Smoketail");
+  const threat = { id: "damage:Fire Damage", category: "damage", name: "Fire Damage", sources: [] };
+  const progression = { level: 50, stars: 10, habit_levels: Object.fromEntries(smoketail.abilities.filter(item => item.kind === "habit").map(item => [item.client_key, 5])) };
+  const evidence = candidateEvidence(realData, smoketail, [threat], progression, "Vanguard");
   assert.equal(evidence.covered.includes(threat.id), false);
   assert.equal(evidence.conditionalCovered.includes(threat.id), true);
 });

@@ -1,0 +1,70 @@
+{
+  "metadata": {
+    "purpose": "Curated recommendation-relevant observations from installed-client snapshots that are not screenshot-audited live facts.",
+    "snapshot_date": "2026-10-01",
+    "client_version": "26.9.56700",
+    "version_code": 326,
+    "comparison_baseline": "2026-09-16 client 26.9.56160",
+    "report": "wiki/client-updates/2026-10-01.md",
+    "policy": "Installed presence proves implementation in the captured build, not release, activation, availability, or final balance. Unchanged logical resources remain continuing installed evidence. Screenshot-audited data remains higher authority for current player-facing mechanics."
+  },
+  "evidence_states": {
+    "screenshot_audited": "Exact current in-game wording captured in repository screenshots; primary for recommendations.",
+    "user_confirmed": "Current player confirmation supplied directly to this repository; authoritative for the confirmed fact but not for unsupplied mechanics or values.",
+    "installed_observed": "Present in a dated installed build; usable with an explicit installed-client qualifier.",
+    "installed_unverified": "Production-shaped installed content whose release or player availability has not been established.",
+    "staged": "Installed content that must not affect live recommendations without activation evidence.",
+    "derived": "Strategic or structural interpretation, never a substitute for source wording.",
+    "unresolved": "Insufficiently corroborated for recommendation credit."
+  },
+  "observations": [
+    {
+      "id": "2026-10-01-production-roster",
+      "subjects": ["Meleys", "Smoketail", "Starshower", "Vermithor"],
+      "evidence_state": "installed_observed",
+      "recommendation_use": "corroboration_only",
+      "claim": "The installed client contains 38 production-named dragon rows: 36 screenshot-audited rows plus the client-discovered Meleys and Smoketail. Starshower's and Vermithor's installed rows are retained as corroborating progression evidence, while current screenshots are primary for their mechanics. WIP, test, NPC, wild, balance-test, and unresolved rows are excluded from the canonical application index.",
+      "source": "data/dragon_application_knowledge.json -> metadata.scope and dragons[].recommendation_status"
+    },
+    {
+      "id": "2026-10-01-season-3-availability",
+      "subjects": ["Meleys", "Smoketail"],
+      "evidence_state": "user_confirmed",
+      "recommendation_use": "conditional_only",
+      "claim": "Meleys and Smoketail are available Season 3 dragons. Their availability is established, while exact current screenshots, resolved numeric client placeholders, and Habit upgrade tracks remain incomplete.",
+      "source": "Current user confirmation supplied on 2026-10-01"
+    },
+    {
+      "id": "2026-10-01-meleys",
+      "subjects": ["Meleys", "Laceration", "Reflect"],
+      "evidence_state": "installed_observed",
+      "recommendation_use": "conditional_only",
+      "claim": "Meleys has installed Relentless and Physical DPS labels. Her current installed templates cap Laceration at 8 stacks and define Queen's Vengeance as a chance each round to grant Reflect (100%) versus Basic Attacks for one round, with one Reflect (Damage) effect per target.",
+      "source": "wiki/client-updates/2026-10-01.md and data/dragon_application_knowledge.json -> dragons[name=Meleys]"
+    },
+    {
+      "id": "2026-10-01-smoketail",
+      "subjects": ["Smoketail", "Burn"],
+      "evidence_state": "installed_observed",
+      "recommendation_use": "conditional_only",
+      "claim": "Smoketail is a production-named installed Epic Hunter with six complete ability slots. Ember Snare explicitly names its ongoing Fire damage effect Burn. Season 3 availability is separately user-confirmed.",
+      "source": "data/dragon_application_knowledge.json -> dragons[name=Smoketail]"
+    },
+    {
+      "id": "2026-10-01-commanders",
+      "subjects": ["Corlys", "Criston", "Daemon", "Young Alicent", "Young Rhaenyra"],
+      "evidence_state": "staged",
+      "recommendation_use": "exclude",
+      "claim": "The installed client adds Commander trait affinities and complete or revised talent kits, but current live activation and player availability are not established. Commander traits and talents must not affect formation recommendations yet.",
+      "source": "wiki/client-updates/2026-10-01.md"
+    },
+    {
+      "id": "2026-10-01-targeting-vocabulary",
+      "subjects": ["Left Flank", "Right Flank", "Vanguard", "Control"],
+      "evidence_state": "installed_observed",
+      "recommendation_use": "corroboration_only",
+      "claim": "Installed targeter and condition rows distinguish left flank, right flank, Vanguard, Dominant/Stalwart composition, and several Control statuses. Because the extraction is schema-less, use these rows to corroborate explicit ability wording, not to invent targeting or condition semantics.",
+      "source": "wiki/client-updates/2026-10-01.md"
+    }
+  ]
+}

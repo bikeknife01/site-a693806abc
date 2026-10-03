@@ -648,9 +648,16 @@ def build_data(root: Path = ROOT) -> dict[str, Any]:
             breed = humanize(client["breed_key"].removeprefix("breed_"))
             rarity_label = None
             rarity_tier = humanize(client["rarity_key"].removeprefix("rarity_dragon_"))
-            affinities = {"positive": [], "negative": [], "unknown": True}
+            affinities = {
+                **client.get("troop_affinities", {"positive": [], "negative": []}),
+                "unknown": "troop_affinities" not in client,
+            }
             traits = []
-            lifecycle = "staged" if "not established" in client["recommendation_evidence"]["availability"].lower() else "live"
+            lifecycle = (
+                "staged"
+                if client.get("availability_status") == "installed_unverified"
+                else "live"
+            )
             evidence_class = "staged" if lifecycle == "staged" else "client_confirmed"
             confidence = "limited"
             uncertainty = missing

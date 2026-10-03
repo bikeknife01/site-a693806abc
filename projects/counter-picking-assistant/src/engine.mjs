@@ -23,9 +23,20 @@ export function abilityEligible(ability, slot) {
   return true;
 }
 
-function recordEligible(record, progression) {
-  const gate = record?.exact_context?.match(/At\s+(\d+)\+?\s+Stars/i);
-  return !gate || Number(progression.stars) >= Number(gate[1]);
+function starGate(text) {
+  const match = text?.match(/At\s+(\d+)\+?\s+Stars/i);
+  return match ? Number(match[1]) : null;
+}
+
+function detailEligible(ability, detail, progression) {
+  const context = detail?.exact_context || "";
+  const parent = ability?.exact_text?.find(line => line.includes(context));
+  const gate = starGate(context) ?? starGate(parent);
+  return gate == null || Number(progression.stars) >= gate;
+}
+
+function eligibleExactText(ability, progression) {
+  return ability.exact_text.filter(line => detailEligible(ability, { exact_context: line }, progression));
 }
 
 function expandRounds(records) {
@@ -46,7 +57,7 @@ function scopedSchedules(data, ability, context = null, inline = null) {
   return context ? records.filter(item => context.toLowerCase().includes(item.exact_text.toLowerCase())) : records;
 }
 
-function roundsFor(data, ability, context = null, inline = null) {
+export function roundsFor(data, ability, context = null, inline = null) {
   return expandRounds(scopedSchedules(data, ability, context, inline));
 }
 
@@ -68,20 +79,29 @@ export function currentHabitValue(ability, progression) {
   const level = habitLevel(ability, progression);
   if (ability.kind !== "habit" || !level) return null;
   const value = ability.upgrade_levels?.[String(level)];
-  return value == null ? null : Number(value);
+  return typeof value === "number" ? value : null;
 }
 
 function operationChance(ability, operation, progression) {
-  if (ability.kind === "habit" && /chance/i.test(ability.value_unit || "")) {
-    const upgraded = currentHabitValue(ability, progression);
-    if (upgraded != null) return upgraded;
+  if (ability.kind === "habit") {
+    const upgrade = ability.upgrade_levels?.[String(habitLevel(ability, progression))];
+    if (typeof upgrade === "number" && (/chance/i.test(ability.value_unit || "") || /chance/i.test(operation.exact_context || ""))) {
+      return upgrade;
+    }
+    if (upgrade && typeof upgrade === "object") {
+      const chanceEntries = Object.entries(upgrade).filter(([key, value]) => key.endsWith("_chance_percent") && typeof value === "number");
+      const effectSlug = operation.effect_id?.replace(/^effect:/, "").replace(/-/g, "_");
+      const matching = chanceEntries.find(([key]) => effectSlug && key === `${effectSlug}_chance_percent`);
+      if (matching) return matching[1];
+      if (chanceEntries.length === 1) return chanceEntries[0][1];
+    }
   }
   return operation.chance_percent == null ? null : Number(operation.chance_percent);
 }
 
-function operationRecords(data, ability, progression) {
+export function operationRecords(data, ability, progression) {
   return abilityRecords(data, ability, "status_operations")
-    .filter(item => recordEligible(item, progression))
+    .filter(item => detailEligible(ability, item, progression))
     .map(item => ({ ...item, chance_percent: operationChance(ability, item, progression) }));
 }
 
@@ -89,7 +109,7 @@ function conditionRecords(data, ability) {
   return abilityRecords(data, ability, "conditions").filter(item => item.type === "status_present");
 }
 
-function activeAbilities(data, dragon, progression, lane) {
+export function activeAbilities(data, dragon, progression, lane) {
   return dragon.abilities.filter(ability => abilityEligible(ability, { ...progression, lane }));
 }
 
@@ -116,9 +136,10 @@ export function extractThreats(data, enemySlots) {
     const dragon = data.dragons.find(item => item.slug === slot.dragon);
     if (!dragon) continue;
     for (const ability of activeAbilities(data, dragon, slot, slot.lane)) {
-      const damageEvents = ability.normalized.damage_events?.length
+      const damageEvents = (ability.normalized.damage_events?.length
         ? ability.normalized.damage_events
-        : (ability.normalized.damage_types || []).map(damage_type => ({ damage_type, exact_context: ability.exact_text[0] }));
+        : (ability.normalized.damage_types || []).map(damage_type => ({ damage_type, exact_context: ability.exact_text[0] })))
+        .filter(event => detailEligible(ability, event, slot));
       for (const event of damageEvents) {
         addThreat(threats, { id: `damage:${event.damage_type}`, category: "damage", name: event.damage_type }, threatSource(data, dragon, ability, event));
       }
@@ -127,6 +148,7 @@ export function extractThreats(data, enemySlots) {
         if (operation.operation !== "applies" || !effect) continue;
         if (effect.id === "effect:recovery") addThreat(threats, { id: "sustain:recovery", category: "sustain", name: "Recovery" }, threatSource(data, dragon, ability, operation));
         else if (effect.effect_on_target === "harmful") addThreat(threats, { id: `status:${effect.id}`, category: "status", effect_id: effect.id, name: effect.name }, threatSource(data, dragon, ability, operation));
+        else if (effect.effect_on_target === "beneficial") addThreat(threats, { id: `enabler:${effect.id}`, category: "enabler", effect_id: effect.id, name: effect.name }, threatSource(data, dragon, ability, operation));
       }
     }
   }
@@ -200,7 +222,7 @@ function laneEvidence(data, dragon, abilities, lane, enemySlots) {
 export function candidateEvidence(data, dragon, threats, progression = { stars: 10, level: 50, habit_levels: {} }, lane = "Vanguard", enemySlots = []) {
   const counters = [];
   const abilities = activeAbilities(data, dragon, progression, lane);
-  const textAbilities = abilities.map(ability => ({ ability, text: ability.exact_text.join(" ") }));
+  const textAbilities = abilities.map(ability => ({ ability, text: eligibleExactText(ability, progression).join(" ") }));
   for (const threat of threats) {
     let match = null;
     let reason = null;
@@ -252,16 +274,19 @@ export function candidateEvidence(data, dragon, threats, progression = { stars: 
   };
 }
 
-export function chooseTroop(data, trio, enemyTroop, objective = "pvp") {
+export function evaluateTroop(data, trio, troop, enemyTroop, objective = "pvp") {
   const rules = data.mechanics.troop_types;
-  return TROOPS.map(troop => {
-    const positive = trio.filter(item => item.troop_affinities.positive.includes(troop)).map(item => item.name);
-    const negative = trio.filter(item => item.troop_affinities.negative.includes(troop)).map(item => item.name);
-    const advantage = rules[troop]?.advantaged_against === enemyTroop;
-    const disadvantage = rules[troop]?.disadvantaged_against === enemyTroop || (troop === "Siege" && objective !== "poi");
-    const value = positive.length * 2 - negative.length * 3 + (advantage ? 3 : 0) - (disadvantage ? 3 : 0) + (objective === "poi" && troop === "Siege" ? 5 : 0);
-    return { troop, positive, negative, advantage, disadvantage, value };
-  }).sort((a, b) => b.value - a.value || a.troop.localeCompare(b.troop))[0];
+  const positive = trio.filter(item => item.troop_affinities.positive.includes(troop)).map(item => item.name);
+  const negative = trio.filter(item => item.troop_affinities.negative.includes(troop)).map(item => item.name);
+  const advantage = rules[troop]?.advantaged_against === enemyTroop;
+  const disadvantage = rules[troop]?.disadvantaged_against === enemyTroop || (troop === "Siege" && objective !== "poi");
+  const value = positive.length * 2 - negative.length * 3 + (advantage ? 3 : 0) - (disadvantage ? 3 : 0) + (objective === "poi" && troop === "Siege" ? 5 : 0);
+  return { troop, positive, negative, advantage, disadvantage, value };
+}
+
+export function chooseTroop(data, trio, enemyTroop, objective = "pvp") {
+  return TROOPS.map(troop => evaluateTroop(data, trio, troop, enemyTroop, objective))
+    .sort((a, b) => b.value - a.value || a.troop.localeCompare(b.troop))[0];
 }
 
 function compatibleChain(effect, condition) {
@@ -323,7 +348,7 @@ function permutations(items) {
   ];
 }
 
-function scoreFormation(data, formation, threats, enemyTroop, objective) {
+export function scoreFormation(data, formation, threats, enemyTroop, objective, forcedTroop = null) {
   const covered = unique(formation.flatMap(item => item.covered));
   const conditionalCovered = unique(formation.flatMap(item => item.conditionalCovered || []).filter(id => !covered.includes(id)));
   const counterEvidence = formation.flatMap(item => item.counters);
@@ -336,7 +361,10 @@ function scoreFormation(data, formation, threats, enemyTroop, objective) {
   const synergy = synergies.reduce((sum, item) => sum + item.score, 0);
   const lanes = formation.reduce((sum, item) => sum + item.laneScore, 0);
   const controls = unique(formation.flatMap(item => item.controls.map(control => control.name))).length;
-  const troop = chooseTroop(data, formation.map(item => item.dragon), enemyTroop, objective);
+  const trio = formation.map(item => item.dragon);
+  const troop = forcedTroop
+    ? evaluateTroop(data, trio, forcedTroop, enemyTroop, objective)
+    : chooseTroop(data, trio, enemyTroop, objective);
   const breakdown = {
     threat_coverage: covered.length * 100, conditional_evidence: conditionalCovered.length * 15, counter_reliability: Math.round(reliability * 20), timing_alignment: timing * 6,
     explicit_synergy: Math.round(synergy), lane_fit: Math.round(lanes * 4), control_options: controls * 2, troop_fit: troop.value * 4,

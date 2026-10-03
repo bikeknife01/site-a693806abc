@@ -1,0 +1,504 @@
+{
+  "generated_at": "2026-10-03T15:58:16.347269+00:00",
+  "response_dir": "projects/strategist-evaluation/runs/2026-10-01-search-revision",
+  "summary": {
+    "cases_graded": 6,
+    "cases_missing": 0,
+    "benchmark_exact_matches": 0,
+    "benchmark_total": 3,
+    "critical_reasoning_passes": 3,
+    "holdout_passes": 3,
+    "holdout_total": 3,
+    "overall_pass": false
+  },
+  "missing": [],
+  "results": [
+    {
+      "id": "meta-high-damage",
+      "kind": "benchmark",
+      "benchmark_id": "velar-vhagar-moondancer-shieldbearers",
+      "parsed_formation": {
+        "troop_type": "Cavalry",
+        "left_flank": "Tairax",
+        "vanguard": "Caraxes",
+        "right_flank": "Tessarion"
+      },
+      "expected_formation": {
+        "troop_type": "Shieldbearers",
+        "left_flank": "Velar",
+        "vanguard": "Vhagar",
+        "right_flank": "Moondancer"
+      },
+      "formation_checks": {
+        "troop_type": false,
+        "left_flank": false,
+        "vanguard": false,
+        "right_flank": false
+      },
+      "exact_formation_match": false,
+      "reasoning_checks": [
+        {
+          "id": "shared-affinity",
+          "label": "Identifies the trio's shared Shieldbearer affinity",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "Shieldbearers?": true,
+            "affinit": true
+          },
+          "any_patterns": {},
+          "none_patterns": {}
+        },
+        {
+          "id": "directional-vanguard",
+          "label": "Uses Vhagar's directional Vanguard support",
+          "critical": true,
+          "passed": false,
+          "all_patterns": {
+            "Vhagar": false,
+            "Vanguard": true,
+            "Left Flank": true,
+            "Right Flank": true,
+            "Tactical": true,
+            "Physical": true
+          },
+          "any_patterns": {},
+          "none_patterns": {}
+        },
+        {
+          "id": "rising-tide-chain",
+          "label": "Traces the Velar-to-Moondancer Rising Tide chain",
+          "critical": true,
+          "passed": false,
+          "all_patterns": {
+            "Velar": false,
+            "Moondancer": false,
+            "Rising Tide": false
+          },
+          "any_patterns": {
+            "Advantage": true,
+            "Tactical": true
+          },
+          "none_patterns": {}
+        },
+        {
+          "id": "six-star-reliability",
+          "label": "Treats the six-Star proc package as chance-based",
+          "critical": false,
+          "passed": false,
+          "all_patterns": {
+            "Gales of Power": false
+          },
+          "any_patterns": {
+            "24%": false,
+            "chance": true,
+            "probabil": true
+          },
+          "none_patterns": {}
+        },
+        {
+          "id": "troop-cycle-risk",
+          "label": "Discloses Cavalry as the troop-cycle risk",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "Cavalry": true,
+            "Shieldbearers?": true
+          },
+          "any_patterns": {
+            "advantage": true,
+            "counter": true,
+            "risk": true,
+            "disadvantage": true
+          },
+          "none_patterns": {}
+        }
+      ],
+      "critical_reasoning_pass": false,
+      "passed": false
+    },
+    {
+      "id": "meta-damage-survivability",
+      "kind": "benchmark",
+      "benchmark_id": "vermithor-rhysarion-venator-spearmen",
+      "parsed_formation": {
+        "troop_type": "Shieldbearers",
+        "left_flank": "Malachite",
+        "vanguard": "Moondancer",
+        "right_flank": "Vermithor"
+      },
+      "expected_formation": {
+        "troop_type": "Spearmen",
+        "left_flank": "Vermithor",
+        "vanguard": "Rhysarion",
+        "right_flank": "Venator"
+      },
+      "formation_checks": {
+        "troop_type": false,
+        "left_flank": false,
+        "vanguard": false,
+        "right_flank": false
+      },
+      "exact_formation_match": false,
+      "reasoning_checks": [
+        {
+          "id": "shared-affinity",
+          "label": "Identifies the trio's shared Spearmen affinity",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "Spearmen": true,
+            "affinit": true
+          },
+          "any_patterns": {},
+          "none_patterns": {}
+        },
+        {
+          "id": "vermithor-protect",
+          "label": "Uses Vermithor's screenshot-audited Protect reliability",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "Vermithor": true,
+            "Protect": true,
+            "50%": true
+          },
+          "any_patterns": {},
+          "none_patterns": {}
+        },
+        {
+          "id": "survivability-chain",
+          "label": "Connects Rhysarion Recovery with Vermithor mitigation",
+          "critical": true,
+          "passed": false,
+          "all_patterns": {
+            "Rhysarion": false,
+            "Recovery": true,
+            "Vermithor": true
+          },
+          "any_patterns": {
+            "mitigation": true,
+            "Damage Received": true,
+            "Nimble Resilience": false
+          },
+          "none_patterns": {}
+        },
+        {
+          "id": "vanguard-placement",
+          "label": "Explains why Rhysarion is Vanguard and Venator is Right Flank",
+          "critical": true,
+          "passed": false,
+          "all_patterns": {
+            "Rhysarion": false,
+            "Vanguard": true,
+            "Venator": false,
+            "Right Flank": true
+          },
+          "any_patterns": {},
+          "none_patterns": {}
+        },
+        {
+          "id": "troop-cycle-risk",
+          "label": "Discloses Archers as the troop-cycle risk",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "Archers": true,
+            "Spearmen": true
+          },
+          "any_patterns": {
+            "advantage": true,
+            "counter": true,
+            "risk": true,
+            "disadvantage": false
+          },
+          "none_patterns": {}
+        }
+      ],
+      "critical_reasoning_pass": false,
+      "passed": false
+    },
+    {
+      "id": "meta-cavalry-counter",
+      "kind": "benchmark",
+      "benchmark_id": "malachite-seasmoke-kalspire-cavalry-counter",
+      "parsed_formation": {
+        "troop_type": "Cavalry",
+        "left_flank": "Tessarion",
+        "vanguard": "Malachite",
+        "right_flank": "Feskar"
+      },
+      "expected_formation": {
+        "troop_type": "Cavalry",
+        "left_flank": "Malachite",
+        "vanguard": "Seasmoke",
+        "right_flank": "Kalspire"
+      },
+      "formation_checks": {
+        "troop_type": true,
+        "left_flank": false,
+        "vanguard": false,
+        "right_flank": false
+      },
+      "exact_formation_match": false,
+      "reasoning_checks": [
+        {
+          "id": "troop-counter",
+          "label": "Uses Cavalry's troop advantage against Shieldbearers",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "Cavalry": true,
+            "Shieldbearers?": true
+          },
+          "any_patterns": {
+            "advantage": true,
+            "counter": true
+          },
+          "none_patterns": {}
+        },
+        {
+          "id": "cleanse-source",
+          "label": "Attributes Seasmoke's removal to Cleansing Wrath",
+          "critical": true,
+          "passed": false,
+          "all_patterns": {
+            "Seasmoke": false,
+            "Cleansing Wrath": false,
+            "Cleanse": true
+          },
+          "any_patterns": {},
+          "none_patterns": {}
+        },
+        {
+          "id": "cleanse-reliability",
+          "label": "Treats Seasmoke's Cleanse as probabilistic rather than blanket removal",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "20%": true
+          },
+          "any_patterns": {
+            "chance": true,
+            "probabil": true,
+            "not guaranteed": false
+          },
+          "none_patterns": {}
+        },
+        {
+          "id": "support-and-pressure",
+          "label": "Identifies Malachite sustain and Kalspire pressure",
+          "critical": true,
+          "passed": false,
+          "all_patterns": {
+            "Malachite": true,
+            "Recovery": true,
+            "Kalspire": false
+          },
+          "any_patterns": {
+            "Panic": false,
+            "pressure": true,
+            "damage": true
+          },
+          "none_patterns": {}
+        },
+        {
+          "id": "vanguard-placement",
+          "label": "Explains Seasmoke Vanguard support for the Right Flank",
+          "critical": true,
+          "passed": false,
+          "all_patterns": {
+            "Seasmoke": false,
+            "Vanguard": true,
+            "Right Flank": true
+          },
+          "any_patterns": {},
+          "none_patterns": {}
+        }
+      ],
+      "critical_reasoning_pass": false,
+      "passed": false
+    },
+    {
+      "id": "holdout-velar-five-stars",
+      "kind": "holdout",
+      "benchmark_id": "velar-vhagar-moondancer-shieldbearers",
+      "parsed_formation": {
+        "troop_type": "Shieldbearers",
+        "left_flank": "Velar",
+        "vanguard": "Vhagar",
+        "right_flank": "Moondancer"
+      },
+      "expected_formation": null,
+      "formation_checks": {},
+      "exact_formation_match": null,
+      "reasoning_checks": [
+        {
+          "id": "removes-locked-habit",
+          "label": "Removes six-Star Gales of Power credit",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "Gales of Power": true
+          },
+          "any_patterns": {
+            "locked": false,
+            "not unlocked": false,
+            "unavailable": true,
+            "loses": true,
+            "remove": true
+          },
+          "none_patterns": {}
+        },
+        {
+          "id": "retains-lower-chain",
+          "label": "Retains the lower-Star Velar/Moondancer interaction",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "Velar": true,
+            "Moondancer": true,
+            "Crescent Blade": true
+          },
+          "any_patterns": {},
+          "none_patterns": {}
+        }
+      ],
+      "critical_reasoning_pass": true,
+      "passed": true
+    },
+    {
+      "id": "holdout-vermithor-five-stars",
+      "kind": "holdout",
+      "benchmark_id": "vermithor-rhysarion-venator-spearmen",
+      "parsed_formation": {
+        "troop_type": "Spearmen",
+        "left_flank": "Vermithor",
+        "vanguard": "Rhysarion",
+        "right_flank": "Venator"
+      },
+      "expected_formation": null,
+      "formation_checks": {},
+      "exact_formation_match": null,
+      "reasoning_checks": [
+        {
+          "id": "base-command-values",
+          "label": "Falls back to Vermithor's base Command values",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "30%": true,
+            "60%": true,
+            "Protect": true
+          },
+          "any_patterns": {},
+          "none_patterns": {}
+        },
+        {
+          "id": "removes-bronze-bulwark",
+          "label": "Removes six-Star Bronze Bulwark credit",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "Bronze Bulwark": true
+          },
+          "any_patterns": {
+            "locked": true,
+            "not unlocked": false,
+            "unavailable": true,
+            "loses": true,
+            "remove": false
+          },
+          "none_patterns": {}
+        },
+        {
+          "id": "no-six-star-mitigation",
+          "label": "Does not retain Bronze Bulwark's on-Protect mitigation",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "mitigation": true
+          },
+          "any_patterns": {
+            "loses": true,
+            "without": false,
+            "not active": false,
+            "unavailable": true,
+            "remove": false
+          },
+          "none_patterns": {}
+        }
+      ],
+      "critical_reasoning_pass": true,
+      "passed": true
+    },
+    {
+      "id": "holdout-low-buff-spearmen",
+      "kind": "holdout",
+      "benchmark_id": "malachite-seasmoke-kalspire-cavalry-counter",
+      "parsed_formation": {
+        "troop_type": "Archers",
+        "left_flank": "Malachite",
+        "vanguard": "Seasmoke",
+        "right_flank": "Kalspire"
+      },
+      "expected_formation": null,
+      "formation_checks": {},
+      "exact_formation_match": null,
+      "reasoning_checks": [
+        {
+          "id": "troop-disadvantage",
+          "label": "Recognizes Cavalry's disadvantage against Spearmen",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "Cavalry": true,
+            "Spearmen": true
+          },
+          "any_patterns": {
+            "disadvantage": true,
+            "countered": false,
+            "weak": false,
+            "unfavorable": false,
+            "advantage over Cavalry": true
+          },
+          "none_patterns": {}
+        },
+        {
+          "id": "cleanse-loses-value",
+          "label": "Downgrades Seasmoke when there are few removable buffs",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "Seasmoke": true
+          },
+          "any_patterns": {
+            "less value": false,
+            "reduced value": false,
+            "loses value": false,
+            "Cleanse": true,
+            "removal": false
+          },
+          "none_patterns": {}
+        },
+        {
+          "id": "does-not-overfit",
+          "label": "Rejects the benchmark formation as a universal default",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {},
+          "any_patterns": {
+            "not.*default": true,
+            "not.*universal": false,
+            "reassess": false,
+            "different counter": false,
+            "would not retain": false
+          },
+          "none_patterns": {}
+        }
+      ],
+      "critical_reasoning_pass": true,
+      "passed": true
+    }
+  ]
+}

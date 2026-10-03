@@ -43,8 +43,8 @@ class EncyclopediaDataTests(unittest.TestCase):
         cls.data = BUILDER.build_data(ROOT)
 
     def test_unique_and_present_stable_ids(self) -> None:
-        self.assertEqual(len(self.data["dragons"]), 37)
-        self.assertEqual(sum(dragon["evidence"]["class"] == "screenshot_confirmed" for dragon in self.data["dragons"]), 34)
+        self.assertEqual(len(self.data["dragons"]), 38)
+        self.assertEqual(sum(dragon["evidence"]["class"] == "screenshot_confirmed" for dragon in self.data["dragons"]), 36)
         ids = [item["id"] for item in self.data["dragons"]]
         ids += [item["id"] for item in self.data["effects"]]
         ids += [ability["id"] for dragon in self.data["dragons"] for ability in dragon["abilities"]]
@@ -138,7 +138,36 @@ class EncyclopediaDataTests(unittest.TestCase):
         visible = [item for item in [*self.data["dragons"], *self.data["effects"]] if item["lifecycle"] != "staged"]
         self.assertTrue(staged)
         self.assertTrue(all(item not in visible for item in staged))
-        self.assertIn("Meleys", {item["name"] for item in staged})
+        staged_dragons = {item["name"] for item in self.data["dragons"] if item["lifecycle"] == "staged"}
+        self.assertNotIn("Meleys", staged_dragons)
+        self.assertNotIn("Smoketail", staged_dragons)
+
+    def test_current_installed_evidence_provenance_and_lifecycle(self) -> None:
+        app = json.loads((ROOT / "data" / "dragon_application_knowledge.json").read_text(encoding="utf-8"))
+        self.assertEqual(app["metadata"]["snapshot_date"], "2026-10-01")
+        self.assertEqual(app["metadata"]["client_version"], "26.9.56700")
+        self.assertEqual(app["metadata"]["version_code"], 326)
+        self.assertIn("continuing_evidence_policy", app["metadata"])
+
+        by_name = {dragon["name"]: dragon for dragon in app["dragons"]}
+        self.assertEqual(by_name["Smoketail"]["recommendation_status"], "client_discovered")
+        self.assertEqual(by_name["Smoketail"]["availability_status"], "user_confirmed_available")
+        self.assertEqual(by_name["Smoketail"]["troop_affinities"]["positive"], ["Spearmen"])
+        self.assertIn("Burn", by_name["Smoketail"]["client_ability_slots"]["habits_in_slot_order"][2]["description_template"])
+        self.assertEqual(by_name["Meleys"]["availability_status"], "user_confirmed_available")
+        self.assertEqual(by_name["Meleys"]["troop_affinities"]["positive"], ["Cavalry", "Archers"])
+        self.assertEqual(by_name["Meleys"]["troop_affinities"]["negative"], ["Siege"])
+
+        for path in sorted((ROOT / "data" / "dragons").glob("*.json")):
+            audited = json.loads(path.read_text(encoding="utf-8"))
+            installed = by_name[audited["name"]]["troop_affinities"]
+            self.assertEqual(installed["positive"], audited["troop_affinities"].get("positive", []), audited["name"])
+            self.assertEqual(installed["negative"], audited["troop_affinities"].get("negative", []), audited["name"])
+
+        curated = json.loads((ROOT / "data" / "installed_evidence.json").read_text(encoding="utf-8"))
+        self.assertEqual(curated["metadata"]["client_version"], app["metadata"]["client_version"])
+        excluded = {item["id"] for item in curated["observations"] if item["recommendation_use"] == "exclude"}
+        self.assertIn("2026-10-01-commanders", excluded)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,71 @@
+{
+  "benchmark_id": "vermithor-rhysarion-venator-spearmen",
+  "objective": "defense",
+  "scenario_notes": "Common damage-and-survivability meta formation. The listed order is user-confirmed as Left Flank, Vanguard, Right Flank. All dragons are Level 50 and 6 Stars; each unlocked Habit is Level 5. Power is unknown. This is a general-purpose meta evaluation rather than a counter to one named opponent. Vermithor is now screenshot-audited.",
+  "our_formation": {
+    "troop_type": "Spearmen",
+    "left_flank": {"dragon": "Vermithor", "level": 50, "star_rank": 6, "habit_levels": [5, 5, 5, "locked", "locked"], "power": "unknown"},
+    "vanguard": {"dragon": "Rhysarion", "level": 50, "star_rank": 6, "habit_levels": [5, 5, 5, "locked", "locked"], "power": "unknown"},
+    "right_flank": {"dragon": "Venator", "level": 50, "star_rank": 6, "habit_levels": [5, 5, 5, "locked", "locked"], "power": "unknown"}
+  },
+  "opponent": {
+    "troop_type": "unknown",
+    "left_flank": {"dragon": "unknown", "level": "unknown", "star_rank": "unknown", "habit_levels": ["unknown", "unknown", "unknown", "unknown", "unknown"], "power": "unknown"},
+    "vanguard": {"dragon": "unknown", "level": "unknown", "star_rank": "unknown", "habit_levels": ["unknown", "unknown", "unknown", "unknown", "unknown"], "power": "unknown"},
+    "right_flank": {"dragon": "unknown", "level": "unknown", "star_rank": "unknown", "habit_levels": ["unknown", "unknown", "unknown", "locked", "locked"], "power": "unknown"}
+  },
+  "known_candidate_roster": ["All screenshot-audited, campaign-observed, and user-confirmed available dragons"],
+  "why_experts_use_it": "Perfect Spearmen affinity, Vermithor's Protect and mitigation, Rhysarion's Recovery, and Venator's sustained Basic-Attack pressure combine damage with staying power.",
+  "source_or_observation": "Current expert benchmark supplied by the user on 2026-10-01.",
+  "runs": {
+    "baseline": {
+      "prompt_revision": "b02c4bc:.github/agents/dragonfire-strategist.agent.md",
+      "repository_revision": "b02c4bc",
+      "input": "Recommend a general-purpose formation favoring damage and survivability from the full known roster. All candidates are Level 50 and 6 Stars with Level 5 unlocked Habits; Power is unknown. No specific opponent is supplied.",
+      "recommendation": "Vermithor Left Flank, Rhysarion Vanguard, Venator Right Flank with Spearmen. The baseline recognizes perfect affinity, Rhysarion's Recovery, Vermithor's conditional Protect, and Rhysarion's Vanguard Damage Dealt bonus for Venator.",
+      "disagreement": "None on formation. Exact Vermithor values and Protect reliability remain unresolved, so the survivability claim must stay conditional.",
+      "diagnosis": "insufficient-context"
+    },
+    "revised": [
+      {
+        "prompt_revision": "working-tree-2026-10-01",
+        "repository_revision": "working-tree",
+        "input": "Same benchmark input and assumptions as baseline.",
+        "recommendation": "Vermithor Left Flank, Rhysarion Vanguard, Venator Right Flank with Spearmen remains the best-supported general-purpose line under the stated assumptions. Rhysarion's Vanguard improves its Recovery and Venator's damage; at Habit Level 5, Echoing Melody reaches its displayed 120% Recovery track and Feral Precision reaches 50% Double-Strike with a 40% damage-rate track. Vermithor supplies conditional Protect and self mitigation, but its unresolved numeric placeholders remain qualified despite the assumed Habit Level 5.",
+        "disagreement": "None. Revised output explicitly separates guaranteed Recovery and affinity from unresolved Vermithor placeholder values and chance-based protection.",
+        "diagnosis": "none"
+      },
+      {
+        "prompt_revision": "working-tree-2026-10-01-vermithor-screenshot-audit",
+        "repository_revision": "working-tree",
+        "input": "Same benchmark input and assumptions as baseline, rerun after current Vermithor screenshots resolved the client placeholders.",
+        "recommendation": "Vermithor Left Flank, Rhysarion Vanguard, Venator Right Flank with Spearmen remains the best-supported general-purpose line. At 6 Stars and Habit Level 5, Vermithor's Bronze Fury deals 45% Physical plus 90% Tactical damage on rounds 2, 4, 6, and 8, has a 50% odd-round chance to Protect the adjacent other Ally with the fewest troops for 2 rounds, and gains 10% Physical/Fire mitigation when Protect applies. Noble Sacrifice has no remaining Tactical vulnerability at Level 5 and suppresses prioritized enemy Physical and Fire dealers by 15% for 5 rounds; Nimble Resilience supplies 12% all-damage mitigation and 24% Initiative. Rhysarion remains Vanguard because its Right Flank damage support benefits Venator while Vermithor can operate from Left Flank.",
+        "disagreement": "None. The former evidence limitation is resolved; Protect remains probabilistic rather than guaranteed, and adjacency geometry beyond the displayed scope is not inferred.",
+        "diagnosis": "none"
+      }
+    ]
+  },
+  "variations": [
+    {
+      "id": "holdout-vermithor-five-stars",
+      "change": "Reduce Vermithor from 6 Stars to 5 Stars while leaving the other benchmark assumptions unchanged.",
+      "expected_general_rule": "Remove Bronze Bulwark's upgraded damage rates, 50% Protect chance, and on-Protect Physical/Fire mitigation. Retain only Bronze Fury's base 30% Physical, 60% Tactical, and 30% Protect values plus the active 2- and 4-Star Habits.",
+      "result": "Passed: the screenshot-audited star gate prevents six-Star values from leaking into the five-Star variation and materially lowers both damage and protection reliability.",
+      "status": "passed"
+    },
+    {
+      "id": "holdout-rhysarion-and-venator-five-stars",
+      "change": "Reduce Rhysarion and Venator from 6 Stars to 5 Stars.",
+      "expected_general_rule": "Remove Echoing Melody Recovery and Feral Precision credit. The trio may remain durable through Vermithor, but its six-Star damage/sustain profile must be downgraded and alternatives reconsidered.",
+      "result": "Passed: the revised method removes both six-Star payoffs and retains only the explicitly active lower-Star survivability and damage evidence, so the original meta verdict is no longer assumed.",
+      "status": "passed"
+    },
+    {
+      "id": "holdout-archer-opponent",
+      "change": "Match the Spearmen formation into an otherwise comparable Archer formation.",
+      "expected_general_rule": "Apply Archers' troop advantage over Spearmen as a material matchup penalty without erasing the formation's internal sustain and damage evidence.",
+      "result": "Passed: the revised method retains the formation's general strengths but explicitly downgrades the matchup because Archers deal more damage to and receive less damage from Spearmen.",
+      "status": "passed"
+    }
+  ]
+}

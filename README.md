@@ -6,7 +6,10 @@ This repository contains an AI-oriented reference for dragon army formation reco
 
 - [`wiki/`](wiki/) — human-readable mechanics and dragon reference pages.
 - [`data/`](data/) — normalized JSON suitable for retrieval and programmatic reasoning.
-- [`data/dragon_application_knowledge.json`](data/dragon_application_knowledge.json) — the canonical installed-client roster, level curves, Star scalars, ability templates, and evidence status for 37 production-named dragons.
+- [`data/recommendation_rules.json`](data/recommendation_rules.json) — machine-checkable formation constraints, decision flow, comparison axes, and benchmark anti-overfitting rules.
+- [`data/dragon_application_knowledge.json`](data/dragon_application_knowledge.json) — the canonical installed-client roster, level curves, Star scalars, ability templates, and evidence status for 38 production-named dragons.
+- [`data/installed_evidence.json`](data/installed_evidence.json) — dated installed-client observations and lifecycle classifications that must not be mistaken for live or screenshot-audited behavior.
+- [`wiki/client-updates/`](wiki/client-updates/) — durable summaries of local installed-client comparisons; raw snapshots remain ignored.
 - [`wiki/Online-Sources.md`](wiki/Online-Sources.md) — dated official/community source audit and unresolved public rules.
 - [`projects/game-data-encyclopedia/`](projects/game-data-encyclopedia/) — searchable static encyclopedia implementation for dragons, abilities, effects/statuses, evidence, and progression gates.
 - [`review/`](review/) — extraction questions that require human confirmation.
@@ -26,6 +29,8 @@ This repository contains an AI-oriented reference for dragon army formation reco
 - Official web guides may supplement system-level rules. Incomplete official dragon
   profiles are included as client-discovered records and never silently promoted to
   screenshot-complete records.
+- Unchanged logical resources in a newer installed snapshot remain continuing client
+  evidence; the canonical index records the snapshot/build and source resource versions.
 
 ## Formation model
 
@@ -49,3 +54,13 @@ python -m unittest discover -s projects/game-data-encyclopedia/tests -v
 
 The deployed artifact is designed for `/encyclopedia/` alongside the existing map.
 It reads only compact generated data; ignored local snapshots are not a runtime input.
+
+Regenerate the canonical installed-client index from an explicit dated capture (the
+source path is required so the historical working set cannot silently replace newer
+evidence):
+
+```powershell
+python Game_Details/Resources/_build_dragon_application_knowledge.py `
+  --resources Game_Details/Resources/_snapshots/2026-10-01/android_data/com.wb.goog.hotd.socialstrategy/files/Resources `
+  --snapshot-manifest Game_Details/Resources/_snapshots/2026-10-01/analysis/snapshot_manifest.json
+```

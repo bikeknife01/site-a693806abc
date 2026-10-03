@@ -1,17 +1,31 @@
 # Recommendation handoff
 
-This handoff describes the recommendation data set. Use `data/dragon_application_knowledge.json` first to discover the complete production-named client roster and obtain level-specific base stats. For screenshot-audited dragons, `data/dragons/<name>.json` remains primary for exact current mechanics. Client-only records must be labeled as such and their evidence limitations disclosed.
+This handoff describes the recommendation data set. Apply the ordered contract in
+`data/recommendation_rules.json`, then use `data/dragon_application_knowledge.json` to
+discover the complete production-named client roster and obtain level-specific base
+stats. For screenshot-audited dragons, `data/dragons/<name>.json` remains primary for
+exact current mechanics. Client-only records must be labeled as such and their evidence
+limitations disclosed.
 
 ## Required recommendation inputs and level handling
 
-Ask for each candidate dragon's **level**, **Star Rank**, and unlocked Habit levels before making a close power comparison. Read `level_model.base_stats_by_level.<stat>.values_by_level[level - 1]` from `data/dragon_application_knowledge.json`; the index is zero-based while the game level is one-based. These are client-derived base values for Strength, Intelligence, Instinct, Initiative, and Max Army Size.
+Ask for each candidate dragon's **level**, **Star Rank**, and unlocked Habits' **skill
+levels** before making a close power comparison. Read
+`level_model.base_stats_by_level.<stat>.values_by_level[level - 1]` from
+`data/dragon_application_knowledge.json`; the index is zero-based while the game level
+is one-based. These are client-derived base values for Strength, Intelligence, Instinct,
+Initiative, and Max Army Size.
 
 - Dragon Level is separate from Star Rank and Habit level. Do not substitute one for another.
 - The client provides separate `star_scalars` but does not establish a complete public final-stat formula. Do not manufacture one; compare raw level curves only when the candidates share the same Star Rank, or qualify the comparison.
 - Base stats are strategically meaningful: Strength enhances Physical damage and mitigates Physical damage through the defender's Instinct; Instinct enhances Tactical damage and mitigates it through the defender's Intelligence; Intelligence enhances Fire damage and mitigates it through the defender's Initiative. Troop Capacity affects staying power and any explicit troop-capacity threshold.
 - If levels are unknown, make a kit-and-synergy recommendation only, label it level-agnostic, and say that the choice may change with actual levels and Stars.
 
-The 37 included production-named client rows are 34 screenshot-audited dragons plus Starshower, Vermithor, and Meleys. WIP, test, NPC, wild, and balance-test records are deliberately excluded.
+The 38 included production-named client rows are 36 screenshot-audited dragons plus
+Meleys and Smoketail. WIP, test, NPC, wild, balance-test, and unresolved
+rows are deliberately excluded. Meleys and Smoketail are user-confirmed Season 3
+available dragons, but their mechanics remain client-derived rather than
+screenshot-complete.
 
 ## Canonical JSON schema
 
@@ -58,9 +72,11 @@ Each `data/dragons/<name>.json` record uses the following keys:
 | Key | Meaning |
 |---|---|
 | `dragons[].recommendation_status` | `screenshot_audited` permits use of the matching `data/dragons` mechanics record. `client_discovered` is usable only with the documented caveats. |
+| `dragons[].availability_status` | Separates `screenshot_observed`, `campaign_observed`, `user_confirmed_available`, and `installed_unverified`; installed-unverified dragons are conditional only and never default recommendations. |
 | `dragons[].level_model.max_level` | Maximum level exposed by the current client row. |
 | `level_model.base_stats_by_level` | Exact client curve per stat, ordered levels 1–50. Use the player-reported level. |
 | `level_model.star_scalars` | Separate client Star scaling curves. Never treat them as a complete final-stat formula unless that formula is established. |
+| `dragons[].troop_affinities` | Installed-client positive, negative, and neutral affinity values joined from the current affinity table. Screenshot-audited affinity fields remain primary when available. |
 | `client_ability_slots` | Client command and six ability slots, including the Breed/Vanguard ability in slot 1. `description_template` can contain unresolved progression tokens, so it supplements but never overrides screenshot wording. |
 | `recommendation_evidence` | Availability and missing-evidence disclosures required for client-discovered dragons. |
 
@@ -191,6 +207,7 @@ Do not turn level, rarity, affinity, or derived role labels into a universal num
 | Sheepstealer | Prey, Fire stacks, Recovery suppression, PvE, Evade/Cleanse | Enemy Recovery feeds targeting and payoff | Prey and Wary Beast suppress Recovery | Legendary; Stolen Flock max 10; some bonus text is PvE-only |
 | Shimmer | Tactical damage, Recovery, ally buffs, First-Strike | Resistance doubles Recovery; Fire Left Flank | Self/team mitigation | Highest-Strength targeting; Cavalry/Siege affinities |
 | Solstryker | Hybrid Basic-Attack damage, Strength erosion, Overwhelm | Vulnerable doubles even-round Tactical damage | Up to 10 Strength-reduction stacks; Overwhelm | Odd/even behavior differs; Archer affinity |
+| Starshower | Tactical damage, Solar Flare consumption, Cleanse/Evade, enemy stat reduction, ally mitigation | Resistance strengthens 10-Star mitigation; Advantage expands it to all Allies; Tactical Left Flank | Reduces all-enemy Intelligence/Initiative and applies same-lane Tactical vulnerability | Solar Flare consumption is 50% chance; Night Guardian remains chance-based; Tactical Breach table-label conflict is recorded in review |
 | Sunfyre | Tactical/Fire damage, Burn, anti-Fire, Cleanse, low-troop defense | Benefits when below 75%/50% troop capacity | Reduces enemy Fire Damage and Intelligence | Several effects depend on first damage received each round and damage type |
 | Syrax | Tactical damage, Fire/First-Strike support, Recovery/Cleanse | Fire ally; Slow increases Recovery; Control cleansing | Teamwide stat/Initiative shifts and multi-effect Cleanse | Recovery on rounds 2/5/8; Spearmen/Archers affinities; Siege negative |
 | Tairax | Fire/Burn, Stagger, control payoff, Resistance/Evade | Any Control effect; Burn produces Resistance chances | Raises damage received of controlled enemies | Same-lane base clause; exact odd/2-5-8 schedules; no direct negative affinity |
@@ -201,21 +218,29 @@ Do not turn level, rarity, affinity, or derived role labels into a universal num
 | Velar | Tactical damage, Advantage, First-Strike/Slow, Recovery/Cleanse | Initiative scaling; teams vulnerable to Bleed/Panic/Burn | Cleanses all allies and applies Slow | Command's Cleanse/Recovery is 10-Star gated; Shieldbearer affinity |
 | Venator | Basic-Attack Physical damage, Hunter counter, Double-Strike, Overwhelm | More Basic Attacks/Double-Strike | Prioritizes Hunters and least-troop enemies | Attack Modifier; low-capacity 10-Star trigger; Spearmen/Shieldbearer affinities |
 | Vermax | Physical damage, Fire-reactive stacking support, mitigation | Enemy Fire dealers add stack attempts; Tactical ally receives Spreading Blaze | Fire mitigation thresholds | Epic; Rallying Flame max 4, Spreading Blaze max 10 |
+| Vermithor | Hybrid Physical/Tactical damage, Protect, self-mitigation, Physical/Fire suppression | Adjacent Ally for Protect; Right Flank Ally when deployed Vanguard | Prioritizes Warriors for Physical suppression and Hunters for Fire suppression; 8-Star mitigation scales with enemy breeds | Noble Sacrifice's Tactical vulnerability falls to 0% only at Habit Level 5; 6-Star Bronze Bulwark materially improves damage and Protect reliability |
 | Vesper | Tactical damage, Slow, mitigation/Resistance, Confusion | Instinct-oriented allies | Slow and late-round Confusion | Confusion only rounds 6-10; Shieldbearer affinity; Siege negative |
 | Vhagar | Physical damage, broad Taunt, mitigation/Recovery, Bulwark | Burn doubles Taunt chance; Tactical Left Flank | Taunt, Weakened, large opening mitigation | Bulwark max 5 and third-stack trigger; 10-Star Habit is `Skyward Titan` |
 | Zivern | Tactical damage/vulnerability, Panic, enemy stat reduction, Overwhelm, team mitigation | Vulnerable doubles Overwhelm chance; Tactical Left Flank | Reduces Strength/Instinct and allied non-Basic Physical/Tactical damage received | Exact scheduled rounds and adjacency scopes; Archer/Siege affinities |
 
 ## Limitations and resolved confirmations
 
-There are no unresolved dragon review items. User confirmation established Dawnseeker's 10-Star Habit as `First Light`, Malachite's Command as `Warden's Rally`, Sheepstealer as Legendary, Vermax as Epic, and Vhagar's 10-Star Habit as `Skyward Titan`.
+Starshower has one documented UI-label conflict: Tactical Breach's sentence says
+`Tactical Damage Received`, while its five-column upgrade row says `Damage Dealt`.
+The canonical values follow the explicit sentence and installed description, and the
+conflict remains in `review`. User confirmation established Dawnseeker's 10-Star Habit
+as `First Light`, Malachite's Command as `Warden's Rally`, Sheepstealer as Legendary,
+Vermax as Epic, and Vhagar's 10-Star Habit as `Skyward Titan`.
 
-`data/dragon_application_knowledge.json` includes three client-discovered dragons
-without screenshot-complete records: the released Shadow of the Greens additions
-Starshower and Vermithor, plus Meleys, whose player availability was not established.
+`data/dragon_application_knowledge.json` includes two client-discovered dragons
+without screenshot-complete records: the user-confirmed Season 3 dragons Meleys and
+Smoketail. Starshower and Vermithor are now screenshot-complete.
 Use their client ability templates only conditionally, disclose the fields named in
 `recommendation_evidence.missing_for_full_recommendations`, and do not invent resolved
-progression-token values. Their named effects Solar Flare, Protect, Laceration, and
-Reflect are defined in `data/effects.json`.
+progression-token values. Their named effects Solar Flare, Protect, Laceration,
+Reflect, and Burn are defined in `data/effects.json`. Consult
+`data/installed_evidence.json` for the dated lifecycle classification before using any
+installed-only behavior.
 
 Some Habit description text shows rounded values while the five-column table shows more precision (for example `-7%` in prose and `-7.5%` at level 1). Records preserve the displayed prose and all five table values; recommendations needing an upgrade value should cite `upgrade_levels`.
 
@@ -230,6 +255,10 @@ request them when a close comparison cannot be resolved from dragon kits and Sta
 
 - Cite the relevant dragon file and fields, for example: `data/dragons/antares.json → command.verbatim[2]`, `vanguard.verbatim`, or `habits[0].upgrade_levels["5"]`. For level-sensitive claims, also cite `data/dragon_application_knowledge.json → dragons[name=Antares].level_model.base_stats_by_level.strength.values_by_level[level - 1]`.
 - State whether a claim is transcribed or derived. Roles, scenario bias, synergies, counters, and preferred position are derived; timings, values, targets, affinities, and effect text are transcribed.
+- Check `data/installed_evidence.json` before using client-derived changes. Respect its
+  `recommendation_use`: `exclude` never affects live recommendations,
+  `corroboration_only` cannot create a mechanic absent from explicit wording, and
+  `conditional_only` requires an installed-client qualifier and missing-field disclosure.
 - Never infer an unstated lane, target count, duration, stack cap, cleanse scope, Basic Attack interaction, status interaction, or damage type.
 - For default and “same lane” targeting, map Left Flank to enemy Left Flank, Vanguard
   to enemy Vanguard, and Right Flank to enemy Right Flank. Never mirror Left and Right;

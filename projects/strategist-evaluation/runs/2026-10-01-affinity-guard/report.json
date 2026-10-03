@@ -1,0 +1,194 @@
+{
+  "generated_at": "2026-10-03T15:58:16.429257+00:00",
+  "response_dir": "projects/strategist-evaluation/runs/2026-10-01-affinity-guard",
+  "summary": {
+    "cases_graded": 2,
+    "cases_missing": 4,
+    "benchmark_exact_matches": 0,
+    "benchmark_total": 1,
+    "critical_reasoning_passes": 1,
+    "holdout_passes": 1,
+    "holdout_total": 1,
+    "overall_pass": false
+  },
+  "missing": [
+    "meta-damage-survivability",
+    "meta-cavalry-counter",
+    "holdout-velar-five-stars",
+    "holdout-vermithor-five-stars"
+  ],
+  "results": [
+    {
+      "id": "meta-high-damage",
+      "kind": "benchmark",
+      "benchmark_id": "velar-vhagar-moondancer-shieldbearers",
+      "parsed_formation": {
+        "troop_type": "Shieldbearers",
+        "left_flank": "Starshower",
+        "vanguard": "Moondancer",
+        "right_flank": "Shadowrend"
+      },
+      "expected_formation": {
+        "troop_type": "Shieldbearers",
+        "left_flank": "Velar",
+        "vanguard": "Vhagar",
+        "right_flank": "Moondancer"
+      },
+      "formation_checks": {
+        "troop_type": true,
+        "left_flank": false,
+        "vanguard": false,
+        "right_flank": false
+      },
+      "exact_formation_match": false,
+      "reasoning_checks": [
+        {
+          "id": "shared-affinity",
+          "label": "Identifies the trio's shared Shieldbearer affinity",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "Shieldbearers?": true,
+            "affinit": true
+          },
+          "any_patterns": {},
+          "none_patterns": {}
+        },
+        {
+          "id": "directional-vanguard",
+          "label": "Uses Vhagar's directional Vanguard support",
+          "critical": true,
+          "passed": false,
+          "all_patterns": {
+            "Vhagar": false,
+            "Vanguard": true,
+            "Left Flank": true,
+            "Right Flank": true,
+            "Tactical": true,
+            "Physical": true
+          },
+          "any_patterns": {},
+          "none_patterns": {}
+        },
+        {
+          "id": "rising-tide-chain",
+          "label": "Traces the Velar-to-Moondancer Rising Tide chain",
+          "critical": true,
+          "passed": false,
+          "all_patterns": {
+            "Velar": false,
+            "Moondancer": true,
+            "Rising Tide": true
+          },
+          "any_patterns": {
+            "Advantage": true,
+            "Tactical": true
+          },
+          "none_patterns": {}
+        },
+        {
+          "id": "six-star-reliability",
+          "label": "Treats the six-Star proc package as chance-based",
+          "critical": false,
+          "passed": false,
+          "all_patterns": {
+            "Gales of Power": false
+          },
+          "any_patterns": {
+            "24%": false,
+            "chance": true,
+            "probabil": true
+          },
+          "none_patterns": {}
+        },
+        {
+          "id": "troop-cycle-risk",
+          "label": "Discloses Cavalry as the troop-cycle risk",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "Cavalry": true,
+            "Shieldbearers?": true
+          },
+          "any_patterns": {
+            "advantage": true,
+            "counter": false,
+            "risk": true,
+            "disadvantage": false
+          },
+          "none_patterns": {}
+        }
+      ],
+      "critical_reasoning_pass": false,
+      "passed": false
+    },
+    {
+      "id": "holdout-low-buff-spearmen",
+      "kind": "holdout",
+      "benchmark_id": "malachite-seasmoke-kalspire-cavalry-counter",
+      "parsed_formation": {
+        "troop_type": "Archers",
+        "left_flank": "Malachite",
+        "vanguard": "Seasmoke",
+        "right_flank": "Kalspire"
+      },
+      "expected_formation": null,
+      "formation_checks": {},
+      "exact_formation_match": null,
+      "reasoning_checks": [
+        {
+          "id": "troop-disadvantage",
+          "label": "Recognizes Cavalry's disadvantage against Spearmen",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "Cavalry": true,
+            "Spearmen": true
+          },
+          "any_patterns": {
+            "disadvantage": true,
+            "countered": false,
+            "weak": false,
+            "unfavorable": false,
+            "advantage over Cavalry": true
+          },
+          "none_patterns": {}
+        },
+        {
+          "id": "cleanse-loses-value",
+          "label": "Downgrades Seasmoke when there are few removable buffs",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {
+            "Seasmoke": true
+          },
+          "any_patterns": {
+            "less value": false,
+            "reduced value": false,
+            "loses value": false,
+            "Cleanse": true,
+            "removal": false
+          },
+          "none_patterns": {}
+        },
+        {
+          "id": "does-not-overfit",
+          "label": "Rejects the benchmark formation as a universal default",
+          "critical": true,
+          "passed": true,
+          "all_patterns": {},
+          "any_patterns": {
+            "not.*default": true,
+            "not.*universal": false,
+            "reassess": false,
+            "different counter": false,
+            "would not retain": false
+          },
+          "none_patterns": {}
+        }
+      ],
+      "critical_reasoning_pass": true,
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "name": "Starshower",
+  "breed": "Sentinel",
+  "rarity_label": "Elder",
+  "rarity_tier": "Epic",
+  "troop_affinities": {
+    "positive": [
+      "Shieldbearers"
+    ],
+    "negative": [],
+    "review_required": false
+  },
+  "excluded_progression_snapshot": [
+    "Strength",
+    "Instinct",
+    "Intelligence",
+    "Initiative",
+    "Stamina",
+    "visible Power",
+    "current level",
+    "XP",
+    "current Star Rank",
+    "current army size"
+  ],
+  "command": {
+    "name": "Starfall",
+    "type": "Active",
+    "verbatim": [
+      "Start of Combat: Mark 3 Enemies in any lane with Solar Flare.",
+      "Each Round: 50% chance to deal Tactical Damage to 1 Enemy with Solar Flare (Damage Rate: +100%). This consumes the Solar Flare mark on the target.",
+      "Rounds 1, 3, 7, 9: Deal Tactical Damage to 1 Enemy in the same lane (Damage Rate: +80%).",
+      "At 6+ Stars: Each Round: Increase the Tactical Damage dealt when consuming Solar Flare to +200%.",
+      "Rounds 6-10: If no Enemy has Solar Flare, mark 3 Enemies in any lane with Solar Flare. This effect can only trigger once per combat.",
+      "At 10 Stars: When you consume a Solar Flare mark: Reduce the Damage Received by -6% of 2 Allies within adjacency for 1 round(s). If you have Resistance, increase this effect by 1.5x (-9%). If you have Advantage, this effect instead applies to 3 Allies in any lane."
+    ],
+    "structured": {
+      "damage_type": "Tactical Damage",
+      "solar_flare_targets": 3,
+      "solar_flare_scope": "any lane",
+      "consume_chance_percent": 50,
+      "same_lane_rounds": [1, 3, 7, 9],
+      "refresh_window": "Rounds 6-10",
+      "refresh_limit": "once per combat",
+      "star_gates": [6, 10]
+    }
+  },
+  "vanguard": {
+    "name": "Sentinel's Wit",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Tactical Damage Dealt by +16%. Increase Instinct and Initiative by +20 of the Ally deployed in the Left Flank.",
+    "structured": {
+      "self_effect": "Tactical Damage Dealt +16%",
+      "left_flank_stats": ["Instinct", "Initiative"],
+      "left_flank_value": 20
+    }
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Night Guardian",
+      "verbatim": "Each Round: 30% chance to Cleanse 1 Negative effect from 2 other Allies in any lane and grant them Evade (Rate: 10%) for 1 round(s). Evade causes each instance of damage against the target to have a chance to be ignored.",
+      "upgrade_levels": {
+        "1": 15,
+        "2": 18,
+        "3": 21,
+        "4": 25.5,
+        "5": 30
+      },
+      "value_unit": "activation_chance_percent",
+      "tags": ["cleanse", "evade", "ally_support", "chance_based"]
+    },
+    {
+      "star_unlock": 4,
+      "name": "Battle Subversion",
+      "verbatim": "Start of Combat: Reduce the Intelligence and Initiative (enhanced by Instinct) of 3 Enemies in any lane by -10.5% until the end of combat.",
+      "upgrade_levels": {
+        "1": -5,
+        "2": -6,
+        "3": -7,
+        "4": -8.85,
+        "5": -10.5
+      },
+      "value_unit": "intelligence_initiative_percent",
+      "tags": ["intelligence_reduction", "initiative_reduction", "all_enemies", "instinct_scaling"]
+    },
+    {
+      "star_unlock": 6,
+      "name": "Ill Portents",
+      "verbatim": [
+        "Starfall gains: Each Round: Increase the Tactical Damage dealt when consuming Solar Flare to +200%.",
+        "Rounds 6-10: If no Enemy has Solar Flare, mark 3 Enemies in any lane with Solar Flare. This effect can only trigger once per combat."
+      ],
+      "upgrade_levels": {
+        "1": 130,
+        "2": 144,
+        "3": 158,
+        "4": 179,
+        "5": 200
+      },
+      "value_unit": "tactical_damage_rate_percent",
+      "tags": ["command_upgrade", "solar_flare", "tactical_damage", "mark_refresh"]
+    },
+    {
+      "star_unlock": 8,
+      "name": "Tactical Breach",
+      "verbatim": "Start of Combat: Increase the Tactical Damage Received by +17% of 1 Enemy in the same lane until the end of combat.",
+      "upgrade_levels": {
+        "1": 10,
+        "2": 12,
+        "3": 14,
+        "4": 17,
+        "5": 20
+      },
+      "value_unit": "tactical_damage_received_percent",
+      "tags": ["tactical_vulnerability", "same_lane"]
+    },
+    {
+      "star_unlock": 10,
+      "name": "Wishkeeper's Grace",
+      "verbatim": "Starfall gains: When you consume a Solar Flare mark: Reduce the Damage Received by -6% of 2 Allies within adjacency for 1 round(s). If you have Resistance, increase this effect by 1.5x (-9%). If you have Advantage, this effect instead applies to 3 Allies in any lane.",
+      "upgrade_levels": {
+        "1": -6,
+        "2": -7.8,
+        "3": -9.6,
+        "4": -12,
+        "5": -15
+      },
+      "value_unit": "damage_received_percent",
+      "tags": ["command_upgrade", "solar_flare", "ally_mitigation", "resistance_payoff", "advantage_payoff"]
+    }
+  ],
+  "derived": {
+    "roles": [
+      "tactical_damage",
+      "solar_flare_payoff",
+      "cleanse_support",
+      "evade_support",
+      "enemy_stat_reduction",
+      "tactical_vulnerability",
+      "ally_mitigation"
+    ],
+    "preferred_troops": ["Shieldbearers"],
+    "avoid_troops": [],
+    "formation_needs": [
+      "Resistance improves Wishkeeper's Grace mitigation",
+      "Advantage expands Wishkeeper's Grace to all three Allies",
+      "Tactical Left Flank benefits from Sentinel's Wit"
+    ],
+    "notes": [
+      "Solar Flare is a consumable mark rather than a documented independent damage-over-time effect.",
+      "Night Guardian is chance-based even at Habit Level 5, so Cleanse and Evade are support coverage rather than guaranteed round-by-round protection.",
+      "At 6 Stars and Ill Portents Level 5, the Solar Flare-consuming Tactical hit reaches a 200% damage rate and can refresh all marks once during rounds 6-10 if none remain."
+    ]
+  },
+  "review": [
+    "Tactical Breach's full sentence says it increases Tactical Damage Received, while the five-column upgrade row is labeled Damage Dealt. The values are normalized to Tactical Damage Received because that is the explicit target effect in both the screenshot sentence and installed-client description; preserve this UI-label conflict when citing the upgrade track."
+  ]
+}

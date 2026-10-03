@@ -1,0 +1,49 @@
+{
+  "benchmark_id": "malachite-seasmoke-kalspire-cavalry-counter",
+  "objective": "pvp-counter",
+  "scenario_notes": "Well-rounded Cavalry formation and expert counter to Velar/Vhagar/Moondancer with Shieldbearers. The listed order is user-confirmed as Left Flank, Vanguard, Right Flank. All dragons on both sides are Level 50 and 6 Stars; each unlocked Habit is Level 5. Power is unknown.",
+  "our_formation": {
+    "troop_type": "Cavalry",
+    "left_flank": {"dragon": "Malachite", "level": 50, "star_rank": 6, "habit_levels": [5, 5, 5, "locked", "locked"], "power": "unknown"},
+    "vanguard": {"dragon": "Seasmoke", "level": 50, "star_rank": 6, "habit_levels": [5, 5, 5, "locked", "locked"], "power": "unknown"},
+    "right_flank": {"dragon": "Kalspire", "level": 50, "star_rank": 6, "habit_levels": [5, 5, 5, "locked", "locked"], "power": "unknown"}
+  },
+  "opponent": {
+    "troop_type": "Shieldbearers",
+    "left_flank": {"dragon": "Velar", "level": 50, "star_rank": 6, "habit_levels": [5, 5, 5, "locked", "locked"], "power": "unknown"},
+    "vanguard": {"dragon": "Vhagar", "level": 50, "star_rank": 6, "habit_levels": [5, 5, 5, "locked", "locked"], "power": "unknown"},
+    "right_flank": {"dragon": "Moondancer", "level": 50, "star_rank": 6, "habit_levels": [5, 5, 5, "locked", "locked"], "power": "unknown"}
+  },
+  "known_candidate_roster": ["All screenshot-audited, campaign-observed, and user-confirmed available dragons"],
+  "why_experts_use_it": "Perfect Cavalry affinity and troop advantage into Shieldbearers, Malachite Recovery and support, Seasmoke removal of enemy positive effects, and Kalspire's broad stat pressure and damage-over-time package.",
+  "source_or_observation": "Current expert benchmark supplied by the user on 2026-10-01. The user's phrase 'Seasmoke cleanse habit' is normalized to the canonical source: enemy-positive-effect Cleanse is in Cleansing Wrath; the 6-Star Infectious Wrath Habit adds Recovery suppression and Panic-reactive Physical damage.",
+  "runs": {
+    "baseline": {
+      "prompt_revision": "b02c4bc:.github/agents/dragonfire-strategist.agent.md",
+      "repository_revision": "b02c4bc",
+      "input": "Counter a Level 50, 6-Star Velar Left/Vhagar Vanguard/Moondancer Right Shieldbearer formation using the full known roster. All unlocked Habits are Level 5; Power is unknown.",
+      "recommendation": "Malachite Left Flank, Seasmoke Vanguard, Kalspire Right Flank with Cavalry. The baseline identifies perfect affinity, Cavalry's troop advantage over Shieldbearers, Seasmoke's enemy-positive-effect Cleanse, Malachite's sustain, and Kalspire's pressure.",
+      "disagreement": "None on formation. The expert shorthand attributes Cleanse to a Habit, while canonical evidence places it in Seasmoke's Command. The baseline does not fully inventory which Velar/Vhagar/Moondancer buffs are probabilistically removable versus effects that are not covered.",
+      "diagnosis": "incorrect-mechanics"
+    },
+    "revised": [
+      {
+        "prompt_revision": "working-tree-2026-10-01",
+        "repository_revision": "working-tree",
+        "input": "Same benchmark input and assumptions as baseline.",
+        "recommendation": "Malachite Left Flank, Seasmoke Vanguard, Kalspire Right Flank with Cavalry remains the best-supported counter. Cavalry directly counters the enemy Shieldbearers; Seasmoke attempts up to three separate 20% enemy-buff Cleanses each round; Malachite supplies Recovery and, at Habit Level 5, a 20% Advantage chance for both allies; Kalspire's Level 5 six-Star track reaches a 30% Panic chance and 50% Physical damage-rate track. Seasmoke's Vanguard protects Kalspire on the Right Flank.",
+        "disagreement": "None on formation. Revised reasoning corrects the Command/Habit attribution and labels Seasmoke's removal as probabilistic rather than a blanket hard counter to every buff instance.",
+        "diagnosis": "none"
+      }
+    ]
+  },
+  "variations": [
+    {
+      "id": "holdout-low-buff-spearmen-opponent",
+      "change": "Replace the Shieldbearer buff-heavy opponent with a low-buff Spearmen formation.",
+      "expected_general_rule": "Cavalry loses its troop advantage and Seasmoke loses much of its counter-specific value. Do not preserve this trio as a universal answer solely because it is a benchmark meta composition.",
+      "result": "Passed: Spearmen directly counter Cavalry and the low-buff enemy reduces Seasmoke's removal value, so the revised method requires a new counter search instead of reusing the benchmark trio.",
+      "status": "passed"
+    }
+  ]
+}

@@ -20,7 +20,9 @@ in *Game of Thrones: Dragonfire*.
 - Store screenshot-complete dragon facts in `data/dragons/<name>.json`.
 - Store shared mechanics in `data/game_mechanics.json`.
 - Store effect definitions in `data/effects.json`.
-- Store incomplete official additions in `data/live_updates.json`.
+- Store dated installed-client observations and lifecycle state in
+  `data/installed_evidence.json`; keep client-derived roster/templates in
+  `data/dragon_application_knowledge.json`.
 - Store source audits in `wiki/Online-Sources.md`.
 - Do not duplicate detailed mechanics in customization files.
 

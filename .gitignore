@@ -62,3 +62,6 @@ Game_Details/Resources/_extracted/_diag_*.png
 
 # Local dragon reference screenshots and extraction folders.
 dragon_stars/
+
+# Disposable intermediate output from Strategist response decoding.
+projects/strategist-evaluation/runs/**/*.initial-decode.txt
