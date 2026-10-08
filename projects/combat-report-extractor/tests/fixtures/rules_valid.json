@@ -1,0 +1,26 @@
+{
+  "metadata": {"schema_version": "1.0.0", "updated": "2026-10-08", "purpose": "Synthetic test rules"},
+  "rules": [
+    {
+      "id": "rule.vhagar.eclipse-cover-advantage.v1",
+      "status": "accepted",
+      "relationship": "emitted_effect",
+      "source": {"dragon": "Vhagar", "ability": "Eclipse Cover", "ability_type": "habit"},
+      "match": {
+        "event_kind": "affect", "owner_scope": "same", "result_event_kind": "affect",
+        "round_offset": {"minimum": 0, "maximum": 0},
+        "report_phrases": ["Advantage (+20%) for 2 rounds."], "report_patterns": []
+      },
+      "interpretation": {
+        "effect": "Advantage", "summary": "Synthetic evidence supports an Eclipse Cover and Advantage association.",
+        "provenance": "inferred", "confidence": "corroborated"
+      },
+      "evidence": {
+        "supports": ["observation.synthetic-report.001"], "contradicts": [],
+        "canonical_sources": ["data/dragons/vhagar.json -> habits[2].verbatim"]
+      },
+      "limitations": ["This rule exists only in synthetic test fixtures."],
+      "review": {"created": "2026-10-08", "last_reviewed": "2026-10-08"}
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "source": {"path": "fixture.mp4", "sha256": "fixture"},
+  "ownership_rule": {"blue": "user", "red": "enemy", "authority": "user-supplied"},
+  "coverage": {
+    "rounds_with_actions": [3],
+    "action_count": 2,
+    "rejected_action_count": 0,
+    "warnings": ["No parsed visible actions for rounds: 1, 2."]
+  },
+  "actions": [
+    {
+      "round": 3,
+      "section": "ROUND 3",
+      "owner": "enemy",
+      "kind": "attack",
+      "actor": "Vermithor",
+      "ability": "Basic Attack",
+      "target": "Velar",
+      "target_lane": "LeftFlank",
+      "damage": {"amount": 177, "type": "Physical"},
+      "losses": 177,
+      "remaining": 11078,
+      "recovery": null,
+      "modifiers": [],
+      "evidence": {
+        "timestamp_seconds": 80.0,
+        "frame": "frame-000001.jpg",
+        "ocr_confidence": 0.9555,
+        "head_text": "[Vermithor] uses [Basic Attack] to attack [Velar] (Left Flank).",
+        "detail_text": "Deals 177 Physical Damage against [Velar]. [Velar] takes 177 losses (11078 remaining)."
+      }
+    },
+    {
+      "round": 3,
+      "section": "ROUND 3",
+      "owner": "user",
+      "kind": "attack",
+      "actor": "Vhagar",
+      "ability": "Basic Attack",
+      "target": "Rhysarion",
+      "target_lane": "Vanguard",
+      "damage": {"amount": 396, "type": "Physical"},
+      "losses": 396,
+      "remaining": 8842,
+      "recovery": null,
+      "modifiers": [],
+      "evidence": {
+        "timestamp_seconds": 80.0,
+        "frame": "frame-000001.jpg",
+        "ocr_confidence": 0.9575,
+        "head_text": "[Vhagar] uses [Basic Attack] to attack [Rhysarion] (Vanguard).",
+        "detail_text": "Deals 396 Physical Damage against [Rhysarion]. [Rhysarion] takes 396 losses (8842 remaining)."
+      }
+    }
+  ],
+  "rejected_actions": []
+}

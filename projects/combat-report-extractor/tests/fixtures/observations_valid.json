@@ -1,0 +1,20 @@
+{
+  "metadata": {"schema_version": "1.0.0", "updated": "2026-10-08"},
+  "observations": [
+    {
+      "id": "observation.synthetic-report.001",
+      "disposition": "supports",
+      "report": {
+        "report_id": "synthetic-report", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "synthetic-formation-a"
+      },
+      "location": {"round": 3, "timestamp_seconds": 31.0, "frame_basename": "synthetic-000002.jpg"},
+      "verbatim": {
+        "head_text": "[Vhagar] activates [Advantage] affecting [Velar] (Left Flank).",
+        "detail_text": "Advantage (+20%) for 2 rounds."
+      },
+      "normalized": {"owner": "user", "actor": "Vhagar", "ability": "Eclipse Cover", "result": "Advantage"},
+      "quality": {"visual_review": "confirmed", "coverage_warnings_relevant": false, "notes": ["Synthetic fixture only."]}
+    }
+  ]
+}

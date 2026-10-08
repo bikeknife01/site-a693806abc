@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "combat-report-rules.schema.json",
+  "title": "Dragonfire combat report rule store",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["metadata", "rules"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "updated", "purpose"],
+      "properties": {
+        "schema_version": {"const": "1.0.0"},
+        "updated": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+        "purpose": {"type": "string", "minLength": 1}
+      }
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "relationship", "source", "match", "interpretation", "evidence", "limitations", "review"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^rule\\.[a-z0-9][a-z0-9.-]*\\.v[1-9][0-9]*$"},
+          "status": {"enum": ["draft", "accepted", "disputed", "deprecated"]},
+          "relationship": {"enum": ["explicit", "ui_alias", "emitted_effect", "unnamed_result", "inferred_exclusive_mapping", "timing_correlation", "unresolved"]},
+          "source": {
+            "type": "object", "additionalProperties": false,
+            "required": ["dragon", "ability", "ability_type"],
+            "properties": {
+              "dragon": {"type": ["string", "null"]},
+              "ability": {"type": ["string", "null"]},
+              "ability_type": {"enum": ["command", "vanguard", "habit", "basic_attack", "other", null]}
+            }
+          },
+          "match": {
+            "type": "object", "additionalProperties": false,
+            "required": ["event_kind", "owner_scope", "result_event_kind", "round_offset", "report_phrases", "report_patterns"],
+            "properties": {
+              "event_kind": {"type": ["string", "null"]},
+              "owner_scope": {"enum": ["same", "opponent", "any"]},
+              "result_event_kind": {"type": ["string", "null"]},
+              "round_offset": {
+                "type": "object", "additionalProperties": false,
+                "required": ["minimum", "maximum"],
+                "properties": {"minimum": {"type": "integer"}, "maximum": {"type": "integer"}}
+              },
+              "report_phrases": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+              "report_patterns": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+            }
+          },
+          "interpretation": {
+            "type": "object", "additionalProperties": false,
+            "required": ["effect", "summary", "provenance", "confidence"],
+            "properties": {
+              "effect": {"type": ["string", "null"]},
+              "summary": {"type": "string", "minLength": 1},
+              "provenance": {"enum": ["observed", "derived", "inferred", "unknown"]},
+              "confidence": {"enum": ["tentative", "supported", "corroborated", "disputed"]}
+            }
+          },
+          "evidence": {
+            "type": "object", "additionalProperties": false,
+            "required": ["supports", "contradicts", "canonical_sources"],
+            "properties": {
+              "supports": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+              "contradicts": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+              "canonical_sources": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+            }
+          },
+          "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}},
+          "review": {
+            "type": "object", "additionalProperties": false,
+            "required": ["created", "last_reviewed"],
+            "properties": {
+              "created": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+              "last_reviewed": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+              "replacement_rule_id": {"type": ["string", "null"]},
+              "rationale": {"type": ["string", "null"]}
+            }
+          },
+          "excluded_alternatives": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "supersedes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+        }
+      }
+    }
+  }
+}

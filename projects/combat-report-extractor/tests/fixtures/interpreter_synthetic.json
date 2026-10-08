@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "source": {"path": "synthetic-fixture.mp4", "sha256": "synthetic-fixture"},
+  "ownership_rule": {"blue": "user", "red": "enemy", "authority": "user-supplied"},
+  "coverage": {
+    "rounds_with_actions": [3, 4],
+    "action_count": 6,
+    "rejected_action_count": 0,
+    "warnings": ["Synthetic fixture warning."]
+  },
+  "actions": [
+    {
+      "round": 3, "section": "ROUND 3", "owner": "user", "kind": "affect",
+      "actor": "Vhagar", "ability": "Eclipse Cover", "target": "Velar", "target_lane": "Left Flank",
+      "damage": null, "losses": null, "remaining": null, "recovery": null, "modifiers": [],
+      "evidence": {"timestamp_seconds": 30.0, "frame": "synthetic-000001.jpg", "ocr_confidence": 1.0,
+        "head_text": "[Vhagar] activates [Eclipse Cover] affecting [Velar] (Left Flank).", "detail_text": ""}
+    },
+    {
+      "round": 3, "section": "ROUND 3", "owner": "user", "kind": "affect",
+      "actor": "Vhagar", "ability": "Advantage", "target": "Velar", "target_lane": "Left Flank",
+      "damage": null, "losses": null, "remaining": null, "recovery": null, "modifiers": [],
+      "evidence": {"timestamp_seconds": 31.0, "frame": "synthetic-000002.jpg", "ocr_confidence": 1.0,
+        "head_text": "[Vhagar] activates [Advantage] affecting [Velar] (Left Flank).", "detail_text": "Advantage (+20%) for 2 rounds."}
+    },
+    {
+      "round": 4, "section": "ROUND 4", "owner": "enemy", "kind": "affect",
+      "actor": "Vermithor", "ability": "Bronze Fury", "target": "Arrax", "target_lane": "Vanguard",
+      "damage": null, "losses": null, "remaining": null, "recovery": null, "modifiers": [],
+      "evidence": {"timestamp_seconds": 40.0, "frame": "synthetic-000003.jpg", "ocr_confidence": 1.0,
+        "head_text": "[Vermithor] activates [Bronze Fury] affecting [Arrax] (Vanguard).", "detail_text": ""}
+    },
+    {
+      "round": 4, "section": "ROUND 4", "owner": "enemy", "kind": "affect",
+      "actor": "Vermithor", "ability": "Noble Sacrifice", "target": "Arrax", "target_lane": "Vanguard",
+      "damage": null, "losses": null, "remaining": null, "recovery": null, "modifiers": [],
+      "evidence": {"timestamp_seconds": 40.5, "frame": "synthetic-000004.jpg", "ocr_confidence": 1.0,
+        "head_text": "[Vermithor] activates [Noble Sacrifice] affecting [Arrax] (Vanguard).", "detail_text": ""}
+    },
+    {
+      "round": 4, "section": "ROUND 4", "owner": "enemy", "kind": "affect",
+      "actor": "Vermithor", "ability": "Protect", "target": "Arrax", "target_lane": "Vanguard",
+      "damage": null, "losses": null, "remaining": null, "recovery": null, "modifiers": [],
+      "evidence": {"timestamp_seconds": 41.0, "frame": "synthetic-000005.jpg", "ocr_confidence": 1.0,
+        "head_text": "[Vermithor] activates [Protect] affecting [Arrax] (Vanguard).", "detail_text": "Protect for 2 rounds."}
+    },
+    {
+      "round": 4, "section": "ROUND 4", "owner": "user", "kind": "affect",
+      "actor": "Vhagar", "ability": "Unresolved Pulse", "target": "Vhagar", "target_lane": null,
+      "damage": null, "losses": null, "remaining": null, "recovery": null, "modifiers": [],
+      "evidence": {"timestamp_seconds": 42.0, "frame": "synthetic-000006.jpg", "ocr_confidence": 1.0,
+        "head_text": "[Vhagar] activates [Unresolved Pulse] on itself.", "detail_text": "Unresolved Pulse remains visible."}
+    }
+  ],
+  "rejected_actions": []
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "enriched-combat-report.schema.json",
+  "title": "Dragonfire enriched combat report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["analysis_schema_version", "tool_version", "input_report_hash", "rule_set_version", "rule_set_hash", "source_report", "events", "links", "unmatched_events", "ambiguous_matches", "coverage", "insights"],
+  "properties": {
+    "analysis_schema_version": {"const": "1.0.0"},
+    "tool_version": {"type": "string"},
+    "input_report_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "rule_set_version": {"type": "string"},
+    "rule_set_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "observation_set_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "source_report": {"type": "object"},
+    "events": {"type": "array", "items": {"type": "object"}},
+    "links": {"type": "array", "items": {"type": "object"}},
+    "unmatched_events": {"type": "array", "items": {"type": "string"}},
+    "ambiguous_matches": {"type": "array", "items": {"type": "object"}},
+    "coverage": {"type": "object"},
+    "insights": {"type": "object"}
+  }
+}
