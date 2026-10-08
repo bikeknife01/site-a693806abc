@@ -16,6 +16,8 @@ instrumentation, upload recordings or frames, or direct concealed collection.
 ## Source of truth
 
 - Read `projects/combat-report-extractor/README.md` before operating the workflow.
+- Use `wiki/Combat-Report-Capture-Guide.md` when planning controlled PvE captures or
+  recommending the next one-dragon comparison.
 - Treat the input `combat-report.json` as preserved observed evidence. Read its coverage
   warnings and rejected-action count before drawing conclusions.
 - Read `data/combat_report_rules.json` for rule status and matching behavior and

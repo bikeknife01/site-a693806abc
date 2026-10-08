@@ -40,6 +40,10 @@ additional rule from examples on this page.
 
 ## Run and review
 
+Before recording new evidence, follow the
+[`Combat Report Capture Guide`](Combat-Report-Capture-Guide.md), especially its
+single-dragon-swap protocol and local capture-note template.
+
 ```powershell
 python projects/combat-report-extractor/validate_combat_report_rules.py
 python projects/combat-report-extractor/combat_report_interpreter.py interpret `

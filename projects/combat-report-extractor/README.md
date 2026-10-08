@@ -109,6 +109,10 @@ python projects/combat-report-extractor/combat_report_extractor.py parse `
 
 ## Recording guidance
 
+For controlled PvE comparisons, single-dragon swaps, capture-note templates, naming, and
+an incremental collection plan, use the
+[`Combat Report Capture Guide`](../../wiki/Combat-Report-Capture-Guide.md).
+
 For the most complete result:
 
 1. Open the detailed report and begin at Troop Formation.

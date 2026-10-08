@@ -14,6 +14,7 @@ class CombatAnalystDocumentationTests(unittest.TestCase):
         for relative in (
             ".github/agents/dragonfire-combat-analyst.agent.md",
             "wiki/Combat-Report-Interpretation.md",
+            "wiki/Combat-Report-Capture-Guide.md",
             "data/combat_report_rules.json",
             "data/combat_report_observations.json",
             "projects/combat-report-extractor/docs/CANDIDATE_REVIEW.md",
