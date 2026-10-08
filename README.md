@@ -14,6 +14,7 @@ This repository contains an AI-oriented reference for dragon army formation reco
 - [`wiki/Online-Sources.md`](wiki/Online-Sources.md) — dated official/community source audit and unresolved public rules.
 - [`projects/game-data-encyclopedia/`](projects/game-data-encyclopedia/) — searchable static encyclopedia implementation for dragons, abilities, effects/statuses, evidence, and progression gates.
 - [`projects/recommendation-planner/`](projects/recommendation-planner/) — deterministic mixed-progression formation search, mandatory common-baseline ledger, Pareto comparison, timing analysis, and evidence trace; it also supports consolidated, validated multi-matchup reports with explicit roster scope and dragon-reuse policy.
+- [`projects/combat-report-extractor/`](projects/combat-report-extractor/) — local-only combat-report video OCR, blue/red ownership classification, auditable action normalization, deduplication, and visible-value insight reports.
 - [`review/`](review/) — extraction questions that require human confirmation.
 - [`Dragon_Specs/`](Dragon_Specs/) and [`Game_Details/`](Game_Details/) — source screenshots.
 

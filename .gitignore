@@ -19,6 +19,12 @@ Desktop.ini
 .tmp*/
 tmp/
 temp/
+projects/combat-report-extractor/runs/
+projects/combat-report-extractor/**/*.mp4
+projects/combat-report-extractor/**/*.mov
+projects/combat-report-extractor/**/*.mkv
+projects/combat-report-extractor/**/*.webm
+projects/combat-report-extractor/**/frames/
 
 # Python caches and local environments
 __pycache__/

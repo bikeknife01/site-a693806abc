@@ -179,6 +179,27 @@ The analyzer uses protobuf field `1` and its nested textual identifier where pos
 - Large quest, task, shop, or event additions may be campaign staging. Record them, but require activation evidence before calling them live.
 - Record snapshot date, client version, package version code, capture scope, source hashes, comparison baseline, and analyzer version in every report.
 
+## Combat Report Video Extraction
+
+Use `projects/combat-report-extractor/combat_report_extractor.py` for user-supplied
+combat-report recordings. Read its README before running it. The workflow is local-only:
+it must not upload recordings or frames, connect to the game, attach instrumentation,
+intercept TLS, inspect memory, or modify the emulator.
+
+Treat the user's ownership convention as authoritative: blue action backgrounds and blue
+dragon names are the user's side; red backgrounds and red names are the enemy side. Run
+the extractor into a dated ignored snapshot under
+`Game_Details/Resources/_snapshots/<date>/analysis/`. Preserve `ocr_frames.json`,
+`combat-report.json`, `insights.md`, and their cited frames together for audit. Reparse
+retained OCR instead of rerunning expensive video decoding when only parser logic changes.
+
+The generated totals describe successfully parsed text visible in sampled frames. They
+are not server totals. Read `coverage.warnings` and inspect cited frames before using a
+claim. Never silently repair ambiguous OCR, infer a missing round, or assign an unknown
+side. Unsupported records remain raw evidence or rejected actions until visually
+corroborated. Keep recordings, extracted frames, OCR runs, local virtual environments,
+and downloaded model/runtime files ignored by Git.
+
 ## Latest Local Findings
 
 The 2026-10-01 local snapshot compares client `26.9.56700` (`versionCode` 326) with the 2026-09-16 snapshot of `26.9.56160`.

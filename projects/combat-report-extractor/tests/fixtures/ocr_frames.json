@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "source": {"path": "fixture.mp4", "sha256": "fixture"},
+  "ownership_rule": {"blue": "user", "red": "enemy", "authority": "user-supplied"},
+  "frames": [
+    {
+      "frame": "frame-000001.jpg",
+      "timestamp_seconds": 80.0,
+      "active_section": "ROUND 3",
+      "lines": [
+        {"text": "[Vhagar] uses [Basic Attack] to attack [Rhysarion] (Vanguard).", "confidence": 0.957, "ownership": "user", "box": [[680, 208], [1551, 208], [1551, 247], [680, 247]]},
+        {"text": "Deals 396 Physical Damage against [Rhysarion]. [Rhysarion] takes 396 losses (8842 remaining).", "confidence": 0.958, "ownership": "user", "box": [[674, 251], [2026, 252], [2026, 294], [674, 293]]},
+        {"text": "[Vermithor] uses [Basic Attack] to attack [Velar] (Left Flank).", "confidence": 0.963, "ownership": "enemy", "box": [[764, 636], [1613, 636], [1613, 674], [764, 674]]},
+        {"text": "Deals 177 Physical Damage against [Velar]. [Velar] takes 177 losses (11078 remaining).", "confidence": 0.948, "ownership": "enemy", "box": [[759, 680], [1974, 680], [1974, 723], [759, 723]]}
+      ]
+    },
+    {
+      "frame": "frame-000002.jpg",
+      "timestamp_seconds": 82.0,
+      "active_section": "ROUND 3",
+      "lines": [
+        {"text": "[Vhagar]uses[BasicAttack]to attack[Rhysarion](Vanguard).", "confidence": 0.936, "ownership": "user", "box": [[680, 208], [1551, 208], [1551, 247], [680, 247]]},
+        {"text": "Deals396Physical Damage against[Rhysarion].[Rhysarion]takes396losses(8842remaining).", "confidence": 0.934, "ownership": "user", "box": [[674, 251], [2026, 252], [2026, 294], [674, 293]]}
+      ]
+    }
+  ]
+}
+
