@@ -109,7 +109,7 @@ python projects/combat-report-extractor/combat_report_extractor.py parse `
 
 ## Recording guidance
 
-For controlled PvE comparisons, single-dragon swaps, capture-note templates, naming, and
+For controlled PvE comparisons, single-dragon swaps, optional context notes, naming, and
 an incremental collection plan, use the
 [`Combat Report Capture Guide`](../../wiki/Combat-Report-Capture-Guide.md).
 

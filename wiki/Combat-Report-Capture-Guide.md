@@ -57,30 +57,28 @@ PvE evidence alone should not be generalized into PvP balance, player availabili
 universal damage values, or behavior against a materially different enemy. Record the
 stage and difficulty so the scope remains clear.
 
-## Before each battle
+## Optional context note
 
-Write a short capture note in the ignored run folder. Do not include account identifiers.
+Do not manually transcribe information that is clearly visible in the recording. The
+video is the primary evidence for formations, lanes, troop type, report wording, and any
+progression details it shows. The extractor or reviewer should recover those facts from
+the retained evidence instead of asking you to enter them twice.
+
+A short local note is optional and useful only for context the video does not establish,
+such as the intended comparison or a setup difference that is not visible:
 
 ```markdown
-# Capture notes
+# Optional capture context
 
-- Capture date: YYYY-MM-DD
-- Client version: unknown
-- Mode/stage/difficulty: PvE / ...
 - Comparison group: experiment-name
 - Variant: baseline | swap
-- User formation:
-  - Left Flank: Dragon — level, Star rank, Habit levels
-  - Vanguard: Dragon — level, Star rank, Habit levels
-  - Right Flank: Dragon — level, Star rank, Habit levels
-- Shared troop type: ...
-- Enemy formation or visible stage reference: ...
-- Deliberate change from baseline: ...
-- Other known differences: none | ...
+- Deliberate change being tested: replaced Dragon A with Dragon B
+- Relevant context not visible in the video: none | ...
 ```
 
-Use the same `Comparison group` for related runs. The notes remain local unless a reviewer
-extracts a minimal, non-account-specific observation into canonical data.
+You can omit this file entirely when descriptive paired folder names make the experiment
+clear. Never include account identifiers. If a note exists, it remains local unless a
+reviewer extracts a minimal, non-account-specific observation into canonical data.
 
 ## Record the report
 
@@ -118,8 +116,9 @@ python projects/combat-report-extractor/combat_report_interpreter.py interpret `
   --output 'Game_Details\Resources\_snapshots\YYYY-MM-DD\analysis\run-name'
 ```
 
-Preserve the video, `capture-notes.md`, OCR evidence, parsed report, generated analysis,
-candidate queue, and cited frames together in that ignored folder.
+Preserve the video, OCR evidence, parsed report, generated analysis, candidate queue, and
+cited frames together in that ignored folder. Preserve an optional context note there
+only when it records something the video does not show.
 
 ## Review checklist
 
@@ -128,8 +127,9 @@ Before asking for a rule update, confirm:
 - the coverage warnings and rejected actions were reviewed;
 - the cited cards are fully visible in their retained frames;
 - exact OCR/report wording has not been silently corrected;
-- the baseline and swap differ in only the documented variables;
-- competing active abilities are listed;
+- the baseline and swap differ only in variables visible in the recordings or called out
+  in the optional context note;
+- competing active abilities visible in the reports are accounted for;
 - repeated occurrences are not presented as distinct reports or formations; and
 - missing report text is not treated as proof that a chance-based effect failed.
 
