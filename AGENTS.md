@@ -11,6 +11,8 @@ This repository is an evidence-oriented knowledge base and tool suite for *Game 
 - `data/live_updates.json`: first-party client discoveries that may not yet be screenshot-complete or live.
 - `wiki/`: human-readable source-audited documentation.
 - `.github/agents/dragonfire-strategist.agent.md`: the user-facing Strategist agent definition.
+- `.github/agents/dragonfire-combat-analyst.agent.md`: the local report interpretation and evidence-review workflow.
+- `data/combat_report_rules.json` and `data/combat_report_observations.json`: canonical reviewed report mappings and portable evidence.
 - `.agents/skills/add-dragon/`: screenshot-complete dragon ingestion workflow.
 - `Game_Details/Resources/`: extraction scripts plus the historical working resource set.
 - `Game_Details/Resources/_snapshots/`: ignored, local-only installed-client snapshots and their analyses.
@@ -199,6 +201,28 @@ claim. Never silently repair ambiguous OCR, infer a missing round, or assign an 
 side. Unsupported records remain raw evidence or rejected actions until visually
 corroborated. Keep recordings, extracted frames, OCR runs, local virtual environments,
 and downloaded model/runtime files ignored by Git.
+
+## Combat Report Interpretation
+
+Use `projects/combat-report-extractor/combat_report_interpreter.py` only after a
+`combat-report.json` exists. The interpreter is a local-file transform and must not
+launch MuMu, connect ADB, inspect the game, capture traffic, use instrumentation, or
+upload evidence. It accepts extractor schema `1.0.0`, preserves every source action,
+and adds annotations with stable event IDs and input/rule hashes.
+
+Validate `data/combat_report_rules.json` and `data/combat_report_observations.json` with
+`projects/combat-report-extractor/validate_combat_report_rules.py`. Keep observed,
+derived, inferred, and unknown claims distinct. Treat timing relationships as
+correlations unless independent evidence establishes more. `rule-candidates.json` is an
+ignored local review queue and must never be promoted automatically.
+
+Committed observations must be portable and reviewed: no account identifiers, absolute
+local paths, raw recordings, or unreviewed claims presented as established. Preserve all
+supporting and contradicting observation references. The Strategist must not consume
+draft/disputed rules or generated local reports. Only an accepted, corroborated,
+canonical-text-compatible durable mechanic may enter the separate review proposal
+described in `wiki/Combat-Report-Interpretation.md`; that proposal does not mutate
+Strategist or canonical mechanic data automatically.
 
 ## Latest Local Findings
 

@@ -4,10 +4,11 @@ This local-only tool converts a Dragonfire combat-report screen recording into r
 OCR evidence, a normalized action ledger, and a deterministic Markdown insight report.
 It does not connect to MuMu, ADB, the game process, or the network.
 
-## Combat Analyst design package
+## Combat Analyst
 
-The planned interpretation layer for mapping abilities and Habits to separately reported
-effects is specified in:
+The deterministic interpretation layer maps accepted, evidence-backed rules to
+separately reported effects without changing the extractor or source actions. Its design
+and implementation contracts are:
 
 - [`docs/COMBAT_ANALYST_SPEC.md`](docs/COMBAT_ANALYST_SPEC.md) — behavior, evidence,
   schemas, rule lifecycle, and acceptance contract;
@@ -17,8 +18,31 @@ effects is specified in:
 - [`docs/NEXT_SESSION_PROMPT.md`](docs/NEXT_SESSION_PROMPT.md) — ready-to-copy build
   prompt for a fresh session.
 
-These are design artifacts. Paths marked as planned do not exist until the build plan is
-implemented.
+The interpreter accepts extractor schema `1.0.0` and uses only local files. Validate the
+canonical stores, then interpret a retained report:
+
+```powershell
+python projects/combat-report-extractor/validate_combat_report_rules.py
+python projects/combat-report-extractor/combat_report_interpreter.py interpret `
+  --report '<run>\combat-report.json' `
+  --output '<run>'
+```
+
+Optional `--rules`, `--observations`, and `--repository-root` arguments support reviewed
+fixtures or another checkout. The command writes:
+
+- `enriched-combat-report.json`: preserved source report, stable event IDs, annotations,
+  links, ambiguities, unmatched events, coverage, hashes, and derived insights;
+- `combat-analysis.json`: compact deterministic timeline and analysis model;
+- `combat-insights.md`: the same model rendered for people; and
+- `rule-candidates.json`: a conservative local review queue, never canonical knowledge.
+
+JSON and Markdown are generated from one model and contain no volatile timestamp. See
+[`docs/CANDIDATE_REVIEW.md`](docs/CANDIDATE_REVIEW.md) before proposing a draft. The
+human evidence guide is
+[`wiki/Combat-Report-Interpretation.md`](../../wiki/Combat-Report-Interpretation.md), and
+the dedicated workflow agent is
+[`dragonfire-combat-analyst.agent.md`](../../.github/agents/dragonfire-combat-analyst.agent.md).
 
 The ownership convention is explicit and user-supplied:
 
