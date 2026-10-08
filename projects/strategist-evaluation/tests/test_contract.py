@@ -39,11 +39,19 @@ class StrategistContractTests(unittest.TestCase):
         self.assertIn("Power cannot create missing counter coverage", self.agent)
         self.assertIn("tools: [read, search, web, execute]", self.agent)
         self.assertIn("projects/strategist-simulator/simulate.mjs", self.agent)
+        self.assertIn("projects/recommendation-planner/recommend.mjs", self.agent)
         self.assertIn("Never select a formation from", self.agent)
+        self.assertIn("include-custom-instructions: true", self.agent)
+        self.assertIn("## Multi-matchup Contract", self.agent)
+        self.assertIn("validation.valid: true", self.agent)
+        self.assertIn("one_per_matchup", self.agent)
+        self.assertIn("roster_preflight.completeness", self.agent)
+        self.assertIn("Do not compose new recommendation or coverage tables", self.agent)
 
-    def test_backtest_runner_grants_only_the_simulator_shell_stem(self) -> None:
+    def test_backtest_runner_grants_only_narrow_analysis_shell_stems(self) -> None:
         runner = (ROOT / "projects" / "strategist-evaluation" / "backtest.py").read_text(encoding="utf-8")
         self.assertIn("shell(node projects/strategist-simulator/simulate.mjs:*)", runner)
+        self.assertIn("shell(node projects/recommendation-planner/recommend.mjs:*)", runner)
         self.assertNotIn('"--allow-tool=shell"', runner)
 
     def test_full_roster_search_is_objective_specific_and_baseline_fair(self) -> None:

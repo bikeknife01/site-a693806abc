@@ -204,6 +204,7 @@ def generate_with_copilot(cases: list[dict[str, Any]], output_dir: Path, agent: 
                 "copilot", "-C", str(ROOT), "--agent", agent, "--no-color", "--no-ask-user",
                 "--allow-tool=read", "--allow-tool=search", "--allow-tool=web",
                 "--allow-tool=shell(node projects/strategist-simulator/simulate.mjs:*)",
+                "--allow-tool=shell(node projects/recommendation-planner/recommend.mjs:*)",
                 "-s", "-p", prompt,
             ]
             completed = subprocess.run(

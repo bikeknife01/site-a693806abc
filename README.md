@@ -13,6 +13,7 @@ This repository contains an AI-oriented reference for dragon army formation reco
 - [`wiki/client-updates/`](wiki/client-updates/) — durable summaries of local installed-client comparisons; raw snapshots remain ignored.
 - [`wiki/Online-Sources.md`](wiki/Online-Sources.md) — dated official/community source audit and unresolved public rules.
 - [`projects/game-data-encyclopedia/`](projects/game-data-encyclopedia/) — searchable static encyclopedia implementation for dragons, abilities, effects/statuses, evidence, and progression gates.
+- [`projects/recommendation-planner/`](projects/recommendation-planner/) — deterministic mixed-progression formation search, mandatory common-baseline ledger, Pareto comparison, timing analysis, and evidence trace; it also supports consolidated, validated multi-matchup reports with explicit roster scope and dragon-reuse policy.
 - [`review/`](review/) — extraction questions that require human confirmation.
 - [`Dragon_Specs/`](Dragon_Specs/) and [`Game_Details/`](Game_Details/) — source screenshots.
 
@@ -65,3 +66,21 @@ python Game_Details/Resources/_build_dragon_application_knowledge.py `
   --resources Game_Details/Resources/_snapshots/2026-10-01/android_data/com.wb.goog.hotd.socialstrategy/files/Resources `
   --snapshot-manifest Game_Details/Resources/_snapshots/2026-10-01/analysis/snapshot_manifest.json
 ```
+
+Compare any two captured `Resources` directories and produce logical-resource, row,
+localization, and repository-consumer impact reports with:
+
+```powershell
+python Game_Details/Resources/analyze_update.py `
+  --old <old-Resources-directory> `
+  --new <new-Resources-directory> `
+  --output Game_Details/Resources/_snapshots/<date> `
+  --snapshot-date <YYYY-MM-DD> `
+  --old-client-version <version> `
+  --new-client-version <version> `
+  --old-version-code <code> `
+  --new-version-code <code>
+```
+
+The impact report routes review work; it never edits canonical data or promotes staged
+client content to live behavior.

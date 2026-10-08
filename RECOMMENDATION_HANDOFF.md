@@ -17,6 +17,31 @@ matchup tests used for newly constructed candidates. Applicability tags affect t
 comparison but do not remove a legal baseline. Do not exclude or down-rank a common
 formation because it is a baseline; recommend it when it is the best-supported result.
 
+When shell execution is available and the required progression inputs are known, run
+`projects/recommendation-planner/recommend.mjs` using the input contract documented in
+`projects/recommendation-planner/README.md`. It deterministically enumerates owned trios,
+lane orders, and available shared troop types; retains every legal common baseline;
+constructs the required candidate ledger; computes a Pareto frontier; and emits timing,
+overlap, progression, tradeoff, and evidence-locator records. Its primary candidate is a
+documented lexicographic choice among nondominated results, not a predicted winner. Verify
+decisive wording in the cited canonical source and preserve alternatives when unknown
+combat formulas could reverse the ordering.
+
+For multiple enemy formations, submit one `scenarios` batch to that planner and retain
+its validated JSON or deterministic Markdown report. Explicitly declare whether the
+request is one counter per matchup or several finalists per matchup, and whether a dragon
+may be reused across hypothetical battles. The batch contract resolves the three common
+formations by canonical ID, records roster completeness and screenshot star
+normalization, emits a per-threat coverage matrix, progression gates, evidence, common
+baseline dispositions, alternatives, reversal conditions, and risks, and fails closed
+when a required audit field is absent. Do not reconstruct or summarize a multi-matchup
+recommendation from an unverified delegated response.
+The batch report distinguishes `direct`, `probabilistic`, `partial`, and `none` coverage
+using the ability's chance, target scope, duration, prerequisites, and damage exclusions.
+Read the remaining gap beside each enemy source instance. A lineup screenshot establishes
+dragon progression but does not establish available shared troop types or actual enemy
+progression; identify those as assumptions when the user has not supplied them.
+
 ## Required recommendation inputs and level handling
 
 Ask for each candidate dragon's **level**, **Star Rank**, and unlocked Habits' **skill

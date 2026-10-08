@@ -28,6 +28,17 @@ Use the following authority order for recommendation-critical claims:
 
 Client presence proves that data exists in an installed build. It does not by itself prove release status, server activation, player availability, final balance, or that a staged event is live. Preserve this distinction in data, documentation, and agent responses.
 
+## Multi-Matchup Recommendations
+
+For several enemy formations, follow the batch contract in
+`projects/recommendation-planner/README.md` even when the caller has not selected the
+custom Strategist agent. Transcribe the supplied roster, run
+`projects/recommendation-planner/recommend.mjs` through its CLI, and use its validated
+Markdown report as the answer. Keep the complete report and cite its selected and primary
+candidate IDs. Do not replace the report's coverage or baseline tables with manually
+authored ones. Preserve explicit distinctions between observed roster facts, assumed
+selectable troops, and reference enemy progression.
+
 ## Local Client Capture
 
 ### Known environment
@@ -152,7 +163,8 @@ Relevant local tools:
 
 - `Game_Details/Resources/_pbdump.py`: schema-less protobuf decoder.
 - `Game_Details/Resources/_parse_locale.py`: locale delta parser.
-- `Game_Details/Resources/_snapshots/2026-10-01/analyze_update.py`: repeatable example that hashes resources, decodes changed non-map protobufs, compares rows, and diffs localization.
+- `Game_Details/Resources/analyze_update.py`: reusable analyzer that hashes logical resources, decodes changed non-map protobufs, compares rows and localization, and routes changed resource domains to repository consumers without editing them.
+- `Game_Details/Resources/_snapshots/2026-10-01/analyze_update.py`: historical snapshot-specific example retained for reproducibility.
 - `Game_Details/Resources/_snapshots/2026-10-01/analysis/update_report.md`: human-readable example report.
 
 The analyzer uses protobuf field `1` and its nested textual identifier where possible as a stable row key. Because this is schema-less decoding, numeric field paths are evidence of change but not authoritative semantic field names. Corroborate behavior with localization, cross-table references, known schemas, screenshots, or code inspection.

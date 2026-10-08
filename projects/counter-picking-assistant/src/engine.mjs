@@ -35,8 +35,15 @@ function detailEligible(ability, detail, progression) {
   return gate == null || Number(progression.stars) >= gate;
 }
 
-function eligibleExactText(ability, progression) {
+export function eligibleExactText(ability, progression) {
   return ability.exact_text.filter(line => detailEligible(ability, { exact_context: line }, progression));
+}
+
+export function eligibleDamageEvents(ability, progression) {
+  return (ability.normalized.damage_events?.length
+    ? ability.normalized.damage_events
+    : (ability.normalized.damage_types || []).map(damage_type => ({ damage_type, exact_context: ability.exact_text[0] })))
+    .filter(event => detailEligible(ability, event, progression));
 }
 
 function expandRounds(records) {
@@ -136,10 +143,7 @@ export function extractThreats(data, enemySlots) {
     const dragon = data.dragons.find(item => item.slug === slot.dragon);
     if (!dragon) continue;
     for (const ability of activeAbilities(data, dragon, slot, slot.lane)) {
-      const damageEvents = (ability.normalized.damage_events?.length
-        ? ability.normalized.damage_events
-        : (ability.normalized.damage_types || []).map(damage_type => ({ damage_type, exact_context: ability.exact_text[0] })))
-        .filter(event => detailEligible(ability, event, slot));
+      const damageEvents = eligibleDamageEvents(ability, slot);
       for (const event of damageEvents) {
         addThreat(threats, { id: `damage:${event.damage_type}`, category: "damage", name: event.damage_type }, threatSource(data, dragon, ability, event));
       }

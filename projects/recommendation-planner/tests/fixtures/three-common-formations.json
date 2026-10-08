@@ -1,0 +1,26 @@
+{
+  "objective": "counter",
+  "available_troops": ["Cavalry", "Shieldbearers", "Spearmen"],
+  "roster_preflight": {
+    "completeness": "complete",
+    "expected_visible_dragons": 9
+  },
+  "request_mode": "one_per_matchup",
+  "reuse_policy": "independent_matchups",
+  "roster": [
+    {"dragon": "Velar", "level": 50, "stars": 6, "habit_levels": {}},
+    {"dragon": "Vhagar", "level": 50, "stars": 6, "habit_levels": {}},
+    {"dragon": "Moondancer", "level": 50, "stars": 6, "habit_levels": {}},
+    {"dragon": "Vermithor", "level": 50, "stars": 6, "habit_levels": {}},
+    {"dragon": "Rhysarion", "level": 50, "stars": 6, "habit_levels": {}},
+    {"dragon": "Venator", "level": 50, "stars": 6, "habit_levels": {}},
+    {"dragon": "Malachite", "level": 50, "stars": 6, "habit_levels": {}},
+    {"dragon": "Seasmoke", "level": 50, "stars": 6, "habit_levels": {}},
+    {"dragon": "Kalspire", "level": 50, "stars": 6, "habit_levels": {}}
+  ],
+  "scenarios": [
+    {"id": "velar-line", "common_formation_id": "velar-vhagar-moondancer-shieldbearers"},
+    {"id": "vermithor-line", "common_formation_id": "vermithor-rhysarion-venator-spearmen"},
+    {"id": "malachite-line", "common_formation_id": "malachite-seasmoke-kalspire-cavalry-counter"}
+  ]
+}
