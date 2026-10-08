@@ -4,6 +4,22 @@ This local-only tool converts a Dragonfire combat-report screen recording into r
 OCR evidence, a normalized action ledger, and a deterministic Markdown insight report.
 It does not connect to MuMu, ADB, the game process, or the network.
 
+## Combat Analyst design package
+
+The planned interpretation layer for mapping abilities and Habits to separately reported
+effects is specified in:
+
+- [`docs/COMBAT_ANALYST_SPEC.md`](docs/COMBAT_ANALYST_SPEC.md) — behavior, evidence,
+  schemas, rule lifecycle, and acceptance contract;
+- [`docs/BUILD_PLAN.md`](docs/BUILD_PLAN.md) — phased end-to-end implementation plan;
+- [`docs/REPOSITORY_LAYOUT.md`](docs/REPOSITORY_LAYOUT.md) — anticipated paths and
+  ownership boundaries; and
+- [`docs/NEXT_SESSION_PROMPT.md`](docs/NEXT_SESSION_PROMPT.md) — ready-to-copy build
+  prompt for a fresh session.
+
+These are design artifacts. Paths marked as planned do not exist until the build plan is
+implemented.
+
 The ownership convention is explicit and user-supplied:
 
 - blue card backgrounds and blue dragon names are the user's side;
