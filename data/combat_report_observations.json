@@ -65,6 +65,141 @@
         "coverage_warnings_relevant": false,
         "notes": ["The retained frame visibly places the First-Strike result on the same Gales of Power card."]
       }
+    },
+    {
+      "id": "observation.combat-7f322ee5105b.003",
+      "disposition": "supports",
+      "report": {
+        "report_id": "combat-7f322ee5105b",
+        "capture_date": "2026-10-08",
+        "client_version": null,
+        "extractor_schema_version": "1.0.0",
+        "formation_id": "formation-03a7063f005b"
+      },
+      "location": {"round": 1, "timestamp_seconds": 36.0, "frame_basename": "frame-000019.jpg"},
+      "verbatim": {
+        "head_text": "[Moondancer]activates[Crescent Blade]affecting[Velar](Left Flank).",
+        "detail_text": "CrescentBlade applied.Lastsfor10rounds."
+      },
+      "normalized": {
+        "owner": "user", "actor": "Moondancer", "ability": "Crescent Blade", "result": "Crescent Blade applied for 10 rounds"
+      },
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["The retained frame visibly places the application and duration on the same Crescent Blade card."]
+      }
+    },
+    {
+      "id": "observation.combat-7f322ee5105b.004",
+      "disposition": "supports",
+      "report": {
+        "report_id": "combat-7f322ee5105b", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-03a7063f005b"
+      },
+      "location": {"round": 4, "timestamp_seconds": 98.0, "frame_basename": "frame-000050.jpg"},
+      "verbatim": {
+        "head_text": "[Vhagar]activates[Fiery Bonds]affecting[Venator](Right Flank),[Rhysarion](Vanguard),",
+        "detail_text": "[Vermithor](LeftFlank). BasicAttackswill forcefullytarget[Vhagar]."
+      },
+      "normalized": {"owner": "user", "actor": "Vhagar", "ability": "Fiery Bonds", "result": "Taunt"},
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["The retained frame shows the force-target wording on the Fiery Bonds card; canonical Fiery Bonds text names the effect Taunt."]
+      }
+    },
+    {
+      "id": "observation.combat-7f322ee5105b.005",
+      "disposition": "supports",
+      "report": {
+        "report_id": "combat-7f322ee5105b", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-03a7063f005b"
+      },
+      "location": {"round": 8, "timestamp_seconds": 166.0, "frame_basename": "frame-000084.jpg"},
+      "verbatim": {
+        "head_text": "[Vhagar]activates[FieryBonds]affecting[Vermithor](LeftFlank).",
+        "detail_text": "BasicAttackswill forcefully target[Vhagar]."
+      },
+      "normalized": {"owner": "user", "actor": "Vhagar", "ability": "Fiery Bonds", "result": "Taunt"},
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["The retained frame shows the force-target wording on the Fiery Bonds card; canonical Fiery Bonds text names the effect Taunt."]
+      }
+    },
+    {
+      "id": "observation.combat-e90151bfdce1.001",
+      "disposition": "supports",
+      "report": {
+        "report_id": "combat-e90151bfdce1", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-7a620421c6cb"
+      },
+      "location": {"round": 1, "timestamp_seconds": 61.5, "frame_basename": "frame-000042.jpg"},
+      "verbatim": {
+        "head_text": "[Moondancer]activates[CrescentBlade]affecting[Zivern](LeftFlank).",
+        "detail_text": "CrescentBlade applied.Lastsfor10 rounds."
+      },
+      "normalized": {
+        "owner": "user", "actor": "Moondancer", "ability": "Crescent Blade", "result": "Crescent Blade applied for 10 rounds"
+      },
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["The retained frame visibly places the application and duration on the same Crescent Blade card in a second formation."]
+      }
+    },
+    {
+      "id": "observation.combat-e90151bfdce1.002",
+      "disposition": "supports",
+      "report": {
+        "report_id": "combat-e90151bfdce1", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-7a620421c6cb"
+      },
+      "location": {"round": 2, "timestamp_seconds": 96.0, "frame_basename": "frame-000065.jpg"},
+      "verbatim": {
+        "head_text": "[Vhagar]activates[Fiery Bonds]affecting[Persistent Hunter](Right Flank),[DevastatingWarrior]",
+        "detail_text": "(Vanguard),[Apex Champion] (Left Flank). BasicAttackswill forcefullytarget[Vhagar]."
+      },
+      "normalized": {"owner": "user", "actor": "Vhagar", "ability": "Fiery Bonds", "result": "Taunt"},
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["The retained frame shows the force-target wording on the Fiery Bonds card against the level 13 Iron tile defenders."]
+      }
+    },
+    {
+      "id": "observation.combat-e90151bfdce1.003",
+      "disposition": "supports",
+      "report": {
+        "report_id": "combat-e90151bfdce1", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-7a620421c6cb"
+      },
+      "location": {"round": 3, "timestamp_seconds": 139.5, "frame_basename": "frame-000094.jpg"},
+      "verbatim": {
+        "head_text": "[Zivern]activates[FearsomeReach]affecting[Persistent Hunter](Right Flank),[Devastating",
+        "detail_text": "Warrior] (Vanguard), [Apex Champion] (Left Flank). 19.632%Instinct."
+      },
+      "normalized": {"owner": "user", "actor": "Zivern", "ability": "Fearsome Reach", "result": "Instinct reduction"},
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["The retained frame visibly shows the downward Instinct modifier on the Fearsome Reach card; the numeric value is progression-specific."]
+      }
+    },
+    {
+      "id": "observation.combat-e90151bfdce1.004",
+      "disposition": "supports",
+      "report": {
+        "report_id": "combat-e90151bfdce1", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-7a620421c6cb"
+      },
+      "location": {"round": 4, "timestamp_seconds": 169.5, "frame_basename": "frame-000114.jpg"},
+      "verbatim": {
+        "head_text": "[Zivern]activates[SilentShade]affecting[ApexChampion](LeftFlank).",
+        "detail_text": "←15%Tactical damagereceived."
+      },
+      "normalized": {
+        "owner": "user", "actor": "Zivern", "ability": "Silent Shade", "result": "Tactical Damage Received increase"
+      },
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["The retained frame visibly shows the upward Tactical Damage Received modifier on the Silent Shade card."]
+      }
     }
   ]
 }

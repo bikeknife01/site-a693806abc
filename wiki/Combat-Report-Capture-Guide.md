@@ -93,6 +93,11 @@ reviewer extracts a minimal, non-account-specific observation into canonical dat
 9. Stop only after the final relevant card is visible.
 
 A slow, complete recording is more valuable than a fast recording of several battles.
+Revisiting a card while scrolling is safe: the extractor collapses the same semantic
+card within a round. Do not rush past it to avoid duplication. For attacks, keep the
+card still until the complete damage and remaining-troops sentence is visible; a named
+attack without that sentence can be retained, but its damage cannot be added to the
+visible parsed total.
 
 ## Store and process the run
 

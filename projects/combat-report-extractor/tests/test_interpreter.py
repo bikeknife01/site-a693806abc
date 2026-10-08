@@ -217,6 +217,108 @@ class CombatReportInterpreterTests(unittest.TestCase):
         candidate = MODULE.discover_candidates([unmatched], empty_rules, empty_observations, ROOT)["candidates"][0]
         self.assertEqual("First-Strike", candidate["pattern"]["normalized_result"])
 
+    def test_every_accepted_rule_matches_reviewed_evidence_and_rejects_changed_result(self) -> None:
+        rules = json.loads((ROOT / "data" / "combat_report_rules.json").read_text(encoding="utf-8"))
+        observations = json.loads(
+            (ROOT / "data" / "combat_report_observations.json").read_text(encoding="utf-8")
+        )
+        observations_by_id = {item["id"]: item for item in observations["observations"]}
+
+        for rule in (item for item in rules["rules"] if item["status"] == "accepted"):
+            with self.subTest(rule=rule["id"]):
+                observation = observations_by_id[rule["evidence"]["supports"][0]]
+                action = {
+                    "round": observation["location"]["round"],
+                    "section": f"ROUND {observation['location']['round']}",
+                    "owner": observation["normalized"]["owner"],
+                    "kind": rule["match"]["event_kind"],
+                    "actor": observation["normalized"]["actor"],
+                    "ability": observation["normalized"]["ability"],
+                    "target": None,
+                    "target_lane": None,
+                    "damage": None,
+                    "losses": None,
+                    "remaining": None,
+                    "recovery": None,
+                    "modifiers": [],
+                    "evidence": {
+                        "timestamp_seconds": observation["location"]["timestamp_seconds"],
+                        "frame": observation["location"]["frame_basename"],
+                        "ocr_confidence": 1.0,
+                        "head_text": observation["verbatim"]["head_text"],
+                        "detail_text": observation["verbatim"]["detail_text"],
+                    },
+                }
+                report = {
+                    "schema_version": "1.0.0",
+                    "source": {"path": "synthetic.mp4", "sha256": f"synthetic-{rule['id']}"},
+                    "ownership_rule": {"blue": "user", "red": "enemy", "authority": "user-supplied"},
+                    "coverage": {
+                        "rounds_with_actions": [action["round"]], "action_count": 1,
+                        "rejected_action_count": 0, "warnings": [],
+                    },
+                    "actions": [action],
+                    "rejected_actions": [],
+                }
+                model = MODULE.build_analysis_model(report, rules, observations, ROOT)
+                self.assertEqual([rule["id"]], [item["rule_id"] for item in model["links"]])
+
+                changed = copy.deepcopy(report)
+                changed["actions"][0]["evidence"]["detail_text"] = "Different result wording."
+                changed_model = MODULE.build_analysis_model(changed, rules, observations, ROOT)
+                self.assertNotIn(rule["id"], [item["rule_id"] for item in changed_model["links"]])
+
+    def test_every_accepted_rule_matches_reviewed_evidence_and_rejects_changed_result(self) -> None:
+        rules = json.loads((ROOT / "data" / "combat_report_rules.json").read_text(encoding="utf-8"))
+        observations = json.loads(
+            (ROOT / "data" / "combat_report_observations.json").read_text(encoding="utf-8")
+        )
+        observations_by_id = {item["id"]: item for item in observations["observations"]}
+
+        for rule in (item for item in rules["rules"] if item["status"] == "accepted"):
+            with self.subTest(rule=rule["id"]):
+                observation = observations_by_id[rule["evidence"]["supports"][0]]
+                action = {
+                    "round": observation["location"]["round"],
+                    "section": f"ROUND {observation['location']['round']}",
+                    "owner": observation["normalized"]["owner"],
+                    "kind": rule["match"]["event_kind"],
+                    "actor": observation["normalized"]["actor"],
+                    "ability": observation["normalized"]["ability"],
+                    "target": None,
+                    "target_lane": None,
+                    "damage": None,
+                    "losses": None,
+                    "remaining": None,
+                    "recovery": None,
+                    "modifiers": [],
+                    "evidence": {
+                        "timestamp_seconds": observation["location"]["timestamp_seconds"],
+                        "frame": observation["location"]["frame_basename"],
+                        "ocr_confidence": 1.0,
+                        "head_text": observation["verbatim"]["head_text"],
+                        "detail_text": observation["verbatim"]["detail_text"],
+                    },
+                }
+                report = {
+                    "schema_version": "1.0.0",
+                    "source": {"path": "synthetic.mp4", "sha256": f"synthetic-{rule['id']}"},
+                    "ownership_rule": {"blue": "user", "red": "enemy", "authority": "user-supplied"},
+                    "coverage": {
+                        "rounds_with_actions": [action["round"]], "action_count": 1,
+                        "rejected_action_count": 0, "warnings": [],
+                    },
+                    "actions": [action],
+                    "rejected_actions": [],
+                }
+                model = MODULE.build_analysis_model(report, rules, observations, ROOT)
+                self.assertEqual([rule["id"]], [item["rule_id"] for item in model["links"]])
+
+                changed = copy.deepcopy(report)
+                changed["actions"][0]["evidence"]["detail_text"] = "Different result wording."
+                changed_model = MODULE.build_analysis_model(changed, rules, observations, ROOT)
+                self.assertNotIn(rule["id"], [item["rule_id"] for item in changed_model["links"]])
+
     def test_strategist_handoff_is_proposal_only_and_gated(self) -> None:
         rules = json.loads((ROOT / "data" / "combat_report_rules.json").read_text(encoding="utf-8"))
         observations = json.loads((ROOT / "data" / "combat_report_observations.json").read_text(encoding="utf-8"))

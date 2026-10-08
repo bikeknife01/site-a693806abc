@@ -43,6 +43,164 @@
         "created": "2026-10-08",
         "last_reviewed": "2026-10-08"
       }
+    },
+    {
+      "id": "rule.moondancer.crescent-blade.application.v1",
+      "status": "accepted",
+      "relationship": "explicit",
+      "source": {
+        "dragon": "Moondancer",
+        "ability": "Crescent Blade",
+        "ability_type": "command"
+      },
+      "match": {
+        "event_kind": "affect",
+        "owner_scope": "same",
+        "result_event_kind": "affect",
+        "round_offset": {"minimum": 0, "maximum": 0},
+        "report_phrases": [
+          "CrescentBlade applied.Lastsfor10 rounds.",
+          "CrescentBlade applied.Lastsfor10rounds."
+        ],
+        "report_patterns": []
+      },
+      "interpretation": {
+        "effect": "Crescent Blade",
+        "summary": "The same report card explicitly shows Moondancer applying Crescent Blade to another Sentinel ally for 10 rounds.",
+        "provenance": "observed",
+        "confidence": "corroborated"
+      },
+      "evidence": {
+        "supports": [
+          "observation.combat-7f322ee5105b.003",
+          "observation.combat-e90151bfdce1.001"
+        ],
+        "contradicts": [],
+        "canonical_sources": ["data/dragons/moondancer.json -> command.verbatim"]
+      },
+      "limitations": [
+        "This establishes the application and displayed duration, not whether a later eligible ally action grants Rising Tide or how often that secondary check succeeds."
+      ],
+      "review": {
+        "created": "2026-10-08",
+        "last_reviewed": "2026-10-08"
+      }
+    },
+    {
+      "id": "rule.vhagar.fiery-bonds.taunt-wording.v1",
+      "status": "accepted",
+      "relationship": "ui_alias",
+      "source": {
+        "dragon": "Vhagar",
+        "ability": "Fiery Bonds",
+        "ability_type": "command"
+      },
+      "match": {
+        "event_kind": "affect",
+        "owner_scope": "same",
+        "result_event_kind": "affect",
+        "round_offset": {"minimum": 0, "maximum": 0},
+        "report_phrases": [
+          "[Vermithor](LeftFlank). BasicAttackswill forcefullytarget[Vhagar].",
+          "BasicAttackswill forcefully target[Vhagar].",
+          "(Vanguard),[Apex Champion] (Left Flank). BasicAttackswill forcefullytarget[Vhagar]."
+        ],
+        "report_patterns": []
+      },
+      "interpretation": {
+        "effect": "Taunt",
+        "summary": "The report phrase that Basic Attacks will forcefully target Vhagar is the displayed result of Fiery Bonds' canonical Taunt effect.",
+        "provenance": "inferred",
+        "confidence": "corroborated"
+      },
+      "evidence": {
+        "supports": [
+          "observation.combat-7f322ee5105b.004",
+          "observation.combat-7f322ee5105b.005",
+          "observation.combat-e90151bfdce1.002"
+        ],
+        "contradicts": [],
+        "canonical_sources": ["data/dragons/vhagar.json -> command.verbatim"]
+      },
+      "limitations": [
+        "This identifies the report wording for Taunt; it does not establish an eligible-target denominator, activation rate, or that missing wording proves a failed trigger."
+      ],
+      "review": {
+        "created": "2026-10-08",
+        "last_reviewed": "2026-10-08"
+      }
+    },
+    {
+      "id": "rule.zivern.fearsome-reach.instinct-reduction.v1",
+      "status": "accepted",
+      "relationship": "explicit",
+      "source": {
+        "dragon": "Zivern",
+        "ability": "Fearsome Reach",
+        "ability_type": "habit"
+      },
+      "match": {
+        "event_kind": "affect",
+        "owner_scope": "same",
+        "result_event_kind": "affect",
+        "round_offset": {"minimum": 0, "maximum": 0},
+        "report_phrases": [],
+        "report_patterns": ["(?:^|\\.)\\s*[0-9]+(?:\\.[0-9]+)?%\\s*Instinct\\.$"]
+      },
+      "interpretation": {
+        "effect": "Instinct reduction",
+        "summary": "The same report card explicitly shows Fearsome Reach reducing the affected enemies' Instinct.",
+        "provenance": "observed",
+        "confidence": "corroborated"
+      },
+      "evidence": {
+        "supports": ["observation.combat-e90151bfdce1.003"],
+        "contradicts": [],
+        "canonical_sources": ["data/dragons/zivern.json -> habits[2].verbatim"]
+      },
+      "limitations": [
+        "The displayed 19.632% value is specific to the observed progression and Intelligence enhancement; it is not a universal Fearsome Reach value or a proc-rate estimate."
+      ],
+      "review": {
+        "created": "2026-10-08",
+        "last_reviewed": "2026-10-08"
+      }
+    },
+    {
+      "id": "rule.zivern.silent-shade.tactical-vulnerability.v1",
+      "status": "accepted",
+      "relationship": "explicit",
+      "source": {
+        "dragon": "Zivern",
+        "ability": "Silent Shade",
+        "ability_type": "command"
+      },
+      "match": {
+        "event_kind": "affect",
+        "owner_scope": "same",
+        "result_event_kind": "affect",
+        "round_offset": {"minimum": 0, "maximum": 0},
+        "report_phrases": ["←15%Tactical damagereceived."],
+        "report_patterns": []
+      },
+      "interpretation": {
+        "effect": "Tactical Damage Received increase",
+        "summary": "The same report card explicitly shows Silent Shade increasing the target's Tactical Damage Received by 15%.",
+        "provenance": "observed",
+        "confidence": "corroborated"
+      },
+      "evidence": {
+        "supports": ["observation.combat-e90151bfdce1.004"],
+        "contradicts": [],
+        "canonical_sources": ["data/dragons/zivern.json -> command.verbatim"]
+      },
+      "limitations": [
+        "This establishes the displayed result for the observed activation, not the command's activation rate or evidence that unreported activations failed."
+      ],
+      "review": {
+        "created": "2026-10-08",
+        "last_reviewed": "2026-10-08"
+      }
     }
   ]
 }

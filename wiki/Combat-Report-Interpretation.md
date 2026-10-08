@@ -31,12 +31,13 @@ are review categories, not invented probabilities.
 ## Current rule state
 
 Established and disputed rules are the entries with the corresponding `status` in
-`data/combat_report_rules.json`. The current accepted rule is
-`rule.velar.gales-of-power.first-strike.v1`: two visually reviewed cards directly show
-Gales of Power applying First-Strike, compatible with Velar's canonical Habit wording.
-Its limitations and exact portable observation references remain in the machine data.
-Use the validator and generated analysis to enumerate current IDs; do not infer an
-additional rule from examples on this page.
+`data/combat_report_rules.json`. Accepted rules currently cover directly displayed
+results for Velar's Gales of Power, Moondancer's Crescent Blade, Zivern's Fearsome
+Reach, and Zivern's Silent Shade, plus the reviewed report wording for Vhagar's Fiery
+Bonds Taunt. Their exact IDs, match bounds, limitations, and portable supporting and
+contradicting observation references remain in the machine data. Use the validator and
+generated analysis to enumerate current IDs; do not infer an additional rule from this
+summary.
 
 ## Run and review
 
