@@ -15,6 +15,7 @@ import hashlib
 import json
 import re
 import shutil
+import statistics
 import subprocess
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
@@ -69,6 +70,20 @@ def canonicalize(value: str | None, vocabulary: dict[str, str]) -> str | None:
         return None
     if key in vocabulary:
         return vocabulary[key]
+    # OCR commonly collapses the adjacent strokes in "rn" into "m" (and can make the
+    # reverse mistake). Prefer an exact, unique vocabulary match under that substitution
+    # before applying a broader fuzzy correction.
+    ocr_variants: set[str] = set()
+    for index, character in enumerate(key):
+        if character == "m":
+            ocr_variants.add(key[:index] + "rn" + key[index + 1:])
+    start = 0
+    while (index := key.find("rn", start)) >= 0:
+        ocr_variants.add(key[:index] + "m" + key[index + 2:])
+        start = index + 1
+    exact_ocr_matches = sorted(variant for variant in ocr_variants if variant in vocabulary)
+    if len(exact_ocr_matches) == 1:
+        return vocabulary[exact_ocr_matches[0]]
     candidates = difflib.get_close_matches(key, vocabulary, n=1, cutoff=0.82)
     return vocabulary[candidates[0]] if candidates else clean_text(value)
 
@@ -103,19 +118,47 @@ def line_center(line: dict[str, Any]) -> tuple[float, float]:
             sum(float(p[1]) for p in points) / len(points))
 
 
+def owner_from_bgr_pixels(pixels: Iterable[Iterable[float]], threshold: float = 10) -> str:
+    values = [tuple(float(channel) for channel in pixel) for pixel in pixels]
+    if not values:
+        return "unknown"
+    blue = statistics.median(pixel[0] for pixel in values)
+    red = statistics.median(pixel[2] for pixel in values)
+    delta = blue - red
+    return "user" if delta >= threshold else "enemy" if delta <= -threshold else "unknown"
+
+
 def classify_owner(image: Any, line: dict[str, Any]) -> str:
     """Classify the card beneath a line using the stable blue/red body colors."""
     import numpy as np
 
-    _, center_y = line_center(line)
+    points = line.get("box") or []
     height, width = image.shape[:2]
+    if points and parse_action_head(line.get("text", "")):
+        x_min = max(0, int(min(float(point[0]) for point in points)))
+        x_max = min(width, int(max(float(point[0]) for point in points)))
+        y_min = max(0, int(min(float(point[1]) for point in points)) - 5)
+        y_max = min(height, int(max(float(point[1]) for point in points)) + 6)
+        source_end = min(x_max, x_min + max(80, int((x_max - x_min) * 0.30)))
+        source_patch = image[y_min:y_max, x_min:source_end]
+        if source_patch.size:
+            pixels = source_patch.reshape(-1, 3)
+            saturated = pixels[
+                ((pixels.max(axis=1) - pixels.min(axis=1)) >= 25)
+                & (pixels.max(axis=1) >= 60)
+            ]
+            if len(saturated) >= 40:
+                blue, _green, red = np.mean(saturated, axis=0)
+                delta = float(blue) - float(red)
+                if abs(delta) >= 10:
+                    return "user" if delta > 0 else "enemy"
+
+    _, center_y = line_center(line)
     patch = image[max(0, int(center_y) - 14):min(height, int(center_y) + 15),
                   max(0, int(width * 0.28)):min(width, int(width * 0.82))]
     if patch.size == 0:
         return "unknown"
-    blue, _green, red = np.median(patch.reshape(-1, 3), axis=0)
-    delta = float(blue) - float(red)
-    return "user" if delta >= 10 else "enemy" if delta <= -10 else "unknown"
+    return owner_from_bgr_pixels(np.median(patch.reshape(-1, 3), axis=0, keepdims=True))
 
 
 def detect_active_section(image: Any, lines: list[dict[str, Any]]) -> str | None:
@@ -273,8 +316,10 @@ def parse_ocr_manifest(manifest: dict[str, Any], repository_root: Path) -> dict[
             else:
                 records.append(record)
 
-    # Neighboring sampled frames intentionally overlap. Collapse the same semantic card
-    # within an eight-second window even when OCR varies in punctuation or modifier text.
+    # Sampled frames intentionally overlap, and a slow or reversed scroll can show the
+    # same card again much later. Within one round, collapse the same semantic card even
+    # when OCR varies in punctuation or modifier text. Distinct targets, damage, losses,
+    # remaining troops, and recovery values remain separate through the key below.
     clustered: dict[tuple[Any, ...], list[dict[str, Any]]] = defaultdict(list)
     for record in sorted(records, key=lambda item: item["evidence"]["timestamp_seconds"]):
         key = (
@@ -283,13 +328,8 @@ def parse_ocr_manifest(manifest: dict[str, Any], repository_root: Path) -> dict[
             compact(record.get("target") or ""), (record.get("damage") or {}).get("amount"),
             record.get("losses"), record.get("remaining"), record.get("recovery"),
         )
-        timestamp = record["evidence"]["timestamp_seconds"]
         matches = clustered[key]
-        nearby_index = next(
-            (index for index, previous in enumerate(matches)
-             if abs(timestamp - previous["evidence"]["timestamp_seconds"]) <= 8),
-            None,
-        )
+        nearby_index = 0 if matches else None
         if nearby_index is None:
             matches.append(record)
         else:

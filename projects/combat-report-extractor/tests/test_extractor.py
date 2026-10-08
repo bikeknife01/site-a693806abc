@@ -30,6 +30,12 @@ class CombatReportExtractorTests(unittest.TestCase):
             )
         )
 
+    def test_owner_color_and_common_ocr_name_correction(self) -> None:
+        self.assertEqual("enemy", MODULE.owner_from_bgr_pixels([[60, 50, 90], [65, 50, 95]]))
+        self.assertEqual("user", MODULE.owner_from_bgr_pixels([[95, 50, 60], [90, 50, 65]]))
+        self.assertEqual("unknown", MODULE.owner_from_bgr_pixels([[70, 50, 72], [72, 50, 70]]))
+        self.assertEqual("Zivern", MODULE.canonicalize("Zivem", {"zivern": "Zivern"}))
+
     def test_manifest_parser_normalizes_and_deduplicates(self) -> None:
         manifest = json.loads((Path(__file__).parent / "fixtures" / "ocr_frames.json").read_text(encoding="utf-8"))
         report = MODULE.parse_ocr_manifest(manifest, ROOT)
@@ -42,6 +48,12 @@ class CombatReportExtractorTests(unittest.TestCase):
         self.assertEqual("Vermithor", enemy["actor"])
         self.assertEqual(177, enemy["losses"])
         self.assertFalse(any(action["kind"] == "attack" and not action["damage"] for action in report["actions"]))
+
+    def test_deduplicates_a_card_revisited_later_in_the_same_round(self) -> None:
+        manifest = json.loads((Path(__file__).parent / "fixtures" / "ocr_frames.json").read_text(encoding="utf-8"))
+        manifest["frames"][1]["timestamp_seconds"] = 120.0
+        report = MODULE.parse_ocr_manifest(manifest, ROOT)
+        self.assertEqual(2, report["coverage"]["action_count"])
 
     def test_insights_separate_user_and_enemy(self) -> None:
         manifest = json.loads((Path(__file__).parent / "fixtures" / "ocr_frames.json").read_text(encoding="utf-8"))
