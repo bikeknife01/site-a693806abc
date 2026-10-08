@@ -341,6 +341,214 @@ def analysis_summary(model: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def load_effect_names(repository_root: Path) -> dict[str, str]:
+    path = repository_root / "data" / "effects.json"
+    if not path.exists():
+        return {}
+    return {
+        normalize_text(item["name"]): item["name"]
+        for item in load_json(path).get("effects", []) if isinstance(item.get("name"), str)
+    }
+
+
+def report_identity(model: dict[str, Any]) -> str:
+    source = model["source_report"].get("source") or {}
+    source_hash = source.get("sha256")
+    return str(source_hash) if source_hash and source_hash != "fixture" else model["input_report_hash"][:24]
+
+
+def formation_identity(model: dict[str, Any]) -> str:
+    members: dict[str, set[str]] = defaultdict(set)
+    for action in model["source_report"]["actions"]:
+        if action.get("actor"):
+            members[action.get("owner", "unknown")].add(action["actor"])
+    formation = {owner: sorted(names) for owner, names in sorted(members.items())}
+    return content_hash(formation)[:24]
+
+
+def candidate_result_phrase(action: dict[str, Any]) -> str:
+    evidence = action.get("evidence") or {}
+    return (evidence.get("detail_text") or evidence.get("head_text") or action.get("ability") or "").strip()
+
+
+def discover_candidates(
+    models: list[dict[str, Any]], rules: dict[str, Any], observations: dict[str, Any],
+    repository_root: Path,
+) -> dict[str, Any]:
+    """Build a conservative review queue; never return a canonical rule."""
+    effect_names = load_effect_names(repository_root)
+    groups: dict[str, dict[str, Any]] = {}
+    for model in models:
+        by_id = {event["event_id"]: event for event in model["events"]}
+        report_id, formation_id = report_identity(model), formation_identity(model)
+        unmatched = set(model["unmatched_events"])
+        for result_event in model["events"]:
+            if result_event["event_id"] not in unmatched:
+                continue
+            result_action = result_event["source_action"]
+            if result_action.get("kind") not in {"affect", "self_effect", "recovery"}:
+                continue
+            phrase = candidate_result_phrase(result_action)
+            if not phrase:
+                continue
+            alternatives: list[dict[str, Any]] = []
+            for source_event in model["events"]:
+                if source_event["position"] >= result_event["position"]:
+                    continue
+                source_action = source_event["source_action"]
+                if source_action.get("owner") != result_action.get("owner"):
+                    continue
+                if not isinstance(source_action.get("round"), int) or not isinstance(result_action.get("round"), int):
+                    continue
+                offset = result_action["round"] - source_action["round"]
+                if not 0 <= offset <= 1:
+                    continue
+                alternatives.append({
+                    "actor": source_action.get("actor"), "ability": source_action.get("ability"),
+                    "event_id": source_event["event_id"], "round_offset": offset,
+                })
+            alternatives.sort(key=lambda item: (item["round_offset"], item["actor"] or "", item["ability"] or "", item["event_id"]))
+            source_signature = [
+                [item["actor"], item["ability"], item["round_offset"]] for item in alternatives
+            ]
+            key_data = {"result_phrase": normalize_text(phrase), "source_window": source_signature}
+            fingerprint = content_hash(key_data)
+            group = groups.setdefault(fingerprint, {
+                "fingerprint": fingerprint,
+                "pattern": {
+                    "result_phrase": phrase,
+                    "normalized_result": None,
+                    "source_window": source_signature,
+                },
+                "occurrences": [], "alternatives": {}, "reports": set(), "formations": set(),
+                "contradictions": [],
+            })
+            normalized_ability = normalize_text(result_action.get("ability"))
+            normalized_phrase = normalize_text(phrase)
+            known_effect = effect_names.get(normalized_ability)
+            if known_effect is None:
+                known_effect = next(
+                    (canonical for normalized, canonical in sorted(effect_names.items())
+                     if re.search(rf"\b{re.escape(normalized)}\b", normalized_phrase)),
+                    None,
+                )
+            group["pattern"]["normalized_result"] = known_effect
+            group["occurrences"].append({
+                "report_id": report_id, "formation_id": formation_id,
+                "event_id": result_event["event_id"], "round": result_action.get("round"),
+                "timestamp_seconds": (result_action.get("evidence") or {}).get("timestamp_seconds"),
+                "frame_basename": (result_action.get("evidence") or {}).get("frame"),
+                "verbatim": phrase,
+            })
+            group["reports"].add(report_id)
+            group["formations"].add(formation_id)
+            for item in alternatives:
+                alternative_key = json.dumps(
+                    [item["actor"], item["ability"], item["round_offset"]], ensure_ascii=False,
+                )
+                group["alternatives"][alternative_key] = {
+                    "actor": item["actor"], "ability": item["ability"],
+                    "round_offset": item["round_offset"],
+                }
+
+    candidates: list[dict[str, Any]] = []
+    for fingerprint, group in groups.items():
+        alternatives = [group["alternatives"][key] for key in sorted(group["alternatives"])]
+        offsets = {item["round_offset"] for item in alternatives}
+        repeated = len(group["occurrences"]) >= 2
+        relationship = "timing_correlation" if repeated and alternatives and len(offsets) == 1 else "unresolved"
+        candidates.append({
+            "candidate_id": f"candidate.{fingerprint[:16]}",
+            "fingerprint": fingerprint,
+            "pattern": group["pattern"],
+            "counts": {
+                "occurrences": len(group["occurrences"]),
+                "distinct_reports": len(group["reports"]),
+                "distinct_formations": len(group["formations"]),
+            },
+            "occurrences": sorted(group["occurrences"], key=lambda item: (item["report_id"], item["event_id"])),
+            "known_alternative_sources": alternatives,
+            "contradictions": sorted(group["contradictions"], key=lambda item: json.dumps(item, sort_keys=True)),
+            "proposed_relationship": relationship,
+            "evidence_needed": [
+                "Visually review every cited frame and exact wording.",
+                "Repeat the pattern in a distinct report and formation.",
+                "Vary or exclude the listed alternative sources.",
+                "Check compatible canonical ability text before proposing causality.",
+            ],
+        })
+
+    observation_by_id = {item["id"]: item for item in observations["observations"]}
+    for rule in sorted(rules["rules"], key=lambda item: item["id"]):
+        if rule["status"] != "accepted" or not rule["evidence"]["contradicts"]:
+            continue
+        contradiction_items = [
+            {"rule_id": rule["id"], "observation_id": observation_id}
+            for observation_id in rule["evidence"]["contradicts"] if observation_id in observation_by_id
+        ]
+        fingerprint = content_hash({"rule_id": rule["id"], "contradictions": contradiction_items})
+        candidates.append({
+            "candidate_id": f"candidate.{fingerprint[:16]}", "fingerprint": fingerprint,
+            "pattern": {"result_phrase": None, "normalized_result": rule["interpretation"]["effect"], "source_window": []},
+            "counts": {"occurrences": 0, "distinct_reports": 0, "distinct_formations": 0},
+            "occurrences": [], "known_alternative_sources": [],
+            "contradictions": contradiction_items, "proposed_relationship": "unresolved",
+            "evidence_needed": ["Resolve the cited counterevidence before retaining or revising the accepted rule."],
+        })
+    candidates.sort(key=lambda item: (item["candidate_id"], item["fingerprint"]))
+    return {
+        "schema_version": "1.0.0", "tool_version": TOOL_VERSION,
+        "input_report_hashes": sorted(model["input_report_hash"] for model in models),
+        "rule_set_hash": content_hash(rules), "candidates": candidates,
+    }
+
+
+def draft_candidate_fragment(candidate_store: dict[str, Any], candidate_key: str) -> dict[str, Any]:
+    candidate = next(
+        (item for item in candidate_store.get("candidates", [])
+         if candidate_key in {item.get("candidate_id"), item.get("fingerprint")}),
+        None,
+    )
+    if candidate is None:
+        raise ValueError(f"candidate not found: {candidate_key}")
+    alternatives = candidate["known_alternative_sources"]
+    unique_source = alternatives[0] if len(alternatives) == 1 else {}
+    result = candidate["pattern"].get("normalized_result")
+    slug_seed = normalize_text(result or candidate["candidate_id"]).replace(" ", "-")
+    slug_seed = re.sub(r"[^a-z0-9-]+", "-", slug_seed).strip("-") or "unresolved"
+    return {
+        "candidate_fingerprint": candidate["fingerprint"],
+        "review_required": True,
+        "draft_rule": {
+            "id": f"rule.review.{slug_seed}.v1",
+            "status": "draft",
+            "relationship": candidate["proposed_relationship"],
+            "source": {
+                "dragon": unique_source.get("actor"), "ability": unique_source.get("ability"),
+                "ability_type": None,
+            },
+            "match": {
+                "event_kind": None, "owner_scope": "same", "result_event_kind": None,
+                "round_offset": {
+                    "minimum": min((item["round_offset"] for item in alternatives), default=0),
+                    "maximum": max((item["round_offset"] for item in alternatives), default=0),
+                },
+                "report_phrases": [candidate["pattern"]["result_phrase"]] if candidate["pattern"]["result_phrase"] else [],
+                "report_patterns": [],
+            },
+            "interpretation": {
+                "effect": result,
+                "summary": "Review candidate only; the responsible source remains unresolved.",
+                "provenance": "unknown", "confidence": "tentative",
+            },
+            "evidence": {"supports": [], "contradicts": [], "canonical_sources": []},
+            "limitations": list(candidate["evidence_needed"]),
+            "review": {"created": "YYYY-MM-DD", "last_reviewed": "YYYY-MM-DD"},
+        },
+        "observation_templates": candidate["occurrences"],
+    }
+
+
 def render_markdown(model: dict[str, Any]) -> str:
     coverage, insights = model["coverage"], model["insights"]
     lines = [
@@ -432,13 +640,7 @@ def interpret_paths(
     write_json(paths["enriched"], model)
     write_json(paths["analysis"], analysis_summary(model))
     paths["markdown"].write_text(render_markdown(model), encoding="utf-8")
-    write_json(paths["candidates"], {
-        "schema_version": "1.0.0",
-        "tool_version": TOOL_VERSION,
-        "input_report_hash": model["input_report_hash"],
-        "rule_set_hash": model["rule_set_hash"],
-        "candidates": [],
-    })
+    write_json(paths["candidates"], discover_candidates([model], rules, observations, repository_root))
     return paths
 
 
@@ -456,6 +658,10 @@ def build_parser() -> argparse.ArgumentParser:
     interpret.add_argument("--report", type=Path, required=True)
     interpret.add_argument("--output", type=Path, required=True)
     add_common_inputs(interpret, root)
+    propose = subparsers.add_parser("propose", help="Write a reviewed candidate as a draft JSON fragment")
+    propose.add_argument("--candidates", type=Path, required=True)
+    propose.add_argument("--candidate", required=True, help="Candidate ID or full fingerprint")
+    propose.add_argument("--output", type=Path, required=True)
     return parser
 
 
@@ -470,6 +676,11 @@ def main(argv: Iterable[str] | None = None) -> int:
         print(f"Analysis: {paths['analysis']}")
         print(f"Insights: {paths['markdown']}")
         print(f"Rule candidates: {paths['candidates']}")
+    elif args.command == "propose":
+        fragment = draft_candidate_fragment(load_json(args.candidates.resolve()), args.candidate)
+        args.output.resolve().parent.mkdir(parents=True, exist_ok=True)
+        write_json(args.output.resolve(), fragment)
+        print(f"Draft review fragment: {args.output.resolve()}")
     return 0
 
 
