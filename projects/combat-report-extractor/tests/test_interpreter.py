@@ -186,6 +186,69 @@ class CombatReportInterpreterTests(unittest.TestCase):
             self.assertIn(fragment["draft_rule"]["relationship"], {"timing_correlation", "unresolved"})
         self.assertEqual(before, (canonical_rules.read_bytes(), canonical_observations.read_bytes()))
 
+    def test_canonical_explicit_rule_links_one_card_to_itself(self) -> None:
+        report = {
+            "schema_version": "1.0.0",
+            "source": {"path": "synthetic.mp4", "sha256": "synthetic-explicit"},
+            "ownership_rule": {"blue": "user", "red": "enemy", "authority": "user-supplied"},
+            "coverage": {"rounds_with_actions": [6], "action_count": 1, "rejected_action_count": 0, "warnings": []},
+            "actions": [{
+                "round": 6, "section": "ROUND 6", "owner": "user", "kind": "affect",
+                "actor": "Velar", "ability": "Gales of Power", "target": "Moondancer", "target_lane": "Right Flank",
+                "damage": None, "losses": None, "remaining": None, "recovery": None, "modifiers": [],
+                "evidence": {"timestamp_seconds": 12.0, "frame": "synthetic.jpg", "ocr_confidence": 1.0,
+                             "head_text": "[Velar] activates [Gales of Power] affecting [Moondancer].",
+                             "detail_text": "First-Strikestatus applied."},
+            }],
+            "rejected_actions": [],
+        }
+        rules = json.loads((ROOT / "data" / "combat_report_rules.json").read_text(encoding="utf-8"))
+        observations = json.loads((ROOT / "data" / "combat_report_observations.json").read_text(encoding="utf-8"))
+        model = MODULE.build_analysis_model(report, rules, observations, ROOT)
+        self.assertEqual(1, len(model["links"]))
+        self.assertEqual(model["links"][0]["source_event_id"], model["links"][0]["result_event_id"])
+        annotation = model["events"][0]["annotations"][0]
+        self.assertEqual("observed", annotation["provenance"])
+        self.assertEqual("corroborated", annotation["confidence"])
+
+        empty_rules = {"metadata": {"schema_version": "1.0.0", "updated": "2026-10-08", "purpose": "Test"}, "rules": []}
+        empty_observations = {"metadata": {"schema_version": "1.0.0", "updated": "2026-10-08"}, "observations": []}
+        unmatched = MODULE.build_analysis_model(report, empty_rules, empty_observations, ROOT)
+        candidate = MODULE.discover_candidates([unmatched], empty_rules, empty_observations, ROOT)["candidates"][0]
+        self.assertEqual("First-Strike", candidate["pattern"]["normalized_result"])
+
+    def test_strategist_handoff_is_proposal_only_and_gated(self) -> None:
+        rules = json.loads((ROOT / "data" / "combat_report_rules.json").read_text(encoding="utf-8"))
+        observations = json.loads((ROOT / "data" / "combat_report_observations.json").read_text(encoding="utf-8"))
+        with self.assertRaisesRegex(ValueError, "durable-mechanic confirmation"):
+            MODULE.build_strategist_handoff(
+                "rule.velar.gales-of-power.first-strike.v1", rules, observations, ROOT,
+                ["data/effects.json"], ["python -m unittest"], False,
+            )
+        with self.assertRaisesRegex(ValueError, "repository-relative"):
+            MODULE.build_strategist_handoff(
+                "rule.velar.gales-of-power.first-strike.v1", rules, observations, ROOT,
+                ["C:\\private\\effects.json"], ["python -m unittest"], True,
+            )
+        proposal = MODULE.build_strategist_handoff(
+            "rule.velar.gales-of-power.first-strike.v1", rules, observations, ROOT,
+            ["data/effects.json"],
+            ["python -m unittest discover -s projects/combat-report-extractor/tests -v"], True,
+        )
+        self.assertTrue(proposal["review_required"])
+        self.assertFalse(proposal["automatic_changes"])
+        self.assertEqual("habits[2].verbatim", proposal["finding"]["canonical_ability"]["field"])
+        self.assertIn("generated local report results", proposal["excluded_inputs"])
+        self.assertEqual(2, len(proposal["evidence"]["supports"]))
+
+        draft_rules = copy.deepcopy(rules)
+        draft_rules["rules"][0]["status"] = "draft"
+        with self.assertRaisesRegex(ValueError, "accepted, corroborated"):
+            MODULE.build_strategist_handoff(
+                "rule.velar.gales-of-power.first-strike.v1", draft_rules, observations, ROOT,
+                ["data/effects.json"], ["python -m unittest"], True,
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

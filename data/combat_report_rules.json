@@ -4,5 +4,45 @@
     "updated": "2026-10-08",
     "purpose": "Combat-report interpretation rules"
   },
-  "rules": []
+  "rules": [
+    {
+      "id": "rule.velar.gales-of-power.first-strike.v1",
+      "status": "accepted",
+      "relationship": "explicit",
+      "source": {
+        "dragon": "Velar",
+        "ability": "Gales of Power",
+        "ability_type": "habit"
+      },
+      "match": {
+        "event_kind": "affect",
+        "owner_scope": "same",
+        "result_event_kind": "affect",
+        "round_offset": {"minimum": 0, "maximum": 0},
+        "report_phrases": ["First-Strikestatus applied."],
+        "report_patterns": []
+      },
+      "interpretation": {
+        "effect": "First-Strike",
+        "summary": "The same report card explicitly shows Gales of Power applying First-Strike.",
+        "provenance": "observed",
+        "confidence": "corroborated"
+      },
+      "evidence": {
+        "supports": [
+          "observation.combat-7f322ee5105b.001",
+          "observation.combat-7f322ee5105b.002"
+        ],
+        "contradicts": [],
+        "canonical_sources": ["data/dragons/velar.json -> habits[2].verbatim"]
+      },
+      "limitations": [
+        "This establishes the displayed First-Strike result, not a proc rate, eligible-target denominator, or evidence that an unreported trigger failed."
+      ],
+      "review": {
+        "created": "2026-10-08",
+        "last_reviewed": "2026-10-08"
+      }
+    }
+  ]
 }

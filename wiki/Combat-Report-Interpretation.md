@@ -31,9 +31,12 @@ are review categories, not invented probabilities.
 ## Current rule state
 
 Established and disputed rules are the entries with the corresponding `status` in
-`data/combat_report_rules.json`. At initial release the canonical store intentionally
-contains no speculative rules. Use the validator and generated analysis to enumerate
-current IDs; do not infer one from examples on this page.
+`data/combat_report_rules.json`. The current accepted rule is
+`rule.velar.gales-of-power.first-strike.v1`: two visually reviewed cards directly show
+Gales of Power applying First-Strike, compatible with Velar's canonical Habit wording.
+Its limitations and exact portable observation references remain in the machine data.
+Use the validator and generated analysis to enumerate current IDs; do not infer an
+additional rule from examples on this page.
 
 ## Run and review
 
@@ -73,4 +76,6 @@ canonical ability wording is compatible, limitations and counterexamples are ret
 the finding is a durable mechanic rather than an account-specific numeric outcome, and
 the intended receiving file and tests are named. The handoff is a proposal; it never
 automatically edits mechanics, effects, dragon profiles, recommendation data, or the
-Strategist agent. Draft/disputed rules and local generated reports are ineligible.
+Strategist agent. Draft/disputed rules and local generated reports are ineligible. See
+[`projects/combat-report-extractor/docs/STRATEGIST_HANDOFF.md`](../projects/combat-report-extractor/docs/STRATEGIST_HANDOFF.md)
+for the proposal command and its explicit eligibility checks.

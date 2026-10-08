@@ -3,5 +3,68 @@
     "schema_version": "1.0.0",
     "updated": "2026-10-08"
   },
-  "observations": []
+  "observations": [
+    {
+      "id": "observation.combat-7f322ee5105b.001",
+      "disposition": "supports",
+      "report": {
+        "report_id": "combat-7f322ee5105b",
+        "capture_date": "2026-10-08",
+        "client_version": null,
+        "extractor_schema_version": "1.0.0",
+        "formation_id": "formation-03a7063f005b"
+      },
+      "location": {
+        "round": 6,
+        "timestamp_seconds": 136.0,
+        "frame_basename": "frame-000069.jpg"
+      },
+      "verbatim": {
+        "head_text": "[Velar]activates[GalesofPower]affecting[Moondancer](RightFlank).",
+        "detail_text": "First-Strikestatus applied."
+      },
+      "normalized": {
+        "owner": "user",
+        "actor": "Velar",
+        "ability": "Gales of Power",
+        "result": "First-Strike"
+      },
+      "quality": {
+        "visual_review": "confirmed",
+        "coverage_warnings_relevant": false,
+        "notes": ["The retained frame visibly places the First-Strike result on the same Gales of Power card."]
+      }
+    },
+    {
+      "id": "observation.combat-7f322ee5105b.002",
+      "disposition": "supports",
+      "report": {
+        "report_id": "combat-7f322ee5105b",
+        "capture_date": "2026-10-08",
+        "client_version": null,
+        "extractor_schema_version": "1.0.0",
+        "formation_id": "formation-03a7063f005b"
+      },
+      "location": {
+        "round": 8,
+        "timestamp_seconds": 170.0,
+        "frame_basename": "frame-000086.jpg"
+      },
+      "verbatim": {
+        "head_text": "[Velar]activates[Galesof Power]affecting[Vhagar](Vanguard).",
+        "detail_text": "First-Strikestatus applied."
+      },
+      "normalized": {
+        "owner": "user",
+        "actor": "Velar",
+        "ability": "Gales of Power",
+        "result": "First-Strike"
+      },
+      "quality": {
+        "visual_review": "confirmed",
+        "coverage_warnings_relevant": false,
+        "notes": ["The retained frame visibly places the First-Strike result on the same Gales of Power card."]
+      }
+    }
+  ]
 }

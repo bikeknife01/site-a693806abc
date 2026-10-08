@@ -17,6 +17,7 @@ class CombatAnalystDocumentationTests(unittest.TestCase):
             "data/combat_report_rules.json",
             "data/combat_report_observations.json",
             "projects/combat-report-extractor/docs/CANDIDATE_REVIEW.md",
+            "projects/combat-report-extractor/docs/STRATEGIST_HANDOFF.md",
         ):
             self.assertTrue((ROOT / relative).is_file(), relative)
 

@@ -43,6 +43,9 @@ human evidence guide is
 [`wiki/Combat-Report-Interpretation.md`](../../wiki/Combat-Report-Interpretation.md), and
 the dedicated workflow agent is
 [`dragonfire-combat-analyst.agent.md`](../../.github/agents/dragonfire-combat-analyst.agent.md).
+Recommendation-relevant findings must use the proposal-only gate in
+[`docs/STRATEGIST_HANDOFF.md`](docs/STRATEGIST_HANDOFF.md); the Strategist never consumes
+local reports or draft/disputed rules directly.
 
 The ownership convention is explicit and user-supplied:
 

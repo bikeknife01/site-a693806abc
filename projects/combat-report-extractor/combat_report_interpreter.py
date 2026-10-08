@@ -408,28 +408,28 @@ def discover_candidates(
                     "event_id": source_event["event_id"], "round_offset": offset,
                 })
             alternatives.sort(key=lambda item: (item["round_offset"], item["actor"] or "", item["ability"] or "", item["event_id"]))
-            source_signature = [
-                [item["actor"], item["ability"], item["round_offset"]] for item in alternatives
-            ]
-            key_data = {"result_phrase": normalize_text(phrase), "source_window": source_signature}
+            normalized_candidate_phrase = re.sub(r"[^a-z0-9]+", "", phrase.casefold())
+            key_data = {"result_phrase": normalized_candidate_phrase}
             fingerprint = content_hash(key_data)
             group = groups.setdefault(fingerprint, {
                 "fingerprint": fingerprint,
                 "pattern": {
                     "result_phrase": phrase,
+                    "verbatim_variants": set(),
                     "normalized_result": None,
-                    "source_window": source_signature,
+                    "source_window": [],
                 },
                 "occurrences": [], "alternatives": {}, "reports": set(), "formations": set(),
                 "contradictions": [],
             })
+            group["pattern"]["verbatim_variants"].add(phrase)
             normalized_ability = normalize_text(result_action.get("ability"))
-            normalized_phrase = normalize_text(phrase)
             known_effect = effect_names.get(normalized_ability)
             if known_effect is None:
+                compact_phrase = re.sub(r"[^a-z0-9]+", "", phrase.casefold())
                 known_effect = next(
                     (canonical for normalized, canonical in sorted(effect_names.items())
-                     if re.search(rf"\b{re.escape(normalized)}\b", normalized_phrase)),
+                     if re.sub(r"[^a-z0-9]+", "", normalized) in compact_phrase),
                     None,
                 )
             group["pattern"]["normalized_result"] = known_effect
@@ -454,6 +454,12 @@ def discover_candidates(
     candidates: list[dict[str, Any]] = []
     for fingerprint, group in groups.items():
         alternatives = [group["alternatives"][key] for key in sorted(group["alternatives"])]
+        variants = sorted(group["pattern"]["verbatim_variants"], key=lambda item: (normalize_text(item), item))
+        group["pattern"]["result_phrase"] = variants[0]
+        group["pattern"]["verbatim_variants"] = variants
+        group["pattern"]["source_window"] = [
+            [item["actor"], item["ability"], item["round_offset"]] for item in alternatives
+        ]
         offsets = {item["round_offset"] for item in alternatives}
         repeated = len(group["occurrences"]) >= 2
         relationship = "timing_correlation" if repeated and alternatives and len(offsets) == 1 else "unresolved"
@@ -489,7 +495,7 @@ def discover_candidates(
         fingerprint = content_hash({"rule_id": rule["id"], "contradictions": contradiction_items})
         candidates.append({
             "candidate_id": f"candidate.{fingerprint[:16]}", "fingerprint": fingerprint,
-            "pattern": {"result_phrase": None, "normalized_result": rule["interpretation"]["effect"], "source_window": []},
+            "pattern": {"result_phrase": None, "verbatim_variants": [], "normalized_result": rule["interpretation"]["effect"], "source_window": []},
             "counts": {"occurrences": 0, "distinct_reports": 0, "distinct_formations": 0},
             "occurrences": [], "known_alternative_sources": [],
             "contradictions": contradiction_items, "proposed_relationship": "unresolved",
@@ -546,6 +552,97 @@ def draft_candidate_fragment(candidate_store: dict[str, Any], candidate_key: str
             "review": {"created": "YYYY-MM-DD", "last_reviewed": "YYYY-MM-DD"},
         },
         "observation_templates": candidate["occurrences"],
+    }
+
+
+def canonical_ability_record(
+    repository_root: Path, dragon_name: str, ability_name: str,
+) -> dict[str, Any]:
+    for path in sorted((repository_root / "data" / "dragons").glob("*.json")):
+        dragon = load_json(path)
+        if dragon.get("name") != dragon_name:
+            continue
+        for key in ("command", "vanguard"):
+            ability = dragon.get(key) or {}
+            if ability.get("name") == ability_name:
+                return {
+                    "path": path.relative_to(repository_root).as_posix(),
+                    "field": f"{key}.verbatim", "verbatim": ability.get("verbatim"),
+                }
+        for index, habit in enumerate(dragon.get("habits", [])):
+            if habit.get("name") == ability_name:
+                return {
+                    "path": path.relative_to(repository_root).as_posix(),
+                    "field": f"habits[{index}].verbatim", "verbatim": habit.get("verbatim"),
+                }
+    raise ValueError(f"canonical ability text not found for {dragon_name} / {ability_name}")
+
+
+def build_strategist_handoff(
+    rule_id: str, rules: dict[str, Any], observations: dict[str, Any], repository_root: Path,
+    target_files: list[str], test_commands: list[str], durable_mechanic_confirmed: bool,
+) -> dict[str, Any]:
+    validation_errors = validate_stores(rules, observations, repository_root)
+    if validation_errors:
+        raise ValueError("invalid rule data:\n" + "\n".join(validation_errors))
+    rule = next((item for item in rules["rules"] if item["id"] == rule_id), None)
+    if rule is None:
+        raise ValueError(f"rule not found: {rule_id}")
+    if rule["status"] != "accepted" or rule["interpretation"]["confidence"] != "corroborated":
+        raise ValueError("Strategist handoff requires an accepted, corroborated rule")
+    if not durable_mechanic_confirmed:
+        raise ValueError("Strategist handoff requires explicit durable-mechanic confirmation")
+    if not rule["limitations"]:
+        raise ValueError("Strategist handoff requires recorded limitations")
+    if not target_files or not test_commands:
+        raise ValueError("Strategist handoff requires receiving files and validation commands")
+    for target in target_files:
+        target_path = Path(target)
+        if target_path.is_absolute() or re.match(r"^(?:[A-Za-z]:[\\/]|\\\\)", target) or ".." in target_path.parts:
+            raise ValueError(f"handoff target must be a repository-relative path: {target}")
+    dragon, ability = rule["source"]["dragon"], rule["source"]["ability"]
+    if not dragon or not ability:
+        raise ValueError("Strategist handoff requires a canonical source dragon and ability")
+    canonical = canonical_ability_record(repository_root, dragon, ability)
+    expected_citation = f"{canonical['path']} -> {canonical['field']}"
+    if expected_citation not in rule["evidence"]["canonical_sources"]:
+        raise ValueError(f"rule does not cite its exact canonical ability field: {expected_citation}")
+    observation_by_id = {item["id"]: item for item in observations["observations"]}
+    return {
+        "proposal_schema_version": "1.0.0",
+        "proposal_type": "combat-analyst-to-strategist-review",
+        "review_required": True,
+        "automatic_changes": False,
+        "rule_id": rule_id,
+        "eligibility": {
+            "status": rule["status"],
+            "confidence": rule["interpretation"]["confidence"],
+            "durable_mechanic_confirmed_by_operator": True,
+            "canonical_text_compatible": True,
+        },
+        "finding": {
+            "relationship": rule["relationship"],
+            "effect": rule["interpretation"]["effect"],
+            "summary": rule["interpretation"]["summary"],
+            "canonical_ability": canonical,
+            "limitations": list(rule["limitations"]),
+        },
+        "evidence": {
+            "supports": [
+                copy.deepcopy(observation_by_id[item]) for item in rule["evidence"]["supports"]
+            ],
+            "contradicts": [
+                copy.deepcopy(observation_by_id[item]) for item in rule["evidence"]["contradicts"]
+            ],
+        },
+        "receiving_changes": {
+            "target_files": sorted(set(target_files)),
+            "validation_commands": sorted(set(test_commands)),
+        },
+        "excluded_inputs": [
+            "draft or disputed rules", "generated local report results",
+            "account-specific damage values", "unreviewed rule candidates",
+        ],
     }
 
 
@@ -662,6 +759,13 @@ def build_parser() -> argparse.ArgumentParser:
     propose.add_argument("--candidates", type=Path, required=True)
     propose.add_argument("--candidate", required=True, help="Candidate ID or full fingerprint")
     propose.add_argument("--output", type=Path, required=True)
+    handoff = subparsers.add_parser("handoff", help="Write an eligible finding as a Strategist review proposal")
+    handoff.add_argument("--rule", required=True)
+    handoff.add_argument("--output", type=Path, required=True)
+    handoff.add_argument("--target-file", action="append", required=True)
+    handoff.add_argument("--test-command", action="append", required=True)
+    handoff.add_argument("--confirm-durable-mechanic", action="store_true")
+    add_common_inputs(handoff, root)
     return parser
 
 
@@ -681,6 +785,15 @@ def main(argv: Iterable[str] | None = None) -> int:
         args.output.resolve().parent.mkdir(parents=True, exist_ok=True)
         write_json(args.output.resolve(), fragment)
         print(f"Draft review fragment: {args.output.resolve()}")
+    elif args.command == "handoff":
+        proposal = build_strategist_handoff(
+            args.rule, load_json(args.rules.resolve()), load_json(args.observations.resolve()),
+            args.repository_root.resolve(), args.target_file, args.test_command,
+            args.confirm_durable_mechanic,
+        )
+        args.output.resolve().parent.mkdir(parents=True, exist_ok=True)
+        write_json(args.output.resolve(), proposal)
+        print(f"Strategist review proposal: {args.output.resolve()}")
     return 0
 
 

@@ -201,6 +201,22 @@ def validate_stores(
             errors.append(f"{rule_id}: disputed rule requires counterevidence")
         if rule["status"] == "accepted" and interpretation["confidence"] in {"tentative", "disputed"}:
             errors.append(f"{rule_id}: accepted rule has inconsistent confidence {interpretation['confidence']}")
+        if rule["status"] == "accepted" and not rule["evidence"]["supports"]:
+            errors.append(f"{rule_id}: accepted rule requires supporting observations")
+        if interpretation["confidence"] == "corroborated":
+            confirmed_support = any(
+                observation_by_id.get(observation_id, {}).get("quality", {}).get("visual_review") == "confirmed"
+                for observation_id in rule["evidence"]["supports"]
+            )
+            if not confirmed_support or not rule["evidence"]["canonical_sources"]:
+                errors.append(
+                    f"{rule_id}: corroborated confidence requires confirmed support and an independent canonical source"
+                )
+        for pattern in rule["match"]["report_patterns"]:
+            try:
+                re.compile(pattern)
+            except re.error as error:
+                errors.append(f"{rule_id}: invalid report pattern {pattern!r}: {error}")
         if rule["status"] == "deprecated":
             review = rule["review"]
             if not review.get("rationale"):
