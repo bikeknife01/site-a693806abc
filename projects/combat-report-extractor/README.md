@@ -35,7 +35,14 @@ fixtures or another checkout. The command writes:
   links, ambiguities, unmatched events, coverage, hashes, and derived insights;
 - `combat-analysis.json`: compact deterministic timeline and analysis model;
 - `combat-insights.md`: the same model rendered for people; and
-- `rule-candidates.json`: a conservative local review queue, never canonical knowledge.
+- `rule-candidates.json`: a conservative local review queue with both-formation context
+  and exact canonical ability/Habit source clues, never canonical knowledge.
+
+Displayed abilities are correlated against `data/dragons/*.json` for both sides. This
+matters in PvE, where a card header can be a role label rather than the dragon's name:
+a uniquely owned Command identifies the likely canonical dragon, and Habits that
+explicitly extend that Command are included as clues. These correlations narrow review;
+they do not promote a candidate or turn timing into causation.
 
 JSON and Markdown are generated from one model and contain no volatile timestamp. See
 [`docs/CANDIDATE_REVIEW.md`](docs/CANDIDATE_REVIEW.md) before proposing a draft. The

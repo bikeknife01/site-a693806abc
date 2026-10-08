@@ -15,7 +15,7 @@ from typing import Any, Iterable
 
 
 ANALYSIS_SCHEMA_VERSION = "1.0.0"
-TOOL_VERSION = "1.0.0"
+TOOL_VERSION = "1.1.0"
 SUPPORTED_REPORT_MAJOR = 1
 SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
@@ -84,10 +84,17 @@ def owner_matches(source_owner: str, result_owner: str, scope: str) -> bool:
     return True
 
 
-def source_matches(rule: dict[str, Any], action: dict[str, Any]) -> bool:
+def source_matches(
+    rule: dict[str, Any], action: dict[str, Any],
+    ability_owners: dict[str, set[str]] | None = None,
+) -> bool:
     source, match = rule["source"], rule["match"]
+    actor_matches = source["dragon"] is None or action.get("actor") == source["dragon"]
+    if not actor_matches and source["dragon"] is not None and source["ability"] is not None:
+        owners = (ability_owners or {}).get(normalize_text(action.get("ability")), set())
+        actor_matches = owners == {source["dragon"]}
     return (
-        (source["dragon"] is None or action.get("actor") == source["dragon"])
+        actor_matches
         and (source["ability"] is None or action.get("ability") == source["ability"])
         and (match["event_kind"] is None or action.get("kind") == match["event_kind"])
     )
@@ -158,6 +165,7 @@ def build_events(report: dict[str, Any], report_hash: str) -> list[dict[str, Any
 
 def match_rules(
     events: list[dict[str, Any]], rules: dict[str, Any], observations: dict[str, Any],
+    ability_owners: dict[str, set[str]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], set[str]]:
     observation_ids = {item["id"] for item in observations["observations"]}
     accepted = [rule for rule in rules["rules"] if rule["status"] == "accepted"]
@@ -165,7 +173,7 @@ def match_rules(
     for rule in sorted(accepted, key=lambda item: item["id"]):
         for source_event in events:
             source_action = source_event["source_action"]
-            if not source_matches(rule, source_action):
+            if not source_matches(rule, source_action, ability_owners):
                 continue
             for result_event in events:
                 if result_event is source_event and rule["relationship"] not in {"explicit", "ui_alias"}:
@@ -289,7 +297,9 @@ def build_analysis_model(
     validate_inputs(report, rules, observations, repository_root)
     report_hash, rule_hash, observation_hash = content_hash(report), content_hash(rules), content_hash(observations)
     events = build_events(report, report_hash)
-    links, ambiguities, involved = match_rules(events, rules, observations)
+    catalog = load_canonical_ability_catalog(repository_root)
+    ability_owners = canonical_ability_owners(catalog)
+    links, ambiguities, involved = match_rules(events, rules, observations, ability_owners)
     unmatched = [event["event_id"] for event in events if event["event_id"] not in involved]
     coverage = copy.deepcopy(report["coverage"])
     coverage["analyst_warnings"] = []
@@ -351,6 +361,113 @@ def load_effect_names(repository_root: Path) -> dict[str, str]:
     }
 
 
+def _verbatim_text(value: Any) -> list[str]:
+    if isinstance(value, str):
+        return [value]
+    if isinstance(value, list):
+        return [item for item in value if isinstance(item, str)]
+    return []
+
+
+def load_canonical_ability_catalog(repository_root: Path) -> list[dict[str, Any]]:
+    """Load exact ability names and wording without altering canonical dragon data."""
+    records: list[dict[str, Any]] = []
+    for path in sorted((repository_root / "data" / "dragons").glob("*.json")):
+        dragon = load_json(path)
+        dragon_name = dragon.get("name")
+        if not isinstance(dragon_name, str):
+            continue
+        relative = path.relative_to(repository_root).as_posix()
+        for ability_type in ("command", "vanguard"):
+            ability = dragon.get(ability_type) or {}
+            if isinstance(ability.get("name"), str):
+                records.append({
+                    "dragon": dragon_name, "ability": ability["name"], "ability_type": ability_type,
+                    "canonical_source": f"{relative} -> {ability_type}.verbatim",
+                    "verbatim": _verbatim_text(ability.get("verbatim")),
+                })
+        for index, ability in enumerate(dragon.get("habits") or []):
+            if isinstance(ability, dict) and isinstance(ability.get("name"), str):
+                records.append({
+                    "dragon": dragon_name, "ability": ability["name"], "ability_type": "habit",
+                    "canonical_source": f"{relative} -> habits[{index}].verbatim",
+                    "verbatim": _verbatim_text(ability.get("verbatim")),
+                })
+    return sorted(records, key=lambda item: (
+        item["dragon"], item["ability_type"], item["ability"], item["canonical_source"],
+    ))
+
+
+def canonical_ability_owners(catalog: list[dict[str, Any]]) -> dict[str, set[str]]:
+    owners: dict[str, set[str]] = defaultdict(set)
+    for record in catalog:
+        owners[normalize_text(record["ability"])].add(record["dragon"])
+    return owners
+
+
+def canonical_source_clues(action: dict[str, Any], catalog: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Correlate a displayed ability with exact canonical wording, without claiming causality."""
+    ability = normalize_text(action.get("ability"))
+    if not ability or ability == "basic attack":
+        return []
+    direct = [record for record in catalog if normalize_text(record["ability"]) == ability]
+    clues: list[dict[str, Any]] = []
+    for record in direct:
+        related = []
+        for candidate in catalog:
+            if candidate["dragon"] != record["dragon"]:
+                continue
+            canonical_text = " ".join(candidate["verbatim"])
+            if candidate is record or ability in normalize_text(canonical_text):
+                related.append({
+                    "ability": candidate["ability"], "ability_type": candidate["ability_type"],
+                    "canonical_source": candidate["canonical_source"],
+                    "verbatim": copy.deepcopy(candidate["verbatim"]),
+                })
+        clues.append({
+            "owner": action.get("owner"), "report_actor": action.get("actor"),
+            "report_ability": action.get("ability"), "canonical_dragon": record["dragon"],
+            "canonical_ability": record["ability"], "ability_type": record["ability_type"],
+            "basis": "exact displayed ability name",
+            "canonical_text": related,
+        })
+    return clues
+
+
+def formation_context(model: dict[str, Any], catalog: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    canonical_dragons = {record["dragon"] for record in catalog}
+    members: dict[tuple[str, str], dict[str, Any]] = {}
+    for action in model["source_report"]["actions"]:
+        owner, actor = action.get("owner", "unknown"), action.get("actor")
+        if not actor:
+            continue
+        member = members.setdefault((owner, actor), {
+            "report_actor": actor, "displayed_abilities": set(), "ability_correlations": {},
+        })
+        if action.get("ability"):
+            member["displayed_abilities"].add(action["ability"])
+        for clue in canonical_source_clues(action, catalog):
+            member["ability_correlations"].setdefault(clue["report_ability"], set()).add(
+                clue["canonical_dragon"]
+            )
+    result: dict[str, list[dict[str, Any]]] = {"user": [], "enemy": [], "unknown": []}
+    for (owner, _actor), member in sorted(members.items()):
+        correlated_dragons = {
+            dragon for dragons in member["ability_correlations"].values() for dragon in dragons
+        }
+        identity_clues = {member["report_actor"]} if member["report_actor"] in canonical_dragons else correlated_dragons
+        result.setdefault(owner, []).append({
+            "report_actor": member["report_actor"],
+            "displayed_abilities": sorted(member["displayed_abilities"]),
+            "canonical_dragon_clues": sorted(identity_clues),
+            "ability_correlations": [
+                {"report_ability": ability, "canonical_dragons": sorted(dragons)}
+                for ability, dragons in sorted(member["ability_correlations"].items())
+            ],
+        })
+    return result
+
+
 def report_identity(model: dict[str, Any]) -> str:
     source = model["source_report"].get("source") or {}
     source_hash = source.get("sha256")
@@ -377,10 +494,16 @@ def discover_candidates(
 ) -> dict[str, Any]:
     """Build a conservative review queue; never return a canonical rule."""
     effect_names = load_effect_names(repository_root)
+    ability_catalog = load_canonical_ability_catalog(repository_root)
     groups: dict[str, dict[str, Any]] = {}
+    formation_contexts: dict[str, dict[str, Any]] = {}
     for model in models:
         by_id = {event["event_id"]: event for event in model["events"]}
         report_id, formation_id = report_identity(model), formation_identity(model)
+        formation_contexts[report_id] = {
+            "report_id": report_id, "formation_id": formation_id,
+            "owners": formation_context(model, ability_catalog),
+        }
         unmatched = set(model["unmatched_events"])
         for result_event in model["events"]:
             if result_event["event_id"] not in unmatched:
@@ -420,7 +543,7 @@ def discover_candidates(
                     "source_window": [],
                 },
                 "occurrences": [], "alternatives": {}, "reports": set(), "formations": set(),
-                "contradictions": [],
+                "contradictions": [], "canonical_source_clues": {},
             })
             group["pattern"]["verbatim_variants"].add(phrase)
             normalized_ability = normalize_text(result_action.get("ability"))
@@ -442,6 +565,12 @@ def discover_candidates(
             })
             group["reports"].add(report_id)
             group["formations"].add(formation_id)
+            for clue in canonical_source_clues(result_action, ability_catalog):
+                clue_key = json.dumps([
+                    clue["owner"], clue["report_actor"], clue["report_ability"],
+                    clue["canonical_dragon"], clue["canonical_ability"],
+                ], ensure_ascii=False)
+                group["canonical_source_clues"][clue_key] = clue
             for item in alternatives:
                 alternative_key = json.dumps(
                     [item["actor"], item["ability"], item["round_offset"]], ensure_ascii=False,
@@ -454,6 +583,9 @@ def discover_candidates(
     candidates: list[dict[str, Any]] = []
     for fingerprint, group in groups.items():
         alternatives = [group["alternatives"][key] for key in sorted(group["alternatives"])]
+        canonical_clues = [
+            group["canonical_source_clues"][key] for key in sorted(group["canonical_source_clues"])
+        ]
         variants = sorted(group["pattern"]["verbatim_variants"], key=lambda item: (normalize_text(item), item))
         group["pattern"]["result_phrase"] = variants[0]
         group["pattern"]["verbatim_variants"] = variants
@@ -474,13 +606,15 @@ def discover_candidates(
             },
             "occurrences": sorted(group["occurrences"], key=lambda item: (item["report_id"], item["event_id"])),
             "known_alternative_sources": alternatives,
+            "canonical_source_clues": canonical_clues,
             "contradictions": sorted(group["contradictions"], key=lambda item: json.dumps(item, sort_keys=True)),
             "proposed_relationship": relationship,
             "evidence_needed": [
                 "Visually review every cited frame and exact wording.",
                 "Repeat the pattern in a distinct report and formation.",
                 "Vary or exclude the listed alternative sources.",
-                "Check compatible canonical ability text before proposing causality.",
+                "Compare the exact displayed ability with every canonical source clue from both formations.",
+                "Treat a canonical text match as a source clue, not automatic proof of an emitted effect.",
             ],
         })
 
@@ -498,6 +632,7 @@ def discover_candidates(
             "pattern": {"result_phrase": None, "verbatim_variants": [], "normalized_result": rule["interpretation"]["effect"], "source_window": []},
             "counts": {"occurrences": 0, "distinct_reports": 0, "distinct_formations": 0},
             "occurrences": [], "known_alternative_sources": [],
+            "canonical_source_clues": [],
             "contradictions": contradiction_items, "proposed_relationship": "unresolved",
             "evidence_needed": ["Resolve the cited counterevidence before retaining or revising the accepted rule."],
         })
@@ -505,7 +640,9 @@ def discover_candidates(
     return {
         "schema_version": "1.0.0", "tool_version": TOOL_VERSION,
         "input_report_hashes": sorted(model["input_report_hash"] for model in models),
-        "rule_set_hash": content_hash(rules), "candidates": candidates,
+        "rule_set_hash": content_hash(rules),
+        "formation_contexts": [formation_contexts[key] for key in sorted(formation_contexts)],
+        "candidates": candidates,
     }
 
 

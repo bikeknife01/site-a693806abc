@@ -31,13 +31,13 @@ are review categories, not invented probabilities.
 ## Current rule state
 
 Established and disputed rules are the entries with the corresponding `status` in
-`data/combat_report_rules.json`. Accepted rules currently cover directly displayed
-results for Velar's Gales of Power, Moondancer's Crescent Blade, Zivern's Fearsome
-Reach, and Zivern's Silent Shade, plus the reviewed report wording for Vhagar's Fiery
-Bonds Taunt. Their exact IDs, match bounds, limitations, and portable supporting and
-contradicting observation references remain in the machine data. Use the validator and
-generated analysis to enumerate current IDs; do not infer an additional rule from this
-summary.
+`data/combat_report_rules.json`. Accepted rules currently include directly displayed
+results for Velar, Moondancer, Vhagar, and Zivern; Moondancer's granted Crescent Blade
+to Rising Tide mitigation chain; Crimson's Bloodscale Terror results; and Seasmoke's
+Cleansing Wrath and Infectious Wrath results. Their exact IDs, match bounds,
+limitations, and portable supporting and contradicting observation references remain
+in the machine data. Use the validator and generated analysis to enumerate current IDs;
+do not infer an additional rule from this summary.
 
 ## Run and review
 
@@ -54,7 +54,11 @@ python projects/combat-report-extractor/combat_report_interpreter.py interpret `
 
 Review `combat-insights.md`, then inspect `enriched-combat-report.json` for preserved
 actions and annotations. Coverage warnings flow through both. `rule-candidates.json`
-is a local queue and may remain unresolved. The candidate proposal workflow is in
+is a local queue and may remain unresolved. Its formation contexts and canonical source
+clues correlate displayed abilities on both sides with exact dragon ability and Habit
+wording. A uniquely owned ability can identify a canonical dragon behind a PvE role
+label, but the correlation remains a clue until the displayed result and relationship
+meet the review policy. The candidate proposal workflow is in
 [`projects/combat-report-extractor/docs/CANDIDATE_REVIEW.md`](../projects/combat-report-extractor/docs/CANDIDATE_REVIEW.md).
 
 ## Contribute a reviewed observation

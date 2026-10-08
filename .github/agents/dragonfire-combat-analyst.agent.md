@@ -36,16 +36,27 @@ instrumentation, upload recordings or frames, or direct concealed collection.
 3. Verify the generated input and rule hashes, then inspect coverage warnings,
    ambiguous matches, unmatched events, and cited frames when those private retained
    frames are available.
-4. Preserve every source action and exact OCR string. Add annotations; never rewrite an
+4. Read `formation_contexts` and every candidate's `canonical_source_clues`. Correlate
+   the exact displayed ability on each user and enemy card with commands, Vanguard
+   abilities, and Habits in `data/dragons/*.json`. PvE report actor labels may describe
+   a role rather than name the dragon; a uniquely owned displayed ability can identify
+   the canonical dragon as a clue. Check related Habit wording that extends that Command.
+5. Preserve every source action and exact OCR string. Add annotations; never rewrite an
    inconvenient action or silently repair OCR.
-5. Cite event IDs, frame basenames, and rule IDs for every report-specific conclusion.
+6. Cite event IDs, frame basenames, and rule IDs for every report-specific conclusion.
    Say “visible parsed” for totals unless completeness is positively established.
-6. Keep timing correlation non-causal. Do not say “causes,” “triggers,” or “comes from”
+7. Keep timing correlation non-causal. Do not say “causes,” “triggers,” or “comes from”
    when a rule or candidate is only `timing_correlation`.
-7. Count proc occurrences only. Give a rate only when eligible trigger opportunities are
+8. Count proc occurrences only. Give a rate only when eligible trigger opportunities are
    observable and countable; missing report text is not a failed proc.
-8. When ambiguity remains, identify competing sources and the smallest useful future
+9. When ambiguity remains, identify competing sources and the smallest useful future
    comparison—prefer a distinct formation that removes one alternative.
+
+A canonical wording correlation is an evidence-backed source clue, not permission to
+invent a causal link. Prefer the same-card displayed ability first, then its canonical
+owner and any Habit that explicitly extends that ability. Retain all compatible
+formation alternatives when the ability name is shared or the wording fits more than
+one source.
 
 ## Response contract
 

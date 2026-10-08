@@ -200,6 +200,197 @@
         "visual_review": "confirmed", "coverage_warnings_relevant": false,
         "notes": ["The retained frame visibly shows the upward Tactical Damage Received modifier on the Silent Shade card."]
       }
+    },
+    {
+      "id": "observation.combat-7f322ee5105b.006", "disposition": "supports",
+      "report": {
+        "report_id": "combat-7f322ee5105b", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-03a7063f005b"
+      },
+      "location": {"round": 4, "timestamp_seconds": 106.0, "frame_basename": "frame-000054.jpg"},
+      "verbatim": {
+        "head_text": "[Velar]activates[CrescentBlade]affecting[Moondancer](RightFlank).",
+        "detail_text": "2.5%damage received."
+      },
+      "normalized": {
+        "owner": "user", "actor": "Velar", "ability": "Crescent Blade",
+        "result": "Rising Tide Damage Received reduction"
+      },
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["The card shows Velar activating the Crescent Blade granted by Moondancer and a downward 2.5% Damage Received result on Moondancer."]
+      }
+    },
+    {
+      "id": "observation.combat-7f322ee5105b.007", "disposition": "supports",
+      "report": {
+        "report_id": "combat-7f322ee5105b", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-03a7063f005b"
+      },
+      "location": {"round": 8, "timestamp_seconds": 174.0, "frame_basename": "frame-000088.jpg"},
+      "verbatim": {
+        "head_text": "[Velar]activates[Crescent Blade]affecting[Moondancer](RightFlank).",
+        "detail_text": "2.5%damage received."
+      },
+      "normalized": {
+        "owner": "user", "actor": "Velar", "ability": "Crescent Blade",
+        "result": "Rising Tide Damage Received reduction"
+      },
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["A second retained card in the same report shows the same granted Crescent Blade and downward mitigation result."]
+      }
+    },
+    {
+      "id": "observation.combat-7f322ee5105b.008", "disposition": "supports",
+      "report": {
+        "report_id": "combat-7f322ee5105b", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-03a7063f005b"
+      },
+      "location": {"round": 9, "timestamp_seconds": 182.0, "frame_basename": "frame-000092.jpg"},
+      "verbatim": {
+        "head_text": "[Velar]activates[Crescent Blade]affecting[Moondancer](Vanguard).",
+        "detail_text": "2.5% damage received."
+      },
+      "normalized": {
+        "owner": "user", "actor": "Velar", "ability": "Crescent Blade",
+        "result": "Rising Tide Damage Received reduction"
+      },
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["A third retained card in the same report shows the same granted Crescent Blade and downward mitigation result."]
+      }
+    },
+    {
+      "id": "observation.combat-e90151bfdce1.005", "disposition": "supports",
+      "report": {
+        "report_id": "combat-e90151bfdce1", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-7a620421c6cb"
+      },
+      "location": {"round": 4, "timestamp_seconds": 166.5, "frame_basename": "frame-000112.jpg"},
+      "verbatim": {
+        "head_text": "[Zivern]activates[CrescentBlade]affecting[Moondancer](RightFlank).",
+        "detail_text": "2.5% damage received."
+      },
+      "normalized": {
+        "owner": "user", "actor": "Zivern", "ability": "Crescent Blade",
+        "result": "Rising Tide Damage Received reduction"
+      },
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["A second formation shows Zivern activating the Crescent Blade granted by Moondancer and the same downward result."]
+      }
+    },
+    {
+      "id": "observation.combat-e90151bfdce1.006", "disposition": "supports",
+      "report": {
+        "report_id": "combat-e90151bfdce1", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-7a620421c6cb"
+      },
+      "location": {"round": 1, "timestamp_seconds": 79.5, "frame_basename": "frame-000054.jpg"},
+      "verbatim": {
+        "head_text": "[PersistentHunter]activates[BloodscaleTerror]affecting[Zivern](LeftFlank).",
+        "detail_text": "Stunapplied.Lastsfor2rounds."
+      },
+      "normalized": {"owner": "enemy", "actor": "Crimson", "ability": "Bloodscale Terror", "result": "Stun"},
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["Persistent Hunter is the visible PvE role label; Bloodscale Terror uniquely correlates the card with canonical Crimson data."]
+      }
+    },
+    {
+      "id": "observation.combat-e90151bfdce1.007", "disposition": "supports",
+      "report": {
+        "report_id": "combat-e90151bfdce1", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-7a620421c6cb"
+      },
+      "location": {"round": 2, "timestamp_seconds": 103.5, "frame_basename": "frame-000070.jpg"},
+      "verbatim": {
+        "head_text": "[Persistent Hunter]activates[Bloodscale Terror]affecting[Vhagar](Vanguard).",
+        "detail_text": "16.911% Instinct. 16.911% Initiative."
+      },
+      "normalized": {
+        "owner": "enemy", "actor": "Crimson", "ability": "Bloodscale Terror",
+        "result": "Instinct and Initiative reduction"
+      },
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["The retained frame visibly shows downward arrows; the numeric values are progression-specific."]
+      }
+    },
+    {
+      "id": "observation.combat-e90151bfdce1.008", "disposition": "supports",
+      "report": {
+        "report_id": "combat-e90151bfdce1", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-7a620421c6cb"
+      },
+      "location": {"round": 2, "timestamp_seconds": 102.0, "frame_basename": "frame-000069.jpg"},
+      "verbatim": {
+        "head_text": "[ApexChampion]activates[CleansingWrath]affecting[Moondancer](RightFlank).",
+        "detail_text": "1effects removed. 1effectsremoved."
+      },
+      "normalized": {"owner": "enemy", "actor": "Seasmoke", "ability": "Cleansing Wrath", "result": "Cleanse"},
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["Apex Champion is the visible PvE role label; Cleansing Wrath uniquely correlates the card with canonical Seasmoke data."]
+      }
+    },
+    {
+      "id": "observation.combat-e90151bfdce1.009", "disposition": "supports",
+      "report": {
+        "report_id": "combat-e90151bfdce1", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-7a620421c6cb"
+      },
+      "location": {"round": 4, "timestamp_seconds": 159.0, "frame_basename": "frame-000107.jpg"},
+      "verbatim": {
+        "head_text": "[ApexChampion]activates[CleansingWrath]affecting[Vhagar](Vanguard)",
+        "detail_text": "1effects removed. 1effectsremoved."
+      },
+      "normalized": {"owner": "enemy", "actor": "Seasmoke", "ability": "Cleansing Wrath", "result": "Cleanse"},
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["A second visually reviewed card shows the same effects-removed wording."]
+      }
+    },
+    {
+      "id": "observation.combat-e90151bfdce1.010", "disposition": "supports",
+      "report": {
+        "report_id": "combat-e90151bfdce1", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-7a620421c6cb"
+      },
+      "location": {"round": 1, "timestamp_seconds": 69.0, "frame_basename": "frame-000047.jpg"},
+      "verbatim": {
+        "head_text": "[Apex Champion]activates[CleansingWrath]affecting[Vhagar](Vanguard)",
+        "detail_text": "15%recovery received.Lasts for3rounds."
+      },
+      "normalized": {
+        "owner": "enemy", "actor": "Seasmoke", "ability": "Cleansing Wrath",
+        "result": "Infectious Wrath Recovery Received reduction"
+      },
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["The frame visibly shows a downward arrow and a 3-round duration; canonical Infectious Wrath extends Cleansing Wrath with this result."]
+      }
+    },
+    {
+      "id": "observation.combat-e90151bfdce1.011", "disposition": "supports",
+      "report": {
+        "report_id": "combat-e90151bfdce1", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-7a620421c6cb"
+      },
+      "location": {"round": 4, "timestamp_seconds": 159.0, "frame_basename": "frame-000107.jpg"},
+      "verbatim": {
+        "head_text": "[ApexChampion]activates[CleansingWrath]affecting[Zivern](LeftFlank)",
+        "detail_text": "15%recoveryreceived.Lastsfor3rounds."
+      },
+      "normalized": {
+        "owner": "enemy", "actor": "Seasmoke", "ability": "Cleansing Wrath",
+        "result": "Infectious Wrath Recovery Received reduction"
+      },
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["A second visually reviewed card shows the same downward Recovery Received result and duration."]
+      }
     }
   ]
 }
