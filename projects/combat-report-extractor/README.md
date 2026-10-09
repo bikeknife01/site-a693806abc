@@ -81,6 +81,22 @@ and generated runs must remain untracked.
 
 ## Extract a video
 
+### One-command ingestion
+
+From the repository root, supply only the recording path:
+
+```powershell
+.\ingest-combat-report.ps1 'C:\path\to\combat-report.mp4'
+```
+
+The script uses `.venv` when available, chooses a dated ignored snapshot folder from the
+video name and content hash, runs extraction and Combat Analyst interpretation, and
+prints the folder and report to review. Running it again for the exact same video reuses
+the retained OCR and refreshes parsing and interpretation with current code and rules.
+If `.venv` is absent, it uses `python` from `PATH`; install the requirements below first.
+
+### Manual extraction
+
 From the repository root:
 
 ```powershell

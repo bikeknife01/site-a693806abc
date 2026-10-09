@@ -109,7 +109,14 @@ Game_Details/Resources/_snapshots/YYYY-MM-DD/analysis/
   pve-stage-name-swap-dragon-name/
 ```
 
-Extract and interpret each report:
+The easiest path performs extraction and interpretation together:
+
+```powershell
+.\ingest-combat-report.ps1 'C:\path\to\report.mp4'
+```
+
+The command prints its dated ignored output folder. For manual control over the output
+name or sampling interval, run the two underlying commands instead:
 
 ```powershell
 python projects/combat-report-extractor/combat_report_extractor.py extract `
