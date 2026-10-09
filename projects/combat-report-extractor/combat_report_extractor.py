@@ -267,8 +267,10 @@ def attach_details(lines: list[dict[str, Any]], index: int, owner: str) -> list[
             continue
         if parse_action_head(candidate["text"]):
             break
-        if candidate.get("ownership", "unknown") not in (owner, "unknown"):
-            continue
+        # Damage/result sentences often contain both blue and red names, so their
+        # sampled text color can disagree with the card header. Ownership comes from
+        # the parsed header; spatial position and the next-header boundary attach
+        # detail lines without using their unreliable mixed-color classification.
         details.append(candidate)
     return details
 
@@ -319,7 +321,9 @@ def parse_ocr_manifest(manifest: dict[str, Any], repository_root: Path) -> dict[
     # Sampled frames intentionally overlap, and a slow or reversed scroll can show the
     # same card again much later. Within one round, collapse the same semantic card even
     # when OCR varies in punctuation or modifier text. Distinct targets, damage, losses,
-    # remaining troops, and recovery values remain separate through the key below.
+    # remaining troops, recovery values, and distinct modifier cards remain separate
+    # through the key below. Some abilities emit multiple cards for the same target
+    # (for example, one Initiative card and one Damage Received card).
     clustered: dict[tuple[Any, ...], list[dict[str, Any]]] = defaultdict(list)
     for record in sorted(records, key=lambda item: item["evidence"]["timestamp_seconds"]):
         key = (
@@ -327,6 +331,10 @@ def parse_ocr_manifest(manifest: dict[str, Any], repository_root: Path) -> dict[
             compact(record.get("actor") or ""), compact(record.get("ability") or ""),
             compact(record.get("target") or ""), (record.get("damage") or {}).get("amount"),
             record.get("losses"), record.get("remaining"), record.get("recovery"),
+            tuple(
+                (modifier.get("percent"), compact(modifier.get("description") or ""))
+                for modifier in record.get("modifiers", [])
+            ),
         )
         matches = clustered[key]
         nearby_index = 0 if matches else None

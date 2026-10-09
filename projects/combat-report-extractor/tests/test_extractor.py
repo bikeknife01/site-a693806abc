@@ -55,6 +55,63 @@ class CombatReportExtractorTests(unittest.TestCase):
         report = MODULE.parse_ocr_manifest(manifest, ROOT)
         self.assertEqual(2, report["coverage"]["action_count"])
 
+    def test_preserves_distinct_modifier_cards_from_the_same_ability(self) -> None:
+        def line(text: str, y: int) -> dict[str, object]:
+            return {
+                "text": text,
+                "confidence": 0.99,
+                "box": [[600, y], [1600, y], [1600, y + 30], [600, y + 30]],
+                "ownership": "user",
+            }
+
+        manifest = {
+            "frames": [{
+                "frame": "frame-000001.jpg",
+                "timestamp_seconds": 1.5,
+                "active_section": "ROUND 2",
+                "lines": [
+                    line("[Rhysarion] activates [Inspiring Melody] affecting [Vermithor] (Left Flank).", 100),
+                    line("25.657% Initiative.", 140),
+                    line("[Rhysarion] activates [Inspiring Melody] affecting [Vermithor] (Left Flank).", 260),
+                    line("5% damage received.", 300),
+                ],
+            }],
+        }
+        report = MODULE.parse_ocr_manifest(manifest, ROOT)
+        self.assertEqual(2, report["coverage"]["action_count"])
+        self.assertEqual(
+            [[{"percent": 25.657, "description": "Initiative"}],
+             [{"percent": 5.0, "description": "damage received"}]],
+            [action["modifiers"] for action in report["actions"]],
+        )
+
+    def test_attaches_mixed_color_detail_to_header_owner(self) -> None:
+        manifest = {
+            "frames": [{
+                "frame": "frame-000001.jpg",
+                "timestamp_seconds": 1.5,
+                "active_section": "ROUND 4",
+                "lines": [
+                    {
+                        "text": "[Commanding Champion] uses [Tactical Strike] to attack [Rhysarion] (Vanguard).",
+                        "confidence": 0.99,
+                        "box": [[600, 100], [1800, 100], [1800, 130], [600, 130]],
+                        "ownership": "enemy",
+                    },
+                    {
+                        "text": "Deals 15 Tactical Damage against [Rhysarion]. [Rhysarion] takes 15 losses (11734 remaining).",
+                        "confidence": 0.99,
+                        "box": [[600, 140], [1900, 140], [1900, 170], [600, 170]],
+                        "ownership": "user",
+                    },
+                ],
+            }],
+        }
+        report = MODULE.parse_ocr_manifest(manifest, ROOT)
+        self.assertEqual(1, report["coverage"]["action_count"])
+        self.assertEqual("enemy", report["actions"][0]["owner"])
+        self.assertEqual({"amount": 15, "type": "Tactical"}, report["actions"][0]["damage"])
+
     def test_insights_separate_user_and_enemy(self) -> None:
         manifest = json.loads((Path(__file__).parent / "fixtures" / "ocr_frames.json").read_text(encoding="utf-8"))
         report = MODULE.parse_ocr_manifest(manifest, ROOT)
