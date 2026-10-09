@@ -95,6 +95,21 @@ prints the folder and report to review. Running it again for the exact same vide
 the retained OCR and refreshes parsing and interpretation with current code and rules.
 If `.venv` is absent, it uses `python` from `PATH`; install the requirements below first.
 
+To group repeatable experiments and preserve a question that is not visible in the
+recording:
+
+```powershell
+.\ingest-combat-report.ps1 'C:\path\to\report.mp4' `
+  -Experiment 'level-13-iron-rhysarion' `
+  -Variant 'baseline' `
+  -Question 'Measure Inspiring Melody opportunities and outcome exposure'
+```
+
+Ingestion also writes `combat-measurements.json` and `combat-measurements.md`. A
+configured RNG activation is keyed by its source event, so several result cards do not
+inflate the proc count. Scheduled, observable, and unknown opportunities remain
+separate.
+
 ### Manual extraction
 
 From the repository root:
@@ -129,6 +144,37 @@ python projects/combat-report-extractor/combat_report_extractor.py parse `
   --ocr '<run>\ocr_frames.json' `
   --output '<run>'
 ```
+
+## Aggregate repeated experiments
+
+Aggregate retained measurements without rerunning video decoding or OCR:
+
+```powershell
+python projects/combat-report-extractor/combat_empirical_analyzer.py aggregate `
+  --measurement '<baseline-run>\combat-measurements.json' `
+  --measurement '<swap-run>\combat-measurements.json' `
+  --experiment 'level-13-iron-rhysarion' `
+  --output '<ignored-experiment-folder>'
+```
+
+The command writes deterministic `combat-experiment.json` and
+`combat-experiment.md`. It pools observable opportunities, retains unknown denominators,
+shows variants independently, and reports a Wilson interval as sampling uncertainty.
+It does not claim that exposure caused a damage or Recovery difference.
+
+Create a draft-only empirical finding for review with:
+
+```powershell
+python projects/combat-report-extractor/combat_empirical_analyzer.py propose `
+  --aggregate '<ignored-experiment-folder>\combat-experiment.json' `
+  --trial 'trial.dragon.ability.effect.v1' `
+  --output '<ignored-review-folder>\empirical-finding-proposal.json'
+```
+
+Reviewed trial definitions live in `data/combat_trial_definitions.json`. Accepted
+cross-report metrics live in `data/combat_empirical_findings.json`; local measurements,
+aggregates, and proposals never become canonical automatically. The Strategist may read
+only accepted, corroborated findings with an explicitly approved recommendation gate.
 
 ## Recording guidance
 

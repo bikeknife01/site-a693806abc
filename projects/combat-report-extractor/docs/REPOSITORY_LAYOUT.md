@@ -14,8 +14,10 @@ D:/repos/Dragonfire/
 │   ├── dragons/                                           # existing canonical kits
 │   ├── effects.json                                       # existing shared effects
 │   ├── game_mechanics.json                                # existing shared mechanics
-│   ├── combat_report_rules.json                           # planned canonical rules
-│   └── combat_report_observations.json                    # planned curated evidence
+│   ├── combat_report_rules.json                           # canonical interpretation rules
+│   ├── combat_report_observations.json                    # curated report evidence
+│   ├── combat_trial_definitions.json                      # reviewed RNG trial definitions
+│   └── combat_empirical_findings.json                     # reviewed aggregate findings
 ├── wiki/
 │   └── Combat-Report-Interpretation.md                    # planned human guide
 ├── projects/
@@ -24,15 +26,21 @@ D:/repos/Dragonfire/
 │       ├── requirements.txt                               # existing dependencies
 │       ├── combat_report_extractor.py                     # existing OCR/parser
 │       ├── combat_report_interpreter.py                   # planned enrichment CLI
+│       ├── combat_empirical_analyzer.py                   # measurement/experiment CLI
 │       ├── validate_combat_report_rules.py                # planned data validator
 │       ├── docs/
 │       │   ├── COMBAT_ANALYST_SPEC.md                     # this design contract
 │       │   ├── BUILD_PLAN.md                              # phased implementation
 │       │   ├── REPOSITORY_LAYOUT.md                       # this file
+│       │   ├── EMPIRICAL_ANALYSIS.md                      # empirical workflow and gate
 │       │   └── NEXT_SESSION_PROMPT.md                     # implementation handoff
 │       ├── schemas/
 │       │   ├── combat-report-rules.schema.json            # planned
 │       │   ├── combat-report-observations.schema.json     # planned
+│       │   ├── combat-trial-definitions.schema.json       # trial contract
+│       │   ├── combat-empirical-findings.schema.json      # finding contract
+│       │   ├── combat-measurement.schema.json              # per-report measurement output
+│       │   ├── combat-experiment.schema.json               # cross-report aggregate output
 │       │   └── enriched-combat-report.schema.json         # planned
 │       └── tests/
 │           ├── fixtures/
@@ -58,6 +66,8 @@ D:/repos/Dragonfire/
                         ├── enriched-combat-report.json    # planned generated output
                         ├── combat-analysis.json            # planned generated output
                         ├── combat-insights.md              # planned generated output
+                        ├── combat-measurements.json        # generated empirical measurement
+                        ├── combat-measurements.md          # generated measurement report
                         └── rule-candidates.json            # planned local review queue
 ```
 

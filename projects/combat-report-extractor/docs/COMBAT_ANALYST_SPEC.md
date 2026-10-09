@@ -427,3 +427,23 @@ The first production-ready release is complete when:
 - all tests run without requiring MuMu, ADB, network access, recordings, or ignored
   snapshots.
 
+## 15. Empirical extension
+
+The empirical layer extends interpretation with a deterministic hierarchy:
+
+```text
+scheduled opportunity -> observable or unknown opportunity -> source activation
+  -> emitted result cards -> effect exposure -> damage/recovery samples
+```
+
+Reviewed trial definitions identify the canonical schedule and accepted rules that
+constitute one success. Result cards sharing a source event count as one activation.
+Missing report text is not a failed proc. A complete denominator requires clean coverage
+and positive source-presence evidence for every scheduled opportunity.
+
+Per-report measurements and cross-report aggregates remain ignored local artifacts.
+Reviewed aggregate findings use a separate canonical store and retain scope, sample
+counts, report hashes, reviewed observations, contradictions, uncertainty, and
+limitations. The Strategist consumes only accepted, corroborated findings with an
+explicitly approved recommendation gate. See `EMPIRICAL_ANALYSIS.md`.
+

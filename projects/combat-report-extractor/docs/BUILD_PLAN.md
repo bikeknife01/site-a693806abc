@@ -211,7 +211,30 @@ The handoff should produce a reviewable proposal, not mutate
 
 Exit criteria: Combat Analyst discoveries cannot silently influence formation advice.
 
-## Phase 7 — Release validation and documentation audit
+## Phase 7 — Empirical measurement and recommendation handoff
+
+Create reviewed trial definitions, per-report opportunity/activation/exposure
+measurements, repeated-experiment aggregation, a canonical empirical-findings store,
+and a proposal-only Strategist handoff. Multiple emitted result cards count as one
+source activation. Unknown opportunities never become failed procs. Outcome samples
+retain exposure context without causal wording.
+
+Update one-command ingestion, both agent contracts, wiki guidance, schemas, validation,
+and synthetic tests. Local measurement and experiment files remain ignored; only
+explicitly reviewed portable findings may be committed.
+
+Checks:
+
+```powershell
+python -m unittest discover -s projects/combat-report-extractor/tests -v
+python projects/combat-report-extractor/validate_combat_report_rules.py
+```
+
+Exit criteria: one-command ingestion emits a deterministic measurement, repeated runs
+aggregate without inflating multi-card activations, and no empirical value can reach
+the Strategist without accepted/corroborated/approved canonical state.
+
+## Phase 8 — Release validation and documentation audit
 
 Run:
 

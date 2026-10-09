@@ -17,7 +17,13 @@ class CombatAnalystDocumentationTests(unittest.TestCase):
             "wiki/Combat-Report-Capture-Guide.md",
             "data/combat_report_rules.json",
             "data/combat_report_observations.json",
+            "data/combat_trial_definitions.json",
+            "data/combat_empirical_findings.json",
+            "projects/combat-report-extractor/combat_empirical_analyzer.py",
+            "projects/combat-report-extractor/schemas/combat-measurement.schema.json",
+            "projects/combat-report-extractor/schemas/combat-experiment.schema.json",
             "projects/combat-report-extractor/docs/CANDIDATE_REVIEW.md",
+            "projects/combat-report-extractor/docs/EMPIRICAL_ANALYSIS.md",
             "projects/combat-report-extractor/docs/STRATEGIST_HANDOFF.md",
         ):
             self.assertTrue((ROOT / relative).is_file(), relative)
@@ -26,9 +32,18 @@ class CombatAnalystDocumentationTests(unittest.TestCase):
         text = (ROOT / ".github/agents/dragonfire-combat-analyst.agent.md").read_text(encoding="utf-8")
         self.assertIn("data/combat_report_rules.json", text)
         self.assertIn("data/combat_report_observations.json", text)
+        self.assertIn("data/combat_trial_definitions.json", text)
+        self.assertIn("data/combat_empirical_findings.json", text)
         for label in ("Observed", "Derived", "Inferred", "Unknown"):
             self.assertIn(label, text)
         self.assertIn("Never auto-promote", text)
+
+    def test_strategist_uses_only_gated_empirical_findings(self) -> None:
+        text = (ROOT / ".github/agents/dragonfire-strategist.agent.md").read_text(encoding="utf-8")
+        self.assertIn("data/combat_empirical_findings.json", text)
+        self.assertIn("recommendation.eligible: true", text)
+        self.assertIn("review.strategist_gate: approved", text)
+        self.assertIn("Never read local combat reports", text)
 
     def test_wiki_does_not_invent_rule_ids(self) -> None:
         wiki = (ROOT / "wiki/Combat-Report-Interpretation.md").read_text(encoding="utf-8")

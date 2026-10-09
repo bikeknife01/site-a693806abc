@@ -115,6 +115,19 @@ The easiest path performs extraction and interpretation together:
 .\ingest-combat-report.ps1 'C:\path\to\report.mp4'
 ```
 
+When a recording belongs to a repeatable experiment, add only the context that is not
+visible in the video:
+
+```powershell
+.\ingest-combat-report.ps1 'C:\path\to\report.mp4' `
+  -Experiment 'level-13-iron-rhysarion' `
+  -Variant 'baseline' `
+  -Question 'How often does Inspiring Melody activate?'
+```
+
+Use the same experiment ID for repeats and a stable variant such as `baseline`,
+`swap-rhysarion`, or `lane-change`. This replaces a separate capture note in most cases.
+
 The command prints its dated ignored output folder. For manual control over the output
 name or sampling interval, run the two underlying commands instead:
 
@@ -129,7 +142,9 @@ python projects/combat-report-extractor/combat_report_interpreter.py interpret `
 ```
 
 Preserve the video, OCR evidence, parsed report, generated analysis, candidate queue, and
-cited frames together in that ignored folder. Preserve an optional context note there
+cited frames together in that ignored folder. The ingestion command also preserves
+per-report RNG opportunities, activations, effect exposures, and outcome samples in
+`combat-measurements.json`. Preserve an optional context note there
 only when it records something the video does not show.
 
 ## Review checklist
@@ -145,9 +160,10 @@ Before asking for a rule update, confirm:
 - repeated occurrences are not presented as distinct reports or formations; and
 - missing report text is not treated as proof that a chance-based effect failed.
 
-Then ask the Combat Analyst to compare the paired runs, inspect the cited frames, and
-identify observations that are safe to curate. It is acceptable—and often correct—for
-the result to remain an unresolved candidate.
+Then ask the Combat Analyst to compare the paired runs, aggregate their measurements,
+inspect the cited frames, and identify observations or empirical findings that are safe
+to curate. It is acceptable—and often correct—for the result to remain a draft or
+unresolved candidate.
 
 ## Sustainable collection plan
 

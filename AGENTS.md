@@ -216,6 +216,14 @@ derived, inferred, and unknown claims distinct. Treat timing relationships as
 correlations unless independent evidence establishes more. `rule-candidates.json` is an
 ignored local review queue and must never be promoted automatically.
 
+One-command ingestion also writes `combat-measurements.json` and
+`combat-measurements.md`. These group multiple result cards under one activation, keep
+observable and unknown RNG opportunities separate, and annotate later outcome samples
+with effect exposure. Group repeated runs with `-Experiment`, `-Variant`, and
+`-Question`, then aggregate their measurements with
+`combat_empirical_analyzer.py aggregate`. Local measurements and aggregates are not
+canonical evidence.
+
 Committed observations must be portable and reviewed: no account identifiers, absolute
 local paths, raw recordings, or unreviewed claims presented as established. Preserve all
 supporting and contradicting observation references. The Strategist must not consume
@@ -223,6 +231,12 @@ draft/disputed rules or generated local reports. Only an accepted, corroborated,
 canonical-text-compatible durable mechanic may enter the separate review proposal
 described in `wiki/Combat-Report-Interpretation.md`; that proposal does not mutate
 Strategist or canonical mechanic data automatically.
+
+Reviewed cross-report metrics belong in `data/combat_empirical_findings.json`. The
+Strategist may consume only accepted, corroborated findings with
+`recommendation.eligible: true` and an approved Strategist gate. Missing report text is
+never a failed proc, and exposure-correlated damage or Recovery is not an isolated
+causal effect without a controlled comparison.
 
 ## Latest Local Findings
 

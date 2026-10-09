@@ -63,6 +63,27 @@ label, but the correlation remains a clue until the displayed result and relatio
 meet the review policy. The candidate proposal workflow is in
 [`projects/combat-report-extractor/docs/CANDIDATE_REVIEW.md`](../projects/combat-report-extractor/docs/CANDIDATE_REVIEW.md).
 
+## Empirical measurements and experiments
+
+Every one-command ingestion writes `combat-measurements.json` and
+`combat-measurements.md` from the enriched report. Reviewed definitions in
+`data/combat_trial_definitions.json` identify countable RNG schedules and the accepted
+rules that constitute one successful activation. Multiple result cards sharing a source
+event count as one activation.
+
+Each measurement keeps scheduled rounds, observable opportunities where the source is
+positively active, and unknown opportunities that cannot safely be called failures
+separate. Repeated measurements can be combined with
+`combat_empirical_analyzer.py aggregate`. The output retains baseline/swap variants,
+sample counts, unknown opportunities, and a Wilson interval. The interval describes
+sampling uncertainty only.
+
+Effect exposure on a later damage or Recovery sample remains correlation unless a
+controlled comparison isolates the effect from troop state, target, progression, other
+effects, and timing. Local measurements and aggregates remain ignored working evidence.
+A reviewed aggregate may be proposed as a draft finding, but only explicitly curated
+entries in `data/combat_empirical_findings.json` are canonical.
+
 ## Contribute a reviewed observation
 
 1. Inspect the cited retained frame and exact OCR/report wording.
@@ -90,3 +111,10 @@ automatically edits mechanics, effects, dragon profiles, recommendation data, or
 Strategist agent. Draft/disputed rules and local generated reports are ineligible. See
 [`projects/combat-report-extractor/docs/STRATEGIST_HANDOFF.md`](../projects/combat-report-extractor/docs/STRATEGIST_HANDOFF.md)
 for the proposal command and its explicit eligibility checks.
+
+The same separation applies to empirical findings. The Strategist may use one only when
+it is `accepted`, `corroborated`, marked `recommendation.eligible`, and has an `approved`
+Strategist gate. Draft/disputed findings, local measurements, experiment summaries, and
+account-specific raw values are never Strategist inputs. Eligible findings supplement
+canonical ability wording; they do not replace an advertised chance or extend a PvE
+sample beyond its reviewed scope.

@@ -22,3 +22,22 @@ The output embeds portable reviewed observations and exact canonical ability wor
 sets `automatic_changes` to false and excludes draft/disputed rules, generated local
 report results, account-specific damage, and unreviewed candidates. The command never
 edits mechanics, effects, dragon profiles, recommendation rules, or either agent.
+
+## Empirical finding handoff
+
+Reviewed proc reliability, effect magnitude, stacking, uptime, or targeting findings
+use the separate empirical store and command:
+
+```powershell
+python projects/combat-report-extractor/combat_empirical_analyzer.py handoff `
+  --finding 'finding.example.v1' `
+  --target-file 'data/recommendation_rules.json' `
+  --test-command 'python -m unittest discover -s projects/combat-report-extractor/tests -v' `
+  --confirm-reviewed-finding `
+  --output '<review-folder>\strategist-handoff.json'
+```
+
+This gate requires an accepted, corroborated finding whose canonical entry is already
+marked recommendation-eligible with an approved Strategist gate. It rejects local
+measurements, draft/disputed findings, unreviewed candidates, absolute target paths, and
+implicit approval. The proposal never edits Strategist inputs automatically.
