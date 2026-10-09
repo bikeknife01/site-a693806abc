@@ -32,9 +32,11 @@ are review categories, not invented probabilities.
 
 Established and disputed rules are the entries with the corresponding `status` in
 `data/combat_report_rules.json`. Accepted rules currently include directly displayed
-results for Velar, Moondancer, Vhagar, and Zivern; Moondancer's granted Crescent Blade
-to Rising Tide mitigation chain; Crimson's Bloodscale Terror results; and Seasmoke's
-Cleansing Wrath and Infectious Wrath results. Their exact IDs, match bounds,
+results for Velar, Moondancer, Vhagar, Zivern, and Rhysarion; Vhagar's displayed
+Bulwark Strength and mitigation cards; Moondancer's granted Crescent Blade to Rising
+Tide mitigation chain; Crimson's Bloodscale Terror results; Rhysarion's Inspiring
+Melody and Dawnsong results; and Seasmoke's Cleansing Wrath and Infectious Wrath
+results. Their exact IDs, match bounds,
 limitations, and portable supporting and contradicting observation references remain
 in the machine data. Use the validator and generated analysis to enumerate current IDs;
 do not infer an additional rule from this summary.

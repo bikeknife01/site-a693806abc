@@ -391,6 +391,159 @@
         "visual_review": "confirmed", "coverage_warnings_relevant": false,
         "notes": ["A second visually reviewed card shows the same downward Recovery Received result and duration."]
       }
+    },
+    {
+      "id": "observation.combat-36e303d5406c.001", "disposition": "supports",
+      "report": {
+        "report_id": "combat-36e303d5406c", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-42337a504e09"
+      },
+      "location": {"round": 1, "timestamp_seconds": 73.5, "frame_basename": "frame-000050.jpg"},
+      "verbatim": {
+        "head_text": "[DevastatingWarrior]activates[Fiery Bonds]affecting[Rhysarion](Vanguard),[Vermithor](Left",
+        "detail_text": "Flank),[Venator](RightFlank). Basic Attackswill forcefully target [DevastatingWarrior]."
+      },
+      "normalized": {"owner": "enemy", "actor": "Vhagar", "ability": "Fiery Bonds", "result": "Taunt"},
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["Devastating Warrior is the visible PvE role label; Fiery Bonds uniquely correlates the card with Vhagar, and canonical text names the force-target effect Taunt."]
+      }
+    },
+    {
+      "id": "observation.combat-36e303d5406c.002", "disposition": "supports",
+      "report": {
+        "report_id": "combat-36e303d5406c", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-42337a504e09"
+      },
+      "location": {"round": 2, "timestamp_seconds": 111.0, "frame_basename": "frame-000075.jpg"},
+      "verbatim": {
+        "head_text": "[DevastatingWarrior]activates[SkywardTitan]on itself.",
+        "detail_text": "←5% Strength."
+      },
+      "normalized": {"owner": "enemy", "actor": "Vhagar", "ability": "Skyward Titan", "result": "Bulwark Strength increase"},
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["The retained frame visibly shows an upward Strength arrow; the OCR arrow glyph is inaccurate. Skyward Titan uniquely correlates the PvE role label with Vhagar."]
+      }
+    },
+    {
+      "id": "observation.combat-36e303d5406c.003", "disposition": "supports",
+      "report": {
+        "report_id": "combat-36e303d5406c", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-42337a504e09"
+      },
+      "location": {"round": 2, "timestamp_seconds": 108.0, "frame_basename": "frame-000073.jpg"},
+      "verbatim": {
+        "head_text": "[DevastatingWarrior]activates[SkywardTitan]on itself.",
+        "detail_text": "2.5%Physical damagereceived. 2.5%Tactical damagereceived."
+      },
+      "normalized": {"owner": "enemy", "actor": "Vhagar", "ability": "Skyward Titan", "result": "Bulwark Physical and Tactical Damage Received reduction"},
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["The retained frame visibly shows downward arrows for both Damage Received modifiers on the Skyward Titan card."]
+      }
+    },
+    {
+      "id": "observation.combat-36e303d5406c.004", "disposition": "supports",
+      "report": {
+        "report_id": "combat-36e303d5406c", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-42337a504e09"
+      },
+      "location": {"round": 2, "timestamp_seconds": 121.5, "frame_basename": "frame-000082.jpg"},
+      "verbatim": {
+        "head_text": "[Rhysarion]activates[InspiringMelody]affecting[Vermithor](LeftFlank).",
+        "detail_text": "←25.657% Initiative."
+      },
+      "normalized": {"owner": "user", "actor": "Rhysarion", "ability": "Inspiring Melody", "result": "Initiative increase"},
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["The retained frame visibly shows an upward Initiative arrow; the OCR arrow glyph is inaccurate and the numeric value is progression-specific."]
+      }
+    },
+    {
+      "id": "observation.combat-36e303d5406c.005", "disposition": "supports",
+      "report": {
+        "report_id": "combat-36e303d5406c", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-42337a504e09"
+      },
+      "location": {"round": 2, "timestamp_seconds": 121.5, "frame_basename": "frame-000082.jpg"},
+      "verbatim": {
+        "head_text": "[Rhysarion]activates[InspiringMelody]affecting[Vermithor](LeftFlank).",
+        "detail_text": "5% damage received."
+      },
+      "normalized": {"owner": "user", "actor": "Rhysarion", "ability": "Inspiring Melody", "result": "Resistance Damage Received reduction"},
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["The retained frame visibly shows a downward Damage Received arrow on a second Inspiring Melody card; canonical text names the paired grant Resistance."]
+      }
+    },
+    {
+      "id": "observation.combat-36e303d5406c.006", "disposition": "supports",
+      "report": {
+        "report_id": "combat-36e303d5406c", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-42337a504e09"
+      },
+      "location": {"round": 2, "timestamp_seconds": 126.0, "frame_basename": "frame-000085.jpg"},
+      "verbatim": {
+        "head_text": "[Rhysarion]activates[Dawnsong]affecting[Vermithor](Left Flank).",
+        "detail_text": "Recovers136 total troops."
+      },
+      "normalized": {"owner": "user", "actor": "Rhysarion", "ability": "Dawnsong", "result": "Recovery"},
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["The retained frame visibly places the recovery total on Dawnsong's Vermithor card."]
+      }
+    },
+    {
+      "id": "observation.combat-36e303d5406c.007", "disposition": "supports",
+      "report": {
+        "report_id": "combat-36e303d5406c", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-42337a504e09"
+      },
+      "location": {"round": 2, "timestamp_seconds": 126.0, "frame_basename": "frame-000085.jpg"},
+      "verbatim": {
+        "head_text": "[Rhysarion]activates[Dawnsong]affecting[Venator](RightFlank).",
+        "detail_text": "Recovers147total troops."
+      },
+      "normalized": {"owner": "user", "actor": "Rhysarion", "ability": "Dawnsong", "result": "Recovery"},
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["The retained frame visibly places a second recovery total on Dawnsong's Venator card."]
+      }
+    },
+    {
+      "id": "observation.combat-36e303d5406c.008", "disposition": "supports",
+      "report": {
+        "report_id": "combat-36e303d5406c", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-42337a504e09"
+      },
+      "location": {"round": 3, "timestamp_seconds": 148.5, "frame_basename": "frame-000100.jpg"},
+      "verbatim": {
+        "head_text": "[DevastatingWarrior]activates[SkywardTitan]onitself.",
+        "detail_text": "←5% Strength."
+      },
+      "normalized": {"owner": "enemy", "actor": "Vhagar", "ability": "Skyward Titan", "result": "Bulwark Strength increase"},
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["A second retained card in the next round visibly shows the same upward Strength result; the OCR arrow glyph is inaccurate."]
+      }
+    },
+    {
+      "id": "observation.combat-36e303d5406c.009", "disposition": "supports",
+      "report": {
+        "report_id": "combat-36e303d5406c", "capture_date": "2026-10-08", "client_version": null,
+        "extractor_schema_version": "1.0.0", "formation_id": "formation-42337a504e09"
+      },
+      "location": {"round": 3, "timestamp_seconds": 153.0, "frame_basename": "frame-000103.jpg"},
+      "verbatim": {
+        "head_text": "[DevastatingWarrior]activates[SkywardTitan]onitself.",
+        "detail_text": "2.5%Physical damagereceived. 2.5%Tactical damagereceived."
+      },
+      "normalized": {"owner": "enemy", "actor": "Vhagar", "ability": "Skyward Titan", "result": "Bulwark Physical and Tactical Damage Received reduction"},
+      "quality": {
+        "visual_review": "confirmed", "coverage_warnings_relevant": false,
+        "notes": ["A second retained card in the next round visibly shows the same two downward Damage Received modifiers."]
+      }
     }
   ]
 }

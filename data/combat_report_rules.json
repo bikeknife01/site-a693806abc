@@ -103,7 +103,8 @@
         "report_phrases": [
           "[Vermithor](LeftFlank). BasicAttackswill forcefullytarget[Vhagar].",
           "BasicAttackswill forcefully target[Vhagar].",
-          "(Vanguard),[Apex Champion] (Left Flank). BasicAttackswill forcefullytarget[Vhagar]."
+          "(Vanguard),[Apex Champion] (Left Flank). BasicAttackswill forcefullytarget[Vhagar].",
+          "Flank),[Venator](RightFlank). Basic Attackswill forcefully target [DevastatingWarrior]."
         ],
         "report_patterns": []
       },
@@ -117,7 +118,8 @@
         "supports": [
           "observation.combat-7f322ee5105b.004",
           "observation.combat-7f322ee5105b.005",
-          "observation.combat-e90151bfdce1.002"
+          "observation.combat-e90151bfdce1.002",
+          "observation.combat-36e303d5406c.001"
         ],
         "contradicts": [],
         "canonical_sources": ["data/dragons/vhagar.json -> command.verbatim"]
@@ -129,6 +131,54 @@
         "created": "2026-10-08",
         "last_reviewed": "2026-10-08"
       }
+    },
+    {
+      "id": "rule.vhagar.skyward-titan.strength.v1",
+      "status": "accepted",
+      "relationship": "explicit",
+      "source": {"dragon": "Vhagar", "ability": "Skyward Titan", "ability_type": "habit"},
+      "match": {
+        "event_kind": "self_effect", "owner_scope": "same", "result_event_kind": "self_effect",
+        "round_offset": {"minimum": 0, "maximum": 0}, "report_phrases": [],
+        "report_patterns": ["[0-9]+(?:\\.[0-9]+)?%\\s*Strength\\.$"]
+      },
+      "interpretation": {
+        "effect": "Bulwark Strength increase",
+        "summary": "The same Skyward Titan card explicitly shows Vhagar gaining Strength from a Bulwark stack.",
+        "provenance": "observed", "confidence": "corroborated"
+      },
+      "evidence": {
+        "supports": ["observation.combat-36e303d5406c.002", "observation.combat-36e303d5406c.008"],
+        "contradicts": [], "canonical_sources": ["data/dragons/vhagar.json -> habits[4].verbatim"]
+      },
+      "limitations": [
+        "The displayed 5% value is progression-specific; this does not establish a universal value, activation rate, or current stack count."
+      ],
+      "review": {"created": "2026-10-08", "last_reviewed": "2026-10-08"}
+    },
+    {
+      "id": "rule.vhagar.skyward-titan.mitigation.v1",
+      "status": "accepted",
+      "relationship": "explicit",
+      "source": {"dragon": "Vhagar", "ability": "Skyward Titan", "ability_type": "habit"},
+      "match": {
+        "event_kind": "self_effect", "owner_scope": "same", "result_event_kind": "self_effect",
+        "round_offset": {"minimum": 0, "maximum": 0}, "report_phrases": [],
+        "report_patterns": ["[0-9]+(?:\\.[0-9]+)?%\\s*Physical\\s*damage\\s*received\\.\\s*[0-9]+(?:\\.[0-9]+)?%\\s*Tactical\\s*damage\\s*received\\.$"]
+      },
+      "interpretation": {
+        "effect": "Bulwark Physical and Tactical Damage Received reduction",
+        "summary": "The same Skyward Titan card explicitly shows a Bulwark stack reducing Vhagar's Physical and Tactical Damage Received.",
+        "provenance": "observed", "confidence": "corroborated"
+      },
+      "evidence": {
+        "supports": ["observation.combat-36e303d5406c.003", "observation.combat-36e303d5406c.009"],
+        "contradicts": [], "canonical_sources": ["data/dragons/vhagar.json -> habits[4].verbatim"]
+      },
+      "limitations": [
+        "The displayed 2.5% values are progression-specific; this does not establish universal values, an activation rate, or the current stack count."
+      ],
+      "review": {"created": "2026-10-08", "last_reviewed": "2026-10-08"}
     },
     {
       "id": "rule.zivern.fearsome-reach.instinct-reduction.v1",
@@ -325,6 +375,81 @@
       "limitations": [
         "The displayed 15% value is progression-specific and is not a universal stack value.",
         "Apex Champion is a PvE role label; the unique displayed Command identifies Seasmoke as the canonical source clue."
+      ],
+      "review": {"created": "2026-10-08", "last_reviewed": "2026-10-08"}
+    },
+    {
+      "id": "rule.rhysarion.inspiring-melody.initiative.v1",
+      "status": "accepted", "relationship": "explicit",
+      "source": {"dragon": "Rhysarion", "ability": "Inspiring Melody", "ability_type": "habit"},
+      "match": {
+        "event_kind": "affect", "owner_scope": "same", "result_event_kind": "affect",
+        "round_offset": {"minimum": 0, "maximum": 0}, "report_phrases": [],
+        "report_patterns": ["[0-9]+(?:\\.[0-9]+)?%\\s*Initiative\\.$"]
+      },
+      "interpretation": {
+        "effect": "Initiative increase",
+        "summary": "The same Inspiring Melody card explicitly shows an Initiative increase on the affected ally.",
+        "provenance": "observed", "confidence": "supported"
+      },
+      "evidence": {
+        "supports": ["observation.combat-36e303d5406c.004"], "contradicts": [],
+        "canonical_sources": ["data/dragons/rhysarion.json -> habits[4].verbatim"]
+      },
+      "limitations": [
+        "The displayed 25.657% value is progression- and enhancement-specific; one activation does not establish a proc rate."
+      ],
+      "review": {"created": "2026-10-08", "last_reviewed": "2026-10-08"}
+    },
+    {
+      "id": "rule.rhysarion.inspiring-melody.resistance.v1",
+      "status": "accepted", "relationship": "ui_alias",
+      "source": {"dragon": "Rhysarion", "ability": "Inspiring Melody", "ability_type": "habit"},
+      "match": {
+        "event_kind": "affect", "owner_scope": "same", "result_event_kind": "affect",
+        "round_offset": {"minimum": 0, "maximum": 0}, "report_phrases": [],
+        "report_patterns": ["[0-9]+(?:\\.[0-9]+)?%\\s*damage\\s*received\\.$"]
+      },
+      "interpretation": {
+        "effect": "Resistance Damage Received reduction",
+        "summary": "The unnamed Damage Received reduction on the Inspiring Melody card is the report display for the ability's canonical Resistance grant.",
+        "provenance": "inferred", "confidence": "supported"
+      },
+      "evidence": {
+        "supports": ["observation.combat-36e303d5406c.005"], "contradicts": [],
+        "canonical_sources": ["data/dragons/rhysarion.json -> habits[4].verbatim"]
+      },
+      "limitations": [
+        "The displayed 5% value is progression-specific; attribution to Resistance uses the same-card wording and canonical Habit text, not timing alone.",
+        "One activation does not establish a proc rate or whether every Resistance rank has the same mitigation value."
+      ],
+      "review": {"created": "2026-10-08", "last_reviewed": "2026-10-08"}
+    },
+    {
+      "id": "rule.rhysarion.dawnsong.recovery.v1",
+      "status": "accepted", "relationship": "explicit",
+      "source": {"dragon": "Rhysarion", "ability": "Dawnsong", "ability_type": "command"},
+      "match": {
+        "event_kind": "affect", "owner_scope": "same", "result_event_kind": "affect",
+        "round_offset": {"minimum": 0, "maximum": 0}, "report_phrases": [],
+        "report_patterns": ["Recovers\\s*[0-9,]+\\s*total\\s*troops\\.$"]
+      },
+      "interpretation": {
+        "effect": "Recovery",
+        "summary": "The same Dawnsong cards explicitly show Recovery applied to two other allies.",
+        "provenance": "observed", "confidence": "corroborated"
+      },
+      "evidence": {
+        "supports": ["observation.combat-36e303d5406c.006", "observation.combat-36e303d5406c.007"],
+        "contradicts": [],
+        "canonical_sources": [
+          "data/dragons/rhysarion.json -> command.verbatim",
+          "data/dragons/rhysarion.json -> habits[2].verbatim"
+        ]
+      },
+      "limitations": [
+        "The displayed troop totals are target- and progression-specific; they are not universal recovery values.",
+        "This observed activation does not by itself distinguish whether the Recovery was unlocked by star rank or Echoing Melody."
       ],
       "review": {"created": "2026-10-08", "last_reviewed": "2026-10-08"}
     }
