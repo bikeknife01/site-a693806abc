@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "combat-empirical-findings.schema.json",
+  "title": "Reviewed Dragonfire empirical combat findings",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["metadata", "findings"],
+  "properties": {
+    "metadata": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema_version", "updated", "purpose"],
+      "properties": {
+        "schema_version": {"const": "1.0.0"},
+        "updated": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+        "purpose": {"type": "string", "minLength": 1}
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "status", "metric_type", "source", "scope", "estimate", "evidence", "interpretation", "limitations", "recommendation", "review"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^finding\\.[a-z0-9][a-z0-9.-]*\\.v[0-9]+$"},
+          "status": {"enum": ["draft", "accepted", "disputed", "deprecated"]},
+          "metric_type": {"enum": ["proc_rate", "effect_uptime", "damage_impact", "recovery_impact", "stacking", "targeting"]},
+          "source": {
+            "type": "object", "additionalProperties": false,
+            "required": ["dragon", "ability", "trial_id"],
+            "properties": {
+              "dragon": {"type": "string", "minLength": 1},
+              "ability": {"type": "string", "minLength": 1},
+              "trial_id": {"type": ["string", "null"]}
+            }
+          },
+          "scope": {
+            "type": "object", "additionalProperties": false,
+            "required": ["battle_type", "enemy", "formation_constraints", "progression_constraints"],
+            "properties": {
+              "battle_type": {"enum": ["pve", "pvp", "mixed", "unknown"]},
+              "enemy": {"type": ["string", "null"]},
+              "formation_constraints": {"type": "array", "items": {"type": "string"}},
+              "progression_constraints": {"type": "array", "items": {"type": "string"}}
+            }
+          },
+          "estimate": {
+            "type": "object", "additionalProperties": false,
+            "required": ["numerator", "denominator", "rate", "interval_95", "unit"],
+            "properties": {
+              "numerator": {"type": ["integer", "null"], "minimum": 0},
+              "denominator": {"type": ["integer", "null"], "minimum": 0},
+              "rate": {"type": ["number", "null"], "minimum": 0},
+              "interval_95": {"type": ["array", "null"], "items": {"type": "number", "minimum": 0}, "minItems": 2},
+              "unit": {"type": "string", "minLength": 1}
+            }
+          },
+          "evidence": {
+            "type": "object", "additionalProperties": false,
+            "required": ["report_hashes", "observation_ids", "contradicting_observation_ids", "distinct_reports"],
+            "properties": {
+              "report_hashes": {"type": "array", "items": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "uniqueItems": true},
+              "observation_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+              "contradicting_observation_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+              "distinct_reports": {"type": "integer", "minimum": 0}
+            }
+          },
+          "interpretation": {
+            "type": "object", "additionalProperties": false,
+            "required": ["summary", "provenance", "confidence"],
+            "properties": {
+              "summary": {"type": "string", "minLength": 1},
+              "provenance": {"enum": ["derived", "inferred"]},
+              "confidence": {"enum": ["tentative", "supported", "corroborated", "disputed"]}
+            }
+          },
+          "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1},
+          "recommendation": {
+            "type": "object", "additionalProperties": false,
+            "required": ["eligible", "use", "rationale"],
+            "properties": {
+              "eligible": {"type": "boolean"},
+              "use": {"enum": ["exclude", "context", "reliability", "magnitude", "targeting"]},
+              "rationale": {"type": "string", "minLength": 1}
+            }
+          },
+          "review": {
+            "type": "object", "additionalProperties": false,
+            "required": ["created", "last_reviewed", "strategist_gate"],
+            "properties": {
+              "created": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+              "last_reviewed": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+              "strategist_gate": {"enum": ["not_requested", "pending", "approved", "rejected"]}
+            }
+          }
+        }
+      }
+    }
+  }
+}

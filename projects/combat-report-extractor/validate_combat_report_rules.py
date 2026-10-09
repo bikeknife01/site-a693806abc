@@ -231,24 +231,115 @@ def validate_stores(
     return sorted(set(errors))
 
 
+def validate_empirical_stores(
+    definitions: dict[str, Any], findings: dict[str, Any], rules: dict[str, Any],
+    observations: dict[str, Any], repository_root: Path, schema_root: Path | None = None,
+) -> list[str]:
+    schema_root = schema_root or repository_root / "projects" / "combat-report-extractor" / "schemas"
+    errors = [
+        f"trial definitions {message}" for message in validate_schema(
+            definitions, load_json(schema_root / "combat-trial-definitions.schema.json")
+        )
+    ]
+    errors.extend(
+        f"empirical findings {message}" for message in validate_schema(
+            findings, load_json(schema_root / "combat-empirical-findings.schema.json")
+        )
+    )
+    if errors:
+        return sorted(errors)
+
+    vocabulary = load_canonical_vocabulary(repository_root)
+    rule_ids = {item["id"] for item in rules["rules"]}
+    accepted_rule_ids = {item["id"] for item in rules["rules"] if item["status"] == "accepted"}
+    observation_ids = {item["id"] for item in observations["observations"]}
+    trials = definitions["trials"]
+    findings_list = findings["findings"]
+    errors.extend(f"duplicate trial ID: {item}" for item in _duplicates(item["id"] for item in trials))
+    errors.extend(f"duplicate empirical finding ID: {item}" for item in _duplicates(item["id"] for item in findings_list))
+    trial_by_id = {item["id"]: item for item in trials}
+
+    for trial in trials:
+        trial_id = trial["id"]
+        source = trial["source"]
+        if source["dragon"] not in vocabulary:
+            errors.append(f"{trial_id}: unknown canonical dragon {source['dragon']!r}")
+        elif source["ability"] not in vocabulary[source["dragon"]]:
+            errors.append(f"{trial_id}: unknown canonical ability {source['ability']!r} for {source['dragon']}")
+        for rule_id in trial["success_rule_ids"]:
+            if rule_id not in rule_ids:
+                errors.append(f"{trial_id}: dangling success rule {rule_id}")
+            elif trial["status"] == "accepted" and rule_id not in accepted_rule_ids:
+                errors.append(f"{trial_id}: accepted trial requires accepted success rule {rule_id}")
+        if trial["trigger"]["schedule"] == "scheduled_rounds" and not trial["trigger"]["rounds"]:
+            errors.append(f"{trial_id}: scheduled_rounds requires at least one round")
+        if trial["trigger"]["schedule"] != "scheduled_rounds" and trial["trigger"]["rounds"]:
+            errors.append(f"{trial_id}: rounds must be empty unless schedule is scheduled_rounds")
+
+    errors.extend(_unsafe_observation_values(findings, "empirical findings"))
+    for finding in findings_list:
+        finding_id = finding["id"]
+        source = finding["source"]
+        trial = trial_by_id.get(source["trial_id"]) if source["trial_id"] else None
+        if source["dragon"] not in vocabulary:
+            errors.append(f"{finding_id}: unknown canonical dragon {source['dragon']!r}")
+        elif source["ability"] not in vocabulary[source["dragon"]]:
+            errors.append(f"{finding_id}: unknown canonical ability {source['ability']!r} for {source['dragon']}")
+        if source["trial_id"] and trial is None:
+            errors.append(f"{finding_id}: dangling trial ID {source['trial_id']}")
+        elif trial and (source["dragon"], source["ability"]) != (trial["source"]["dragon"], trial["source"]["ability"]):
+            errors.append(f"{finding_id}: source does not match referenced trial")
+        for key in ("observation_ids", "contradicting_observation_ids"):
+            for observation_id in finding["evidence"][key]:
+                if observation_id not in observation_ids:
+                    errors.append(f"{finding_id}: dangling empirical evidence observation {observation_id}")
+        if finding["evidence"]["distinct_reports"] != len(finding["evidence"]["report_hashes"]):
+            errors.append(f"{finding_id}: distinct_reports must equal unique report_hashes")
+        if finding["status"] == "accepted" and not finding["evidence"]["observation_ids"]:
+            errors.append(f"{finding_id}: accepted finding requires reviewed observation references")
+        if finding["status"] == "disputed" and not finding["evidence"]["contradicting_observation_ids"]:
+            errors.append(f"{finding_id}: disputed finding requires contradicting observations")
+        if finding["recommendation"]["eligible"]:
+            if finding["status"] != "accepted" or finding["interpretation"]["confidence"] != "corroborated":
+                errors.append(f"{finding_id}: recommendation eligibility requires accepted, corroborated evidence")
+            if finding["review"]["strategist_gate"] != "approved":
+                errors.append(f"{finding_id}: recommendation eligibility requires approved Strategist gate")
+        elif finding["review"]["strategist_gate"] == "approved":
+            errors.append(f"{finding_id}: approved Strategist gate requires recommendation eligibility")
+        if finding["status"] != "accepted" and finding["recommendation"]["use"] != "exclude":
+            errors.append(f"{finding_id}: non-accepted finding must be excluded from recommendations")
+
+    return sorted(set(errors))
+
+
 def build_parser() -> argparse.ArgumentParser:
     root = repository_root_from_script()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repository-root", type=Path, default=root)
     parser.add_argument("--rules", type=Path, default=root / "data" / "combat_report_rules.json")
     parser.add_argument("--observations", type=Path, default=root / "data" / "combat_report_observations.json")
+    parser.add_argument("--trial-definitions", type=Path, default=root / "data" / "combat_trial_definitions.json")
+    parser.add_argument("--empirical-findings", type=Path, default=root / "data" / "combat_empirical_findings.json")
     return parser
 
 
 def main(argv: Iterable[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    errors = validate_stores(load_json(args.rules), load_json(args.observations), args.repository_root.resolve())
+    rules, observations = load_json(args.rules), load_json(args.observations)
+    errors = validate_stores(rules, observations, args.repository_root.resolve())
+    errors.extend(validate_empirical_stores(
+        load_json(args.trial_definitions), load_json(args.empirical_findings), rules,
+        observations, args.repository_root.resolve(),
+    ))
     if errors:
         print("Combat report rule validation failed:")
         for error in errors:
             print(f"- {error}")
         return 1
-    print(f"Validated {args.rules} and {args.observations}.")
+    print(
+        f"Validated {args.rules}, {args.observations}, {args.trial_definitions}, "
+        f"and {args.empirical_findings}."
+    )
     return 0
 
 

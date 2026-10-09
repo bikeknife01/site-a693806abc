@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "combat-experiment.schema.json",
+  "title": "Generated cross-report combat experiment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["experiment_schema_version", "tool_version", "experiment_id", "measurement_hashes", "input_report_hashes", "rule_set_hashes", "trial_definition_hashes", "trials", "outcome_samples", "limitations", "aggregate_hash"],
+  "properties": {
+    "experiment_schema_version": {"const": "1.0.0"},
+    "tool_version": {"type": "string"},
+    "experiment_id": {"type": ["string", "null"]},
+    "measurement_hashes": {"type": "array", "items": {"type": "string", "pattern": "^[a-f0-9]{64}$"}},
+    "input_report_hashes": {"type": "array", "items": {"type": "string", "pattern": "^[a-f0-9]{64}$"}},
+    "rule_set_hashes": {"type": "array", "items": {"type": "string", "pattern": "^[a-f0-9]{64}$"}},
+    "trial_definition_hashes": {"type": "array", "items": {"type": "string", "pattern": "^[a-f0-9]{64}$"}},
+    "trials": {"type": "array", "items": {"type": "object"}},
+    "outcome_samples": {"type": "array", "items": {"type": "object"}},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "aggregate_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

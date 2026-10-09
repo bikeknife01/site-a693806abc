@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "schema_version": "1.0.0",
+    "updated": "2026-10-08",
+    "purpose": "Reviewed definitions for countable combat-report RNG opportunities"
+  },
+  "trials": [
+    {
+      "id": "trial.vhagar.fiery-bonds.taunt.v1",
+      "status": "accepted",
+      "source": {"dragon": "Vhagar", "ability": "Fiery Bonds", "ability_type": "command"},
+      "trigger": {
+        "schedule": "each_round", "rounds": [], "advertised_chance_percent": 25,
+        "canonical_source": "data/dragons/vhagar.json -> command.verbatim"
+      },
+      "success_rule_ids": ["rule.vhagar.fiery-bonds.taunt-wording.v1"],
+      "opportunity": {"requires_actor_action_in_round": true, "requires_complete_coverage": true},
+      "activation": {"stack_gain": null, "max_stacks": null, "persists_until_end": false},
+      "limitations": ["A round is countable only when the source actor is visibly active and report coverage is complete."]
+    },
+    {
+      "id": "trial.vhagar.skyward-titan.bulwark.v1",
+      "status": "accepted",
+      "source": {"dragon": "Vhagar", "ability": "Skyward Titan", "ability_type": "habit"},
+      "trigger": {
+        "schedule": "each_round", "rounds": [], "advertised_chance_percent": 30,
+        "canonical_source": "data/dragons/vhagar.json -> habits[4].verbatim"
+      },
+      "success_rule_ids": [
+        "rule.vhagar.skyward-titan.strength.v1",
+        "rule.vhagar.skyward-titan.mitigation.v1"
+      ],
+      "opportunity": {"requires_actor_action_in_round": true, "requires_complete_coverage": true},
+      "activation": {"stack_gain": 1, "max_stacks": 5, "persists_until_end": true},
+      "limitations": ["Multiple result cards from one source event count as one activation; an unobserved round is not automatically a failed proc."]
+    },
+    {
+      "id": "trial.rhysarion.inspiring-melody.v1",
+      "status": "accepted",
+      "source": {"dragon": "Rhysarion", "ability": "Inspiring Melody", "ability_type": "habit"},
+      "trigger": {
+        "schedule": "each_round", "rounds": [], "advertised_chance_percent": null,
+        "canonical_source": "data/dragons/rhysarion.json -> habits[4].verbatim"
+      },
+      "success_rule_ids": [
+        "rule.rhysarion.inspiring-melody.initiative.v1",
+        "rule.rhysarion.inspiring-melody.resistance.v1"
+      ],
+      "opportunity": {"requires_actor_action_in_round": true, "requires_complete_coverage": true},
+      "activation": {"stack_gain": null, "max_stacks": null, "persists_until_end": false},
+      "limitations": ["The canonical wording does not provide a fixed chance in the normalized profile; measure recurrence without inventing an advertised rate."]
+    }
+  ]
+}

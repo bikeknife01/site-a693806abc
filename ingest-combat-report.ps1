@@ -1,7 +1,10 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true, Position = 0)]
-    [string]$VideoPath
+    [string]$VideoPath,
+    [string]$Experiment,
+    [string]$Variant,
+    [string]$Question
 )
 
 $ErrorActionPreference = 'Stop'
@@ -19,5 +22,10 @@ if (Test-Path -LiteralPath $venvPython -PathType Leaf) {
     $python = $pythonCommand.Source
 }
 
-& $python $ingestScript $VideoPath
+$arguments = @($ingestScript, $VideoPath)
+if ($Experiment) { $arguments += @('--experiment', $Experiment) }
+if ($Variant) { $arguments += @('--variant', $Variant) }
+if ($Question) { $arguments += @('--question', $Question) }
+
+& $python @arguments
 exit $LASTEXITCODE

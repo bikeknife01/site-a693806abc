@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "combat-measurement.schema.json",
+  "title": "Generated per-report combat empirical measurement",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["measurement_schema_version", "tool_version", "input_report_hash", "rule_set_hash", "trial_definition_hash", "experiment", "coverage", "trials", "exposures", "outcome_samples", "limitations"],
+  "properties": {
+    "measurement_schema_version": {"const": "1.0.0"},
+    "tool_version": {"type": "string"},
+    "input_report_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "rule_set_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "trial_definition_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "experiment": {"type": "object"},
+    "coverage": {"type": "object"},
+    "trials": {"type": "array", "items": {"type": "object"}},
+    "exposures": {"type": "array", "items": {"type": "object"}},
+    "outcome_samples": {"type": "array", "items": {"type": "object"}},
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  }
+}

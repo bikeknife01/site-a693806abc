@@ -16,6 +16,7 @@ if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 import combat_report_extractor as extractor
 import combat_report_interpreter as interpreter
+import combat_empirical_analyzer as empirical
 
 
 def repository_root_from_script() -> Path:
@@ -56,7 +57,10 @@ def find_retained_ocr(repository_root: Path, source_hash: str) -> Path | None:
     return max(matches, key=lambda path: (path.stat().st_mtime_ns, str(path))) if matches else None
 
 
-def ingest(video: Path, repository_root: Path, capture_date: date) -> dict[str, Path]:
+def ingest(
+    video: Path, repository_root: Path, capture_date: date, *, experiment: str | None = None,
+    variant: str | None = None, question: str | None = None,
+) -> dict[str, Path]:
     video = video.expanduser().resolve()
     if not video.is_file():
         raise FileNotFoundError(f"Video does not exist or is not a file: {video}")
@@ -89,11 +93,22 @@ def ingest(video: Path, repository_root: Path, capture_date: date) -> dict[str, 
         repository_root / "data" / "combat_report_observations.json",
         repository_root,
     )
+    measurement = empirical.build_measurement(
+        json.loads(interpreted["enriched"].read_text(encoding="utf-8")),
+        json.loads((repository_root / "data" / "combat_trial_definitions.json").read_text(encoding="utf-8")),
+        experiment_id=experiment, variant=variant, question=question,
+    )
+    measurement_json = output / "combat-measurements.json"
+    measurement_markdown = output / "combat-measurements.md"
+    empirical.write_json(measurement_json, measurement)
+    measurement_markdown.write_text(empirical.render_measurement(measurement), encoding="utf-8")
     return {
         "output": output,
         "ocr": ocr_path,
         "report": report_path,
         "extractor_insights": extractor_insights,
+        "measurement": measurement_json,
+        "measurement_markdown": measurement_markdown,
         **interpreted,
     }
 
@@ -101,6 +116,9 @@ def ingest(video: Path, repository_root: Path, capture_date: date) -> dict[str, 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("video", type=Path, help="Path to a local combat-report recording")
+    parser.add_argument("--experiment", help="Optional local experiment group identifier")
+    parser.add_argument("--variant", help="Optional baseline/swap or other variant label")
+    parser.add_argument("--question", help="Optional hypothesis not otherwise visible in the recording")
     return parser
 
 
@@ -108,7 +126,10 @@ def main(argv: Iterable[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     root = repository_root_from_script()
     try:
-        paths = ingest(args.video, root, date.today())
+        paths = ingest(
+            args.video, root, date.today(), experiment=args.experiment,
+            variant=args.variant, question=args.question,
+        )
     except (FileNotFoundError, RuntimeError) as error:
         raise SystemExit(str(error)) from error
 
@@ -118,10 +139,13 @@ def main(argv: Iterable[str] | None = None) -> int:
     print("\nCombat report ingestion complete.")
     print(f"Output folder: {paths['output']}")
     print(f"Review first: {paths['markdown']}")
+    print(f"Empirical measurements: {paths['measurement_markdown']}")
     print(f"Parsed actions: {coverage.get('action_count', 0)}")
     print(f"Rejected actions: {coverage.get('rejected_action_count', 0)}")
     print(f"Established links: {analysis['insights']['established_link_count']}")
     print(f"Review candidates: {len(candidates['candidates'])}")
+    measurement = json.loads(paths["measurement"].read_text(encoding="utf-8"))
+    print(f"Configured RNG subjects measured: {len(measurement['trials'])}")
     for warning in coverage.get("warnings", []):
         print(f"Coverage warning: {warning}")
     return 0

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "combat-trial-definitions.schema.json",
+  "title": "Dragonfire combat empirical trial definitions",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["metadata", "trials"],
+  "properties": {
+    "metadata": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema_version", "updated", "purpose"],
+      "properties": {
+        "schema_version": {"const": "1.0.0"},
+        "updated": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+        "purpose": {"type": "string", "minLength": 1}
+      }
+    },
+    "trials": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "status", "source", "trigger", "success_rule_ids", "opportunity", "activation", "limitations"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^trial\\.[a-z0-9][a-z0-9.-]*\\.v[0-9]+$"},
+          "status": {"enum": ["accepted", "deprecated"]},
+          "source": {
+            "type": "object", "additionalProperties": false,
+            "required": ["dragon", "ability", "ability_type"],
+            "properties": {
+              "dragon": {"type": "string", "minLength": 1},
+              "ability": {"type": "string", "minLength": 1},
+              "ability_type": {"enum": ["command", "vanguard", "habit"]}
+            }
+          },
+          "trigger": {
+            "type": "object", "additionalProperties": false,
+            "required": ["schedule", "rounds", "advertised_chance_percent", "canonical_source"],
+            "properties": {
+              "schedule": {"enum": ["each_round", "odd_rounds", "even_rounds", "scheduled_rounds"]},
+              "rounds": {"type": "array", "items": {"type": "integer", "minimum": 1}, "uniqueItems": true},
+              "advertised_chance_percent": {"type": ["number", "null"], "minimum": 0},
+              "canonical_source": {"type": "string", "minLength": 1}
+            }
+          },
+          "success_rule_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true},
+          "opportunity": {
+            "type": "object", "additionalProperties": false,
+            "required": ["requires_actor_action_in_round", "requires_complete_coverage"],
+            "properties": {
+              "requires_actor_action_in_round": {"type": "boolean"},
+              "requires_complete_coverage": {"type": "boolean"}
+            }
+          },
+          "activation": {
+            "type": "object", "additionalProperties": false,
+            "required": ["stack_gain", "max_stacks", "persists_until_end"],
+            "properties": {
+              "stack_gain": {"type": ["integer", "null"], "minimum": 1},
+              "max_stacks": {"type": ["integer", "null"], "minimum": 1},
+              "persists_until_end": {"type": "boolean"}
+            }
+          },
+          "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1}
+        }
+      }
+    }
+  }
+}
