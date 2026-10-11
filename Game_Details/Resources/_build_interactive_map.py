@@ -503,6 +503,8 @@ html = """<!DOCTYPE html>
   .type-row:hover { background:#20242e; }
   .type-row input[type=checkbox] { margin-top:3px; flex-shrink:0; pointer-events:none; }
   .swatch { width:12px; height:12px; border-radius:3px; flex-shrink:0; margin-top:3px; }
+  .type-icon { width:16px; height:16px; flex:0 0 16px; overflow:visible; }
+  .type-icon .marker-bg { stroke:#05070a; stroke-opacity:.82; stroke-width:1; }
   .type-row .type-name { min-width:0; line-height:1.3; font-size:12px; }
   .type-row .count { color:var(--muted); font-size:11px; }
   .btn-row { display:flex; gap:6px; margin-bottom:8px; }
@@ -533,11 +535,12 @@ html = """<!DOCTYPE html>
   svg { width:100%; height:100%; display:block; cursor:grab; }
   svg.dragging { cursor:grabbing; }
   .node-marker { cursor:pointer; outline:none; }
-  .node-marker .marker-bg { stroke:#05070a; stroke-opacity:.78; stroke-width:1.15; }
-  .node-marker .marker-glyph { fill:none; stroke:#fff; stroke-width:1.15; stroke-linecap:round; stroke-linejoin:round; pointer-events:none; }
-  .node-marker:hover .marker-bg { stroke:#fff; stroke-width:1.8; }
-  .node-marker.selected .marker-bg { stroke:#fff4bf; stroke-width:2.2; }
-  .node-marker.route-used .marker-bg { stroke:#50e3c2; stroke-width:2; }
+  .node-marker .marker-hit { fill:transparent; stroke:none; pointer-events:all; }
+  .node-marker .marker-halo { fill:none; stroke:#05070a; stroke-width:3.2; stroke-linecap:round; stroke-linejoin:round; pointer-events:none; }
+  .marker-glyph { fill:none; stroke:#fff; stroke-width:1.55; stroke-linecap:round; stroke-linejoin:round; pointer-events:none; }
+  .node-marker:hover .marker-glyph { stroke:#fff !important; stroke-width:2; }
+  .node-marker.selected .marker-glyph { stroke:#fff4bf !important; stroke-width:2.3; }
+  .node-marker.route-used .marker-glyph { stroke:#50e3c2 !important; stroke-width:2.2; }
   .chain-line { stroke:#ffffff; stroke-opacity:.85; stroke-linecap:round; pointer-events:none; }
   #mountainLayer, #regionColorLayer, #regionLabelLayer, #kingdomLabelLayer { pointer-events:none; }
   .region-label { fill:#fff; font-size:16px; font-weight:600; text-anchor:middle; opacity:.9; paint-order:stroke; stroke:#000; stroke-width:3px; stroke-linejoin:round; }
@@ -827,20 +830,6 @@ html = """<!DOCTYPE html>
           <filter id="borderGlow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="5"></feGaussianBlur>
           </filter>
-          <!-- Compact POI glyphs share a colored circular backing. Their marker
-               groups are scaled in JavaScript so they remain legible and grow
-               only modestly as the user zooms in. -->
-          <g id="poi-ruin"><path d="M-3.1 3.1V-2.7H-.9V-.8H.9V-3.1H3.1V3.1M-3.1 3.1H3.1"></path></g>
-          <g id="poi-town"><path d="M-3.2-.2L0-3.1 3.2-.2V3.1H-3.2ZM-.9 3.1V.7H.9V3.1"></path></g>
-          <g id="poi-crossing"><path d="M-3-3L3 3M3-3L-3 3M-3 0H3"></path></g>
-          <g id="poi-tunnel"><path d="M-3.2 3.1V.3A3.2 3.2 0 0 1 3.2.3V3.1M-1.3 3.1V.5A1.3 1.3 0 0 1 1.3.5V3.1"></path></g>
-          <g id="poi-castle"><path d="M-3.2-2.8V3.1H3.2V-2.8H1.4V-.9H-.2V-2.8H-1.6V-.9H-3.2M-.8 3.1V1.1A.8.8 0 0 1 .8 1.1V3.1"></path></g>
-          <g id="poi-bridge"><path d="M-3.2 2.8V-2.8M3.2 2.8V-2.8M-3.2-.5Q0-3 3.2-.5M-3.2 1.3Q0-1.2 3.2 1.3"></path></g>
-          <g id="poi-dragon"><path d="M0-3.4L1-1.1 3.2-2.1 2 1.1 0 3.3-2 1.1-3.2-2.1-1-1.1ZM0-1.1V1.5"></path></g>
-          <g id="poi-seat"><path d="M-3.2-1.8L-1.6.1 0-2.7 1.6.1 3.2-1.8 2.5 2.7H-2.5ZM-2.4 1.2H2.4"></path></g>
-          <g id="poi-harbor"><path d="M0-3.2V2.4M-1.4-2H1.4M-3 0Q-2.8 3 0 3.2 2.8 3 3 0M-3 0L-1.8 1M3 0L1.8 1"></path></g>
-          <g id="poi-house"><path d="M0-3.4.9-1.1 3.4-1.1 1.4.4 2.2 3 0 1.4-2.2 3-1.4.4-3.4-1.1-.9-1.1Z"></path></g>
-          <g id="poi-world"><circle cx="0" cy="0" r="2.7"></circle><path d="M0-3.7V3.7M-3.7 0H3.7M-1.9-1.9 1.9 1.9M1.9-1.9-1.9 1.9"></path></g>
         </defs>
         <image id="bgImage" href="worldmap_background.jpg" x="0" y="0" width="BG_W_PLACEHOLDER" height="BG_H_PLACEHOLDER" preserveAspectRatio="none"></image>
         <!-- Pixel-exact shading decoded from the game's region-index texture.
@@ -1081,6 +1070,28 @@ let routeUsedStops = new Set();
 // Type column enough to drop its scrollbar.
 function typeLabel(t) { return t === 'Settlement (Town)' ? 'Town' : t; }
 
+// Draw glyph paths directly instead of referencing SVG <defs> through <use>.
+// Some browser/rendering combinations reduced inherited <use> strokes to a
+// sub-pixel speck at overview zoom. Direct paths are deterministic and the same
+// geometry can also serve as the filter/table legend.
+const POI_ICON_PATHS = {
+  'Ruin':'M-3.1 3.1V-2.7H-.9V-.8H.9V-3.1H3.1V3.1M-3.1 3.1H3.1',
+  'Settlement (Town)':'M-3.2-.2L0-3.1 3.2-.2V3.1H-3.2ZM-.9 3.1V.7H.9V3.1',
+  'Crossing':'M-3-3L3 3M3-3L-3 3M-3 0H3',
+  'Tunnel':'M-3.2 3.1V.3A3.2 3.2 0 0 1 3.2.3V3.1M-1.3 3.1V.5A1.3 1.3 0 0 1 1.3.5V3.1',
+  'Castle':'M-3.2-2.8V3.1H3.2V-2.8H1.4V-.9H-.2V-2.8H-1.6V-.9H-3.2M-.8 3.1V1.1A.8.8 0 0 1 .8 1.1V3.1',
+  'Bridge':'M-3.2 2.8V-2.8M3.2 2.8V-2.8M-3.2-.5Q0-3 3.2-.5M-3.2 1.3Q0-1.2 3.2 1.3',
+  'Dragon Sanctum':'M0-3.4L1-1.1 3.2-2.1 2 1.1 0 3.3-2 1.1-3.2-2.1-1-1.1ZM0-1.1V1.5',
+  'Seat of Power':'M-3.2-1.8L-1.6.1 0-2.7 1.6.1 3.2-1.8 2.5 2.7H-2.5ZM-2.4 1.2H2.4',
+  'Harbor/Dock':'M0-3.2V2.4M-1.4-2H1.4M-3 0Q-2.8 3 0 3.2 2.8 3 3 0M-3 0L-1.8 1M3 0L1.8 1',
+  'Great House Capital':'M0-3.4.9-1.1 3.4-1.1 1.4.4 2.2 3 0 1.4-2.2 3-1.4.4-3.4-1.1-.9-1.1Z',
+  'World Capital':'M2.7 0A2.7 2.7 0 1 1-2.7 0A2.7 2.7 0 1 1 2.7 0M0-3.7V3.7M-3.7 0H3.7M-1.9-1.9 1.9 1.9M1.9-1.9-1.9 1.9'
+};
+function poiIconMarkup(type) {
+  const path = POI_ICON_PATHS[type] || POI_ICON_PATHS.Ruin;
+  return `<svg class="type-icon" viewBox="-5 -5 10 10" aria-hidden="true"><circle class="marker-bg" r="4.5" fill="${COLORS[type] || '#888'}"></circle><path class="marker-glyph" d="${path}"></path></svg>`;
+}
+
 // ---------- sidebar type list ----------
 const typeListEl = document.getElementById('typeList');
 const typeRowEls = new Map(); // type -> {row, checkbox}
@@ -1090,7 +1101,7 @@ TYPES.forEach(t => {
   const row = document.createElement('div');
   row.className = 'type-row';
   row.title = `${t} (${counts[t]||0})`;
-  row.innerHTML = `<input type="checkbox"><span class="swatch" style="background:${COLORS[t]}"></span><span class="type-name">${typeLabel(t)} <span class="count">${counts[t]||0}</span></span>`;
+  row.innerHTML = `<input type="checkbox">${poiIconMarkup(t)}<span class="type-name">${typeLabel(t)} <span class="count">${counts[t]||0}</span></span>`;
   row.dataset.type = t;
   const checkbox = row.querySelector('input');
   typeRowEls.set(t, { row, checkbox });
@@ -1255,14 +1266,10 @@ function hideClusterPopup() {
 function renderMap() {
   dotsLayer.innerHTML = '';
   const zoomRatio = Math.max(1, vb.w / vbState.w);
-  const markerRadius = 4.2 + Math.min(1.3, Math.log2(zoomRatio) * .22);
-  const markerScale = currentScale() * markerRadius / 4.2;
-  const iconByType = {
-    'Ruin':'ruin', 'Settlement (Town)':'town', 'Crossing':'crossing',
-    'Tunnel':'tunnel', 'Castle':'castle', 'Bridge':'bridge',
-    'Dragon Sanctum':'dragon', 'Seat of Power':'seat', 'Harbor/Dock':'harbor',
-    'Great House Capital':'house', 'World Capital':'world'
-  };
+  // Keep the line-art footprint close to the old dots at overview zoom and
+  // grow it only slightly as the user zooms in.
+  const iconScreenScale = 1 + Math.min(.22, Math.log2(zoomRatio) * .045);
+  const markerScale = currentScale() * iconScreenScale;
   filtered.forEach(d => {
     const marker = document.createElementNS(svgNS, 'g');
     // Raw node y is stored in the game's native texture-space convention (row 0 = bottom),
@@ -1278,14 +1285,17 @@ function renderMap() {
     marker.setAttribute('tabindex', '0');
     marker.setAttribute('role', 'button');
     marker.setAttribute('aria-label', `${d.n || typeLabel(d.t)}, ${d.x}, ${d.y}`);
-    const background = document.createElementNS(svgNS, 'circle');
-    background.setAttribute('r', 4.2);
-    background.setAttribute('fill', COLORS[d.t] || '#888');
-    background.setAttribute('class', 'marker-bg');
-    const glyph = document.createElementNS(svgNS, 'use');
-    glyph.setAttribute('href', `#poi-${iconByType[d.t] || 'ruin'}`);
+    const hit = document.createElementNS(svgNS, 'circle');
+    hit.setAttribute('r', 4.6);
+    hit.setAttribute('class', 'marker-hit');
+    const halo = document.createElementNS(svgNS, 'path');
+    halo.setAttribute('d', POI_ICON_PATHS[d.t] || POI_ICON_PATHS.Ruin);
+    halo.setAttribute('class', 'marker-halo');
+    const glyph = document.createElementNS(svgNS, 'path');
+    glyph.setAttribute('d', POI_ICON_PATHS[d.t] || POI_ICON_PATHS.Ruin);
+    glyph.setAttribute('stroke', COLORS[d.t] || '#fff');
     glyph.setAttribute('class', 'marker-glyph');
-    marker.append(background, glyph);
+    marker.append(hit, halo, glyph);
     marker.addEventListener('mousemove', (ev) => showTooltip(ev, d));
     marker.addEventListener('mouseleave', hideTooltip);
     marker.addEventListener('click', (ev) => {
@@ -1336,7 +1346,7 @@ function renderTable() {
     tr.dataset.idx = d.idx;
     tr.tabIndex = 0;
     tr.setAttribute('aria-selected', selected === d ? 'true' : 'false');
-    tr.innerHTML = `<td>${d.x}</td><td>${d.y}</td><td><span class="swatch" style="background:${COLORS[d.t]};display:inline-block;margin-right:6px;width:9px;height:9px;border-radius:2px;"></span>${typeLabel(d.t)}</td><td>${d.n||''}</td><td>${d.lvl||''}</td>`;
+    tr.innerHTML = `<td>${d.x}</td><td>${d.y}</td><td><span style="display:inline-flex;align-items:center;gap:5px;">${poiIconMarkup(d.t)}${typeLabel(d.t)}</span></td><td>${d.n||''}</td><td>${d.lvl||''}</td>`;
     tr.addEventListener('click', () => selectNode(d, { flyTo: true }));
     tr.addEventListener('keydown', (ev) => {
       if (ev.key === 'Enter' || ev.key === ' ') {
