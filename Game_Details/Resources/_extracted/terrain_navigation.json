@@ -1,0 +1,25 @@
+{
+  "schema": "atlas-terrain-navigation-1.0.0",
+  "source": "2026-10-10 installed client 26.9.57505 (versionCode 335)",
+  "dimensions": [
+    2080,
+    3312
+  ],
+  "terrain_chunks": 514,
+  "codes": {
+    "unknown": 0,
+    "default": 1,
+    "coast": 2,
+    "mountain": 3,
+    "water": 4,
+    "error": 5
+  },
+  "cell_counts": {
+    "unknown": 3289804,
+    "default": 3134066,
+    "coast": 139550,
+    "mountain": 325540,
+    "water": 0,
+    "error": 0
+  }
+}

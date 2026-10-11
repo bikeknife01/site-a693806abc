@@ -343,11 +343,14 @@ minx, maxx, miny, maxy = min(xs), max(xs), min(ys), max(ys)
 # native pixel dimensions, no scaling needed.
 from PIL import Image as _Image, ImageFilter as _ImageFilter
 _bg_path = os.path.join(EXT, 'worldmap_background.jpg')
+_terrain_nav_path = os.path.join(EXT, 'terrain_navigation.png')
 BG_W, BG_H = _Image.open(_bg_path).size
 if _Image.open(region_overlay_path).size != (BG_W, BG_H):
     raise ValueError('region_color_overlay.png dimensions do not match worldmap_background.jpg')
 if _Image.open(mountain_overlay_path).size != (BG_W, BG_H):
     raise ValueError('mountain_overlay.png dimensions do not match worldmap_background.jpg')
+if _Image.open(_terrain_nav_path).size != (BG_W, BG_H):
+    raise ValueError('terrain_navigation.png dimensions do not match worldmap_background.jpg')
 
 # Browser-side route finding uses a 2x2-world-tile navigation cell. Rivers are often
 # only a few pixels wide, so the former 4x4 grid could collapse them out of existence.
@@ -370,9 +373,11 @@ ROUTE_H = math.ceil(BG_H / ROUTE_CELL)
 _route_bg = _Image.open(_bg_path).convert('RGB')
 _route_region = _Image.open(region_overlay_path).convert('P')
 _route_mountain = _Image.open(mountain_overlay_path).convert('P')
+_route_terrain = _Image.open(_terrain_nav_path).convert('P')
 _route_bg_px = _route_bg.load()
 _route_region_px = _route_region.load()
 _route_mountain_px = _route_mountain.load()
+_route_terrain_px = _route_terrain.load()
 
 # The four broad land palettes are brown, green, tan, and orange. Their blue channel
 # is either low or their red channel is below this threshold; the waterway stroke is
@@ -395,9 +400,17 @@ for gy in range(ROUTE_H):
         passable_samples = 0
         for yy in range(y0, y1):
             for xx in range(x0, x1):
-                if (_route_region_px[xx, yy]
+                terrain_code = _route_terrain_px[xx, yy]
+                # Current-client terrain is the strongest available static
+                # navigation evidence. Default is ordinary land; Coast,
+                # Mountain, Water, and Error are not safe ground. Unknown cells
+                # retain the older region/mountain/river fallback so incomplete
+                # client cache coverage does not erase routable territory.
+                if (terrain_code == 1 or (
+                        terrain_code == 0
+                        and _route_region_px[xx, yy]
                         and _route_mountain_px[xx, yy] != 1
-                        and not _route_river_px[xx, yy]):
+                        and not _route_river_px[xx, yy])):
                     passable_samples += 1
         if passable_samples * 2 >= samples:
             route_grid[gy * ROUTE_W + gx] = 1
@@ -519,9 +532,12 @@ html = """<!DOCTYPE html>
   #mapwrap { flex:1; position:relative; overflow:hidden; background:#0b0d12; }
   svg { width:100%; height:100%; display:block; cursor:grab; }
   svg.dragging { cursor:grabbing; }
-  .node-dot { stroke:#000; stroke-opacity:.6; stroke-width:1.2; cursor:pointer; }
-  .node-dot:hover { stroke:#fff; stroke-width:2; }
-  .node-dot.selected { stroke:#fff; stroke-width:3; }
+  .node-marker { cursor:pointer; outline:none; }
+  .node-marker .marker-bg { stroke:#05070a; stroke-opacity:.78; stroke-width:1.15; }
+  .node-marker .marker-glyph { fill:none; stroke:#fff; stroke-width:1.15; stroke-linecap:round; stroke-linejoin:round; pointer-events:none; }
+  .node-marker:hover .marker-bg { stroke:#fff; stroke-width:1.8; }
+  .node-marker.selected .marker-bg { stroke:#fff4bf; stroke-width:2.2; }
+  .node-marker.route-used .marker-bg { stroke:#50e3c2; stroke-width:2; }
   .chain-line { stroke:#ffffff; stroke-opacity:.85; stroke-linecap:round; pointer-events:none; }
   #mountainLayer, #regionColorLayer, #regionLabelLayer, #kingdomLabelLayer { pointer-events:none; }
   .region-label { fill:#fff; font-size:16px; font-weight:600; text-anchor:middle; opacity:.9; paint-order:stroke; stroke:#000; stroke-width:3px; stroke-linejoin:round; }
@@ -568,7 +584,7 @@ html = """<!DOCTYPE html>
   .ping-dot { fill:#fff4bf; stroke:#3a2600; stroke-width:1.5; pointer-events:none; animation:dot-pulse .85s ease-in-out infinite alternate; }
   @keyframes dot-pulse { from { opacity:.6; r:4; } to { opacity:1; r:7; } }
   .route-line { fill:none; stroke:#50e3c2; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; pointer-events:none; filter:drop-shadow(0 0 3px rgba(22,126,108,.95)); }
-  .route-endpoint { fill:#fff; stroke:#087d6b; stroke-width:3; vector-effect:non-scaling-stroke; pointer-events:none; }
+  .route-endpoint { fill:#fff; stroke:#087d6b; stroke-width:1.5; vector-effect:non-scaling-stroke; pointer-events:none; }
   .route-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
   .route-grid .wide { grid-column:1 / -1; }
   .route-field label { display:block; color:var(--muted); font-size:9px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; margin:0 0 5px; }
@@ -646,9 +662,9 @@ html = """<!DOCTYPE html>
   #mapwrap::after { content:"";position:absolute;inset:0;pointer-events:none;border-radius:11px;box-shadow:inset 0 0 45px rgba(0,0,0,.42);z-index:3; }
   .zoom-controls { right:16px;bottom:16px;gap:7px; }
   .zoom-controls button { width:36px;height:36px;background:rgba(15,24,33,.92);backdrop-filter:blur(8px);box-shadow:0 5px 18px rgba(0,0,0,.3); }
-  .node-dot { transition:stroke-width .12s,filter .12s; }
-  .node-dot:hover { filter:drop-shadow(0 0 5px rgba(255,255,255,.8)); }
-  .node-dot.selected { stroke:var(--accent-strong);stroke-width:4;filter:drop-shadow(0 0 8px rgba(240,197,103,.95)); }
+  .node-marker { transition:filter .12s; }
+  .node-marker:hover { filter:drop-shadow(0 0 4px rgba(255,255,255,.75)); }
+  .node-marker.selected { filter:drop-shadow(0 0 6px rgba(240,197,103,.95)); }
   .ping-ring { stroke:var(--accent-strong); }
   #tooltip { background:rgba(10,16,23,.96);border-color:#3a4d5d;border-radius:9px;padding:9px 11px;box-shadow:0 12px 30px rgba(0,0,0,.42);backdrop-filter:blur(8px); }
   .results-header { padding:18px 16px 13px;border-bottom:1px solid var(--border);background:radial-gradient(circle at 100% 0%,rgba(88,183,201,.11),transparent 50%); }
@@ -811,6 +827,20 @@ html = """<!DOCTYPE html>
           <filter id="borderGlow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="5"></feGaussianBlur>
           </filter>
+          <!-- Compact POI glyphs share a colored circular backing. Their marker
+               groups are scaled in JavaScript so they remain legible and grow
+               only modestly as the user zooms in. -->
+          <g id="poi-ruin"><path d="M-3.1 3.1V-2.7H-.9V-.8H.9V-3.1H3.1V3.1M-3.1 3.1H3.1"></path></g>
+          <g id="poi-town"><path d="M-3.2-.2L0-3.1 3.2-.2V3.1H-3.2ZM-.9 3.1V.7H.9V3.1"></path></g>
+          <g id="poi-crossing"><path d="M-3-3L3 3M3-3L-3 3M-3 0H3"></path></g>
+          <g id="poi-tunnel"><path d="M-3.2 3.1V.3A3.2 3.2 0 0 1 3.2.3V3.1M-1.3 3.1V.5A1.3 1.3 0 0 1 1.3.5V3.1"></path></g>
+          <g id="poi-castle"><path d="M-3.2-2.8V3.1H3.2V-2.8H1.4V-.9H-.2V-2.8H-1.6V-.9H-3.2M-.8 3.1V1.1A.8.8 0 0 1 .8 1.1V3.1"></path></g>
+          <g id="poi-bridge"><path d="M-3.2 2.8V-2.8M3.2 2.8V-2.8M-3.2-.5Q0-3 3.2-.5M-3.2 1.3Q0-1.2 3.2 1.3"></path></g>
+          <g id="poi-dragon"><path d="M0-3.4L1-1.1 3.2-2.1 2 1.1 0 3.3-2 1.1-3.2-2.1-1-1.1ZM0-1.1V1.5"></path></g>
+          <g id="poi-seat"><path d="M-3.2-1.8L-1.6.1 0-2.7 1.6.1 3.2-1.8 2.5 2.7H-2.5ZM-2.4 1.2H2.4"></path></g>
+          <g id="poi-harbor"><path d="M0-3.2V2.4M-1.4-2H1.4M-3 0Q-2.8 3 0 3.2 2.8 3 3 0M-3 0L-1.8 1M3 0L1.8 1"></path></g>
+          <g id="poi-house"><path d="M0-3.4.9-1.1 3.4-1.1 1.4.4 2.2 3 0 1.4-2.2 3-1.4.4-3.4-1.1-.9-1.1Z"></path></g>
+          <g id="poi-world"><circle cx="0" cy="0" r="2.7"></circle><path d="M0-3.7V3.7M-3.7 0H3.7M-1.9-1.9 1.9 1.9M1.9-1.9-1.9 1.9"></path></g>
         </defs>
         <image id="bgImage" href="worldmap_background.jpg" x="0" y="0" width="BG_W_PLACEHOLDER" height="BG_H_PLACEHOLDER" preserveAspectRatio="none"></image>
         <!-- Pixel-exact shading decoded from the game's region-index texture.
@@ -1040,10 +1070,9 @@ svg.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.w} ${vb.h}`);
 const activeTypes = new Set();
 let selected = null;
 let filtered = [];
-// While a calculated route is active, this set temporarily overrides the normal
-// POI facets so only the exact transit structures used by that route are visible.
-// The user's type/level/territory selections remain untouched and return on Clear.
-let routeFocusedStops = null;
+// Route calculation never replaces the user's POI facets. Transit structures used
+// by a route are merely accented if they are already visible under those facets.
+let routeUsedStops = new Set();
 
 // Display-only shortening for the (verbose, CSV-sourced) type name - the underlying
 // value is still 'Settlement (Town)' everywhere (TYPES/activeTypes/COLORS/d.t all
@@ -1122,8 +1151,7 @@ const levelFacet = buildFacetList(document.getElementById('levelList'), LEVEL_VA
 let dotEls = new Map(); // data index -> circle element
 
 function render() {
-  filtered = DATA.filter((d, dataIndex) => {
-    if (routeFocusedStops !== null) return routeFocusedStops.has(dataIndex);
+  filtered = DATA.filter(d => {
     if (!activeTypes.has(d.t)) return false;
     if (namedOnly && !d.hn) return false;
     if (!activeLevels.has(d.lvl)) return false;
@@ -1226,10 +1254,17 @@ function hideClusterPopup() {
 
 function renderMap() {
   dotsLayer.innerHTML = '';
-  const r = Math.max(currentScale() * 3.8, 3);
+  const zoomRatio = Math.max(1, vb.w / vbState.w);
+  const markerRadius = 4.2 + Math.min(1.3, Math.log2(zoomRatio) * .22);
+  const markerScale = currentScale() * markerRadius / 4.2;
+  const iconByType = {
+    'Ruin':'ruin', 'Settlement (Town)':'town', 'Crossing':'crossing',
+    'Tunnel':'tunnel', 'Castle':'castle', 'Bridge':'bridge',
+    'Dragon Sanctum':'dragon', 'Seat of Power':'seat', 'Harbor/Dock':'harbor',
+    'Great House Capital':'house', 'World Capital':'world'
+  };
   filtered.forEach(d => {
-    const c = document.createElementNS(svgNS, 'circle');
-    c.setAttribute('cx', d.x);
+    const marker = document.createElementNS(svgNS, 'g');
     // Raw node y is stored in the game's native texture-space convention (row 0 = bottom),
     // which is vertically flipped relative to standard screen/SVG space (row 0 = top).
     // Confirmed via the 11 Great House Capitals: sorting by raw y put Sunspear (Dorne,
@@ -1237,16 +1272,23 @@ function renderMap() {
     // exact opposite of a north-up screen. We flip only here, at draw time, so every
     // other use of d.y (tooltip, table, range-filter, coordinate box) keeps showing the
     // raw in-game coordinate the user reads off their own screenshots.
-    c.setAttribute('cy', BG_H - d.y);
-    c.setAttribute('r', r);
-    c.setAttribute('fill', COLORS[d.t] || '#888');
-    c.setAttribute('class', 'node-dot' + (selected === d ? ' selected' : ''));
-    c.setAttribute('tabindex', '0');
-    c.setAttribute('role', 'button');
-    c.setAttribute('aria-label', `${d.n || typeLabel(d.t)}, ${d.x}, ${d.y}`);
-    c.addEventListener('mousemove', (ev) => showTooltip(ev, d));
-    c.addEventListener('mouseleave', hideTooltip);
-    c.addEventListener('click', (ev) => {
+    marker.setAttribute('transform', `translate(${d.x} ${BG_H - d.y}) scale(${markerScale})`);
+    const routeAccent = routeUsedStops.has(d.idx) ? ' route-used' : '';
+    marker.setAttribute('class', 'node-marker' + (selected === d ? ' selected' : '') + routeAccent);
+    marker.setAttribute('tabindex', '0');
+    marker.setAttribute('role', 'button');
+    marker.setAttribute('aria-label', `${d.n || typeLabel(d.t)}, ${d.x}, ${d.y}`);
+    const background = document.createElementNS(svgNS, 'circle');
+    background.setAttribute('r', 4.2);
+    background.setAttribute('fill', COLORS[d.t] || '#888');
+    background.setAttribute('class', 'marker-bg');
+    const glyph = document.createElementNS(svgNS, 'use');
+    glyph.setAttribute('href', `#poi-${iconByType[d.t] || 'ruin'}`);
+    glyph.setAttribute('class', 'marker-glyph');
+    marker.append(background, glyph);
+    marker.addEventListener('mousemove', (ev) => showTooltip(ev, d));
+    marker.addEventListener('mouseleave', hideTooltip);
+    marker.addEventListener('click', (ev) => {
       ev.stopPropagation();
       hideClusterPopup();
       const nearby = findNearby(d);
@@ -1260,15 +1302,16 @@ function renderMap() {
         selectNode(d);
       }
     });
-    c.addEventListener('keydown', (ev) => {
+    marker.addEventListener('keydown', (ev) => {
       if (ev.key === 'Enter' || ev.key === ' ') {
         ev.preventDefault();
         selectNode(d);
       }
     });
-    dotsLayer.appendChild(c);
+    dotsLayer.appendChild(marker);
   });
   renderChain();
+  syncRouteEndpointSize();
 }
 
 function renderTable() {
@@ -1466,7 +1509,7 @@ svg.addEventListener('mousedown', (ev) => {
   hideClusterPopup();
   // Marker clicks are selections, not pan gestures. Starting a drag here caused
   // mouseup to rebuild the dot layer before the marker's click event could fire.
-  if (ev.target.classList && ev.target.classList.contains('node-dot')) return;
+  if (ev.target.closest && ev.target.closest('.node-marker')) return;
   dragging = true; svg.classList.add('dragging');
   dragStart = [ev.clientX, ev.clientY];
   vbStart = { ...vbState };
@@ -1690,6 +1733,76 @@ class MinHeap {
   get length() { return this.a.length; }
 }
 
+function routeLineOfSight(from, to, passable) {
+  // Supercover traversal: every grid cell touched by the segment must be
+  // passable. At an exact corner crossing, require both side cells too so
+  // smoothing cannot reintroduce the diagonal corner-squeeze forbidden by A*.
+  let x = from % ROUTE_W, y = Math.floor(from / ROUTE_W);
+  const tx = to % ROUTE_W, ty = Math.floor(to / ROUTE_W);
+  const dx = tx - x, dy = ty - y;
+  const nx = Math.abs(dx), ny = Math.abs(dy);
+  const sx = Math.sign(dx), sy = Math.sign(dy);
+  let ix = 0, iy = 0;
+  if (!passable[y * ROUTE_W + x]) return false;
+  while (ix < nx || iy < ny) {
+    const decision = (1 + 2 * ix) * ny - (1 + 2 * iy) * nx;
+    if (decision === 0) {
+      const sideX = y * ROUTE_W + (x + sx);
+      const sideY = (y + sy) * ROUTE_W + x;
+      if (!passable[sideX] || !passable[sideY]) return false;
+      x += sx; y += sy; ix++; iy++;
+    } else if (decision < 0) {
+      x += sx; ix++;
+    } else {
+      y += sy; iy++;
+    }
+    if (!passable[y * ROUTE_W + x]) return false;
+  }
+  return true;
+}
+
+function simplifyGridSegment(segment, passable) {
+  if (segment.length <= 2) return segment.slice();
+  const result = [segment[0]];
+  let anchor = 0;
+  while (anchor < segment.length - 1) {
+    let farthest = anchor + 1;
+    for (let candidate = anchor + 2; candidate < segment.length; candidate++) {
+      if (!routeLineOfSight(segment[anchor], segment[candidate], passable)) break;
+      farthest = candidate;
+    }
+    result.push(segment[farthest]);
+    anchor = farthest;
+  }
+  return result;
+}
+
+function simplifyRoute(indices, passable) {
+  if (indices.length <= 2) return indices.slice();
+  const result = [];
+  let segment = [indices[0]];
+  function appendSimplified() {
+    const simplified = simplifyGridSegment(segment, passable);
+    simplified.forEach(cell => {
+      if (result[result.length - 1] !== cell) result.push(cell);
+    });
+  }
+  for (let i = 1; i < indices.length; i++) {
+    const a = indices[i - 1], b = indices[i];
+    const ay = Math.floor(a / ROUTE_W), ax = a % ROUTE_W;
+    const by = Math.floor(b / ROUTE_W), bx = b % ROUTE_W;
+    if (Math.abs(ax - bx) > 1 || Math.abs(ay - by) > 1) {
+      appendSimplified();
+      if (result[result.length - 1] !== b) result.push(b);
+      segment = [b];
+    } else {
+      segment.push(b);
+    }
+  }
+  appendSimplified();
+  return result;
+}
+
 function findRoute(start, end, world) {
   const startIdx = nearestRouteCell(start.x, start.y, world.passable);
   const goalIdx = nearestRouteCell(end.x, end.y, world.passable);
@@ -1762,12 +1875,21 @@ function findRoute(start, end, world) {
     // means this path is using the structure whose opening made it traversable.
     (world.transitCells.get(cell) || []).forEach(addStop);
   });
+  const displayIndices = simplifyRoute(indices, world.passable);
   const points = [{ x:start.x, y:BG_H-start.y }];
-  indices.forEach(idx => points.push({ x:(idx % ROUTE_W + .5) * ROUTE_CELL, y:(Math.floor(idx / ROUTE_W) + .5) * ROUTE_CELL }));
+  // A fully visible ground segment can use the exact entered endpoints. Routes
+  // with turns or portals retain their intermediate navigation-cell centers.
+  if (displayIndices.length > 2) {
+    displayIndices.forEach((idx, i) => {
+      if (!i || i === displayIndices.length - 1) return;
+      points.push({ x:(idx % ROUTE_W + .5) * ROUTE_CELL, y:(Math.floor(idx / ROUTE_W) + .5) * ROUTE_CELL });
+    });
+  }
   points.push({ x:end.x, y:BG_H-end.y });
-  const startCell = points[1], endCell = points[points.length - 2];
-  const distance = score[goalIdx] + Math.hypot(points[0].x-startCell.x, points[0].y-startCell.y)
-    + Math.hypot(points[points.length-1].x-endCell.x, points[points.length-1].y-endCell.y);
+  let distance = 0;
+  for (let i = 1; i < points.length; i++) {
+    distance += Math.hypot(points[i].x - points[i - 1].x, points[i].y - points[i - 1].y);
+  }
   return { points, distance, used:[...new Set(used)], stops };
 }
 
@@ -1779,7 +1901,7 @@ function drawRoute(result) {
   routeLayer.appendChild(line);
   [result.points[0], result.points[result.points.length - 1]].forEach(p => {
     const c = document.createElementNS(svgNS, 'circle');
-    c.setAttribute('cx', p.x); c.setAttribute('cy', p.y); c.setAttribute('r', 7);
+    c.setAttribute('cx', p.x); c.setAttribute('cy', p.y);
     c.setAttribute('class', 'route-endpoint'); routeLayer.appendChild(c);
   });
   const xs = result.points.map(p => p.x), ys = result.points.map(p => p.y);
@@ -1791,6 +1913,14 @@ function drawRoute(result) {
   vbState.x = (minX + maxX) / 2 - vbState.w / 2;
   vbState.y = (minY + maxY) / 2 - vbState.h / 2;
   applyViewBox();
+  syncRouteEndpointSize();
+}
+
+function syncRouteEndpointSize() {
+  // Small, screen-relative dots: unlike the previous fixed seven-world-unit
+  // circles, these do not balloon when drawRoute zooms into a short route.
+  const radius = currentScale() * 2.4;
+  routeLayer.querySelectorAll('.route-endpoint').forEach(el => el.setAttribute('r', radius));
 }
 
 const routeSummaryEl = document.getElementById('routeSummary');
@@ -1840,21 +1970,21 @@ function calculateRoute() {
   setRouteMessage('Calculating…', false);
   requestAnimationFrame(() => {
     const result = findRoute(start, end, buildRouteWorld(minLevel, maxLevel));
-    if (!result) { routeLayer.innerHTML = ''; clearRouteItinerary(); routeFocusedStops = null; render(); setRouteMessage('No traversable route was found with this level range.', true); return; }
-    routeFocusedStops = new Set(result.stops);
+    if (!result) { routeLayer.innerHTML = ''; clearRouteItinerary(); routeUsedStops.clear(); render(); setRouteMessage('No traversable route was found with this level range.', true); return; }
+    routeUsedStops = new Set(result.stops);
     render();
     drawRoute(result);
     renderRouteItinerary(result.stops);
     const via = result.used.length ? ` · uses ${result.used.join(' and ')}` : '';
-    const focus = result.stops.length ? `<br>Showing only the ${result.stops.length} transit node${result.stops.length === 1 ? '' : 's'} used by this route.` : '<br>This route does not use a transit node.';
-    setRouteMessage(`<strong>${Math.round(result.distance).toLocaleString()} tiles</strong> · transit levels ${minLevel}–${maxLevel}${via}<br>Estimated on a ${ROUTE_CELL}-tile navigation grid.${focus}`, false);
+    const transit = result.stops.length ? `<br>${result.stops.length} route transit node${result.stops.length === 1 ? '' : 's'} highlighted; visible POI filters preserved.` : '<br>This route does not use a transit node; visible POI filters preserved.';
+    setRouteMessage(`<strong>${Math.round(result.distance).toLocaleString()} tiles</strong> · transit levels ${minLevel}–${maxLevel}${via}<br>Estimated on a ${ROUTE_CELL}-tile navigation grid.${transit}`, false);
   });
 }
 document.getElementById('routeCalc').onclick = calculateRoute;
 document.getElementById('routeClear').onclick = () => {
   routeLayer.innerHTML = '';
   clearRouteItinerary();
-  routeFocusedStops = null;
+  routeUsedStops.clear();
   render();
   document.getElementById('routeStart').value = '';
   document.getElementById('routeEnd').value = '';
