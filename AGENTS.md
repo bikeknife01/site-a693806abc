@@ -49,16 +49,33 @@ selectable troops, and reference enemy progression.
 - MuMu tools directory: `C:\Program Files\Netease\MuMuPlayer\nx_main`
 - CLI: `mumu-cli.exe`
 - ADB client: `adb.exe`
-- Emulator instance used by the current local snapshots: VM index `0`, Android 15.
+- Existing main-account instance display name: `Bikeknife`.
+- Dedicated throwaway research instance display name: `TrikePistol`.
+- Emulator instance used by the 2026-10-01 local snapshots: VM index `0`, Android 15. Do not infer a current display name or reuse this index without discovery.
 - Game package: `com.wb.goog.hotd.socialstrategy`
 
-Do not hard-code the ADB port or `/data/app/...` installation directory. MuMu can assign a different port, and Android changes the hashed package path after installs or updates. Discover both on every capture.
+Do not hard-code the VM index, ADB port, or `/data/app/...` installation directory. MuMu can reorder instances or assign a different port, and Android changes the hashed package path after installs or updates. Discover all three on every capture.
+
+### Instance identity and research boundary
+
+- Treat MuMu display names as mandatory safety labels, not as assumptions about VM indexes. At the start of every emulator task, run `mumu-cli.exe info --vmindex all`, resolve the requested display name to exactly one VM index, and record the name, index, and reported ADB endpoint. Stop if the name is missing, duplicated, or ambiguous.
+- `Bikeknife` is the user's main-account instance. It is restricted to the minimal-impact capture policy below. Never use it for root access, private app-data access, runtime instrumentation, memory inspection, traffic interception, client modification, or experimental security-setting changes.
+- `TrikePistol` is the user-designated throwaway research instance. Repository work may launch the game there and, when relevant to a documented investigation, inspect the game's private files, use emulator-provided root or debugging access, attach runtime instrumentation to the game process, inspect the game's in-process state, and observe the game application's own network behavior.
+- Authorization for `TrikePistol` does not extend to `Bikeknife`, the host's unrelated data, other applications, other accounts, other players, or publisher infrastructure. Do not collect Google or WB credentials, reusable authentication tokens, payment data, contacts, messages, or unrelated analytics identifiers. If such material appears incidentally, do not persist it and redact it from reports.
+- Privacy separation is permitted; evasion is not. `TrikePistol` may use a separately created MuMu instance, distinct Google and game identities, separate host-side working directories and evidence stores, an explicit ADB-endpoint allowlist, and network segmentation such as a guest network or dedicated firewall profile. These controls may prevent accidental cross-instance access and reduce unnecessary linkage, but must not be represented as anonymity. Do not spoof device identity, rotate identifiers or network origins to defeat enforcement, hide instrumentation from the game, suppress security telemetry, or circumvent an account or device restriction.
+- Research automation on `TrikePistol` is permitted when it reproduces ordinary client inputs for setup, navigation, evidence capture, or repeatable non-competitive experiments. Document the script, input sequence, rate, and expected server-visible effects. Do not automate competitive play, resource farming, matchmaking, ranking, purchases, rewards, or interactions that disadvantage another player or create an in-game advantage.
+- Ordinary actions performed through the unmodified client may create expected server-side state on the throwaway account; this alone is not prohibited. Do not forge, tamper with, replay, or directly issue protocol requests to obtain unintended results; alter purchases, currency, inventory, rewards, match outcomes, or another user's data; exploit publisher infrastructure; or bypass server authorization or validation.
+- Runtime instrumentation may observe the user's own `TrikePistol` client, but authorization does not include bypassing anti-cheat or other access controls. If a protection blocks an experiment, stop and record the limitation rather than concealing the tool, patching the protection, or changing fingerprints to evade detection.
+- Prefer read-only collection and observation. Any change needed to enable research on `TrikePistol` must be limited to that instance, documented in the investigation notes, and reversible where practical. Preserve original APKs, libraries, metadata, and relevant configuration hashes before patching or transformation. Do not present behavior observed in a modified client as ordinary live-client behavior.
+- Keep `TrikePistol` artifacts local and ignored by Git until they are reviewed and sanitized. Use a distinct snapshot name such as `Game_Details/Resources/_snapshots/YYYY-MM-DD-trikepistol/`, and record the client version, package version, instance display name, VM index, collection method, modifications, and source hashes. Never commit account identifiers, secrets, raw private databases, tokens, or unsanitized traffic captures.
+- Before an invasive step, re-check that the selected VM is `TrikePistol`. Afterward, disconnect only its ADB endpoint and restore only processes or settings changed for that investigation. Never stop, reset, snapshot, clone, or modify `Bikeknife` as cleanup for a `TrikePistol` task.
 
 ### Minimal-impact capture policy
 
+- This is the default policy for routine static captures on either instance and the maximum permitted scope on `Bikeknife`. The explicitly authorized research activities above are exceptions for `TrikePistol` only.
 - Use ordinary read-only ADB listing and pull operations.
 - Do not launch the game solely to copy files. Starting the emulator is sufficient when the downloaded resources are already current.
-- Do not write into the emulator, modify the APKs, attach instrumentation, alter security settings, or attempt to conceal activity from monitoring or anti-cheat systems.
+- Under this default workflow, do not write into the emulator, modify the APKs, attach instrumentation, alter security settings, or attempt to conceal activity from monitoring or anti-cheat systems.
 - Do not pull the complete package data directory by default. It contains logs, analytics queues, caches, temporary offer art, and potentially account-adjacent data that are unnecessary for static gameplay analysis.
 - Capture only installed APKs, the downloaded `Resources` directory, `Application.current-version`, and IL2CPP metadata unless a documented investigation requires more.
 - Copy into a new dated snapshot. Never overwrite an earlier baseline.
@@ -77,12 +94,13 @@ $adb = 'C:\Program Files\Netease\MuMuPlayer\nx_main\adb.exe'
 & $adb devices -l
 ```
 
-If VM `0` is stopped, start the existing MuMu manager and instance through the supported CLI. Some installations require `MuMuNxMain.exe` to be started once before `control launch` can connect.
+After resolving the requested display name to `$vmIndex`, start only that instance through the supported CLI if it is stopped. Some installations require `MuMuNxMain.exe` to be started once before `control launch` can connect.
 
 ```powershell
+$vmIndex = <resolved-index-for-requested-display-name>
 & $mumu main launch
-& $mumu control --vmindex 0 launch
-& $mumu info --vmindex 0
+& $mumu control --vmindex $vmIndex launch
+& $mumu info --vmindex $vmIndex
 ```
 
 If `control launch` returns `mainnx connect failed`, start the installed main process, then retry the same control command:
@@ -90,10 +108,10 @@ If `control launch` returns `mainnx connect failed`, start the installed main pr
 ```powershell
 $mumuMain = 'C:\Program Files\Netease\MuMuPlayer\nx_main\MuMuNxMain.exe'
 Start-Process -FilePath $mumuMain -WindowStyle Hidden
-& $mumu control --vmindex 0 launch
+& $mumu control --vmindex $vmIndex launch
 ```
 
-Do not repeatedly launch additional manager processes. Confirm the player state with `info --vmindex 0` and continue only when `is_android_started` and `is_process_started` are true.
+Do not repeatedly launch additional manager processes. Confirm the display name and player state again with `info --vmindex $vmIndex`; continue only when the name still matches and `is_android_started` and `is_process_started` are true.
 
 Read `adb_host_ip` and `adb_port` from the final `info` output. Connect with the reported endpoint, then verify the package and build:
 
@@ -147,7 +165,7 @@ Finish by restoring the prior emulator state when applicable:
 
 ```powershell
 & $adb disconnect $device
-& $mumu control --vmindex 0 shutdown
+& $mumu control --vmindex $vmIndex shutdown
 & $mumu main close
 ```
 
