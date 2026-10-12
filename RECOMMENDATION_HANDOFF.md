@@ -51,9 +51,14 @@ levels** before making a close power comparison. Read
 is one-based. These are client-derived base values for Strength, Intelligence, Instinct,
 Initiative, and Max Army Size.
 
-- Dragon Level is separate from Star Rank and Habit level. Do not substitute one for another.
+- Dragon Level is separate from Star Rank and Habit level. Combat experience and Meat
+  raise Dragon Level but never raise Star Rank. Star Rank increases only through the
+  dragon-specific Relics obtained from opened Dragon Chests.
+- Star Ranks 2, 4, 6, 8, and 10 each unlock one Habit. Unlocking a Habit does not raise
+  its skill level; Breedmarks and the Core matching the dragon's Rare, Epic, or
+  Legendary rarity raise that Habit separately from Level 1 through Level 5.
 - The client provides separate `star_scalars` but does not establish a complete public final-stat formula. Do not manufacture one; compare raw level curves only when the candidates share the same Star Rank, or qualify the comparison.
-- Base stats are strategically meaningful: Strength enhances Physical damage and mitigates Physical damage through the defender's Instinct; Instinct enhances Tactical damage and mitigates it through the defender's Intelligence; Intelligence enhances Fire damage and mitigates it through the defender's Initiative. Troop Capacity affects staying power and any explicit troop-capacity threshold.
+- Base stats are strategically meaningful: Strength enhances Physical damage and mitigates Physical damage through the defender's Instinct; Instinct enhances Tactical damage and mitigates it through the defender's Intelligence; Intelligence enhances Fire damage and mitigates it through the defender's Initiative. Treat Troop Capacity as the army's practical health pool: higher maximum army size increases staying power before depletion and affects explicit troop-capacity thresholds. For highest-tile or troop-preservation recommendations, compare the candidates' current modeled maximum army sizes before preferring a mechanically elegant but materially lower-level formation.
 - If levels are unknown, make a kit-and-synergy recommendation only, label it level-agnostic, and say that the choice may change with actual levels and Stars.
 
 The 38 included production-named client rows are 36 screenshot-audited dragons plus

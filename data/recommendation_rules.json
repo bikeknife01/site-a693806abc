@@ -1,8 +1,8 @@
 {
   "metadata": {
     "purpose": "Canonical decision contract for three-dragon formation recommendations.",
-    "schema_version": "1.2.0",
-    "updated": "2026-10-03",
+    "schema_version": "1.3.0",
+    "updated": "2026-10-11",
     "policy": "Hard eligibility and evidence constraints are applied before comparative judgment. Strategic weights remain scenario-dependent and are not a universal tier score."
   },
   "evidence_order": [
@@ -46,7 +46,11 @@
     },
     {
       "id": "gated_mechanics",
-      "rule": "Trace producer-to-payoff chains only through abilities active at the reported Star rank, level, and Habit skill level. For the same dragon, a higher Star rank expands or preserves its eligible kit and can unlock additional synergies; do not turn that into a cross-dragon ranking. Unknown Habit skill level means unknown value or reliability, not Level 1 or maximum."
+      "rule": "Trace producer-to-payoff chains only through abilities active at the reported Star rank, level, and Habit skill level. Dragon Level never grants Stars: Stars increase only through dragon-specific Relics from opened Dragon Chests and unlock Habits at 2, 4, 6, 8, and 10 Stars. Breedmarks and rarity-matched Cores upgrade unlocked Habits separately. For the same dragon, a higher Star rank expands or preserves its eligible kit and can unlock additional synergies; do not turn that into a cross-dragon ranking. Unknown Habit skill level means unknown value or reliability, not Level 1 or maximum."
+    },
+    {
+      "id": "capacity_and_staying_power",
+      "rule": "When Dragon Levels and Stars are known, compare current maximum army size using the recorded level model and applicable Star scalar. Treat Troop Capacity as the army's practical health pool and a primary staying-power input for highest-tile and troop-preservation objectives. Explain any choice that gives up materially more capacity for mechanics, affinity, or matchup value."
     },
     {
       "id": "placement",
@@ -107,7 +111,7 @@
     },
     "mechanics": ["unlocked_functionality", "explicit_synergy", "vanguard_value", "target_scope", "damage_and_effect_coverage"],
     "reliability": ["trigger_certainty", "prerequisite_certainty", "habit_skill_value", "target_availability"],
-    "formation": ["lane_fit", "shared_troop_affinity", "enemy_troop_matchup", "objective_fit"],
+    "formation": ["lane_fit", "shared_troop_affinity", "enemy_troop_matchup", "objective_fit", "modeled_maximum_army_size", "troop_capacity_staying_power"],
     "horizon": ["opening_cycle", "later_cycles", "recovery_and_mitigation", "vulnerable_rounds"]
   },
   "counter_coverage_states": {

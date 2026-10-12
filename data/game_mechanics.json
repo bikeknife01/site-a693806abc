@@ -81,16 +81,16 @@
     "recommendation_impact": "Evaluate opening performance in the first 10 automated rounds and sustained performance across later 10-round cycles. Most PvP analysis should consider one Stalemate and, when relevant, a second, while recognizing that combat has no fixed one- or two-Stalemate limit. Do not recommend manual mid-combat tactics; player agency resumes only through available map actions such as retreat or recall during Stalemate."
   },
   "progression": {
-    "star_rank": "Permanent between campaigns; increased with dragon-specific Relics. Higher Star Rank improves stats and unlocks Habits, but a higher-Star dragon is not automatically stronger or more suitable than a lower-Star dragon with a stronger kit, rarity tendency, Habit investment, formation synergy, or matchup advantage.",
+    "star_rank": "Permanent between campaigns; increased only by obtaining and applying dragon-specific Relics from opened Dragon Chests. Dragon Level does not increase Star Rank. Higher Star Rank improves stats and unlocks Habits at 2, 4, 6, 8, and 10 Stars, but a higher-Star dragon is not automatically stronger or more suitable than a lower-Star dragon with a stronger kit, rarity tendency, Habit investment, formation synergy, or matchup advantage.",
     "star_display": {
       "yellow_stars": "One through five yellow stars represent Star Ranks 1 through 5.",
       "red_stars": "After five yellow stars, each displayed red star represents one additional Star Rank: one red star is Rank 6, two red stars is Rank 7, continuing through five red stars at Rank 10.",
       "normalization_rule": "Convert displayed star color/count to the numeric Star Rank before determining unlocked Habits. Never interpret one red star as Rank 1."
     },
-    "dragon_level": "Seasonal dragon progression. Combat experience and Meat increase Dragon Level; higher levels increase maximum army size plus Strength, Instinct, Intelligence, and Initiative. Use data/dragon_application_knowledge.json for the current client-derived per-dragon level curves rather than treating a Basics screenshot as a universal stat profile.",
+    "dragon_level": "Seasonal dragon progression. Combat experience and Meat increase Dragon Level; they do not grant Stars. Higher levels increase maximum army size plus Strength, Instinct, Intelligence, and Initiative. Maximum army size is the formation's troop-capacity health pool in practical combat terms: more troops increase staying power before the army is depleted. Use data/dragon_application_knowledge.json for the current client-derived per-dragon level curves rather than treating a Basics screenshot as a universal stat profile.",
     "habit_upgrades": {
       "levels": [1, 2, 3, 4, 5],
-      "currencies": "Breedmarks and rarity-matched Cores are both required. Core types include Rare, Epic, and Legendary.",
+      "currencies": "Breedmarks and rarity-matched Cores are both required. Core types include Rare, Epic, and Legendary; use the Core matching the dragon's rarity.",
       "persistence": "Habit skill levels are permanent and persist into the next Reign.",
       "effect": "The five levels modify the values in habits[].upgrade_levels. Depending on the Habit, investment may increase damage, mitigation, Recovery, stat changes, activation chance, or other displayed values.",
       "reliability": "Chance-based Habits may require investment before their activation rate is reliable enough to anchor a formation plan. Other Habits can be strategically valuable at Level 1.",

@@ -99,12 +99,18 @@ stronger than another.
 
 ## Progression and account modifiers
 
-- **Star Rank** persists between Reigns, increases dragon stats, and unlocks Habits.
+- **Star Rank** persists between Reigns. It increases only through dragon-specific
+  Relics obtained from opened Dragon Chests; Dragon Level, combat experience, and Meat
+  do not grant Stars. Star Rank increases dragon stats and unlocks Habits at 2, 4, 6,
+  8, and 10 Stars.
 - **Displayed Stars** are yellow through Rank 5. After that, one red star means Rank 6,
   two red stars means Rank 7, continuing through five red stars at Rank 10. Normalize
   the display to numeric rank before checking Habit unlocks.
-- **Reign Level** resets each Reign. It increases maximum army size and the dragon's
-  Strength, Instinct, Intelligence, and Initiative.
+- **Dragon Level** is raised through combat experience and Meat and resets with its
+  seasonal progression. It increases maximum army size and the dragon's Strength,
+  Instinct, Intelligence, and Initiative, but never changes Star Rank. Maximum army
+  size/Troop Capacity functions as the army's practical health pool: more troops give
+  the formation more staying power before depletion.
 - **Rarity** is a tendency, not a strict ranking. Legendary kits tend to have more
   advanced and stronger elements than Epic, followed by Rare, but actual abilities,
   unlocks, synergy, and matchup remain decisive. Rare/blue dragons can be exceptional;
@@ -113,7 +119,8 @@ stronger than another.
   screenshot labels such as `Juvenile`, `Adult`, and `Elder`; do not substitute one for
   the other.
 - **Habit skill level** runs from 1 through 5 and is separate from Star Rank. Breedmarks
-  and rarity-matched Rare, Epic, or Legendary Cores upgrade Habits permanently. The
+  and the Core matching the dragon's Rare, Epic, or Legendary rarity upgrade Habits
+  permanently. The
   five values under `upgrade_levels` are these skill levels.
 - **Habit investment** is secondary but meaningful. Some Habits are valuable at Level
   1, while chance-based Habits may require levels before they can reliably anchor a

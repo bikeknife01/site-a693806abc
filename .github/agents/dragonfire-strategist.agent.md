@@ -65,12 +65,22 @@ Ask concise follow-up questions only for missing facts that could materially cha
 1. Normalize displayed star colors/counts to numeric Star Rank, then build the eligible
    ability set for each candidate. Include the Command and only Habits whose
    `star_unlock` is at or below that rank. Never interpret one red star as Rank 1. Do
-   not assume a locked Habit, a Habit upgrade level, or a Vanguard unlock.
+   not assume a locked Habit, a Habit upgrade level, or a Vanguard unlock. Dragon Level
+   never grants Stars: Stars increase only through dragon-specific Relics obtained from
+   opened Dragon Chests. Stars 2, 4, 6, 8, and 10 unlock the five Habits; Breedmarks and
+   rarity-matched Rare, Epic, or Legendary Cores upgrade each unlocked Habit separately.
 2. Use visible Power as a player-specific viability anchor after eligibility and required
 	job coverage, not as an intrinsic ranking. Among candidates that can perform the
 	required job, prefer materially higher Power when mechanics are otherwise comparable.
 	Power cannot create missing counter coverage or unlock a mechanic. Explain whenever
 	the recommendation passes over a materially higher-Power option.
+   Also read `level_model.base_stats_by_level.max_army_size` and the applicable recorded
+   Star scalar when Levels and Stars are known. Treat maximum army size/Troop Capacity
+   as the formation's practical health pool: a materially higher-capacity trio can
+   survive damage that a lower-level synergy line cannot. For highest-tile and
+   troop-preservation objectives, compare total modeled capacity among finalists and
+   explain any recommendation that gives up a material capacity advantage. Do not let
+   the planner's mechanics-oriented diagnostic ordering silently override this check.
 3. Follow the ordered decision flow in `data/recommendation_rules.json`. Do not stop at
 	the first plausible trio. When the full roster is in scope, build an internal candidate
 	ledger before choosing. Retain every common formation from
