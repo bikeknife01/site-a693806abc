@@ -2,9 +2,9 @@
 
 Sentinel · Age label: Juvenile · Rarity tier: Legendary · Positive affinities: Cavalry, Shieldbearers · Negative affinity: Siege
 
-Malachite is a recovery and ally-buff support dragon. **Warden's Rally** provides
-recurring self Instinct/Initiative, same-lane Tactical
-Damage, and adjacent recovery; at 6 Stars it improves both damage and recovery.
+Malachite is a recovery and ally-buff support dragon. **Warden's Rally** deals
+same-lane Tactical Damage on rounds 2, 4, 7, and 9 and applies broad Recovery on
+rounds 3, 6, and 9.
 
 Its Vanguard effect improves its Recovery Dealt and Instinct while granting the
 Left Flank ally Fire Damage. Habits provide temporary ally offense/mitigation,
@@ -16,7 +16,7 @@ Exact in-game text and all displayed levels: [JSON](../../data/dragons/malachite
 
 ## Recommendation-critical source coverage
 
-- **Command — Warden's Rally:** Each Round: 30% chance to increase your Instinct and Initiative by +20% for 1 round. Rounds 1, 2, 4, 7: Deal Tactical Damage to 1 Enemy in the same lane (Damage Rate: +50%). Rounds 2, 5, 8: Recover troops of 2 adjacent Allies (Recovery Rate: +30%, enhanced by Initiative). At 6+ Stars: Rounds 1, 2: increase Tactical Damage Rate by +100% and Recovery Rate by +60%.
+- **Command — Warden's Rally:** Rounds 2, 4, 7, 9: Deal Tactical Damage to 1 Enemy in the same lane (Damage Rate: +100%). Rounds 3, 6, 9: Apply Recovery to 3 Allies in any lane (Recovery Rate: +70%, enhanced by Instinct).
 - **Vanguard — Sentinel's Presence:** At Level 16+ and deployed in the Vanguard Increase your Recovery Dealt by +15% and Instinct by +25. Increase Fire Damage Dealt by +16% of the Ally deployed in the Left Flank.
 - **2 Stars — Forest's Instinct:** Each Round: 35% chance to increase Physical Damage Dealt (excluding Basic Attacks) by +8% and reduce Tactical Damage Received by -8% of 2 other Allies in any lane for 2 round(s).
 - **4 Stars — Wise Vigor:** Start of Combat: Increase your Instinct and Recovery Dealt by +24% until the end of combat.

@@ -45,6 +45,7 @@ class EncyclopediaDataTests(unittest.TestCase):
     def test_unique_and_present_stable_ids(self) -> None:
         self.assertEqual(len(self.data["dragons"]), 38)
         self.assertEqual(sum(dragon["evidence"]["class"] == "screenshot_confirmed" for dragon in self.data["dragons"]), 36)
+        self.assertEqual(sum(dragon["evidence"]["class"] == "cross_site_confirmed" for dragon in self.data["dragons"]), 2)
         ids = [item["id"] for item in self.data["dragons"]]
         ids += [item["id"] for item in self.data["effects"]]
         ids += [ability["id"] for dragon in self.data["dragons"] for ability in dragon["abilities"]]
@@ -150,11 +151,12 @@ class EncyclopediaDataTests(unittest.TestCase):
         self.assertIn("continuing_evidence_policy", app["metadata"])
 
         by_name = {dragon["name"]: dragon for dragon in app["dragons"]}
-        self.assertEqual(by_name["Smoketail"]["recommendation_status"], "client_discovered")
+        self.assertEqual(by_name["Smoketail"]["recommendation_status"], "cross_site_verified")
         self.assertEqual(by_name["Smoketail"]["availability_status"], "user_confirmed_available")
         self.assertEqual(by_name["Smoketail"]["troop_affinities"]["positive"], ["Spearmen"])
         self.assertIn("Burn", by_name["Smoketail"]["client_ability_slots"]["habits_in_slot_order"][2]["description_template"])
         self.assertEqual(by_name["Meleys"]["availability_status"], "user_confirmed_available")
+        self.assertEqual(by_name["Meleys"]["recommendation_status"], "cross_site_verified")
         self.assertEqual(by_name["Meleys"]["troop_affinities"]["positive"], ["Cavalry", "Archers"])
         self.assertEqual(by_name["Meleys"]["troop_affinities"]["negative"], ["Siege"])
 

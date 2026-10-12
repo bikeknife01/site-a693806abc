@@ -199,12 +199,22 @@ def build(resources: Path, snapshot_manifest: Path | None = None) -> dict[str, A
                 "ability_key": key(habit.get("5", {})),
             })
 
-        status = "screenshot_audited" if name in documented else "client_discovered"
+        documented_record = documented.get(name)
+        documented_evidence = (documented_record or {}).get("evidence", {})
+        status = (
+            documented_evidence.get("recommendation_status", "screenshot_audited")
+            if documented_record
+            else "client_discovered"
+        )
         availability = ({
-            "availability_status": "screenshot_observed",
-            "availability": "Established by screenshot-audited record.",
+            "availability_status": documented_evidence.get("availability_status", "screenshot_observed"),
+            "availability": (
+                "Established by screenshot-audited record."
+                if status == "screenshot_audited"
+                else documented_evidence.get("basis", "Established by a reviewed canonical record.")
+            ),
             "missing": [],
-        } if status == "screenshot_audited" else client_only.get(name, {
+        } if documented_record else client_only.get(name, {
             "availability_status": "installed_unverified",
             "availability": "Present in the installed client; player availability is not established.",
             "missing": ["Release and availability confirmation", "Exact numeric values", "Habit upgrade levels", "current screenshot verification"],
@@ -222,7 +232,7 @@ def build(resources: Path, snapshot_manifest: Path | None = None) -> dict[str, A
             },
             "recommendation_status": status,
             "availability_status": availability["availability_status"],
-            "source_record": f"data/dragons/{name.lower()}.json" if status == "screenshot_audited" else None,
+            "source_record": f"data/dragons/{name.lower()}.json" if documented_record else None,
             "level_model": {
                 "max_level": body.get("23"),
                 "vanguard_unlock_level": 16,
@@ -241,7 +251,8 @@ def build(resources: Path, snapshot_manifest: Path | None = None) -> dict[str, A
             },
             "recommendation_evidence": {
                 "screenshot_record_is_primary": status == "screenshot_audited",
-                "client_templates_require_caution": True,
+                "reviewed_canonical_record_is_primary": documented_record is not None,
+                "client_templates_require_caution": status == "client_discovered",
                 "availability": availability["availability"],
                 "missing_for_full_recommendations": availability["missing"],
             },
@@ -262,7 +273,7 @@ def build(resources: Path, snapshot_manifest: Path | None = None) -> dict[str, A
             "comparison_baseline": "2026-09-16 client 26.9.56160" if snapshot.get("snapshot_date") == "2026-10-01" else None,
             "continuing_evidence_policy": "Unchanged logical resources in the captured installed build remain current installed-client evidence; a no-diff result does not make an older table irrelevant.",
             "scope": f"{len(roster)} production-named client rows; WIP, test, NPC, wild, balance-test, and unresolved rows are excluded.",
-            "evidence_policy": "Screenshot-audited dragon records remain primary for exact current mechanics. Client templates and level curves supplement them; client-only rows must be labeled client-discovered and their missing fields disclosed.",
+            "evidence_policy": "Reviewed canonical dragon records remain primary for exact current mechanics. Their evidence class distinguishes screenshot-audited records from explicitly approved cross-site verification. Client templates and level curves supplement them; client-only rows must be labeled client-discovered and their missing fields disclosed.",
         },
         "recommendation_contract": {
             "required_player_inputs": ["dragon name", "dragon level", "Star Rank", "Habit skill levels", "visible Power", "available dragons", "scenario", "enemy formation and troop type when applicable"],

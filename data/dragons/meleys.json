@@ -1,0 +1,208 @@
+{
+  "name": "Meleys",
+  "breed": "Warrior",
+  "rarity_label": null,
+  "rarity_tier": "Legendary",
+  "troop_affinities": {
+    "positive": [
+      "Cavalry",
+      "Archers"
+    ],
+    "negative": [
+      "Siege"
+    ],
+    "review_required": false
+  },
+  "excluded_progression_snapshot": [],
+  "evidence": {
+    "class": "cross_site_confirmed",
+    "recommendation_status": "cross_site_verified",
+    "availability_status": "user_confirmed_available",
+    "as_of": "2026-10-12",
+    "sources": [
+      "data/dragon_application_knowledge.json -> dragons[name=Meleys]",
+      "https://dragonfire-hub.com/",
+      "https://dragonfiresim.com/"
+    ],
+    "basis": "Installed-client names, schedules, targeting, affinities, Laceration, and Reflect templates are resolved by matching numeric records from Dragonfire Hub and Dragonfire Sim. The user directed matching site data to be treated as trusted and verified when no current screenshot was supplied."
+  },
+  "command": {
+    "name": "Scarlet Strike",
+    "type": "Active",
+    "verbatim": [
+      "Odd-numbered Rounds: Deal Physical Damage (Damage Rate: +135%) to the enemy with the highest Initiative.",
+      "Additionally, afflict the target with 1 stack of Laceration (Max 8 stacks). Each stack of Laceration reduces the target's Initiative by -7% (enhanced by Strength)."
+    ],
+    "structured": {
+      "core_tags": [
+        "physical_damage",
+        "laceration",
+        "initiative_reduction",
+        "highest_initiative_target"
+      ]
+    }
+  },
+  "vanguard": {
+    "name": "Warrior's Resilience",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Reduce your Damage Received by -8%. Increase Tactical Damage Dealt by +16% of the Ally deployed in the Left Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Royal Rend",
+      "verbatim": "Scarlet Strike gains: If the target is afflicted with Bleed, there is a 50% chance to afflict them with Vulnerable for 2 rounds and apply an additional stack of Laceration. Otherwise, there is a chance to increase their Physical Damage Received by +7% for 2 rounds and apply an additional stack of Laceration.",
+      "upgrade_levels": {
+        "1": 50,
+        "2": 60,
+        "3": 70,
+        "4": 85,
+        "5": 100
+      },
+      "value_unit": "percent_trigger_chance",
+      "tags": [
+        "command_upgrade",
+        "bleed_payoff",
+        "vulnerable",
+        "physical_damage_received",
+        "laceration"
+      ]
+    },
+    {
+      "star_unlock": 4,
+      "name": "Nimble Resilience",
+      "verbatim": "Start of Combat: Reduce your Damage Received by -6% and increase your Initiative by +12% until the end of combat.",
+      "upgrade_levels": {
+        "1": {
+          "damage_received_percent": -6,
+          "initiative_percent": 12
+        },
+        "2": {
+          "damage_received_percent": -7.2,
+          "initiative_percent": 14.4
+        },
+        "3": {
+          "damage_received_percent": -8.4,
+          "initiative_percent": 16.8
+        },
+        "4": {
+          "damage_received_percent": -10.2,
+          "initiative_percent": 20.4
+        },
+        "5": {
+          "damage_received_percent": -12,
+          "initiative_percent": 24
+        }
+      },
+      "tags": [
+        "self_mitigation",
+        "initiative"
+      ]
+    },
+    {
+      "star_unlock": 6,
+      "name": "Queen's Vengeance",
+      "verbatim": "Each Round: There is a 25% chance to grant yourself Reflect (100%) versus Basic Attacks for 1 round. Reflect causes each instance of the specified damage against the target to have a chance to be split between the target and the source of the attack. Each target's mitigation stats will affect the final damage they take. Reflect (Damage) effects are limited to 1 effect per target.",
+      "upgrade_levels": {
+        "1": 25,
+        "2": 30,
+        "3": 35,
+        "4": 42.5,
+        "5": 50
+      },
+      "value_unit": "percent_trigger_chance",
+      "tags": [
+        "reflect",
+        "basic_attack_counter",
+        "self_mitigation"
+      ]
+    },
+    {
+      "star_unlock": 8,
+      "name": "Brisk Might",
+      "verbatim": "Start of Combat: Increase Strength by +22% and Initiative by +12.5% of the Ally with the highest Strength until the end of combat. Both effects are enhanced by Intelligence.",
+      "upgrade_levels": {
+        "1": {
+          "strength_percent": 22,
+          "initiative_percent": 12.5
+        },
+        "2": {
+          "strength_percent": 26.4,
+          "initiative_percent": 15
+        },
+        "3": {
+          "strength_percent": 30.8,
+          "initiative_percent": 17.5
+        },
+        "4": {
+          "strength_percent": 37.4,
+          "initiative_percent": 21.25
+        },
+        "5": {
+          "strength_percent": 44,
+          "initiative_percent": 25
+        }
+      },
+      "tags": [
+        "ally_buff",
+        "strength",
+        "initiative"
+      ]
+    },
+    {
+      "star_unlock": 10,
+      "name": "The Red Queen",
+      "verbatim": "Rounds 3, 6, 9: Deal Physical Damage (Damage Rate: +40%) to 3 Enemies in any lane. Additionally, there is a 40% chance to apply 1 stack of Laceration to them. Apply an additional stack of Laceration to targets afflicted with Bleed.",
+      "upgrade_levels": {
+        "1": {
+          "physical_damage_rate_percent": 40,
+          "laceration_chance_percent": 40
+        },
+        "2": {
+          "physical_damage_rate_percent": 52,
+          "laceration_chance_percent": 52
+        },
+        "3": {
+          "physical_damage_rate_percent": 64,
+          "laceration_chance_percent": 64
+        },
+        "4": {
+          "physical_damage_rate_percent": 80,
+          "laceration_chance_percent": 80
+        },
+        "5": {
+          "physical_damage_rate_percent": 100,
+          "laceration_chance_percent": 100
+        }
+      },
+      "tags": [
+        "physical_damage",
+        "multi_target",
+        "laceration",
+        "bleed_payoff"
+      ]
+    }
+  ],
+  "derived": {
+    "roles": [
+      "physical_damage",
+      "laceration",
+      "bleed_payoff",
+      "reflect",
+      "ally_buff"
+    ],
+    "preferred_position": "vanguard",
+    "preferred_troops": [
+      "Cavalry",
+      "Archers"
+    ],
+    "avoid_troops": [
+      "Siege"
+    ],
+    "formation_needs": [
+      "Bleed source for Royal Rend and The Red Queen",
+      "Tactical-damage Left Flank ally"
+    ]
+  },
+  "review": []
+}

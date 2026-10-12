@@ -67,7 +67,7 @@
       "properties": {
         "id": {"type": "string", "minLength": 1},
         "ability_id": {"type": "string", "pattern": "^ability:"},
-        "evidence_class": {"enum": ["derived", "screenshot_confirmed", "client_confirmed", "observed", "staged", "unknown"]}
+          "evidence_class": {"enum": ["derived", "screenshot_confirmed", "cross_site_confirmed", "client_confirmed", "observed", "staged", "unknown"]}
       }
     }
   }

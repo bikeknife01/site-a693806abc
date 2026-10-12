@@ -458,7 +458,7 @@ def make_ability(
         },
         "evidence": {
             "class": evidence_class,
-            "confidence": "confirmed" if evidence_class == "screenshot_confirmed" else "limited",
+            "confidence": "confirmed" if evidence_class in {"screenshot_confirmed", "cross_site_confirmed"} else "limited",
             "source": source,
             "source_version": source_version,
             "uncertainty": uncertainty or [],
@@ -563,6 +563,7 @@ def build_data(root: Path = ROOT) -> dict[str, Any]:
         if audited:
             path, record = audited
             relative_source = path.relative_to(root).as_posix()
+            record_evidence_class = record.get("evidence", {}).get("class", "screenshot_confirmed")
             slots = client["client_ability_slots"]["habits_in_slot_order"]
             command_client = client["client_ability_slots"]["command"]
             abilities.append(make_ability(
@@ -573,7 +574,7 @@ def build_data(root: Path = ROOT) -> dict[str, Any]:
                 ability_type=record["command"].get("type"),
                 exact_text=record["command"]["verbatim"],
                 source=relative_source,
-                evidence_class="screenshot_confirmed",
+                evidence_class=record_evidence_class,
                 source_version=client_version,
                 effects=effects_source,
             ))
@@ -585,7 +586,7 @@ def build_data(root: Path = ROOT) -> dict[str, Any]:
                 unlock={"level": int(record["vanguard"].get("unlock_level", 16))},
                 exact_text=record["vanguard"]["verbatim"],
                 source=relative_source,
-                evidence_class="screenshot_confirmed",
+                evidence_class=record_evidence_class,
                 source_version=client_version,
                 effects=effects_source,
             ))
@@ -601,7 +602,7 @@ def build_data(root: Path = ROOT) -> dict[str, Any]:
                     value_unit=habit.get("value_unit"),
                     exact_text=habit["verbatim"],
                     source=relative_source,
-                    evidence_class="screenshot_confirmed",
+                    evidence_class=record_evidence_class,
                     source_version=client_version,
                     effects=effects_source,
                 ))
@@ -611,7 +612,7 @@ def build_data(root: Path = ROOT) -> dict[str, Any]:
             affinities = record.get("troop_affinities", {"positive": [], "negative": []})
             traits = [humanize(role) for role in record.get("derived", {}).get("roles", [])]
             lifecycle = "live"
-            evidence_class = "screenshot_confirmed"
+            evidence_class = record_evidence_class
             confidence = "confirmed"
             uncertainty = list(record.get("review", []))
             source = relative_source
@@ -764,7 +765,7 @@ def build_data(root: Path = ROOT) -> dict[str, Any]:
             "breeds": sorted(mechanics["breeds"].keys()),
             "rarities": ["Rare", "Epic", "Legendary"],
             "troop_affinities": sorted(mechanics["troop_types"].keys()),
-            "evidence_classes": ["screenshot_confirmed", "client_confirmed", "observed", "derived", "staged", "unknown"],
+            "evidence_classes": ["screenshot_confirmed", "cross_site_confirmed", "client_confirmed", "observed", "derived", "staged", "unknown"],
             "star_gates": list(STAR_GATES),
             "habit_levels": mechanics["progression"]["habit_upgrades"]["levels"],
             "map_regions": sorted({node["region"] for node in map_nodes if node["region"]}),

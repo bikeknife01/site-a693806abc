@@ -28,7 +28,7 @@
     "comparison_baseline": "2026-09-16 client 26.9.56160",
     "continuing_evidence_policy": "Unchanged logical resources in the captured installed build remain current installed-client evidence; a no-diff result does not make an older table irrelevant.",
     "scope": "38 production-named client rows; WIP, test, NPC, wild, balance-test, and unresolved rows are excluded.",
-    "evidence_policy": "Screenshot-audited dragon records remain primary for exact current mechanics. Client templates and level curves supplement them; client-only rows must be labeled client-discovered and their missing fields disclosed."
+    "evidence_policy": "Reviewed canonical dragon records remain primary for exact current mechanics. Their evidence class distinguishes screenshot-audited records from explicitly approved cross-site verification. Client templates and level curves supplement them; client-only rows must be labeled client-discovered and their missing fields disclosed."
   },
   "recommendation_contract": {
     "required_player_inputs": [
@@ -485,7 +485,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -924,7 +925,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -1363,7 +1365,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -1802,7 +1805,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -2241,7 +2245,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -2680,7 +2685,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -3119,7 +3125,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -3559,7 +3566,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -3999,7 +4007,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -4438,7 +4447,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -4877,7 +4887,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -5317,7 +5328,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -5341,9 +5353,9 @@
         ],
         "source_key": "affinity_iconic_meleys"
       },
-      "recommendation_status": "client_discovered",
+      "recommendation_status": "cross_site_verified",
       "availability_status": "user_confirmed_available",
-      "source_record": null,
+      "source_record": "data/dragons/meleys.json",
       "level_model": {
         "max_level": 50,
         "vanguard_unlock_level": 16,
@@ -5757,13 +5769,10 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": false,
-        "client_templates_require_caution": true,
-        "availability": "User confirmed Meleys as a Season 3 available dragon on 2026-10-01.",
-        "missing_for_full_recommendations": [
-          "Exact numeric values",
-          "Habit upgrade levels",
-          "current screenshot verification"
-        ]
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
+        "availability": "Installed-client names, schedules, targeting, affinities, Laceration, and Reflect templates are resolved by matching numeric records from Dragonfire Hub and Dragonfire Sim. The user directed matching site data to be treated as trusted and verified when no current screenshot was supplied.",
+        "missing_for_full_recommendations": []
       }
     },
     {
@@ -6201,7 +6210,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -6640,7 +6650,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -7079,7 +7090,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -7519,7 +7531,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -7958,7 +7971,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -8397,7 +8411,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -8836,7 +8851,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -9275,7 +9291,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -9298,9 +9315,9 @@
         ],
         "source_key": "affinity_generic_smoketail"
       },
-      "recommendation_status": "client_discovered",
+      "recommendation_status": "cross_site_verified",
       "availability_status": "user_confirmed_available",
-      "source_record": null,
+      "source_record": "data/dragons/smoketail.json",
       "level_model": {
         "max_level": 50,
         "vanguard_unlock_level": 16,
@@ -9714,13 +9731,10 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": false,
-        "client_templates_require_caution": true,
-        "availability": "User confirmed Smoketail as a Season 3 available dragon on 2026-10-01.",
-        "missing_for_full_recommendations": [
-          "Exact numeric values",
-          "Habit upgrade levels",
-          "current screenshot verification"
-        ]
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
+        "availability": "Installed-client names, schedules, targeting, affinities, and Burn templates are resolved by matching numeric records from Dragonfire Hub and Dragonfire Sim. The user directed matching site data to be treated as trusted and verified when no current screenshot was supplied.",
+        "missing_for_full_recommendations": []
       }
     },
     {
@@ -10157,7 +10171,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -10596,7 +10611,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -11035,7 +11051,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -11475,7 +11492,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -11914,7 +11932,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -12354,7 +12373,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -12793,7 +12813,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -13232,7 +13253,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -13671,7 +13693,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -14110,7 +14133,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -14549,7 +14573,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -14988,7 +15013,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -15427,7 +15453,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -15867,7 +15894,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -16306,7 +16334,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }
@@ -16745,7 +16774,8 @@
       },
       "recommendation_evidence": {
         "screenshot_record_is_primary": true,
-        "client_templates_require_caution": true,
+        "reviewed_canonical_record_is_primary": true,
+        "client_templates_require_caution": false,
         "availability": "Established by screenshot-audited record.",
         "missing_for_full_recommendations": []
       }

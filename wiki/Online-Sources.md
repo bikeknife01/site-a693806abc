@@ -1,11 +1,13 @@
 # Online source audit
 
-Last reviewed: 2026-10-01
+Last reviewed: 2026-10-12
 
 This page records public sources checked for game rules and live additions. It is a
 source-quality ledger, not a claim that every public strategy opinion is correct.
 Exact dragon ability screenshots in this repository remain authoritative for the
-audited dragon records.
+audited dragon records. Matching Dragonfire Hub and Dragonfire Sim claims accepted
+under the user's 2026-10-12 direction are labeled cross-site verified rather than
+screenshot audited and yield to contradictory current-client evidence.
 
 ## Installed-client source reviewed
 
@@ -34,13 +36,12 @@ tracks. Meleys is also present with identity,
 Legendary rarity, Warrior breed,
 affinities, Vanguard, Command/Habit names, schedules, targeting, Laceration, and
 Reflect behavior. Smoketail is now a production-named Epic Hunter with six complete
-ability slots, and Ember Snare explicitly names Burn. The extraction does not expose
-resolved Habit upgrade tracks for the remaining client-only dragons, and
-many detailed descriptions retain progression placeholders. They are included as
-client-discovered entries in `data/dragon_application_knowledge.json`, rather than
-being promoted to screenshot-complete dragon records. Meleys and Smoketail were
-user-confirmed as Season 3 available dragons on 2026-10-01; their dated lifecycle and
-usage rules are curated in `data/installed_evidence.json`.
+ability slots, and Ember Snare explicitly names Burn. Meleys and Smoketail were
+user-confirmed as Season 3 available dragons on 2026-10-01. Their complete records are
+now cross-site verified because Dragonfire Hub and Dragonfire Sim publish matching
+Commands, Vanguards, five Habits, and upgrade tracks; the installed client corroborates
+their structure and terminology. Their provenance and usage rules are retained in
+`data/installed_evidence.json` and `wiki/Community-Source-Audit-2026-10-12.md`.
 
 `WildDragonTable.1786045129.json` joined to Node Finder strings in `locale_enUS.json`
 also resolves the PvE breed weaknesses: Champion Wild Dragons are weak to Warriors,
@@ -51,9 +52,11 @@ specific to Wild Dragon encounters and is not evidence of a universal PvP breed 
 
 1. Current in-game text and screenshots.
 2. Official WB Games support guides and official Dragonfire news/profile pages.
-3. Repeated, reproducible player observations with enough battle context.
-4. Fan databases and guides for discovery or strategic hypotheses.
-5. Tier lists, unsourced summaries, and search snippets only as leads.
+3. Explicitly reviewed matching Dragonfire Hub and Dragonfire Sim claims that do not
+   conflict with current client evidence, labeled cross-site verified.
+4. Repeated, reproducible player observations with enough battle context.
+5. Fan databases and guides for discovery or strategic hypotheses.
+6. Tier lists, unsourced summaries, and search snippets only as leads.
 
 When sources conflict, prefer the newest direct evidence and record the conflict rather
 than merging incompatible claims.
@@ -82,8 +85,12 @@ Vanguard text, so it must not silently replace complete in-game records.
 
 | Source | Assessment | Use |
 | --- | --- | --- |
-| [Dragonfire Hub](https://dragonfire-hub.com/) | Active fan database and lineup builder. Its public guide largely mirrors the in-game effect glossary; detailed blog analysis is commonly Patreon-gated. | Useful for discovery, filtering, and candidate combinations. Verify mechanics against official or in-game text. |
-| [Dragonfire Hub guide](https://dragonfire-hub.com/guide) | Repeats damage types, status definitions, and named stack mechanics. | Corroboration only; it did not resolve combat formulas, proc order, adjacency, or Cleanse priority. |
+| [Dragonfire Hub](https://dragonfire-hub.com/) | Active fan database and lineup builder with structured dragon, progression, and effect data. | Matching Meleys, Smoketail, and Dragon Growth values were cross-site verified; conflicts still yield to client evidence. |
+| [Dragonfire Hub guide](https://dragonfire-hub.com/guide) | Repeats damage types, status definitions, and named stack mechanics. | Corroboration; it did not resolve combat formulas, proc order, adjacency, or Cleanse priority. |
+| [Dragonfire Sim](https://dragonfiresim.com/) | Public Monte Carlo simulator with dragon cards, Guides, and exposed implementation constants. | Full Meleys/Smoketail and Dragon Growth data agreed with Hub. Simulator constants, tier output, and formations are retained separately as model benchmarks, not live formulas. |
+| [Dragonfire Sim combat mechanics](https://dragonfiresim.com/combat-mechanics) | Documents the site's combat model and assumptions. | Useful for reproducibility and empirical-test design; unverified constants are not promoted to canonical mechanics. |
+| [Dragonfire Sim tier list](https://dragonfiresim.com/guides/tier-list) | 427,500 simulated battles at 10 Stars, Level 50, Habit Rank 5. | Aggregate candidate-discovery benchmark only; scenario and simulator assumptions prevent treating percentages as live win rates. |
+| [Dragonfire Sim formations and troops](https://dragonfiresim.com/guides/best-formations) | Publishes candidate trios and shared troop choices. | Candidate generation only; the repository planner must re-evaluate them against the user's roster, progression, matchup, and legal common baselines. |
 | [Game of Thrones Dragonfire Wiki tier list](https://www.gameofthronesdragonfire.wiki/tier-list) | Launch-stage, explicitly confidence-weighted, but stale enough to mark dragons with complete repository data as pending. | Do not import rankings. Its advice to avoid spreading rare resources is a strategic opinion, not a combat rule. |
 | Reddit communities `r/GOTDragonfire` and `r/GOT_DragonFire` | Search surfaced formation posts that primarily link to videos; accessible post text did not provide auditable mechanics. | Leads for testing and meta discussion, not rule authority. |
 | RTS Mobile formation videos surfaced through web search | Potential player-tested strategy, but no battle reports or transcripts were available in the inspected results. | Do not encode claims without reproducible matchup context. |
@@ -96,10 +103,9 @@ Vanguard text, so it must not silently replace complete in-game records.
     in-game damage-report evidence establishes matching named positions for `same lane`,
     but equivalent published official wording has not been found.
 - Universal stacking, control-conflict, Cleanse-priority, and Recovery-order rules.
-- Full in-game records for Meleys and Smoketail, especially exact values, Habit upgrade
-  tracks, and current screenshot verification. Meleys and
-  Smoketail availability is confirmed, but those missing mechanics still limit precise
-  comparisons.
+- Current-client screenshot verification for Meleys and Smoketail. Their complete
+  mechanics and upgrade tracks are cross-site verified and usable with source
+  disclosure, but they are not screenshot audited.
 
 ## User-confirmed in-game clarifications
 

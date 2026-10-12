@@ -127,13 +127,13 @@ class StrategistContractTests(unittest.TestCase):
                     self.assertEqual(common[lane], benchmark[lane]["dragon"])
         self.assertIn("no score boost", self.rules["candidate_search"]["benchmark_safety"])
 
-    def test_season_three_dragons_preserve_availability_and_evidence_limits(self) -> None:
+    def test_season_three_dragons_preserve_availability_and_cross_site_evidence(self) -> None:
         by_name = {item["name"]: item for item in self.app["dragons"]}
         for name in ("Meleys", "Smoketail"):
             with self.subTest(name=name):
-                self.assertEqual(by_name[name]["recommendation_status"], "client_discovered")
+                self.assertEqual(by_name[name]["recommendation_status"], "cross_site_verified")
                 self.assertEqual(by_name[name]["availability_status"], "user_confirmed_available")
-                self.assertNotIn("Release and availability confirmation", by_name[name]["recommendation_evidence"]["missing_for_full_recommendations"])
+                self.assertEqual(by_name[name]["recommendation_evidence"]["missing_for_full_recommendations"], [])
 
     def test_vermithor_is_screenshot_audited_with_resolved_six_star_values(self) -> None:
         by_name = {item["name"]: item for item in self.app["dragons"]}
@@ -162,7 +162,7 @@ class StrategistContractTests(unittest.TestCase):
 
     def test_curated_installed_evidence_has_explicit_usage(self) -> None:
         allowed_states = set(self.installed["evidence_states"])
-        allowed_uses = {"conditional_only", "exclude", "corroboration_only"}
+        allowed_uses = {"conditional_only", "allowed_with_source_disclosure", "exclude", "corroboration_only"}
         ids = set()
         for item in self.installed["observations"]:
             self.assertNotIn(item["id"], ids)

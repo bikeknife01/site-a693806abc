@@ -28,7 +28,7 @@
     "name": "Crescent Blade",
     "type": "Active",
     "verbatim": [
-      "Round 1: Grant Crescent Blade to 1 other Sentinel Ally in any lane until the end of combat. When that Ally deals Tactical Damage or applies Recovery, there is a 50% chance to grant Moondancer 1 stack of Rising Tide (maximum 8; no more than once per round). Each Rising Tide stack reduces Moondancer's Damage Received by -2%.",
+      "Round 1: Grant Crescent Blade to 1 other Sentinel Ally in any lane until the end of combat. When this target deals Tactical Damage or applies Recovery, 50% chance to grant Moondancer 1 stack of Rising Tide (Max 8 stacks). This effect cannot trigger more than once per round. Each stack of Rising Tide reduces Moondancer's Damage Received by -2.5%.",
       "Even-numbered Rounds: Deal Physical Damage to 2 adjacent Enemies (Damage Rate: +75%). At 6+ Stars: increase the Damage Rate to +85%; double it to +170% with 4+ Rising Tide stacks."
     ],
     "structured": {

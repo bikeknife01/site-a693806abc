@@ -6,9 +6,10 @@ discover the complete production-named client roster and obtain level-specific b
 stats. Load `data/common_formations.json` for every formation recommendation so the
 user-confirmed common formations enter the candidate ledger whenever legal for an
 ordinary combat recommendation.
-For screenshot-audited dragons, `data/dragons/<name>.json` remains primary for
-exact current mechanics. Client-only records must be labeled as such and their evidence
-limitations disclosed.
+For reviewed dragons, `data/dragons/<name>.json` remains primary for exact mechanics.
+Its optional `evidence` block distinguishes screenshot-audited records from explicitly
+approved cross-site verification. Client-only records must be labeled as such and their
+evidence limitations disclosed.
 
 Common formations are comparison baselines, not fixed winners or sacrificial controls.
 Recompute them under the player's actual roster, levels, Stars, Habit levels, Power, and
@@ -62,10 +63,10 @@ Initiative, and Max Army Size.
 - If levels are unknown, make a kit-and-synergy recommendation only, label it level-agnostic, and say that the choice may change with actual levels and Stars.
 
 The 38 included production-named client rows are 36 screenshot-audited dragons plus
-Meleys and Smoketail. WIP, test, NPC, wild, balance-test, and unresolved
-rows are deliberately excluded. Meleys and Smoketail are user-confirmed Season 3
-available dragons, but their mechanics remain client-derived rather than
-screenshot-complete.
+cross-site-verified Meleys and Smoketail. WIP, test, NPC, wild, balance-test, and
+unresolved rows are deliberately excluded. Meleys and Smoketail are user-confirmed
+Season 3 available dragons. Their complete mechanics and upgrade tracks are usable with
+cross-site source disclosure, but they are not screenshot audited.
 
 ## Canonical JSON schema
 
@@ -104,6 +105,7 @@ Each `data/dragons/<name>.json` record uses the following keys:
 | `derived.scenario_bias` | Optional heuristic scores, not source facts. Do not cite them as mechanics. |
 | `derived.notes` | Optional qualified strategic interpretation. |
 | `review` | Precise unresolved source conflicts, crops, or missing required facts. A non-empty array must be disclosed in recommendations that depend on the affected fact. |
+| `evidence` | Optional provenance block for a reviewed canonical record whose authority is not the default screenshot audit. `cross_site_confirmed` records are usable with source disclosure and yield to contradictory current-client evidence. |
 
 ## Client knowledge schema
 
@@ -111,7 +113,7 @@ Each `data/dragons/<name>.json` record uses the following keys:
 
 | Key | Meaning |
 |---|---|
-| `dragons[].recommendation_status` | `screenshot_audited` permits use of the matching `data/dragons` mechanics record. `client_discovered` is usable only with the documented caveats. |
+| `dragons[].recommendation_status` | `screenshot_audited` and `cross_site_verified` permit use of the matching canonical mechanics record, with provenance disclosure for the latter. `client_discovered` is usable only with the documented caveats. |
 | `dragons[].availability_status` | Separates `screenshot_observed`, `campaign_observed`, `user_confirmed_available`, and `installed_unverified`; installed-unverified dragons are conditional only and never default recommendations. |
 | `dragons[].level_model.max_level` | Maximum level exposed by the current client row. |
 | `level_model.base_stats_by_level` | Exact client curve per stat, ordered levels 1–50. Use the player-reported level. |
@@ -238,6 +240,7 @@ Do not turn level, rarity, affinity, or derived role labels into a universal num
 | Jagadrix | Fire damage, Initiative/Instinct debuff, Panic payoff | Panic; high-Strength Right Flank | Weakened and stat reduction | Same-lane base attacks; later all-enemy payoff only against Tactical dealers |
 | Kalspire | Basic-Attack modifier, hybrid damage, Bleed/Panic, stat debuff | Basic Attacks; Right Flank needing mitigation | Reduces enemy Strength/Intelligence; self Stun trades for opening mitigation | Screenshot filenames for Command/Vanguard are swapped, but panel contents are clear |
 | Malachite | Tactical damage, Recovery, Advantage, ally stat/turn-order support | Fire Left Flank; adjacent ally for First-/Double-Strike | Temporary ally mitigation | Command confirmed as `Warden's Rally`; Cavalry/Shieldbearer affinities; Siege negative |
+| Meleys | Physical damage, Laceration, Initiative pressure, Reflect, Bleed payoff | Bleed; high Initiative; Tactical Left Flank | Targets highest Initiative; Vulnerable/Physical vulnerability; reflects Basic Attacks | Cross-site verified, not screenshot audited; Cavalry/Archer affinities; Siege negative |
 | Moondancer | Physical damage, Rising Tide stacks, Sentinel synergy, Bleed | Sentinel ally dealing Tactical Damage or Recovery; Advantage | Damage Dealt and stat debuffs | Rising Tide max 8; thresholds at 4 and 6 stacks; Siege negative |
 | Nyrena | Enemy stat/Physical suppression, Fire/Tactical damage, siege/defense support | Burn extends Physical suppression; adjacent Fire ally | Reduces Physical Damage Dealt and late-round allied Physical Damage Received | Round 6+ defense and After Combat Tile Damage; Shieldbearer/Siege affinities |
 | Rhysarion | Hybrid damage, Recovery, control payoff | Any Control effect; damage-focused Right Flank | Opening all-combatant Damage Dealt reduction | Ebbing Fury also reduces allies; scheduled rounds matter |
@@ -247,6 +250,7 @@ Do not turn level, rarity, affinity, or derived role labels into a universal num
 | Sheepstealer | Prey, Fire stacks, Recovery suppression, PvE, Evade/Cleanse | Enemy Recovery feeds targeting and payoff | Prey and Wary Beast suppress Recovery | Legendary; Stolen Flock max 10; some bonus text is PvE-only |
 | Shimmer | Tactical damage, Recovery, ally buffs, First-Strike | Resistance doubles Recovery; Fire Left Flank | Self/team mitigation | Highest-Strength targeting; Cavalry/Siege affinities |
 | Solstryker | Hybrid Basic-Attack damage, Strength erosion, Overwhelm | Vulnerable doubles even-round Tactical damage | Up to 10 Strength-reduction stacks; Overwhelm | Odd/even behavior differs; Archer affinity |
+| Smoketail | Fire damage, Burn, Weakened payoff, stat suppression, Champion counter | Reliable Weakened; Right Flank benefiting from Strength/Initiative | Reduces Tactical/Fire output, stats, and raises Fire Damage Received | Cross-site verified, not screenshot audited; Spearmen affinity |
 | Starshower | Tactical damage, Solar Flare consumption, Cleanse/Evade, enemy stat reduction, ally mitigation | Resistance strengthens 10-Star mitigation; Advantage expands it to all Allies; Tactical Left Flank | Reduces all-enemy Intelligence/Initiative and applies same-lane Tactical vulnerability | Solar Flare consumption is 50% chance; Night Guardian remains chance-based; Tactical Breach table-label conflict is recorded in review |
 | Sunfyre | Tactical/Fire damage, Burn, anti-Fire, Cleanse, low-troop defense | Benefits when below 75%/50% troop capacity | Reduces enemy Fire Damage and Intelligence | Several effects depend on first damage received each round and damage type |
 | Syrax | Tactical damage, Fire/First-Strike support, Recovery/Cleanse | Fire ally; Slow increases Recovery; Control cleansing | Teamwide stat/Initiative shifts and multi-effect Cleanse | Recovery on rounds 2/5/8; Spearmen/Archers affinities; Siege negative |
@@ -272,15 +276,12 @@ conflict remains in `review`. User confirmation established Dawnseeker's 10-Star
 as `First Light`, Malachite's Command as `Warden's Rally`, Sheepstealer as Legendary,
 Vermax as Epic, and Vhagar's 10-Star Habit as `Skyward Titan`.
 
-`data/dragon_application_knowledge.json` includes two client-discovered dragons
-without screenshot-complete records: the user-confirmed Season 3 dragons Meleys and
-Smoketail. Starshower and Vermithor are now screenshot-complete.
-Use their client ability templates only conditionally, disclose the fields named in
-`recommendation_evidence.missing_for_full_recommendations`, and do not invent resolved
-progression-token values. Their named effects Solar Flare, Protect, Laceration,
-Reflect, and Burn are defined in `data/effects.json`. Consult
-`data/installed_evidence.json` for the dated lifecycle classification before using any
-installed-only behavior.
+Meleys and Smoketail are user-confirmed available Season 3 dragons with complete
+cross-site-verified canonical records. Use them with source disclosure; do not call
+them screenshot audited. Starshower and Vermithor are screenshot complete. Their named
+effects Solar Flare, Protect, Laceration, Reflect, and Burn are defined in
+`data/effects.json`. Consult `data/installed_evidence.json` for lifecycle and evidence
+classification before using any installed-only behavior.
 
 Some Habit description text shows rounded values while the five-column table shows more precision (for example `-7%` in prose and `-7.5%` at level 1). Records preserve the displayed prose and all five table values; recommendations needing an upgrade value should cite `upgrade_levels`.
 

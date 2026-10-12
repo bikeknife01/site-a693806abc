@@ -1,0 +1,62 @@
+{
+  "metadata": {
+    "purpose": "Reviewed external simulator assumptions and aggregate benchmarks for sensitivity analysis. This file does not override canonical dragon mechanics or constitute a verified live combat formula.",
+    "as_of": "2026-10-12",
+    "sources": [
+      "https://dragonfiresim.com/",
+      "https://dragonfiresim.com/combat-mechanics",
+      "https://dragonfiresim.com/guides/tier-list",
+      "https://dragonfiresim.com/guides/best-formations",
+      "https://dragonfiresim.com/guides/best-troops",
+      "https://dragonfire-hub.com/"
+    ],
+    "bundles": [
+      {"site": "Dragonfire Sim", "url": "https://dragonfiresim.com/assets/index-KcG_IEUf.js", "sha256": "113f13ce26156b28aa4c13c3eac739d8f88605e9b2943a357ab3277a8774fa53"},
+      {"site": "Dragonfire Hub", "url": "https://dragonfire-hub.com/_next/static/chunks/1e2b4fc53b91f6fb.js", "sha256": "affc7c2355379a761b95769cfffe44344a4d6d1f4ca0e76629b54ec8b38a3b53"}
+    ],
+    "use_policy": "Use green parameters as cross-site corroboration where applicable. Use yellow and red parameters only to reproduce the public simulator, test sensitivity, or frame empirical questions. Never cite its modeled win rate as a prediction for a user's live account without matching progression and disclosed assumptions."
+  },
+  "simulator_parameters": [
+    {"id": "damage_stat_coefficient", "value": 0.055, "review": "yellow", "use": "Simulator-specific calibration; live formula not independently established."},
+    {"id": "mitigation_constant", "value": 1000, "review": "yellow", "use": "Simulator-specific calibration; live formula not independently established."},
+    {"id": "troop_scaling_exponent", "value": 1, "review": "yellow", "use": "Simulator assumption."},
+    {"id": "basic_attack_damage_rate_percent", "value": 100, "review": "red", "use": "Unverified live default."},
+    {"id": "champion_basic_attack_stat", "value": "highest_stat", "review": "yellow", "use": "Plausible simulator behavior, not canonical client wording."},
+    {"id": "command_rate_interpretation", "value": "displayed percentage only", "review": "yellow", "use": "Implementation convention rather than an established universal rule."},
+    {"id": "troop_triangle_modifier_percent", "value": 7, "review": "green", "use": "Both reviewed sites agree; retain source disclosure because no client screenshot establishes the number."},
+    {"id": "positive_affinity_modifier_percent", "value": 20, "review": "green", "use": "Both reviewed sites agree; retain source disclosure because the public client text gives direction but not the number."},
+    {"id": "siege_combat_penalty_percent", "value": 15, "review": "red", "use": "Simulator approximation; not independently established."},
+    {"id": "recovery_unit", "value": 2.74, "review": "green", "use": "The sites agree on this measured simulator conversion; the live recovery ordering remains unknown."},
+    {"id": "damage_over_time_rate_percent", "value": 20, "review": "green", "use": "Matches the reviewed Burn/Panic/Bleed implementation where explicitly specified; do not generalize over exact ability text."},
+    {"id": "weakened_modifier_percent", "value": 10, "review": "green", "use": "Cross-site corroborated but still subordinate to exact effect wording."},
+    {"id": "evade_chance", "value": 0.3, "review": "red", "use": "Fallback simulator assumption; exact ability-specific rates prevail."},
+    {"id": "protect_split", "value": 0.5, "review": "red", "use": "Fallback simulator assumption."},
+    {"id": "reflect_split", "value": 0.5, "review": "red", "use": "Fallback simulator assumption."},
+    {"id": "vanguard_projection", "value": "center_projects_to_adjacent_flanks", "review": "green", "use": "Supported by explicit Vanguard targets and the site's battle-log implementation."},
+    {"id": "default_targeting", "value": "same_lane", "review": "red", "use": "Repository client evidence confirms matching named lanes for Basic Attacks, but a universal fallback for every unspecified effect is not established."},
+    {"id": "simulation_round_limit", "value": 10, "review": "yellow", "use": "One combat cycle only. Live unresolved combat enters Stalemate and may continue through additional ten-round cycles."},
+    {"id": "star_bonus_per_step_percent", "value": [20, 15, 10], "review": "green", "use": "Cross-site progression convention; exact installed client star scalars remain primary and are not fully represented by this shorthand."}
+  ],
+  "tier_benchmark": {
+    "label": "Dragonfire Sim aggregate potential",
+    "sample_battles": 427500,
+    "scenario": "10 Stars, Level 50, Habit Rank 5 simulator benchmark",
+    "interpretation": "A model-output benchmark for candidate discovery, not a canonical tier ranking or live win probability.",
+    "rows": [
+      ["Meleys", 62.4], ["Venator", 47.5], ["Malachite", 38.8], ["Moondancer", 37.6], ["Sunfyre", 32.6], ["Kalspire", 31.0], ["Sheepstealer", 29.7], ["Vermithor", 27.3], ["Syrax", 23.4], ["Seasmoke", 23.3], ["Crimson", 21.1], ["Caraxes", 20.2], ["Daemoros", 14.9], ["Zivern", 14.6], ["Vhagar", 14.3], ["Tairax", 13.8], ["Shadowsong", 13.4], ["Velar", 13.3], ["Smoketail", 13.3], ["Tashix", 13.3], ["Starshower", 13.3], ["Antares", 11.9], ["Vermax", 11.3], ["Feskar", 10.9], ["Tessarion", 10.5], ["Rhysarion", 9.9], ["Vaeldra", 8.8], ["Vesper", 6.7], ["Jagadrix", 6.6], ["Dawnseeker", 6.5], ["Shadowrend", 6.4], ["Solstryker", 6.0], ["Thunderstrike", 5.9], ["Shimmer", 5.1], ["Nyrena", 4.9], ["Arulix", 4.8], ["Arrax", 4.6], ["Bevlorin", 3.6]
+    ]
+  },
+  "published_candidate_formations": [
+    {"dragons": ["Malachite", "Venator", "Vaeldra"], "troops": "Shieldbearers"},
+    {"dragons": ["Malachite", "Seasmoke", "Syrax"], "troops": "Archers"},
+    {"dragons": ["Malachite", "Meleys", "Tashix"], "troops": "Archers"},
+    {"dragons": ["Malachite", "Seasmoke", "Kalspire"], "troops": "Cavalry", "label": "reference lineup"}
+  ],
+  "recorded_conflicts": [
+    {"subject": "base stats", "resolution": "Reject site card values where they conflict with installed client curves or current Level 1 screenshots. Use data/dragon_application_knowledge.json."},
+    {"subject": "Tairax affinity", "resolution": "Reject Dragonfire Sim's Archer affinity. Current screenshot and Dragonfire Hub agree on Cavalry, Shieldbearers, and Siege."},
+    {"subject": "Venator Feral Strike", "resolution": "Reject stale simulator values/timing. Current screenshot establishes +20% extra hits, rounds 4/6/8, and 40% at 6+ Stars."},
+    {"subject": "Moondancer Rising Tide mitigation", "resolution": "Reject the simulator's -2% value. Current screenshot and Dragonfire Hub establish -2.5% per stack."},
+    {"subject": "high-star progression shorthand", "resolution": "Use the installed per-dragon star_scalars. The public site's simplified progression does not exactly reproduce every Rank 7-10 value."}
+  ]
+}

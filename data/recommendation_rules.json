@@ -2,7 +2,7 @@
   "metadata": {
     "purpose": "Canonical decision contract for three-dragon formation recommendations.",
     "schema_version": "1.3.0",
-    "updated": "2026-10-11",
+    "updated": "2026-10-12",
     "policy": "Hard eligibility and evidence constraints are applied before comparative judgment. Strategic weights remain scenario-dependent and are not a universal tier score."
   },
   "evidence_order": [
@@ -10,6 +10,7 @@
     "screenshot_audited_canonical_json",
     "dated_installed_client_evidence",
     "official_current_web_material",
+    "explicitly_reviewed_cross_site_verification",
     "community_hypothesis"
   ],
   "required_context": {

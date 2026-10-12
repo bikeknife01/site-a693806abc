@@ -154,7 +154,6 @@ test("counter coverage does not call chance or target limited effects direct", (
     roster,
     scenarios: [
       { id: "shieldbearers", common_formation_id: common.formations[0].id },
-      { id: "cavalry", common_formation_id: common.formations[2].id },
     ],
   });
   const shieldbearers = result.scenarios[0];
@@ -164,7 +163,11 @@ test("counter coverage does not call chance or target limited effects direct", (
   const shroud = shieldbearers.coverage_matrix.find(row => row.threat === "Physical Damage");
   assert.equal(shroud.state, "partial");
   assert.match(shroud.remaining_gap, /Basic Attacks are excluded/);
-  const cavalry = result.scenarios[1];
+  const cavalryResult = planBatchRecommendations(data, common, {
+    roster: ["Starshower", "Zivern", "Arulix"].map(name => entry(name, { stars: 10 })),
+    scenarios: [{ id: "cavalry", common_formation_id: common.formations[2].id }],
+  });
+  const cavalry = cavalryResult.scenarios[0];
   const fire = cavalry.coverage_matrix.find(row => row.threat === "Fire Damage");
   assert.equal(fire.state, "partial");
   assert.equal(fire.responses.find(response => response.ability === "Gleaming Spiral").chance_percent, 25);

@@ -28,19 +28,13 @@
     "name": "Warden's Rally",
     "type": "Active",
     "verbatim": [
-      "Each Round: 30% chance to increase your Instinct and Initiative by +20% for 1 round.",
-      "Rounds 1, 2, 4, 7: Deal Tactical Damage to 1 Enemy in the same lane (Damage Rate: +50%).",
-      "Rounds 2, 5, 8: Recover troops of 2 adjacent Allies (Recovery Rate: +30%, enhanced by Initiative).",
-      "At 6+ Stars: Rounds 1, 2: increase Tactical Damage Rate by +100% and Recovery Rate by +60%."
+      "Rounds 2, 4, 7, 9: Deal Tactical Damage to 1 Enemy in the same lane (Damage Rate: +100%).",
+      "Rounds 3, 6, 9: Apply Recovery to 3 Allies in any lane (Recovery Rate: +70%, enhanced by Instinct)."
     ],
     "structured": {
       "core_tags": [
         "tactical_damage",
-        "recovery",
-        "self_stat_buff"
-      ],
-      "star_6_plus_tags": [
-        "command_upgrade"
+        "recovery"
       ]
     }
   },

@@ -1,15 +1,16 @@
 {
   "metadata": {
-    "purpose": "Curated recommendation-relevant observations from installed-client snapshots that are not screenshot-audited live facts.",
+    "purpose": "Curated recommendation-relevant observations from installed-client snapshots and explicitly reviewed cross-site evidence that are not all screenshot-audited live facts.",
     "snapshot_date": "2026-10-01",
     "client_version": "26.9.56700",
     "version_code": 326,
     "comparison_baseline": "2026-09-16 client 26.9.56160",
     "report": "wiki/client-updates/2026-10-01.md",
-    "policy": "Installed presence proves implementation in the captured build, not release, activation, availability, or final balance. Unchanged logical resources remain continuing installed evidence. Screenshot-audited data remains higher authority for current player-facing mechanics."
+    "policy": "Installed presence proves implementation in the captured build, not release, activation, availability, or final balance. Unchanged logical resources remain continuing installed evidence. Screenshot-audited data remains higher authority for current player-facing mechanics. Matching Dragonfire Hub and Dragonfire Sim claims may be marked cross-site verified only where the 2026-10-12 audit found no contradiction with supplied client evidence."
   },
   "evidence_states": {
     "screenshot_audited": "Exact current in-game wording captured in repository screenshots; primary for recommendations.",
+    "cross_site_verified": "Matching Dragonfire Hub and Dragonfire Sim data accepted as verified under the user's 2026-10-12 direction, while retaining source disclosure and yielding to contradictory client evidence.",
     "user_confirmed": "Current player confirmation supplied directly to this repository; authoritative for the confirmed fact but not for unsupplied mechanics or values.",
     "installed_observed": "Present in a dated installed build; usable with an explicit installed-client qualifier.",
     "installed_unverified": "Production-shaped installed content whose release or player availability has not been established.",
@@ -23,32 +24,32 @@
       "subjects": ["Meleys", "Smoketail", "Starshower", "Vermithor"],
       "evidence_state": "installed_observed",
       "recommendation_use": "corroboration_only",
-      "claim": "The installed client contains 38 production-named dragon rows: 36 screenshot-audited rows plus the client-discovered Meleys and Smoketail. Starshower's and Vermithor's installed rows are retained as corroborating progression evidence, while current screenshots are primary for their mechanics. WIP, test, NPC, wild, balance-test, and unresolved rows are excluded from the canonical application index.",
+      "claim": "The installed client contains 38 production-named dragon rows: 36 screenshot-audited rows plus cross-site-verified Meleys and Smoketail records. Starshower's and Vermithor's installed rows are retained as corroborating progression evidence, while current screenshots are primary for their mechanics. WIP, test, NPC, wild, balance-test, and unresolved rows are excluded from the canonical application index.",
       "source": "data/dragon_application_knowledge.json -> metadata.scope and dragons[].recommendation_status"
     },
     {
       "id": "2026-10-01-season-3-availability",
       "subjects": ["Meleys", "Smoketail"],
-      "evidence_state": "user_confirmed",
-      "recommendation_use": "conditional_only",
-      "claim": "Meleys and Smoketail are available Season 3 dragons. Their availability is established, while exact current screenshots, resolved numeric client placeholders, and Habit upgrade tracks remain incomplete.",
-      "source": "Current user confirmation supplied on 2026-10-01"
+      "evidence_state": "cross_site_verified",
+      "recommendation_use": "allowed_with_source_disclosure",
+      "claim": "Meleys and Smoketail are user-confirmed available Season 3 dragons. Their complete Commands, Vanguards, five Habits, and Habit upgrade tracks are independently published with matching values by Dragonfire Hub and Dragonfire Sim and are canonicalized with cross-site provenance.",
+      "source": "Current user confirmation supplied on 2026-10-01; data/dragons/meleys.json; data/dragons/smoketail.json; wiki/Community-Source-Audit-2026-10-12.md"
     },
     {
       "id": "2026-10-01-meleys",
       "subjects": ["Meleys", "Laceration", "Reflect"],
-      "evidence_state": "installed_observed",
-      "recommendation_use": "conditional_only",
-      "claim": "Meleys has installed Relentless and Physical DPS labels. Her current installed templates cap Laceration at 8 stacks and define Queen's Vengeance as a chance each round to grant Reflect (100%) versus Basic Attacks for one round, with one Reflect (Damage) effect per target.",
-      "source": "wiki/client-updates/2026-10-01.md and data/dragon_application_knowledge.json -> dragons[name=Meleys]"
+      "evidence_state": "cross_site_verified",
+      "recommendation_use": "allowed_with_source_disclosure",
+      "claim": "Meleys has installed Relentless and Physical DPS labels. Her cross-site-verified record caps Laceration at 8 stacks and defines Queen's Vengeance as a chance each round to grant Reflect (100%) versus Basic Attacks for one round, with one Reflect (Damage) effect per target.",
+      "source": "data/dragons/meleys.json and wiki/Community-Source-Audit-2026-10-12.md"
     },
     {
       "id": "2026-10-01-smoketail",
       "subjects": ["Smoketail", "Burn"],
-      "evidence_state": "installed_observed",
-      "recommendation_use": "conditional_only",
-      "claim": "Smoketail is a production-named installed Epic Hunter with six complete ability slots. Ember Snare explicitly names its ongoing Fire damage effect Burn. Season 3 availability is separately user-confirmed.",
-      "source": "data/dragon_application_knowledge.json -> dragons[name=Smoketail]"
+      "evidence_state": "cross_site_verified",
+      "recommendation_use": "allowed_with_source_disclosure",
+      "claim": "Smoketail is a user-confirmed available Epic Hunter with a cross-site-verified Command, Vanguard, and five Habits. Ember Snare explicitly names its ongoing Fire damage effect Burn.",
+      "source": "data/dragons/smoketail.json and wiki/Community-Source-Audit-2026-10-12.md"
     },
     {
       "id": "2026-10-01-commanders",

@@ -1,0 +1,187 @@
+{
+  "name": "Smoketail",
+  "breed": "Hunter",
+  "rarity_label": null,
+  "rarity_tier": "Epic",
+  "troop_affinities": {
+    "positive": [
+      "Spearmen"
+    ],
+    "negative": [],
+    "review_required": false
+  },
+  "excluded_progression_snapshot": [],
+  "evidence": {
+    "class": "cross_site_confirmed",
+    "recommendation_status": "cross_site_verified",
+    "availability_status": "user_confirmed_available",
+    "as_of": "2026-10-12",
+    "sources": [
+      "data/dragon_application_knowledge.json -> dragons[name=Smoketail]",
+      "https://dragonfire-hub.com/",
+      "https://dragonfiresim.com/"
+    ],
+    "basis": "Installed-client names, schedules, targeting, affinities, and Burn templates are resolved by matching numeric records from Dragonfire Hub and Dragonfire Sim. The user directed matching site data to be treated as trusted and verified when no current screenshot was supplied."
+  },
+  "command": {
+    "name": "Veilflame",
+    "type": "Active",
+    "verbatim": [
+      "Rounds 2, 5, 8: Deal Fire Damage to 2 Enemies within adjacency (Damage Rate: +75%). Additionally, grant yourself Evade (Rate: 10% chance) for 1 round(s). If Veilflame dealt Fire Damage to an enemy Champion, double your chances to Evade. Evade causes each instance of damage against the target to have a chance to be ignored.",
+      "At 10 Stars: Rounds 3, 6, 9: Deal Fire Damage to 3 Enemies in any lane (Damage Rate: +30%). Deal triple the damage to enemy Champion dragons."
+    ],
+    "structured": {
+      "core_tags": [
+        "fire_damage",
+        "evade",
+        "champion_counter",
+        "adjacency"
+      ],
+      "star_10_tags": [
+        "multi_target",
+        "champion_counter"
+      ]
+    }
+  },
+  "vanguard": {
+    "name": "Hunter's Wrath",
+    "unlock_level": 16,
+    "verbatim": "At Level 16+ and deployed in the Vanguard Increase your Fire Damage Dealt by +16%. Increase Strength and Initiative by +20 of the Ally deployed in the Right Flank."
+  },
+  "habits": [
+    {
+      "star_unlock": 2,
+      "name": "Ashen Phantom",
+      "verbatim": "Start of Each Round: Reduce the Tactical and Fire Damage dealt of all enemies afflicted with Weakened by +9%, until the end of the round. If the enemy is a Champion, double this effect.",
+      "upgrade_levels": {
+        "1": -9,
+        "2": -11,
+        "3": -13,
+        "4": -15,
+        "5": -18
+      },
+      "value_unit": "percent_tactical_and_fire_damage_dealt",
+      "tags": [
+        "weakened_payoff",
+        "damage_suppression",
+        "champion_counter"
+      ]
+    },
+    {
+      "star_unlock": 4,
+      "name": "Ember Snare",
+      "verbatim": "Each Round: 30% chance to reduce the Initiative and Intelligence by -20% (enhanced by Instinct) and afflict Burn (Damage Rate: +20%) on 1 Enemy in any lane (prioritizes the Left Flank). Each effect lasts for 2 round(s). Burn deals Fire Damage to the target each round.",
+      "upgrade_levels": {
+        "1": {
+          "trigger_chance_percent": 30,
+          "initiative_percent": -20,
+          "intelligence_percent": -20,
+          "burn_damage_rate_percent": 20
+        },
+        "2": {
+          "trigger_chance_percent": 36,
+          "initiative_percent": -24,
+          "intelligence_percent": -24,
+          "burn_damage_rate_percent": 20
+        },
+        "3": {
+          "trigger_chance_percent": 42,
+          "initiative_percent": -28,
+          "intelligence_percent": -28,
+          "burn_damage_rate_percent": 20
+        },
+        "4": {
+          "trigger_chance_percent": 51,
+          "initiative_percent": -34,
+          "intelligence_percent": -34,
+          "burn_damage_rate_percent": 20
+        },
+        "5": {
+          "trigger_chance_percent": 60,
+          "initiative_percent": -40,
+          "intelligence_percent": -40,
+          "burn_damage_rate_percent": 20
+        }
+      },
+      "tags": [
+        "burn",
+        "stat_debuff",
+        "left_flank_priority"
+      ]
+    },
+    {
+      "star_unlock": 6,
+      "name": "Unraveled",
+      "verbatim": "Start of Each Round: For each enemy that is Weakened, reduce the Intelligence, Instinct, and Initiative by +7% (enhanced by Intelligence) of 3 Enemies in any lane until the end of the round. If the Weakened enemy is a Champion, increase this effect.",
+      "upgrade_levels": {
+        "1": -7,
+        "2": -8,
+        "3": -10,
+        "4": -12,
+        "5": -14
+      },
+      "value_unit": "percent_intelligence_instinct_initiative_per_weakened_enemy",
+      "tags": [
+        "weakened_payoff",
+        "multi_target",
+        "stat_debuff",
+        "champion_counter"
+      ]
+    },
+    {
+      "star_unlock": 8,
+      "name": "Backdraft",
+      "verbatim": "Start of Combat: Increase the Fire Damage Received by +10% of 1 Enemy in the same lane until the end of combat.",
+      "upgrade_levels": {
+        "1": 10,
+        "2": 12,
+        "3": 14,
+        "4": 17,
+        "5": 20
+      },
+      "value_unit": "percent_fire_damage_received",
+      "tags": [
+        "fire_vulnerability",
+        "same_lane"
+      ]
+    },
+    {
+      "star_unlock": 10,
+      "name": "Champion's Scourge",
+      "verbatim": "Veilflame gains: Rounds 3, 6, 9: Deal Fire Damage to 3 Enemies in any lane (Damage Rate: +30%). Deal triple the damage to enemy Champion dragons.",
+      "upgrade_levels": {
+        "1": 30,
+        "2": 39,
+        "3": 48,
+        "4": 60,
+        "5": 75
+      },
+      "value_unit": "percent_fire_damage_rate",
+      "tags": [
+        "command_upgrade",
+        "fire_damage",
+        "multi_target",
+        "champion_counter"
+      ]
+    }
+  ],
+  "derived": {
+    "roles": [
+      "fire_damage",
+      "champion_counter",
+      "weakened_payoff",
+      "burn",
+      "stat_debuffer"
+    ],
+    "preferred_position": "vanguard",
+    "preferred_troops": [
+      "Spearmen"
+    ],
+    "avoid_troops": [],
+    "formation_needs": [
+      "Reliable Weakened source",
+      "Right Flank ally benefiting from Strength and Initiative"
+    ]
+  },
+  "review": []
+}
