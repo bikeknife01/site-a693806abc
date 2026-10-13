@@ -18,6 +18,8 @@ class StrategistContractTests(unittest.TestCase):
         cls.vermithor = json.loads((ROOT / "data" / "dragons" / "vermithor.json").read_text(encoding="utf-8"))
         cls.starshower = json.loads((ROOT / "data" / "dragons" / "starshower.json").read_text(encoding="utf-8"))
         cls.agent = (ROOT / ".github" / "agents" / "dragonfire-strategist.agent.md").read_text(encoding="utf-8")
+        cls.repo_instructions = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        cls.handoff = (ROOT / "RECOMMENDATION_HANDOFF.md").read_text(encoding="utf-8")
 
     def test_hard_formation_constraints(self) -> None:
         hard = self.rules["hard_constraints"]
@@ -29,6 +31,13 @@ class StrategistContractTests(unittest.TestCase):
         })
         self.assertEqual(hard["habit_star_gates"], [2, 4, 6, 8, 10])
         self.assertFalse(hard["installed_unverified_default_eligible"])
+        context = self.rules["required_context"]
+        self.assertEqual(
+            context["formation_minimum_for_planner"],
+            ["objective", "candidate_roster", "dragon_level", "star_rank"],
+        )
+        self.assertIn("visible_power", context["recommended_when_known"])
+        self.assertNotIn("visible_power", context["formation_minimum_for_planner"])
 
     def test_agent_uses_canonical_contract_and_current_evidence(self) -> None:
         self.assertIn("data/recommendation_rules.json", self.agent)
@@ -47,6 +56,10 @@ class StrategistContractTests(unittest.TestCase):
         self.assertIn("one_per_matchup", self.agent)
         self.assertIn("roster_preflight.completeness", self.agent)
         self.assertIn("Do not compose new recommendation or coverage tables", self.agent)
+        self.assertIn("--output <recommendation.json>", self.agent)
+        self.assertIn("Always inspect supplied\n  roster or progression screenshots", self.agent)
+        self.assertIn("For one concrete formation, return", self.agent)
+        self.assertIn("exactly three dragons per concrete formation", self.agent)
 
     def test_backtest_runner_grants_only_narrow_analysis_shell_stems(self) -> None:
         runner = (ROOT / "projects" / "strategist-evaluation" / "backtest.py").read_text(encoding="utf-8")
@@ -67,8 +80,10 @@ class StrategistContractTests(unittest.TestCase):
         self.assertIn("must not seed, boost, or exempt", search["benchmark_safety"])
         self.assertEqual(
             set(self.rules["objective_profiles"]),
-            {"high_damage", "damage_and_survivability", "counter"},
+            {"high_damage", "damage_and_survivability", "counter", "highest_tile", "troop_preservation"},
         )
+        self.assertEqual(self.rules["objective_aliases"]["minimize_troop_loss"], "troop_preservation")
+        self.assertEqual(self.rules["objective_aliases"]["highest_tiles"], "highest_tile")
         self.assertIn("internal candidate\n\tledger", self.agent)
         self.assertIn("exclude, down-rank, or omit a common formation because it is a baseline", self.agent)
         self.assertIn("If the leader is itself a common baseline", self.agent)
@@ -78,6 +93,34 @@ class StrategistContractTests(unittest.TestCase):
         shared_troops = next(item for item in self.rules["decision_flow"] if item["id"] == "shared_troops")
         self.assertIn("exact intersection", shared_troops["rule"])
         self.assertIn("exact intersection of the three canonical Positive", self.agent)
+
+    def test_multiple_formation_contract_is_canonical_and_non_overlapping_by_default(self) -> None:
+        portfolio = self.rules["portfolio_contract"]
+        self.assertEqual(portfolio["default_multiple_formation_reuse_policy"], "disjoint_armies")
+        self.assertEqual(portfolio["explicit_reuse_override"], "allow_reuse")
+        self.assertIn("full legal candidate set", portfolio["allocation_rule"])
+        self.assertIn("independent_matchups", portfolio["independent_matchup_rule"])
+        self.assertIn("request_mode: formation_portfolio", portfolio["required_input"])
+        self.assertIn("validation.valid", portfolio["required_output"])
+        self.assertIn("non-overlapping", self.agent)
+        self.assertIn("formation_count", self.agent)
+        self.assertIn("reuse_policy: disjoint_armies", self.agent)
+        self.assertIn("validated generated\nMarkdown report structure", self.agent)
+        self.assertIn("expected_visible_dragons", self.agent)
+        self.assertIn("do not ask the user to write a manifest or run commands", self.agent)
+
+    def test_instruction_ownership_and_evidence_tiers_are_aligned(self) -> None:
+        self.assertEqual(self.rules["metadata"]["schema_version"], "1.4.0")
+        self.assertIn("explicitly_reviewed_cross_site_verification", self.rules["evidence_order"])
+        self.assertIn("Explicitly reviewed cross-site verification", self.repo_instructions)
+        self.assertIn("data/community_simulation_reference.json", self.repo_instructions)
+        self.assertIn("projects/recommendation-planner/", self.repo_instructions)
+        self.assertIn("projects/roster-ingestion/", self.repo_instructions)
+        self.assertIn("data/recommendation_rules.json` is the machine-readable decision", self.repo_instructions)
+        self.assertIn("node --test projects/recommendation-planner/tests/planner.test.mjs", self.repo_instructions)
+        self.assertIn("python -m unittest discover -s projects/strategist-evaluation/tests -v", self.repo_instructions)
+        self.assertIn("level-curve-plus-Dragon's-Army capacity proxies", self.handoff)
+        self.assertNotIn("current modeled maximum army sizes", self.handoff)
 
     def test_common_formations_are_canonical_legal_candidates(self) -> None:
         expected = {

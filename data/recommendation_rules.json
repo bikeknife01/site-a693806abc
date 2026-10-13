@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "purpose": "Canonical decision contract for three-dragon formation recommendations.",
-    "schema_version": "1.3.0",
+    "purpose": "Canonical decision contract for three-dragon formation recommendations and multi-formation portfolios.",
+    "schema_version": "1.4.0",
     "updated": "2026-10-12",
     "policy": "Hard eligibility and evidence constraints are applied before comparative judgment. Strategic weights remain scenario-dependent and are not a universal tier score."
   },
@@ -14,7 +14,8 @@
     "community_hypothesis"
   ],
   "required_context": {
-    "formation": ["objective", "candidate_roster", "dragon_level", "star_rank", "habit_skill_levels", "visible_power", "available_troop_types"],
+    "formation_minimum_for_planner": ["objective", "candidate_roster", "dragon_level", "star_rank"],
+    "recommended_when_known": ["habit_skill_levels", "visible_power", "available_troop_types", "dragons_army_progression"],
     "counter_additions": ["enemy_lanes", "enemy_star_ranks", "enemy_troop_type", "observed_tactics"],
     "unknown_policy": "Proceed with explicit assumptions when missing inputs do not prevent a useful conditional answer; identify the single missing input most likely to reverse the result."
   },
@@ -31,6 +32,15 @@
     "default_vanguard_unlock_level": 16,
     "installed_unverified_default_eligible": false,
     "manual_mid_combat_actions": false
+  },
+  "portfolio_contract": {
+    "default_multiple_formation_reuse_policy": "disjoint_armies",
+    "default_rule": "An unqualified request for two or more formations, armies, marches, or compositions means one simultaneously deployable portfolio with no dragon reused across formations.",
+    "explicit_reuse_override": "allow_reuse",
+    "independent_matchup_rule": "Use independent_matchups only when the user explicitly requests separate hypothetical matchup answers whose dragons need not be deployed simultaneously.",
+    "allocation_rule": "Select the complete portfolio globally from the full legal candidate set. Do not choose one formation, remove its dragons, and rerun greedily.",
+    "required_input": ["request_mode: formation_portfolio", "formation_count", "reuse_policy"],
+    "required_output": ["candidate_ids", "global_candidate_ranks", "allocation_attestation", "validation.valid"]
   },
   "decision_flow": [
     {
@@ -102,7 +112,28 @@
       "troop_matchup",
       "coverage_reliability_and_timing",
       "uncovered_win_conditions"
+    ],
+    "highest_tile": [
+      "hard_troop_safety",
+      "total_level_curve_capacity_proxy",
+      "weakest_lane_capacity_proxy",
+      "explicit_formation_synergy",
+      "shared_troop_fit"
+    ],
+    "troop_preservation": [
+      "hard_troop_safety",
+      "weakest_lane_capacity_proxy",
+      "active_Recovery_Protect_Resistance_Evade_Cleanse_and_explicit_mitigation",
+      "trigger_certainty_target_coverage_and_known_Habit_investment",
+      "negative_side_effects",
+      "total_level_curve_capacity_proxy"
     ]
+  },
+  "objective_aliases": {
+    "highest_tiles": "highest_tile",
+    "preserve_troops": "troop_preservation",
+    "minimize_troop_loss": "troop_preservation",
+    "minimise_troop_loss": "troop_preservation"
   },
   "comparison_axes": {
     "visible_power": {
@@ -112,7 +143,7 @@
     },
     "mechanics": ["unlocked_functionality", "explicit_synergy", "vanguard_value", "target_scope", "damage_and_effect_coverage"],
     "reliability": ["trigger_certainty", "prerequisite_certainty", "habit_skill_value", "target_availability"],
-    "formation": ["lane_fit", "shared_troop_affinity", "enemy_troop_matchup", "objective_fit", "modeled_maximum_army_size", "troop_capacity_staying_power"],
+    "formation": ["lane_fit", "shared_troop_affinity", "enemy_troop_matchup", "objective_fit", "level_curve_plus_dragons_army_capacity_proxy", "weakest_lane_capacity_floor", "troop_capacity_staying_power"],
     "horizon": ["opening_cycle", "later_cycles", "recovery_and_mitigation", "vulnerable_rounds"]
   },
   "counter_coverage_states": {

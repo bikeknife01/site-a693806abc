@@ -13,9 +13,15 @@ This repository is an evidence-oriented knowledge base and tool suite for *Game 
 - `.github/agents/dragonfire-strategist.agent.md`: the user-facing Strategist agent definition.
 - `.github/agents/dragonfire-combat-analyst.agent.md`: the local report interpretation and evidence-review workflow.
 - `data/combat_report_rules.json` and `data/combat_report_observations.json`: canonical reviewed report mappings and portable evidence.
+- `data/community_simulation_reference.json`: reviewed public simulator constants,
+  benchmarks, and formation hypotheses for sensitivity checks; not a live combat formula.
 - `.agents/skills/add-dragon/`: screenshot-complete dragon ingestion workflow.
 - `Game_Details/Resources/`: extraction scripts plus the historical working resource set.
 - `Game_Details/Resources/_snapshots/`: ignored, local-only installed-client snapshots and their analyses.
+- `projects/recommendation-planner/`: deterministic single-formation, portfolio, and
+  multi-matchup planning with validated JSON and Markdown reports.
+- `projects/roster-ingestion/`: evidence-aware Formation Forge and screenshot roster
+  ingestion that emits planner-ready profiles.
 - `projects/`: data foundation, encyclopedia, combat explorer, counter assistant, and related tools.
 
 ## Evidence Order
@@ -26,7 +32,9 @@ Use the following authority order for recommendation-critical claims:
 2. Canonical screenshot-audited dragon JSON and mechanics files.
 3. Curated installed-client evidence with an explicit snapshot/build date.
 4. Official current web material.
-5. Community sources as discovery or strategy hypotheses only.
+5. Explicitly reviewed cross-site verification, usable only with its recorded source
+   disclosure and always subordinate to contradictory current-client evidence.
+6. Unreviewed community sources as discovery or strategy hypotheses only.
 
 Client presence proves that data exists in an installed build. It does not by itself prove release status, server activation, player availability, final balance, or that a staged event is live. Preserve this distinction in data, documentation, and agent responses.
 
@@ -40,6 +48,11 @@ Markdown report as the answer. Keep the complete report and cite its selected an
 candidate IDs. Do not replace the report's coverage or baseline tables with manually
 authored ones. Preserve explicit distinctions between observed roster facts, assumed
 selectable troops, and reference enemy progression.
+
+Use `independent_matchups` only when the user explicitly wants separate hypothetical
+answers that need not be deployed together. If the user asks for a numbered set of
+formations to deploy—even against several enemies—the non-overlapping portfolio contract
+below takes precedence.
 
 ## Multiple-Formation Recommendations
 
@@ -273,23 +286,29 @@ Strategist may consume only accepted, corroborated findings with
 never a failed proc, and exposure-correlated damage or Recovery is not an isolated
 causal effect without a controlled comparison.
 
-## Latest Local Findings
+## Classified Local Findings
 
 The 2026-10-01 local snapshot compares client `26.9.56700` (`versionCode` 326) with the 2026-09-16 snapshot of `26.9.56160`.
 
-High-confidence Strategist-relevant findings:
+The following findings have already been classified and must not be reopened merely
+because they originated in an installed snapshot:
 
-- Commander trait affinities were added for Corlys, Criston, Daemon, young Alicent, and young Rhaenyra.
-- Criston, Daemon, and young Alicent received complete named three-talent kits instead of placeholder dragon habits.
-- Corlys and young Rhaenyra talent behavior changed materially, including trait gates, mitigation targets, status choice, and Tile Damage effects.
-- Meleys gained explicit Relentless and Physical DPS labels.
-- Reflect now distinguishes specified damage categories, includes a one-effect-per-target limit, and has a dedicated `ability_label_reflect_damage` label.
-- Smoketail's Ember Snare text now names its ongoing Fire damage status as Burn.
-- New targeter/condition rows distinguish left flank, right flank, Vanguard, Dominant/Stalwart composition, and several Control statuses.
-- Four Alpha savage-dragon spawn rows were added.
-- The snapshot added 221 `Westeros_*` logical resources but changed no existing logical map resource, consistent with cache completion rather than a map revision.
+- Meleys and Smoketail are user-confirmed available and their complete records are
+  `cross_site_verified`; they are recommendation-eligible only with source disclosure.
+- Meleys' Relentless/Physical DPS labels, Reflect limit, and related mechanics are recorded
+  in her canonical profile and `data/installed_evidence.json` with that same provenance.
+- Smoketail's Ember Snare naming its ongoing Fire damage as Burn is likewise
+  cross-site-verified and canonicalized.
+- Installed targeter and condition rows are `corroboration_only`; use them to support
+  explicit ability wording, never to invent targeting semantics.
+- Commander affinities and talent changes for Corlys, Criston, Daemon, young Alicent, and
+  young Rhaenyra remain `staged` and `exclude` for recommendations.
+- Alpha savage-dragon rows and the additional `Westeros_*` cache files remain discovery
+  evidence, not proof of live activation or a map revision.
 
-Consult the local snapshot report and machine-readable manifests for exact IDs and row-level changes. Before incorporating these findings into canonical data or the Strategist agent, decide whether each item is a durable mechanic, staged content, or a current live rule, and preserve uncertainty explicitly.
+Consult `data/installed_evidence.json`, the local snapshot report, and machine-readable
+manifests for exact IDs and row-level changes. New findings still require lifecycle and
+recommendation-use classification before incorporation.
 
 ## Editing and Validation
 
@@ -303,5 +322,22 @@ Consult the local snapshot report and machine-readable manifests for exact IDs a
 python projects/game-data-encyclopedia/scripts/build.py
 python -m unittest discover -s projects/game-data-encyclopedia/tests -v
 ```
+
+- For Strategist, planner, engine, or roster-workflow changes, run the affected focused
+  suites and the Strategist contract suite:
+
+```powershell
+node --test projects/recommendation-planner/tests/planner.test.mjs
+node --test projects/counter-picking-assistant/tests/engine.test.mjs
+node --test projects/roster-ingestion/tests/roster-ingestion.test.mjs
+python -m unittest discover -s projects/strategist-evaluation/tests -v
+python -m unittest discover -s projects/combat-report-extractor/tests -p test_documentation.py -v
+```
+
+- `data/recommendation_rules.json` is the machine-readable decision and portfolio
+  contract. The planner README owns CLI and report schemas; `RECOMMENDATION_HANDOFF.md`
+  owns mechanics discovery and field interpretation; the Strategist agent owns runtime
+  routing and response behavior; this file owns repository-wide workflow and validation.
+  Prefer references across these boundaries instead of copying detailed policy text.
 
 - Check `git status --short` before and after work. Preserve unrelated user changes and confirm that local snapshots remain ignored.
