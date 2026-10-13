@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { planBatchRecommendations, planRecommendations, renderBatchMarkdown, validatePlannerInput } from "../recommend.mjs";
+import { globalDisjointPortfolio, parseArgs, planBatchRecommendations, planFormationPortfolio, planRecommendations, renderBatchMarkdown, renderPortfolioMarkdown, validatePlannerInput } from "../recommend.mjs";
 
 const data = JSON.parse(fs.readFileSync(new URL("../../game-data-encyclopedia/public/data/encyclopedia.json", import.meta.url), "utf8"));
 const common = JSON.parse(fs.readFileSync(new URL("../../../data/common_formations.json", import.meta.url), "utf8"));
@@ -28,6 +28,11 @@ test("validates mixed per-dragon progression without replacing unknown Habit lev
   assert.equal(input.roster[0].level, 41);
   assert.equal(input.roster[0].stars, 4);
   assert.deepEqual(input.roster[0].habit_levels, {});
+});
+
+test("CLI accepts saved input files and rejects the removed inline-JSON path", () => {
+  assert.equal(parseArgs(["--input", "scenario.json"]).input, "scenario.json");
+  assert.throws(() => parseArgs(["--input-json", "{}"]), /Unknown argument/);
 });
 
 test("rejects missing progression instead of silently assuming it", () => {
@@ -121,7 +126,8 @@ test("uses a normalized Dragon's Army record in modeled capacity without trustin
   assert.equal(result.input_summary.dragons_army.additional_troops_per_dragon, 1150);
   assert.equal(result.primary_candidate.metrics.dragons_army_bonus_per_dragon, 1150);
   assert.equal(result.primary_candidate.metrics.modeled_team_capacity, 18450);
-  assert.match(result.metadata.selection_policy, /modeled team capacity/);
+  assert.match(result.metadata.selection_policy, /level-curve capacity proxy/);
+  assert.ok(result.primary_candidate.metrics.modeled_capacity_by_dragon.every(item => item.star_scalar_applied === false));
   assert.throws(() => validatePlannerInput(data, {
     profile: {
       ...profile,
@@ -151,6 +157,74 @@ test("does not compare partial visible Power as though unknown dragons had zero 
   });
   assert.equal(result.input_summary.power_comparable, false);
   assert.ok(result.pareto_finalists.every(candidate => candidate.metrics.known_team_power === null));
+});
+
+test("troop-preservation objective scores active sustain within the documented policy", () => {
+  const result = planRecommendations(data, { formations: [] }, {
+    objective: "troop_preservation",
+    roster: [
+      entry("Velar", { level: 50, stars: 10, power: null }),
+      entry("Rhysarion", { level: 50, stars: 2, power: null }),
+      entry("Vermithor", { level: 50, stars: 4, power: null }),
+      entry("Caraxes", { level: 50, stars: 1, power: null, habit_levels: {} }),
+      entry("Feskar", { level: 50, stars: 1, power: null, habit_levels: {} }),
+      entry("Tairax", { level: 50, stars: 1, power: null, habit_levels: {} }),
+    ],
+  });
+  assert.ok(result.primary_candidate.metrics.troop_preservation.score > 0);
+  assert.ok(result.primary_candidate.metrics.troop_preservation.components.some(item => item.effect_id === "effect:recovery" || item.effect_id === "effect:protect"));
+  assert.equal(result.primary_candidate.metrics.modeled_team_capacity, 15000);
+});
+
+test("capacity proxy reports Star scalars without applying an unverified formula", () => {
+  const result = planRecommendations(data, { formations: [] }, {
+    objective: "highest_tile",
+    roster: [entry("Velar", { level: 40, stars: 10 }), entry("Vhagar", { level: 40, stars: 1 }), entry("Moondancer", { level: 40, stars: 6 })],
+  });
+  assert.equal(result.primary_candidate.metrics.modeled_team_capacity, 12000);
+  assert.ok(result.primary_candidate.metrics.modeled_capacity_by_dragon.every(item => item.modeled_max_army_size === 4000));
+  assert.ok(result.primary_candidate.metrics.modeled_capacity_by_dragon.every(item => item.capacity_formula_status.includes("star_formula_unverified")));
+});
+
+test("global disjoint allocator can beat greedy first-choice removal", () => {
+  const candidate = (id, slugs) => ({ id, result: { formation: slugs.map(slug => ({ dragon: { slug } })) } });
+  const ranked = [
+    candidate("abc", ["a", "b", "c"]),
+    candidate("ade", ["a", "d", "e"]),
+    candidate("bfg", ["b", "f", "g"]),
+    candidate("chi", ["c", "h", "i"]),
+    candidate("jkl", ["j", "k", "l"]),
+    candidate("mno", ["m", "n", "o"]),
+  ];
+  const result = globalDisjointPortfolio(ranked, 3);
+  assert.equal(result.primary.rankCost, 6);
+  assert.deepEqual(result.primary.selected.map(item => item.candidate.id), ["ade", "bfg", "chi"]);
+});
+
+test("formation portfolios default to globally selected non-overlapping armies", () => {
+  const result = planFormationPortfolio(data, common, {
+    formation_count: 2,
+    objective: "troop_preservation",
+    roster: baselineRoster,
+    roster_preflight: { completeness: "complete", expected_visible_dragons: baselineRoster.length },
+  });
+  assert.equal(result.request_interpretation.reuse_policy, "disjoint_armies");
+  assert.equal(result.selected_formations.length, 2);
+  const selected = result.selected_formations.flatMap(item => item.candidate.progression.map(dragon => dragon.slug));
+  assert.equal(new Set(selected).size, 6);
+  assert.equal(result.allocation_attestation.greedy_selection_used, false);
+  assert.equal(result.search_summary.allocation_scope.includes("not a truncated"), true);
+  const report = renderPortfolioMarkdown(result);
+  assert.match(report, /validation.valid: true/);
+  for (const formation of result.selected_formations) assert.ok(report.includes(formation.candidate.id));
+});
+
+test("formation portfolios fail closed on a screenshot roster-count mismatch", () => {
+  assert.throws(() => planFormationPortfolio(data, common, {
+    formation_count: 2,
+    roster: baselineRoster,
+    roster_preflight: { completeness: "complete", expected_visible_dragons: baselineRoster.length + 1 },
+  }), /expected 10 owned dragons but received 9/);
 });
 
 test("batch planner consolidates all three common enemy formations into an auditable report", () => {

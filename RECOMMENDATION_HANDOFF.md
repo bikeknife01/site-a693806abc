@@ -58,7 +58,7 @@ Initiative, and Max Army Size.
 - Star Ranks 2, 4, 6, 8, and 10 each unlock one Habit. Unlocking a Habit does not raise
   its skill level; Breedmarks and the Core matching the dragon's Rare, Epic, or
   Legendary rarity raise that Habit separately from Level 1 through Level 5.
-- The client provides separate `star_scalars` but does not establish a complete public final-stat formula. Do not manufacture one; compare raw level curves only when the candidates share the same Star Rank, or qualify the comparison.
+- The client provides separate `star_scalars` but does not establish a complete public final-stat formula. Do not manufacture one or apply `base × (1 + scalar)`. The planner's capacity proxy uses the raw level curve plus the confirmed Dragon's Army bonus, discloses the scalar without applying it, and keeps this distinct from an observed in-game capacity.
 - Base stats are strategically meaningful: Strength enhances Physical damage and mitigates Physical damage through the defender's Instinct; Instinct enhances Tactical damage and mitigates it through the defender's Intelligence; Intelligence enhances Fire damage and mitigates it through the defender's Initiative. Treat Troop Capacity as the army's practical health pool: higher maximum army size increases staying power before depletion and affects explicit troop-capacity thresholds. For highest-tile or troop-preservation recommendations, compare the candidates' current modeled maximum army sizes before preferring a mechanically elegant but materially lower-level formation.
 - If levels are unknown, make a kit-and-synergy recommendation only, label it level-agnostic, and say that the choice may change with actual levels and Stars.
 

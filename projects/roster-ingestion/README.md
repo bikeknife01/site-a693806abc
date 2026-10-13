@@ -237,6 +237,12 @@ closed.
 through the recommendation planner's input validator. It intentionally omits
 unknown Habit levels and unknown Power.
 
+When the user requests multiple formations, wrap this profile in a retained
+portfolio input with `request_mode: formation_portfolio`, the requested
+`formation_count`, `reuse_policy: disjoint_armies`, and the same validated
+`roster_preflight` count. The agent performs this work itself; the user is not
+asked to author a screenshot manifest or run the commands.
+
 ## Snapshot deltas
 
 Never overwrite a historical player snapshot. The agent compares two dates

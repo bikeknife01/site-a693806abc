@@ -51,7 +51,7 @@
     },
     {
       "id": "capacity_and_staying_power",
-      "rule": "When Dragon Levels and Stars are known, compare current maximum army size using the recorded level model and applicable Star scalar. Treat Troop Capacity as the army's practical health pool and a primary staying-power input for highest-tile and troop-preservation objectives. Explain any choice that gives up materially more capacity for mechanics, affinity, or matchup value."
+      "rule": "When Dragon Levels are known, compare a capacity proxy using the recorded level curve plus the confirmed account-level Dragon's Army bonus. Disclose the recorded Star scalar but do not apply it until a complete final-stat formula is independently established. Treat Troop Capacity as a practical health-pool input, not as casualty prevention by itself. For troop-preservation objectives, first protect the weakest lane with its per-dragon capacity floor; then compare documented preservation tier from active Recovery, Protect, Resistance, Evade, Cleanse, explicit mitigation, trigger certainty, target coverage, negative side effects, and known Habit investment; then compare total capacity and exact preservation score."
     },
     {
       "id": "placement",

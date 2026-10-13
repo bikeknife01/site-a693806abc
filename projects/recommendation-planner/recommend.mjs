@@ -34,11 +34,10 @@ const sum = values => values.reduce((total, value) => total + value, 0);
 const round = value => Math.round(value * 10000) / 10000;
 
 export function parseArgs(argv) {
-  const options = { input: null, inputJson: null, output: null, format: "json", pretty: false, maxFinalists: DEFAULT_MAX_FINALISTS };
+  const options = { input: null, output: null, format: "json", pretty: false, maxFinalists: DEFAULT_MAX_FINALISTS };
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
     if (arg === "--input") options.input = argv[++index];
-    else if (arg === "--input-json") options.inputJson = argv[++index];
     else if (arg === "--output") options.output = argv[++index];
     else if (arg === "--format") options.format = argv[++index];
     else if (arg === "--max-finalists") options.maxFinalists = Number(argv[++index]);
@@ -52,7 +51,7 @@ export function parseArgs(argv) {
 function usage() {
   return [
     "Usage:",
-    "  node projects/recommendation-planner/recommend.mjs (--input scenario.json | --input-json '{...}') [--format json|markdown] [--output result] [--max-finalists 12] [--pretty]",
+    "  node projects/recommendation-planner/recommend.mjs --input scenario.json [--format json|markdown] [--output result] [--max-finalists 12] [--pretty]",
     "",
     "The scenario format is documented in projects/recommendation-planner/README.md.",
   ].join("\n");
@@ -150,7 +149,11 @@ function dragonsArmyProfile(input) {
 }
 
 function capacitySensitiveObjective(objective) {
-  return ["highest_tile", "highest_tiles", "troop_preservation", "preserve_troops"].includes(String(objective).toLowerCase().replaceAll("-", "_").replaceAll(" ", "_"));
+  return ["highest_tile", "highest_tiles", "troop_preservation", "preserve_troops", "minimize_troop_loss", "minimise_troop_loss"].includes(String(objective).toLowerCase().replaceAll("-", "_").replaceAll(" ", "_"));
+}
+
+function troopPreservationObjective(objective) {
+  return ["troop_preservation", "preserve_troops", "minimize_troop_loss", "minimise_troop_loss"].includes(String(objective).toLowerCase().replaceAll("-", "_").replaceAll(" ", "_"));
 }
 
 export function validatePlannerInput(data, input) {
@@ -195,6 +198,7 @@ export function validatePlannerInput(data, input) {
     dragonsArmy: dragonsArmyProfile(input),
     powerComparable: owned.every(entry => entry.power != null),
     capacitySensitive: capacitySensitiveObjective(objective),
+    troopPreservation: troopPreservationObjective(objective),
   };
 }
 
@@ -331,7 +335,69 @@ function eventTimeline(data, formation, horizon = 10) {
   };
 }
 
-function objectiveFit(data, result, objective, coverageCounts = null) {
+function targetCoverageWeight(text) {
+  if (/\b(?:all|3) (?:other )?Allies\b/i.test(text)) return 1;
+  if (/\b2 (?:other )?Allies\b/i.test(text)) return 0.75;
+  if (/\b(?:1|one) (?:other )?Ally\b/i.test(text)) return 0.4;
+  if (/\b(?:yourself|your)\b/i.test(text)) return 0.35;
+  return 0.5;
+}
+
+function preservationAssessment(data, result) {
+  const beneficial = new Set(["effect:recovery", "effect:protect", "effect:resistance", "effect:evade", "effect:cleanse"]);
+  const weights = { "effect:recovery": 4, "effect:protect": 3, "effect:resistance": 3, "effect:evade": 2, "effect:cleanse": 2 };
+  const components = [];
+  let effectScore = 0;
+  let mitigationScore = 0;
+  let vulnerabilityPenalty = 0;
+  let unknownHabitEffects = 0;
+  const seenEffects = new Set();
+  const seenText = new Set();
+  for (const pick of result.formation) for (const ability of pick.abilities) {
+    const habitLevel = ability.kind === "habit" ? pick.progression.habit_levels?.[ability.client_key] : null;
+    const habitInvestmentKnown = ability.kind !== "habit" || Number.isInteger(Number(habitLevel)) && Number(habitLevel) > 0;
+    for (const operation of operationRecords(data, ability, pick.progression)) {
+      if (operation.operation !== "applies" || !beneficial.has(operation.effect_id)) continue;
+      const effectKey = `${pick.dragon.slug}|${operation.effect_id}|${operation.exact_context}`;
+      if (seenEffects.has(effectKey)) continue;
+      seenEffects.add(effectKey);
+      const reliability = operation.chance_known === false ? 0 : operation.chance_percent == null ? 1 : Number(operation.chance_percent) / 100;
+      if (operation.chance_known === false) unknownHabitEffects += 1;
+      const score = round((weights[operation.effect_id] || 0) * reliability * targetCoverageWeight(operation.exact_context || ""));
+      effectScore += score;
+      components.push({ dragon: pick.dragon.name, ability: ability.name, kind: "beneficial_effect", effect_id: operation.effect_id, score, chance_percent: operation.chance_percent, chance_known: operation.chance_known !== false, exact_text: operation.exact_context });
+    }
+    for (const text of eligibleExactText(ability, pick.progression)) {
+      const textKey = `${pick.dragon.slug}|${text}`;
+      if (seenText.has(textKey)) continue;
+      seenText.add(textKey);
+      const reducesReceived = /(?:reduce|decrease)[^.]{0,120}Damage Received/i.test(text);
+      const reducesEnemyDealt = /(?:reduce|decrease)[^.]{0,120}(?:Enemy|Enemies)[^.]{0,120}Damage Dealt/i.test(text) || /(?:reduce|decrease)[^.]{0,120}(?:Physical|Tactical|Fire) Damage Dealt of [^.]{0,80}Enemy/i.test(text);
+      if (reducesReceived || reducesEnemyDealt) {
+        const score = habitInvestmentKnown ? 2 : 1;
+        mitigationScore += score;
+        if (!habitInvestmentKnown) unknownHabitEffects += 1;
+        components.push({ dragon: pick.dragon.name, ability: ability.name, kind: "mitigation", score, habit_investment_known: habitInvestmentKnown, exact_text: text });
+      }
+      if (/Increase (?:your|the source[^.]*)?[^.]{0,80}Damage Received by \+/i.test(text)) {
+        vulnerabilityPenalty += 2;
+        components.push({ dragon: pick.dragon.name, ability: ability.name, kind: "self_vulnerability", score: -2, exact_text: text });
+      }
+    }
+  }
+  return {
+    score: round(effectScore + mitigationScore - vulnerabilityPenalty),
+    tier: effectScore + mitigationScore - vulnerabilityPenalty >= 6 ? 3 : effectScore + mitigationScore - vulnerabilityPenalty >= 3 ? 2 : effectScore + mitigationScore - vulnerabilityPenalty > 0 ? 1 : 0,
+    tier_label: effectScore + mitigationScore - vulnerabilityPenalty >= 6 ? "strong" : effectScore + mitigationScore - vulnerabilityPenalty >= 3 ? "supported" : effectScore + mitigationScore - vulnerabilityPenalty > 0 ? "limited" : "none",
+    beneficial_effect_score: round(effectScore),
+    mitigation_score: mitigationScore,
+    vulnerability_penalty: vulnerabilityPenalty,
+    unknown_habit_effects: unknownHabitEffects,
+    components,
+  };
+}
+
+function objectiveFit(data, result, objective, coverageCounts = null, preservation = null) {
   const normalized = String(objective || "pvp").toLowerCase().replaceAll("-", "_").replaceAll(" ", "_");
   const abilities = result.formation.flatMap(pick => pick.abilities.map(ability => ({ pick, ability })));
   const damageAbilities = abilities.filter(({ pick, ability }) => eligibleDamageEvents(ability, pick.progression).length > 0).length;
@@ -347,6 +413,7 @@ function objectiveFit(data, result, objective, coverageCounts = null) {
   if (["damage_and_survivability", "defense", "survivability"].includes(normalized)) {
     return damageAbilities + sustainEffects * 3 + mitigationAbilities * 2 + result.synergies.length + openingPressure + latePressure + result.troop.positive.length;
   }
+  if (troopPreservationObjective(normalized)) return preservation?.score ?? preservationAssessment(data, result).score;
   if (["counter", "counter_specific"].includes(normalized)) {
     const counts = coverageCounts || coverageSummary(result);
     return counts.direct * 4 + counts.probabilistic * 2 + counts.partial + (result.troop.advantage ? 3 : 0) - (result.troop.disadvantage ? 3 : 0);
@@ -359,18 +426,18 @@ function modeledArmyCapacity(pick, dragonsArmy) {
   const model = APPLICATION_DRAGONS.get(pick.dragon.slug)?.level_model;
   const baseArmySize = model?.base_stats_by_level?.max_army_size?.values_by_level?.[Number(pick.progression.level) - 1];
   const starScalar = model?.star_scalars?.max_army_size?.values_by_star?.[Number(pick.progression.stars) - 1];
-  if (!Number.isFinite(baseArmySize) || !Number.isFinite(starScalar)) return null;
-  const starScaledArmySize = round(Number(baseArmySize) * (1 + Number(starScalar)));
+  if (!Number.isFinite(baseArmySize)) return null;
   return {
     dragon: pick.dragon.name,
     dragon_slug: pick.dragon.slug,
     level: pick.progression.level,
     stars: pick.progression.stars,
     base_max_army_size: Number(baseArmySize),
-    star_scalar: Number(starScalar),
-    star_scaled_max_army_size: starScaledArmySize,
+    star_scalar: Number.isFinite(starScalar) ? Number(starScalar) : null,
+    star_scalar_applied: false,
+    capacity_formula_status: "level_curve_plus_dragons_army_only_star_formula_unverified",
     dragons_army_bonus: dragonsArmy.additional_troops_per_dragon,
-    modeled_max_army_size: starScaledArmySize + dragonsArmy.additional_troops_per_dragon,
+    modeled_max_army_size: Number(baseArmySize) + dragonsArmy.additional_troops_per_dragon,
   };
 }
 
@@ -383,6 +450,7 @@ function metricsFor(data, result, objective, context) {
   }));
   const knownPowers = result.formation.map(pick => pick.progression.power).filter(value => value != null);
   const capacities = result.formation.map(pick => modeledArmyCapacity(pick, context.dragonsArmy));
+  const preservation = preservationAssessment(data, result);
   return {
     direct_threat_coverage: result.threats.length ? coverageCounts.direct / result.threats.length : 0,
     covered_threat_count: coverageCounts.direct,
@@ -397,9 +465,11 @@ function metricsFor(data, result, objective, context) {
     affinity_count: result.troop.positive.length,
     affinity_penalty_count: result.troop.negative.length,
     troop_disadvantage: result.troop.disadvantage ? 1 : 0,
-    objective_fit: objectiveFit(data, result, objective, coverageCounts),
+    objective_fit: objectiveFit(data, result, objective, coverageCounts, preservation),
+    troop_preservation: preservation,
     known_team_power: context.powerComparable && knownPowers.length === 3 ? sum(knownPowers) : null,
     modeled_team_capacity: capacities.every(Boolean) ? sum(capacities.map(item => item.modeled_max_army_size)) : null,
+    minimum_modeled_dragon_capacity: capacities.every(Boolean) ? Math.min(...capacities.map(item => item.modeled_max_army_size)) : null,
     modeled_capacity_by_dragon: capacities,
     dragons_army_bonus_per_dragon: context.dragonsArmy.additional_troops_per_dragon,
     dragons_army: context.dragonsArmy,
@@ -410,16 +480,16 @@ function metricsFor(data, result, objective, context) {
 const MAXIMIZE = ["direct_threat_coverage", "objective_fit", "counter_reliability", "timing_alignment", "explicit_synergy", "lane_fit", "troop_fit", "affinity_count"];
 const MINIMIZE = ["affinity_penalty_count", "troop_disadvantage"];
 
-function dominates(left, right, { includePower, includeCapacity }) {
-  const maximize = [...MAXIMIZE, ...(includePower ? ["known_team_power"] : []), ...(includeCapacity ? ["modeled_team_capacity"] : [])];
+function dominates(left, right, { includePower, includeCapacity, includeMinimumCapacity }) {
+  const maximize = [...MAXIMIZE, ...(includePower ? ["known_team_power"] : []), ...(includeCapacity ? ["modeled_team_capacity"] : []), ...(includeMinimumCapacity ? ["minimum_modeled_dragon_capacity"] : [])];
   const noWorse = maximize.every(key => left.metrics[key] >= right.metrics[key]) && MINIMIZE.every(key => left.metrics[key] <= right.metrics[key]);
   const better = maximize.some(key => left.metrics[key] > right.metrics[key]) || MINIMIZE.some(key => left.metrics[key] < right.metrics[key]);
   return noWorse && better;
 }
 
-function paretoFront(candidates, { includeCapacity = false } = {}) {
+function paretoFront(candidates, { includeCapacity = false, troopPreservation = false } = {}) {
   const includePower = candidates.length > 0 && candidates.every(candidate => candidate.metrics.known_team_power != null);
-  const dimensions = { includePower, includeCapacity };
+  const dimensions = { includePower, includeCapacity, includeMinimumCapacity: troopPreservation };
   const frontier = [];
   for (const candidate of candidates) {
     if (frontier.some(other => dominates(other, candidate, dimensions))) continue;
@@ -431,12 +501,18 @@ function paretoFront(candidates, { includeCapacity = false } = {}) {
   return frontier;
 }
 
-function policyCompare(left, right, { includeCapacity = false } = {}) {
+function policyCompare(left, right, { includeCapacity = false, troopPreservation = false } = {}) {
+  const objectiveAndCapacity = troopPreservation
+    ? (right.metrics.minimum_modeled_dragon_capacity ?? -1) - (left.metrics.minimum_modeled_dragon_capacity ?? -1)
+      || right.metrics.troop_preservation.tier - left.metrics.troop_preservation.tier
+      || (right.metrics.modeled_team_capacity ?? -1) - (left.metrics.modeled_team_capacity ?? -1)
+      || right.metrics.objective_fit - left.metrics.objective_fit
+    : right.metrics.objective_fit - left.metrics.objective_fit
+      || (includeCapacity ? (right.metrics.modeled_team_capacity ?? -1) - (left.metrics.modeled_team_capacity ?? -1) : 0);
   return (
     right.metrics.direct_threat_coverage - left.metrics.direct_threat_coverage
     || left.metrics.troop_disadvantage - right.metrics.troop_disadvantage
-    || (includeCapacity ? (right.metrics.modeled_team_capacity ?? -1) - (left.metrics.modeled_team_capacity ?? -1) : 0)
-    || right.metrics.objective_fit - left.metrics.objective_fit
+    || objectiveAndCapacity
     || right.metrics.counter_reliability - left.metrics.counter_reliability
     || right.metrics.explicit_synergy - left.metrics.explicit_synergy
     || right.metrics.troop_fit - left.metrics.troop_fit
@@ -625,8 +701,12 @@ function riskRegister(data, result, coverage, rosterPreflight = null, dragonsArm
   const noPower = result.formation.filter(pick => pick.progression.power == null).map(pick => pick.dragon.name);
   if (noPower.length) risks.push({ type: "unknown_power", detail: `Current Power is unknown for ${noPower.join(", ")}.` });
   if (dragonsArmy?.additional_troops_per_dragon === 0 && ["ingestion_default", "planner_default_assumption"].includes(dragonsArmy.basis)) {
-    risks.push({ type: "assumed_dragons_army", detail: "Dragon's Army was not supplied; modeled capacity uses the required assumed +0 troops per dragon." });
+    risks.push({ type: "assumed_dragons_army", detail: "Dragon's Army was not supplied; the level-curve capacity proxy uses the required assumed +0 troops per dragon." });
   }
+  if (result.formation.some(pick => pick.abilities.some(ability => ability.kind === "habit" && !Object.hasOwn(pick.progression.habit_levels || {}, ability.client_key)))) {
+    risks.push({ type: "unknown_habit_investment", detail: "One or more unlocked Habit levels are unknown; variable proc rates and upgrade magnitudes were not treated as known or guaranteed." });
+  }
+  risks.push({ type: "capacity_formula", detail: "Capacity is a level-curve plus Dragon's Army proxy. Recorded Star scalars are disclosed but not applied because the final-stat formula is unverified." });
   for (const row of coverage.filter(item => item.state !== "direct")) risks.push({ type: `coverage_${row.state}`, detail: `${row.threat}: ${row.remaining_gap || "not guaranteed."}` });
   for (const gate of gateReport(data, result).filter(item => item.state === "locked")) risks.push({ type: "locked_ability", detail: `${gate.dragon} ${gate.ability}: ${gate.reason}` });
   if (rosterPreflight && rosterPreflight.completeness !== "complete") risks.push({ type: "roster_scope", detail: "The submitted roster is not explicitly confirmed complete; exhaustive search applies only to declared dragons." });
@@ -662,7 +742,7 @@ function exhaustiveCandidates(data, context) {
         const result = resultForOrder(data, order, troop, scoringContext, cache);
         const evaluated = { id: candidateId(result), result, metrics: metricsFor(data, result, context.objective, context) };
         const current = bestByTroop.get(troop);
-        if (!current || policyCompare(evaluated, current) < 0) bestByTroop.set(troop, evaluated);
+        if (!current || policyCompare(evaluated, current, { includeCapacity: context.capacitySensitive, troopPreservation: context.troopPreservation }) < 0) bestByTroop.set(troop, evaluated);
       }
     }
     for (const evaluated of bestByTroop.values()) candidates.push({ ...evaluated, provenance: provenanceFor(data, evaluated.result) });
@@ -754,7 +834,7 @@ export function planRecommendations(data, commonFormations, rawInput) {
   const candidateMap = new Map(search.candidates.map(candidate => [candidate.id, candidate]));
   for (const candidate of baselineCandidates) if (!candidateMap.has(candidate.id)) candidateMap.set(candidate.id, candidate);
   const allCandidates = [...candidateMap.values()];
-  const comparison = { includeCapacity: input.capacitySensitive };
+  const comparison = { includeCapacity: input.capacitySensitive, troopPreservation: input.troopPreservation };
   const pareto = paretoFront(allCandidates, comparison).sort((left, right) => policyCompare(left, right, comparison));
   const finalists = pareto.slice(0, input.maxFinalists);
   const primary = finalists[0] || null;
@@ -767,12 +847,14 @@ export function planRecommendations(data, commonFormations, rawInput) {
       evidence_source: path.relative(ROOT, DATA_PATH).replaceAll("\\", "/"),
       common_baselines_source: path.relative(ROOT, BASELINES_PATH).replaceAll("\\", "/"),
       objective: input.objective,
-      selection_policy: `Pareto filter, then lexicographic ordering by direct threat coverage, troop safety${input.capacitySensitive ? ", modeled team capacity" : ""}, documented objective fit, counter reliability, explicit synergy, troop fit, lane fit, comparable known team Power, and diagnostic proxy score.`,
+      selection_policy: `Pareto filter, then lexicographic ordering by direct threat coverage, troop safety${input.troopPreservation ? ", weakest-lane level-curve capacity floor, documented preservation tier, total level-curve capacity proxy, exact preservation score" : `, documented objective fit${input.capacitySensitive ? ", level-curve capacity proxy" : ""}`}, counter reliability, explicit synergy, troop fit, lane fit, comparable known team Power, and diagnostic proxy score.`,
     },
     limitations: [
       "This planner enumerates documented mechanics; it is not a battle-outcome or win-rate simulator.",
+      "Troop-preservation weights are ordinal planning policy, not estimated casualties or equivalent troop counts.",
       "Diagnostic proxy scores are search aids and are not treated as universal formation strength.",
       "Unknown Habit levels remain unknown and contribute no invented upgrade value.",
+      "Recorded Star scalars are reported but are not applied to capacity because the installed data does not establish a complete final-stat formula.",
       "No hidden damage, Recovery, troop-advantage, action-order, target-tiebreak, stacking, or Cleanse-priority formula is invented.",
       "Client presence alone does not establish live availability; staged dragons are excluded.",
     ],
@@ -784,6 +866,7 @@ export function planRecommendations(data, commonFormations, rawInput) {
       dragons_army: input.dragonsArmy,
       power_comparable: input.powerComparable,
       capacity_sensitive_objective: input.capacitySensitive,
+      troop_preservation_objective: input.troopPreservation,
       enemy_lanes: input.enemies.length,
       enemy_troop: input.enemyTroop,
     },
@@ -823,8 +906,173 @@ export function planRecommendations(data, commonFormations, rawInput) {
   };
 }
 
+function portfolioCandidateKey(candidate) {
+  return candidate.result.formation.map(pick => pick.dragon.slug).sort().join("/");
+}
+
+function allocationSignature(allocation) {
+  return allocation.selected.map(item => item.candidate.id).sort().join("||");
+}
+
+function allocationCompare(left, right) {
+  return left.rankCost - right.rankCost || allocationSignature(left).localeCompare(allocationSignature(right));
+}
+
+export function globalDisjointPortfolio(rankedCandidates, formationCount) {
+  const best = [];
+  const consider = selected => {
+    const allocation = { selected, rankCost: sum(selected.map(item => item.rank)) };
+    if (best.some(item => allocationSignature(item) === allocationSignature(allocation))) return;
+    best.push(allocation);
+    best.sort(allocationCompare);
+    if (best.length > 2) best.length = 2;
+  };
+  const greedy = [];
+  const greedyUsed = new Set();
+  for (const [rank, candidate] of rankedCandidates.entries()) {
+    const dragons = candidate.result.formation.map(pick => pick.dragon.slug);
+    if (dragons.some(slug => greedyUsed.has(slug))) continue;
+    dragons.forEach(slug => greedyUsed.add(slug));
+    greedy.push({ candidate, rank });
+    if (greedy.length === formationCount) break;
+  }
+  if (greedy.length === formationCount) consider(greedy);
+
+  function visit(start, used, selected, rankCost) {
+    const needed = formationCount - selected.length;
+    if (!needed) {
+      consider(selected);
+      return;
+    }
+    if (rankedCandidates.length - start < needed) return;
+    const currentBound = best.length >= 2 ? best[1].rankCost : Number.POSITIVE_INFINITY;
+    for (let index = start; index <= rankedCandidates.length - needed; index += 1) {
+      const optimistic = rankCost + needed * index + needed * (needed - 1) / 2;
+      if (optimistic > currentBound) break;
+      const candidate = rankedCandidates[index];
+      const dragons = candidate.result.formation.map(pick => pick.dragon.slug);
+      if (dragons.some(slug => used.has(slug))) continue;
+      visit(index + 1, new Set([...used, ...dragons]), [...selected, { candidate, rank: index }], rankCost + index);
+    }
+  }
+  visit(0, new Set(), [], 0);
+  return { primary: best[0] || null, alternative: best[1] || null };
+}
+
+function validatePortfolioResult(result) {
+  const failures = [];
+  if (result.selected_formations.length !== result.request_interpretation.formation_count) failures.push("Selected formation count does not match the request.");
+  if (result.request_interpretation.reuse_policy === "disjoint_armies") {
+    const dragons = result.selected_formations.flatMap(item => item.candidate.progression.map(entry => entry.slug));
+    if (new Set(dragons).size !== dragons.length) failures.push("The selected portfolio reuses a dragon.");
+  }
+  if (!result.roster_preflight.verified_complete) failures.push("Roster preflight is not verified complete.");
+  if (result.selected_formations.some(item => !item.candidate.id || !item.candidate.evidence.length)) failures.push("A selected formation is missing its candidate ID or evidence.");
+  return { valid: failures.length === 0, failures };
+}
+
+export function planFormationPortfolio(data, commonFormations, rawInput) {
+  const formationCount = Number(rawInput.formation_count);
+  if (!Number.isInteger(formationCount) || formationCount < 1) throw new Error("formation_count must be a positive integer.");
+  const reusePolicy = rawInput.reuse_policy || "disjoint_armies";
+  if (!['disjoint_armies', 'allow_reuse'].includes(reusePolicy)) throw new Error("Portfolio reuse_policy must be disjoint_armies or allow_reuse.");
+  const preflight = rosterPreflight(data, rawInput);
+  const input = validatePlannerInput(data, rawInput);
+  if (formationCount * 3 > input.roster.length && reusePolicy === "disjoint_armies") throw new Error(`A ${formationCount}-formation disjoint portfolio requires at least ${formationCount * 3} owned dragons.`);
+  const search = exhaustiveCandidates(data, input);
+  const baselines = commonFormations.formations.map(baseline => baselineCandidate(data, baseline, search));
+  const all = [...search.candidates, ...baselines.filter(item => item.candidate).map(item => item.candidate)];
+  const comparison = { includeCapacity: input.capacitySensitive, troopPreservation: input.troopPreservation };
+  const bestByTrio = new Map();
+  for (const candidate of all) {
+    const key = portfolioCandidateKey(candidate);
+    const current = bestByTrio.get(key);
+    if (!current || policyCompare(candidate, current, comparison) < 0) bestByTrio.set(key, candidate);
+  }
+  const ranked = [...bestByTrio.values()].sort((left, right) => policyCompare(left, right, comparison));
+  let allocation;
+  let alternative = null;
+  if (reusePolicy === "allow_reuse") {
+    if (ranked.length < formationCount) throw new Error("Not enough distinct candidate formations exist for the requested portfolio.");
+    allocation = { selected: ranked.slice(0, formationCount).map((candidate, rank) => ({ candidate, rank })), rankCost: sum(Array.from({ length: formationCount }, (_, rank) => rank)) };
+  } else {
+    const selected = globalDisjointPortfolio(ranked, formationCount);
+    allocation = selected.primary;
+    alternative = selected.alternative;
+    if (!allocation) throw new Error("No globally valid disjoint formation portfolio exists for the supplied roster.");
+  }
+  const selectedFormations = allocation.selected.map((item, index) => ({
+    priority: index + 1,
+    global_candidate_rank: item.rank + 1,
+    candidate: summarizeCandidate(data, item.candidate),
+    risks: riskRegister(data, item.candidate.result, coverageMatrix(data, item.candidate.result), preflight, input.dragonsArmy),
+  }));
+  const summarizeAllocation = value => value ? {
+    total_rank_cost: value.rankCost,
+    candidate_ids: value.selected.map(item => item.candidate.id),
+    candidate_ranks: value.selected.map(item => item.rank + 1),
+  } : null;
+  const result = {
+    metadata: {
+      model: "dragonfire_global_formation_portfolio_v1",
+      evidence_source: path.relative(ROOT, DATA_PATH).replaceAll("\\", "/"),
+      common_baselines_source: path.relative(ROOT, BASELINES_PATH).replaceAll("\\", "/"),
+      objective: input.objective,
+      selection_policy: "Globally minimize the sum of full-search candidate ranks subject to the requested dragon-reuse policy. For troop preservation, candidate ranks use direct coverage, troop safety, the weakest-lane level-curve capacity floor, documented preservation tier, total level-curve capacity proxy, exact preservation score, reliability, synergy, troop fit, lane fit, comparable Power, and diagnostic tie-breaks.",
+    },
+    limitations: [
+      "This planner enumerates documented mechanics; it is not a battle-outcome, win-rate, or casualty simulator.",
+      "Troop-preservation weights are ordinal planning policy, not estimated casualties or equivalent troop counts.",
+      "Unknown Habit levels and variable Habit proc rates remain unknown and receive no invented reliability value.",
+      "Recorded Star scalars are reported but are not applied to capacity because the installed data does not establish a complete final-stat formula.",
+    ],
+    request_interpretation: {
+      request_mode: "formation_portfolio",
+      formation_count: formationCount,
+      reuse_policy: reusePolicy,
+      default_semantics: rawInput.reuse_policy ? "explicit" : "An unqualified request for multiple formations defaults to non-overlapping armies.",
+    },
+    roster_preflight: preflight,
+    troop_preflight: {
+      available_troops: input.availableTroops,
+      source: input.availableTroopsSource,
+      caveat: "A lineup screenshot establishes dragons and progression, not which formation troop types are selectable.",
+    },
+    input_summary: {
+      owned_dragons: input.roster.length,
+      objective: input.objective,
+      dragons_army: input.dragonsArmy,
+      capacity_basis: "Level curve plus Dragon's Army only; recorded Star scalars are not applied.",
+      power_comparable: input.powerComparable,
+    },
+    search_summary: {
+      legal_dragons: search.pool.length,
+      trios_evaluated: combinations(search.pool).length,
+      lane_orders_evaluated: search.laneOrdersEvaluated,
+      full_trio_troop_candidates: search.candidates.length,
+      globally_ranked_trios: ranked.length,
+      allocation_scope: "The disjoint search uses every globally ranked legal trio, not a truncated Pareto-finalist list.",
+    },
+    selected_formations: selectedFormations,
+    allocation_attestation: {
+      selected: summarizeAllocation(allocation),
+      strongest_alternative: summarizeAllocation(alternative),
+      greedy_selection_used: false,
+      exhaustive_candidate_pool_used: true,
+    },
+    common_baselines: baselines.map(item => ({ id: item.id, name: item.name, status: item.status, reasons: item.reasons, candidate: item.candidate ? summarizeCandidate(data, item.candidate) : null })),
+  };
+  result.validation = validatePortfolioResult(result);
+  if (!result.validation.valid) throw new Error(`Portfolio result failed output validation: ${result.validation.failures.join(" ")}`);
+  return result;
+}
+
 function isBatchInput(input) {
   return Array.isArray(input?.scenarios);
+}
+
+function isPortfolioInput(input) {
+  return input?.request_mode === "formation_portfolio" || input?.formation_count != null;
 }
 
 function habitLevelsAtFive(dragon) {
@@ -1092,6 +1340,45 @@ export function renderBatchMarkdown(result) {
   return `${lines.join("\n")}\n`;
 }
 
+export function renderPortfolioMarkdown(result) {
+  if (!result?.validation?.valid) throw new Error("Cannot render an unvalidated formation portfolio.");
+  const lines = [
+    "# Dragonfire non-overlapping formation portfolio",
+    "",
+    `Objective: **${result.metadata.objective}**. Requested formations: **${result.request_interpretation.formation_count}**. Dragon reuse: **${result.request_interpretation.reuse_policy}**.`,
+    `Interpretation: ${result.request_interpretation.default_semantics}`,
+    `Roster preflight: verified complete with ${result.roster_preflight.declared_owned_dragons} owned dragons${result.roster_preflight.expected_visible_dragons == null ? "" : `; expected visible count ${result.roster_preflight.expected_visible_dragons}`}.`,
+    `Troop availability: ${result.troop_preflight.available_troops.join(", ")} (${result.troop_preflight.source}).`,
+    `Capacity basis: ${result.input_summary.capacity_basis}`,
+    "",
+    "| Priority | Candidate ID | Left Flank | Vanguard | Right Flank | Shared troop | Preservation | Capacity proxy | Global rank |",
+    "|---:|---|---|---|---|---|---:|---:|---:|",
+    ...result.selected_formations.map(item => {
+      const candidate = item.candidate;
+      return `| ${item.priority} | ${markdownCell(candidate.id)} | ${markdownCell(candidate.formation.left_flank)} | ${markdownCell(candidate.formation.vanguard)} | ${markdownCell(candidate.formation.right_flank)} | ${markdownCell(candidate.formation.troop_type)} | ${markdownCell(candidate.metrics.troop_preservation.tier_label)} (${markdownCell(candidate.metrics.troop_preservation.score)}) | ${markdownCell(candidate.metrics.modeled_team_capacity)} | ${item.global_candidate_rank} |`;
+    }),
+    "",
+    `Allocation audit: total rank cost **${result.allocation_attestation.selected.total_rank_cost}**; greedy selection used: **false**; exhaustive candidate pool used: **true**.`,
+  ];
+  for (const item of result.selected_formations) {
+    const candidate = item.candidate;
+    lines.push("", `## Priority ${item.priority}: ${candidate.id}`, "", `Shared troop: **${candidate.formation.troop_type}**`, "", formatFormationTable(candidate));
+    lines.push("", "### Troop-preservation evidence", "", "| Dragon | Ability | Evidence type | Contribution | Reliability |", "|---|---|---|---:|---|");
+    const components = candidate.metrics.troop_preservation.components.filter(component => component.score !== 0);
+    if (!components.length) lines.push("| — | — | No active documented preservation component | 0 | — |");
+    else for (const component of components) lines.push(`| ${markdownCell(component.dragon)} | ${markdownCell(component.ability)} | ${markdownCell(component.effect_id || component.kind)} | ${markdownCell(component.score)} | ${component.chance_known === false ? "Unknown Habit reliability" : component.chance_percent == null ? "Guaranteed when its stated trigger/condition is met" : `${component.chance_percent}%`} |`);
+    lines.push("", "### Capacity proxy", "", "Recorded Star scalars are disclosed but not applied because the final-stat formula is unverified.", "", "| Dragon | Level curve | Dragon's Army | Proxy capacity | Star scalar (not applied) |", "|---|---:|---:|---:|---:|");
+    for (const capacity of candidate.metrics.modeled_capacity_by_dragon || []) lines.push(`| ${markdownCell(capacity.dragon)} | ${markdownCell(capacity.base_max_army_size)} | ${markdownCell(capacity.dragons_army_bonus)} | ${markdownCell(capacity.modeled_max_army_size)} | ${markdownCell(capacity.star_scalar)} |`);
+    if (item.risks.length) lines.push("", "### Risks and unknowns", "", ...item.risks.map(risk => `- ${risk.detail}`));
+    lines.push("", "### Evidence locators", "", ...candidate.evidence.map(entry => `- ${entry.canonical_source || "unknown source"} → ${entry.encyclopedia_pointer || "unknown pointer"}`));
+  }
+  lines.push("", "## Common-baseline check", "", ...result.common_baselines.map(baseline => `- ${baseline.name}: **${baseline.status}**${baseline.reasons.length ? ` — ${baseline.reasons.join(" ")}` : baseline.candidate ? ` — candidate \`${baseline.candidate.id}\`` : ""}.`));
+  if (result.allocation_attestation.strongest_alternative) lines.push("", "## Strongest alternative portfolio", "", `Candidate IDs: ${result.allocation_attestation.strongest_alternative.candidate_ids.map(id => `\`${id}\``).join(", ")}; total rank cost ${result.allocation_attestation.strongest_alternative.total_rank_cost}.`);
+  lines.push("", "## Limitations", "", ...result.limitations.map(limitation => `- ${limitation}`));
+  lines.push("", "## Validation", "", "`validation.valid: true`. This is a documented-mechanics portfolio comparison, not a simulated win-rate or predicted casualty total.");
+  return `${lines.join("\n")}\n`;
+}
+
 function main() {
   try {
     const options = parseArgs(process.argv.slice(2));
@@ -1099,17 +1386,17 @@ function main() {
       process.stdout.write(`${usage()}\n`);
       return 0;
     }
-    if (Boolean(options.input) === Boolean(options.inputJson)) throw new Error("Supply exactly one of --input or --input-json.");
+    if (!options.input) throw new Error("Supply --input with a saved JSON scenario or profile file.");
     if (!Number.isInteger(options.maxFinalists) || options.maxFinalists < 1 || options.maxFinalists > 100) throw new Error("--max-finalists must be an integer from 1 to 100.");
     if (!["json", "markdown"].includes(options.format)) throw new Error("--format must be json or markdown.");
     const data = JSON.parse(fs.readFileSync(DATA_PATH, "utf8"));
     const baselines = JSON.parse(fs.readFileSync(BASELINES_PATH, "utf8"));
-    const input = options.inputJson == null ? JSON.parse(fs.readFileSync(path.resolve(options.input), "utf8")) : JSON.parse(options.inputJson);
+    const input = JSON.parse(fs.readFileSync(path.resolve(options.input), "utf8"));
     input.max_finalists = options.maxFinalists;
-    const result = isBatchInput(input) ? planBatchRecommendations(data, baselines, input) : planRecommendations(data, baselines, input);
-    if (options.format === "markdown" && !isBatchInput(input)) throw new Error("--format markdown requires a batch input with scenarios.");
+    const result = isBatchInput(input) ? planBatchRecommendations(data, baselines, input) : isPortfolioInput(input) ? planFormationPortfolio(data, baselines, input) : planRecommendations(data, baselines, input);
+    if (options.format === "markdown" && !isBatchInput(input) && !isPortfolioInput(input)) throw new Error("--format markdown requires a batch input with scenarios or a formation portfolio input.");
     const output = options.format === "markdown"
-      ? renderBatchMarkdown(result)
+      ? isBatchInput(input) ? renderBatchMarkdown(result) : renderPortfolioMarkdown(result)
       : JSON.stringify(result, null, options.pretty || options.output ? 2 : 0);
     if (options.output) fs.writeFileSync(path.resolve(options.output), `${output}\n`, "utf8");
     else process.stdout.write(`${output}\n`);

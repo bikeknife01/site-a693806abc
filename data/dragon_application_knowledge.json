@@ -429,7 +429,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -869,7 +869,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -1309,7 +1309,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -1749,7 +1749,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -2189,7 +2189,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -2629,7 +2629,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -3069,7 +3069,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -3510,7 +3510,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -3951,7 +3951,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -4391,7 +4391,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -4831,7 +4831,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -5272,7 +5272,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -5713,7 +5713,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -6154,7 +6154,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -6594,7 +6594,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -7034,7 +7034,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -7475,7 +7475,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -7915,7 +7915,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -8355,7 +8355,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -8795,7 +8795,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -9235,7 +9235,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -9675,7 +9675,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -10115,7 +10115,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -10555,7 +10555,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -10995,7 +10995,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -11436,7 +11436,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -11876,7 +11876,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -12317,7 +12317,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -12757,7 +12757,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -13197,7 +13197,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -13637,7 +13637,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -14077,7 +14077,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -14517,7 +14517,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -14957,7 +14957,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -15397,7 +15397,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -15838,7 +15838,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -16278,7 +16278,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {
@@ -16718,7 +16718,7 @@
             ]
           }
         },
-        "interpretation": "Use values_by_level at the player's reported dragon level. Star scaling is separate; do not compare raw base stats across different Star Ranks without applying the displayed star scalar."
+        "interpretation": "Use values_by_level at the player's reported dragon level as a level-curve comparison. Star scaling is separate, but the complete final-stat formula is unverified; disclose the recorded scalar without applying it or claiming a current final stat."
       },
       "client_ability_slots": {
         "command": {

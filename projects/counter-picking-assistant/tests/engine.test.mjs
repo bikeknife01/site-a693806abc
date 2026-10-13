@@ -98,6 +98,26 @@ test("saved Habit level changes producer reliability in an explicit synergy chai
   assert.equal(formationSynergies(local, [high, payoff, filler])[0].chance_percent, 50);
 });
 
+test("unknown Habit level does not become a fixed or guaranteed proc rate", () => {
+  const slow = effect("effect:slow", "Slow");
+  const producerAbility = ability("unknown-slow-source", "Unknown Slow Source", [], ["op-unknown-slow"], "Each Round: chance to afflict Slow.", "habit");
+  producerAbility.client_key = "unknown-slow-source";
+  producerAbility.unlock = { star_rank: 2 };
+  producerAbility.upgrade_levels = { "1": 10, "2": 20, "3": 35, "4": 50, "5": 70 };
+  producerAbility.value_unit = "percent_chance";
+  const local = {
+    ...data,
+    effects: [...data.effects, slow],
+    graph: {
+      ...data.graph,
+      status_operations: [...data.graph.status_operations, { id: "op-unknown-slow", ability_id: "unknown-slow-source", effect_id: "effect:slow", operation: "applies", chance_percent: 70, exact_context: "chance to afflict Slow" }],
+    },
+  };
+  const record = operationRecords(local, producerAbility, { stars: 2, level: 50, habit_levels: {} })[0];
+  assert.equal(record.chance_percent, null);
+  assert.equal(record.chance_known, false);
+});
+
 test("an allied beneficial effect does not satisfy an enemy-status prerequisite", () => {
   const sourceAbility = ability("recovery-source", "Recovery Source", [], ["op-recovery"], "Apply Recovery to an Ally.", "habit");
   sourceAbility.client_key = "recovery-source";

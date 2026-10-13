@@ -41,6 +41,22 @@ candidate IDs. Do not replace the report's coverage or baseline tables with manu
 authored ones. Preserve explicit distinctions between observed roster facts, assumed
 selectable troops, and reference enemy progression.
 
+## Multiple-Formation Recommendations
+
+When the user asks for any number greater than one of formations, armies, marches, or
+compositions, assume the dragons must be non-overlapping unless the user explicitly
+allows reuse. For a general PvE, tile, or troop-preservation request, use one
+`formation_portfolio` planner input with the requested `formation_count` and
+`reuse_policy: disjoint_armies`. Do not choose one formation and repeatedly rerun after
+removing its dragons. Use the validated generated Markdown report and preserve its
+candidate IDs, global-allocation attestation, preservation evidence, capacity-proxy
+disclosure, risks, and common-baseline dispositions.
+
+For screenshot rosters, the agent—not the user—performs the reviewed transcription through
+`projects/roster-ingestion/roster.mjs`. Record and validate the visible-card count, retain
+the ignored local profile/input/report together, and stop on a mismatch. Planner CLI work
+uses saved input and output files; do not pass inline JSON through PowerShell.
+
 ## Local Client Capture
 
 ### Known environment

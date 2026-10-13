@@ -79,18 +79,21 @@ Ask concise follow-up questions only for missing facts that could materially cha
 	required job, prefer materially higher Power when mechanics are otherwise comparable.
 	Power cannot create missing counter coverage or unlock a mechanic. Explain whenever
 	the recommendation passes over a materially higher-Power option.
-	Add the account's Dragon's Army capacity bonus to each dragon's modeled maximum
-	army size. Each skill requires the previous skill at level 5: I adds 50 troops
+	Add the account's Dragon's Army capacity bonus to each dragon's level-curve capacity
+	proxy. Each skill requires the previous skill at level 5: I adds 50 troops
 	per level, II adds 100, III adds 200, and IV adds 250. Therefore III level 2
 	means 250 + 500 + 400 = 1,150 additional troops per dragon. Keep the current
 	skill's contribution distinct from the cumulative total, apply the cumulative
 	per-dragon value to all three formation members, and disclose when ingestion
 	used the required assumed-zero default.
-   Also read `level_model.base_stats_by_level.max_army_size` and the applicable recorded
-   Star scalar when Levels and Stars are known. Treat maximum army size/Troop Capacity
+   Also read `level_model.base_stats_by_level.max_army_size` when Levels are known and
+   disclose the applicable recorded Star scalar without applying it. The client data does
+   not establish the final-stat formula, so do not calculate `base × (1 + scalar)` or
+   describe that result as current capacity. Treat the level-curve plus Dragon's Army
+   value as an explicitly labeled capacity proxy. Treat maximum army size/Troop Capacity
    as the formation's practical health pool: a materially higher-capacity trio can
    survive damage that a lower-level synergy line cannot. For highest-tile and
-   troop-preservation objectives, compare total modeled capacity among finalists and
+   troop-preservation objectives, compare the capacity proxy among finalists and
    explain any recommendation that gives up a material capacity advantage. Do not let
    the planner's mechanics-oriented diagnostic ordering silently override this check.
 3. Follow the ordered decision flow in `data/recommendation_rules.json`. Do not stop at
@@ -228,12 +231,11 @@ For a concrete formation recommendation, use the deterministic planner when shel
 execution is available and the player has supplied a roster with level and Star Rank.
 Construct the scenario using the schema in `projects/recommendation-planner/README.md`,
 including each known Habit level and Power without filling unknown values. Use an existing
-profile/scenario file when available, or direct JSON in a read-only environment. Run one
-of these command shapes:
+profile/scenario file when available. Always save input and output files; do not pass inline
+JSON through PowerShell or reconstruct results with ad-hoc shell pipelines. Run:
 
 ```text
 node projects/recommendation-planner/recommend.mjs --input <scenario.json> --pretty
-node projects/recommendation-planner/recommend.mjs --input-json '<scenario-json>' --pretty
 ```
 
 The planner exhaustively evaluates legal owned trios, all lane orders, available shared
@@ -250,14 +252,41 @@ If required level or Star data is missing, do not invent it to make the planner 
 Give a qualified kit-only answer or ask for the missing high-impact input. Missing Habit
 levels remain unknown; `0` means explicitly unavailable.
 
+For `troop_preservation`, `preserve_troops`, or a request to minimize troop loss, use the
+planner's preservation evidence rather than equating high capacity with low casualties.
+Compare active Recovery, Protect, Resistance, Evade, Cleanse, explicit mitigation,
+trigger certainty, target coverage, negative side effects, and known Habit investment.
+Capacity is a separate staying-power proxy. Do not call the result a casualty prediction.
+
+## Multiple-formation Contract
+
+When the user requests two or more formations, armies, marches, or compositions, treat
+them as one simultaneous **non-overlapping** portfolio unless the user explicitly permits
+dragon reuse. This is the repository default; do not ask the user to restate it. Set
+`request_mode: formation_portfolio`, `formation_count` to the requested number, and
+`reuse_policy: disjoint_armies`, then run one retained portfolio input through the CLI.
+Never select one army, remove its dragons, and rerun for the next army.
+
+```text
+node projects/recommendation-planner/recommend.mjs --input <portfolio.json> --format markdown --output <portfolio-report.md>
+```
+
+The validated portfolio report is authoritative. Present its formation table, candidate
+IDs, objective evidence, capacity-proxy disclosure, risks, common-baseline dispositions,
+allocation attestation, and validation status. Do not replace it with a manually composed
+table or claim that priority means a measured defender difficulty when no specific enemy
+was supplied.
+
 ## Multi-matchup Contract
 
 When a user asks for counters to more than one enemy formation, run **one batch planner
 request** rather than independently improvising three answers. Resolve each named common
 formation through its canonical `common_formation_id`, declare whether the request means
 `one_per_matchup` or `top_n_per_matchup`, and declare whether dragons may be reused
-between matchups. Default only to `one_per_matchup` and `independent_matchups` when the
-user has not specified those semantics; say that default in the report.
+between matchups. For explicitly independent hypothetical matchups, default to
+`one_per_matchup` and `independent_matchups`. If the user asks for a numbered set of
+deployable formations, the Multiple-formation Contract takes precedence and requires
+non-overlap.
 
 Use the batch schema in `projects/recommendation-planner/README.md`, then run:
 
@@ -288,10 +317,21 @@ when the visible roster has actually been fully transcribed; otherwise use
 `declared_subset`. The planner rejects a mismatch between `expected_visible_dragons` and
 the submitted roster and rejects red/yellow displayed stars that conflict with numeric
 rank. It cannot reliably infer omitted or obscured screenshot entries.
+For a screenshot-derived roster, use `projects/roster-ingestion/roster.mjs` before the
+recommendation planner. Perform the transcription and create the ignored local input
+yourself; do not ask the user to write a manifest or run commands. Record the visible card
+count as `expected_visible_dragons`, inspect `ingestion-report.md`, and use the emitted
+`planner-profile.json`. Stop rather than recommend if ingestion is blocked or the count
+does not match. Derive every roster count stated in the answer from the validated profile.
 The lineup screenshot does not establish which shared troop types are selectable: record
 the player's supplied options when known, and label the planner's combat-troop default
 as an assumption when they are not. Call common formation enemy progression its
 `reference_assumptions`, not observed enemy account progression.
+
+If the user asks how a recommendation was reached, provide a concise decision audit from
+the saved input and validated planner report: request interpretation, candidate and
+allocation IDs, decisive evidence, assumptions, risks, and reversal conditions. Do not
+invent a post-hoc narrative or expose hidden chain-of-thought.
 
 Read each coverage row's `state`, `qualifiers`, and `remaining_gap` literally. `direct`
 requires a documented applicable response without an identified activation, target,

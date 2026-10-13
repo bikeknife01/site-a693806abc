@@ -82,6 +82,10 @@ function habitLevel(ability, progression) {
   return Number(progression.habit_levels?.[ability.client_key] || 0);
 }
 
+function habitLevelKnown(ability, progression) {
+  return ability.kind !== "habit" || Object.hasOwn(progression.habit_levels || {}, ability.client_key) && habitLevel(ability, progression) > 0;
+}
+
 export function currentHabitValue(ability, progression) {
   const level = habitLevel(ability, progression);
   if (ability.kind !== "habit" || !level) return null;
@@ -89,27 +93,40 @@ export function currentHabitValue(ability, progression) {
   return typeof value === "number" ? value : null;
 }
 
+function variableHabitChance(ability, operation) {
+  if (ability.kind !== "habit") return false;
+  const effectSlug = operation.effect_id?.replace(/^effect:/, "").replace(/-/g, "_");
+  return Object.values(ability.upgrade_levels || {}).some(upgrade => {
+    if (typeof upgrade === "number") return /chance/i.test(ability.value_unit || "") || /chance/i.test(operation.exact_context || "");
+    if (!upgrade || typeof upgrade !== "object") return false;
+    return Object.keys(upgrade).some(key => key.endsWith("_chance_percent") && (!effectSlug || key === `${effectSlug}_chance_percent`));
+  });
+}
+
 function operationChance(ability, operation, progression) {
+  if (variableHabitChance(ability, operation) && !habitLevelKnown(ability, progression)) {
+    return { chance_percent: null, chance_known: false };
+  }
   if (ability.kind === "habit") {
     const upgrade = ability.upgrade_levels?.[String(habitLevel(ability, progression))];
     if (typeof upgrade === "number" && (/chance/i.test(ability.value_unit || "") || /chance/i.test(operation.exact_context || ""))) {
-      return upgrade;
+      return { chance_percent: upgrade, chance_known: true };
     }
     if (upgrade && typeof upgrade === "object") {
       const chanceEntries = Object.entries(upgrade).filter(([key, value]) => key.endsWith("_chance_percent") && typeof value === "number");
       const effectSlug = operation.effect_id?.replace(/^effect:/, "").replace(/-/g, "_");
       const matching = chanceEntries.find(([key]) => effectSlug && key === `${effectSlug}_chance_percent`);
-      if (matching) return matching[1];
-      if (chanceEntries.length === 1) return chanceEntries[0][1];
+      if (matching) return { chance_percent: matching[1], chance_known: true };
+      if (chanceEntries.length === 1) return { chance_percent: chanceEntries[0][1], chance_known: true };
     }
   }
-  return operation.chance_percent == null ? null : Number(operation.chance_percent);
+  return { chance_percent: operation.chance_percent == null ? null : Number(operation.chance_percent), chance_known: true };
 }
 
 export function operationRecords(data, ability, progression) {
   return abilityRecords(data, ability, "status_operations")
     .filter(item => detailEligible(ability, item, progression))
-    .map(item => ({ ...item, chance_percent: operationChance(ability, item, progression) }));
+    .map(item => ({ ...item, ...operationChance(ability, item, progression) }));
 }
 
 function conditionRecords(data, ability, progression) {
@@ -190,6 +207,7 @@ function evidenceReliability(data, ability, progression, relation = null) {
   const relevant = relation && relation.relationship !== "counters"
     ? operations.filter(item => item.effect_id === "effect:cleanse" || item.operation === "applies" && /cleanse/i.test(item.exact_context))
     : operations;
+  if (relevant.some(item => item.chance_known === false)) return { chance_percent: null, unresolved: true, label: "Activation chance is unknown because the saved Habit level was not supplied" };
   const chances = relevant.map(item => item.chance_percent).filter(value => value != null);
   if (!chances.length) return { chance_percent: null, label: "Guaranteed when its stated trigger/condition is met" };
   const chance = Math.min(...chances);
@@ -322,11 +340,13 @@ export function formationSynergies(data, formation) {
     const effect = effects.get(producer.operation.effect_id);
     if (!effect || !compatibleChain(effect, consumer.condition)) continue;
     const chance = producer.operation.chance_percent;
+    const chanceKnown = producer.operation.chance_known !== false;
     chains.push({
       effect: effect.name, producer: producer.pick.dragon.name, producerAbility: producer.ability.name,
       consumer: consumer.pick.dragon.name, consumerAbility: consumer.ability.name, consumerAbilityKind: consumer.ability.kind,
-      chance_percent: chance, reliability: chance == null ? "Guaranteed when triggered" : `${chance}% producer activation`,
-      prerequisite: consumer.condition.exact_text, score: chance == null ? 8 : Math.max(1, 8 * chance / 100),
+      chance_percent: chance, chance_known: chanceKnown,
+      reliability: !chanceKnown ? "Unknown producer activation; Habit level was not supplied" : chance == null ? "Guaranteed when triggered" : `${chance}% producer activation`,
+      prerequisite: consumer.condition.exact_text, score: !chanceKnown ? 0 : chance == null ? 8 : Math.max(1, 8 * chance / 100),
     });
   }
   const best = new Map();

@@ -80,7 +80,7 @@ recommendation planner.
 ### Phase 10 — Recommendation determinism audit
 
 - [x] RST-091 Gate producer/payoff conditions by the consumer ability's actual progression requirement.
-- [x] RST-092 Surface modeled army capacity, including the Dragon's Army account bonus, and use it for capacity-sensitive objectives.
+- [x] RST-092 Surface the level-curve capacity proxy, including the Dragon's Army account bonus, without applying the unverified Star-scalar formula.
 - [x] RST-093 Apply visible Power only when it is comparable across the complete eligible roster.
 - [x] RST-094 Audit deterministic ordering, regression-test every corrected rule, and update the planner documentation.
 
@@ -103,7 +103,7 @@ paths, evidence-aware validation and review, planner output, compatibility
 export, snapshot deltas, a deterministic recommendation audit, fixtures,
 integration tests, and operator documentation. The audit gates inline
 progression clauses before assigning synergy credit, de-duplicates a Habit
-enhancement from its parent Command, compares modeled Dragon's Army capacity
+enhancement from its parent Command, compares the Dragon's Army-adjusted level-curve capacity proxy
 for capacity-sensitive objectives, and uses Power only when the roster is
 fully comparable. Manual end-to-end testing with real player inputs remains
 the requested post-review step. In the normal workflow the user supplies a

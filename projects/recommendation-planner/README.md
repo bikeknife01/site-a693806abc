@@ -2,12 +2,14 @@
 
 The planner exhaustively evaluates every legal owned trio, all six lane orders, and every available shared troop. It always evaluates each legal common formation in its declared lane order and troop, even when that baseline is dominated or becomes the primary recommendation.
 
-It applies each dragon's own level, Star Rank, Habit levels, optional visible Power, and the account-level Dragon's Army capacity upgrade. The result contains the mandatory candidate ledger, a Pareto frontier, deterministic finalists, timing windows, modeled troop capacity, and source locators. It does not estimate win rates or invent undocumented combat formulas.
+It applies each dragon's own level, Star Rank, Habit levels, optional visible Power, and the account-level Dragon's Army capacity upgrade. The result contains the mandatory candidate ledger, a Pareto frontier, deterministic finalists, timing windows, an explicitly limited capacity proxy, and source locators. It does not estimate win rates or invent undocumented combat formulas.
 
 The objective-fit axis uses only documented active mechanics: damage-bearing abilities,
 damage amplification, producer/payoff chains, and scheduled pressure for high-damage
 requests; documented Recovery, Protect, Resistance, mitigation, damage, and timing for
-damage-and-survivability requests; exact normalized threat coverage and troop matchup for
+damage-and-survivability requests; active Recovery, Protect, Resistance, Evade, Cleanse,
+mitigation, reliability, target coverage, and negative side effects for troop-preservation
+requests; exact normalized threat coverage and troop matchup for
 counters; and explicit Siege specialization for POI requests. It remains a comparison
 axis rather than a universal strength score.
 
@@ -17,8 +19,9 @@ axis rather than a universal strength score.
 node projects/recommendation-planner/recommend.mjs --input scenario.json --output recommendation.json --pretty
 ```
 
-Read-only agent environments that cannot create a scenario file may pass the same object
-directly with `--input-json '<JSON object>'`. Supply exactly one input mode.
+The CLI deliberately accepts saved files only. This avoids PowerShell quoting failures,
+keeps roster transcription auditable, and ensures the input and output can be retained
+together.
 
 Minimal valid input can use a roster array (real recommendations should include every
 owned dragon so exhaustive search is meaningful):
@@ -58,12 +61,72 @@ An ingestion profile may include `profile.stronghold.dragons_army`. The planner 
 its per-dragon bonus from `current_skill` (`none`, `I`–`IV`) and `current_level` (0–5),
 and rejects a supplied derived total that disagrees with the canonical prerequisite
 sequence. If it is absent, capacity uses an explicitly disclosed assumed `+0` bonus. Each
-candidate includes its per-dragon level curve, Star scalar, Dragon's Army addition, and
-total modeled capacity. For `highest_tile` and `troop_preservation` objectives, capacity
-becomes a primary comparison dimension after direct coverage and troop safety; it remains
-reported, but does not silently become a universal score for other objectives.
+candidate includes its per-dragon level curve, recorded Star scalar, Dragon's Army
+addition, and capacity proxy. The Star scalar is disclosed but never applied because the
+installed data does not establish a complete final-stat formula. The proxy is therefore
+the raw level curve plus Dragon's Army. For `highest_tile`, total capacity is the primary
+documented comparison after hard troop safety. For `troop_preservation`, the weakest
+dragon's capacity floor prevents a mechanically elegant but severely under-leveled lane;
+documented preservation tier then ranks before total capacity and exact preservation
+score. Capacity remains reported for other objectives but does not silently become a
+universal score. Preservation component weights are an ordinal planner policy for
+comparing documented mechanics; they are not a casualty formula or estimates of saved
+troops.
 
 Common formations are loaded from `data/common_formations.json`. A baseline is reported as `evaluated`, `illegal`, or `inapplicable`, with reasons. Applicability never removes a legal ordinary-combat baseline from the ledger.
+
+## Non-overlapping formation portfolios
+
+An unqualified request for any number of formations means a simultaneous,
+non-overlapping portfolio. Set `formation_count` and retain the default
+`reuse_policy: disjoint_armies`. Use `allow_reuse` only when the user explicitly requests
+independent alternatives.
+
+```json
+{
+  "request_mode": "formation_portfolio",
+  "formation_count": 3,
+  "reuse_policy": "disjoint_armies",
+  "objective": "troop_preservation",
+  "roster_preflight": {
+    "completeness": "complete",
+    "expected_visible_dragons": 9
+  },
+  "stronghold": {
+    "dragons_army": {"current_skill": "III", "current_level": 2}
+  },
+  "roster": [
+    {"dragon": "Velar", "level": 50, "stars": 6, "habit_levels": {}},
+    {"dragon": "Vhagar", "level": 50, "stars": 6, "habit_levels": {}},
+    {"dragon": "Moondancer", "level": 50, "stars": 6, "habit_levels": {}},
+    {"dragon": "Vermithor", "level": 48, "stars": 6, "habit_levels": {}},
+    {"dragon": "Rhysarion", "level": 48, "stars": 6, "habit_levels": {}},
+    {"dragon": "Tessarion", "level": 47, "stars": 6, "habit_levels": {}},
+    {"dragon": "Malachite", "level": 45, "stars": 6, "habit_levels": {}},
+    {"dragon": "Seasmoke", "level": 44, "stars": 6, "habit_levels": {}},
+    {"dragon": "Kalspire", "level": 43, "stars": 6, "habit_levels": {}}
+  ]
+}
+```
+
+A three-formation disjoint request needs at least nine owned dragons. Screenshot inputs must first pass through
+`projects/roster-ingestion/roster.mjs`, and `expected_visible_dragons` must match the
+emitted planner profile. The portfolio planner ranks the best troop/lane candidate for
+every legal trio, then globally minimizes total candidate-rank cost while enforcing the
+reuse policy. It does not select one army and remove its dragons before planning the next,
+and it does not restrict allocation to a truncated Pareto list.
+
+Run and retain a deterministic report:
+
+```powershell
+node projects/recommendation-planner/recommend.mjs --input portfolio.json --format json --output portfolio-result.json --pretty
+node projects/recommendation-planner/recommend.mjs --input portfolio.json --format markdown --output portfolio-report.md
+```
+
+Portfolio Markdown is generated from the validated structured result. It includes the
+candidate IDs and ranks, allocation attestation, preservation evidence, capacity basis,
+risks, evidence locators, common-baseline dispositions, and strongest alternative
+portfolio. Do not replace its table with a hand-authored reconstruction.
 
 ## Multi-matchup batch input
 
