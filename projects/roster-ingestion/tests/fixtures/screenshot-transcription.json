@@ -1,0 +1,56 @@
+{
+  "schema_version": "dragonfire.screenshot-transcription.v1",
+  "profile_id": "fixture-player",
+  "observed_at": "2026-10-11T20:00:00-07:00",
+  "roster_preflight": {
+    "completeness": "complete",
+    "expected_visible_dragons": 3
+  },
+  "stronghold": {
+    "dragons_army": {
+      "current_skill": "III",
+      "current_level": 2
+    }
+  },
+  "sources": [
+    { "id": "overview-1", "path": "screenshot-placeholder.txt", "kind": "overview" },
+    { "id": "details-1", "path": "screenshot-placeholder.txt", "kind": "details" }
+  ],
+  "observations": [
+    {
+      "dragon": "Syrax",
+      "source_id": "overview-1",
+      "fields": {
+        "level": { "value": 50, "confidence": "confirmed", "review_status": "confirmed" },
+        "displayed_stars": { "value": { "color": "red", "count": 3 }, "confidence": "confirmed", "review_status": "confirmed" }
+      }
+    },
+    {
+      "dragon": "Syrax",
+      "source_id": "details-1",
+      "fields": {
+        "power": { "value": 72000, "confidence": "high", "review_status": "confirmed" },
+        "troop_capacity": { "value": 11200, "confidence": "high", "review_status": "confirmed" },
+        "habit_levels": { "value": [4, 4, 4, 5, 0], "confidence": "confirmed", "review_status": "confirmed" }
+      }
+    },
+    {
+      "dragon": "Vhagar",
+      "source_id": "overview-1",
+      "fields": {
+        "level": { "value": 50, "confidence": "confirmed", "review_status": "confirmed" },
+        "displayed_stars": { "value": { "color": "red", "count": 3 }, "confidence": "confirmed", "review_status": "confirmed" },
+        "habit_levels": { "value": [4, 4, 2, 4, 0], "confidence": "confirmed", "review_status": "confirmed" }
+      }
+    },
+    {
+      "dragon": "Caraxes",
+      "source_id": "overview-1",
+      "fields": {
+        "level": { "value": 49, "confidence": "confirmed", "review_status": "confirmed" },
+        "displayed_stars": { "value": { "color": "red", "count": 3 }, "confidence": "confirmed", "review_status": "confirmed" },
+        "habit_levels": { "value": [5, 5, 5, 5, 0], "confidence": "confirmed", "review_status": "confirmed" }
+      }
+    }
+  ]
+}

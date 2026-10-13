@@ -112,8 +112,17 @@ export function operationRecords(data, ability, progression) {
     .map(item => ({ ...item, chance_percent: operationChance(ability, item, progression) }));
 }
 
-function conditionRecords(data, ability) {
-  return abilityRecords(data, ability, "conditions").filter(item => item.type === "status_present");
+function conditionRecords(data, ability, progression) {
+  return abilityRecords(data, ability, "conditions")
+    .filter(item => item.type === "status_present")
+    // Graph conditions retain the matched phrase rather than the enclosing ability
+    // sentence. Restore that context before applying an inline Star gate. Without it,
+    // a command-level condition copied from a locked Habit enhancement could receive
+    // cross-dragon synergy credit before the enhancement is available.
+    .filter(item => {
+      const exactContext = ability.exact_text.find(line => line.includes(item.exact_text)) || item.exact_text;
+      return detailEligible(ability, { ...item, exact_context: exactContext }, progression);
+    });
 }
 
 export function activeAbilities(data, dragon, progression, lane) {
@@ -305,7 +314,7 @@ export function formationSynergies(data, formation) {
   const consumers = [];
   for (const pick of formation) for (const ability of pick.abilities.filter(item => item.evidence?.confidence !== "limited")) {
     for (const operation of operationRecords(data, ability, pick.progression)) if (operation.operation === "applies") producers.push({ pick, ability, operation });
-    for (const condition of conditionRecords(data, ability)) consumers.push({ pick, ability, condition });
+    for (const condition of conditionRecords(data, ability, pick.progression)) consumers.push({ pick, ability, condition });
   }
   const chains = [];
   for (const producer of producers) for (const consumer of consumers) {
@@ -315,17 +324,26 @@ export function formationSynergies(data, formation) {
     const chance = producer.operation.chance_percent;
     chains.push({
       effect: effect.name, producer: producer.pick.dragon.name, producerAbility: producer.ability.name,
-      consumer: consumer.pick.dragon.name, consumerAbility: consumer.ability.name,
+      consumer: consumer.pick.dragon.name, consumerAbility: consumer.ability.name, consumerAbilityKind: consumer.ability.kind,
       chance_percent: chance, reliability: chance == null ? "Guaranteed when triggered" : `${chance}% producer activation`,
       prerequisite: consumer.condition.exact_text, score: chance == null ? 8 : Math.max(1, 8 * chance / 100),
     });
   }
   const best = new Map();
   for (const chain of chains) {
-    const key = `${chain.effect}|${chain.producer}|${chain.consumer}|${chain.consumerAbility}`;
-    if (!best.has(key) || best.get(key).score < chain.score) best.set(key, chain);
+    // A later-star Habit can explicitly add a clause to its Command. The client text
+    // may expose the same condition under both ability records; it is still one
+    // producer-to-consumer relationship, not two independent payoffs. Prefer the
+    // explicit Habit record on an equal score because it carries the actual Star gate.
+    const key = `${chain.effect}|${chain.producer}|${chain.consumer}`;
+    const current = best.get(key);
+    const prefersConsumer = chain.consumerAbilityKind === "habit" && current?.consumerAbilityKind !== "habit";
+    if (!current || current.score < chain.score || (current.score === chain.score && prefersConsumer)) best.set(key, chain);
   }
-  return [...best.values()].sort((a, b) => b.score - a.score || a.effect.localeCompare(b.effect)).slice(0, 6);
+  return [...best.values()]
+    .map(({ consumerAbilityKind, ...chain }) => chain)
+    .sort((a, b) => b.score - a.score || a.effect.localeCompare(b.effect))
+    .slice(0, 6);
 }
 
 function habitReliability(data, formation) {

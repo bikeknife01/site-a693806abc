@@ -1,0 +1,14 @@
+{
+  "schema_version": "dragonfire.screenshot-transcription.v1",
+  "profile_id": "fixture-player",
+  "observed_at": "2026-10-11T20:00:00-07:00",
+  "roster_preflight": { "completeness": "declared_subset", "expected_visible_dragons": null },
+  "sources": [
+    { "id": "shot-1", "path": "screenshot-placeholder.txt", "kind": "overview" },
+    { "id": "shot-2", "path": "screenshot-placeholder.txt", "kind": "overview" }
+  ],
+  "observations": [
+    { "dragon": "Syrax", "source_id": "shot-1", "fields": { "level": { "value": 49, "confidence": "high", "review_status": "confirmed" } } },
+    { "dragon": "Syrax", "source_id": "shot-2", "fields": { "level": { "value": 50, "confidence": "high", "review_status": "confirmed" } } }
+  ]
+}

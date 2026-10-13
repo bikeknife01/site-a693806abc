@@ -15,6 +15,7 @@ Planning hub for proposed tools built from locally copied and normalized Dragonf
 - [Shop and Currency Evaluator](shop-currency-evaluator/PROJECT_PLAN.md)
 - [Game-Data Encyclopedia](game-data-encyclopedia/PROJECT_PLAN.md)
 - [Player Tools index](player-tools-index/README.md)
+- [Player Roster Ingestion](roster-ingestion/README.md) — normalize Formation Forge exports or reviewed screenshots into evidence-aware roster snapshots and planner profiles.
 
 The Game-Data Encyclopedia and Atlas integration form the first implemented vertical
 slice. The chosen delivery sequence is Combat Interaction Explorer, Counter-Picking

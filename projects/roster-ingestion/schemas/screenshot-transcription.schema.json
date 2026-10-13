@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dragonfire.local/schemas/screenshot-transcription-v1.schema.json",
+  "title": "Dragonfire reviewed screenshot transcription",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "profile_id", "observed_at", "roster_preflight", "sources", "observations"],
+  "properties": {
+    "schema_version": { "const": "dragonfire.screenshot-transcription.v1" },
+    "profile_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$" },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "roster_preflight": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["completeness"],
+      "properties": {
+        "completeness": { "enum": ["complete", "declared_subset"] },
+        "expected_visible_dragons": { "type": ["integer", "null"], "minimum": 0 }
+      }
+    },
+    "stronghold": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dragons_army"],
+      "properties": {
+        "dragons_army": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["current_skill", "current_level"],
+          "properties": {
+            "current_skill": { "enum": ["none", "I", "II", "III", "IV"] },
+            "current_level": { "type": "integer", "minimum": 0, "maximum": 5 }
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "path", "kind"],
+        "properties": {
+          "id": { "type": "string" },
+          "path": { "type": "string" },
+          "kind": { "enum": ["overview", "details", "other"] },
+          "sha256": { "type": ["string", "null"], "pattern": "^[a-f0-9]{64}$" }
+        }
+      }
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["dragon", "source_id", "fields"],
+        "properties": {
+          "dragon": { "type": "string" },
+          "source_id": { "type": "string" },
+          "fields": {
+            "type": "object",
+            "additionalProperties": { "$ref": "#/$defs/observedField" }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "observedField": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "confidence", "review_status"],
+      "properties": {
+        "value": {},
+        "confidence": { "enum": ["low", "medium", "high", "confirmed"] },
+        "review_status": { "enum": ["machine_read", "confirmed", "corrected", "conflicting", "unreadable"] },
+        "crop": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["x", "y", "width", "height"],
+          "properties": {
+            "x": { "type": "number", "minimum": 0 },
+            "y": { "type": "number", "minimum": 0 },
+            "width": { "type": "number", "exclusiveMinimum": 0 },
+            "height": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        "note": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

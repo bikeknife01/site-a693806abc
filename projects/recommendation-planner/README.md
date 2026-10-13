@@ -2,7 +2,7 @@
 
 The planner exhaustively evaluates every legal owned trio, all six lane orders, and every available shared troop. It always evaluates each legal common formation in its declared lane order and troop, even when that baseline is dominated or becomes the primary recommendation.
 
-It applies each dragon's own level, Star Rank, Habit levels, and optional visible Power. The result contains the mandatory candidate ledger, a Pareto frontier, deterministic finalists, timing windows, and source locators. It does not estimate win rates or invent undocumented combat formulas.
+It applies each dragon's own level, Star Rank, Habit levels, optional visible Power, and the account-level Dragon's Army capacity upgrade. The result contains the mandatory candidate ledger, a Pareto frontier, deterministic finalists, timing windows, modeled troop capacity, and source locators. It does not estimate win rates or invent undocumented combat formulas.
 
 The objective-fit axis uses only documented active mechanics: damage-bearing abilities,
 damage amplification, producer/payoff chains, and scheduled pressure for high-damage
@@ -51,7 +51,17 @@ owned dragon so exhaustive search is meaningful):
 accepts the application's exported `profile.dragons` object directly. Level and Stars are
 required so that progression is never silently assumed. Habit levels may be omitted and
 then remain unknown; `0` explicitly marks a Habit unavailable. `power` is optional and is
-used only when all three dragons in every compared candidate have known current Power.
+used only when every eligible roster dragon has known current Power, so every searched
+candidate is comparable; a mixture of known and unknown Power is never treated as zero.
+
+An ingestion profile may include `profile.stronghold.dragons_army`. The planner derives
+its per-dragon bonus from `current_skill` (`none`, `I`–`IV`) and `current_level` (0–5),
+and rejects a supplied derived total that disagrees with the canonical prerequisite
+sequence. If it is absent, capacity uses an explicitly disclosed assumed `+0` bonus. Each
+candidate includes its per-dragon level curve, Star scalar, Dragon's Army addition, and
+total modeled capacity. For `highest_tile` and `troop_preservation` objectives, capacity
+becomes a primary comparison dimension after direct coverage and troop safety; it remains
+reported, but does not silently become a universal score for other objectives.
 
 Common formations are loaded from `data/common_formations.json`. A baseline is reported as `evaluated`, `illegal`, or `inapplicable`, with reasons. Applicability never removes a legal ordinary-combat baseline from the ledger.
 

@@ -1,6 +1,5 @@
 [CmdletBinding()]
 param(
-    [int]$VmIndex = 0,
     [int]$DurationSeconds = 0,
     [string]$OutputDirectory,
     [switch]$SkipLogcat,
@@ -13,33 +12,22 @@ $mumu = 'C:\Program Files\Netease\MuMuPlayer\nx_main\mumu-cli.exe'
 $adb = 'C:\Program Files\Netease\MuMuPlayer\nx_main\adb.exe'
 $pktmon = 'C:\Windows\System32\PktMon.exe'
 $package = 'com.wb.goog.hotd.socialstrategy'
+$researchGuard = Join-Path $PSScriptRoot '_mumu_research_guard.ps1'
 
-foreach ($requiredTool in @($mumu, $adb, $pktmon)) {
+foreach ($requiredTool in @($mumu, $adb, $pktmon, $researchGuard)) {
     if (-not (Test-Path -LiteralPath $requiredTool)) {
         throw "Required tool not found: $requiredTool"
     }
 }
 
-$infoText = (& $mumu info --vmindex $VmIndex | Out-String).Trim()
-if ($LASTEXITCODE -ne 0) {
-    throw "MuMu info failed for VM $VmIndex."
+. $researchGuard
+$target = Get-MuMuResearchTarget -MuMuPath $mumu -RequireRunning
+if ($target.protected_is_running) {
+    throw "The protected MuMu instance '$($target.protected_name)' is running. Stop it manually before a host-level network capture so its traffic cannot contaminate the evidence."
 }
-$infoDocument = $infoText | ConvertFrom-Json
-$vmProperty = $infoDocument.PSObject.Properties["$VmIndex"]
-if ($vmProperty) {
-    $vm = $vmProperty.Value
-}
-elseif ([string]$infoDocument.index -eq [string]$VmIndex) {
-    $vm = $infoDocument
-}
-else {
-    $vm = $null
-}
-if (-not $vm -or -not $vm.is_android_started -or -not $vm.is_process_started) {
-    throw "MuMu VM $VmIndex is not already running. This script intentionally does not start it."
-}
+$VmIndex = $target.vm_index
 
-$device = '{0}:{1}' -f $vm.adb_host_ip, $vm.adb_port
+$device = '{0}:{1}' -f $target.adb_host_ip, $target.adb_port
 $connectText = (& $adb connect $device | Out-String).Trim()
 if ($LASTEXITCODE -ne 0) {
     throw "ADB could not connect to $device`: $connectText"
@@ -160,7 +148,7 @@ $metadata = [ordered]@{
     package_paths = $packagePaths -split "`r?`n"
     package_details = $packageDetails -split "`n"
     mumu_vm_index = $VmIndex
-    mumu_info = $vm
+    mumu_instance = $target
     adb_device = $device
     emulator_was_already_running = $true
     pktmon_filters_at_start = $filterText -split "`r?`n"

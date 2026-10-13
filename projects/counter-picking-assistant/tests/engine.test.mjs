@@ -124,6 +124,36 @@ test("an allied beneficial effect does not satisfy an enemy-status prerequisite"
   assert.equal(formationSynergies(local, formation).length, 0);
 });
 
+test("a locked inline Star enhancement cannot consume another dragon's status", () => {
+  const realData = JSON.parse(fs.readFileSync(new URL("../../game-data-encyclopedia/public/data/encyclopedia.json", import.meta.url), "utf8"));
+  const feskar = realData.dragons.find(item => item.name === "Feskar");
+  const tairax = realData.dragons.find(item => item.name === "Tairax");
+  const filler = realData.dragons.find(item => item.name === "Nyrena");
+  const progression = { level: 37, stars: 2, habit_levels: {} };
+  const formation = [
+    candidateEvidence(realData, tairax, [], progression, "Left Flank"),
+    candidateEvidence(realData, feskar, [], progression, "Vanguard"),
+    candidateEvidence(realData, filler, [], progression, "Right Flank"),
+  ];
+  assert.equal(formationSynergies(realData, formation).some(chain => chain.consumer === "Feskar" && chain.effect === "Burn"), false);
+});
+
+test("a Habit-added payoff is counted once and attributed to the unlocked Habit", () => {
+  const realData = JSON.parse(fs.readFileSync(new URL("../../game-data-encyclopedia/public/data/encyclopedia.json", import.meta.url), "utf8"));
+  const feskar = realData.dragons.find(item => item.name === "Feskar");
+  const tairax = realData.dragons.find(item => item.name === "Tairax");
+  const filler = realData.dragons.find(item => item.name === "Nyrena");
+  const progression = { level: 37, stars: 6, habit_levels: { "habit_dragon_feskar_slot4_01": 1 } };
+  const formation = [
+    candidateEvidence(realData, tairax, [], progression, "Left Flank"),
+    candidateEvidence(realData, feskar, [], progression, "Vanguard"),
+    candidateEvidence(realData, filler, [], progression, "Right Flank"),
+  ];
+  const chains = formationSynergies(realData, formation).filter(chain => chain.consumer === "Feskar" && chain.effect === "Burn");
+  assert.equal(chains.length, 1);
+  assert.equal(chains[0].consumerAbility, "Emerald Inferno");
+});
+
 test("repository matchup fixtures return legal, distinct, explainable formations", () => {
   const realData = JSON.parse(fs.readFileSync(new URL("../../game-data-encyclopedia/public/data/encyclopedia.json", import.meta.url), "utf8"));
   const fixtures = JSON.parse(fs.readFileSync(new URL("./matchup-fixtures/core-matchups.json", import.meta.url), "utf8"));
@@ -194,14 +224,14 @@ test("qualified Cleanse relationships do not claim unrelated negative effects", 
   assert.equal(weakened.relationships.cleanses.some(item => item.dragon_id === sunfyre.id), false);
 });
 
-test("unresolved client templates remain conditional instead of confirmed coverage", () => {
+test("cross-site-confirmed Smoketail mitigation is eligible for documented coverage", () => {
   const realData = JSON.parse(fs.readFileSync(new URL("../../game-data-encyclopedia/public/data/encyclopedia.json", import.meta.url), "utf8"));
   const smoketail = realData.dragons.find(item => item.name === "Smoketail");
   const threat = { id: "damage:Fire Damage", category: "damage", name: "Fire Damage", sources: [] };
   const progression = { level: 50, stars: 10, habit_levels: Object.fromEntries(smoketail.abilities.filter(item => item.kind === "habit").map(item => [item.client_key, 5])) };
   const evidence = candidateEvidence(realData, smoketail, [threat], progression, "Vanguard");
-  assert.equal(evidence.covered.includes(threat.id), false);
-  assert.equal(evidence.conditionalCovered.includes(threat.id), true);
+  assert.equal(evidence.covered.includes(threat.id), true);
+  assert.equal(evidence.conditionalCovered.includes(threat.id), false);
 });
 
 test("partial enemy formations lower confidence without inventing threats", () => {

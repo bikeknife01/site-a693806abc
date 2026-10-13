@@ -101,6 +101,58 @@ test("normalizes displayed red stars and rejects a conflicting declared rank", (
   }), /resolves to Rank 7/);
 });
 
+test("uses a normalized Dragon's Army record in modeled capacity without trusting a mismatched total", () => {
+  const profile = {
+    dragons: Object.fromEntries(["Velar", "Vhagar", "Moondancer"].map(name => {
+      const value = entry(name, { stars: 1, power: null });
+      return [data.dragons.find(item => item.name === name).slug, value];
+    })),
+    stronghold: {
+      dragons_army: {
+        current_skill: "III",
+        current_level: 2,
+        additional_troops_per_dragon: 1150,
+        basis: "user_declaration",
+        provenance: "observed",
+      },
+    },
+  };
+  const result = planRecommendations(data, { formations: [] }, { objective: "highest_tile", profile, available_troops: ["Shieldbearers"] });
+  assert.equal(result.input_summary.dragons_army.additional_troops_per_dragon, 1150);
+  assert.equal(result.primary_candidate.metrics.dragons_army_bonus_per_dragon, 1150);
+  assert.equal(result.primary_candidate.metrics.modeled_team_capacity, 18450);
+  assert.match(result.metadata.selection_policy, /modeled team capacity/);
+  assert.throws(() => validatePlannerInput(data, {
+    profile: {
+      ...profile,
+      stronghold: { dragons_army: { ...profile.stronghold.dragons_army, additional_troops_per_dragon: 999 } },
+    },
+  }), /must be 1150/);
+});
+
+test("highest-tile ordering prioritizes the largest legal modeled capacity after hard troop safety", () => {
+  const result = planRecommendations(data, { formations: [] }, {
+    objective: "highest_tile",
+    roster: [
+      entry("Vhagar", { level: 50, stars: 1, power: null }),
+      entry("Velar", { level: 40, stars: 1, power: null }),
+      entry("Moondancer", { level: 30, stars: 1, power: null }),
+      entry("Vermithor", { level: 20, stars: 1, power: null }),
+    ],
+  });
+  assert.equal(result.primary_candidate.metrics.modeled_team_capacity, 12000);
+  assert.deepEqual(result.primary_candidate.progression.map(item => item.dragon).sort(), ["Moondancer", "Velar", "Vhagar"]);
+});
+
+test("does not compare partial visible Power as though unknown dragons had zero Power", () => {
+  const result = planRecommendations(data, { formations: [] }, {
+    roster: [entry("Velar", { power: 200000 }), entry("Vhagar", { power: null }), entry("Moondancer", { power: 100000 }), entry("Vermithor", { power: 300000 })],
+    available_troops: ["Shieldbearers"],
+  });
+  assert.equal(result.input_summary.power_comparable, false);
+  assert.ok(result.pareto_finalists.every(candidate => candidate.metrics.known_team_power === null));
+});
+
 test("batch planner consolidates all three common enemy formations into an auditable report", () => {
   const result = planBatchRecommendations(data, common, {
     objective: "counter",

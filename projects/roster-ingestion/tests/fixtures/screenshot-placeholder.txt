@@ -1,0 +1,1 @@
+Placeholder evidence file used to exercise hashing and source references in tests.

@@ -61,7 +61,7 @@ Before making a specific optimized recommendation, establish as much of the foll
 5. Relevant Habit skill levels from 1-5 when their upgraded values could change
 	reliability or the ranking. Star Rank unlocks a Habit; it does not identify that
 	Habit's skill level.
-6. Reign Level and relevant Stronghold, Heirloom, Realm, or Campaign Stage modifiers when comparing close PvP/PvE outcomes across accounts.
+6. Reign Level and relevant Stronghold, Heirloom, Realm, or Campaign Stage modifiers when comparing close PvP/PvE outcomes across accounts. During roster ingestion, ask once for the highest unlocked Dragon's Army skill (I-IV) and its current level (0-5). If the user does not know, record skill `none`, level `0`, and an explicitly assumed zero bonus.
 
 Ask concise follow-up questions only for missing facts that could materially change the result. If the user wants a general discussion or has incomplete information, proceed with explicit assumptions and give conditional recommendations instead of blocking.
 
@@ -79,6 +79,13 @@ Ask concise follow-up questions only for missing facts that could materially cha
 	required job, prefer materially higher Power when mechanics are otherwise comparable.
 	Power cannot create missing counter coverage or unlock a mechanic. Explain whenever
 	the recommendation passes over a materially higher-Power option.
+	Add the account's Dragon's Army capacity bonus to each dragon's modeled maximum
+	army size. Each skill requires the previous skill at level 5: I adds 50 troops
+	per level, II adds 100, III adds 200, and IV adds 250. Therefore III level 2
+	means 250 + 500 + 400 = 1,150 additional troops per dragon. Keep the current
+	skill's contribution distinct from the cumulative total, apply the cumulative
+	per-dragon value to all three formation members, and disclose when ingestion
+	used the required assumed-zero default.
    Also read `level_model.base_stats_by_level.max_army_size` and the applicable recorded
    Star scalar when Levels and Stars are known. Treat maximum army size/Troop Capacity
    as the formation's practical health pool: a materially higher-capacity trio can

@@ -45,7 +45,7 @@ selectable troops, and reference enemy progression.
 
 ### Known environment
 
-- Android emulator: MuMu Player, with CLI version `6.8.0.0` observed on 2026-10-01.
+- Android emulator: MuMu Player, with CLI version `6.8.3.0` observed on 2026-10-10 (`6.8.0.0` was observed on 2026-10-01).
 - MuMu tools directory: `C:\Program Files\Netease\MuMuPlayer\nx_main`
 - CLI: `mumu-cli.exe`
 - ADB client: `adb.exe`
@@ -68,6 +68,7 @@ Do not hard-code the VM index, ADB port, or `/data/app/...` installation directo
 - Runtime instrumentation may observe the user's own `TrikePistol` client, but authorization does not include bypassing anti-cheat or other access controls. If a protection blocks an experiment, stop and record the limitation rather than concealing the tool, patching the protection, or changing fingerprints to evade detection.
 - Prefer read-only collection and observation. Any change needed to enable research on `TrikePistol` must be limited to that instance, documented in the investigation notes, and reversible where practical. Preserve original APKs, libraries, metadata, and relevant configuration hashes before patching or transformation. Do not present behavior observed in a modified client as ordinary live-client behavior.
 - Keep `TrikePistol` artifacts local and ignored by Git until they are reviewed and sanitized. Use a distinct snapshot name such as `Game_Details/Resources/_snapshots/YYYY-MM-DD-trikepistol/`, and record the client version, package version, instance display name, VM index, collection method, modifications, and source hashes. Never commit account identifiers, secrets, raw private databases, tokens, or unsanitized traffic captures.
+- Never copy private app or Android identity state between instances. This includes `/data/data` or `/data/user` trees, app databases and shared preferences, AccountManager data, keystores, backups, authentication state, Android or Google service identifiers, advertising identifiers, and push-registration tokens. Public APKs and static game resources may be compared as evidence, but do not import TrikePistol state into Bikeknife or vice versa.
 - Before an invasive step, re-check that the selected VM is `TrikePistol`. Afterward, disconnect only its ADB endpoint and restore only processes or settings changed for that investigation. Never stop, reset, snapshot, clone, or modify `Bikeknife` as cleanup for a `TrikePistol` task.
 
 ### Minimal-impact capture policy
