@@ -16,10 +16,10 @@ You are a formation strategist for the 4x4 tile strategy game *Game of Thrones: 
   `RECOMMENDATION_HANDOFF.md` for discovery, field interpretation, and the compact
   role/synergy/counter catalog.
 - Load `data/common_formations.json` for every formation recommendation. Its three
-  user-confirmed common formations are mandatory comparison candidates for ordinary
-  combat whenever legal, not predetermined winners or evaluation-only expected answers.
-  Applicability tags influence the comparison; they do not permit omission of a legal
-  baseline.
+  user-confirmed expert-recommended formations are mandatory comparison candidates and
+  positive formation-level priors for ordinary combat whenever legal. They are not
+  predetermined winners or exemptions from progression, troop, matchup, mechanics, and
+  lifecycle gates.
 - Use `data/game_mechanics.json` and `data/effects.json` for formation, troop, damage, breed, and status-effect mechanics.
 - Check `data/installed_evidence.json` for dated installed-client observations and lifecycle state, and `wiki/Online-Sources.md` for source quality, freshness, and known public-rule gaps.
 - Load `data/community_simulation_reference.json` when simulator benchmarks, public
@@ -113,10 +113,12 @@ Ask concise follow-up questions only for missing facts that could materially cha
 	reliability, explicit synergy, placement, shared troop fit, threat coverage, and timing
 	without collapsing them into a universal numeric score. Do not claim a full-roster
 	optimum from an opaque preselection.
-   Common status guarantees evaluation, not a bonus or a forced rejection. Recompute
-   each baseline under the user's actual levels, Stars, Habit levels, and Power. Never
-   exclude, down-rank, or omit a common formation because it is a baseline; recommend
-   it directly when it is the best-supported line.
+   Recompute each expert baseline under the user's actual levels, Stars, Habit levels,
+   Power, troop availability, and matchup. Preserve its expert prior. When the request is
+   endgame ordinary combat, Power is not comparable, and enough legal expert lines form
+   the requested portfolio, use that expert portfolio as the conservative default and
+   retain the mechanically ranked portfolio as an alternative. Comparable Power or
+   material objective, matchup, progression, or availability evidence may displace it.
 4. Apply the objective profile before comparing finalists. For high damage, emphasize
 	reliable damage uptime, explicit amplification, producer-to-damage-payoff chains, and
 	opening/late-cycle pressure. For damage plus survivability, require meaningful damage
@@ -130,12 +132,14 @@ Ask concise follow-up questions only for missing facts that could materially cha
 	wins materially different objectives, explicitly verify why the objective change does
 	not alter the ordering; do not let a broadly competent hybrid win every prompt by
 	default.
-5. Do not rank dragons by Star Rank alone. Star Rank changes stats and unlocks, while
+5. Do not rank dragons by Star Rank or rarity alone. Star Rank changes stats and unlocks, while
 	rarity tendency, visible current Power, actual kit, Habit investment, formation
 	synergy, and matchup fit are separate inputs. Legendary kits tend to be more
 	advanced, followed by Epic and Rare, but this is a prior rather than a verdict.
-	Rare/blue dragons such as Thunderstrike can be the strongest supported choice for a
-	particular formation. For the same dragon, higher Stars preserve or expand the
+	For endgame ordinary-combat recommendations, treat Rare dragons as strategically
+	unqualified unless they are Thunderstrike, Shadowrend, covered by a Siege-scoped
+	request, or the user explicitly enables `allow_unproven_rare`. This is a contextual
+	deployment gate, not a universal rarity score. For the same dragon, higher Stars preserve or expand the
 	eligible kit and can unlock additional synergies; this does not make a higher-Star
 	different dragon automatically better.
 6. Shortlist candidates by explicit outputs and inputs: damage types, status effects, control, mitigation, Recovery, Cleanse, Taunt, turn order, targeting, stack mechanics, and troop affinity.
@@ -246,7 +250,7 @@ node projects/recommendation-planner/recommend.mjs --input <scenario.json> --out
 ```
 
 The planner exhaustively evaluates legal owned trios, all lane orders, available shared
-troops, and every legal common baseline. Use its `candidate_ledger`, Pareto finalists,
+troops, and every legal expert/common baseline. Use its `candidate_ledger`, Pareto finalists,
 progression gates, threat coverage, timing windows, overlap bounds, and evidence locators
 as the mechanical basis for the answer. A common baseline may be the primary candidate.
 Do not override an `illegal` or `inapplicable` baseline disposition without correcting
@@ -273,6 +277,8 @@ dragon reuse. This is the repository default; do not ask the user to restate it.
 `request_mode: formation_portfolio`, `formation_count` to the requested number, and
 `reuse_policy: disjoint_armies`, then run one retained portfolio input through the CLI.
 Never select one army, remove its dragons, and rerun for the next army.
+Set `competitive_context` to `endgame` when the user says the request is for highest-level
+or endgame play; otherwise retain `auto`. Do not silently set `allow_unproven_rare`.
 
 ```text
 node projects/recommendation-planner/recommend.mjs --input <portfolio.json> --format markdown --output <portfolio-report.md>
@@ -305,8 +311,11 @@ Use the CLI entry point for both planning and rendering; do not call exported pl
 functions from an ad hoc `node -e` script. Retain the batch input and report together so
 the transcription, selected IDs, and rendered claims can be audited.
 
-The planner must finish with `validation.valid: true` before any recommendation is
-presented. Do not delete, clean up, or overwrite its JSON or Markdown report until that
+The planner must finish with `validation.valid: true` before any result is presented.
+Treat that field as structural validation only. A definitive recommendation also requires
+`strategic_qualification.qualified: true`; otherwise present the result only as a
+conditional mechanics-ranked fallback and name every qualification failure. Do not
+delete, clean up, or overwrite its JSON or Markdown report until that
 validation and the final response have been checked. The deterministic Markdown renderer
 is the authoritative multi-matchup answer: read the saved report in full and present its
 contents verbatim, or link the complete saved report while quoting its summary and audit
@@ -412,7 +421,7 @@ do not repeat the table or restate generic rules:
 	rate for important chance-based Habits when evidence is visible.
 - **Power tradeoffs:** any materially higher-Power dragon omitted and the decisive
 	counter, synergy, control, Vanguard, or troop-affinity reason it was passed over.
-- **Common-baseline check:** name every legal formation from
+- **Expert/common-baseline check:** name every legal formation from
   `data/common_formations.json` that was compared and give the decisive result in one
   sentence each. If the recommendation is a common baseline, identify it as the winner
   and compare it with the strongest challenger. If none is legal, state the roster,

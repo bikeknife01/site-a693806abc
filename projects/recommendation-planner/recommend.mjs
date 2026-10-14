@@ -21,6 +21,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "../..");
 const DATA_PATH = path.join(ROOT, "projects/game-data-encyclopedia/public/data/encyclopedia.json");
 const BASELINES_PATH = path.join(ROOT, "data/common_formations.json");
+const RECOMMENDATION_RULES_PATH = path.join(ROOT, "data/recommendation_rules.json");
 const APPLICATION_KNOWLEDGE_PATH = path.join(ROOT, "data/dragon_application_knowledge.json");
 const GAME_MECHANICS_PATH = path.join(ROOT, "data/game_mechanics.json");
 const DEFAULT_MAX_FINALISTS = 12;
@@ -28,6 +29,9 @@ const COMBAT_TROOPS = TROOPS.filter(troop => troop !== "Siege");
 const APPLICATION_DRAGONS = new Map(JSON.parse(fs.readFileSync(APPLICATION_KNOWLEDGE_PATH, "utf8")).dragons.map(dragon => [dragon.client_key, dragon]));
 const DRAGONS_ARMY_UPGRADES = JSON.parse(fs.readFileSync(GAME_MECHANICS_PATH, "utf8")).progression?.dragon_army_capacity_upgrades?.upgrades || {};
 const DRAGONS_ARMY_TIERS = ["I", "II", "III", "IV"];
+const RECOMMENDATION_RULES = JSON.parse(fs.readFileSync(RECOMMENDATION_RULES_PATH, "utf8"));
+const COMPETITIVE_POLICY = RECOMMENDATION_RULES.competitive_viability;
+const REVIEWED_RARE_EXCEPTIONS = new Set(COMPETITIVE_POLICY.reviewed_rare_exceptions.map(item => item.dragon_slug));
 
 const unique = values => [...new Set(values)];
 const sum = values => values.reduce((total, value) => total + value, 0);
@@ -156,6 +160,28 @@ function troopPreservationObjective(objective) {
   return ["troop_preservation", "preserve_troops", "minimize_troop_loss", "minimise_troop_loss"].includes(String(objective).toLowerCase().replaceAll("-", "_").replaceAll(" ", "_"));
 }
 
+function competitiveContext(input, roster, objective) {
+  const requested = String(input.competitive_context || COMPETITIVE_POLICY.default_context).toLowerCase();
+  if (!["auto", "endgame", "unrestricted"].includes(requested)) throw new Error("competitive_context must be auto, endgame, or unrestricted.");
+  const threshold = COMPETITIVE_POLICY.auto_endgame_threshold;
+  const matureDragonCount = roster.filter(entry => entry.level >= threshold.minimum_level && entry.stars >= threshold.minimum_star_rank).length;
+  const resolved = requested === "auto"
+    ? matureDragonCount >= threshold.minimum_owned_dragons_at_or_above_threshold ? "endgame" : "unrestricted"
+    : requested;
+  return {
+    requested,
+    resolved,
+    inference: requested === "auto" ? {
+      mature_dragon_count: matureDragonCount,
+      minimum_owned_dragons: threshold.minimum_owned_dragons_at_or_above_threshold,
+      minimum_level: threshold.minimum_level,
+      minimum_star_rank: threshold.minimum_star_rank,
+    } : null,
+    allow_unproven_rare: Boolean(input.allow_unproven_rare),
+    siege_scoped: ["poi", "siege"].includes(String(objective).toLowerCase().replaceAll("-", "_").replaceAll(" ", "_")),
+  };
+}
+
 export function validatePlannerInput(data, input) {
   if (!input || typeof input !== "object" || Array.isArray(input)) throw new Error("Planner input must be a JSON object.");
   const objective = String(input.objective || "pvp");
@@ -187,6 +213,7 @@ export function validatePlannerInput(data, input) {
 
   const maxFinalists = input.max_finalists == null ? DEFAULT_MAX_FINALISTS : Number(input.max_finalists);
   if (!Number.isInteger(maxFinalists) || maxFinalists < 1 || maxFinalists > 100) throw new Error("max_finalists must be an integer from 1 to 100.");
+  const competitive = competitiveContext(input, owned, objective);
   return {
     objective,
     availableTroops,
@@ -199,6 +226,7 @@ export function validatePlannerInput(data, input) {
     powerComparable: owned.every(entry => entry.power != null),
     capacitySensitive: capacitySensitiveObjective(objective),
     troopPreservation: troopPreservationObjective(objective),
+    competitive,
   };
 }
 
@@ -343,6 +371,55 @@ function targetCoverageWeight(text) {
   return 0.5;
 }
 
+function enemyTargetWeight(text) {
+  if (/\b(?:3|all) Enemies\b/i.test(text)) return 1;
+  if (/\b2 Enemies\b/i.test(text)) return 0.75;
+  if (/\b(?:1|one|the) Enemy\b/i.test(text)) return 0.5;
+  return 0.5;
+}
+
+function percentageValues(text, pattern) {
+  return [...String(text).matchAll(pattern)].map(match => Number(match[1])).filter(Number.isFinite);
+}
+
+function objectiveQualityAssessment(data, result) {
+  const components = [];
+  const seenDamage = new Set();
+  const seenAmplification = new Set();
+  let damage = 0;
+  let amplification = 0;
+  for (const pick of result.formation) for (const ability of pick.abilities) {
+    for (const event of eligibleDamageEvents(ability, pick.progression)) {
+      const text = event.exact_context || "";
+      const key = `${pick.dragon.slug}|${text}`;
+      if (seenDamage.has(key) || !/\bdeal\b[^.]{0,180}\bDamage\b/i.test(text) || /\b(?:reduce|received)\b/i.test(text)) continue;
+      seenDamage.add(key);
+      const rates = percentageValues(text, /Damage Rate:\s*\+(\d+(?:\.\d+)?)%/gi);
+      if (!rates.length) continue;
+      const chance = text.match(/(\d+(?:\.\d+)?)%\s+chance/i);
+      const reliability = chance ? Number(chance[1]) / 100 : /\b(?:if|when)\b/i.test(text) ? 0.5 : 1;
+      const magnitude = sum(rates);
+      const score = round((magnitude / 25) * reliability * enemyTargetWeight(text));
+      damage += score;
+      components.push({ dragon: pick.dragon.name, ability: ability.name, kind: "damage", magnitude_percent: magnitude, reliability, score, exact_text: text });
+    }
+    for (const text of eligibleExactText(ability, pick.progression)) {
+      const key = `${pick.dragon.slug}|${text}`;
+      if (seenAmplification.has(key) || !/Increase[^.]{0,160}Damage Dealt by \+/i.test(text)) continue;
+      seenAmplification.add(key);
+      const values = percentageValues(text, /Damage Dealt by \+(\d+(?:\.\d+)?)%/gi);
+      if (!values.length) continue;
+      const chance = text.match(/(\d+(?:\.\d+)?)%\s+chance/i);
+      const reliability = chance ? Number(chance[1]) / 100 : /\b(?:if|when)\b/i.test(text) ? 0.5 : 1;
+      const magnitude = sum(values);
+      const score = round((magnitude / 10) * reliability * targetCoverageWeight(text));
+      amplification += score;
+      components.push({ dragon: pick.dragon.name, ability: ability.name, kind: "damage_amplification", magnitude_percent: magnitude, reliability, score, exact_text: text });
+    }
+  }
+  return { damage: round(damage), amplification: round(amplification), components };
+}
+
 function preservationAssessment(data, result) {
   const beneficial = new Set(["effect:recovery", "effect:protect", "effect:resistance", "effect:evade", "effect:cleanse"]);
   const weights = { "effect:recovery": 4, "effect:protect": 3, "effect:resistance": 3, "effect:evade": 2, "effect:cleanse": 2 };
@@ -374,7 +451,9 @@ function preservationAssessment(data, result) {
       const reducesReceived = /(?:reduce|decrease)[^.]{0,120}Damage Received/i.test(text);
       const reducesEnemyDealt = /(?:reduce|decrease)[^.]{0,120}(?:Enemy|Enemies)[^.]{0,120}Damage Dealt/i.test(text) || /(?:reduce|decrease)[^.]{0,120}(?:Physical|Tactical|Fire) Damage Dealt of [^.]{0,80}Enemy/i.test(text);
       if (reducesReceived || reducesEnemyDealt) {
-        const score = habitInvestmentKnown ? 2 : 1;
+        const magnitudes = percentageValues(text, /Damage (?:Received|Dealt)[^.]{0,80}(?:by\s+)?-(\d+(?:\.\d+)?)%/gi);
+        const magnitudeWeight = magnitudes.length ? Math.max(...magnitudes) / 10 : 1;
+        const score = round(Math.max(1, magnitudeWeight) * (habitInvestmentKnown ? 1 : 0.5));
         mitigationScore += score;
         if (!habitInvestmentKnown) unknownHabitEffects += 1;
         components.push({ dragon: pick.dragon.name, ability: ability.name, kind: "mitigation", score, habit_investment_known: habitInvestmentKnown, exact_text: text });
@@ -397,29 +476,51 @@ function preservationAssessment(data, result) {
   };
 }
 
-function objectiveFit(data, result, objective, coverageCounts = null, preservation = null) {
+function objectiveAssessment(data, result, objective, coverageCounts = null, preservation = null) {
   const normalized = String(objective || "pvp").toLowerCase().replaceAll("-", "_").replaceAll(" ", "_");
-  const abilities = result.formation.flatMap(pick => pick.abilities.map(ability => ({ pick, ability })));
-  const damageAbilities = abilities.filter(({ pick, ability }) => eligibleDamageEvents(ability, pick.progression).length > 0).length;
+  const quality = objectiveQualityAssessment(data, result);
   const openingPressure = result.combatHorizon.opening.length;
   const latePressure = result.combatHorizon.late.length;
-  const appliedEffects = abilities.flatMap(({ pick, ability }) => operationRecords(data, ability, pick.progression).filter(operation => operation.operation === "applies"));
-  const sustainEffects = appliedEffects.filter(operation => ["effect:recovery", "effect:protect", "effect:resistance"].includes(operation.effect_id)).length;
-  const mitigationAbilities = abilities.filter(({ pick, ability }) => eligibleExactText(ability, pick.progression).some(text => /(?:reduce|decrease)[^.]{0,100}Damage Received/i.test(text))).length;
-  const amplificationAbilities = abilities.filter(({ pick, ability }) => eligibleExactText(ability, pick.progression).some(text => /Increase[^.]{0,120}(?:Damage Dealt|Damage Received)/i.test(text))).length;
+  const preservationValue = preservation?.score ?? preservationAssessment(data, result).score;
+  let score = 0;
   if (["high_damage", "attack", "damage"].includes(normalized)) {
-    return damageAbilities * 2 + amplificationAbilities * 2 + result.synergies.length * 2 + openingPressure + latePressure + result.troop.positive.length;
-  }
-  if (["damage_and_survivability", "defense", "survivability"].includes(normalized)) {
-    return damageAbilities + sustainEffects * 3 + mitigationAbilities * 2 + result.synergies.length + openingPressure + latePressure + result.troop.positive.length;
-  }
-  if (troopPreservationObjective(normalized)) return preservation?.score ?? preservationAssessment(data, result).score;
-  if (["counter", "counter_specific"].includes(normalized)) {
+    score = quality.damage + quality.amplification + result.synergies.length * 2 + openingPressure * 0.5 + latePressure * 0.25 + result.troop.positive.length;
+  } else if (["damage_and_survivability", "defense", "survivability"].includes(normalized)) {
+    const offense = quality.damage + quality.amplification;
+    score = offense + preservationValue + Math.min(offense, preservationValue) + result.synergies.length + result.troop.positive.length;
+  } else if (troopPreservationObjective(normalized)) score = preservationValue;
+  else if (["counter", "counter_specific"].includes(normalized)) {
     const counts = coverageCounts || coverageSummary(result);
-    return counts.direct * 4 + counts.probabilistic * 2 + counts.partial + (result.troop.advantage ? 3 : 0) - (result.troop.disadvantage ? 3 : 0);
-  }
-  if (["poi", "siege"].includes(normalized)) return result.troop.troop === "Siege" ? 5 + result.troop.positive.length : 0;
-  return 0;
+    score = counts.direct * 4 + counts.probabilistic * 2 + counts.partial + (result.troop.advantage ? 3 : 0) - (result.troop.disadvantage ? 3 : 0);
+  } else if (["poi", "siege"].includes(normalized)) score = result.troop.troop === "Siege" ? 5 + result.troop.positive.length : 0;
+  return {
+    score: round(score),
+    method: "deduplicated_magnitude_reliability_aware_ordinal_v1",
+    damage_quality: quality.damage,
+    amplification_quality: quality.amplification,
+    preservation_quality: preservationValue,
+    components: quality.components,
+  };
+}
+
+function competitiveViability(result, context) {
+  const rare = result.formation.filter(pick => pick.dragon.rarity_tier === "Rare");
+  const reviewed = rare.filter(pick => REVIEWED_RARE_EXCEPTIONS.has(pick.dragon.slug));
+  const unsupported = rare.filter(pick => !REVIEWED_RARE_EXCEPTIONS.has(pick.dragon.slug));
+  const siegeException = context.competitive.siege_scoped || result.troop.troop === "Siege";
+  const gateActive = context.competitive.resolved === "endgame" && !context.competitive.allow_unproven_rare && !siegeException;
+  const qualified = !gateActive || unsupported.length === 0;
+  return {
+    qualified,
+    context: context.competitive.resolved,
+    requested_context: context.competitive.requested,
+    gate_applied: gateActive,
+    allow_unproven_rare: context.competitive.allow_unproven_rare,
+    siege_exception_applied: siegeException && rare.length > 0,
+    reviewed_rare_exceptions: reviewed.map(pick => pick.dragon.name),
+    unsupported_rare_dragons: unsupported.map(pick => pick.dragon.name),
+    reason: qualified ? unsupported.length ? "Rare use is permitted by the selected context or explicit override." : "No unsupported Rare dragon is used." : `Endgame ordinary-combat policy does not qualify: ${unsupported.map(pick => pick.dragon.name).join(", ")}.`,
+  };
 }
 
 function modeledArmyCapacity(pick, dragonsArmy) {
@@ -451,6 +552,7 @@ function metricsFor(data, result, objective, context) {
   const knownPowers = result.formation.map(pick => pick.progression.power).filter(value => value != null);
   const capacities = result.formation.map(pick => modeledArmyCapacity(pick, context.dragonsArmy));
   const preservation = preservationAssessment(data, result);
+  const objectiveEvaluation = objectiveAssessment(data, result, objective, coverageCounts, preservation);
   return {
     direct_threat_coverage: result.threats.length ? coverageCounts.direct / result.threats.length : 0,
     covered_threat_count: coverageCounts.direct,
@@ -465,7 +567,9 @@ function metricsFor(data, result, objective, context) {
     affinity_count: result.troop.positive.length,
     affinity_penalty_count: result.troop.negative.length,
     troop_disadvantage: result.troop.disadvantage ? 1 : 0,
-    objective_fit: objectiveFit(data, result, objective, coverageCounts, preservation),
+    objective_fit: objectiveEvaluation.score,
+    objective_assessment: objectiveEvaluation,
+    competitive_viability: competitiveViability(result, context),
     troop_preservation: preservation,
     known_team_power: context.powerComparable && knownPowers.length === 3 ? sum(knownPowers) : null,
     modeled_team_capacity: capacities.every(Boolean) ? sum(capacities.map(item => item.modeled_max_army_size)) : null,
@@ -510,7 +614,8 @@ function policyCompare(left, right, { includeCapacity = false, troopPreservation
     : right.metrics.objective_fit - left.metrics.objective_fit
       || (includeCapacity ? (right.metrics.modeled_team_capacity ?? -1) - (left.metrics.modeled_team_capacity ?? -1) : 0);
   return (
-    right.metrics.direct_threat_coverage - left.metrics.direct_threat_coverage
+    Number(right.metrics.competitive_viability.qualified) - Number(left.metrics.competitive_viability.qualified)
+    || right.metrics.direct_threat_coverage - left.metrics.direct_threat_coverage
     || left.metrics.troop_disadvantage - right.metrics.troop_disadvantage
     || objectiveAndCapacity
     || right.metrics.counter_reliability - left.metrics.counter_reliability
@@ -536,6 +641,7 @@ function summarizeCandidate(data, candidate, { includeTimeline = true } = {}) {
   const threatCoverage = coverageMatrix(data, result);
   return {
     id: candidate.id,
+    expert_prior: candidate.expert_prior || null,
     formation: {
       troop_type: result.troop.troop,
       left_flank: result.formation[0].dragon.name,
@@ -771,6 +877,14 @@ function baselineCandidate(data, baseline, search) {
     candidate: null,
   };
   const result = resultForOrder(data, dragons, troop, search.context, search.cache);
+  const candidate = decorateCandidate(data, result, search.context.objective, search.context);
+  candidate.expert_prior = {
+    formation_id: baseline.id,
+    evidence_state: baseline.evidence_state,
+    recommendation_prior: baseline.recommendation_prior || null,
+    applicability: baseline.applicability,
+    strategic_basis: baseline.strategic_basis,
+  };
   return {
     id: baseline.id,
     name: baseline.name,
@@ -778,7 +892,39 @@ function baselineCandidate(data, baseline, search) {
     reasons: [],
     applicability: baseline.applicability,
     strategic_basis: baseline.strategic_basis,
-    candidate: decorateCandidate(data, result, search.context.objective, search.context),
+    candidate,
+  };
+}
+
+function baselineApplies(baseline, objective) {
+  const normalized = String(objective || "pvp").toLowerCase().replaceAll("-", "_").replaceAll(" ", "_");
+  const objectives = baseline.applicability?.objectives || [];
+  return objectives.includes(normalized) || objectives.includes("general_purpose") || normalized === "pvp";
+}
+
+function expertPriorEligible(baseline, input) {
+  if (!baseline.candidate?.metrics.competitive_viability.qualified || !baselineApplies(baseline, input.objective)) return false;
+  if (baseline.candidate.metrics.troop_disadvantage) return false;
+  const threshold = COMPETITIVE_POLICY.auto_endgame_threshold;
+  return baseline.candidate.result.formation.every(pick => pick.progression.level >= threshold.minimum_level && pick.progression.stars >= threshold.minimum_star_rank);
+}
+
+function strategicQualification(selectedCandidates, input, selectionBasis) {
+  const failures = [];
+  const unsupported = unique(selectedCandidates.flatMap(candidate => candidate.metrics.competitive_viability.unsupported_rare_dragons));
+  if (selectedCandidates.some(candidate => !candidate.metrics.competitive_viability.qualified)) failures.push(`Selected portfolio includes unsupported endgame Rare dragon(s): ${unsupported.join(", ")}.`);
+  if (input.competitive.resolved === "endgame" && !input.powerComparable && selectionBasis !== "expert_prior_default") {
+    failures.push("Endgame Power is not comparable and no complete expert-prior portfolio was used; the result is mechanics-ranked only.");
+  }
+  return {
+    qualified: failures.length === 0,
+    status: failures.length ? "not_strategically_qualified" : selectionBasis === "expert_prior_default" ? "qualified_with_expert_prior" : "qualified",
+    selection_basis: selectionBasis,
+    competitive_context: input.competitive,
+    power_comparable: input.powerComparable,
+    unsupported_rare_dragons: unsupported,
+    failures,
+    meaning: "Strategic qualification is separate from structural validation and does not claim a simulated win rate or globally optimal formation.",
   };
 }
 
@@ -832,13 +978,24 @@ export function planRecommendations(data, commonFormations, rawInput) {
   const baselines = commonFormations.formations.map(baseline => baselineCandidate(data, baseline, search));
   const baselineCandidates = baselines.filter(item => item.candidate).map(item => item.candidate);
   const candidateMap = new Map(search.candidates.map(candidate => [candidate.id, candidate]));
-  for (const candidate of baselineCandidates) if (!candidateMap.has(candidate.id)) candidateMap.set(candidate.id, candidate);
+  for (const candidate of baselineCandidates) {
+    const existing = candidateMap.get(candidate.id);
+    if (existing) existing.expert_prior = candidate.expert_prior;
+    else candidateMap.set(candidate.id, candidate);
+  }
   const allCandidates = [...candidateMap.values()];
   const comparison = { includeCapacity: input.capacitySensitive, troopPreservation: input.troopPreservation };
-  const pareto = paretoFront(allCandidates, comparison).sort((left, right) => policyCompare(left, right, comparison));
-  const finalists = pareto.slice(0, input.maxFinalists);
-  const primary = finalists[0] || null;
-  const alternative = finalists[1] || null;
+  const qualifiedCandidates = allCandidates.filter(candidate => candidate.metrics.competitive_viability.qualified);
+  const selectionPool = qualifiedCandidates.length ? qualifiedCandidates : allCandidates;
+  const pareto = paretoFront(selectionPool, comparison).sort((left, right) => policyCompare(left, right, comparison));
+  const mechanicalPrimary = pareto[0] || null;
+  const expertPrimary = !input.powerComparable && input.competitive.resolved === "endgame"
+    ? baselines.filter(item => expertPriorEligible(item, input)).map(item => item.candidate).sort((left, right) => policyCompare(left, right, comparison))[0] || null
+    : null;
+  const primary = expertPrimary || mechanicalPrimary;
+  const selectionBasis = expertPrimary ? "expert_prior_default" : qualifiedCandidates.length ? "mechanically_ranked_qualified" : "mechanically_ranked_fallback";
+  const finalists = unique([primary, ...pareto].filter(Boolean).map(candidate => candidate.id)).slice(0, input.maxFinalists).map(id => [primary, ...pareto].find(candidate => candidate?.id === id));
+  const alternative = finalists.find(candidate => candidate.id !== primary?.id) || null;
   const primaryCoverage = primary ? coverageMatrix(data, primary.result) : [];
   const primaryGates = primary ? gateReport(data, primary.result) : [];
   return {
@@ -846,6 +1003,7 @@ export function planRecommendations(data, commonFormations, rawInput) {
       model: "dragonfire_deterministic_recommendation_planner_v1",
       evidence_source: path.relative(ROOT, DATA_PATH).replaceAll("\\", "/"),
       common_baselines_source: path.relative(ROOT, BASELINES_PATH).replaceAll("\\", "/"),
+      recommendation_rules_source: path.relative(ROOT, RECOMMENDATION_RULES_PATH).replaceAll("\\", "/"),
       objective: input.objective,
       selection_policy: `Pareto filter, then lexicographic ordering by direct threat coverage, troop safety${input.troopPreservation ? ", weakest-lane level-curve capacity floor, documented preservation tier, total level-curve capacity proxy, exact preservation score" : `, documented objective fit${input.capacitySensitive ? ", level-curve capacity proxy" : ""}`}, counter reliability, explicit synergy, troop fit, lane fit, comparable known team Power, and diagnostic proxy score.`,
     },
@@ -865,6 +1023,7 @@ export function planRecommendations(data, commonFormations, rawInput) {
       available_troops_source: input.availableTroopsSource,
       dragons_army: input.dragonsArmy,
       power_comparable: input.powerComparable,
+      competitive_context: input.competitive,
       capacity_sensitive_objective: input.capacitySensitive,
       troop_preservation_objective: input.troopPreservation,
       enemy_lanes: input.enemies.length,
@@ -903,6 +1062,7 @@ export function planRecommendations(data, commonFormations, rawInput) {
       evidence: decisionEvidence(data, primary.result),
       risks: riskRegister(data, primary.result, primaryCoverage, null, primary.metrics.dragons_army),
     } : null,
+    strategic_qualification: strategicQualification(primary ? [primary] : [], input, selectionBasis),
   };
 }
 
@@ -981,26 +1141,60 @@ export function planFormationPortfolio(data, commonFormations, rawInput) {
   if (formationCount * 3 > input.roster.length && reusePolicy === "disjoint_armies") throw new Error(`A ${formationCount}-formation disjoint portfolio requires at least ${formationCount * 3} owned dragons.`);
   const search = exhaustiveCandidates(data, input);
   const baselines = commonFormations.formations.map(baseline => baselineCandidate(data, baseline, search));
-  const all = [...search.candidates, ...baselines.filter(item => item.candidate).map(item => item.candidate)];
+  const all = [...search.candidates];
+  for (const baseline of baselines.filter(item => item.candidate)) {
+    const expertCandidate = baseline.candidate;
+    const existing = all.find(candidate => candidate.id === expertCandidate.id);
+    if (existing) {
+      existing.expert_prior = expertCandidate.expert_prior;
+      baseline.candidate = existing;
+    }
+    else all.push(expertCandidate);
+  }
   const comparison = { includeCapacity: input.capacitySensitive, troopPreservation: input.troopPreservation };
   const bestByTrio = new Map();
   for (const candidate of all) {
-    const key = portfolioCandidateKey(candidate);
+    const key = candidate.expert_prior ? `expert:${candidate.id}` : portfolioCandidateKey(candidate);
     const current = bestByTrio.get(key);
     if (!current || policyCompare(candidate, current, comparison) < 0) bestByTrio.set(key, candidate);
   }
   const ranked = [...bestByTrio.values()].sort((left, right) => policyCompare(left, right, comparison));
-  let allocation;
+  const qualifiedRanked = ranked.filter(candidate => candidate.metrics.competitive_viability.qualified);
+  let mechanicalAllocation;
   let alternative = null;
+  let qualifiedAllocationUsed = false;
   if (reusePolicy === "allow_reuse") {
-    if (ranked.length < formationCount) throw new Error("Not enough distinct candidate formations exist for the requested portfolio.");
-    allocation = { selected: ranked.slice(0, formationCount).map((candidate, rank) => ({ candidate, rank })), rankCost: sum(Array.from({ length: formationCount }, (_, rank) => rank)) };
+    const allocationPool = qualifiedRanked.length >= formationCount ? qualifiedRanked : ranked;
+    if (allocationPool.length < formationCount) throw new Error("Not enough distinct candidate formations exist for the requested portfolio.");
+    mechanicalAllocation = { selected: allocationPool.slice(0, formationCount).map(candidate => ({ candidate, rank: ranked.indexOf(candidate) })), rankCost: sum(allocationPool.slice(0, formationCount).map(candidate => ranked.indexOf(candidate))) };
+    qualifiedAllocationUsed = allocationPool === qualifiedRanked;
   } else {
-    const selected = globalDisjointPortfolio(ranked, formationCount);
-    allocation = selected.primary;
-    alternative = selected.alternative;
-    if (!allocation) throw new Error("No globally valid disjoint formation portfolio exists for the supplied roster.");
+    let selected = globalDisjointPortfolio(qualifiedRanked, formationCount);
+    qualifiedAllocationUsed = Boolean(selected.primary);
+    if (!selected.primary) selected = globalDisjointPortfolio(ranked, formationCount);
+    const remap = value => value ? {
+      selected: value.selected.map(item => ({ candidate: item.candidate, rank: ranked.indexOf(item.candidate) })),
+      rankCost: sum(value.selected.map(item => ranked.indexOf(item.candidate))),
+    } : null;
+    mechanicalAllocation = remap(selected.primary);
+    alternative = remap(selected.alternative);
+    if (!mechanicalAllocation) throw new Error("No globally valid disjoint formation portfolio exists for the supplied roster.");
   }
+  const expertCandidates = baselines
+    .filter(item => expertPriorEligible(item, input))
+    .map(item => item.candidate)
+    .sort((left, right) => policyCompare(left, right, comparison));
+  const expertSearch = reusePolicy === "allow_reuse"
+    ? expertCandidates.length >= formationCount ? { primary: { selected: expertCandidates.slice(0, formationCount).map(candidate => ({ candidate, rank: ranked.indexOf(candidate) })) } } : { primary: null }
+    : globalDisjointPortfolio(expertCandidates, formationCount);
+  const expertAllocation = expertSearch.primary ? {
+    selected: expertSearch.primary.selected.map(item => ({ candidate: item.candidate, rank: ranked.indexOf(item.candidate) })),
+    rankCost: sum(expertSearch.primary.selected.map(item => ranked.indexOf(item.candidate))),
+  } : null;
+  const useExpertPrior = input.competitive.resolved === "endgame" && !input.powerComparable && expertAllocation;
+  const allocation = useExpertPrior ? expertAllocation : mechanicalAllocation;
+  if (useExpertPrior && allocationSignature(mechanicalAllocation) !== allocationSignature(expertAllocation)) alternative = mechanicalAllocation;
+  const selectionBasis = useExpertPrior ? "expert_prior_default" : qualifiedAllocationUsed ? "globally_ranked_qualified" : "globally_ranked_fallback";
   const selectedFormations = allocation.selected.map((item, index) => ({
     priority: index + 1,
     global_candidate_rank: item.rank + 1,
@@ -1017,14 +1211,16 @@ export function planFormationPortfolio(data, commonFormations, rawInput) {
       model: "dragonfire_global_formation_portfolio_v1",
       evidence_source: path.relative(ROOT, DATA_PATH).replaceAll("\\", "/"),
       common_baselines_source: path.relative(ROOT, BASELINES_PATH).replaceAll("\\", "/"),
+      recommendation_rules_source: path.relative(ROOT, RECOMMENDATION_RULES_PATH).replaceAll("\\", "/"),
       objective: input.objective,
-      selection_policy: "Globally minimize the sum of full-search candidate ranks subject to the requested dragon-reuse policy. For troop preservation, candidate ranks use direct coverage, troop safety, the weakest-lane level-curve capacity floor, documented preservation tier, total level-curve capacity proxy, exact preservation score, reliability, synergy, troop fit, lane fit, comparable Power, and diagnostic tie-breaks.",
+      selection_policy: "Apply competitive-viability gates, then globally minimize the sum of full-search candidate ranks subject to the requested dragon-reuse policy. When endgame Power is not comparable, a complete legal expert-recommended portfolio is the conservative default and the mechanically ranked portfolio is retained as an alternative.",
     },
     limitations: [
       "This planner enumerates documented mechanics; it is not a battle-outcome, win-rate, or casualty simulator.",
       "Troop-preservation weights are ordinal planning policy, not estimated casualties or equivalent troop counts.",
       "Unknown Habit levels and variable Habit proc rates remain unknown and receive no invented reliability value.",
       "Recorded Star scalars are reported but are not applied to capacity because the installed data does not establish a complete final-stat formula.",
+      "Competitive viability and expert status are reviewed policy evidence, not simulated win rates or universal rarity scores.",
     ],
     request_interpretation: {
       request_mode: "formation_portfolio",
@@ -1044,6 +1240,7 @@ export function planFormationPortfolio(data, commonFormations, rawInput) {
       dragons_army: input.dragonsArmy,
       capacity_basis: "Level curve plus Dragon's Army only; recorded Star scalars are not applied.",
       power_comparable: input.powerComparable,
+      competitive_context: input.competitive,
     },
     search_summary: {
       legal_dragons: search.pool.length,
@@ -1051,18 +1248,22 @@ export function planFormationPortfolio(data, commonFormations, rawInput) {
       lane_orders_evaluated: search.laneOrdersEvaluated,
       full_trio_troop_candidates: search.candidates.length,
       globally_ranked_trios: ranked.length,
+      competitively_qualified_ranked_trios: qualifiedRanked.length,
       allocation_scope: "The disjoint search uses every globally ranked legal trio, not a truncated Pareto-finalist list.",
     },
     selected_formations: selectedFormations,
     allocation_attestation: {
       selected: summarizeAllocation(allocation),
       strongest_alternative: summarizeAllocation(alternative),
+      expert_baseline_portfolio: summarizeAllocation(expertAllocation),
+      selection_basis: selectionBasis,
       greedy_selection_used: false,
       exhaustive_candidate_pool_used: true,
     },
     common_baselines: baselines.map(item => ({ id: item.id, name: item.name, status: item.status, reasons: item.reasons, candidate: item.candidate ? summarizeCandidate(data, item.candidate) : null })),
   };
   result.validation = validatePortfolioResult(result);
+  result.strategic_qualification = strategicQualification(allocation.selected.map(item => item.candidate), input, selectionBasis);
   if (!result.validation.valid) throw new Error(`Portfolio result failed output validation: ${result.validation.failures.join(" ")}`);
   return result;
 }
@@ -1242,6 +1443,8 @@ export function planBatchRecommendations(data, commonFormations, raw) {
     scenarios: planned.map((item, index) => {
       const primary = item.planner_result.primary_candidate;
       const chosen = selected[index].candidate;
+      const selectionBasis = chosen.id === primary.id ? item.planner_result.strategic_qualification.selection_basis : "disjoint_pareto_override";
+      const qualification = strategicQualification([chosen], validatePlannerInput(data, item.input), selectionBasis);
       const candidates = requestMode === "top_n_per_matchup" ? uniqueCandidateChoices(item.planner_result).slice(0, topN) : [chosen];
       const alternative = item.planner_result.pareto_finalists.find(candidate => candidate.id !== chosen.id) || null;
       return {
@@ -1263,6 +1466,7 @@ export function planBatchRecommendations(data, commonFormations, raw) {
           pareto_rank: selected[index].rank + 1,
           selection_policy: reusePolicy === "disjoint_armies" ? "Lowest-total-rank allocation across documented Pareto finalists with no dragon reused between scenarios." : "Planner primary under the documented deterministic lexicographic policy.",
         },
+        strategic_qualification: qualification,
         coverage_matrix: chosen.threat_coverage,
         gate_report: chosen.gate_report,
         decision_evidence: chosen.decision_evidence,
@@ -1276,6 +1480,12 @@ export function planBatchRecommendations(data, commonFormations, raw) {
   result.cross_scenario_summary = {
     selected_formations: result.scenarios.map(scenario => ({ scenario_id: scenario.scenario_id, candidate_id: scenario.selected_candidates[0].id, dragons: summaryDragonSlugs(scenario.selected_candidates[0]), troop_type: scenario.selected_candidates[0].formation.troop_type })),
     repeated_dragons: Object.entries(result.scenarios.flatMap(scenario => summaryDragonSlugs(scenario.selected_candidates[0])).reduce((counts, slug) => ({ ...counts, [slug]: (counts[slug] || 0) + 1 }), {})).filter(([, count]) => count > 1).map(([slug]) => slug),
+  };
+  result.strategic_qualification = {
+    qualified: result.scenarios.every(scenario => scenario.strategic_qualification.qualified),
+    status: result.scenarios.every(scenario => scenario.strategic_qualification.qualified) ? "qualified" : "not_strategically_qualified",
+    failures: result.scenarios.flatMap(scenario => scenario.strategic_qualification.failures.map(failure => `${scenario.scenario_id}: ${failure}`)),
+    meaning: "Aggregate strategic qualification covers each selected scenario and remains separate from structural validation.",
   };
   result.validation = validateBatchResult(result);
   if (!result.validation.valid) throw new Error(`Batch result failed output validation: ${result.validation.failures.join(" ")}`);
@@ -1320,8 +1530,8 @@ export function renderBatchMarkdown(result) {
     }
     lines.push("", "### Gates and investment", "", "| Dragon | Ability | State | Requirement / reason |", "|---|---|---|---|");
     for (const gate of scenario.gate_report) lines.push(`| ${markdownCell(gate.dragon)} | ${markdownCell(gate.ability)} | ${markdownCell(gate.state)} | ${markdownCell(gate.reason || "Active under supplied progression")} |`);
-    lines.push("", "### Common-baseline check", "");
-    lines.push("Evaluated under the supplied roster and the troop options listed above. Common status gives no scoring bonus.", "");
+    lines.push("", "### Expert/common-baseline check", "");
+    lines.push("Evaluated under the supplied roster and troop options. Expert-recommended status is a disclosed positive prior, not an exemption from evidence or matchup gates.", "");
     for (const baseline of scenario.common_baselines) {
       const comparison = baseline.candidate ? ` Candidate \`${baseline.candidate.id}\`; direct threats ${baseline.candidate.metrics.covered_threat_count} versus selected ${candidate.metrics.covered_threat_count}; affinity matches ${baseline.candidate.metrics.affinity_count} versus selected ${candidate.metrics.affinity_count}.` : "";
       lines.push(`- ${baseline.name}: **${baseline.status}**${baseline.reasons.length ? ` — ${baseline.reasons.join(" ")}` : ""}.${comparison}`);
@@ -1334,9 +1544,11 @@ export function renderBatchMarkdown(result) {
       if (claim.claim_type === "producer_payoff") lines.push(`- ${claim.effect}: ${claim.producer.dragon} ${claim.producer.ability} → ${claim.consumer.dragon} ${claim.consumer.ability}.`);
       if (claim.claim_type === "formation_selection") lines.push(`- Formation records: ${claim.evidence.map(item => `${item.canonical_source || "unknown source"} → ${item.encyclopedia_pointer || "unknown pointer"}`).join("; ")}.`);
     }
-    lines.push("", "### Audit status", "", `Selected candidate: \`${scenario.selection_attestation.selected_candidate_id}\`; planner primary: \`${scenario.selection_attestation.planner_primary_id}\`; selection rule: ${scenario.selection_attestation.selection_policy}`);
+    lines.push("", "### Audit status", "", `Selected candidate: \`${scenario.selection_attestation.selected_candidate_id}\`; planner primary: \`${scenario.selection_attestation.planner_primary_id}\`; selection rule: ${scenario.selection_attestation.selection_policy}`, `Strategic qualification: **${scenario.strategic_qualification.status}** (${scenario.strategic_qualification.qualified}).`);
   }
-  lines.push("", "## Validation", "", "`validation.valid: true`. This is a mechanics-constrained comparison, not a win-rate prediction.");
+  lines.push("", "## Structural validation", "", "`validation.valid: true`.", "", "## Strategic qualification", "", `Status: **${result.strategic_qualification.status}**; qualified: **${result.strategic_qualification.qualified}**.`);
+  if (result.strategic_qualification.failures.length) lines.push("", ...result.strategic_qualification.failures.map(failure => `- ${failure}`));
+  lines.push("", "This is a mechanics-constrained comparison, not a win-rate prediction.");
   return `${lines.join("\n")}\n`;
 }
 
@@ -1350,15 +1562,16 @@ export function renderPortfolioMarkdown(result) {
     `Roster preflight: verified complete with ${result.roster_preflight.declared_owned_dragons} owned dragons${result.roster_preflight.expected_visible_dragons == null ? "" : `; expected visible count ${result.roster_preflight.expected_visible_dragons}`}.`,
     `Troop availability: ${result.troop_preflight.available_troops.join(", ")} (${result.troop_preflight.source}).`,
     `Capacity basis: ${result.input_summary.capacity_basis}`,
+    `Competitive context: requested **${result.input_summary.competitive_context.requested}**, resolved **${result.input_summary.competitive_context.resolved}**. Selection basis: **${result.allocation_attestation.selection_basis}**.`,
     "",
-    "| Priority | Candidate ID | Left Flank | Vanguard | Right Flank | Shared troop | Preservation | Capacity proxy | Global rank |",
-    "|---:|---|---|---|---|---|---:|---:|---:|",
+    "| Priority | Candidate ID | Left Flank | Vanguard | Right Flank | Shared troop | Viability | Evidence prior | Preservation | Capacity proxy | Global rank |",
+    "|---:|---|---|---|---|---|---|---|---:|---:|---:|",
     ...result.selected_formations.map(item => {
       const candidate = item.candidate;
-      return `| ${item.priority} | ${markdownCell(candidate.id)} | ${markdownCell(candidate.formation.left_flank)} | ${markdownCell(candidate.formation.vanguard)} | ${markdownCell(candidate.formation.right_flank)} | ${markdownCell(candidate.formation.troop_type)} | ${markdownCell(candidate.metrics.troop_preservation.tier_label)} (${markdownCell(candidate.metrics.troop_preservation.score)}) | ${markdownCell(candidate.metrics.modeled_team_capacity)} | ${item.global_candidate_rank} |`;
+      return `| ${item.priority} | ${markdownCell(candidate.id)} | ${markdownCell(candidate.formation.left_flank)} | ${markdownCell(candidate.formation.vanguard)} | ${markdownCell(candidate.formation.right_flank)} | ${markdownCell(candidate.formation.troop_type)} | ${candidate.metrics.competitive_viability.qualified ? "Qualified" : "Not qualified"} | ${candidate.expert_prior ? "Expert-recommended" : "Generated"} | ${markdownCell(candidate.metrics.troop_preservation.tier_label)} (${markdownCell(candidate.metrics.troop_preservation.score)}) | ${markdownCell(candidate.metrics.modeled_team_capacity)} | ${item.global_candidate_rank} |`;
     }),
     "",
-    `Allocation audit: total rank cost **${result.allocation_attestation.selected.total_rank_cost}**; greedy selection used: **false**; exhaustive candidate pool used: **true**.`,
+    `Allocation audit: total rank cost **${result.allocation_attestation.selected.total_rank_cost}**; selection basis **${result.allocation_attestation.selection_basis}**; greedy selection used: **false**; exhaustive candidate pool used: **true**.`,
   ];
   for (const item of result.selected_formations) {
     const candidate = item.candidate;
@@ -1372,10 +1585,14 @@ export function renderPortfolioMarkdown(result) {
     if (item.risks.length) lines.push("", "### Risks and unknowns", "", ...item.risks.map(risk => `- ${risk.detail}`));
     lines.push("", "### Evidence locators", "", ...candidate.evidence.map(entry => `- ${entry.canonical_source || "unknown source"} → ${entry.encyclopedia_pointer || "unknown pointer"}`));
   }
-  lines.push("", "## Common-baseline check", "", ...result.common_baselines.map(baseline => `- ${baseline.name}: **${baseline.status}**${baseline.reasons.length ? ` — ${baseline.reasons.join(" ")}` : baseline.candidate ? ` — candidate \`${baseline.candidate.id}\`` : ""}.`));
+  lines.push("", "## Expert/common-baseline check", "", ...result.common_baselines.map(baseline => `- ${baseline.name}: **${baseline.status}**${baseline.reasons.length ? ` — ${baseline.reasons.join(" ")}` : baseline.candidate ? ` — candidate \`${baseline.candidate.id}\`${baseline.candidate.expert_prior ? "; expert-recommended prior retained" : ""}` : ""}.`));
+  if (result.allocation_attestation.expert_baseline_portfolio) lines.push("", "## Expert portfolio benchmark", "", `Candidate IDs: ${result.allocation_attestation.expert_baseline_portfolio.candidate_ids.map(id => `\`${id}\``).join(", ")}; global rank cost ${result.allocation_attestation.expert_baseline_portfolio.total_rank_cost}.`);
   if (result.allocation_attestation.strongest_alternative) lines.push("", "## Strongest alternative portfolio", "", `Candidate IDs: ${result.allocation_attestation.strongest_alternative.candidate_ids.map(id => `\`${id}\``).join(", ")}; total rank cost ${result.allocation_attestation.strongest_alternative.total_rank_cost}.`);
   lines.push("", "## Limitations", "", ...result.limitations.map(limitation => `- ${limitation}`));
-  lines.push("", "## Validation", "", "`validation.valid: true`. This is a documented-mechanics portfolio comparison, not a simulated win-rate or predicted casualty total.");
+  lines.push("", "## Structural validation", "", "`validation.valid: true`. The count, non-overlap, roster preflight, candidate IDs, and evidence references are structurally valid.");
+  lines.push("", "## Strategic qualification", "", `Status: **${result.strategic_qualification.status}**; qualified: **${result.strategic_qualification.qualified}**; selection basis: **${result.strategic_qualification.selection_basis}**.`);
+  if (result.strategic_qualification.failures.length) lines.push("", ...result.strategic_qualification.failures.map(failure => `- ${failure}`));
+  lines.push("", "This remains a documented-mechanics portfolio comparison, not a simulated win-rate or predicted casualty total.");
   return `${lines.join("\n")}\n`;
 }
 

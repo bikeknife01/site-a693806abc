@@ -219,6 +219,120 @@ test("formation portfolios default to globally selected non-overlapping armies",
   for (const formation of result.selected_formations) assert.ok(report.includes(formation.candidate.id));
 });
 
+test("unknown-Power endgame portfolios conservatively select the complete expert formation set", () => {
+  const roster = baselineRoster.map(dragon => ({ ...dragon, power: null }));
+  const result = planFormationPortfolio(data, common, {
+    formation_count: 3,
+    objective: "damage_and_survivability",
+    roster,
+    roster_preflight: { completeness: "complete", expected_visible_dragons: roster.length },
+  });
+  assert.equal(result.input_summary.competitive_context.resolved, "endgame");
+  assert.equal(result.allocation_attestation.selection_basis, "expert_prior_default");
+  assert.equal(result.strategic_qualification.status, "qualified_with_expert_prior");
+  assert.equal(result.strategic_qualification.qualified, true);
+  assert.deepEqual(new Set(result.selected_formations.map(item => item.candidate.expert_prior?.formation_id)), new Set(common.formations.map(item => item.id)));
+  assert.ok(result.selected_formations.every(item => item.candidate.metrics.competitive_viability.qualified));
+  assert.ok(result.selected_formations.every(item => item.global_candidate_rank > 0));
+  assert.ok(result.allocation_attestation.strongest_alternative);
+  const report = renderPortfolioMarkdown(result);
+  assert.match(report, /Strategic qualification/);
+  assert.match(report, /qualified_with_expert_prior/);
+});
+
+test("endgame ordinary-combat policy fails strategically closed on unsupported Rare dragons", () => {
+  const roster = ["Bevlorin", "Shimmer", "Arrax"].map(name => entry(name));
+  const result = planFormationPortfolio(data, { formations: [] }, {
+    formation_count: 1,
+    objective: "damage_and_survivability",
+    competitive_context: "endgame",
+    roster,
+    roster_preflight: { completeness: "complete", expected_visible_dragons: roster.length },
+  });
+  assert.equal(result.validation.valid, true);
+  assert.equal(typeof result.strategic_qualification.qualified, "boolean");
+  assert.equal(result.strategic_qualification.qualified, false);
+  assert.deepEqual(result.strategic_qualification.unsupported_rare_dragons.sort(), ["Arrax", "Bevlorin", "Shimmer"]);
+});
+
+test("reviewed Rare exceptions remain qualified in endgame ordinary combat", () => {
+  const roster = ["Thunderstrike", "Shadowrend", "Velar"].map(name => entry(name));
+  const result = planFormationPortfolio(data, { formations: [] }, {
+    formation_count: 1,
+    objective: "damage_and_survivability",
+    competitive_context: "endgame",
+    roster,
+    roster_preflight: { completeness: "complete", expected_visible_dragons: roster.length },
+  });
+  assert.equal(result.strategic_qualification.qualified, true);
+  assert.deepEqual(result.selected_formations[0].candidate.metrics.competitive_viability.reviewed_rare_exceptions.sort(), ["Shadowrend", "Thunderstrike"]);
+});
+
+test("explicit Rare override and Siege scope are audited exceptions rather than universal rarity scoring", () => {
+  const roster = ["Bevlorin", "Shimmer", "Arrax"].map(name => entry(name));
+  const overridden = planFormationPortfolio(data, { formations: [] }, {
+    formation_count: 1,
+    objective: "damage_and_survivability",
+    competitive_context: "endgame",
+    allow_unproven_rare: true,
+    roster,
+    roster_preflight: { completeness: "complete", expected_visible_dragons: roster.length },
+  });
+  assert.equal(overridden.strategic_qualification.qualified, true);
+  assert.equal(overridden.selected_formations[0].candidate.metrics.competitive_viability.allow_unproven_rare, true);
+
+  const siege = planFormationPortfolio(data, { formations: [] }, {
+    formation_count: 1,
+    objective: "siege",
+    competitive_context: "endgame",
+    available_troops: ["Siege"],
+    roster,
+    roster_preflight: { completeness: "complete", expected_visible_dragons: roster.length },
+  });
+  assert.equal(siege.strategic_qualification.qualified, true);
+  assert.equal(siege.selected_formations[0].candidate.metrics.competitive_viability.siege_exception_applied, true);
+});
+
+test("known comparable Power permits mechanics-ranked displacement of the expert prior", () => {
+  const result = planFormationPortfolio(data, common, {
+    formation_count: 3,
+    objective: "damage_and_survivability",
+    competitive_context: "endgame",
+    roster: baselineRoster,
+    roster_preflight: { completeness: "complete", expected_visible_dragons: baselineRoster.length },
+  });
+  assert.equal(result.input_summary.power_comparable, true);
+  assert.equal(result.allocation_attestation.selection_basis, "globally_ranked_qualified");
+  assert.equal(result.strategic_qualification.qualified, true);
+});
+
+test("materially underdeveloped expert line does not receive the unknown-Power endgame default", () => {
+  const roster = baselineRoster.map(dragon => ({ ...dragon, power: null }));
+  roster.find(dragon => dragon.dragon === "Velar").level = 44;
+  const result = planFormationPortfolio(data, common, {
+    formation_count: 3,
+    objective: "damage_and_survivability",
+    competitive_context: "endgame",
+    roster,
+    roster_preflight: { completeness: "complete", expected_visible_dragons: roster.length },
+  });
+  assert.notEqual(result.allocation_attestation.selection_basis, "expert_prior_default");
+  assert.equal(result.allocation_attestation.expert_baseline_portfolio, null);
+  assert.equal(result.strategic_qualification.qualified, false);
+});
+
+test("hybrid objective uses de-duplicated magnitude-aware ordinal components", () => {
+  const result = planRecommendations(data, { formations: [] }, {
+    roster: [entry("Velar"), entry("Vermithor"), entry("Rhysarion")],
+    objective: "damage_and_survivability",
+  });
+  const assessment = result.primary_candidate.metrics.objective_assessment;
+  assert.equal(assessment.method, "deduplicated_magnitude_reliability_aware_ordinal_v1");
+  assert.ok(assessment.damage_quality > 0);
+  const keys = assessment.components.map(item => `${item.dragon}|${item.exact_text}`);
+  assert.equal(new Set(keys).size, keys.length);
+});
+
 test("formation portfolios fail closed on a screenshot roster-count mismatch", () => {
   assert.throws(() => planFormationPortfolio(data, common, {
     formation_count: 2,
@@ -239,6 +353,7 @@ test("batch planner consolidates all three common enemy formations into an audit
   });
   assert.equal(result.scenarios.length, 3);
   assert.equal(result.validation.valid, true);
+  assert.equal(typeof result.strategic_qualification.qualified, "boolean");
   assert.equal(result.roster_preflight.verified_complete, true);
   for (const scenario of result.scenarios) {
     assert.equal(scenario.selected_candidates.length, 1);
@@ -250,7 +365,8 @@ test("batch planner consolidates all three common enemy formations into an audit
   }
   const markdown = renderBatchMarkdown(result);
   assert.match(markdown, /Threat coverage/);
-  assert.match(markdown, /Common-baseline check/);
+  assert.match(markdown, /Expert\/common-baseline check/);
+  assert.match(markdown, /Strategic qualification/);
   assert.match(markdown, /Left Flank/);
 });
 

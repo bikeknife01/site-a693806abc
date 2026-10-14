@@ -1,15 +1,21 @@
 {
   "metadata": {
-    "purpose": "Canonical user-confirmed common formations used as comparison baselines in formation recommendations.",
-    "schema_version": "1.0.0",
-    "updated": "2026-10-03",
-    "policy": "All legal common formations are mandatory candidate-ledger baselines for ordinary combat formation recommendations, not predetermined winners. Applicability tags describe intended strengths and affect comparison; they are not permission to omit a legal baseline. Evaluate each line under the user's actual roster, progression, troop availability, objective, and opponent. Apply the same evidence gates and comparison axes used for every other candidate. A common formation remains fully eligible to be the final recommendation when it is the best-supported line. Specialized non-combat or Siege-only requests may mark combat baselines inapplicable with an explicit reason."
+    "purpose": "Canonical user-confirmed expert formations used as recommendation priors and comparison baselines.",
+    "schema_version": "1.1.0",
+    "updated": "2026-10-13",
+    "policy": "All legal expert formations are mandatory candidate-ledger baselines for ordinary combat recommendations. Their expert-recommended status is positive formation-level evidence, not a predetermined winner or an exemption from progression, troop, matchup, mechanics, and lifecycle gates. When endgame Power is not comparable, prefer a complete legal expert portfolio as the conservative default and retain the mechanically ranked portfolio as an alternative. Specialized non-combat or Siege-only requests may mark combat baselines inapplicable with an explicit reason."
   },
   "formations": [
     {
       "id": "velar-vhagar-moondancer-shieldbearers",
       "name": "Velar / Vhagar / Moondancer",
-      "evidence_state": "user_confirmed_common",
+      "evidence_state": "user_confirmed_expert_recommended",
+      "recommendation_prior": {
+        "class": "expert_formation",
+        "strength": "strong",
+        "use": "positive_prior",
+        "displacement_rule": "May be displaced by known comparable player Power or material objective, matchup, progression, or availability evidence."
+      },
       "formation": {
         "troop_type": "Shieldbearers",
         "left_flank": "Velar",
@@ -27,12 +33,18 @@
         "power": "unknown"
       },
       "strategic_basis": "Common all-around high-damage formation with affinity-perfect Shieldbearers, Vhagar's directional Vanguard support, and Velar-to-Moondancer Rising Tide opportunities.",
-      "source": "User-confirmed common formation supplied on 2026-10-01. Mechanics require fresh validation against canonical dragon records for every recommendation."
+      "source": "User-confirmed common formation supplied on 2026-10-01 and confirmed as an expert-recommended formation on 2026-10-13. Mechanics require fresh validation against canonical dragon records for every recommendation."
     },
     {
       "id": "vermithor-rhysarion-venator-spearmen",
       "name": "Vermithor / Rhysarion / Venator",
-      "evidence_state": "user_confirmed_common",
+      "evidence_state": "user_confirmed_expert_recommended",
+      "recommendation_prior": {
+        "class": "expert_formation",
+        "strength": "strong",
+        "use": "positive_prior",
+        "displacement_rule": "May be displaced by known comparable player Power or material objective, matchup, progression, or availability evidence."
+      },
       "formation": {
         "troop_type": "Spearmen",
         "left_flank": "Vermithor",
@@ -50,12 +62,18 @@
         "power": "unknown"
       },
       "strategic_basis": "Common damage-and-survivability formation with affinity-perfect Spearmen, Vermithor's Protect and mitigation, Rhysarion's Recovery and Vanguard support, and Venator's sustained Basic-Attack pressure.",
-      "source": "User-confirmed common formation supplied on 2026-10-01. Mechanics require fresh validation against canonical dragon records for every recommendation."
+      "source": "User-confirmed common formation supplied on 2026-10-01 and confirmed as an expert-recommended formation on 2026-10-13. Mechanics require fresh validation against canonical dragon records for every recommendation."
     },
     {
       "id": "malachite-seasmoke-kalspire-cavalry-counter",
       "name": "Malachite / Seasmoke / Kalspire",
-      "evidence_state": "user_confirmed_common",
+      "evidence_state": "user_confirmed_expert_recommended",
+      "recommendation_prior": {
+        "class": "expert_formation",
+        "strength": "strong",
+        "use": "positive_prior",
+        "displacement_rule": "May be displaced by known comparable player Power or material objective, matchup, progression, or availability evidence."
+      },
       "formation": {
         "troop_type": "Cavalry",
         "left_flank": "Malachite",
@@ -73,7 +91,7 @@
         "power": "unknown"
       },
       "strategic_basis": "Common well-rounded Cavalry formation and expert counter baseline into Velar/Vhagar/Moondancer with Shieldbearers, combining troop advantage, Malachite sustain, Seasmoke enemy-buff removal, and Kalspire pressure.",
-      "source": "User-confirmed common formation and counter supplied on 2026-10-01. Mechanics require fresh validation against canonical dragon records for every recommendation."
+      "source": "User-confirmed common formation and counter supplied on 2026-10-01 and confirmed as an expert-recommended formation on 2026-10-13. Mechanics require fresh validation against canonical dragon records for every recommendation."
     }
   ]
 }

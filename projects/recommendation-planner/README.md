@@ -1,11 +1,13 @@
 # Deterministic recommendation planner
 
-The planner exhaustively evaluates every legal owned trio, all six lane orders, and every available shared troop. It always evaluates each legal common formation in its declared lane order and troop, even when that baseline is dominated or becomes the primary recommendation.
+The planner exhaustively evaluates every legal owned trio, all six lane orders, and every available shared troop. It always evaluates each legal expert/common formation in its declared lane order and troop. Those formations carry a disclosed expert recommendation prior but remain subject to normal legality and evidence gates.
 
 It applies each dragon's own level, Star Rank, Habit levels, optional visible Power, and the account-level Dragon's Army capacity upgrade. The result contains the mandatory candidate ledger, a Pareto frontier, deterministic finalists, timing windows, an explicitly limited capacity proxy, and source locators. It does not estimate win rates or invent undocumented combat formulas.
 
-The objective-fit axis uses only documented active mechanics: damage-bearing abilities,
-damage amplification, producer/payoff chains, and scheduled pressure for high-damage
+The objective-fit axis uses only documented active mechanics. Damage and amplification
+components are de-duplicated and use stated magnitudes, target scope, conditions, and
+known proc reliability as an ordinal comparison—not a damage simulation. Producer/payoff
+chains and scheduled pressure remain separate evidence for high-damage
 requests; documented Recovery, Protect, Resistance, mitigation, damage, and timing for
 damage-and-survivability requests; active Recovery, Protect, Resistance, Evade, Cleanse,
 mitigation, reliability, target coverage, and negative side effects for troop-preservation
@@ -73,7 +75,13 @@ universal score. Preservation component weights are an ordinal planner policy fo
 comparing documented mechanics; they are not a casualty formula or estimates of saved
 troops.
 
-Common formations are loaded from `data/common_formations.json`. A baseline is reported as `evaluated`, `illegal`, or `inapplicable`, with reasons. Applicability never removes a legal ordinary-combat baseline from the ledger.
+Expert formations are loaded from `data/common_formations.json`. A baseline is reported as `evaluated`, `illegal`, or `inapplicable`, with reasons. Applicability never removes a legal ordinary-combat baseline from the ledger. For endgame portfolios with unknown or partial Power, a complete legal expert portfolio is the conservative default; the strongest mechanics-ranked portfolio remains an explicit alternative.
+
+`competitive_context` accepts `auto`, `endgame`, or `unrestricted`. `auto` resolves to
+endgame when at least nine owned dragons are Level 45+ and Rank 6+. In endgame ordinary
+combat, Rare dragons are retained for audit but are not strategically qualified unless
+they are Thunderstrike or Shadowrend. Siege objectives/troops are scoped exceptions. A
+caller may explicitly set `allow_unproven_rare: true`; this is always disclosed.
 
 ## Non-overlapping formation portfolios
 
@@ -184,8 +192,11 @@ node projects/recommendation-planner/recommend.mjs --input batch.json --format j
 node projects/recommendation-planner/recommend.mjs --input batch.json --format markdown --output batch-report.md
 ```
 
-The batch output contains `validation`. A caller must present no recommendation if
-`validation.valid` is not true. The Markdown renderer includes the selected formation,
+Planner output separates `validation` from `strategic_qualification`. `validation.valid`
+checks structure, roster completeness, evidence presence, and non-overlap; it is not an
+attestation that the result is a strategically credible endgame recommendation. A caller
+must present no definitive recommendation unless both `validation.valid` and
+`strategic_qualification.qualified` are true. The Markdown renderer includes the selected formation,
 per-threat direct/probabilistic/partial/none coverage, progression gates, exact-evidence
 links in JSON, common-baseline check, alternative and reversal conditions, risks, and the
 selection attestation. Keep the output until the caller has verified and delivered it.

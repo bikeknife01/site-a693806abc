@@ -4,19 +4,22 @@ This handoff describes the recommendation data set. Apply the ordered contract i
 `data/recommendation_rules.json`, then use `data/dragon_application_knowledge.json` to
 discover the complete production-named client roster and obtain level-specific base
 stats. Load `data/common_formations.json` for every formation recommendation so the
-user-confirmed common formations enter the candidate ledger whenever legal for an
-ordinary combat recommendation.
+user-confirmed expert-recommended formations enter the candidate ledger with their
+formation-level prior whenever legal for an ordinary combat recommendation.
 For reviewed dragons, `data/dragons/<name>.json` remains primary for exact mechanics.
 Its optional `evidence` block distinguishes screenshot-audited records from explicitly
 approved cross-site verification. Client-only records must be labeled as such and their
 evidence limitations disclosed.
 
-Common formations are comparison baselines, not fixed winners or sacrificial controls.
+Expert formations are positive recommendation priors and comparison baselines, not fixed winners or sacrificial controls.
 Recompute them under the player's actual roster, levels, Stars, Habit levels, Power, and
 troop availability. Apply the same objective, mechanics, lane, reliability, timing, and
 matchup tests used for newly constructed candidates. Applicability tags affect the
 comparison but do not remove a legal baseline. Do not exclude or down-rank a common
-formation because it is a baseline; recommend it when it is the best-supported result.
+formation because it is a baseline. When endgame Power is not comparable and a complete
+legal expert portfolio exists, use it as the conservative default while preserving the
+mechanically ranked portfolio as an alternative. Known comparable Power or material
+objective, matchup, progression, or availability evidence may displace that prior.
 
 When shell execution is available and the required progression inputs are known, run
 `projects/recommendation-planner/recommend.mjs` using the input contract documented in
@@ -200,8 +203,10 @@ The game's effect menu places Bleed, Panic, and Burn under “Positive Effects,�
   combat cycle.
 - Star Rank controls stat growth and Habit unlocks but is not a direct power ranking.
   Legendary dragons tend to have more advanced/stronger kit elements than Epic, and
-  Epic than Rare, but rarity is not absolute. Rare/blue dragons can have exceptional
-  output or uniquely valuable mechanics; Thunderstrike is a confirmed example.
+  Epic than Rare, but rarity is not absolute. In endgame ordinary combat, Rare dragons
+  are strategically gated unless reviewed as exceptions; Thunderstrike and Shadowrend
+  are confirmed exceptions, and Siege use is scoped separately. This is not a universal
+  strength ranking and may be explicitly overridden with disclosure.
 - Habit skill level is separate from Star Rank. Breedmarks and rarity-matched Rare,
   Epic, or Legendary Cores raise each Habit from Level 1 through Level 5. Use the
   matching `upgrade_levels` value when known. Treat investment as secondary but
@@ -298,6 +303,9 @@ request them when a close comparison cannot be resolved from dragon kits and Sta
   `data/common_formations.json`. State briefly why each baseline wins, loses, or is
   inapplicable. If a common formation is strongest, return it as the recommendation and
   compare it with the strongest non-baseline challenger.
+- Keep `validation.valid` and `strategic_qualification.qualified` distinct. Structural
+  validity proves count, non-overlap, roster preflight, IDs, and evidence—not endgame
+  strategic credibility.
 - Cite the relevant dragon file and fields, for example: `data/dragons/antares.json → command.verbatim[2]`, `vanguard.verbatim`, or `habits[0].upgrade_levels["5"]`. For level-sensitive claims, also cite `data/dragon_application_knowledge.json → dragons[name=Antares].level_model.base_stats_by_level.strength.values_by_level[level - 1]`.
 - State whether a claim is transcribed or derived. Roles, scenario bias, synergies, counters, and preferred position are derived; timings, values, targets, affinities, and effect text are transcribed.
 - Check `data/installed_evidence.json` before using client-derived changes. Respect its

@@ -74,7 +74,7 @@ class StrategistContractTests(unittest.TestCase):
         self.assertIn("not as a prefilter", search["common_baselines"])
         self.assertIn("fully eligible candidate", search["common_baseline_eligibility"])
         self.assertIn("recommend it directly", search["common_baseline_eligibility"])
-        self.assertIn("no scoring bonus", search["common_baseline_fairness"])
+        self.assertIn("positive formation-level evidence", search["common_baseline_fairness"])
         self.assertIn("every retained trio", search["lane_permutations"])
         self.assertIn("materially different objectives", search["cross_objective_check"])
         self.assertIn("must not seed, boost, or exempt", search["benchmark_safety"])
@@ -85,9 +85,9 @@ class StrategistContractTests(unittest.TestCase):
         self.assertEqual(self.rules["objective_aliases"]["minimize_troop_loss"], "troop_preservation")
         self.assertEqual(self.rules["objective_aliases"]["highest_tiles"], "highest_tile")
         self.assertIn("internal candidate\n\tledger", self.agent)
-        self.assertIn("exclude, down-rank, or omit a common formation because it is a baseline", self.agent)
+        self.assertIn("Preserve its expert prior", self.agent)
         self.assertIn("If the leader is itself a common baseline", self.agent)
-        self.assertIn("Common-baseline check", self.agent)
+        self.assertIn("Expert/common-baseline check", self.agent)
         self.assertIn("every legal common baseline", self.agent)
         self.assertIn("do not let a broadly competent hybrid win every prompt", self.agent)
         shared_troops = next(item for item in self.rules["decision_flow"] if item["id"] == "shared_troops")
@@ -102,6 +102,13 @@ class StrategistContractTests(unittest.TestCase):
         self.assertIn("independent_matchups", portfolio["independent_matchup_rule"])
         self.assertIn("request_mode: formation_portfolio", portfolio["required_input"])
         self.assertIn("validation.valid", portfolio["required_output"])
+        competitive = self.rules["competitive_viability"]
+        self.assertEqual(competitive["default_context"], "auto")
+        self.assertEqual(
+            {item["dragon_slug"] for item in competitive["reviewed_rare_exceptions"]},
+            {"dragon_generic_thunderstrike", "dragon_generic_shadowrend"},
+        )
+        self.assertIn("strategic_qualification.qualified: true", self.agent)
         self.assertIn("non-overlapping", self.agent)
         self.assertIn("formation_count", self.agent)
         self.assertIn("reuse_policy: disjoint_armies", self.agent)
@@ -110,7 +117,7 @@ class StrategistContractTests(unittest.TestCase):
         self.assertIn("do not ask the user to write a manifest or run commands", self.agent)
 
     def test_instruction_ownership_and_evidence_tiers_are_aligned(self) -> None:
-        self.assertEqual(self.rules["metadata"]["schema_version"], "1.4.0")
+        self.assertEqual(self.rules["metadata"]["schema_version"], "1.5.0")
         self.assertIn("explicitly_reviewed_cross_site_verification", self.rules["evidence_order"])
         self.assertIn("Explicitly reviewed cross-site verification", self.repo_instructions)
         self.assertIn("data/community_simulation_reference.json", self.repo_instructions)
@@ -130,8 +137,8 @@ class StrategistContractTests(unittest.TestCase):
         }
         formations = self.common["formations"]
         self.assertEqual({item["id"] for item in formations}, expected)
-        self.assertIn("fully eligible", self.common["metadata"]["policy"])
-        self.assertIn("not permission to omit", self.common["metadata"]["policy"])
+        self.assertIn("positive formation-level evidence", self.common["metadata"]["policy"])
+        self.assertIn("not a predetermined winner", self.common["metadata"]["policy"])
 
         profiles = {}
         for path in (ROOT / "data" / "dragons").glob("*.json"):
@@ -151,6 +158,8 @@ class StrategistContractTests(unittest.TestCase):
                     self.assertIn(formation["troop_type"], dragon["troop_affinities"]["positive"])
                 for target in item["applicability"]["counter_targets"]:
                     self.assertIn(target, ids)
+                self.assertEqual(item["evidence_state"], "user_confirmed_expert_recommended")
+                self.assertEqual(item["recommendation_prior"]["class"], "expert_formation")
 
     def test_common_formations_match_the_user_benchmarks_without_becoming_fixed_answers(self) -> None:
         benchmark_dir = ROOT / "projects" / "strategist-evaluation" / "benchmarks"
@@ -168,7 +177,7 @@ class StrategistContractTests(unittest.TestCase):
                 self.assertEqual(common["troop_type"], benchmark["troop_type"])
                 for lane in ("left_flank", "vanguard", "right_flank"):
                     self.assertEqual(common[lane], benchmark[lane]["dragon"])
-        self.assertIn("no score boost", self.rules["candidate_search"]["benchmark_safety"])
+        self.assertIn("independently recorded user-confirmed expert recommendation prior", self.rules["candidate_search"]["benchmark_safety"])
 
     def test_season_three_dragons_preserve_availability_and_cross_site_evidence(self) -> None:
         by_name = {item["name"]: item for item in self.app["dragons"]}

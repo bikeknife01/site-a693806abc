@@ -65,6 +65,16 @@ removing its dragons. Use the validated generated Markdown report and preserve i
 candidate IDs, global-allocation attestation, preservation evidence, capacity-proxy
 disclosure, risks, and common-baseline dispositions.
 
+Resolve `competitive_context` through `data/recommendation_rules.json`. Endgame ordinary
+combat excludes unsupported Rare dragons from a qualified selection while retaining them
+for audit; Thunderstrike and Shadowrend are reviewed exceptions, and Siege is separately
+scoped. Do not enable `allow_unproven_rare` without an explicit user request. Treat the
+formations in `data/common_formations.json` as expert-recommended priors, not neutral test
+controls. When endgame Power is not comparable and a complete legal expert portfolio
+exists, use it as the conservative default and retain the mechanics-ranked portfolio as
+an alternative. `validation.valid` is structural only; a definitive recommendation also
+requires `strategic_qualification.qualified`.
+
 For screenshot rosters, the agent—not the user—performs the reviewed transcription through
 `projects/roster-ingestion/roster.mjs`. Record and validate the visible-card count, retain
 the ignored local profile/input/report together, and stop on a mismatch. Planner CLI work

@@ -1,8 +1,8 @@
 {
   "metadata": {
     "purpose": "Canonical decision contract for three-dragon formation recommendations and multi-formation portfolios.",
-    "schema_version": "1.4.0",
-    "updated": "2026-10-12",
+    "schema_version": "1.5.0",
+    "updated": "2026-10-13",
     "policy": "Hard eligibility and evidence constraints are applied before comparative judgment. Strategic weights remain scenario-dependent and are not a universal tier score."
   },
   "evidence_order": [
@@ -40,7 +40,34 @@
     "independent_matchup_rule": "Use independent_matchups only when the user explicitly requests separate hypothetical matchup answers whose dragons need not be deployed simultaneously.",
     "allocation_rule": "Select the complete portfolio globally from the full legal candidate set. Do not choose one formation, remove its dragons, and rerun greedily.",
     "required_input": ["request_mode: formation_portfolio", "formation_count", "reuse_policy"],
-    "required_output": ["candidate_ids", "global_candidate_ranks", "allocation_attestation", "validation.valid"]
+    "required_output": ["candidate_ids", "global_candidate_ranks", "allocation_attestation", "validation.valid", "strategic_qualification.qualified"]
+  },
+  "competitive_viability": {
+    "contexts": ["auto", "endgame", "unrestricted"],
+    "default_context": "auto",
+    "auto_endgame_threshold": {
+      "minimum_owned_dragons_at_or_above_threshold": 9,
+      "minimum_level": 45,
+      "minimum_star_rank": 6,
+      "basis": "A roster with enough mature dragons to field three developed armies is treated as endgame unless the caller explicitly selects unrestricted evaluation."
+    },
+    "ordinary_combat_rare_policy": "In endgame ordinary-combat recommendations, a Rare dragon is strategically unqualified unless it has a reviewed exception or the caller explicitly allows unproven Rare use. This is a deployment-context gate, not a claim that rarity alone measures strength.",
+    "reviewed_rare_exceptions": [
+      {
+        "dragon_slug": "dragon_generic_thunderstrike",
+        "scope": "ordinary_combat",
+        "source": "User-confirmed high-level-play exception on 2026-10-13."
+      },
+      {
+        "dragon_slug": "dragon_generic_shadowrend",
+        "scope": "ordinary_combat",
+        "source": "User-confirmed high-level-play exception on 2026-10-13."
+      }
+    ],
+    "siege_exception": "Rare dragons remain eligible when the requested objective or selected shared troop is Siege; this exception does not carry into ordinary combat.",
+    "explicit_override": "allow_unproven_rare",
+    "fallback_rule": "Retain strategically unqualified candidates in the audit. Select one only when no qualified candidate or complete qualified portfolio exists, and mark the result strategically unqualified.",
+    "unknown_power_rule": "When endgame Power is not comparable and a complete legal disjoint expert portfolio exists, use that expert portfolio as the conservative default. Preserve the mechanically ranked portfolio as an alternative rather than claiming it supersedes expert evidence."
   },
   "decision_flow": [
     {
@@ -84,11 +111,11 @@
     "full_roster_ledger": "When the full roster is in scope and Power is unknown or comparable, inspect every eligible dragon before finalizing the shortlist. For each non-Siege troop type, retain the strongest credible affinity-perfect trio if one exists; separately retain the strongest explicit synergy and objective-specific trios even when they overlap.",
     "common_baselines": "Load data/common_formations.json for every formation recommendation. For ordinary combat, retain each common formation whose three dragons and shared troop type are legal under the user's roster and progression. Treat applicability as objective and matchup evidence, not as a prefilter. Recompute each line under actual inputs rather than assuming the reference Level 50, 6-Star, Level-5 state. A specialized non-combat or Siege-only request may mark a combat baseline inapplicable only with an explicit reason.",
     "common_baseline_eligibility": "A common formation is an ordinary fully eligible candidate, never a control group that must lose. Do not exclude, down-rank, or omit it because it is a baseline; recommend it directly when the same evidence-based comparison shows it is the best-supported line.",
-    "common_baseline_fairness": "Common status guarantees comparison, with no scoring bonus, immunity from evidence gates, or predetermined result. Apply the same mechanics, reliability, lane, troop, timing, Power, objective, and matchup tests to common and newly constructed formations.",
+    "common_baseline_fairness": "Expert-recommended status is positive formation-level evidence, not immunity from legality, progression, troop, matchup, or mechanics gates. Recompute each expert line under the user's actual inputs. When endgame Power is unknown, a complete legal expert portfolio is the conservative default; known comparable Power or material matchup evidence may displace it.",
     "lane_permutations": "For every retained trio, compare all legal Vanguard choices and directional flank beneficiaries before selecting its best lane order.",
     "pairwise_comparison": "Compare retained lines pairwise on the objective profile, unlocked mechanics, reliability, lane value, shared affinity, timing, and known matchup. Record the decisive advantage and material reversal condition internally; do not claim a full-roster optimum from an unreported preselection heuristic.",
     "cross_objective_check": "If the same line wins materially different objectives, explicitly verify why the changed objective does not alter the ordering. A generic hybrid must not win attack and survivability prompts merely because it is broadly competent.",
-    "benchmark_safety": "Evaluation-only benchmark answers must not seed, boost, or exempt a trio. Canonical common formations are included because data/common_formations.json explicitly designates them as comparison baselines, but they receive no score boost or formation-name exception."
+    "benchmark_safety": "Evaluation-only benchmark answers must not seed, boost, or exempt a trio. The formations in data/common_formations.json carry an independently recorded user-confirmed expert recommendation prior and therefore may influence selection only through that disclosed evidence class."
   },
   "objective_profiles": {
     "high_damage": [
