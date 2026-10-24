@@ -48,6 +48,14 @@ projects/game-data-encyclopedia/preview/
 projects/combat-interaction-explorer/dist/
 projects/counter-picking-assistant/dist/
 projects/player-tools-index/dist/
+_site/
+*.tsbuildinfo
+
+# Local credentials and environment overrides (keep distributable examples).
+.env
+.env.*
+!.env.example
+!.env.template
 
 # Local Android/MuMu client payloads. Existing historical files remain tracked;
 # these rules prevent newly copied campaign resources from being added by accident.

@@ -11,6 +11,10 @@ on:
       - "Game_Details/Resources/_extracted/worldmap_background.jpg"
       - "Game_Details/Resources/_extracted/region_color_overlay.png"
       - "Game_Details/Resources/_extracted/mountain_overlay.png"
+      - "Game_Details/Resources/_extracted/seasons/season1/**"
+      - "Game_Details/Resources/_extracted/seasons/season3/**"
+      - "Game_Details/Resources/_publish_atlas_maps.py"
+      - "projects/strategic-atlas-overlays/src/map-selector.html"
       - "projects/game-data-encyclopedia/**"
       - "projects/combat-interaction-explorer/**"
       - "projects/counter-picking-assistant/**"
@@ -51,6 +55,10 @@ jobs:
             Game_Details/Resources/_extracted/worldmap_background.jpg
             Game_Details/Resources/_extracted/region_color_overlay.png
             Game_Details/Resources/_extracted/mountain_overlay.png
+            Game_Details/Resources/_extracted/seasons/season1/
+            Game_Details/Resources/_extracted/seasons/season3/
+            Game_Details/Resources/_publish_atlas_maps.py
+            projects/strategic-atlas-overlays/src/map-selector.html
             projects/game-data-encyclopedia
             projects/combat-interaction-explorer
             projects/counter-picking-assistant
@@ -79,10 +87,7 @@ jobs:
         run: |
           mkdir -p _site/map _site/encyclopedia _site/combat _site/counter
           cp -R projects/player-tools-index/dist/. _site/
-          cp Game_Details/Resources/_extracted/interactive_map.html _site/map/index.html
-          cp Game_Details/Resources/_extracted/worldmap_background.jpg _site/map/
-          cp Game_Details/Resources/_extracted/region_color_overlay.png _site/map/
-          cp Game_Details/Resources/_extracted/mountain_overlay.png _site/map/
+          python Game_Details/Resources/_publish_atlas_maps.py --output-dir _site/map
           cp -R projects/game-data-encyclopedia/dist/. _site/encyclopedia/
           cp -R projects/combat-interaction-explorer/dist/. _site/combat/
           cp -R projects/counter-picking-assistant/dist/. _site/counter/

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1015">
+  <title>Dragonfire Atlas</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #0b1015; color: #e8edf0; }
+    .season-bar { height: 58px; display: flex; align-items: center; gap: 14px; padding: 0 18px; border-bottom: 1px solid #27343c; background: #111a20; }
+    .brand { color: #e8edf0; font-size: 14px; font-weight: 700; letter-spacing: .02em; white-space: nowrap; }
+    label { color: #aab8bf; font-size: 12px; font-weight: 650; }
+    select { margin-left: 8px; padding: 7px 30px 7px 10px; border: 1px solid #465761; border-radius: 5px; background: #17232b; color: #f1f5f6; font: inherit; font-size: 13px; }
+    .source-note { color: #98a9b1; font-size: 11px; }
+    iframe { display: block; width: 100%; height: calc(100% - 58px); border: 0; }
+    @media (max-width: 620px) {
+      .season-bar { height: 68px; flex-wrap: wrap; gap: 2px 10px; padding: 6px 12px; }
+      .brand { width: 100%; font-size: 12px; }
+      .source-note { font-size: 10px; }
+      iframe { height: calc(100% - 68px); }
+    }
+  </style>
+</head>
+<body>
+  <header class="season-bar">
+    <span class="brand">Westeros Atlas</span>
+    <label for="season">Map version
+      <select id="season">
+        <option value="season1">Season 1 · Campaign Alpha</option>
+        <option value="season2">Season 2 · Campaign Bravo</option>
+        <option value="season3">Season 3 · Campaign Charlie</option>
+      </select>
+    </label>
+    <span id="sourceNote" class="source-note" aria-live="polite"></span>
+  </header>
+  <iframe id="map" title="Interactive Westeros Atlas"></iframe>
+  <script>
+    (() => {
+      const pages = { season1: "season1.html", season2: "season2.html", season3: "season3.html" };
+      const select = document.getElementById("season");
+      const frame = document.getElementById("map");
+      const note = document.getElementById("sourceNote");
+
+      function showFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        const requested = params.get("season");
+        // Existing encyclopedia links have unscoped Bravo row IDs. Preserve them;
+        // a plain Atlas visit opens Charlie. Explicit season links always win.
+        const season = Object.prototype.hasOwnProperty.call(pages, requested)
+          ? requested : (params.has("node") ? "season2" : "season3");
+        select.value = season;
+        const notes = {
+          season1: "Rebuilt from retained Alpha data; small trailing gap in region layer.",
+          season2: "",
+          season3: "8,039 POIs · Captured Oct 23 · Partial terrain; routes are estimates.",
+        };
+        note.textContent = notes[season];
+        const target = new URL(pages[season], window.location.href);
+        const node = params.get("node");
+        if (node) target.searchParams.set("node", node);
+        frame.src = target.href;
+      }
+
+      select.addEventListener("change", () => {
+        const url = new URL(window.location.href);
+        url.searchParams.set("season", select.value);
+        url.searchParams.delete("node");
+        window.history.pushState({}, "", url);
+        showFromUrl();
+      });
+      window.addEventListener("popstate", showFromUrl);
+      showFromUrl();
+    })();
+  </script>
+</body>
+</html>

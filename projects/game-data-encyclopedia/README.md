@@ -22,7 +22,14 @@ python -m http.server 8000 --directory projects/game-data-encyclopedia/preview
 ```
 
 Then open `http://localhost:8000/encyclopedia/`. The preview mirrors the deployed
-layout: `/` and `/map/` serve the Atlas, while `/encyclopedia/` serves this application.
+layout: `/` serves the tool index, `/map/` serves the season selector for the Atlas,
+and `/encyclopedia/` serves this application. The Atlas offers Season 1 Alpha,
+Season 2 Bravo, and Season 3 Charlie, with Charlie as the default. The Encyclopedia map-node catalog
+continues to describe Bravo placements; Alpha and Charlie map links therefore open its general map
+record index rather than claiming an exact cross-season record match.
+Existing unscoped `?node=` Atlas links still open Bravo; new Charlie links use
+`?season=season3&node=map-node%3A000000`. Charlie's terrain cache is partial, so routes
+remain estimates. See [Atlas source notes](../strategic-atlas-overlays/README.md).
 Entity URLs use client logical keys or stable map
 row IDs in hash routes, so display-name changes do not break links. Map records use
 `#/map-nodes/000000`; Atlas links use `../map/?node=map-node%3A000000`.
