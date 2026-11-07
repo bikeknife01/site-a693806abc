@@ -130,6 +130,12 @@ Reign Level and relevant account or stage modifiers when comparing close matchup
 
 ## PvE and Points of Interest
 
+The user reports that POI locations and values are generated for a particular
+server and season and remain static during that season. They may differ on another
+server, including one in the same season. Captured Atlas data is an example for its
+source, not a universal map; verify coordinates and values on the intended server.
+Ownership and upgrades remain separate live state.
+
 Every tile has Defenders and Durability. Defenders must be defeated before Siege
 damage can reduce Durability, and the tile is conquered at zero Durability. Official
 guidance therefore separates combat formations from Siege formations: clear the

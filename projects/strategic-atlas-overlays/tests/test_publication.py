@@ -23,6 +23,7 @@ class AtlasPublicationTests(unittest.TestCase):
             self.assertEqual((output / 'index.html').read_bytes(), publisher.SELECTOR.read_bytes())
             for slug, source, _ in publisher.MAPS:
                 html = (output / f'{slug}.html').read_text(encoding='utf-8')
+                self.assertIn('POI locations and values are specific to a server and season', html)
                 for asset in publisher.ASSETS:
                     self.assertIn(f'href="assets/{slug}/{asset}"', html)
                     self.assertEqual((output / 'assets' / slug / asset).read_bytes(), (source / asset).read_bytes())

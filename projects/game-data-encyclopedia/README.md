@@ -27,6 +27,9 @@ and `/encyclopedia/` serves this application. The Atlas offers Season 1 Alpha,
 Season 2 Bravo, and Season 3 Charlie, with Charlie as the default. The Encyclopedia map-node catalog
 continues to describe Bravo placements; Alpha and Charlie map links therefore open its general map
 record index rather than claiming an exact cross-season record match.
+According to the user, POI locations and values are server- and season-specific
+and remain static within that season. The captured server identity is not established;
+these records and row IDs do not establish locations or values on another server.
 Existing unscoped `?node=` Atlas links still open Bravo; new Charlie links use
 `?season=season3&node=map-node%3A000000`. Charlie's terrain cache is partial, so routes
 remain estimates. See [Atlas source notes](../strategic-atlas-overlays/README.md).

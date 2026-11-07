@@ -106,7 +106,8 @@ def build(args: argparse.Namespace) -> dict:
             "trailing_zero_pixels": int(gap.group(1)) if gap else 0,
         },
         "limitations": [
-            "POIs and template levels are installed static placements, not current ownership or upgraded levels.",
+            "POI locations and values are user-reported as server- and season-specific and static during that season; the capture does not establish its server identity or another server's layout.",
+            "Captured placements and template levels do not establish current ownership or upgraded levels.",
             "Terrain chunks are a partial client cache. Routes use geographic fallback where terrain is unknown.",
             "Crossing connections are inferred from placement proximity, not server adjacency.",
             "Unassigned region labels stay blank; trailing region-texture gaps render as zero/ocean.",

@@ -42,6 +42,7 @@ test('explicit season links select the requested placement namespace', () => {
     const target = new URL(elements.map.src);
     assert.equal(target.pathname, `/map/${season}.html`);
     assert.equal(target.searchParams.get('node'), 'map-node:000042');
+    assert.match(elements.sourceNote.textContent, /server- and season-specific/);
   }
 });
 

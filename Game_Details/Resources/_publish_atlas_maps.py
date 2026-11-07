@@ -58,16 +58,20 @@ def _map_html(slug: str, source: Path) -> str:
             "Browse encyclopedia map records &#8599;",
             f"{slug} encyclopedia detail label",
         )
+    description = "Explore territories, inspect map nodes, and evaluate routes around mountain barriers."
+    warning = "POI locations and values are specific to a server and season, stay fixed for that season, and can differ on your server. Verify before planning. "
     if slug == "season3":
         manifest = json.loads((source.parent / "source_manifest.json").read_text(encoding="utf-8"))
         count = manifest["poi_count"]
         content = _replace_once(
             content,
-            "Explore territories, inspect map nodes, and evaluate routes around mountain barriers.",
-            f"Season 3 · Campaign Charlie · {count:,} static POIs. Routes are estimates: "
+            description,
+            warning + f"Season 3 · Campaign Charlie · {count:,} captured POIs. Routes are estimates: "
             "terrain coverage is partial. Ruin levels may scale in game.",
             "Charlie map description",
         )
+    else:
+        content = _replace_once(content, description, warning + description, f"{slug} map description")
     return content
 
 

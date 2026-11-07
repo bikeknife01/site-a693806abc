@@ -18,6 +18,7 @@ Extend the existing interactive Atlas with optional analytical overlays that ans
 - Building timers are irrelevant and excluded.
 - March distance/time remains relevant because it affects reinforcement and coordination.
 - Player/alliance ownership is optional user-entered or imported session data; it is not assumed to exist in static client files.
+- The user reports POI locations and values are specific to a server and season and remain static for that season. Treat captured layouts as server-scoped examples, not universal season maps; keep server provenance explicit and unknown when it is not recorded.
 - Staged future-map records remain hidden unless explicitly enabled.
 
 ## Existing related files

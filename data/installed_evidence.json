@@ -19,6 +19,14 @@
   },
   "observations": [
     {
+      "id": "2026-11-07-combat-reference-changes",
+      "subjects": ["Tashix", "Seasmoke", "Crimson", "Jagadrix", "Vhagar", "Turncloak"],
+      "evidence_state": "installed_observed",
+      "recommendation_use": "corroboration_only",
+      "claim": "The 2026-11-07 downloaded client resources change Mirage condition references and several combat effect rows, and add Turncloak encounter wording. These schema-less changes do not establish live combat behavior or player-facing balance values; retain screenshot-audited mechanics and do not infer recommendation changes from the changed rows.",
+      "source": "wiki/client-updates/2026-11-07.md"
+    },
+    {
       "id": "2026-10-01-production-roster",
       "subjects": ["Meleys", "Smoketail", "Starshower", "Vermithor"],
       "evidence_state": "installed_observed",

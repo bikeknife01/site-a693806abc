@@ -41,6 +41,11 @@ limitations, and portable supporting and contradicting observation references re
 in the machine data. Use the validator and generated analysis to enumerate current IDs;
 do not infer an additional rule from this summary.
 
+The 2026-11-07 installed English resources contain new action-text templates for
+Evade, Redirect and Split (see [client review](client-updates/2026-11-07.md)).
+They are discovery leads, not observed report cards or accepted mappings. Preserve
+unrecognized report text and corroborate it with cited frames before adding rules.
+
 ## Run and review
 
 Before recording new evidence, follow the

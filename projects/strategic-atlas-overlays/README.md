@@ -4,6 +4,13 @@ The Atlas offers Season 1 / Alpha, Season 2 / Bravo, and Season 3 / Charlie.
 Plain visits open Charlie. Select another campaign from **Map version**, or link
 with `?season=season1`, `?season=season2`, or `?season=season3`.
 
+The user reports that POI locations and values are generated for a particular
+server and season and remain static during that season. They can differ on another
+server even in the same season. These maps are captured examples, and the source
+server identity is not established in the retained manifests. Selecting a season
+does not select or verify a server; confirm locations and values in your own game.
+Ownership, upgrades, and other live state can still change.
+
 ## Charlie source and scope
 
 The October 23, 2026 read-only installed-client capture contains
@@ -40,7 +47,8 @@ Routes are estimates and crossing connections are inferred from proximity.
 The 2080×3312 region texture ends 57,428 pixels before its declared extent; those
 trailing pixels remain zero/ocean. 997 POIs have no region label in the decoded
 texture and remain unassigned rather than receiving guessed labels. The map
-positions themselves come directly from the complete captured POI R-tree.
+positions themselves come directly from the captured POI R-tree for this source;
+they are not established as universal Charlie positions.
 
 ## Build and publication
 
