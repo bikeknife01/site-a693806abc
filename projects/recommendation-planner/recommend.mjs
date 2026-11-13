@@ -606,6 +606,19 @@ function paretoFront(candidates, { includeCapacity = false, troopPreservation = 
 }
 
 function policyCompare(left, right, { includeCapacity = false, troopPreservation = false } = {}) {
+  const affinityDifference = left.metrics.affinity_count - right.metrics.affinity_count;
+  let affinityAndSynergy = 0;
+  if (affinityDifference === 0) affinityAndSynergy = right.metrics.explicit_synergy - left.metrics.explicit_synergy;
+  else {
+    const higherAffinity = affinityDifference > 0 ? left : right;
+    const lowerAffinity = affinityDifference > 0 ? right : left;
+    const affinityGap = Math.abs(affinityDifference);
+    const synergyAdvantage = lowerAffinity.metrics.explicit_synergy - higherAffinity.metrics.explicit_synergy;
+    const lowerAffinityOutweighs = synergyAdvantage > affinityGap;
+    affinityAndSynergy = lowerAffinityOutweighs
+      ? (lowerAffinity === left ? -1 : 1)
+      : (higherAffinity === left ? -1 : 1);
+  }
   const objectiveAndCapacity = troopPreservation
     ? (right.metrics.minimum_modeled_dragon_capacity ?? -1) - (left.metrics.minimum_modeled_dragon_capacity ?? -1)
       || right.metrics.troop_preservation.tier - left.metrics.troop_preservation.tier
@@ -618,8 +631,8 @@ function policyCompare(left, right, { includeCapacity = false, troopPreservation
     || right.metrics.direct_threat_coverage - left.metrics.direct_threat_coverage
     || left.metrics.troop_disadvantage - right.metrics.troop_disadvantage
     || objectiveAndCapacity
+    || affinityAndSynergy
     || right.metrics.counter_reliability - left.metrics.counter_reliability
-    || right.metrics.explicit_synergy - left.metrics.explicit_synergy
     || right.metrics.troop_fit - left.metrics.troop_fit
     || right.metrics.lane_fit - left.metrics.lane_fit
     || (right.metrics.known_team_power ?? -1) - (left.metrics.known_team_power ?? -1)
@@ -650,6 +663,7 @@ function summarizeCandidate(data, candidate, { includeTimeline = true } = {}) {
     },
     progression: result.formation.map(pick => ({ dragon: pick.dragon.name, slug: pick.dragon.slug, lane: pick.lane, ...pick.progression })),
     metrics: candidate.metrics,
+    affinity_policy: affinityPolicyAttestation(candidate, { preferences: { affinity_policy: "perfect_unless_explicit_synergy" } }),
     troop_matchup: result.troop,
     troop_mechanics_evidence: {
       canonical_source: "data/game_mechanics.json",
@@ -980,17 +994,21 @@ export function planRecommendations(data, commonFormations, rawInput) {
   const candidateMap = new Map(search.candidates.map(candidate => [candidate.id, candidate]));
   for (const candidate of baselineCandidates) {
     const existing = candidateMap.get(candidate.id);
-    if (existing) existing.expert_prior = candidate.expert_prior;
+    if (existing) {
+      existing.expert_prior = candidate.expert_prior;
+      for (const baseline of baselines.filter(item => item.candidate === candidate)) baseline.candidate = existing;
+    }
     else candidateMap.set(candidate.id, candidate);
   }
   const allCandidates = [...candidateMap.values()];
+  const affinityEligibleCandidates = applyAffinityPolicy(allCandidates);
   const comparison = { includeCapacity: input.capacitySensitive, troopPreservation: input.troopPreservation };
-  const qualifiedCandidates = allCandidates.filter(candidate => candidate.metrics.competitive_viability.qualified);
-  const selectionPool = qualifiedCandidates.length ? qualifiedCandidates : allCandidates;
+  const qualifiedCandidates = affinityEligibleCandidates.filter(candidate => candidate.metrics.competitive_viability.qualified);
+  const selectionPool = qualifiedCandidates.length ? qualifiedCandidates : affinityEligibleCandidates;
   const pareto = paretoFront(selectionPool, comparison).sort((left, right) => policyCompare(left, right, comparison));
   const mechanicalPrimary = pareto[0] || null;
   const expertPrimary = !input.powerComparable && input.competitive.resolved === "endgame"
-    ? baselines.filter(item => expertPriorEligible(item, input)).map(item => item.candidate).sort((left, right) => policyCompare(left, right, comparison))[0] || null
+    ? baselines.filter(item => expertPriorEligible(item, input) && affinityEligibleCandidates.includes(item.candidate)).map(item => item.candidate).sort((left, right) => policyCompare(left, right, comparison))[0] || null
     : null;
   const primary = expertPrimary || mechanicalPrimary;
   const selectionBasis = expertPrimary ? "expert_prior_default" : qualifiedCandidates.length ? "mechanically_ranked_qualified" : "mechanically_ranked_fallback";
@@ -1005,7 +1023,7 @@ export function planRecommendations(data, commonFormations, rawInput) {
       common_baselines_source: path.relative(ROOT, BASELINES_PATH).replaceAll("\\", "/"),
       recommendation_rules_source: path.relative(ROOT, RECOMMENDATION_RULES_PATH).replaceAll("\\", "/"),
       objective: input.objective,
-      selection_policy: `Pareto filter, then lexicographic ordering by direct threat coverage, troop safety${input.troopPreservation ? ", weakest-lane level-curve capacity floor, documented preservation tier, total level-curve capacity proxy, exact preservation score" : `, documented objective fit${input.capacitySensitive ? ", level-curve capacity proxy" : ""}`}, counter reliability, explicit synergy, troop fit, lane fit, comparable known team Power, and diagnostic proxy score.`,
+      selection_policy: `Require 3-of-3 shared affinity unless a documented explicit-synergy advantage exceeds the affinity gap; then Pareto filter and order by direct threat coverage, troop safety${input.troopPreservation ? ", weakest-lane level-curve capacity floor, documented preservation tier, total level-curve capacity proxy, exact preservation score" : `, documented objective fit${input.capacitySensitive ? ", level-curve capacity proxy" : ""}`}, affinity/synergy policy, counter reliability, troop fit, lane fit, comparable known team Power, and diagnostic proxy score.`,
     },
     limitations: [
       "Commander talents, trait synergies, assignment and Commander Army Size bonuses are not modeled; they may change formation comparisons and capacity.",
@@ -1042,6 +1060,7 @@ export function planRecommendations(data, commonFormations, rawInput) {
       trios_evaluated: combinations(search.pool).length,
       lane_orders_evaluated: search.laneOrdersEvaluated,
       trio_troop_candidates: search.candidates.length,
+      shared_affinity_policy_eligible_candidates: affinityEligibleCandidates.length,
       pareto_candidate_count: pareto.length,
       returned_finalists: finalists.length,
     },
@@ -1079,7 +1098,8 @@ function allocationCompare(left, right) {
   return left.rankCost - right.rankCost || allocationSignature(left).localeCompare(allocationSignature(right));
 }
 
-export function globalDisjointPortfolio(rankedCandidates, formationCount) {
+export function globalDisjointPortfolio(rankedCandidates, formationCount, fullRanks = null) {
+  const fullRank = (candidate, index) => fullRanks?.get(candidate.id) ?? index;
   const best = [];
   const consider = selected => {
     const allocation = { selected, rankCost: sum(selected.map(item => item.rank)) };
@@ -1094,7 +1114,7 @@ export function globalDisjointPortfolio(rankedCandidates, formationCount) {
     const dragons = candidate.result.formation.map(pick => pick.dragon.slug);
     if (dragons.some(slug => greedyUsed.has(slug))) continue;
     dragons.forEach(slug => greedyUsed.add(slug));
-    greedy.push({ candidate, rank });
+    greedy.push({ candidate, rank: fullRank(candidate, rank) });
     if (greedy.length === formationCount) break;
   }
   if (greedy.length === formationCount) consider(greedy);
@@ -1108,15 +1128,213 @@ export function globalDisjointPortfolio(rankedCandidates, formationCount) {
     if (rankedCandidates.length - start < needed) return;
     const currentBound = best.length >= 2 ? best[1].rankCost : Number.POSITIVE_INFINITY;
     for (let index = start; index <= rankedCandidates.length - needed; index += 1) {
-      const optimistic = rankCost + needed * index + needed * (needed - 1) / 2;
+      const optimistic = rankCost + sum(rankedCandidates.slice(index, index + needed).map((candidate, offset) => fullRank(candidate, index + offset)));
       if (optimistic > currentBound) break;
       const candidate = rankedCandidates[index];
       const dragons = candidate.result.formation.map(pick => pick.dragon.slug);
       if (dragons.some(slug => used.has(slug))) continue;
-      visit(index + 1, new Set([...used, ...dragons]), [...selected, { candidate, rank: index }], rankCost + index);
+      const rank = fullRank(candidate, index);
+      visit(index + 1, new Set([...used, ...dragons]), [...selected, { candidate, rank }], rankCost + rank);
     }
   }
   visit(0, new Set(), [], 0);
+  return { primary: best[0] || null, alternative: best[1] || null };
+}
+
+const PORTFOLIO_RARITIES = ["Rare", "Epic", "Legendary"];
+
+function normalizePortfolioGroups(rawInput, formationCount) {
+  if (rawInput.portfolio_groups == null) return [{
+    id: "portfolio",
+    label: "Portfolio",
+    count: formationCount,
+    objective: String(rawInput.objective || "pvp"),
+    constraints: {},
+    preferences: { rarity_order: [], affinity_policy: "perfect_unless_explicit_synergy" },
+    explicit: false,
+  }];
+  if (!Array.isArray(rawInput.portfolio_groups) || !rawInput.portfolio_groups.length) throw new Error("portfolio_groups must be a non-empty array when supplied.");
+  const seen = new Set();
+  const groups = rawInput.portfolio_groups.map((raw, index) => {
+    if (!raw || typeof raw !== "object" || Array.isArray(raw)) throw new Error(`portfolio_groups[${index}] must be an object.`);
+    const id = String(raw.id || `group_${index + 1}`).trim();
+    if (!id || seen.has(id)) throw new Error(`portfolio_groups must use unique non-empty ids; duplicate: ${id || "(empty)"}.`);
+    seen.add(id);
+    const count = Number(raw.count);
+    if (!Number.isInteger(count) || count < 1) throw new Error(`portfolio_groups[${index}].count must be a positive integer.`);
+    const constraints = raw.constraints || {};
+    if (typeof constraints !== "object" || Array.isArray(constraints)) throw new Error(`portfolio_groups[${index}].constraints must be an object.`);
+    const unknownConstraints = Object.keys(constraints).filter(key => !["minimum_dragon_level", "minimum_positive_affinities"].includes(key));
+    if (unknownConstraints.length) throw new Error(`portfolio_groups[${index}].constraints contains unsupported key(s): ${unknownConstraints.join(", ")}.`);
+    const minimumDragonLevel = constraints.minimum_dragon_level == null ? null : Number(constraints.minimum_dragon_level);
+    if (minimumDragonLevel != null && (!Number.isInteger(minimumDragonLevel) || minimumDragonLevel < 1 || minimumDragonLevel > 50)) throw new Error(`portfolio_groups[${index}].constraints.minimum_dragon_level must be an integer from 1 to 50.`);
+    const minimumPositiveAffinities = constraints.minimum_positive_affinities == null ? null : Number(constraints.minimum_positive_affinities);
+    if (minimumPositiveAffinities != null && (!Number.isInteger(minimumPositiveAffinities) || minimumPositiveAffinities < 0 || minimumPositiveAffinities > 3)) throw new Error(`portfolio_groups[${index}].constraints.minimum_positive_affinities must be an integer from 0 to 3.`);
+    const preferences = raw.preferences || {};
+    if (typeof preferences !== "object" || Array.isArray(preferences)) throw new Error(`portfolio_groups[${index}].preferences must be an object.`);
+    const unknownPreferences = Object.keys(preferences).filter(key => !["rarity_order", "affinity_policy"].includes(key));
+    if (unknownPreferences.length) throw new Error(`portfolio_groups[${index}].preferences contains unsupported key(s): ${unknownPreferences.join(", ")}.`);
+    if (preferences.rarity_order != null && !Array.isArray(preferences.rarity_order)) throw new Error(`portfolio_groups[${index}].preferences.rarity_order must be an array.`);
+    const rarityOrder = preferences.rarity_order == null ? [] : preferences.rarity_order.map(value => String(value));
+    const unknownRarities = rarityOrder.filter(value => !PORTFOLIO_RARITIES.includes(value));
+    if (unknownRarities.length || new Set(rarityOrder).size !== rarityOrder.length) throw new Error(`portfolio_groups[${index}].preferences.rarity_order must contain unique Rare, Epic, or Legendary values.`);
+    const affinityPolicy = preferences.affinity_policy == null ? "perfect_unless_explicit_synergy" : String(preferences.affinity_policy);
+    if (affinityPolicy !== "perfect_unless_explicit_synergy") throw new Error(`portfolio_groups[${index}].preferences.affinity_policy must be perfect_unless_explicit_synergy.`);
+    return {
+      id,
+      label: String(raw.label || id),
+      count,
+      objective: String(raw.objective || rawInput.objective || "pvp"),
+      constraints: {
+        minimum_dragon_level: minimumDragonLevel,
+        minimum_positive_affinities: minimumPositiveAffinities,
+      },
+      preferences: { rarity_order: rarityOrder, affinity_policy: affinityPolicy },
+      explicit: true,
+    };
+  });
+  const declaredCount = sum(groups.map(group => group.count));
+  if (declaredCount !== formationCount) throw new Error(`portfolio_groups counts sum to ${declaredCount}, not formation_count ${formationCount}.`);
+  return groups;
+}
+
+function candidateMeetsPortfolioGroup(candidate, group) {
+  const levels = candidate.result.formation.map(pick => pick.progression.level);
+  if (group.constraints.minimum_dragon_level != null && levels.some(level => level < group.constraints.minimum_dragon_level)) return false;
+  if (group.constraints.minimum_positive_affinities != null && candidate.metrics.affinity_count < group.constraints.minimum_positive_affinities) return false;
+  return true;
+}
+
+export function applyAffinityPolicy(candidates) {
+  // Compare against the strongest documented synergy among eligible perfect-affinity
+  // candidates of the same competitive qualification, not an absolute score.
+  const perfectByQualification = new Map();
+  for (const candidate of candidates.filter(item => item.metrics.affinity_count === 3)) {
+    const key = candidate.metrics.competitive_viability.qualified;
+    const best = perfectByQualification.get(key);
+    if (!best || candidate.metrics.explicit_synergy > best.metrics.explicit_synergy || (candidate.metrics.explicit_synergy === best.metrics.explicit_synergy && candidate.id.localeCompare(best.id) < 0)) perfectByQualification.set(key, candidate);
+  }
+  for (const candidate of candidates) {
+    const comparator = perfectByQualification.get(candidate.metrics.competitive_viability.qualified) || null;
+    const gap = 3 - candidate.metrics.affinity_count;
+    const advantage = comparator ? candidate.metrics.explicit_synergy - comparator.metrics.explicit_synergy : null;
+    candidate.affinity_evaluation = { comparator_id: comparator?.id || null, comparator_synergy_score: comparator?.metrics.explicit_synergy ?? null, synergy_advantage: advantage, eligible: gap <= 0 || !comparator || advantage > gap };
+  }
+  return candidates.filter(candidate => candidate.affinity_evaluation.eligible);
+}
+
+function affinityPolicyAttestation(candidate, group) {
+  const affinityCount = candidate.metrics.affinity_count;
+  const affinityGap = 3 - affinityCount;
+  const explicitSynergy = candidate.metrics.explicit_synergy;
+  const evaluation = candidate.affinity_evaluation;
+  if (affinityCount === 3) return {
+    target_positive_affinities: 3,
+    status: "affinity_perfect",
+    explicit_synergy_score: explicitSynergy,
+    override_applied: false,
+    justification: "All three dragons have positive affinity for the shared troop.",
+  };
+  if (!evaluation) return {
+    target_positive_affinities: 3, status: "not_evaluated", explicit_synergy_score: explicitSynergy,
+    affinity_gap: affinityGap, override_applied: false,
+    justification: "No eligible comparison pool was evaluated for this candidate.",
+  };
+  const overrideApplied = Boolean(evaluation?.comparator_id && evaluation.synergy_advantage > affinityGap);
+  return {
+    target_positive_affinities: 3,
+    status: overrideApplied ? "documented_synergy_override" : !evaluation?.comparator_id ? "no_affinity_perfect_available" : "below_affinity_target",
+    explicit_synergy_score: explicitSynergy,
+    affinity_gap: affinityGap,
+    override_applied: overrideApplied,
+    comparator_id: evaluation?.comparator_id || null,
+    comparator_synergy_score: evaluation?.comparator_synergy_score ?? null,
+    synergy_advantage: evaluation?.synergy_advantage ?? null,
+    justification: overrideApplied
+      ? `Documented synergy advantage ${evaluation.synergy_advantage} over ${evaluation.comparator_id} exceeds the ${affinityGap}-point shared-affinity gap.`
+      : !evaluation?.comparator_id ? "No eligible affinity-perfect formation exists in this comparison pool; no synergy override is claimed." : "No documented explicit-synergy advantage outweighs the missing shared affinity.",
+    documented_synergies: candidate.result.synergies,
+  };
+}
+
+function portfolioGroupCompare(left, right, group, comparison) {
+  for (const rarity of group.preferences.rarity_order) {
+    const count = candidate => candidate.result.formation.filter(pick => pick.dragon.rarity_tier === rarity).length;
+    const rarityDifference = count(right) - count(left);
+    if (rarityDifference) return rarityDifference;
+  }
+  return policyCompare(left, right, comparison);
+}
+
+export function rankPortfolioGroupCandidates(candidates, group, comparison = {}) {
+  const eligible = applyAffinityPolicy(candidates.filter(candidate => candidateMeetsPortfolioGroup(candidate, group)));
+  const bestByTrio = new Map();
+  for (const candidate of eligible) {
+    const key = candidate.expert_prior ? `expert:${candidate.id}` : portfolioCandidateKey(candidate);
+    const current = bestByTrio.get(key);
+    if (!current || portfolioGroupCompare(candidate, current, group, comparison) < 0) bestByTrio.set(key, candidate);
+  }
+  return [...bestByTrio.values()].sort((left, right) => portfolioGroupCompare(left, right, group, comparison));
+}
+
+function constrainedAllocationSignature(allocation) {
+  return allocation.selected.map(item => `${item.group.id}:${item.slot_index}:${item.candidate.id}`).join("||");
+}
+
+function constrainedAllocationCompare(left, right) {
+  return left.rankCost - right.rankCost || constrainedAllocationSignature(left).localeCompare(constrainedAllocationSignature(right));
+}
+
+export function globalConstrainedPortfolio(groupPools) {
+  const slots = groupPools.flatMap(({ group, ranked, fullRanks }) => Array.from({ length: group.count }, (_, slotIndex) => ({ group, ranked, fullRanks, slotIndex })));
+  const best = [];
+  const consider = selected => {
+    const allocation = { selected, rankCost: sum(selected.map(item => item.rank)) };
+    if (best.some(item => constrainedAllocationSignature(item) === constrainedAllocationSignature(allocation))) return;
+    best.push(allocation);
+    best.sort(constrainedAllocationCompare);
+    if (best.length > 2) best.length = 2;
+  };
+  const greedy = [];
+  const greedyUsed = new Set();
+  const greedyLastIndex = new Map();
+  for (const slot of slots) {
+    const minimumIndex = slot.slotIndex > 0 ? (greedyLastIndex.get(slot.group.id) ?? -1) + 1 : 0;
+    let chosen = null;
+    for (let index = minimumIndex; index < slot.ranked.length; index += 1) {
+      const candidate = slot.ranked[index];
+      const dragons = candidate.result.formation.map(pick => pick.dragon.slug);
+      if (dragons.some(slug => greedyUsed.has(slug))) continue;
+      chosen = { candidate, rank: slot.fullRanks.get(candidate.id), group: slot.group, slot_index: slot.slotIndex };
+      dragons.forEach(slug => greedyUsed.add(slug));
+      greedyLastIndex.set(slot.group.id, index);
+      break;
+    }
+    if (!chosen) break;
+    greedy.push(chosen);
+  }
+  if (greedy.length === slots.length) consider(greedy);
+
+  function visit(slotIndex, used, selected, rankCost, lastIndexByGroup) {
+    if (slotIndex === slots.length) {
+      consider(selected);
+      return;
+    }
+    const currentBound = best.length >= 2 ? best[1].rankCost : Number.POSITIVE_INFINITY;
+    const slot = slots[slotIndex];
+    const start = slot.slotIndex > 0 ? (lastIndexByGroup.get(slot.group.id) ?? -1) + 1 : 0;
+    for (let index = start; index < slot.ranked.length; index += 1) {
+      const candidate = slot.ranked[index];
+      const rank = slot.fullRanks.get(candidate.id);
+      if (rankCost + rank > currentBound) break;
+      const dragons = candidate.result.formation.map(pick => pick.dragon.slug);
+      if (dragons.some(slug => used.has(slug))) continue;
+      const nextLast = new Map(lastIndexByGroup);
+      nextLast.set(slot.group.id, index);
+      visit(slotIndex + 1, new Set([...used, ...dragons]), [...selected, { candidate, rank, group: slot.group, slot_index: slot.slotIndex }], rankCost + rank, nextLast);
+    }
+  }
+  visit(0, new Set(), [], 0, new Map());
   return { primary: best[0] || null, alternative: best[1] || null };
 }
 
@@ -1129,7 +1347,145 @@ function validatePortfolioResult(result) {
   }
   if (!result.roster_preflight.verified_complete) failures.push("Roster preflight is not verified complete.");
   if (result.selected_formations.some(item => !item.candidate.id || !item.candidate.evidence.length)) failures.push("A selected formation is missing its candidate ID or evidence.");
+  if (result.selected_formations.some(item => item.constraint_attestation && !item.constraint_attestation.satisfied)) failures.push("A selected formation violates its portfolio-group constraints.");
   return { valid: failures.length === 0, failures };
+}
+
+function planGroupedFormationPortfolio(data, commonFormations, rawInput, formationCount, reusePolicy, preflight, groups) {
+  if (reusePolicy !== "disjoint_armies") throw new Error("portfolio_groups currently require reuse_policy: disjoint_armies.");
+  const groupPlans = groups.map(group => {
+    const input = validatePlannerInput(data, { ...rawInput, objective: group.objective });
+    const search = exhaustiveCandidates(data, input);
+    const baselines = commonFormations.formations.map(baseline => baselineCandidate(data, baseline, search));
+    const all = [...search.candidates];
+    for (const baseline of baselines.filter(item => item.candidate)) {
+      const expertCandidate = baseline.candidate;
+      const existing = all.find(candidate => candidate.id === expertCandidate.id);
+      if (existing) {
+        existing.expert_prior = expertCandidate.expert_prior;
+        baseline.candidate = existing;
+      } else all.push(expertCandidate);
+    }
+    const comparison = { includeCapacity: input.capacitySensitive, troopPreservation: input.troopPreservation };
+    const ranked = rankPortfolioGroupCandidates(all, group, comparison);
+    if (ranked.length < group.count) throw new Error(`Portfolio group ${group.id} has only ${ranked.length} eligible formations for ${group.count} requested slots.`);
+    const fullRanks = new Map(ranked.map((candidate, index) => [candidate.id, index]));
+    const qualifiedRanked = ranked.filter(candidate => candidate.metrics.competitive_viability.qualified);
+    const expertIds = new Set(baselines.filter(baseline => expertPriorEligible(baseline, input)).map(baseline => baseline.candidate.id));
+    return { group, input, search, baselines, ranked, fullRanks, qualifiedRanked, expertRanked: qualifiedRanked.filter(candidate => expertIds.has(candidate.id)) };
+  });
+  const pools = field => groupPlans.map(plan => ({ group: plan.group, ranked: plan[field], fullRanks: plan.fullRanks }));
+  const qualifiedSearch = globalConstrainedPortfolio(pools("qualifiedRanked"));
+  const allSearch = qualifiedSearch.primary ? qualifiedSearch : globalConstrainedPortfolio(pools("ranked"));
+  if (!allSearch.primary) throw new Error("No globally valid disjoint formation portfolio satisfies every portfolio-group constraint.");
+  const expertSearch = globalConstrainedPortfolio(pools("expertRanked"));
+  const useExpertPrior = groupPlans[0].input.competitive.resolved === "endgame" && !groupPlans[0].input.powerComparable && expertSearch.primary;
+  const allocation = useExpertPrior || allSearch.primary;
+  const alternative = useExpertPrior && constrainedAllocationSignature(useExpertPrior) !== constrainedAllocationSignature(allSearch.primary) ? allSearch.primary : allSearch.alternative;
+  const qualifiedAllocationUsed = Boolean(qualifiedSearch.primary);
+  const selectionBasis = useExpertPrior ? "expert_prior_default" : qualifiedAllocationUsed ? "globally_grouped_qualified" : "globally_grouped_fallback";
+  const inputByGroup = new Map(groupPlans.map(plan => [plan.group.id, plan.input]));
+  const selectedFormations = allocation.selected.map((item, index) => {
+    const input = inputByGroup.get(item.group.id);
+    const minimumLevel = Math.min(...item.candidate.result.formation.map(pick => pick.progression.level));
+    const affinityCount = item.candidate.metrics.affinity_count;
+    return {
+      priority: index + 1,
+      portfolio_group: {
+        id: item.group.id,
+        label: item.group.label,
+        slot: item.slot_index + 1,
+        objective: item.group.objective,
+        constraints: item.group.constraints,
+        preferences: item.group.preferences,
+      },
+      group_candidate_rank: item.rank + 1,
+      candidate_rank_scope: "portfolio_group",
+      constraint_attestation: {
+        satisfied: candidateMeetsPortfolioGroup(item.candidate, item.group),
+        minimum_dragon_level_observed: minimumLevel,
+        positive_affinity_count_observed: affinityCount,
+        affinity_policy: affinityPolicyAttestation(item.candidate, item.group),
+        rarity_counts: Object.fromEntries(PORTFOLIO_RARITIES.map(rarity => [rarity, item.candidate.result.formation.filter(pick => pick.dragon.rarity_tier === rarity).length])),
+      },
+      candidate: summarizeCandidate(data, item.candidate),
+      risks: riskRegister(data, item.candidate.result, coverageMatrix(data, item.candidate.result), preflight, input.dragonsArmy),
+    };
+  });
+  const summarizeAllocation = value => value ? {
+    total_rank_cost: value.rankCost,
+    candidate_ids: value.selected.map(item => item.candidate.id),
+    candidate_ranks: value.selected.map(item => item.rank + 1),
+    portfolio_group_ids: value.selected.map(item => item.group.id),
+  } : null;
+  const primaryInput = groupPlans[0].input;
+  const result = {
+    metadata: {
+      model: "dragonfire_grouped_formation_portfolio_v1",
+      evidence_source: path.relative(ROOT, DATA_PATH).replaceAll("\\", "/"),
+      common_baselines_source: path.relative(ROOT, BASELINES_PATH).replaceAll("\\", "/"),
+      recommendation_rules_source: path.relative(ROOT, RECOMMENDATION_RULES_PATH).replaceAll("\\", "/"),
+      objective: "heterogeneous_portfolio",
+      selection_policy: "Apply each portfolio group's hard constraints and ordered preferences, then globally minimize the sum of group-local full-search candidate ranks while enforcing disjoint armies.",
+    },
+    limitations: [
+      "Commander talents, trait synergies, assignment and Commander Army Size bonuses are not modeled; they may change formation comparisons and capacity.",
+      "This planner enumerates documented mechanics; it is not a battle-outcome, win-rate, or casualty simulator.",
+      "Group rarity preferences are explicit request priorities, not a universal rarity score.",
+      "Troop-preservation weights are ordinal planning policy, not estimated casualties or equivalent troop counts.",
+      "Unknown Habit levels and variable Habit proc rates remain unknown and receive no invented reliability value.",
+      "Recorded Star scalars are reported but are not applied to capacity because the installed data does not establish a complete final-stat formula.",
+    ],
+    request_interpretation: {
+      request_mode: "formation_portfolio",
+      formation_count: formationCount,
+      reuse_policy: reusePolicy,
+      default_semantics: "Explicit ordered portfolio groups with non-overlapping armies.",
+      portfolio_groups: groups,
+    },
+    roster_preflight: preflight,
+    troop_preflight: {
+      available_troops: primaryInput.availableTroops,
+      source: primaryInput.availableTroopsSource,
+      caveat: "A lineup screenshot establishes dragons and progression, not which formation troop types are selectable.",
+    },
+    input_summary: {
+      owned_dragons: primaryInput.roster.length,
+      objective: "heterogeneous_portfolio",
+      portfolio_groups: groups,
+      dragons_army: primaryInput.dragonsArmy,
+      capacity_basis: "Level curve plus Dragon's Army only; recorded Star scalars are not applied.",
+      power_comparable: primaryInput.powerComparable,
+      competitive_context: primaryInput.competitive,
+    },
+    search_summary: {
+      legal_dragons: primaryInput.roster.length,
+      groups: groupPlans.map(plan => ({
+        id: plan.group.id,
+        objective: plan.group.objective,
+        full_trio_troop_candidates: plan.search.candidates.length,
+        constraint_eligible_ranked_trios: plan.ranked.length,
+        competitively_qualified_ranked_trios: plan.qualifiedRanked.length,
+      })),
+      allocation_scope: "The disjoint search jointly assigns every ordered group slot from its complete constraint-eligible ranked pool.",
+    },
+    selected_formations: selectedFormations,
+    allocation_attestation: {
+      selected: summarizeAllocation(allocation),
+      strongest_alternative: summarizeAllocation(alternative),
+      expert_baseline_portfolio: summarizeAllocation(expertSearch.primary),
+      selection_basis: selectionBasis,
+      greedy_selection_used: false,
+      exhaustive_candidate_pool_used: true,
+      group_constraints_enforced: true,
+    },
+    common_baselines: groupPlans[0].baselines.map(item => ({ id: item.id, name: item.name, status: item.status, reasons: item.reasons, candidate: item.candidate ? summarizeCandidate(data, item.candidate) : null })),
+    common_baselines_by_group: Object.fromEntries(groupPlans.map(plan => [plan.group.id, plan.baselines.map(item => ({ id: item.id, name: item.name, status: item.status, reasons: item.reasons, candidate: item.candidate ? summarizeCandidate(data, item.candidate) : null }))])),
+  };
+  result.validation = validatePortfolioResult(result);
+  result.strategic_qualification = strategicQualification(allocation.selected.map(item => item.candidate), primaryInput, selectionBasis);
+  if (!result.validation.valid) throw new Error(`Portfolio result failed output validation: ${result.validation.failures.join(" ")}`);
+  return result;
 }
 
 export function planFormationPortfolio(data, commonFormations, rawInput) {
@@ -1138,6 +1494,8 @@ export function planFormationPortfolio(data, commonFormations, rawInput) {
   const reusePolicy = rawInput.reuse_policy || "disjoint_armies";
   if (!['disjoint_armies', 'allow_reuse'].includes(reusePolicy)) throw new Error("Portfolio reuse_policy must be disjoint_armies or allow_reuse.");
   const preflight = rosterPreflight(data, rawInput);
+  const groups = normalizePortfolioGroups(rawInput, formationCount);
+  if (groups.some(group => group.explicit)) return planGroupedFormationPortfolio(data, commonFormations, rawInput, formationCount, reusePolicy, preflight, groups);
   const input = validatePlannerInput(data, rawInput);
   if (formationCount * 3 > input.roster.length && reusePolicy === "disjoint_armies") throw new Error(`A ${formationCount}-formation disjoint portfolio requires at least ${formationCount * 3} owned dragons.`);
   const search = exhaustiveCandidates(data, input);
@@ -1154,12 +1512,13 @@ export function planFormationPortfolio(data, commonFormations, rawInput) {
   }
   const comparison = { includeCapacity: input.capacitySensitive, troopPreservation: input.troopPreservation };
   const bestByTrio = new Map();
-  for (const candidate of all) {
+  for (const candidate of applyAffinityPolicy(all)) {
     const key = candidate.expert_prior ? `expert:${candidate.id}` : portfolioCandidateKey(candidate);
     const current = bestByTrio.get(key);
     if (!current || policyCompare(candidate, current, comparison) < 0) bestByTrio.set(key, candidate);
   }
   const ranked = [...bestByTrio.values()].sort((left, right) => policyCompare(left, right, comparison));
+  const fullRanks = new Map(ranked.map((candidate, index) => [candidate.id, index]));
   const qualifiedRanked = ranked.filter(candidate => candidate.metrics.competitive_viability.qualified);
   let mechanicalAllocation;
   let alternative = null;
@@ -1170,9 +1529,9 @@ export function planFormationPortfolio(data, commonFormations, rawInput) {
     mechanicalAllocation = { selected: allocationPool.slice(0, formationCount).map(candidate => ({ candidate, rank: ranked.indexOf(candidate) })), rankCost: sum(allocationPool.slice(0, formationCount).map(candidate => ranked.indexOf(candidate))) };
     qualifiedAllocationUsed = allocationPool === qualifiedRanked;
   } else {
-    let selected = globalDisjointPortfolio(qualifiedRanked, formationCount);
+    let selected = globalDisjointPortfolio(qualifiedRanked, formationCount, fullRanks);
     qualifiedAllocationUsed = Boolean(selected.primary);
-    if (!selected.primary) selected = globalDisjointPortfolio(ranked, formationCount);
+    if (!selected.primary) selected = globalDisjointPortfolio(ranked, formationCount, fullRanks);
     const remap = value => value ? {
       selected: value.selected.map(item => ({ candidate: item.candidate, rank: ranked.indexOf(item.candidate) })),
       rankCost: sum(value.selected.map(item => ranked.indexOf(item.candidate))),
@@ -1182,12 +1541,12 @@ export function planFormationPortfolio(data, commonFormations, rawInput) {
     if (!mechanicalAllocation) throw new Error("No globally valid disjoint formation portfolio exists for the supplied roster.");
   }
   const expertCandidates = baselines
-    .filter(item => expertPriorEligible(item, input))
+    .filter(item => expertPriorEligible(item, input) && ranked.includes(item.candidate))
     .map(item => item.candidate)
     .sort((left, right) => policyCompare(left, right, comparison));
   const expertSearch = reusePolicy === "allow_reuse"
     ? expertCandidates.length >= formationCount ? { primary: { selected: expertCandidates.slice(0, formationCount).map(candidate => ({ candidate, rank: ranked.indexOf(candidate) })) } } : { primary: null }
-    : globalDisjointPortfolio(expertCandidates, formationCount);
+    : globalDisjointPortfolio(expertCandidates, formationCount, fullRanks);
   const expertAllocation = expertSearch.primary ? {
     selected: expertSearch.primary.selected.map(item => ({ candidate: item.candidate, rank: ranked.indexOf(item.candidate) })),
     rankCost: sum(expertSearch.primary.selected.map(item => ranked.indexOf(item.candidate))),
@@ -1217,6 +1576,7 @@ export function planFormationPortfolio(data, commonFormations, rawInput) {
       selection_policy: "Apply competitive-viability gates, then globally minimize the sum of full-search candidate ranks subject to the requested dragon-reuse policy. When endgame Power is not comparable, a complete legal expert-recommended portfolio is the conservative default and the mechanically ranked portfolio is retained as an alternative.",
     },
     limitations: [
+      "Commander talents, trait synergies, assignment and Commander Army Size bonuses are not modeled; they may change formation comparisons and capacity.",
       "This planner enumerates documented mechanics; it is not a battle-outcome, win-rate, or casualty simulator.",
       "Troop-preservation weights are ordinal planning policy, not estimated casualties or equivalent troop counts.",
       "Unknown Habit levels and variable Habit proc rates remain unknown and receive no invented reliability value.",
@@ -1503,6 +1863,16 @@ function formatFormationTable(candidate) {
   return ["| Position | Dragon | Level | Star rank | Current Power | Habit levels |", "|---|---|---:|---:|---:|---|", ...rows].join("\n");
 }
 
+function affinityPolicyLines(policy) {
+  if (!policy) return [];
+  const lines = [`Affinity policy: **${policy.status}**. ${policy.justification}`];
+  if (policy.override_applied) {
+    lines.push("", "Compensating documented synergy:");
+    for (const synergy of policy.documented_synergies || []) lines.push(`- ${synergy.producer} **${synergy.producerAbility}** → ${synergy.consumer} **${synergy.consumerAbility}** through ${synergy.effect}; reliability: ${synergy.reliability}; prerequisite: ${synergy.prerequisite}.`);
+  }
+  return lines;
+}
+
 export function renderBatchMarkdown(result) {
   if (!result?.validation?.valid) throw new Error("Cannot render an unvalidated batch result.");
   const lines = [
@@ -1519,6 +1889,7 @@ export function renderBatchMarkdown(result) {
   for (const scenario of result.scenarios) {
     const candidate = scenario.selected_candidates[0];
     lines.push("", `## ${scenario.label}`, "", "### Recommended formation", "", `Shared troop: **${candidate.formation.troop_type}**`, "", formatFormationTable(candidate));
+    lines.push("", ...affinityPolicyLines(candidate.affinity_policy));
     lines.push("", `Enemy progression: ${scenario.enemy_assumption.source}; ${scenario.enemy_assumption.formation.map(item => `${item.dragon} Level ${item.level}, Rank ${item.stars}, Habit levels ${Object.values(item.habit_levels || {}).length ? [...new Set(Object.values(item.habit_levels))].join("/") : "unknown"}`).join("; ")}.`);
     if (scenario.selected_candidates.length > 1) {
       lines.push("", "### Additional Pareto finalists", "", "| Rank | Candidate | Formation | Shared troop |", "|---:|---|---|---|");
@@ -1555,6 +1926,7 @@ export function renderBatchMarkdown(result) {
 
 export function renderPortfolioMarkdown(result) {
   if (!result?.validation?.valid) throw new Error("Cannot render an unvalidated formation portfolio.");
+  const grouped = Array.isArray(result.request_interpretation.portfolio_groups);
   const lines = [
     "# Dragonfire non-overlapping formation portfolio",
     "",
@@ -1564,19 +1936,37 @@ export function renderPortfolioMarkdown(result) {
     `Troop availability: ${result.troop_preflight.available_troops.join(", ")} (${result.troop_preflight.source}).`,
     `Capacity basis: ${result.input_summary.capacity_basis}`,
     `Competitive context: requested **${result.input_summary.competitive_context.requested}**, resolved **${result.input_summary.competitive_context.resolved}**. Selection basis: **${result.allocation_attestation.selection_basis}**.`,
-    "",
-    "| Priority | Candidate ID | Left Flank | Vanguard | Right Flank | Shared troop | Viability | Evidence prior | Preservation | Capacity proxy | Global rank |",
-    "|---:|---|---|---|---|---|---|---|---:|---:|---:|",
-    ...result.selected_formations.map(item => {
-      const candidate = item.candidate;
-      return `| ${item.priority} | ${markdownCell(candidate.id)} | ${markdownCell(candidate.formation.left_flank)} | ${markdownCell(candidate.formation.vanguard)} | ${markdownCell(candidate.formation.right_flank)} | ${markdownCell(candidate.formation.troop_type)} | ${candidate.metrics.competitive_viability.qualified ? "Qualified" : "Not qualified"} | ${candidate.expert_prior ? "Expert-recommended" : "Generated"} | ${markdownCell(candidate.metrics.troop_preservation.tier_label)} (${markdownCell(candidate.metrics.troop_preservation.score)}) | ${markdownCell(candidate.metrics.modeled_team_capacity)} | ${item.global_candidate_rank} |`;
-    }),
-    "",
-    `Allocation audit: total rank cost **${result.allocation_attestation.selected.total_rank_cost}**; selection basis **${result.allocation_attestation.selection_basis}**; greedy selection used: **false**; exhaustive candidate pool used: **true**.`,
   ];
+  if (grouped) {
+    lines.push("", "## Ordered portfolio groups", "");
+    for (const group of result.request_interpretation.portfolio_groups) {
+      const constraints = [
+        group.constraints.minimum_dragon_level == null ? null : `minimum dragon level ${group.constraints.minimum_dragon_level}`,
+        group.constraints.minimum_positive_affinities == null ? null : `minimum ${group.constraints.minimum_positive_affinities} positive affinities for the shared troop`,
+      ].filter(Boolean);
+      const preference = group.preferences.rarity_order.length ? `; rarity preference ${group.preferences.rarity_order.join(" then ")}` : "";
+      const affinityPolicy = group.preferences.affinity_policy === "perfect_unless_explicit_synergy" ? "; prefer 3/3 shared affinity; compare documented synergy against the strongest 3/3 candidate in this group, or disclose when none exists" : "";
+      lines.push(`- **${group.label}** (${group.count}): objective **${group.objective}**; ${constraints.length ? constraints.join("; ") : "no additional hard constraints"}${preference}${affinityPolicy}.`);
+    }
+  }
+  lines.push("", grouped
+    ? "| Priority | Group | Candidate ID | Left Flank | Vanguard | Right Flank | Shared troop | Affinities | Minimum level | Viability | Capacity proxy | Group rank |"
+    : "| Priority | Candidate ID | Left Flank | Vanguard | Right Flank | Shared troop | Viability | Evidence prior | Preservation | Capacity proxy | Global rank |",
+  grouped
+    ? "|---:|---|---|---|---|---|---|---:|---:|---|---:|---:|"
+    : "|---:|---|---|---|---|---|---|---|---:|---:|---:|",
+  ...result.selected_formations.map(item => {
+    const candidate = item.candidate;
+    if (grouped) return `| ${item.priority} | ${markdownCell(item.portfolio_group.label)} | ${markdownCell(candidate.id)} | ${markdownCell(candidate.formation.left_flank)} | ${markdownCell(candidate.formation.vanguard)} | ${markdownCell(candidate.formation.right_flank)} | ${markdownCell(candidate.formation.troop_type)} | ${item.constraint_attestation.positive_affinity_count_observed} | ${item.constraint_attestation.minimum_dragon_level_observed} | ${candidate.metrics.competitive_viability.qualified ? "Qualified" : "Not qualified"} | ${markdownCell(candidate.metrics.modeled_team_capacity)} | ${item.group_candidate_rank} |`;
+    return `| ${item.priority} | ${markdownCell(candidate.id)} | ${markdownCell(candidate.formation.left_flank)} | ${markdownCell(candidate.formation.vanguard)} | ${markdownCell(candidate.formation.right_flank)} | ${markdownCell(candidate.formation.troop_type)} | ${candidate.metrics.competitive_viability.qualified ? "Qualified" : "Not qualified"} | ${candidate.expert_prior ? "Expert-recommended" : "Generated"} | ${markdownCell(candidate.metrics.troop_preservation.tier_label)} (${markdownCell(candidate.metrics.troop_preservation.score)}) | ${markdownCell(candidate.metrics.modeled_team_capacity)} | ${item.global_candidate_rank} |`;
+  }), "", `Allocation audit: total rank cost **${result.allocation_attestation.selected.total_rank_cost}**; selection basis **${result.allocation_attestation.selection_basis}**; greedy selection used: **false**; exhaustive candidate pool used: **true**${grouped ? "; group constraints enforced: **true**" : ""}.`);
   for (const item of result.selected_formations) {
     const candidate = item.candidate;
     lines.push("", `## Priority ${item.priority}: ${candidate.id}`, "", `Shared troop: **${candidate.formation.troop_type}**`, "", formatFormationTable(candidate));
+    if (grouped) {
+      const affinityPolicy = item.constraint_attestation.affinity_policy;
+      lines.push("", `Portfolio group: **${item.portfolio_group.label}**; objective **${item.portfolio_group.objective}**; group candidate rank **${item.group_candidate_rank}**.`, `Constraint check: minimum dragon level **${item.constraint_attestation.minimum_dragon_level_observed}**; positive affinities **${item.constraint_attestation.positive_affinity_count_observed}**; affinity policy **${affinityPolicy.status}**; satisfied: **${item.constraint_attestation.satisfied}**.`, ...affinityPolicyLines(affinityPolicy));
+    } else lines.push("", ...affinityPolicyLines(candidate.affinity_policy));
     lines.push("", "### Troop-preservation evidence", "", "| Dragon | Ability | Evidence type | Contribution | Reliability |", "|---|---|---|---:|---|");
     const components = candidate.metrics.troop_preservation.components.filter(component => component.score !== 0);
     if (!components.length) lines.push("| — | — | No active documented preservation component | 0 | — |");

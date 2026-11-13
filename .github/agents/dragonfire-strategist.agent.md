@@ -277,6 +277,16 @@ dragon reuse. This is the repository default; do not ask the user to restate it.
 `request_mode: formation_portfolio`, `formation_count` to the requested number, and
 `reuse_policy: disjoint_armies`, then run one retained portfolio input through the CLI.
 Never select one army, remove its dragons, and rerun for the next army.
+If ordered subsets have different objectives, minimum levels, minimum positive-affinity
+counts, or an explicit rarity preference, encode those requirements as
+`portfolio_groups` using the schema in the planner README. Do not run a single-objective
+portfolio and manually accept or reject its rows afterward; the generated constraint
+attestations must validate the actual request.
+Default to 3-of-3 positive affinity for the shared troop. Where a qualifying 3-of-3
+comparator exists, a lower-affinity line needs a documented skill or Habit synergy
+advantage greater than the missing-affinity count. If no qualifying comparator exists,
+disclose that fact instead of claiming an override. Use the generated attestation; set
+`minimum_positive_affinities: 3` when the user requires 3-of-3 without exception.
 Set `competitive_context` to `endgame` when the user says the request is for highest-level
 or endgame play; otherwise retain `auto`. Do not silently set `allow_unproven_rare`.
 

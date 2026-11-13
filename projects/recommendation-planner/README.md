@@ -4,6 +4,8 @@ The planner exhaustively evaluates every legal owned trio, all six lane orders, 
 
 It applies each dragon's own level, Star Rank, Habit levels, optional visible Power, and the account-level Dragon's Army capacity upgrade. The result contains the mandatory candidate ledger, a Pareto frontier, deterministic finalists, timing windows, an explicitly limited capacity proxy, and source locators. It does not estimate win rates or invent undocumented combat formulas.
 
+Commanders are not yet inputs to the planner. Their talents, trait synergies, assignments and possible Army Size bonuses are not scored or included in capacity; they can change the practical comparison between formations. Reports disclose this limitation. See the Encyclopedia Commander guide for the official system description and separately labeled installed-client talent text.
+
 The objective-fit axis uses only documented active mechanics. Damage and amplification
 components are de-duplicated and use stated magnitudes, target scope, conditions, and
 known proc reliability as an ordinal comparison—not a damage simulation. Producer/payoff
@@ -135,6 +137,68 @@ Portfolio Markdown is generated from the validated structured result. It include
 candidate IDs and ranks, allocation attestation, preservation evidence, capacity basis,
 risks, evidence locators, common-baseline dispositions, and strongest alternative
 portfolio. Do not replace its table with a hand-authored reconstruction.
+
+When ordered subsets of the portfolio have different jobs or eligibility rules, add
+`portfolio_groups`. Group counts must sum to `formation_count`. The planner searches each
+group under its own objective, applies its constraints before ranking, applies any
+explicit rarity preference lexicographically, and then allocates all group slots jointly
+under the disjoint-army rule. Rarity preferences record the caller's stated priority;
+they are not a universal rarity score.
+
+```json
+{
+  "request_mode": "formation_portfolio",
+  "formation_count": 4,
+  "reuse_policy": "disjoint_armies",
+  "objective": "highest_tile",
+  "portfolio_groups": [
+    {
+      "id": "primary",
+      "label": "Primary tile armies",
+      "count": 2,
+      "objective": "highest_tile"
+    },
+    {
+      "id": "secondary",
+      "label": "Secondary tile armies",
+      "count": 2,
+      "objective": "highest_tile",
+      "constraints": {
+        "minimum_dragon_level": 16,
+        "minimum_positive_affinities": 2
+      },
+      "preferences": {
+        "affinity_policy": "perfect_unless_explicit_synergy",
+        "rarity_order": ["Legendary", "Rare", "Epic"]
+      }
+    }
+  ]
+}
+```
+
+All recommendation modes apply `perfect_unless_explicit_synergy` by default: target 3/3
+positive affinity for the shared troop and admit a lower-affinity candidate only when its
+documented explicit-synergy advantage over the highest-synergy eligible 3/3 candidate
+with the same competitive qualification is greater than the missing-affinity count.
+For grouped requests the comparator is drawn from the same hard-constraint-eligible
+group pool, before trio deduplication. It is a candidate-level comparator and does not
+attest that the comparator could replace that formation while preserving every other
+selected army. When no eligible 3/3 candidate exists in that pool, lower-affinity
+candidates remain eligible and the report explicitly says no perfect comparator was
+available; it does not claim a synergy override.
+Supported group constraints are `minimum_dragon_level` (1–50, applied to every dragon)
+and `minimum_positive_affinities` (0–3, counted against the formation's one shared troop
+type). `preferences.rarity_order` may contain each of `Rare`, `Epic`, and `Legendary` at
+most once. A group may state the default explicitly with
+`preferences.affinity_policy: perfect_unless_explicit_synergy`; use a hard
+`minimum_positive_affinities: 3` only when no exception is allowed. Grouped portfolios
+currently require `reuse_policy: disjoint_armies`. The
+structured result includes each slot's group-local candidate rank and a constraint
+attestation; output validation fails if any selected formation violates its group.
+Group ranks and allocation cost refer to the complete ranked group pool before
+competitive or expert filtering. At endgame with incomparable Power, a complete legal,
+group-compatible expert portfolio is the conservative default; the mechanics-ranked
+portfolio remains the alternative if different.
 
 ## Multi-matchup batch input
 

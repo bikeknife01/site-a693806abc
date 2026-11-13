@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { globalDisjointPortfolio, parseArgs, planBatchRecommendations, planFormationPortfolio, planRecommendations, renderBatchMarkdown, renderPortfolioMarkdown, validatePlannerInput } from "../recommend.mjs";
+import { applyAffinityPolicy, globalConstrainedPortfolio, globalDisjointPortfolio, parseArgs, planBatchRecommendations, planFormationPortfolio, planRecommendations, rankPortfolioGroupCandidates, renderBatchMarkdown, renderPortfolioMarkdown, validatePlannerInput } from "../recommend.mjs";
 
 const data = JSON.parse(fs.readFileSync(new URL("../../game-data-encyclopedia/public/data/encyclopedia.json", import.meta.url), "utf8"));
 const common = JSON.parse(fs.readFileSync(new URL("../../../data/common_formations.json", import.meta.url), "utf8"));
@@ -50,6 +50,7 @@ test("retains all common baselines in the mandatory ledger", () => {
   assert.ok(result.common_baselines.every(item => item.status === "evaluated"));
   assert.equal(result.candidate_ledger.filter(item => item.category === "common_baseline").length, 3);
   assert.ok(result.primary_candidate);
+  assert.ok(result.limitations.some(item => item.includes("Commander talents")));
 });
 
 test("a common baseline can itself be the primary recommendation", () => {
@@ -219,6 +220,167 @@ test("formation portfolios default to globally selected non-overlapping armies",
   for (const formation of result.selected_formations) assert.ok(report.includes(formation.candidate.id));
 });
 
+test("ordered portfolio groups jointly enforce per-group objectives, constraints, and preferences", () => {
+  const result = planFormationPortfolio(data, common, {
+    formation_count: 2,
+    reuse_policy: "disjoint_armies",
+    objective: "highest_tile",
+    portfolio_groups: [
+      { id: "primary", label: "Primary", count: 1, objective: "highest_tile", constraints: { minimum_positive_affinities: 3 } },
+      {
+        id: "secondary",
+        label: "Secondary",
+        count: 1,
+        objective: "damage_and_survivability",
+        constraints: { minimum_dragon_level: 44, minimum_positive_affinities: 2 },
+        preferences: { affinity_policy: "perfect_unless_explicit_synergy", rarity_order: ["Legendary", "Rare", "Epic"] },
+      },
+    ],
+    roster: baselineRoster,
+    roster_preflight: { completeness: "complete", expected_visible_dragons: baselineRoster.length },
+  });
+  assert.equal(result.metadata.model, "dragonfire_grouped_formation_portfolio_v1");
+  assert.equal(result.allocation_attestation.group_constraints_enforced, true);
+  assert.deepEqual(result.selected_formations.map(item => item.portfolio_group.id), ["primary", "secondary"]);
+  assert.ok(result.selected_formations.every(item => item.constraint_attestation.satisfied));
+  assert.equal(result.selected_formations[0].constraint_attestation.positive_affinity_count_observed, 3);
+  assert.equal(result.selected_formations[0].constraint_attestation.affinity_policy.status, "affinity_perfect");
+  assert.ok(result.selected_formations[1].constraint_attestation.minimum_dragon_level_observed >= 44);
+  assert.ok(result.selected_formations[1].constraint_attestation.positive_affinity_count_observed >= 2);
+  if (result.selected_formations[1].constraint_attestation.positive_affinity_count_observed < 3) {
+    assert.equal(result.selected_formations[1].constraint_attestation.affinity_policy.status, "documented_synergy_override");
+    assert.ok(result.selected_formations[1].constraint_attestation.affinity_policy.explicit_synergy_score > 1);
+  }
+  const selected = result.selected_formations.flatMap(item => item.candidate.progression.map(dragon => dragon.slug));
+  assert.equal(new Set(selected).size, 6);
+  const report = renderPortfolioMarkdown(result);
+  assert.match(report, /Ordered portfolio groups/);
+  assert.match(report, /group constraints enforced: \*\*true\*\*/);
+});
+
+test("portfolio groups fail closed when counts or constraints are invalid", () => {
+  const base = {
+    formation_count: 2,
+    roster: baselineRoster,
+    roster_preflight: { completeness: "complete", expected_visible_dragons: baselineRoster.length },
+  };
+  assert.throws(() => planFormationPortfolio(data, common, {
+    ...base,
+    portfolio_groups: [{ id: "primary", count: 1 }],
+  }), /counts sum to 1/);
+  assert.throws(() => planFormationPortfolio(data, common, {
+    ...base,
+    portfolio_groups: [{ id: "primary", count: 2, constraints: { minimum_positive_affinities: 4 } }],
+  }), /integer from 0 to 3/);
+  assert.throws(() => planFormationPortfolio(data, common, {
+    ...base,
+    portfolio_groups: [{ id: "primary", count: 2, constraints: { minimum_average_level: 40 } }],
+  }), /unsupported key/);
+  assert.throws(() => planFormationPortfolio(data, common, {
+    ...base,
+    portfolio_groups: [{ id: "primary", count: 2, preferences: { rarity_order: "Legendary" } }],
+  }), /must be an array/);
+  assert.throws(() => planFormationPortfolio(data, common, {
+    ...base,
+    portfolio_groups: [{ id: "primary", count: 2, preferences: { affinity_policy: "soft" } }],
+  }), /must be perfect_unless_explicit_synergy/);
+});
+
+test("shared affinity discloses when no perfect-affinity candidate exists", () => {
+  const fallback = planRecommendations(data, { formations: [] }, {
+    objective: "damage_and_survivability",
+    roster: ["Thunderstrike", "Shadowrend", "Velar"].map(name => entry(name)),
+  });
+  assert.equal(fallback.primary_candidate.affinity_policy.status, "no_affinity_perfect_available");
+  assert.equal(fallback.primary_candidate.affinity_policy.override_applied, false);
+  const fallbackRoster = ["Thunderstrike", "Shadowrend", "Velar"].map(name => entry(name));
+  const fallbackPortfolio = planFormationPortfolio(data, { formations: [] }, {
+    formation_count: 1, objective: "damage_and_survivability", roster: fallbackRoster,
+    roster_preflight: { completeness: "complete", expected_visible_dragons: 3 },
+  });
+  assert.match(renderPortfolioMarkdown(fallbackPortfolio), /no eligible affinity-perfect/i);
+
+  const exception = planRecommendations(data, { formations: [] }, {
+    objective: "highest_tile",
+    roster: ["Velar", "Tessarion", "Vermithor"].map(name => entry(name)),
+  });
+  assert.equal(exception.primary_candidate.metrics.affinity_count, 2);
+  assert.equal(exception.primary_candidate.affinity_policy.status, "no_affinity_perfect_available");
+
+  const groupedException = planFormationPortfolio(data, { formations: [] }, {
+    formation_count: 1,
+    roster: ["Velar", "Tessarion", "Vermithor"].map(name => entry(name)),
+    roster_preflight: { completeness: "complete", expected_visible_dragons: 3 },
+    portfolio_groups: [{ id: "primary", count: 1, objective: "highest_tile" }],
+  });
+  const report = renderPortfolioMarkdown(groupedException);
+  assert.match(report, /no eligible affinity-perfect/i);
+});
+
+test("affinity exceptions compare synergy advantage against a perfect-affinity candidate", () => {
+  const candidate = (id, affinity, synergy, qualified = true) => ({ id, metrics: { affinity_count: affinity, explicit_synergy: synergy, competitive_viability: { qualified } } });
+  const perfect = candidate("perfect", 3, 3);
+  const insufficient = candidate("insufficient", 2, 4);
+  const sufficient = candidate("sufficient", 2, 5);
+  const eligible = applyAffinityPolicy([perfect, insufficient, sufficient]);
+  assert.deepEqual(eligible.map(item => item.id), ["perfect", "sufficient"]);
+  assert.equal(sufficient.affinity_evaluation.comparator_id, "perfect");
+  assert.equal(sufficient.affinity_evaluation.synergy_advantage, 2);
+  const only = candidate("only", 2, 0);
+  assert.deepEqual(applyAffinityPolicy([only]), [only]);
+  assert.equal(only.affinity_evaluation.comparator_id, null);
+});
+
+test("group allocation retains full-pool ranks after qualification filtering", () => {
+  const candidate = (id, slugs) => ({ id, result: { formation: slugs.map(slug => ({ dragon: { slug } })) } });
+  const group = { id: "one", count: 1 };
+  const first = candidate("first", ["a", "b", "c"]);
+  const second = candidate("second", ["d", "e", "f"]);
+  const result = globalConstrainedPortfolio([{ group, ranked: [first, second], fullRanks: new Map([["first", 3], ["second", 8]]) }]);
+  assert.equal(result.primary.selected[0].rank, 3);
+  assert.equal(result.primary.rankCost, 3);
+  assert.equal(result.alternative.rankCost, 8);
+  const a = candidate("a", ["shared", "a2", "a3"]);
+  const b = candidate("b", ["b1", "b2", "b3"]);
+  const x = candidate("x", ["shared", "x2", "x3"]);
+  const y = candidate("y", ["y1", "y2", "y3"]);
+  const multi = globalConstrainedPortfolio([
+    { group: { id: "g1", count: 1 }, ranked: [a, b], fullRanks: new Map([["a", 0], ["b", 1]]) },
+    { group: { id: "g2", count: 1 }, ranked: [x, y], fullRanks: new Map([["x", 0], ["y", 10]]) },
+  ]);
+  assert.deepEqual(multi.primary.selected.map(item => item.candidate.id), ["b", "x"]);
+  assert.equal(multi.primary.rankCost, 1);
+});
+
+test("group constraints retain a legal troop variant before choosing a trio representative", () => {
+  const formation = ["a", "b", "c"].map(slug => ({ dragon: { slug }, progression: { level: 50 } }));
+  const candidate = (id, affinity, objective) => ({ id, result: { formation }, metrics: {
+    affinity_count: affinity, explicit_synergy: 0, competitive_viability: { qualified: true },
+    direct_threat_coverage: 0, troop_disadvantage: 0, objective_fit: objective,
+    counter_reliability: 0, troop_fit: 0, lane_fit: 0, diagnostic_proxy_score: 0,
+  } });
+  const betterButIllegal = candidate("two-affinities", 2, 100);
+  const valid = candidate("three-affinities", 3, 0);
+  const group = { constraints: { minimum_positive_affinities: 3 }, preferences: { rarity_order: [], affinity_policy: "perfect_unless_explicit_synergy" } };
+  assert.deepEqual(rankPortfolioGroupCandidates([betterButIllegal, valid], group).map(item => item.id), ["three-affinities"]);
+});
+
+test("grouped unknown-Power endgame defaults to a complete eligible expert portfolio", () => {
+  const roster = baselineRoster.map(dragon => ({ ...dragon, power: null }));
+  const result = planFormationPortfolio(data, common, {
+    formation_count: 3, objective: "damage_and_survivability", roster,
+    roster_preflight: { completeness: "complete", expected_visible_dragons: roster.length },
+    portfolio_groups: [{ id: "all", count: 3, objective: "damage_and_survivability" }],
+  });
+  assert.equal(result.allocation_attestation.selection_basis, "expert_prior_default");
+  assert.equal(result.strategic_qualification.qualified, true);
+  assert.ok(result.allocation_attestation.expert_baseline_portfolio);
+  assert.ok(result.selected_formations.every(item => item.group_candidate_rank > 0));
+  assert.equal(result.allocation_attestation.selected.total_rank_cost, result.selected_formations.reduce((sum, item) => sum + item.group_candidate_rank - 1, 0));
+  assert.ok(result.allocation_attestation.strongest_alternative);
+  assert.deepEqual(new Set(result.selected_formations.map(item => item.candidate.expert_prior?.formation_id)), new Set(common.formations.map(item => item.id)));
+});
+
 test("unknown-Power endgame portfolios conservatively select the complete expert formation set", () => {
   const roster = baselineRoster.map(dragon => ({ ...dragon, power: null }));
   const result = planFormationPortfolio(data, common, {
@@ -256,16 +418,21 @@ test("endgame ordinary-combat policy fails strategically closed on unsupported R
 });
 
 test("reviewed Rare exceptions remain qualified in endgame ordinary combat", () => {
-  const roster = ["Thunderstrike", "Shadowrend", "Velar"].map(name => entry(name));
+  const roster = ["Thunderstrike", "Tairax", "Caraxes", "Shadowrend", "Velar", "Vhagar"].map(name => entry(name));
   const result = planFormationPortfolio(data, { formations: [] }, {
-    formation_count: 1,
+    formation_count: 2,
     objective: "damage_and_survivability",
     competitive_context: "endgame",
     roster,
     roster_preflight: { completeness: "complete", expected_visible_dragons: roster.length },
   });
   assert.equal(result.strategic_qualification.qualified, true);
-  assert.deepEqual(result.selected_formations[0].candidate.metrics.competitive_viability.reviewed_rare_exceptions.sort(), ["Shadowrend", "Thunderstrike"]);
+  assert.deepEqual(result.strategic_qualification.unsupported_rare_dragons, []);
+  assert.deepEqual(result.selected_formations.flatMap(item => item.candidate.metrics.competitive_viability.reviewed_rare_exceptions).sort(), ["Shadowrend", "Thunderstrike"]);
+  assert.ok(result.selected_formations.every(item => ["affinity_perfect", "documented_synergy_override"].includes(item.candidate.affinity_policy.status)));
+  for (const item of result.selected_formations.filter(item => item.candidate.affinity_policy.override_applied)) {
+    assert.ok(item.candidate.affinity_policy.explicit_synergy_score > item.candidate.affinity_policy.affinity_gap);
+  }
 });
 
 test("explicit Rare override and Siege scope are audited exceptions rather than universal rarity scoring", () => {
@@ -364,6 +531,7 @@ test("batch planner consolidates all three common enemy formations into an audit
     assert.equal(scenario.common_baselines.length, 3);
   }
   const markdown = renderBatchMarkdown(result);
+  assert.match(markdown, /Commander talents, trait synergies/);
   assert.match(markdown, /Threat coverage/);
   assert.match(markdown, /Expert\/common-baseline check/);
   assert.match(markdown, /Strategic qualification/);
@@ -391,7 +559,7 @@ test("batch top-n output keeps roster-scope uncertainty explicit", () => {
 });
 
 test("counter coverage does not call chance or target limited effects direct", () => {
-  const roster = ["Starshower", "Zivern", "Seasmoke", "Arulix"].map(name => entry(name, { stars: 10 }));
+  const roster = ["Seasmoke", "Zivern", "Daemoros"].map(name => entry(name, { stars: 10 }));
   const result = planBatchRecommendations(data, common, {
     roster,
     scenarios: [
@@ -406,7 +574,7 @@ test("counter coverage does not call chance or target limited effects direct", (
   assert.equal(shroud.state, "partial");
   assert.match(shroud.remaining_gap, /Basic Attacks are excluded/);
   const cavalryResult = planBatchRecommendations(data, common, {
-    roster: ["Starshower", "Zivern", "Arulix"].map(name => entry(name, { stars: 10 })),
+    roster: ["Arulix", "Tairax", "Caraxes"].map(name => entry(name, { stars: 10 })),
     scenarios: [{ id: "cavalry", common_formation_id: common.formations[2].id }],
   });
   const cavalry = cavalryResult.scenarios[0];

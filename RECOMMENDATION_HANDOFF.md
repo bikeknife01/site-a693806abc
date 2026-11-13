@@ -182,11 +182,12 @@ The game's effect menu places Bleed, Panic, and Burn under â€œPositive Effects,â
   Troop advantage directly improves damage dealt and reduces damage received in that
   matchup. Siege is disadvantaged against all combat troop types and specializes in
   POI Durability damage.
-- Treat affinity-perfect coverage as a strong damage baseline and tiebreaker, not an
-  absolute formation rule. Explicit Command/Habit/Vanguard synergies, control,
-  mitigation, Recovery, timing, enemy troop counters, and scenario objectives may
-  outweigh perfect affinity overlap. State the compensating value whenever the
-  recommendation gives up an available affinity-perfect option.
+- Default to affinity-perfect coverage for the formation's shared troop. A lower-affinity
+  formation may displace it only when an active, documented skill or Habit synergy
+  advantage exceeds the missing-affinity count against the eligible comparator. State the
+  exact compensating synergy and affinity tradeoff; if no eligible affinity-perfect
+  comparator exists, disclose that instead of claiming an override. Use a hard 3-of-3
+  constraint when the request permits no exception.
 - Values in `upgrade_levels` are the five displayed Habit levels, not five Star unlocks. The Habit itself unlocks at `star_unlock`.
 - Combat begins when an army enters a tile containing an enemy army and resolves
   automatically without player choices during rounds. If both armies remain after a
@@ -279,9 +280,9 @@ conflict remains in `review`. User confirmation established Dawnseeker's 10-Star
 as `First Light`, Malachite's Command as `Warden's Rally`, Sheepstealer as Legendary,
 Vermax as Epic, and Vhagar's 10-Star Habit as `Skyward Titan`.
 
-Meleys and Smoketail are user-confirmed available Season 3 dragons with complete
-cross-site-verified canonical records. Use them with source disclosure; do not call
-them screenshot audited. Starshower and Vermithor are screenshot complete. Their named
+Meleys and Smoketail are user-confirmed available Season 3 dragons and are
+screenshot audited.
+Starshower and Vermithor are screenshot complete. Their named
 effects Solar Flare, Protect, Laceration, Reflect, and Burn are defined in
 `data/effects.json`. Consult `data/installed_evidence.json` for lifecycle and evidence
 classification before using any installed-only behavior.

@@ -39,8 +39,12 @@
     "explicit_reuse_override": "allow_reuse",
     "independent_matchup_rule": "Use independent_matchups only when the user explicitly requests separate hypothetical matchup answers whose dragons need not be deployed simultaneously.",
     "allocation_rule": "Select the complete portfolio globally from the full legal candidate set. Do not choose one formation, remove its dragons, and rerun greedily.",
+    "heterogeneous_group_rule": "When ordered subsets of a deployable portfolio have different objectives, hard eligibility rules, or explicit preferences, encode them as portfolio_groups. Apply each group's constraints before ranking and allocate all group slots jointly; do not validate the request with a single global objective followed by a manual audit.",
+    "supported_group_constraints": ["minimum_dragon_level", "minimum_positive_affinities"],
+    "supported_group_preferences": ["rarity_order", "affinity_policy: perfect_unless_explicit_synergy"],
+    "shared_affinity_default": "Prefer 3-of-3 positive affinity for the formation's one shared troop. Compare a lower-affinity formation against the highest-synergy hard-constraint-eligible 3-of-3 candidate with the same competitive qualification; permit it only when its documented synergy advantage exceeds the missing-affinity count. When no such candidate exists, disclose that no perfect comparator is available rather than asserting a synergy override. For grouped portfolios this candidate-level comparison does not establish a feasible substitute for the complete disjoint allocation. Use minimum_positive_affinities: 3 when the caller requires affinity-perfect formations without exception.",
     "required_input": ["request_mode: formation_portfolio", "formation_count", "reuse_policy"],
-    "required_output": ["candidate_ids", "global_candidate_ranks", "allocation_attestation", "validation.valid", "strategic_qualification.qualified"]
+    "required_output": ["candidate_ids", "global_candidate_ranks_or_group_candidate_ranks", "allocation_attestation", "constraint_attestation_when_grouped", "validation.valid", "strategic_qualification.qualified"]
   },
   "competitive_viability": {
     "contexts": ["auto", "endgame", "unrestricted"],
