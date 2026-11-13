@@ -1,7 +1,7 @@
 {
   "name": "Meleys",
   "breed": "Warrior",
-  "rarity_label": null,
+  "rarity_label": "Elder",
   "rarity_tier": "Legendary",
   "troop_affinities": {
     "positive": [
@@ -14,24 +14,14 @@
     "review_required": false
   },
   "excluded_progression_snapshot": [],
-  "evidence": {
-    "class": "cross_site_confirmed",
-    "recommendation_status": "cross_site_verified",
-    "availability_status": "user_confirmed_available",
-    "as_of": "2026-10-12",
-    "sources": [
-      "data/dragon_application_knowledge.json -> dragons[name=Meleys]",
-      "https://dragonfire-hub.com/",
-      "https://dragonfiresim.com/"
-    ],
-    "basis": "Installed-client names, schedules, targeting, affinities, Laceration, and Reflect templates are resolved by matching numeric records from Dragonfire Hub and Dragonfire Sim. The user directed matching site data to be treated as trusted and verified when no current screenshot was supplied."
-  },
   "command": {
     "name": "Scarlet Strike",
     "type": "Active",
     "verbatim": [
-      "Odd-numbered Rounds: Deal Physical Damage (Damage Rate: +135%) to the enemy with the highest Initiative.",
-      "Additionally, afflict the target with 1 stack of Laceration (Max 8 stacks). Each stack of Laceration reduces the target's Initiative by -7% (enhanced by Strength)."
+      "Odd-numbered Rounds: Deal Physical Damage (Damage Rate: +135%) to the enemy with the highest Initiative. Additionally, afflict the target with 1 stack of Laceration (Max 8 stacks).",
+      "Each stack of Laceration reduces the target's Initiative by -7% (enhanced by Strength).",
+      "At 2 Stars: If the target is afflicted with Bleed, there is a 70% chance to afflict them with 4 stacks of Vulnerable for 2 rounds and apply an additional stack of Laceration. Otherwise, there is a chance to increase their Physical Damage Received by +12.5% for 2 rounds and apply an additional stack of Laceration.",
+      "Each stack of Vulnerable increases the target's Damage Received by +5%."
     ],
     "structured": {
       "core_tags": [
@@ -51,7 +41,7 @@
     {
       "star_unlock": 2,
       "name": "Royal Rend",
-      "verbatim": "Scarlet Strike gains: If the target is afflicted with Bleed, there is a 50% chance to afflict them with Vulnerable for 2 rounds and apply an additional stack of Laceration. Otherwise, there is a chance to increase their Physical Damage Received by +7% for 2 rounds and apply an additional stack of Laceration.",
+      "verbatim": "Scarlet Strike gains: If the target is afflicted with Bleed, there is a 70% chance to afflict them with 4 stacks of Vulnerable for 2 rounds and apply an additional stack of Laceration. Otherwise, there is a chance to increase their Physical Damage Received by +12.5% for 2 rounds and apply an additional stack of Laceration. Each stack of Vulnerable increases the target's Damage Received by +5%.",
       "upgrade_levels": {
         "1": 50,
         "2": 60,
@@ -152,7 +142,7 @@
     {
       "star_unlock": 10,
       "name": "The Red Queen",
-      "verbatim": "Rounds 3, 6, 9: Deal Physical Damage (Damage Rate: +40%) to 3 Enemies in any lane. Additionally, there is a 40% chance to apply 1 stack of Laceration to them. Apply an additional stack of Laceration to targets afflicted with Bleed.",
+      "verbatim": "Round 3,6,9: Deal Physical Damage (Damage Rate: +40%) to 3 Enemies in any lane. Additionally, there is a 40% to apply 1 stack of Laceration to them. Apply an additional stack of Laceration to targets afflicted with Bleed.",
       "upgrade_levels": {
         "1": {
           "physical_damage_rate_percent": 40,
@@ -191,7 +181,6 @@
       "reflect",
       "ally_buff"
     ],
-    "preferred_position": "vanguard",
     "preferred_troops": [
       "Cavalry",
       "Archers"
@@ -204,5 +193,8 @@
       "Tactical-damage Left Flank ally"
     ]
   },
-  "review": []
+  "review": [
+    "Royal Rend states 'Otherwise, there is a chance' without specifying whether that chance equals the displayed Royal Rend chance or exactly what triggers the otherwise branch.",
+    "The Red Queen says 'there is a 40% to apply' without the word chance; the upgrade table labels this Laceration Chance. Whether the additional Bleed stack depends on the preceding chance is not specified."
+  ]
 }

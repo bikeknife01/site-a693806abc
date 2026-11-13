@@ -244,7 +244,7 @@ test("qualified Cleanse relationships do not claim unrelated negative effects", 
   assert.equal(weakened.relationships.cleanses.some(item => item.dragon_id === sunfyre.id), false);
 });
 
-test("cross-site-confirmed Smoketail mitigation is eligible for documented coverage", () => {
+test("screenshot-audited Smoketail mitigation is eligible for documented coverage", () => {
   const realData = JSON.parse(fs.readFileSync(new URL("../../game-data-encyclopedia/public/data/encyclopedia.json", import.meta.url), "utf8"));
   const smoketail = realData.dragons.find(item => item.name === "Smoketail");
   const threat = { id: "damage:Fire Damage", category: "damage", name: "Fire Damage", sources: [] };

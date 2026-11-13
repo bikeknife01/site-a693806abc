@@ -5353,7 +5353,7 @@
         ],
         "source_key": "affinity_iconic_meleys"
       },
-      "recommendation_status": "cross_site_verified",
+      "recommendation_status": "screenshot_audited",
       "availability_status": "user_confirmed_available",
       "source_record": "data/dragons/meleys.json",
       "level_model": {
@@ -5768,10 +5768,10 @@
         ]
       },
       "recommendation_evidence": {
-        "screenshot_record_is_primary": false,
+        "screenshot_record_is_primary": true,
         "reviewed_canonical_record_is_primary": true,
         "client_templates_require_caution": false,
-        "availability": "Installed-client names, schedules, targeting, affinities, Laceration, and Reflect templates are resolved by matching numeric records from Dragonfire Hub and Dragonfire Sim. The user directed matching site data to be treated as trusted and verified when no current screenshot was supplied.",
+        "availability": "User-confirmed available; supplied screenshots establish the current canonical ability text and upgrade tracks.",
         "missing_for_full_recommendations": []
       }
     },
@@ -9315,7 +9315,7 @@
         ],
         "source_key": "affinity_generic_smoketail"
       },
-      "recommendation_status": "cross_site_verified",
+      "recommendation_status": "screenshot_audited",
       "availability_status": "user_confirmed_available",
       "source_record": "data/dragons/smoketail.json",
       "level_model": {
@@ -9730,10 +9730,10 @@
         ]
       },
       "recommendation_evidence": {
-        "screenshot_record_is_primary": false,
+        "screenshot_record_is_primary": true,
         "reviewed_canonical_record_is_primary": true,
         "client_templates_require_caution": false,
-        "availability": "Installed-client names, schedules, targeting, affinities, and Burn templates are resolved by matching numeric records from Dragonfire Hub and Dragonfire Sim. The user directed matching site data to be treated as trusted and verified when no current screenshot was supplied.",
+        "availability": "User-confirmed available; supplied screenshots establish the current canonical ability text and upgrade tracks.",
         "missing_for_full_recommendations": []
       }
     },

@@ -42,10 +42,37 @@ class EncyclopediaDataTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.data = BUILDER.build_data(ROOT)
 
+    def test_commander_reference_has_separate_sources_and_complete_talents(self) -> None:
+        reference = json.loads((ROOT / "data/commanders.json").read_text(encoding="utf-8"))
+        audit = json.loads((ROOT / "data/commander_value_audit.json").read_text(encoding="utf-8"))
+        traces = {(item["commander"], item["talent"]): item for item in audit["talents"]}
+        self.assertEqual(reference["source_date"], "2026-11-13")
+        self.assertEqual(audit["snapshot_date"], reference["source_date"])
+        self.assertTrue(reference["guide_url"].startswith("https://news.gotdragonfire.com/"))
+        self.assertEqual(len(reference["commanders"]), 5)
+        self.assertEqual(len(reference["trait_examples"]), 8)
+        for commander in reference["commanders"]:
+            self.assertEqual(len(commander["talents"]), 3)
+            self.assertEqual(len(commander["traits"]), 2)
+            self.assertTrue(set(commander["traits"]).issubset(reference["trait_examples"]))
+            for talent in commander["talents"]:
+                self.assertTrue(talent["client_key"].startswith("TALENT_"))
+                self.assertTrue(talent["exact_client_text"])
+                trace = traces[(commander["name"], talent["name"])]
+                self.assertTrue(trace["edges"])
+                for row in talent["reviewed_tracks"]:
+                    track = trace["tracks"][row["progression_id"]]
+                    self.assertIn(len(track), (1, 20))
+                    self.assertTrue(any(edge["to"] == row["progression_id"] for edge in trace["edges"]))
+        no_quarter = traces[("Daemon Targaryen", "No Quarter")]["tracks"]
+        self.assertEqual([no_quarter["prog_talent_noquarter_pos_01"][i] for i in (0, 9, 19)], [0.0107, 0.064, 0.16])
+        sea_snake = traces[("Corlys Velaryon", "The Sea Snake")]["tracks"]
+        self.assertEqual(sea_snake["prog_talent_theseasnake_trig_02"][-1], 1.0)
+
     def test_unique_and_present_stable_ids(self) -> None:
         self.assertEqual(len(self.data["dragons"]), 38)
-        self.assertEqual(sum(dragon["evidence"]["class"] == "screenshot_confirmed" for dragon in self.data["dragons"]), 36)
-        self.assertEqual(sum(dragon["evidence"]["class"] == "cross_site_confirmed" for dragon in self.data["dragons"]), 2)
+        self.assertEqual(sum(dragon["evidence"]["class"] == "screenshot_confirmed" for dragon in self.data["dragons"]), 38)
+        self.assertEqual(sum(dragon["evidence"]["class"] == "cross_site_confirmed" for dragon in self.data["dragons"]), 0)
         ids = [item["id"] for item in self.data["dragons"]]
         ids += [item["id"] for item in self.data["effects"]]
         ids += [ability["id"] for dragon in self.data["dragons"] for ability in dragon["abilities"]]
@@ -92,6 +119,17 @@ class EncyclopediaDataTests(unittest.TestCase):
         starfall = next(ability for ability in starshower["abilities"] if ability["name"] == "Starfall")
         operations = [item for item in self.data["graph"]["status_operations"] if item["ability_id"] == starfall["id"]]
         self.assertTrue(any(item["effect_id"] == "effect:solar-flare" and item["operation"] == "consumes" for item in operations))
+
+    def test_status_prerequisites_are_not_consumed_or_applied(self) -> None:
+        meleys = next(dragon for dragon in self.data["dragons"] if dragon["name"] == "Meleys")
+        abilities = {ability["name"]: ability for ability in meleys["abilities"]}
+        for name in ("Scarlet Strike", "Royal Rend"):
+            operations = [item for item in self.data["graph"]["status_operations"] if item["ability_id"] == abilities[name]["id"]]
+            self.assertFalse(any(item["effect_id"] in {"effect:bleed", "effect:vulnerable", "effect:laceration"} and item["operation"] == "consumes" for item in operations))
+            self.assertTrue(any(item["effect_id"] == "effect:vulnerable" and item["operation"] == "applies" for item in operations))
+        red_queen = [item for item in self.data["graph"]["status_operations"] if item["ability_id"] == abilities["The Red Queen"]["id"]]
+        self.assertFalse(any(item["effect_id"] == "effect:bleed" and item["operation"] == "applies" for item in red_queen))
+        self.assertTrue(any(item["effect_id"] == "effect:laceration" and item["operation"] == "applies" for item in red_queen))
 
     def test_semantic_diff_reports_field_changes(self) -> None:
         baseline = BUILDER.make_version_baseline(self.data)
@@ -151,12 +189,15 @@ class EncyclopediaDataTests(unittest.TestCase):
         self.assertIn("continuing_evidence_policy", app["metadata"])
 
         by_name = {dragon["name"]: dragon for dragon in app["dragons"]}
-        self.assertEqual(by_name["Smoketail"]["recommendation_status"], "cross_site_verified")
+        self.assertEqual(by_name["Smoketail"]["recommendation_status"], "screenshot_audited")
         self.assertEqual(by_name["Smoketail"]["availability_status"], "user_confirmed_available")
         self.assertEqual(by_name["Smoketail"]["troop_affinities"]["positive"], ["Spearmen"])
+        smoketail = json.loads((ROOT / "data" / "dragons" / "smoketail.json").read_text(encoding="utf-8"))
+        unraveled = next(habit for habit in smoketail["habits"] if habit["name"] == "Unraveled")
+        self.assertEqual([unraveled["upgrade_levels"][str(level)]["per_weakened_champion_percent"] for level in range(1, 6)], [-10.5, -13, -15, -18, -21])
         self.assertIn("Burn", by_name["Smoketail"]["client_ability_slots"]["habits_in_slot_order"][2]["description_template"])
         self.assertEqual(by_name["Meleys"]["availability_status"], "user_confirmed_available")
-        self.assertEqual(by_name["Meleys"]["recommendation_status"], "cross_site_verified")
+        self.assertEqual(by_name["Meleys"]["recommendation_status"], "screenshot_audited")
         self.assertEqual(by_name["Meleys"]["troop_affinities"]["positive"], ["Cavalry", "Archers"])
         self.assertEqual(by_name["Meleys"]["troop_affinities"]["negative"], ["Siege"])
 

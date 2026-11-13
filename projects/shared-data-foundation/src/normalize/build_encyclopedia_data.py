@@ -85,11 +85,13 @@ def classify_effect_relations(text: str, effects: list[dict[str, Any]]) -> list[
         if not re.search(pattern, text, flags=re.IGNORECASE):
             continue
         kinds: list[str] = []
-        if re.search(rf"\b(?:afflict|apply|grant|mark)\b[^.\n]{{0,120}}{pattern}", text, flags=re.IGNORECASE):
-            kinds.append("applies")
+        for application in re.finditer(rf"\b(?:afflict|apply|grant|mark)\b(?P<between>[^.\n]{{0,120}}?){pattern}", text, flags=re.IGNORECASE):
+            # A condition on the target is not an application to that target:
+            # "apply Laceration to targets afflicted with Bleed" applies only Laceration.
+            if not re.search(r"\b(?:targets?|enemies|allies)\s+(?:that\s+(?:are|is)\s+)?afflicted\s+with\b", application.group("between"), flags=re.IGNORECASE):
+                kinds.append("applies")
+                break
         if re.search(rf"\b(?:consume|consuming)\b[^.\n]{{0,100}}{pattern}", text, flags=re.IGNORECASE):
-            kinds.append("consumes")
-        if re.search(rf"\b(?:if|when|while)\b[^.\n]{{0,140}}\b(?:has|have|with|afflicted)\b[^.\n]{{0,80}}{pattern}", text, flags=re.IGNORECASE):
             kinds.append("consumes")
         if re.search(rf"\bimmunity\b[^.\n]{{0,100}}{pattern}", text, flags=re.IGNORECASE):
             kinds.append("counters")

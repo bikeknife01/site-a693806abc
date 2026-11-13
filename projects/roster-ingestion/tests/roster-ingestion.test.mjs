@@ -89,6 +89,38 @@ test("screenshot transcription derives numeric Stars and preserves evidence", ()
   assert.equal(validateSnapshot(snapshot, knowledge).valid, true);
 });
 
+test("screenshot ownership and inclusion reject non-booleans without inventing values", () => {
+  const output = fs.mkdtempSync(path.join(os.tmpdir(), "dragonfire-roster-boolean-test-"));
+  try {
+    fs.copyFileSync(fixture("screenshot-placeholder.txt"), path.join(output, "screenshot-placeholder.txt"));
+    const input = JSON.parse(fs.readFileSync(fixture("screenshot-transcription.json"), "utf8"));
+    const inputPath = path.join(output, "transcription.json");
+    for (const field of ["owned", "include_in_search"]) {
+      for (const value of ["false", 0, 1]) {
+        input.observations[0].fields[field] = { value, confidence: "confirmed", review_status: "confirmed" };
+        fs.writeFileSync(inputPath, JSON.stringify(input));
+        const snapshot = ingestScreenshotTranscription({ inputPath, knowledge });
+        assert.equal(snapshot.profile.dragons.dragon_iconic_syrax[field], null);
+        assert.ok(snapshot.review.errors.some(item => item.code === "invalid_boolean" && item.field === field));
+        assert.equal(validateSnapshot(snapshot, knowledge).valid, false);
+        assert.throws(() => plannerProfile(snapshot, knowledge), /Planner profile is blocked/);
+      }
+      delete input.observations[0].fields[field];
+    }
+    input.roster_preflight = { completeness: "declared_subset", expected_visible_dragons: null };
+    input.observations[0].fields.owned = { value: false, confidence: "confirmed", review_status: "confirmed" };
+    input.observations[0].fields.include_in_search = { value: false, confidence: "confirmed", review_status: "confirmed" };
+    fs.writeFileSync(inputPath, JSON.stringify(input));
+    const snapshot = ingestScreenshotTranscription({ inputPath, knowledge });
+    assert.equal(snapshot.profile.dragons.dragon_iconic_syrax.owned, false);
+    assert.equal(snapshot.profile.dragons.dragon_iconic_syrax.include_in_search, false);
+    assert.equal(validateSnapshot(snapshot, knowledge).valid, true);
+  } finally {
+    const resolved = path.resolve(output);
+    if (resolved.startsWith(path.resolve(os.tmpdir()) + path.sep)) fs.rmSync(resolved, { recursive: true, force: true });
+  }
+});
+
 test("conflicting screenshot observations fail closed", () => {
   const snapshot = ingestScreenshotTranscription({ inputPath: fixture("screenshot-conflict.json"), knowledge });
   assert.equal(snapshot.review.status, "blocked");

@@ -1,21 +1,19 @@
 # Smoketail
 
-Hunter · Rarity tier: Epic · Spearmen affinity. Fire attacker and Champion counter built around Weakened, Burn, stat suppression, and Fire vulnerability.
+Hunter · Age label: Elder · Epic tier (installed-client evidence) · Spearmen positive affinity. Smoketail combines Fire Damage, Burn, and stat suppression with payoffs against Weakened enemies and Champions. A Weakened source supports Ashen Phantom and Unraveled; a Right Flank ally benefits from Hunter's Wrath when Smoketail is deployed in the Vanguard.
 
-Evidence class: **cross-site verified**. Dragonfire Hub and Dragonfire Sim publish matching mechanics and upgrade tracks, and the installed client corroborates names, targeting, affinity, and Burn. No current screenshot record was available on 2026-10-12.
+Exact wording and all five Habit upgrade tracks: [canonical JSON](../../data/dragons/smoketail.json).
 
-**Command — Veilflame:** on rounds 2, 5, and 8, deals +75% Fire Damage to two adjacent enemies and can grant Evade; damaging a Champion doubles the Evade chance. At 10 Stars it also deals +30% Fire Damage to three enemies on rounds 3, 6, and 9, tripled against Champion dragons.
+## Recommendation-critical source coverage
 
-**Vanguard — Hunter's Wrath:** increases own Fire Damage Dealt by 16%; the Right Flank ally gains 20 Strength and Initiative.
+The supplied screenshots cover Basics, Command, Vanguard, and all five Habits with their displayed upgrade values. Habit levels and Star unlocks are separate progression dimensions. Unraveled's two tracks are recorded as displayed, including the rounded level-2 values.
 
-Exact data and all five Habit upgrade tracks: [JSON](../../data/dragons/smoketail.json).
+**Command — Veilflame:** On rounds 2, 5, and 8, deals +75% Fire Damage to two enemies within adjacency and grants Evade at a 10% rate for one round. Dealing Fire Damage to an enemy Champion doubles the chance to Evade. At 10 Stars, rounds 3, 6, and 9 also deal +30–75% Fire Damage to three enemies in any lane, tripled against Champion dragons.
 
-## Recommendation-critical coverage
+**Vanguard — Hunter's Wrath:** At level 16+, increases Smoketail's Fire Damage Dealt by 16% and grants the Right Flank ally +20 Strength and Initiative.
 
-- **2 Stars — Ashen Phantom:** suppresses Tactical and Fire Damage from Weakened enemies, doubled for Champions.
-- **4 Stars — Ember Snare:** chance each round to reduce Initiative and Intelligence and apply Burn, prioritizing the Left Flank.
-- **6 Stars — Unraveled:** scales a three-target stat reduction with the number of Weakened enemies.
-- **8 Stars — Backdraft:** permanently raises one same-lane enemy's Fire Damage Received.
-- **10 Stars — Champion's Scourge:** adds Veilflame's three-target, anti-Champion rounds.
-
-Use source disclosure in recommendations until current screenshots supersede this cross-site record.
+- **2 Stars — Ashen Phantom:** At the start of each round, reduces Tactical and Fire Damage Dealt by Weakened enemies by 9–18% until the round ends; double the effect for a Champion.
+- **4 Stars — Ember Snare:** Each round, a 30–60% chance reduces one enemy's Initiative and Intelligence by 20–40%, enhanced by Instinct, and applies Burn at +20% Damage Rate. Each effect lasts two rounds; the target is in any lane, prioritizing Left Flank.
+- **6 Stars — Unraveled:** At the start of each round, for each Weakened enemy, reduces Intelligence, Instinct, and Initiative of three enemies in any lane until the round ends, enhanced by Intelligence. The displayed reduction track is 7–14%; the separate Weakened Champion track is 10.5–21%.
+- **8 Stars — Backdraft:** At combat start, increases one same-lane enemy's Fire Damage Received by 10–20% until combat ends.
+- **10 Stars — Champion's Scourge:** Adds Veilflame's three-target Fire Damage on rounds 3, 6, and 9, tripled against enemy Champions.

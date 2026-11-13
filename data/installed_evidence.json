@@ -20,11 +20,19 @@
   },
   "observations": [
     {
+      "id": "2026-11-07-combat-reference-changes",
+      "subjects": ["Tashix", "Seasmoke", "Crimson", "Jagadrix", "Vhagar", "Turncloak"],
+      "evidence_state": "installed_observed",
+      "recommendation_use": "corroboration_only",
+      "claim": "The 2026-11-07 downloaded client resources change Mirage condition references and several combat effect rows, and add Turncloak encounter wording. These schema-less changes do not establish live combat behavior or player-facing balance values; retain screenshot-audited mechanics and do not infer recommendation changes from the changed rows.",
+      "source": "wiki/client-updates/2026-11-07.md"
+    },
+    {
       "id": "2026-10-01-production-roster",
       "subjects": ["Meleys", "Smoketail", "Starshower", "Vermithor"],
       "evidence_state": "installed_observed",
       "recommendation_use": "corroboration_only",
-      "claim": "The installed client contains 38 production-named dragon rows: 36 screenshot-audited rows plus cross-site-verified Meleys and Smoketail records. Starshower's and Vermithor's installed rows are retained as corroborating progression evidence, while current screenshots are primary for their mechanics. WIP, test, NPC, wild, balance-test, and unresolved rows are excluded from the canonical application index.",
+      "claim": "The installed client contains 38 production-named dragon rows: 38 screenshot-audited rows. Starshower's and Vermithor's installed rows are retained as corroborating progression evidence, while current screenshots are primary for their mechanics. WIP, test, NPC, wild, balance-test, and unresolved rows are excluded from the canonical application index.",
       "source": "data/dragon_application_knowledge.json -> metadata.scope and dragons[].recommendation_status"
     },
     {
@@ -32,7 +40,7 @@
       "subjects": ["Meleys", "Smoketail"],
       "evidence_state": "cross_site_verified",
       "recommendation_use": "allowed_with_source_disclosure",
-      "claim": "Meleys and Smoketail are user-confirmed available Season 3 dragons. Their complete Commands, Vanguards, five Habits, and Habit upgrade tracks are independently published with matching values by Dragonfire Hub and Dragonfire Sim and are canonicalized with cross-site provenance.",
+      "claim": "Meleys and Smoketail are user-confirmed available Season 3 dragons. The 2026-10-12 cross-site audit supplied their prior canonical records. Both were subsequently screenshot audited on 2026-11-05.",
       "source": "Current user confirmation supplied on 2026-10-01; data/dragons/meleys.json; data/dragons/smoketail.json; wiki/Community-Source-Audit-2026-10-12.md"
     },
     {
@@ -40,16 +48,16 @@
       "subjects": ["Meleys", "Laceration", "Reflect"],
       "evidence_state": "cross_site_verified",
       "recommendation_use": "allowed_with_source_disclosure",
-      "claim": "Meleys has installed Relentless and Physical DPS labels. Her cross-site-verified record caps Laceration at 8 stacks and defines Queen's Vengeance as a chance each round to grant Reflect (100%) versus Basic Attacks for one round, with one Reflect (Damage) effect per target.",
+      "claim": "Meleys has installed Relentless and Physical DPS labels. Her screenshot-audited record caps Laceration at 8 stacks and defines Queen's Vengeance as a chance each round to grant Reflect (100%) versus Basic Attacks for one round, with one Reflect (Damage) effect per target.",
       "source": "data/dragons/meleys.json and wiki/Community-Source-Audit-2026-10-12.md"
     },
     {
       "id": "2026-10-01-smoketail",
       "subjects": ["Smoketail", "Burn"],
-      "evidence_state": "cross_site_verified",
-      "recommendation_use": "allowed_with_source_disclosure",
-      "claim": "Smoketail is a user-confirmed available Epic Hunter with a cross-site-verified Command, Vanguard, and five Habits. Ember Snare explicitly names its ongoing Fire damage effect Burn.",
-      "source": "data/dragons/smoketail.json and wiki/Community-Source-Audit-2026-10-12.md"
+      "evidence_state": "screenshot_audited",
+      "recommendation_use": "corroboration_only",
+      "claim": "Smoketail is a user-confirmed available Epic Hunter with a screenshot-audited Command, Vanguard, and five Habits. Ember Snare explicitly names its ongoing Fire damage effect Burn.",
+      "source": "data/dragons/smoketail.json and Dragon_Specs/Smoketail/"
     },
     {
       "id": "2026-10-01-commanders",

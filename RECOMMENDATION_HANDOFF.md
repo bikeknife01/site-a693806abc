@@ -65,11 +65,9 @@ Initiative, and Max Army Size.
 - Base stats are strategically meaningful: Strength enhances Physical damage and mitigates Physical damage through the defender's Instinct; Instinct enhances Tactical damage and mitigates it through the defender's Intelligence; Intelligence enhances Fire damage and mitigates it through the defender's Initiative. Treat Troop Capacity as the army's practical health pool: higher maximum army size increases staying power before depletion and affects explicit troop-capacity thresholds. For highest-tile or troop-preservation recommendations, compare the candidates' explicitly limited level-curve-plus-Dragon's-Army capacity proxies before preferring a mechanically elegant but materially lower-level formation. Do not describe that proxy as observed or final in-game capacity.
 - If levels are unknown, make a kit-and-synergy recommendation only, label it level-agnostic, and say that the choice may change with actual levels and Stars.
 
-The 38 included production-named client rows are 36 screenshot-audited dragons plus
-cross-site-verified Meleys and Smoketail. WIP, test, NPC, wild, balance-test, and
+The 38 included production-named client rows have screenshot-audited canonical dragon records. WIP, test, NPC, wild, balance-test, and
 unresolved rows are deliberately excluded. Meleys and Smoketail are user-confirmed
-Season 3 available dragons. Their complete mechanics and upgrade tracks are usable with
-cross-site source disclosure, but they are not screenshot audited.
+Season 3 available dragons, and both are screenshot audited.
 
 ## Canonical JSON schema
 
@@ -245,7 +243,7 @@ Do not turn level, rarity, affinity, or derived role labels into a universal num
 | Jagadrix | Fire damage, Initiative/Instinct debuff, Panic payoff | Panic; high-Strength Right Flank | Weakened and stat reduction | Same-lane base attacks; later all-enemy payoff only against Tactical dealers |
 | Kalspire | Basic-Attack modifier, hybrid damage, Bleed/Panic, stat debuff | Basic Attacks; Right Flank needing mitigation | Reduces enemy Strength/Intelligence; self Stun trades for opening mitigation | Screenshot filenames for Command/Vanguard are swapped, but panel contents are clear |
 | Malachite | Tactical damage, Recovery, Advantage, ally stat/turn-order support | Fire Left Flank; adjacent ally for First-/Double-Strike | Temporary ally mitigation | Command confirmed as `Warden's Rally`; Cavalry/Shieldbearer affinities; Siege negative |
-| Meleys | Physical damage, Laceration, Initiative pressure, Reflect, Bleed payoff | Bleed; high Initiative; Tactical Left Flank | Targets highest Initiative; Vulnerable/Physical vulnerability; reflects Basic Attacks | Cross-site verified, not screenshot audited; Cavalry/Archer affinities; Siege negative |
+| Meleys | Physical damage, Laceration, Initiative pressure, Reflect, Bleed payoff | Bleed; high Initiative; Tactical Left Flank | Targets highest Initiative; Vulnerable/Physical vulnerability; reflects Basic Attacks | Screenshot audited; Royal Rend otherwise chance unspecified; Cavalry/Archer affinities; Siege negative |
 | Moondancer | Physical damage, Rising Tide stacks, Sentinel synergy, Bleed | Sentinel ally dealing Tactical Damage or Recovery; Advantage | Damage Dealt and stat debuffs | Rising Tide max 8; thresholds at 4 and 6 stacks; Siege negative |
 | Nyrena | Enemy stat/Physical suppression, Fire/Tactical damage, siege/defense support | Burn extends Physical suppression; adjacent Fire ally | Reduces Physical Damage Dealt and late-round allied Physical Damage Received | Round 6+ defense and After Combat Tile Damage; Shieldbearer/Siege affinities |
 | Rhysarion | Hybrid damage, Recovery, control payoff | Any Control effect; damage-focused Right Flank | Opening all-combatant Damage Dealt reduction | Ebbing Fury also reduces allies; scheduled rounds matter |
@@ -255,7 +253,7 @@ Do not turn level, rarity, affinity, or derived role labels into a universal num
 | Sheepstealer | Prey, Fire stacks, Recovery suppression, PvE, Evade/Cleanse | Enemy Recovery feeds targeting and payoff | Prey and Wary Beast suppress Recovery | Legendary; Stolen Flock max 10; some bonus text is PvE-only |
 | Shimmer | Tactical damage, Recovery, ally buffs, First-Strike | Resistance doubles Recovery; Fire Left Flank | Self/team mitigation | Highest-Strength targeting; Cavalry/Siege affinities |
 | Solstryker | Hybrid Basic-Attack damage, Strength erosion, Overwhelm | Vulnerable doubles even-round Tactical damage | Up to 10 Strength-reduction stacks; Overwhelm | Odd/even behavior differs; Archer affinity |
-| Smoketail | Fire damage, Burn, Weakened payoff, stat suppression, Champion counter | Reliable Weakened; Right Flank benefiting from Strength/Initiative | Reduces Tactical/Fire output, stats, and raises Fire Damage Received | Cross-site verified, not screenshot audited; Spearmen affinity |
+| Smoketail | Fire damage, Burn, Weakened payoff, stat suppression, Champion counter | Reliable Weakened; Right Flank benefiting from Strength/Initiative | Reduces Tactical/Fire output, stats, and raises Fire Damage Received | Screenshot audited; Spearmen affinity; Unraveled scales per Weakened enemy, with a separate Champion track |
 | Starshower | Tactical damage, Solar Flare consumption, Cleanse/Evade, enemy stat reduction, ally mitigation | Resistance strengthens 10-Star mitigation; Advantage expands it to all Allies; Tactical Left Flank | Reduces all-enemy Intelligence/Initiative and applies same-lane Tactical vulnerability | Solar Flare consumption is 50% chance; Night Guardian remains chance-based; Tactical Breach table-label conflict is recorded in review |
 | Sunfyre | Tactical/Fire damage, Burn, anti-Fire, Cleanse, low-troop defense | Benefits when below 75%/50% troop capacity | Reduces enemy Fire Damage and Intelligence | Several effects depend on first damage received each round and damage type |
 | Syrax | Tactical damage, Fire/First-Strike support, Recovery/Cleanse | Fire ally; Slow increases Recovery; Control cleansing | Teamwide stat/Initiative shifts and multi-effect Cleanse | Recovery on rounds 2/5/8; Spearmen/Archers affinities; Siege negative |

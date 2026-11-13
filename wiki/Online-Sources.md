@@ -40,7 +40,8 @@ ability slots, and Ember Snare explicitly names Burn. Meleys and Smoketail were
 user-confirmed as Season 3 available dragons on 2026-10-01. Their complete records are
 now cross-site verified because Dragonfire Hub and Dragonfire Sim publish matching
 Commands, Vanguards, five Habits, and upgrade tracks; the installed client corroborates
-their structure and terminology. Their provenance and usage rules are retained in
+their structure and terminology. Meleys has since been screenshot audited; see the
+2026-11-05 update below. Their provenance and usage rules are retained in
 `data/installed_evidence.json` and `wiki/Community-Source-Audit-2026-10-12.md`.
 
 `WildDragonTable.1786045129.json` joined to Node Finder strings in `locale_enUS.json`
@@ -103,9 +104,6 @@ Vanguard text, so it must not silently replace complete in-game records.
     in-game damage-report evidence establishes matching named positions for `same lane`,
     but equivalent published official wording has not been found.
 - Universal stacking, control-conflict, Cleanse-priority, and Recovery-order rules.
-- Current-client screenshot verification for Meleys and Smoketail. Their complete
-  mechanics and upgrade tracks are cross-site verified and usable with source
-  disclosure, but they are not screenshot audited.
 
 ## User-confirmed in-game clarifications
 
@@ -135,3 +133,23 @@ treated as direct observations pending equivalent published official wording:
 
 These gaps should be answered with current in-game screenshots or controlled battle
 tests. Until then, recommendations must state assumptions and avoid false precision.
+
+## Meleys screenshot update — 2026-11-05
+
+Supplied screenshots now establish Meleys's ability texts and five upgrade tracks; the
+Legendary tier remains installed-client evidence. Royal Rend shows four Vulnerable
+stacks, +5% Damage Received per stack, and +12.5% Physical Damage Received in the
+otherwise branch. The earlier cross-site canonical transcription omitted the stack
+count and recorded +7%; its source cannot override these screenshots. The previous
+wiki summaries of Brisk Might and The Red Queen also mischaracterized their effects.
+The otherwise chance and its precise condition remain unspecified by the panel.
+
+## Smoketail screenshot update — 2026-11-05
+
+Supplied screenshots establish Smoketail's Command, Vanguard, affinity, five Habit
+texts, and displayed upgrade tracks. The Epic tier remains installed-client evidence.
+Unraveled's screenshot supplies a separate Champion track (-10.5%, -13%, -15%,
+-18%, -21%) that the prior canonical record omitted. Ashen Phantom and Unraveled
+show reductions with negative signs, correcting the prior positive-sign transcription.
+The screenshot shows level 5 for the unlocked Habits and level 1 for the locked
+10-Star Habit; these are Habit levels, not Star ranks.

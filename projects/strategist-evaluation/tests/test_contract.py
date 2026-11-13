@@ -183,7 +183,7 @@ class StrategistContractTests(unittest.TestCase):
         by_name = {item["name"]: item for item in self.app["dragons"]}
         for name in ("Meleys", "Smoketail"):
             with self.subTest(name=name):
-                self.assertEqual(by_name[name]["recommendation_status"], "cross_site_verified")
+                self.assertEqual(by_name[name]["recommendation_status"], "screenshot_audited")
                 self.assertEqual(by_name[name]["availability_status"], "user_confirmed_available")
                 self.assertEqual(by_name[name]["recommendation_evidence"]["missing_for_full_recommendations"], [])
 

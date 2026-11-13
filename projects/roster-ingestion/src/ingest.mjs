@@ -182,7 +182,10 @@ function normalizeObservedField(snapshot, dragon, field, observed, sourceId) {
   let value = observed.value;
   if (["level", "stars"].includes(field)) value = normalizeNullableNumber(value);
   if (["power", "troop_capacity"].includes(field)) value = normalizeNullableNumber(value, { zeroIsUnknown: true });
-  if (["owned", "include_in_search"].includes(field)) value = value == null ? null : Boolean(value);
+  if (["owned", "include_in_search"].includes(field) && value != null && typeof value !== "boolean") {
+    snapshot.review.errors.push(issue("error", "invalid_boolean", `${dragon.name}: ${field} must be a boolean or null.`, { dragon: dragon.slug, field, source_id: sourceId }));
+    value = null;
+  }
   if (field === "displayed_stars" && value != null) value = { color: String(value.color || "").toLowerCase(), count: Number(value.count) };
   if (reviewStatus === "unreadable" || reviewStatus === "conflicting" || (reviewStatus === "machine_read" && !["high", "confirmed"].includes(confidence))) value = null;
   if (reviewStatus === "conflicting") snapshot.review.conflicts.push(issue("error", "declared_field_conflict", `${dragon.name}: ${field} was explicitly marked conflicting.`, { dragon: dragon.slug, field, source_id: sourceId, recommendation_critical: true }));
@@ -319,11 +322,11 @@ export function ingestScreenshotTranscription({ inputPath, knowledge, dragonsArm
         if (values.length > 1) snapshot.review.warnings.push(issue("warning", "duplicate_coverage", `${dragon.name}: ${field} appears in ${values.length} screenshots with the same value.`, { dragon: slug, field }));
       }
     }
-    if (entry.owned == null) {
+    if (entry.owned == null && !fields.has("owned")) {
       entry.owned = true;
       addEvidence(snapshot, slug, "owned", derivedEvidence({ sourceId: valuesSource(fields), field: "owned", rawValue: dragon.name, normalizedValue: true, note: "Derived from the dragon being visibly present in the submitted roster evidence." }));
     }
-    if (entry.include_in_search == null) entry.include_in_search = entry.owned;
+    if (entry.include_in_search == null && !fields.has("include_in_search")) entry.include_in_search = entry.owned;
     if (entry.displayed_stars != null) {
       const derivedRank = displayStarsToRank(entry.displayed_stars);
       if (derivedRank == null) snapshot.review.errors.push(issue("error", "invalid_displayed_stars", `${dragon.name}: displayed Stars are invalid.`, { dragon: slug }));
