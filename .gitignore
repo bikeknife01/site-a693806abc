@@ -43,6 +43,10 @@ node_modules/
 .parcel-cache/
 .cache/
 coverage/
+dist/
+build/
+*.egg-info/
+.next/
 projects/game-data-encyclopedia/dist/
 projects/game-data-encyclopedia/preview/
 projects/combat-interaction-explorer/dist/

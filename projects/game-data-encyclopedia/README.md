@@ -6,6 +6,8 @@ abilities, Habits, effects/statuses, breed and rarity metadata, troop affinities
 Star/Habit gates, evidence, uncertainty, full-text search, structured filters, and
 bidirectional relationship links.
 
+The Commander guide combines official system information and separately labeled November 13 installed-client talent and progression evidence. The audit is in `wiki/Commander-Value-Audit-2026-11-13.md`; values are not planner scores. Staged Coldmoat and Standfast POI references include regional property links but no coordinates or asserted live bonuses. These maintained references are built from `data/commanders.json`, `data/commander_value_audit.json`, and `data/staged_poi_references.json` and are not part of the generated semantic version-history baseline.
+
 The Atlas integration adds 7,912 stable map-placement records, searchable map entity
 pages, inferred crossing relationships with explicit uncertainty, and reciprocal deep
 links that preserve the exact selected Atlas node.

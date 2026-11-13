@@ -24,6 +24,9 @@ on:
       - "data/effects.json"
       - "data/game_mechanics.json"
       - "data/dragon_application_knowledge.json"
+      - "data/commanders.json"
+      - "data/commander_value_audit.json"
+      - "data/staged_poi_references.json"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -68,6 +71,9 @@ jobs:
             data/effects.json
             data/game_mechanics.json
             data/dragon_application_knowledge.json
+            data/commanders.json
+            data/commander_value_audit.json
+            data/staged_poi_references.json
           sparse-checkout-cone-mode: false
 
       - name: Configure GitHub Pages

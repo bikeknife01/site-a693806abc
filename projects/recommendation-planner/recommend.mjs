@@ -540,7 +540,7 @@ function decisionEvidence(data, result) {
 }
 
 function riskRegister(data, result, coverage, rosterPreflight = null) {
-  const risks = [];
+  const risks = [{ type: "commanders_not_modeled", detail: "Commander talents, trait synergies, assignment and Commander Army Size bonuses are not modeled; they may change formation comparisons and capacity." }];
   const noPower = result.formation.filter(pick => pick.progression.power == null).map(pick => pick.dragon.name);
   if (noPower.length) risks.push({ type: "unknown_power", detail: `Current Power is unknown for ${noPower.join(", ")}.` });
   for (const row of coverage.filter(item => item.state !== "direct")) risks.push({ type: `coverage_${row.state}`, detail: `${row.threat}: ${row.remaining_gap || "not guaranteed."}` });
@@ -684,6 +684,7 @@ export function planRecommendations(data, commonFormations, rawInput) {
       selection_policy: "Pareto filter, then lexicographic ordering by direct threat coverage, troop safety, documented objective fit, counter reliability, explicit synergy, troop fit, lane fit, known team Power, and diagnostic proxy score.",
     },
     limitations: [
+      "Commander talents, trait synergies, assignment and Commander Army Size bonuses are not modeled; they may change formation comparisons and capacity.",
       "This planner enumerates documented mechanics; it is not a battle-outcome or win-rate simulator.",
       "Diagnostic proxy scores are search aids and are not treated as universal formation strength.",
       "Unknown Habit levels remain unknown and contribute no invented upgrade value.",

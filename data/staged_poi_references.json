@@ -1,0 +1,71 @@
+{
+  "snapshot_date": "2026-11-13",
+  "client_version": "26.10.58019",
+  "version_code": 345,
+  "baseline": "2026-11-07",
+  "evidence": "Installed-client definitions only; availability, activation, server placement, coordinates, live state and values are not established. Region descriptions are PLACEHOLDER.",
+  "references": [
+    {
+      "id": "poi-reference:coldmoat",
+      "slug": "coldmoat",
+      "name": "Coldmoat",
+      "lifecycle": "staged",
+      "poi_key": "poiNode__sop_Coldmoat_alpha",
+      "region_key": "region_Coldmoat_alpha",
+      "category": "Seat of Power",
+      "campaign_reference": "Alpha",
+      "kingdom_client_reference": "The Crownlands",
+      "shared_template": "poiNode_Shared__SOP_lvl2_crownlands_alpha",
+      "defender_group": "nodedefendergroup_sop_level02_alpha",
+      "region_description": "PLACEHOLDER",
+      "bonuses": [
+        {
+          "name": "Regional march speed",
+          "property_key": "property_marchSpeedIncrease_region_Coldmoat_poi_faction",
+          "evidence": "Region and transient modifier rows reference a march-speed property; amount, conditions and live effect are unverified."
+        },
+        {
+          "name": "Damage vs Seat of Power",
+          "property_key": "property_SeatofPowerDamage_region_Coldmoat_poi_faction",
+          "evidence": "Region and transient modifier rows reference a seat-damage property. buff_castle_region_Coldmoat_alpha references it with prog_castle_level_region_buff_multiplier; amount, eligibility, stacking and live effect are unverified."
+        }
+      ],
+      "limitations": [
+        "No coordinates or server identity are established.",
+        "Presence in the client does not establish activation, player availability, ownership, upgrades or defender difficulty.",
+        "POI locations and values are server- and season-specific; verify them in your game."
+      ]
+    },
+    {
+      "id": "poi-reference:standfast",
+      "slug": "standfast",
+      "name": "Standfast",
+      "lifecycle": "staged",
+      "poi_key": "poiNode__sop_Standfast_alpha",
+      "region_key": "region_Standfast_alpha",
+      "category": "Seat of Power",
+      "campaign_reference": "Alpha",
+      "kingdom_client_reference": "The Crownlands",
+      "shared_template": "poiNode_Shared__SOP_lvl3_crownlands_alpha",
+      "defender_group": "nodedefendergroup_sop_level03_alpha",
+      "region_description": "PLACEHOLDER",
+      "bonuses": [
+        {
+          "name": "Regional march speed",
+          "property_key": "property_marchSpeedIncrease_region_Standfast_poi_faction",
+          "evidence": "Region and transient modifier rows reference a march-speed property; amount, conditions and live effect are unverified."
+        },
+        {
+          "name": "Damage vs Seat of Power",
+          "property_key": "property_SeatofPowerDamage_region_Standfast_poi_faction",
+          "evidence": "Region and transient modifier rows reference a seat-damage property. buff_castle_region_Standfast_alpha references it with prog_castle_level_region_buff_multiplier; amount, eligibility, stacking and live effect are unverified."
+        }
+      ],
+      "limitations": [
+        "No coordinates or server identity are established.",
+        "Presence in the client does not establish activation, player availability, ownership, upgrades or defender difficulty.",
+        "POI locations and values are server- and season-specific; verify them in your game."
+      ]
+    }
+  ]
+}

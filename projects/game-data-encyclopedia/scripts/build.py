@@ -52,6 +52,9 @@ def main() -> int:
         shutil.rmtree(DIST)
     shutil.copytree(PROJECT / "src", DIST)
     shutil.copytree(PROJECT / "public", DIST, dirs_exist_ok=True)
+    shutil.copy2(ROOT / "data" / "commanders.json", DIST / "data" / "commanders.json")
+    shutil.copy2(ROOT / "data" / "commander_value_audit.json", DIST / "data" / "commander_value_audit.json")
+    shutil.copy2(ROOT / "data" / "staged_poi_references.json", DIST / "data" / "staged_poi_references.json")
     (DIST / ".nojekyll").touch()
     print(f"built {DIST}")
     if args.preview:

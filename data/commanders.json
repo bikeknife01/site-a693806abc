@@ -1,0 +1,501 @@
+{
+  "source_date": "2026-11-13",
+  "client_version": "26.10.58019 / 345",
+  "guide_url": "https://news.gotdragonfire.com/a-guide-to-commanders/",
+  "corlys_url": "https://news.gotdragonfire.com/corlys-velaryon-the-sea-snake/",
+  "commanders": [
+    {
+      "id": "commander:corlys",
+      "slug": "corlys",
+      "name": "Corlys Velaryon",
+      "traits": [
+        "Cunning",
+        "Relentless"
+      ],
+      "acquisition": "Daily Login Events during Heirs of the Dragon; Alliance Market after the first Reign.",
+      "talents": [
+        {
+          "name": "The Sea Snake",
+          "client_key": "TALENT_THESEASNAKE_DYNAMIC_DESCRIPTION",
+          "exact_client_text": "<style=\"Inline_Underline\">Start of Round 1</style>: {effect_group=1:trigger_chance} chance to apply 3 stacks of <style=\"Inline_Debuff\">Vulnerable</style> to  {effect_group=1:number_of_targets} Enemy Dragons {effect_group=1:target_range} for 2 rounds. This chance is increased by 2x ({effect_group=2:trigger_chance}) and applies 2 additional stacks (5 total) if your army contains a <style=\"InlineSprite_DragonTrait_Relentless\">Relentless</style> Dragon.\nEach stack of <style=\"Inline_Debuff\">Vulnerable</style> increases the target's Damage Received by <style=\"Inline_Negative\">+5%</style>. Max 10 stacks.\n\n<style=\"Inline_Bold\">Bonus:</style> This effect only progresses at Ranks 1, 10, and 20.\n<style=\"Inline_Underline\">Start of Combat</style>: If your army contains a <style=\"InlineSprite_DragonTrait_Relentless\">Relentless</style> Dragon, reduce the <style=\"Inline_Debuff\"></style><style=\"Inline_Damage_Tactical\">Tactical</style> Damage Dealt by {effect_group=3:effect=1:base_mod} of 1 Enemy Dragon that deals <style=\"Inline_Damage_Tactical\">Tactical</style> Damage until the end of Combat.",
+          "reviewed_tracks": [
+            {
+              "label": "Base Vulnerable chance",
+              "progression_id": "prog_talent_theseasnake_trig_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Chance with Relentless",
+              "progression_id": "prog_talent_theseasnake_trig_02",
+              "unit": "fraction"
+            },
+            {
+              "label": "Tactical damage dealt reduction, Relentless bonus",
+              "progression_id": "prog_talent_theseasnake_neg_02",
+              "unit": "fraction"
+            }
+          ],
+          "comparison_source": "https://westeroscommand.com/patch-notes/26.9.57184"
+        },
+        {
+          "name": "Blockade",
+          "client_key": "TALENT_BLOCKADE_DYNAMIC_DESCRIPTION",
+          "exact_client_text": "<style=\"Inline_Underline\">Start of Combat</style>: Reduce the <style=\"Inline_Buff\"></style><style=\"Inline_Damage_Physical\">Physical</style> and <style=\"Inline_Damage_Tactical\">Tactical</style> Damage Received by {effect_group=1:effect=1:base_mod} of {effect_group=1:number_of_targets} Ally Dragons {effect_group=1:target_range} until the end of Combat. This effect is increased by 2x ({effect_group=2:effect=1:base_mod}) if your army contains a <style=\"InlineSprite_DragonTrait_Cunning\">Cunning</style> Dragon.\n\n<style=\"Inline_Bold\">Bonus:</style> This effect only progresses at Ranks 1, 10, and 20.\n<style=\"Inline_Underline\">Start of Combat</style>: If your army contains a <style=\"InlineSprite_DragonTrait_Cunning\">Cunning</style> Dragon, reduce the <style=\"Inline_Debuff\"></style><style=\"Inline_Damage_Physical\">Physical</style> Damage Dealt by {effect_group=3:effect=1:base_mod} of 1 Enemy Dragon that deals <style=\"Inline_Damage_Physical\">Physical</style> Damage until the end of Combat.",
+          "reviewed_tracks": [
+            {
+              "label": "Physical and Tactical damage received",
+              "progression_id": "prog_talent_blockade_pos_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Physical and Tactical damage received with Cunning",
+              "progression_id": "prog_talent_blockade_pos_02",
+              "unit": "fraction"
+            },
+            {
+              "label": "Physical damage dealt reduction, Cunning bonus",
+              "progression_id": "prog_talent_blockade_neg_01",
+              "unit": "fraction"
+            }
+          ],
+          "comparison_source": "https://westeroscommand.com/patch-notes/26.9.57184"
+        },
+        {
+          "name": "Driftmark's Snare",
+          "client_key": "TALENT_DRIFTMARKSSNARE_DYNAMIC_DESCRIPTION",
+          "exact_client_text": "<style=\"Inline_Underline\">Start of Combat</style>: Mark {effect_group=1:number_of_targets} Enemy Dragon {effect_group=1:target_range} (prioritizes enemies with an <style=\"Inline_Command\">Attack Modifier Command</style>) with <style=\"Inline_Bold\">Driftmark's Snare</style> until the end of Combat. Every time the target deals damage, there is a {ability=ability_talent_driftmarkssnare_wrxn_01:effect_group=1:trigger_chance} chance they gain 1 stack of <style=\"Inline_Debuff\">Undertow</style> (Max 25 stacks).\nEach stack of <style=\"Inline_Debuff\">Undertow</style> reduces the target's Damage Dealt by {ability=ability_talent_driftmarkssnare_wrxn_01:effect_group=1:effect=1:base_mod} until the end of Combat.\n\n<style=\"Inline_Bold\">Bonus:</style> This effect only progresses at Ranks 1, 10, and 20.\n<style=\"Inline_Underline\">Start of Combat</style>: Reduce the <style=\"Inline_Debuff\"></style>Recovery Received by {ability=ability_talent_driftmarkssnare_01:effect_group=2:effect=1:base_mod} of {ability=ability_talent_driftmarkssnare_01:effect_group=2:number_of_targets} Enemy Dragons {ability=ability_talent_driftmarkssnare_01:effect_group=2:target_range} until the end of Combat.",
+          "reviewed_tracks": [
+            {
+              "label": "Undertow application chance",
+              "progression_id": "prog_talent_driftmarkssnare_wrxn_trig_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Damage dealt change per Undertow stack",
+              "progression_id": "prog_talent_driftmarkssnare_wrxn_neg_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Enemy Recovery received bonus",
+              "progression_id": "prog_talent_driftmarkssnare_neg_01",
+              "unit": "fraction"
+            }
+          ],
+          "comparison_source": "https://westeroscommand.com/patch-notes/26.9.57184"
+        }
+      ]
+    },
+    {
+      "id": "commander:criston",
+      "slug": "criston",
+      "name": "Criston Cole",
+      "traits": [
+        "Dominant",
+        "Stalwart"
+      ],
+      "acquisition": "Siege Seats Events.",
+      "talents": [
+        {
+          "name": "The Kingmaker",
+          "client_key": "TALENT_THEKINGMAKER_DYNAMIC_DESCRIPTION",
+          "exact_client_text": "<style=\"Inline_Underline\">Start of Combat</style>: Grant <style=\"Inline_Buff\">Reflect</style> ({effect_group=1:effect=1:chance}) versus Active <style=\"Inline_Command\">Commands</style> and <style=\"InlineSprite_Talent\">Talents</style> to the Ally Dragon deployed in the <style=\"Inline_Vanguard\">Vanguard</style> until the end of Combat. \n<style=\"Inline_Buff\">Reflect</style> causes each instance of the specified damage against the target to have a chance to be split between the target and the source of the attack. Each target's mitigation stats will affect the final damage they take. Reflect (Damage) effects are limited to 1 effect per target.\n\n<style=\"Inline_Underline\">Start of each Round</style>: Increase the <style=\"Inline_Buff\"></style>Damage Dealt by {effect_group=2:effect=1:base_mod} of the Ally Dragon deployed in the <style=\"Inline_Vanguard\">Vanguard</style> until the end of the round. This effect is increased by 1.5x ({effect_group=3:effect=1:base_mod}) when the target is <style=\"Inline_Bold\">below 75% Troop Capacity</style>, and by 2x ({effect_group=4:effect=1:base_mod}) when the target is <style=\"Inline_Bold\">below 50% Troop Capacity</style>.\n\n<style=\"Inline_Bold\">Bonus:</style> This effect only progresses at Ranks 1, 10, and 20.\n<style=\"Inline_Underline\">Start of Round 1</style>: Increase the <style=\"Inline_Buff\"></style><style=\"Inline_Dragon_Strength\">Strength</style>, <style=\"Inline_Dragon_Intelligence\">Intelligence</style>, and <style=\"Inline_Dragon_Instinct\">Instinct</style> by {effect_group=5:effect=1:base_mod} of the Ally Dragon deployed in the <style=\"Inline_Vanguard\">Vanguard</style> until the end of Combat.",
+          "reviewed_tracks": [
+            {
+              "label": "Vanguard damage increase above 75% troops",
+              "progression_id": "prog_talent_thekingmaker_pos_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Vanguard damage increase at 50–75% troops",
+              "progression_id": "prog_talent_thekingmaker_pos_02",
+              "unit": "fraction"
+            },
+            {
+              "label": "Vanguard damage increase at or below 50% troops",
+              "progression_id": "prog_talent_thekingmaker_pos_03",
+              "unit": "fraction"
+            },
+            {
+              "label": "Vanguard Strength, Intelligence and Instinct bonus",
+              "progression_id": "prog_talent_thekingmaker_pos_04",
+              "unit": "fraction"
+            }
+          ],
+          "comparison_source": "https://westeroscommand.com/patch-notes/26.10.58019"
+        },
+        {
+          "name": "Vanguard's Challenge",
+          "client_key": "TALENT_VANGUARDSCHALLENGE_DYNAMIC_DESCRIPTION",
+          "exact_client_text": "<style=\"Inline_Underline\">Start of Combat</style>: Reduce the <style=\"Inline_Debuff\"></style><style=\"Inline_Dragon_Speed\">Initiative</style> by {effect_group=1:effect=1:base_mod} of the Enemy Dragon deployed in the <style=\"Inline_Vanguard\">Vanguard</style> until the end of Combat. \nAdditionally, reduce the <style=\"Inline_Buff\"></style><style=\"Inline_Damage_Physical\">Physical</style> & <style=\"Inline_Damage_Fire\">Fire</style> Damage Received by {effect_group=2:effect=1:base_mod} of the Ally Dragon deployed in the <style=\"Inline_Vanguard\">Vanguard</style> until the end of Combat. This effect is increased by 2x ({effect_group=3:effect=1:base_mod}) if your army contains a <style=\"InlineSprite_DragonTrait_Dominant\">Dominant</style> Dragon.\n\n<style=\"Inline_Bold\">Bonus:</style> This effect only progresses at Ranks 1, 10, and 20.\nIf your <style=\"Inline_Vanguard\">Vanguard</style> Dragon is <style=\"InlineSprite_DragonTrait_Dominant\">Dominant</style>, increase the <style=\"Inline_Debuff\"></style>Damage Received by {effect_group=6:effect=1:base_mod} of the Enemy's <style=\"Inline_Vanguard\">Vanguard</style> Dragon until the end of Combat.\nIf your <style=\"Inline_Vanguard\">Vanguard</style> Dragon is <style=\"InlineSprite_DragonTrait_Stalwart\">Stalwart</style>, reduce the <style=\"Inline_Debuff\"></style>Damage Dealt by {effect_group=7:effect=1:base_mod} of the Enemy's <style=\"Inline_Vanguard\">Vanguard</style> Dragon until the end of Combat.",
+          "reviewed_tracks": [
+            {
+              "label": "Enemy Vanguard Initiative change",
+              "progression_id": "prog_talent_vanguardschallenge_neg_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Allied Vanguard Physical and Fire damage received",
+              "progression_id": "prog_talent_vanguardschallenge_pos_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Allied Vanguard damage received with Dominant",
+              "progression_id": "prog_talent_vanguardschallenge_pos_02",
+              "unit": "fraction"
+            },
+            {
+              "label": "Enemy Vanguard damage received, Dominant Vanguard bonus",
+              "progression_id": "prog_talent_vanguardschallenge_neg_02",
+              "unit": "fraction"
+            },
+            {
+              "label": "Enemy Vanguard damage dealt, Stalwart Vanguard bonus",
+              "progression_id": "prog_talent_vanguardschallenge_neg_03",
+              "unit": "fraction"
+            }
+          ],
+          "comparison_source": "https://westeroscommand.com/patch-notes/26.9.57184"
+        },
+        {
+          "name": "Strike and Vanish",
+          "client_key": "TALENT_STRIKEANDVANISH_DYNAMIC_DESCRIPTION",
+          "exact_client_text": "<style=\"Inline_Underline\">Start of Rounds 1 and 6</style>: {effect_group=1:trigger_chance} chance to grant 2 stacks of <style=\"Inline_Buff\">Advantage</style> to the 2 Ally Dragons deployed in the <style=\"Inline_LeftFlank\">Left</style> and <style=\"Inline_RightFlank\">Right</style> Flanks for {effect_group=1:duration_rounds} round(s). This chance is increased by 2x ({effect_group=3:trigger_chance}) if your army contains a <style=\"InlineSprite_DragonTrait_Dominant\">Dominant</style> Dragon.\nEach stack of <style=\"Inline_Buff\">Advantage</style> increases the target's Damage Dealt by <style=\"Inline_Positive\">+5%</style>. Max 10 stacks.\n\n<style=\"Inline_Underline\">Start of Rounds 3 and 8</style>: Grant <style=\"Inline_Buff\">Evade</style> ({effect_group=5:effect=1:chance}) to the 2 Ally Dragons deployed in the <style=\"Inline_LeftFlank\">Left</style> and <style=\"Inline_RightFlank\">Right</style> Flanks for {effect_group=1:duration_rounds} round(s). The <style=\"Inline_Buff\">Evade</style> chance is increased by 2x ({effect_group=6:effect=1:chance}) if your army contains a <style=\"InlineSprite_DragonTrait_Stalwart\">Stalwart</style> Dragon.\n\n<style=\"Inline_Bold\">Bonus:</style> This effect only progresses at Ranks 1, 10, and 20.\n<style=\"Inline_Underline\">Start of Rounds 1 and 6</style>: If your army contains a <style=\"InlineSprite_DragonTrait_Stalwart\">Stalwart</style> Dragon, reduce the <style=\"Inline_Buff\"></style></style><style=\"Inline_Damage_Physical\">Physical</style> & <style=\"Inline_Damage_Fire\">Fire</style> Damage Received by {effect_group=9:effect=1:base_mod} of the 2 Ally Dragons deployed in the <style=\"Inline_LeftFlank\">Left</style> and <style=\"Inline_RightFlank\">Right</style> Flanks for {effect_group=1:duration_rounds} round(s).",
+          "reviewed_tracks": [
+            {
+              "label": "Advantage chance",
+              "progression_id": "prog_talent_strikeandvanish_trig_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Advantage chance with Dominant",
+              "progression_id": "prog_talent_strikeandvanish_trig_02",
+              "unit": "fraction"
+            },
+            {
+              "label": "Evade chance",
+              "progression_id": "prog_talent_strikeandvanish_evde_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Evade chance with Stalwart",
+              "progression_id": "prog_talent_strikeandvanish_evde_02",
+              "unit": "fraction"
+            },
+            {
+              "label": "Flank damage received, Stalwart bonus",
+              "progression_id": "prog_talent_strikeandvanish_pos_02",
+              "unit": "fraction"
+            }
+          ],
+          "comparison_source": "https://westeroscommand.com/patch-notes/26.9.57184"
+        }
+      ]
+    },
+    {
+      "id": "commander:daemon",
+      "slug": "daemon",
+      "name": "Daemon Targaryen",
+      "traits": [
+        "Volatile",
+        "Ruthless"
+      ],
+      "acquisition": "Player-versus-player leaderboard events.",
+      "talents": [
+        {
+          "name": "The Rogue Prince",
+          "client_key": "TALENT_THEROGUEPRINCE_DYNAMIC_DESCRIPTION",
+          "exact_client_text": "<style=\"Inline_Underline\">Round 2</style>: When <style=\"Inline_Bold\">attacking</style>, command the Ally Dragon with the highest <style=\"Inline_Dragon_Intelligence\">Intelligence</style> to deal <style=\"Inline_Damage_Fire\">Fire</style> Damage (Damage Rate: {ability=ability_talent_therogueprince_wrxn_01:effect_group=1:effect=1:base_mod}) to {ability=ability_talent_therogueprince_wrxn_01:effect_group=1:number_of_targets} {ability=ability_talent_therogueprince_wrxn_01:effect_group=1:target_type} {ability=ability_talent_therogueprince_wrxn_01:effect_group=1:target_range}.\n\n<style=\"Inline_Bold\">Bonus:</style> This effect only progresses at Ranks 1, 10, and 20.\n<style=\"Inline_Underline\">Start of Combat</style>: When <style=\"Inline_Bold\">attacking other players</style>, increase the <style=\"Inline_Buff\"></style>Damage Dealt by {ability=ability_talent_therogueprince_01:effect_group=2:effect=1:base_mod} of {ability=ability_talent_therogueprince_01:effect_group=2:number_of_targets} Ally Dragons {ability=ability_talent_therogueprince_01:effect_group=2:target_range} until the end of Combat.",
+          "reviewed_tracks": [
+            {
+              "label": "Fire damage rate",
+              "progression_id": "prog_talent_therogueprince_wrxn_dmg_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Allied damage dealt bonus when attacking players",
+              "progression_id": "prog_talent_therogueprince_pos_01",
+              "unit": "fraction"
+            }
+          ],
+          "comparison_source": "https://westeroscommand.com/patch-notes/26.9.57184"
+        },
+        {
+          "name": "Cloaked in Gold",
+          "client_key": "TALENT_CLOAKEDINGOLD_DYNAMIC_DESCRIPTION",
+          "exact_client_text": "<style=\"Inline_Underline\">Start of Round 1</style>: Reduce the <style=\"Inline_Buff\"></style><style=\"Inline_Damage_Physical\">Physical</style> Damage Received by {effect_group=1:effect=1:base_mod} of {effect_group=1:number_of_targets} Ally Dragons {effect_group=1:target_range} for {effect_group=1:duration_rounds} round(s). This effect's duration is increased by 2x ({effect_group=2:duration_rounds} rounds) if your army contains a <style=\"InlineSprite_DragonTrait_Volatile\">Volatile</style> Dragon.\n\n<style=\"Inline_Bold\">Bonus:</style> This effect only progresses at Ranks 1, 10, and 20.\n<style=\"Inline_Underline\">Start of Combat</style>: When <style=\"Inline_Bold\">attacking other players</style>, if your army contains a <style=\"InlineSprite_DragonTrait_Volatile\">Volatile</style> Dragon, increase the <style=\"Inline_Buff\"></style>Damage Dealt by {effect_group=3:effect=1:base_mod} of {effect_group=3:number_of_targets} Ally Dragons {effect_group=3:target_range} until the end of Combat.",
+          "reviewed_tracks": [
+            {
+              "label": "Physical damage received",
+              "progression_id": "prog_talent_cloakedingold_pos_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Damage dealt bonus when attacking players with Volatile",
+              "progression_id": "prog_talent_cloakedingold_pos_02",
+              "unit": "fraction"
+            }
+          ],
+          "comparison_source": "https://westeroscommand.com/patch-notes/26.9.57184"
+        },
+        {
+          "name": "No Quarter",
+          "client_key": "TALENT_NOQUARTER_DYNAMIC_DESCRIPTION",
+          "exact_client_text": "<style=\"Inline_Underline\">Start of Combat</style>: Increase the <style=\"Inline_Buff\"></style><style=\"Inline_Damage_Fire\">Fire</style> Damage Dealt by {effect_group=1:effect=1:base_mod} of the Allied Dragon deployed in the <style=\"Inline_RightFlank\">Right Flank</style> until the end of Combat. Additionally, if your army contains a <style=\"InlineSprite_DragonTrait_Ruthless\">Ruthless</style> Dragon, increase the <style=\"Inline_Debuff\"></style>Damage Received by {effect_group=2:effect=1:base_mod} of {effect_group=2:number_of_targets} Enemy Dragons {effect_group=2:target_range} until the end of Combat.\n\n<style=\"Inline_Bold\">Bonus:</style> This effect only progresses at Ranks 1, 10, and 20.\n<style=\"Inline_Underline\">Start of Combat</style>: When <style=\"Inline_Bold\">attacking other players</style>, if your army contains a <style=\"InlineSprite_DragonTrait_Ruthless\">Ruthless</style> Dragon, increase the <style=\"Inline_Buff\"></style>Damage Dealt by {effect_group=3:effect=1:base_mod} of {effect_group=3:number_of_targets} Ally Dragons {effect_group=3:target_range} until the end of Combat.",
+          "reviewed_tracks": [
+            {
+              "label": "Right-flank Fire damage dealt increase",
+              "progression_id": "prog_talent_noquarter_pos_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Enemy damage received increase with Ruthless",
+              "progression_id": "prog_talent_noquarter_neg_01",
+              "unit": "fraction"
+            }
+          ],
+          "comparison_source": "https://westeroscommand.com/patch-notes/26.10.58019"
+        }
+      ]
+    },
+    {
+      "id": "commander:alicent",
+      "slug": "alicent",
+      "name": "Young Alicent",
+      "traits": [
+        "Willful",
+        "Cunning"
+      ],
+      "acquisition": "Alliance Market.",
+      "talents": [
+        {
+          "name": "The Seven's Grace",
+          "client_key": "TALENT_THESEVENSGRACE_DYNAMIC_DESCRIPTION",
+          "exact_client_text": "<style=\"Inline_Underline\">Start of Rounds 2, 5</style>: {effect_group=1:trigger_chance} chance to grant the Ally Dragon with the <style=\"Inline_Bold\">fewest troops</style> <style=\"Inline_Buff\">Immunity</style> against <style=\"Inline_Damage_Physical\">Bleed</style>, <style=\"Inline_Damage_Tactical\">Panic</style>, and <style=\"Inline_Damage_Fire\">Burn</style> for {effect_group=1:duration_rounds} round(s). This chance is increased by 2x ({effect_group=2:trigger_chance}) if your army contains a <style=\"InlineSprite_DragonTrait_Stubborn\">Willful</style> Dragon.\n\n<style=\"Inline_Underline\">Rounds 3, 6</style>: Apply <style=\"Inline_Recovery\">Recovery</style> to the Ally Dragon with the <style=\"Inline_Bold\">fewest troops</style> (Recovery Rate: {effect_group=3:effect=1:base_mod}). This effect is increased by 2x (Recovery Rate: {effect_group=4:effect=1:base_mod}) if your army contains a <style=\"InlineSprite_DragonTrait_Stubborn\">Willful</style> Dragon.\n\n<style=\"Inline_Bold\">Bonus:</style> This effect only progresses at Ranks 1, 10, and 20.\n<style=\"Inline_Underline\">Start of Combat</style>: If your army contains a <style=\"InlineSprite_DragonTrait_Stubborn\">Willful</style> Dragon, increase the <style=\"Inline_Dragon_Strength\">Strength</style> and <style=\"Inline_Dragon_Speed\">Initiative</style> by {effect_group=5:effect=1:base_mod} of {effect_group=5:number_of_targets} Ally Dragons {effect_group=5:target_range} until the end of Combat.",
+          "reviewed_tracks": [
+            {
+              "label": "Immunity chance",
+              "progression_id": "prog_talent_thesevensgrace_trig_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Immunity chance with Willful",
+              "progression_id": "prog_talent_thesevensgrace_trig_02",
+              "unit": "fraction"
+            },
+            {
+              "label": "Recovery rate",
+              "progression_id": "prog_talent_thesevensgrace_rec_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Recovery rate with Willful",
+              "progression_id": "prog_talent_thesevensgrace_rec_02",
+              "unit": "fraction"
+            },
+            {
+              "label": "Strength and Initiative bonus with Willful",
+              "progression_id": "prog_talent_thesevensgrace_pos_01",
+              "unit": "fraction"
+            }
+          ],
+          "comparison_source": "https://westeroscommand.com/patch-notes/24861"
+        },
+        {
+          "name": "Steel Beneath Silk",
+          "client_key": "TALENT_STEELBENEATHSILK_DYNAMIC_DESCRIPTION",
+          "exact_client_text": "<style=\"Inline_Underline\">Start of Round 1</style>: {effect_group=1:trigger_chance} chance to grant 3 stacks of <style=\"Inline_Buff\">Resistance</style> to {effect_group=1:number_of_targets} Ally Dragons {effect_group=1:target_range} for {effect_group=1:duration_rounds} round(s). Apply 3 additional stacks (6 total) if your army contains a <style=\"InlineSprite_DragonTrait_Cunning\">Cunning</style> Dragon.\nEach stack of <style=\"Inline_Buff\">Resistance</style> decreases the target's Damage Received by <style=\"Inline_Positive\">+5%</style>. Max 10 stacks.\n\n<style=\"Inline_Bold\">Bonus:</style> This effect only progresses at Ranks 1, 10, and 20.\n<style=\"Inline_Underline\">Start of Combat</style>: If your army contains a <style=\"InlineSprite_DragonTrait_Cunning\">Cunning</style> Dragon, increase the <style=\"Inline_Dragon_Intelligence\">Intelligence</style> and <style=\"Inline_Dragon_Instinct\">Instinct</style> by {effect_group=3:effect=1:base_mod} of {effect_group=3:number_of_targets} Ally Dragons {effect_group=3:target_range} until the end of Combat.",
+          "reviewed_tracks": [
+            {
+              "label": "Resistance chance",
+              "progression_id": "prog_talent_steelbeneathsilk_trig_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Intelligence and Instinct bonus with Cunning",
+              "progression_id": "prog_talent_steelbeneathsilk_pos_02",
+              "unit": "fraction"
+            }
+          ],
+          "comparison_source": "https://westeroscommand.com/patch-notes/24861"
+        },
+        {
+          "name": "Hightower's Beacon",
+          "client_key": "TALENT_HIGHTOWERSBEACON_DYNAMIC_DESCRIPTION",
+          "exact_client_text": "<style=\"Inline_Underline\">Each Round</style>: <style=\"Inline_Bold\">When the Ally Dragon deployed in the <style=\"Inline_Vanguard\">Vanguard</style> applies a <style=\"Inline_Control\">Control</style> effect to an Enemy Dragon</style>, there is a chance to apply the same effect to an additional Enemy in any lane for 2 rounds.\n<style=\"Inline_Control\">Stun</style>, <style=\"Inline_Control\">Stagger</style>, and <style=\"Inline_Control\">Overwhelm</style> have a {ability=ability_talent_hightowersbeacon_wrxn_01:effect_group=1:trigger_chance} chance to be applied to an additional target.\n<style=\"Inline_Control\">Confusion</style> has a {ability=ability_talent_hightowersbeacon_wrxn_04:effect_group=1:trigger_chance} chance to be applied to an additional target.\n\n<style=\"Inline_Underline\">Start of Round 1</style>: {ability=ability_talent_hightowersbeacon_01:effect_group=5:trigger_chance} chance to grant <style=\"Inline_Buff\">First-Strike</style> to {ability=ability_talent_hightowersbeacon_01:effect_group=5:number_of_targets} Ally Dragons {ability=ability_talent_hightowersbeacon_01:effect_group=5:target_range} for {ability=ability_talent_hightowersbeacon_01:effect_group=5:duration_rounds} round(s).\n\n<style=\"Inline_Bold\">Bonus:</style> This effect only progresses at Ranks 1, 10, and 20.\n<style=\"Inline_Underline\">Start of Combat</style>: Increase the <style=\"Inline_Buff\"></style>Damage Dealt by {ability=ability_talent_hightowersbeacon_01:effect_group=6:effect=1:base_mod} of {ability=ability_talent_hightowersbeacon_01:effect_group=6:number_of_targets} Ally Dragons {ability=ability_talent_hightowersbeacon_01:effect_group=6:target_range} until the end of Combat.",
+          "reviewed_tracks": [
+            {
+              "label": "First-Strike chance",
+              "progression_id": "prog_talent_hightowersbeacon_trig_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Allied damage dealt bonus",
+              "progression_id": "prog_talent_hightowersbeacon_pos_01",
+              "unit": "fraction"
+            }
+          ],
+          "comparison_source": "https://westeroscommand.com/patch-notes/24861"
+        }
+      ]
+    },
+    {
+      "id": "commander:rhaenyra",
+      "slug": "rhaenyra",
+      "name": "Young Rhaenyra",
+      "traits": [
+        "Nimble",
+        "Stalwart"
+      ],
+      "acquisition": "Chapter Quests or Urgent Quests.",
+      "talents": [
+        {
+          "name": "The Realm's Delight",
+          "client_key": "TALENT_THEREALMSDELIGHT_DYNAMIC_DESCRIPTION",
+          "exact_client_text": "<style=\"Inline_Underline\">Start of Combat</style>: Reduce the Damage Received by {effect_group=1:effect=1:base_mod} of {effect_group=1:number_of_targets} Ally Dragons {effect_group=1:target_range} until the end of Combat. This effect is increased by 2x ({effect_group=2:effect=1:base_mod}) against non-player armies.\n\n<style=\"Inline_Bold\">Bonus:</style> This effect only progresses at Ranks 1, 10, and 20.\n<style=\"Inline_Underline\">Start of Combat</style>: Increase the <style=\"Inline_Dragon_Strength\">Strength</style> by {effect_group=3:effect=1:base_mod} of {effect_group=3:number_of_targets} Ally Dragons {effect_group=3:target_range} until the end of Combat. After Combat, increase the <style=\"Inline_Durability\">Tile Damage</style> Dealt to the tile's durability by {effect_group=3:effect=2:base_mod} of {effect_group=3:number_of_targets} Ally Dragons {effect_group=3:target_range}.",
+          "reviewed_tracks": [
+            {
+              "label": "Damage received reduction against players",
+              "progression_id": "prog_talent_therealmsdelight_pos_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Damage received reduction against non-player armies",
+              "progression_id": "prog_talent_therealmsdelight_pos_02",
+              "unit": "fraction"
+            }
+          ],
+          "comparison_source": "https://westeroscommand.com/patch-notes/26.10.58019"
+        },
+        {
+          "name": "Swift Counsel",
+          "client_key": "TALENT_SWIFTCOUNSEL_DYNAMIC_DESCRIPTION",
+          "exact_client_text": "<style=\"Inline_Underline\">Start of Combat</style>: Increase the <style=\"Inline_Dragon_Speed\">Initiative</style> by {effect_group=1:effect=1:base_mod} of {effect_group=1:number_of_targets} Ally Dragons {effect_group=1:target_range} until the end of Combat. This effect is increased by 2x ({effect_group=2:effect=1:base_mod}) if your army contains either a <style=\"InlineSprite_DragonTrait_Nimble\">Nimble</style> or a <style=\"InlineSprite_DragonTrait_Stalwart\">Stalwart</style> Dragon.\n\n<style=\"Inline_Underline\">Start of Each Round</style>: {effect_group=3:trigger_chance} chance to grant 2 Stacks of <style=\"Inline_Buff\">Resistance</style> to the Ally Dragon with the Fewest Troops for 2 rounds. The number of stacks is increased to 4 if your army contains either a <style=\"InlineSprite_DragonTrait_Nimble\">Nimble</style> or a <style=\"InlineSprite_DragonTrait_Stalwart\">Stalwart</style> Dragon.\nEach stack of <style=\"Inline_Buff\">Resistance</style> reduces the target's Damage Received by <style=\"Inline_Positive\">-5%</style>. Max 10 stacks.\n\n<style=\"Inline_Bold\">Bonus:</style> This effect only progresses at Ranks 1, 10, and 20.\n<style=\"Inline_Underline\">Start of Combat</style>: If your army contains either a <style=\"InlineSprite_DragonTrait_Nimble\">Nimble</style> or a <style=\"InlineSprite_DragonTrait_Stalwart\">Stalwart</style> Dragon, increase the <style=\"Inline_Dragon_Intelligence\">Intelligence</style> by {effect_group=5:effect=1:base_mod} of {effect_group=5:number_of_targets} Ally Dragons {effect_group=5:target_range} until the end of Combat. After Combat, increase the <style=\"Inline_Durability\">Tile Damage</style> Dealt to the tile's durability by {effect_group=5:effect=2:base_mod} of {effect_group=5:number_of_targets} Ally Dragons {effect_group=5:target_range}.",
+          "reviewed_tracks": [
+            {
+              "label": "Initiative increase",
+              "progression_id": "prog_talent_swiftcounsel_pos_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Initiative increase with Nimble or Stalwart",
+              "progression_id": "prog_talent_swiftcounsel_pos_02",
+              "unit": "fraction"
+            },
+            {
+              "label": "Resistance chance",
+              "progression_id": "prog_talent_swiftcounsel_trig_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Intelligence bonus with Nimble or Stalwart",
+              "progression_id": "prog_talent_swiftcounsel_pos_04",
+              "unit": "fraction"
+            },
+            {
+              "label": "Post-combat tile durability damage bonus",
+              "progression_id": "prog_talent_swiftcounsel_pos_05",
+              "unit": "fraction"
+            }
+          ],
+          "comparison_source": "https://westeroscommand.com/patch-notes/26.9.57184"
+        },
+        {
+          "name": "Heir's Reckoning",
+          "client_key": "TALENT_HEIRSRECKONING_DYNAMIC_DESCRIPTION",
+          "exact_client_text": "<style=\"Inline_Underline\">Start of Each Round</style>: {effect_group=1:trigger_chance} chance to afflict 3 stacks of <style=\"Inline_Debuff\">Weakened</style> on the Enemy Dragon with the Most Troops and <style=\"Inline_Debuff\">Slow</style> on the Enemy Dragon with the Highest <style=\"Inline_Dragon_Speed\">Initiative</style>, each for 2 rounds.\nAdditionally, if your army contains either a <style=\"InlineSprite_DragonTrait_Nimble\">Nimble</style> or a <style=\"InlineSprite_DragonTrait_Stalwart\">Stalwart</style> Dragon, {effect_group=3:trigger_chance} chance to grant <style=\"Inline_Buff\">First-Strike</style> to the Ally Dragon with the Lowest <style=\"Inline_Dragon_Speed\">Initiative</style> for 2 rounds.\nEach stack of <style=\"Inline_Debuff\">Weakened</style> reduces the target's Damage Dealt by <style=\"Inline_Negative\">-5%</style>. Max 10 stacks.\n<style=\"Inline_Debuff\">Slow</style> causes the target to attack after all other combatants each round.\n<style=\"Inline_Buff\">First-Strike</style> causes the target to attack before all other combatants each round.\n\n<style=\"Inline_Bold\">Bonus:</style> This effect only progresses at Ranks 1, 10, and 20.\n<style=\"Inline_Underline\">Start of Combat</style>: If your army contains either a <style=\"InlineSprite_DragonTrait_Nimble\">Nimble</style> or a <style=\"InlineSprite_DragonTrait_Stalwart\">Stalwart</style> Dragon, increase the <style=\"Inline_Dragon_Instinct\">Instinct</style> by {effect_group=4:effect=1:base_mod} of {effect_group=4:number_of_targets} Ally Dragons {effect_group=4:target_range} until the end of Combat. After Combat, increase the <style=\"Inline_Durability\">Tile Damage</style> Dealt to the tile's durability by {effect_group=4:effect=2:base_mod} of {effect_group=4:number_of_targets} Ally Dragons {effect_group=4:target_range}.",
+          "reviewed_tracks": [
+            {
+              "label": "Weakened effect group trigger chance",
+              "progression_id": "prog_talent_heirsreckoning_trig_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Instinct bonus with Nimble or Stalwart",
+              "progression_id": "prog_talent_heirsreckoning_pos_01",
+              "unit": "fraction"
+            },
+            {
+              "label": "Post-combat tile durability damage bonus",
+              "progression_id": "prog_talent_heirsreckoning_pos_02",
+              "unit": "fraction"
+            }
+          ],
+          "comparison_source": "https://westeroscommand.com/patch-notes/26.9.57184"
+        }
+      ]
+    }
+  ],
+  "trait_examples": {
+    "Ruthless": [
+      "Antares",
+      "Sheepstealer",
+      "Smoketail",
+      "Tessarion",
+      "Thunderstrike",
+      "Venator"
+    ],
+    "Volatile": [
+      "Caraxes",
+      "Shadowrend",
+      "Sunfyre",
+      "Tairax"
+    ],
+    "Dominant": [
+      "Nyrena",
+      "Shadowsong",
+      "Vermax",
+      "Vermithor",
+      "Vhagar"
+    ],
+    "Willful": [
+      "Daemoros",
+      "Jagadrix",
+      "Moondancer",
+      "Velar"
+    ],
+    "Cunning": [
+      "Arulix",
+      "Crimson",
+      "Feskar",
+      "Zivern"
+    ],
+    "Relentless": [
+      "Arrax",
+      "Kalspire",
+      "Meleys",
+      "Solstryker",
+      "Starshower"
+    ],
+    "Nimble": [
+      "Dawnseeker",
+      "Seasmoke",
+      "Syrax",
+      "Tashix",
+      "Vesper"
+    ],
+    "Stalwart": [
+      "Bevlorin",
+      "Malachite",
+      "Rhysarion",
+      "Shimmer",
+      "Vaeldra"
+    ]
+  },
+  "community_sources": [
+    {
+      "name": "Westeros Command: version 26.10.58019",
+      "url": "https://westeroscommand.com/patch-notes/26.10.58019",
+      "note": "Independent community data interpretation; selected rank-20 values match the captured progression tracks. Live behavior is not established."
+    },
+    {
+      "name": "Westeros Command: earlier Commander rebalance",
+      "url": "https://westeroscommand.com/patch-notes/26.9.57184",
+      "note": "Earlier progression and cost comparison; later updates supersede some values."
+    },
+    {
+      "name": "Buffer Companion: Commanders and talents",
+      "url": "https://buffercompanion.com/en/commandants",
+      "note": "Viewed summary conflicts with the November 13 snapshot and official Corlys description; may reflect an older data set. Excluded from calculations."
+    }
+  ]
+}
