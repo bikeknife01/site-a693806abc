@@ -1,0 +1,4 @@
+# Generated Atlas evidence is SHA-256 audited; preserve its exact bytes on checkout.
+Game_Details/Resources/_extracted/seasons/season3/*.html -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+Game_Details/Resources/_extracted/seasons/season3/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+Game_Details/Resources/_extracted/seasons/season3/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

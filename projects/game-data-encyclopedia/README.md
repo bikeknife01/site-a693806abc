@@ -6,7 +6,9 @@ abilities, Habits, effects/statuses, breed and rarity metadata, troop affinities
 Star/Habit gates, evidence, uncertainty, full-text search, structured filters, and
 bidirectional relationship links.
 
-The Atlas integration adds 7,912 stable map-placement records, searchable map entity
+The Commander guide combines official system information and separately labeled November 13 installed-client talent and progression evidence. Its rank selector shows traced values; unresolved placeholders remain in captured wording. The audit is in `wiki/Commander-Value-Audit-2026-11-13.md`; values are not planner scores. Staged Coldmoat and Standfast POI references include regional property links but no coordinates or asserted live bonuses. These maintained references are built from `data/commanders.json`, `data/commander_value_audit.json`, and `data/staged_poi_references.json` and are not part of the generated semantic version-history baseline.
+
+The Atlas integration adds 7,912 captured Bravo map-placement records, searchable map entity
 pages, inferred crossing relationships with explicit uncertainty, and reciprocal deep
 links that preserve the exact selected Atlas node.
 
@@ -22,7 +24,17 @@ python -m http.server 8000 --directory projects/game-data-encyclopedia/preview
 ```
 
 Then open `http://localhost:8000/encyclopedia/`. The preview mirrors the deployed
-layout: `/` and `/map/` serve the Atlas, while `/encyclopedia/` serves this application.
+layout: `/` serves the tool index, `/map/` serves the season selector for the Atlas,
+and `/encyclopedia/` serves this application. The Atlas offers Season 1 Alpha,
+Season 2 Bravo, and Season 3 Charlie, with Charlie as the default. The Encyclopedia map-node catalog
+continues to describe Bravo placements; Alpha and Charlie map links therefore open its general map
+record index rather than claiming an exact cross-season record match.
+According to the user, POI locations and values are server- and season-specific
+and remain static within that season. The captured server identity is not established;
+these records and row IDs do not establish locations or values on another server.
+Existing unscoped `?node=` Atlas links still open Bravo; new Charlie links use
+`?season=season3&node=map-node%3A000000`. Charlie's terrain cache is partial, so routes
+remain estimates. See [Atlas source notes](../strategic-atlas-overlays/README.md).
 Entity URLs use client logical keys or stable map
 row IDs in hash routes, so display-name changes do not break links. Map records use
 `#/map-nodes/000000`; Atlas links use `../map/?node=map-node%3A000000`.

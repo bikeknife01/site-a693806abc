@@ -9,6 +9,9 @@
   let data;
   let changesData;
   let changesError;
+  let commandersData;
+  let commanderAudit;
+  let stagedPoiData;
   let documents = [];
   const repositoryBase = "https://github.com/bikeknife01/site-a693806abc/blob/main/";
 
@@ -38,6 +41,8 @@
   const lifecycleChip = lifecycle => lifecycle === "live" ? "" : `<span class="life-chip ${escapeHtml(lifecycle)}">${escapeHtml(label(lifecycle))}</span>`;
   const linkFor = item => item.entity_type === "dragon"
     ? `#/dragons/${encodeURIComponent(item.slug)}`
+    : item.entity_type === "commander" ? `#/commanders/${encodeURIComponent(item.slug)}`
+    : item.entity_type === "poi_reference" ? `#/poi-references/${encodeURIComponent(item.slug)}`
     : item.entity_type === "map_node"
       ? `#/map-nodes/${encodeURIComponent(item.slug)}`
       : `#/statuses/${encodeURIComponent(item.slug)}`;
@@ -67,7 +72,15 @@
       text: [node.name, node.type, node.region, node.template_key, node.instance_id,
         node.coordinates.x, node.coordinates.y, node.level ? `level ${node.level}` : ""].join(" "),
     }));
-    documents = [...dragonDocs, ...effectDocs, ...mapDocs];
+    const commanderDocs = (commandersData?.commanders || []).map(commander => ({
+      item: { ...commander, entity_type: "commander", lifecycle: "reference", evidence: { class: "official" } },
+      text: [commander.name, "commander", ...commander.traits, commander.acquisition, ...commander.talents.flatMap(t => [t.name, t.exact_client_text])].join(" "),
+    }));
+    const poiDocs = (stagedPoiData?.references || []).map(poi => ({
+      item: { ...poi, entity_type: "poi_reference", evidence: { class: "staged" } },
+      text: [poi.name, poi.category, poi.region_key, poi.poi_key, ...poi.bonuses.map(bonus => bonus.name)].join(" "),
+    }));
+    documents = [...dragonDocs, ...effectDocs, ...mapDocs, ...commanderDocs, ...poiDocs];
   }
 
   function parseRoute() {
@@ -128,7 +141,7 @@
       <input type="hidden" name="type" value="map_node"><input type="hidden" name="section" value="map-nodes">
     </form>`;
     return `<form class="filters" id="filters">
-      <label>Type<select name="type"><option value="all">All entities</option><option value="dragon" ${filters.type === "dragon" ? "selected" : ""}>Dragons</option><option value="status" ${filters.type === "status" ? "selected" : ""}>Effects &amp; statuses</option><option value="map_node" ${filters.type === "map_node" ? "selected" : ""}>Atlas locations</option></select></label>
+      <label>Type<select name="type"><option value="all">All entities</option><option value="dragon" ${filters.type === "dragon" ? "selected" : ""}>Dragons</option><option value="commander" ${filters.type === "commander" ? "selected" : ""}>Commanders</option><option value="status" ${filters.type === "status" ? "selected" : ""}>Effects &amp; statuses</option><option value="map_node" ${filters.type === "map_node" ? "selected" : ""}>Atlas locations</option></select></label>
       <label>Breed<select name="breed"><option value="">All breeds</option>${options(data.facets.breeds, filters.breed)}</select></label>
       <label>Rarity<select name="rarity"><option value="">All rarities</option>${options(data.facets.rarities, filters.rarity)}</select></label>
       <label>Troop affinity<select name="affinity"><option value="">All affinities</option>${options(data.facets.troop_affinities, filters.affinity)}</select></label>
@@ -139,6 +152,8 @@
   }
 
   function entityCard(item) {
+    if (item.entity_type === "poi_reference") return `<a class="entity-card" href="${linkFor(item)}"><div class="card-meta"><span class="life-chip staged">Staged</span></div><h2>${escapeHtml(item.name)}</h2><p>Alpha Seat of Power reference · location unverified</p><div class="card-footer"><span>Regional bonuses</span><span>View reference →</span></div></a>`;
+    if (item.entity_type === "commander") return `<a class="entity-card" href="${linkFor(item)}"><div class="card-meta"><span class="chip">Official guide · client text</span></div><h2>${escapeHtml(item.name)}</h2><p>${escapeHtml(item.traits.join(" · "))}</p><div class="card-footer"><span>3 talent descriptions</span><span>View guide →</span></div></a>`;
     if (item.entity_type === "dragon") {
       const abilityNames = item.abilities.slice(0, 3).map(ability => ability.name).join(" · ");
       return `<a class="entity-card" href="${linkFor(item)}">
@@ -205,13 +220,14 @@
       : section === "statuses"
         ? "Definitions, sources, consumers, counters, and category-based cleanses in one relationship view."
         : section === "map-nodes"
-          ? "Stable records for Atlas placements, coordinates, regions, levels, source templates, and inferred crossing connections."
+          ? "Captured Bravo placements and inferred crossings. POI locations and values are server- and season-specific and stay fixed for that season; verify them on your server."
         : "Commands, Vanguard abilities, Habits, affinities, traits, progression gates, and source evidence.";
     const visibleResults = section === "map-nodes" && !query ? results.slice(0, 200) : results;
     content.innerHTML = `<section>
       <div class="page-heading"><div><p class="eyebrow">Combat reference</p><h1>${title}</h1><p>${description}</p></div><div class="count">${results.length} records</div></div>
       ${filtersHtml(filters, section)}
       ${section === "map-nodes" && results.length > visibleResults.length ? `<p class="panel-note">Showing the first ${visibleResults.length} records. Use search to locate a name, type, template, instance ID, or coordinate pair.</p>` : ""}
+      ${section === "map-nodes" && !query && stagedPoiData ? `<section class="panel"><h2>Staged POI references</h2><p class="panel-note">Client definitions only; no verified coordinates or live availability.</p><div class="entity-grid">${stagedPoiData.references.map(item => entityCard({...item, entity_type: "poi_reference"})).join("")}</div></section>` : ""}
       <div class="entity-grid">${visibleResults.map(entityCard).join("") || `<div class="empty">No records match these filters.</div>`}</div>
     </section>`;
     bindFilters(section, query);
@@ -327,7 +343,7 @@
     content.innerHTML = `<div class="breadcrumbs"><a href="#/map-nodes">Atlas locations</a><span>/</span><span>${escapeHtml(node.name)}</span></div>
       <header class="detail-heading"><div><p class="eyebrow">Atlas location</p><h1>${escapeHtml(node.name)}</h1><div class="chips">${evidenceChip(node.evidence)}<span class="chip">${escapeHtml(node.type)}</span>${node.level ? `<span class="chip">Level ${node.level}</span>` : ""}</div></div><div class="stable-id">${escapeHtml(node.id)}</div></header>
       <div class="detail-layout"><div class="stack">
-        <section class="panel"><h2>Map placement</h2><dl class="facts"><div><dt>Coordinates</dt><dd>${node.coordinates.x}, ${node.coordinates.y}</dd></div><div><dt>Region</dt><dd>${escapeHtml(node.region || "Outside mapped regions")}</dd></div><div><dt>Footprint</dt><dd>${node.footprint.width} × ${node.footprint.height}</dd></div><div><dt>Own place name</dt><dd>${node.has_own_name ? "Yes" : "No — display name falls back to its region"}</dd></div></dl><p><a class="action-link" href="${escapeHtml(atlasUrl)}">Open this location on the Atlas ↗</a></p></section>
+        <section class="panel"><h2>Map placement</h2><p class="panel-note">Captured Bravo record: POI locations and values are server- and season-specific and stay fixed for that season. Verify this location on your server.</p><dl class="facts"><div><dt>Coordinates</dt><dd>${node.coordinates.x}, ${node.coordinates.y}</dd></div><div><dt>Region</dt><dd>${escapeHtml(node.region || "Outside mapped regions")}</dd></div><div><dt>Footprint</dt><dd>${node.footprint.width} × ${node.footprint.height}</dd></div><div><dt>Own place name</dt><dd>${node.has_own_name ? "Yes" : "No — display name falls back to its region"}</dd></div></dl><p><a class="action-link" href="${escapeHtml(atlasUrl)}">Open this location on the Atlas ↗</a></p></section>
         <section class="panel"><h2>Crossing connections</h2><p class="panel-note">These links are derived from spatial proximity because the client data has no explicit adjacency field.</p>${connections.length ? `<div class="relationship-list">${connections.map(item => `<a class="relationship-link" href="${linkFor(item)}"><span><strong>${escapeHtml(item.name)}</strong><small>${escapeHtml(item.type)} · ${item.coordinates.x}, ${item.coordinates.y}</small></span><span>→</span></a>`).join("")}</div>` : `<div class="empty">This location is not part of an inferred crossing chain.</div>`}</section>
       </div><aside class="stack detail-aside"><section class="panel"><h2>Source identifiers</h2><dl class="facts"><div><dt>Template</dt><dd class="source-path">${escapeHtml(node.template_key)}</dd></div><div><dt>Instance ID</dt><dd class="source-path">${escapeHtml(node.instance_id)}</dd></div><div><dt>Variant</dt><dd>${escapeHtml(node.variant || "Not recorded")}</dd></div><div><dt>Type code</dt><dd>${escapeHtml(node.type_code)}</dd></div></dl></section>${evidencePanel(node.evidence)}${uncertaintyPanel(node.evidence)}</aside></div>`;
   }
@@ -380,6 +396,45 @@
       <aside class="stack detail-aside"><section class="panel"><h2>Inventory comparison</h2><dl class="inventory-list">${inventoryRows}</dl></section>${changesData.source_changes.length ? `<section class="panel"><h2>Source changes</h2>${changesData.source_changes.map(item => `<div class="source-change"><span>${escapeHtml(label(item.change_type))}</span>${escapeHtml(item.path)}</div>`).join("")}</section>` : ""}</aside></div>`;
   }
 
+  function renderPoiReference(slug) {
+    setActiveNav("map-nodes");
+    searchInput.value = "";
+    const poi = stagedPoiData?.references.find(item => item.slug === decodeURIComponent(slug || ""));
+    if (!poi) return renderNotFound();
+    content.innerHTML = `<div class="breadcrumbs"><a href="#/map-nodes">Atlas locations</a><span>/</span><span>${escapeHtml(poi.name)}</span></div><header class="detail-heading"><div><p class="eyebrow">Installed-client reference · ${escapeHtml(stagedPoiData.snapshot_date)}</p><h1>${escapeHtml(poi.name)}</h1><div class="chips"><span class="life-chip staged">Staged</span><span class="chip">${escapeHtml(poi.campaign_reference)}</span><span class="chip">${escapeHtml(poi.category)}</span></div></div></header><div class="detail-layout"><div class="stack"><section class="panel"><h2>Regional bonus references</h2><p>These are associated client definitions, not established live bonuses.</p>${poi.bonuses.map(bonus => `<article class="ability-card"><h3>${escapeHtml(bonus.name)}</h3><p>${escapeHtml(bonus.evidence)}</p><p class="panel-note">${escapeHtml(bonus.property_key)}</p></article>`).join("")}</section><section class="panel"><h2>Known limitations</h2><ul>${poi.limitations.map(note => `<li>${escapeHtml(note)}</li>`).join("")}</ul><p>Client region description: <code>${escapeHtml(poi.region_description)}</code>.</p></section></div><aside class="stack detail-aside"><section class="panel"><h2>Client references</h2><dl class="facts"><div><dt>POI</dt><dd>${escapeHtml(poi.poi_key)}</dd></div><div><dt>Region</dt><dd>${escapeHtml(poi.region_key)}</dd></div><div><dt>Kingdom reference</dt><dd>${escapeHtml(poi.kingdom_client_reference)}</dd></div><div><dt>Shared template</dt><dd>${escapeHtml(poi.shared_template)}</dd></div><div><dt>Defender group</dt><dd>${escapeHtml(poi.defender_group)}</dd></div></dl><p class="panel-note">Client ${escapeHtml(stagedPoiData.client_version)} / ${escapeHtml(stagedPoiData.version_code)}; compared with ${escapeHtml(stagedPoiData.baseline)}.</p></section></aside></div>`;
+  }
+
+  function renderCommanders(slug, rank = 20) {
+    setActiveNav("commanders");
+    searchInput.value = "";
+    if (!commandersData) {
+      content.innerHTML = `<div class="error"><h1>Commander guide unavailable</h1><p>The Commander reference data could not be loaded. Rebuild the encyclopedia and refresh.</p></div>`;
+      return;
+    }
+    const source = `<a href="${escapeHtml(commandersData.guide_url)}">Official Commander guide</a>`;
+    if (slug) {
+      const commander = commandersData.commanders.find(item => item.slug === decodeURIComponent(slug));
+      if (!commander) return renderNotFound();
+      const talentCards = commander.talents.map(talent => {
+        const audit = commanderAudit?.talents.find(item => item.talent === talent.name && item.commander === commander.name);
+        const values = (talent.reviewed_tracks || []).flatMap(row => {
+          const track = audit?.tracks[row.progression_id];
+          if (!track || ![1, 20].includes(track.length)) return [];
+          const value = track.length === 1 ? track[0] : track[rank - 1];
+          return [`<div><dt>${escapeHtml(row.label)}</dt><dd>${escapeHtml(Number((value * 100).toFixed(4)))}% <small>(${escapeHtml(row.progression_id)})</small></dd></div>`];
+        }).join("");
+        const evidence = audit ? `<details><summary>Inspect linked progression tracks</summary><p class="panel-note">Raw decimal tracks and reference chains; numeric field paths are schema-less evidence. Not every linked track has been assigned a player-facing meaning.</p><dl class="facts">${Object.entries(audit.tracks).filter(([key]) => key.includes("talent_")).map(([key, track]) => `<div><dt>${escapeHtml(key)}</dt><dd>${escapeHtml(track.length === 1 ? track[0] : track[rank - 1])} <small>(${track.length === 1 ? "constant" : `rank ${rank}`}; raw decimal)</small></dd></div>`).join("")}</dl></details>` : "";
+        const clientText = talent.exact_client_text.replace(/<[^>]*>/g, "");
+        const displayedText = talent.name === "Hightower's Beacon" ? clientText.replace("until the end of Combat.", "until the end of Combat.*") : clientText;
+        return `<article class="ability-card"><h3>${escapeHtml(talent.name)}</h3><p class="panel-note">Installed-client text · ${escapeHtml(commandersData.source_date)} · ${escapeHtml(talent.client_key)}. Formatting tags removed; placeholders in the text are unresolved.</p><p style="white-space:pre-wrap">${escapeHtml(displayedText)}</p>${talent.name === "Hightower's Beacon" ? `<p class="panel-note">* Damage bonus duration requires confirmation.</p>` : ""}${values ? `<h4>Traced values · rank ${rank}</h4><dl class="facts">${values}</dl><p class="panel-note">Signed values are changes, not multipliers. The snapshot's linked 20-entry tracks are interpreted as talent ranks. Refer to the talent text for timing, targets and gates. <a href="${escapeHtml(talent.comparison_source)}">Community comparison</a>; not every displayed rank was independently corroborated.</p>` : ""}${evidence}</article>`;
+      }).join("");
+      content.innerHTML = `<div class="breadcrumbs"><a href="#/commanders">Commanders</a><span>/</span><span>${escapeHtml(commander.name)}</span></div><header class="detail-heading"><div><p class="eyebrow">Commander reference</p><h1>${escapeHtml(commander.name)}</h1><div class="chips">${commander.traits.map(trait => `<span class="chip">${escapeHtml(trait)}</span>`).join("")}</div></div></header><div class="detail-layout"><div class="stack"><section class="panel"><h2>Talents</h2><p>Client definitions and progression tracks do not confirm availability, current values, or live combat behavior. Use the talent screen for your current rank. ${commander.slug === "corlys" ? `The publisher also describes these talents in its <a href="${escapeHtml(commandersData.corlys_url)}">Corlys guide</a>.` : ""}</p>${commanderAudit ? `<label>Talent rank <select id="commander-rank">${Array.from({length: 20}, (_, i) => `<option value="${i + 1}" ${rank === i + 1 ? "selected" : ""}>${i + 1}</option>`).join("")}</select></label>` : `<p class="panel-note">Progression audit unavailable; client text remains available.</p>`}${talentCards}</section></div><aside class="stack detail-aside"><section class="panel"><h2>Acquisition</h2><p>${escapeHtml(commander.acquisition)}</p><p class="panel-note">Published route; availability depends on your world and Reign. ${source}</p></section><section class="panel"><h2>Evidence and conflicts</h2><p>Westeros Command reports that descriptions and data were out of sync in earlier builds. Buffer Companion's viewed summary conflicts with this capture and the official Corlys description. Do not combine values across versions.</p><p><a href="../encyclopedia/data/commander_value_audit.json">Download reference chains and source hashes</a></p></section></aside></div>`;
+      document.querySelector("#commander-rank")?.addEventListener("change", event => renderCommanders(slug, Number(event.target.value)));
+      return;
+    }
+    content.innerHTML = `<div class="page-heading"><div><p class="eyebrow">Official guide and installed-client evidence</p><h1>Commanders</h1><p>Assign a Commander to an army to add talents that interact with its dragons and combat conditions.</p></div></div><div class="mechanics-grid"><section class="panel"><h2>Unlock and assign</h2><p>Unlock the Commander’s Seat through Stronghold Upgrades, then assign a Commander in the Army Builder. Manage them in the Commander Grove or Army Builder. If unavailable, the publisher says Commanders become available after your next Reign Transition.</p><p>${source} · Published November 10, 2026</p></section><section class="panel"><h2>Progression and persistence</h2><p>Collect Commander Medals, Commander Honors and Onyx Honors through quests, events and offers to upgrade talents. Commander rank is the sum of talent ranks; rarity progresses from Common through Legendary and some progression may increase Army Size. Commanders and their upgrades persist between Reigns.</p></section><section class="panel"><h2>Build around talents</h2><p>Check the talent’s required trait, lane, trigger, rank and whether it applies to player or non-player battles. A trait anywhere in an army and a trait required specifically in the Vanguard are different conditions. A chance is not a guarantee.</p><p>The formation planner does not model Commander effects or Commander Army Size bonuses.</p></section></div><div class="page-heading" style="margin-top:2rem"><div><h2>Commanders and traits</h2><p>Acquisition and traits are from the official guide; talent descriptions are captured client text.</p></div></div><div class="entity-grid">${commandersData.commanders.map(item => entityCard({...item, entity_type: "commander"})).join("")}</div><section class="panel" style="margin-top:1rem"><h2>Dragon traits</h2><p class="panel-note">Publisher examples; verify the current trait in the Dragon Pit or Army Builder. These are Commander traits, distinct from inferred ability tags.</p><dl class="facts">${Object.entries(commandersData.trait_examples).map(([trait, dragons]) => `<div><dt>${escapeHtml(trait)}</dt><dd>${escapeHtml(dragons.join(", "))}</dd></div>`).join("")}</dl></section>`;
+  }
+
   function renderNotFound() {
     content.innerHTML = `<div class="error"><h1>Record not found</h1><p>The stable ID in this URL is not present in the current validated dataset.</p><p><a href="#/dragons">Return to the dragon index</a></p></div>`;
   }
@@ -388,7 +443,9 @@
     if (!data) return;
     const route = parseRoute();
     const [section = "dragons", id] = route.parts;
-    if (section === "dragons" && id) renderDragon(id);
+    if (section === "poi-references" && id) renderPoiReference(id);
+    else if (section === "commanders") renderCommanders(id);
+    else if (section === "dragons" && id) renderDragon(id);
     else if (section === "statuses" && id) renderStatus(id);
     else if (section === "map-nodes" && id) renderMapNode(id);
     else if (section === "dragons" || section === "statuses" || section === "map-nodes" || section === "search") renderIndex(section, route);
@@ -422,10 +479,16 @@
       changesError = error;
       return null;
     }),
+    fetchJson("./data/commanders.json").catch(() => null),
+    fetchJson("./data/commander_value_audit.json").catch(() => null),
+    fetchJson("./data/staged_poi_references.json").catch(() => null),
   ])
-    .then(([payload, changePayload]) => {
+    .then(([payload, changePayload, commanderPayload, auditPayload, poiPayload]) => {
       data = payload;
       changesData = changePayload;
+      commandersData = commanderPayload;
+      commanderAudit = auditPayload;
+      stagedPoiData = poiPayload;
       buildDocuments();
       version.textContent = `Schema ${data.metadata.schema_version} · client ${Object.values(data.metadata.client_versions).join("/")}`;
       render();

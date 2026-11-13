@@ -15,8 +15,7 @@ ROOT = PROJECT.parents[1]
 DIST = PROJECT / "dist"
 PREVIEW = PROJECT / "preview"
 NORMALIZER = ROOT / "projects" / "shared-data-foundation" / "src" / "normalize" / "build_encyclopedia_data.py"
-MAP_SOURCE = ROOT / "Game_Details" / "Resources" / "_extracted"
-MAP_ASSETS = ("interactive_map.html", "worldmap_background.jpg", "region_color_overlay.png", "mountain_overlay.png")
+ATLAS_PUBLISHER = ROOT / "Game_Details" / "Resources" / "_publish_atlas_maps.py"
 COMBAT_DIST = ROOT / "projects" / "combat-interaction-explorer" / "dist"
 COUNTER_DIST = ROOT / "projects" / "counter-picking-assistant" / "dist"
 LANDING_DIST = ROOT / "projects" / "player-tools-index" / "dist"
@@ -35,10 +34,11 @@ def assemble_preview() -> None:
         shutil.copytree(COMBAT_DIST, PREVIEW / "combat")
     if COUNTER_DIST.exists():
         shutil.copytree(COUNTER_DIST, PREVIEW / "counter")
-    for name in MAP_ASSETS:
-        source = MAP_SOURCE / name
-        target_name = "index.html" if name == "interactive_map.html" else name
-        shutil.copy2(source, PREVIEW / "map" / target_name)
+    subprocess.run(
+        [sys.executable, str(ATLAS_PUBLISHER), "--output-dir", str(PREVIEW / "map")],
+        cwd=ROOT,
+        check=True,
+    )
     (PREVIEW / ".nojekyll").touch()
     print(f"assembled local preview {PREVIEW}")
 
@@ -52,6 +52,9 @@ def main() -> int:
         shutil.rmtree(DIST)
     shutil.copytree(PROJECT / "src", DIST)
     shutil.copytree(PROJECT / "public", DIST, dirs_exist_ok=True)
+    shutil.copy2(ROOT / "data" / "commanders.json", DIST / "data" / "commanders.json")
+    shutil.copy2(ROOT / "data" / "commander_value_audit.json", DIST / "data" / "commander_value_audit.json")
+    shutil.copy2(ROOT / "data" / "staged_poi_references.json", DIST / "data" / "staged_poi_references.json")
     (DIST / ".nojekyll").touch()
     print(f"built {DIST}")
     if args.preview:

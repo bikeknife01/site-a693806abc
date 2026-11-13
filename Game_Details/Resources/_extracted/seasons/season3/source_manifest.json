@@ -1,0 +1,3150 @@
+{
+  "schema": "atlas-season-source-1.0.0",
+  "source": "October 23, 2026 installed client 26.10.57632 (337)",
+  "snapshot_date": "2026-10-23",
+  "map_prefix": "Westeros_Charlie_3_ScalingRuins",
+  "campaign": "Charlie",
+  "poi_count": 8039,
+  "types": {
+    "Bridge": 300,
+    "Castle": 484,
+    "Crossing": 623,
+    "Dragon Sanctum": 161,
+    "Great House Capital": 10,
+    "Harbor/Dock": 45,
+    "Ruin": 4954,
+    "Seat of Power": 87,
+    "Settlement (Town)": 868,
+    "Tunnel": 506,
+    "World Capital": 1
+  },
+  "terrain_navigation": {
+    "schema": "atlas-terrain-navigation-1.0.0",
+    "source": "October 23, 2026 installed client 26.10.57632 (337)",
+    "dimensions": [
+      2080,
+      3312
+    ],
+    "terrain_chunks": 183,
+    "codes": {
+      "unknown": 0,
+      "default": 1,
+      "coast": 2,
+      "mountain": 3,
+      "water": 4,
+      "error": 5
+    },
+    "cell_counts": {
+      "unknown": 5434096,
+      "default": 1242253,
+      "coast": 50335,
+      "mountain": 162276,
+      "water": 0,
+      "error": 0
+    }
+  },
+  "region_layer": {
+    "unassigned_pois": 997,
+    "trailing_zero_pixels": 57428
+  },
+  "limitations": [
+    "POIs and template levels are installed static placements, not current ownership or upgraded levels.",
+    "Terrain chunks are a partial client cache. Routes use geographic fallback where terrain is unknown.",
+    "Crossing connections are inferred from placement proximity, not server adjacency.",
+    "Unassigned region labels stay blank; trailing region-texture gaps render as zero/ocean."
+  ],
+  "sources": [
+    {
+      "file": "AchievementTable.1792437875.pb",
+      "bytes": 3681,
+      "sha256": "58db19a8ea620a5ee95a91810b9e1bbdc68e8de2611ceb2f90f7decee92b6fc1"
+    },
+    {
+      "file": "AchievementTypeTable.1792437875.pb",
+      "bytes": 262,
+      "sha256": "7f2b4318ea1ea5187f2ea9e76dadac677ab71f5bd4a63e92866fea50dd4f4175"
+    },
+    {
+      "file": "ActivityBuffTable.1792437875.pb",
+      "bytes": 5155,
+      "sha256": "2d8f306d9346c5349a1e710f66c5d0bc0bece8172110b453e35e05a91dcbd294"
+    },
+    {
+      "file": "AllianceRankConstantTable.1792437877.pb",
+      "bytes": 159,
+      "sha256": "735ce86939a5bcae9691bf62f6677e328fa75d157c8769a4f66bc6a966ede557"
+    },
+    {
+      "file": "AllianceRankInfoTable.1792437877.pb",
+      "bytes": 791,
+      "sha256": "65809c67f27014d51c7a28eb88d27bc23eea0e5c604e815e9721e9ecfe821ff2"
+    },
+    {
+      "file": "AmbitionTable.1792437877.pb",
+      "bytes": 475,
+      "sha256": "088ad69edcbd7962463a9fb23109f454a8a139b4ae216f83b1280877a9e5e5bb"
+    },
+    {
+      "file": "ArmySlotTable.1792437877.pb",
+      "bytes": 620,
+      "sha256": "1cab28f4a120c2c9c9fdf5e5df5e9a32d16b639b4653e5691d1893107dbd0a02"
+    },
+    {
+      "file": "AutoBuildTable.1792437875.pb",
+      "bytes": 45,
+      "sha256": "f7ee3377194f45a7cd659f3b644e324251a9b3b572f4334009e505aa679999d1"
+    },
+    {
+      "file": "AvatarTable.1792524201.pb",
+      "bytes": 4313,
+      "sha256": "794dc2e8f687beda7ef366cfca80801e4bfe698617e235bd12adf7e1c4a38062"
+    },
+    {
+      "file": "BannerBackgroundTable.1792437877.pb",
+      "bytes": 6550,
+      "sha256": "a2f4e8840a13ebe69e9d68d1c807275bd82ce9f55b83266c061e23a7fdf79cb1"
+    },
+    {
+      "file": "BannerColorTable.1792437877.pb",
+      "bytes": 4194,
+      "sha256": "7199bd65cf14091bc439073d55d04ceeb73ca15f5fb0f3d8c519d45ed897e24a"
+    },
+    {
+      "file": "BannerHouseTable.1792437877.pb",
+      "bytes": 47578,
+      "sha256": "65c0d76a05158c2e09f1ede6c39b277f1d9a62c9c10eaaf099632f4180bc2e9b"
+    },
+    {
+      "file": "BannerSigilTable.1792437877.pb",
+      "bytes": 31737,
+      "sha256": "b8fcbeea7bb4f1e68ab91c0d7a7ab06df0aac9d36113c9a6ef2c267c43074627"
+    },
+    {
+      "file": "BiomeTypeTable.1792437875.pb",
+      "bytes": 178,
+      "sha256": "31db3c267d97eabeea9c3329232c9f5ef96aa917fcf2b5b7bf94da01447e2327"
+    },
+    {
+      "file": "BoostTable.1792437877.pb",
+      "bytes": 57455,
+      "sha256": "965df0f50abd2e2b19f61903e72aa632e9cebfdaa4306295fb6f956361e83ce1"
+    },
+    {
+      "file": "CalculationTable.1792437877.pb",
+      "bytes": 128232,
+      "sha256": "6cf04bad08f7edaf6cedba6971a3aaa5d9f71af3436e3c8b9d62f1348fd22269"
+    },
+    {
+      "file": "CalculationTable_CalculationTypeTable.1792437877.pb",
+      "bytes": 10189,
+      "sha256": "064cbe5698596fcd05149c75c6be784b98ce3c64a2c29c31d0b43ba81ae491b3"
+    },
+    {
+      "file": "ChallengeRatingTable.1792437877.pb",
+      "bytes": 486,
+      "sha256": "2bbe8d36cc08c9c6fea85f25fd5bfb192378f97cf3f4149987e7be393e8eadf4"
+    },
+    {
+      "file": "ChatChannelTable.1792437877.pb",
+      "bytes": 718,
+      "sha256": "a4634598ad02ff743c14f97ef08c90089455b5be00aeedd2c7449034973b54c2"
+    },
+    {
+      "file": "CityConstantsTable.1792437877.pb",
+      "bytes": 495,
+      "sha256": "14a3949ad99be89a1bd66a8f5227c41dadd48024033f828f1f053b1bc7d14e82"
+    },
+    {
+      "file": "cityProgressions_merged.1792437877.pb",
+      "bytes": 106085,
+      "sha256": "ffabc4b8868c1bd83e0f4c5216061d4a41d98ae35230fca7201253aece69bba6"
+    },
+    {
+      "file": "CityUpgradeCategoryTable.1792437877.pb",
+      "bytes": 1626,
+      "sha256": "5e08ccc314fa0a1d1a3c49ea107a9b61a1fc8bc43bb671c3e870844ef02f4fc2"
+    },
+    {
+      "file": "CityUpgradeTable.1792437877.pb",
+      "bytes": 49079,
+      "sha256": "dd9bda33c75686cda4817fdf53b7d2ea5605b72ff82040f56a638b666365806b"
+    },
+    {
+      "file": "COGCategoryTable.1792437875.pb",
+      "bytes": 10324,
+      "sha256": "bbfe59ba3b26400f632c602300d677fb367c8fb5c4acb24a0faf2d258f38170d"
+    },
+    {
+      "file": "COGDataTable.1792437875.pb",
+      "bytes": 59019,
+      "sha256": "c24e89c37cae9384d40d990f40fef2633246c0e8d6efba5a6179aed3a82b883e"
+    },
+    {
+      "file": "CombatVariablesTable.1792437877.pb",
+      "bytes": 2509,
+      "sha256": "e73e4c3c9296a4e700e8dfd1f0bc590632db74595109a4c164954edcb9bed732"
+    },
+    {
+      "file": "CommanderProgressionTable.1792437877.pb",
+      "bytes": 1711,
+      "sha256": "122aeffbbf1efb1e96178617dc0ea3a98305923ebfcafb94bddd46a8fa9defec"
+    },
+    {
+      "file": "CommanderRoleTable.1792437877.pb",
+      "bytes": 691,
+      "sha256": "f65459f3b2f4d2d85060d4314d5022cf8c64176d6749516ed8e0f6d9b417e6c4"
+    },
+    {
+      "file": "CommanderSettingsTable.1792437877.pb",
+      "bytes": 403,
+      "sha256": "55326d1a1be587544bb7910b82b4a1b9c91ca8ce297c0c3ea3ccf57cc4a0db10"
+    },
+    {
+      "file": "CommanderSlotTable.1792437877.pb",
+      "bytes": 365,
+      "sha256": "0261473a4c5dc56863d362aa5aeef4ed0437922f2849c5cb62af8c48cca3586a"
+    },
+    {
+      "file": "commanderTable_merged.1792524201.pb",
+      "bytes": 6625,
+      "sha256": "077fcb7757dbb4da4f18b9d099b457b10c407d3472637616b249ca1c244e7fdd"
+    },
+    {
+      "file": "commanderTalentTable_merged.1792437877.pb",
+      "bytes": 7031,
+      "sha256": "b7bc3c697a03f15985fb81b0dc2f939949dad1142af9c3935cbf0b98da2bc7b9"
+    },
+    {
+      "file": "CreditsTable.1792437877.pb",
+      "bytes": 99152,
+      "sha256": "5c8555b57d53b56ce22c762918ba0110f69e452c8eb03d3479c201604a5b99a9"
+    },
+    {
+      "file": "DailyQuestIconProgressionTable.1792437877.pb",
+      "bytes": 446,
+      "sha256": "6007c88e064987af1dbee7a3c4f66376e3e567dcdb32dbd6145f04571380469d"
+    },
+    {
+      "file": "DailyQuestTable.1792437877.pb",
+      "bytes": 1242,
+      "sha256": "51fdc661cd1a4151130dabcfeda294fc5c40dc3c293f0b8ee2bc9f6054909d4c"
+    },
+    {
+      "file": "DeepLinkTable.1792437877.pb",
+      "bytes": 22963,
+      "sha256": "98f297cccbd3e55675b8a7e57aac1f315c44fd34d507d4f07350d06e9a51bd2c"
+    },
+    {
+      "file": "DefenderGroupMappingTable.1792437877.pb",
+      "bytes": 20217,
+      "sha256": "27d7bec7c449cf8f803b21acf57dbc1701c824acd1944bf42323b363926694c9"
+    },
+    {
+      "file": "dragonAbilitiesTable_merged.1792437877.pb",
+      "bytes": 129909,
+      "sha256": "d08cd1649260fb1294c953f5d502960738c83bdc22e8c411b0902bc30f99891d"
+    },
+    {
+      "file": "dragonAbilityConditionsTable_merged.1792437877.pb",
+      "bytes": 99170,
+      "sha256": "109d894d1c6af83b4c3aade8b8810618d22f57f6a6bb07c75a12928612670846"
+    },
+    {
+      "file": "dragonAbilityLabelTable_merged.1792437877.pb",
+      "bytes": 12660,
+      "sha256": "4f877e28e292ead221cc146d0b0fcbd6de261557ed0b268e8c91b85de7d4d8cf"
+    },
+    {
+      "file": "dragonAffinityTable_merged.1792437877.pb",
+      "bytes": 7299,
+      "sha256": "998d6694780371dddb5876f393a6f4183d413a867040097736653e767313e8c1"
+    },
+    {
+      "file": "DragonAgeTable.1792437877.pb",
+      "bytes": 162,
+      "sha256": "18ddb46f04cd8619dd0d254e77db32657550193d9af307b9fb28c3063c4800f1"
+    },
+    {
+      "file": "DragonBreedTable.1792437877.pb",
+      "bytes": 3844,
+      "sha256": "ad610ff2fac584db61df615b1b16416e290a2d3d2966dcb408514a963a5d5aa2"
+    },
+    {
+      "file": "DragonCommandRaritiesTable.1792437877.pb",
+      "bytes": 1308,
+      "sha256": "6efda41c1781c2d9e9b41284516a31fcea0840e06ffc34d6ee04cb188af3e5c4"
+    },
+    {
+      "file": "dragonCommandsTable_merged.1792437877.pb",
+      "bytes": 82997,
+      "sha256": "7708bce2629d24b3d3e372b339f0315a41eb67aa589cbbc4f899d5a7e391321f"
+    },
+    {
+      "file": "dragonEffectGroupsTable_merged.1792437878.pb",
+      "bytes": 348207,
+      "sha256": "491800e367adc34ba900efa82cbac21c9d9e94cbaba06b583562754fd2d518ec"
+    },
+    {
+      "file": "dragonEffectsTable_merged.1792437878.pb",
+      "bytes": 342956,
+      "sha256": "ff049eb2aecbfe3466fae5f71b56110ba77c809f598da92b8bcd115a0b7a7533"
+    },
+    {
+      "file": "DragonFeedingVisualsTable.1792437878.pb",
+      "bytes": 212,
+      "sha256": "9caedf97d533b21d73ec8a0ec94ef90e3c3dfb96d336ce2fe3d41c66a9dcccde"
+    },
+    {
+      "file": "dragonHabitsTable_merged.1792437879.pb",
+      "bytes": 96933,
+      "sha256": "e4179f36ccd407c2e657299c5e078d6fa5efcd0a4a2187c74a5f87df454acb42"
+    },
+    {
+      "file": "DragonPowerSourceTable.1792437876.pb",
+      "bytes": 538,
+      "sha256": "831207ea51a772a7f802b1c1c61ce35d7729fcc3b24214ee6c284af3beb2132c"
+    },
+    {
+      "file": "DragonPrefabProgressionTable.1792437879.pb",
+      "bytes": 62697,
+      "sha256": "25e6441d91cf5b06a08c39b457c671fc376f78fadd6018bfa0e53410b84d357a"
+    },
+    {
+      "file": "dragonProgressionWithSourceTable_merged.1792437879.pb",
+      "bytes": 25353,
+      "sha256": "0c8292602ef82e1637c5f07eb6b061e17f99e0a2dbbc003fd50248c5f37b6aa4"
+    },
+    {
+      "file": "DragonRarityTable.1792437879.pb",
+      "bytes": 6344,
+      "sha256": "2b475bb86164a0cdeedc309a8bcfc095eaa76e10fd937ec882ae305c58ac041d"
+    },
+    {
+      "file": "DragonSettingsTable.1792437879.pb",
+      "bytes": 589,
+      "sha256": "729cbc7e6f6ebab9e5aeb179cf4e81b7efe71e64039c76639ed7181028e5149d"
+    },
+    {
+      "file": "DragonShardTable.1792437879.pb",
+      "bytes": 3648,
+      "sha256": "a208efad8eac5b8ed1790fd59803ba53f57530582130558d4caaeb8615dd4e47"
+    },
+    {
+      "file": "DragonStatTable.1792437879.pb",
+      "bytes": 316,
+      "sha256": "62a6ac0fc7ebc595db274626ebaad33db6cc6ffeca3503bf4fea6c9d5aee5bab"
+    },
+    {
+      "file": "DragonStatusTable.1792437879.pb",
+      "bytes": 447,
+      "sha256": "cb5f9cf15fb72b37925affa691548bd8956cee9bd2466567666033c2ccdcd9ef"
+    },
+    {
+      "file": "dragonTable_merged.1792437879.pb",
+      "bytes": 308198,
+      "sha256": "5c07849bf123f76799b9ca23b8fafc6245e402c83da70c15faa19c1001b71f9f"
+    },
+    {
+      "file": "dragonTargeterTable_merged.1792437879.pb",
+      "bytes": 109942,
+      "sha256": "8677e3595d39bf99013ab5a6550473661d18bb55221cea13e4a54042937d8015"
+    },
+    {
+      "file": "DragonTargetPrioritizersTable.1792437876.pb",
+      "bytes": 9233,
+      "sha256": "023c42a232016f01e6c27522767c6a9e4c6b4396e7fcf10ac8dd1b30cacdffe0"
+    },
+    {
+      "file": "DurableUpgradeHeirloomTable.1792437879.pb",
+      "bytes": 692,
+      "sha256": "951ce04472ae50b99b833398543a119b2219a2d80fc0bc0005e8081e2ac61a5c"
+    },
+    {
+      "file": "DurableUpgradeProgressions.1792437879.pb",
+      "bytes": 17513,
+      "sha256": "460cedf4c9718b9bc207ecefbc1f96ee0d5e7900281b2645fc9c0eb3b7e3e131"
+    },
+    {
+      "file": "DurableUpgradeTable.1792437879.pb",
+      "bytes": 70248,
+      "sha256": "522c05f7061ec536a23eb44479c7ec6d4f104b4272544423ae4811500cfbc75b"
+    },
+    {
+      "file": "DurableUpgradeTreeTable.1792437879.pb",
+      "bytes": 777,
+      "sha256": "bb28779aabde3922c4870b143410a3cc30d72df5f7e50bb87975daa8c8f419a6"
+    },
+    {
+      "file": "ExperienceTable.1792437879.pb",
+      "bytes": 70,
+      "sha256": "bba0d3640bd71e37ad7dd0ed07b51c68f9a6b4ab50027a7d4334639e9d0f4c6c"
+    },
+    {
+      "file": "FactionChatSubChannelTable.1792437879.pb",
+      "bytes": 364,
+      "sha256": "a7e74a7b9ae63f434a49bff8bf0603393b7ce1a964edee2e7814db7f807a03c9"
+    },
+    {
+      "file": "factionDisplayTable_merged.1792524203.pb",
+      "bytes": 12677,
+      "sha256": "6428a27032de34b5a3fb248d712ad40c1a6b0869ff12acb7b65b057bfee4a5d0"
+    },
+    {
+      "file": "FactionTable.1792437879.pb",
+      "bytes": 3644,
+      "sha256": "8c091e2cd7610bf6318b952d0aabab40dc26158480b7cf1d6e3b249a89c2c947"
+    },
+    {
+      "file": "FactionTextTable.1792437879.pb",
+      "bytes": 9985,
+      "sha256": "18e6952c6edfc087d5a1c489263c256f7a96c6a8e304d62eacaf6f7832ac4013"
+    },
+    {
+      "file": "FootprintTable.1792437879.pb",
+      "bytes": 17054,
+      "sha256": "33a7c8074eed31daa06832dad3966db5699104acfff3de786b7fcf5e6ed774d3"
+    },
+    {
+      "file": "GachaChestTable_1.1792437879.pb",
+      "bytes": 16247,
+      "sha256": "ce4918a573d7d6f701e4a7f605b21eb3ed319e555b432cfa45894ee9425c3e8a"
+    },
+    {
+      "file": "GachaChestTypeTable.1792437879.pb",
+      "bytes": 486,
+      "sha256": "f0d4f76bc7275bb132f1b4007da9f22822e3dd98fd827973d04fb392f70dbc82"
+    },
+    {
+      "file": "GachaPityTable.1792437879.pb",
+      "bytes": 20578,
+      "sha256": "3373462b0d9cb8a83940e98d7b9fb36674ca76134fc379e83b24d347efaec5d6"
+    },
+    {
+      "file": "GachaPullOptions.1792437879.pb",
+      "bytes": 1409,
+      "sha256": "6a37bc90337512fdecabd26fed27399e86fd7b192f8cb600eb85f3e4ef04633a"
+    },
+    {
+      "file": "GameConstantTable.1792524203.pb",
+      "bytes": 5013,
+      "sha256": "5f652bb994560fd30843cb15885e2456905fba6032a2324804493eed69eed855"
+    },
+    {
+      "file": "GoogleGameStatsEventsTypeTable.1792437877.pb",
+      "bytes": 669,
+      "sha256": "40eb566d2b383bd0f27b7ac2592c58fa7ce063f312c0d0825157e98a80bec884"
+    },
+    {
+      "file": "HeirloomNodeUITable.1792437879.pb",
+      "bytes": 13813,
+      "sha256": "4d33858334d86c72460a19b60e4406badac3c32e10dec6997c3bc1e5dd4bf8f3"
+    },
+    {
+      "file": "HistoryTable.1792437879.pb",
+      "bytes": 463,
+      "sha256": "56af0ca7da24dafad6d42a40d8d65492ddbdc43afc3ca704f6c40f4e4a05958a"
+    },
+    {
+      "file": "HouseHistoryTable.1792437879.pb",
+      "bytes": 6014,
+      "sha256": "350773659a383c5c1138f59d423d7c6866eba04117ec10e72ce43737c1a395bf"
+    },
+    {
+      "file": "HouseTable.1792437879.pb",
+      "bytes": 820,
+      "sha256": "8e871a0c659bdeb54b42d319295bb102dce6b45037e51e71187c4763fca78a09"
+    },
+    {
+      "file": "IDMapControl.1792437879.pb",
+      "bytes": 69,
+      "sha256": "d5b7141470a9cd181eaa51cf6adc525de4069dc2b64ab480cfa6b8791067da48"
+    },
+    {
+      "file": "InfoGuideCategoryTable.1792437879.pb",
+      "bytes": 2835,
+      "sha256": "0e488e5192c54aa58c67edc3d3624ebf4c464c19717406de40acb06162d83a43"
+    },
+    {
+      "file": "InfoGuideModalTable.1792437879.pb",
+      "bytes": 21504,
+      "sha256": "a5ee0f3c3c71b663b95320a9ca169852bdb2e65b42a731dcb897e847f1180977"
+    },
+    {
+      "file": "InfoGuideTable.1792437879.pb",
+      "bytes": 18433,
+      "sha256": "f791d899b6e7b9e15b6bed68fee306491758a2af15046d367f43971f998bcd99"
+    },
+    {
+      "file": "itemTable_merged.1792437879.pb",
+      "bytes": 70133,
+      "sha256": "80fea034edd2151b6111321c9d950bfb893b5e853ed4f613c7c83790bcb422a0"
+    },
+    {
+      "file": "KingdomDataTable.1792437879.pb",
+      "bytes": 788,
+      "sha256": "3c65d715ac87ac6cedae8a3bbda3e3dd4633d45d5a4053af223a0e09b6225098"
+    },
+    {
+      "file": "LeaderboardTable_ClientLeaderboardTable.1792437879.pb",
+      "bytes": 18423,
+      "sha256": "056d0a1e243619f9b9b38040e099336d41020e8f9699584d76d4dc8ebabf1dca"
+    },
+    {
+      "file": "LocaleCodeTable.1792437879.pb",
+      "bytes": 319,
+      "sha256": "59cc8d4a5dc605e695fedecdb4edefcbc97c2e574eb220ad6b569113f2bdbca0"
+    },
+    {
+      "file": "MapManifestTable.1792437879.pb",
+      "bytes": 1529,
+      "sha256": "9aa3d76c05b2abb7e43d42bb403b9e7db1d0770382a695d7b8ceaf2a0dabd262"
+    },
+    {
+      "file": "MapStateGoalTable.1792437879.pb",
+      "bytes": 7872,
+      "sha256": "7874dd029b1ec7effc87b5a928e0c53b9a4d00cb67802804424352cbd4c3bf52"
+    },
+    {
+      "file": "MarchSpeedDescriptiveTextTable.1792437877.pb",
+      "bytes": 262,
+      "sha256": "6cf39b45cacc3d464492b93ca0b8623fd71089598a30fc20c42840002fb3a200"
+    },
+    {
+      "file": "MarchTypeClientTable.1792437877.pb",
+      "bytes": 230,
+      "sha256": "315bf55de88394051a459b6c14baf6f7b539cd2ec1eb98ea49fcb1ac1fff31ae"
+    },
+    {
+      "file": "MarchTypeTable.1792437877.pb",
+      "bytes": 4075,
+      "sha256": "f3e6acc8e3eb62163fa1ed9b67a4dd50d24b45487918624ac6b0690e6a1ed885"
+    },
+    {
+      "file": "MercenaryTable.1792437879.pb",
+      "bytes": 369,
+      "sha256": "13162e24e547791ca0c627b0981c3362ea8e5b42d4f92589a1413524249956a7"
+    },
+    {
+      "file": "NarrativeStageConditionsTable.1792437879.pb",
+      "bytes": 6764,
+      "sha256": "15655db2760917b16d2b8c463ab52a69792ec14b89b6fd084fccfddbc76dd068"
+    },
+    {
+      "file": "NarrativeSummaryTable.1792437879.pb",
+      "bytes": 29373,
+      "sha256": "78018823ddbfce1a8f8f5cb01c382de24290743d4d259ec784b2dfff7079c6a9"
+    },
+    {
+      "file": "narrativeTableV1_merged.1792437879.pb",
+      "bytes": 490131,
+      "sha256": "03519ca7f2a324a7627b62054fedea079c6ab3d9adf7b4723e90e0b98b1e277f"
+    },
+    {
+      "file": "NewPlayerDisplayInfoTable.1792437879.pb",
+      "bytes": 27,
+      "sha256": "b8b3da3577dc239f0c3cfeeb8673ec7b37b938197adea0e3ce1bb721a0fca066"
+    },
+    {
+      "file": "NodeFinderSearchParameterButtonDataTable.1792437880.pb",
+      "bytes": 1188,
+      "sha256": "92f5ec0ca2cf9b91183f3d1524fb8c3944f3a27c915dc0b22dad2fda73d61b4f"
+    },
+    {
+      "file": "NotificationTagTable.1792437880.pb",
+      "bytes": 342,
+      "sha256": "0f35210489d9c65d29bdc5be08e7cf2de2cff194c8fada467520aa5d53577f1e"
+    },
+    {
+      "file": "OfferControl.1792437880.pb",
+      "bytes": 31,
+      "sha256": "cf5ee44f20a6355bb2a0ad86178824d9f65956a412c563962e0ef3b0397cb76f"
+    },
+    {
+      "file": "OfferVfxTable.1792437880.pb",
+      "bytes": 408,
+      "sha256": "1db365f0cbc8c35eda8a7b035a4bb4d73501ccf99960ef77d17ab8c41ef561a9"
+    },
+    {
+      "file": "OwnershipTypeDataTable.1792437880.pb",
+      "bytes": 78,
+      "sha256": "7e65205354d97b0146528a743940f004c4b6abb11dde3eb9a850889fc0414832"
+    },
+    {
+      "file": "PinStyleTable.1792437880.pb",
+      "bytes": 659,
+      "sha256": "3eec4ed99cd24688d586c3400c14e54b39612a599580bf03b26e02f9ac7632dc"
+    },
+    {
+      "file": "PinTypeTable.1792437880.pb",
+      "bytes": 142,
+      "sha256": "69ed0cd319339eed64152d7ada53b6ec36484e07cf3d1806d49bd7cf7b5a0018"
+    },
+    {
+      "file": "PlayerAmbitionTable.1792437880.pb",
+      "bytes": 2684,
+      "sha256": "78bd534247272b083579fe13afc8bb0c129d01b1150a328adc798927f1fe2949"
+    },
+    {
+      "file": "PointOfInterestNodeSharedTable.1792437880.pb",
+      "bytes": 55011,
+      "sha256": "f44d4ef7997e9df77809dd9a5c1c55642c977086d647752c9bee5d28227eb606"
+    },
+    {
+      "file": "pointOfInterestNodeTable_merged.1792437880.pb",
+      "bytes": 170293,
+      "sha256": "6c80bbe7536027e5d9c5ce05b9e8190dd4be7e0319bc63718e11c3046de49661"
+    },
+    {
+      "file": "PointOfInterestTypeTable.1792437880.pb",
+      "bytes": 716,
+      "sha256": "ba106833881d0dae0fcfadcc90b5d51140fafec8d051687ad09383598d7a5d94"
+    },
+    {
+      "file": "powerTable_merged.1792437880.pb",
+      "bytes": 82080,
+      "sha256": "05e39708b48842387cdbb7b33a982ce3abd205a1edd8a0d00549e9cdbafc6cc4"
+    },
+    {
+      "file": "Progressions_Spawnable.1792437884.pb",
+      "bytes": 1103,
+      "sha256": "5fc45c634a5df65d16d76a9942b4a506130664cd3f275022a587ebdb8253448c"
+    },
+    {
+      "file": "progressionTable_merged.1792437881.pb",
+      "bytes": 398633,
+      "sha256": "392353b43152b954d89409de20f874896da4a5cc87f2e9e24cb72fafa4880eb3"
+    },
+    {
+      "file": "propertyModderTable_merged.1792437881.pb",
+      "bytes": 160092,
+      "sha256": "6d88fe25f19972e1240d45e7192d06648f4646a173a67befbdd70f26ea0ecc3a"
+    },
+    {
+      "file": "PropertyTable.1792437881.pb",
+      "bytes": 127821,
+      "sha256": "f3beb75ff53baf6d3137c0805c92b3caece42bf16a1c4146af39efd458ff9302"
+    },
+    {
+      "file": "QuestCategoryTable.1792437881.pb",
+      "bytes": 487,
+      "sha256": "d0938c754e57744606eb72abdc19a0a8faa0e2f9aed2e1e4b1a050a6a9c8abf6"
+    },
+    {
+      "file": "questTable_merged.1792437881.pb",
+      "bytes": 806382,
+      "sha256": "7a1b0f52fe7045b37397160b93dad4c2d98ca98703091f4bafe408bace7ee1ca"
+    },
+    {
+      "file": "RecruitCostTable.1792437881.pb",
+      "bytes": 106,
+      "sha256": "88b294511479dd07b11ed5048837538cb842479de8825e19290586f2d6041b48"
+    },
+    {
+      "file": "RegionDataTable.1792437882.pb",
+      "bytes": 56763,
+      "sha256": "d21174d7063ea68f189d81886d384b4a000e542a51d0eacb9d80e1bf50667feb"
+    },
+    {
+      "file": "ResourceNodeDefenderGroupInfoTable.1792437877.pb",
+      "bytes": 32010,
+      "sha256": "56aff82eab4ada77b138165985296d15f159f78f5c4d68ff35dc5175654ee5ca"
+    },
+    {
+      "file": "ResourceNodeDefenderInfoTable.1792437877.pb",
+      "bytes": 91179,
+      "sha256": "5e356408992cf87f6d96e49e2c954fe5cf0178787d22b999f2144a78b6676340"
+    },
+    {
+      "file": "ResourceNodeDefenderTable.1792437883.pb",
+      "bytes": 262925,
+      "sha256": "89d4b19a6ea6aa9af5ac53b309cfef84d2e24b5911881af84fa81addacd08c9a"
+    },
+    {
+      "file": "ResourceNodeSharedTable.1792437883.pb",
+      "bytes": 47520,
+      "sha256": "9a46c5a35365c4ca3a39c9e6fc6e0fa2103255fe6a95f9d6bfdcc0779d00e300"
+    },
+    {
+      "file": "ResourceNodeTable.1792437883.pb",
+      "bytes": 98692,
+      "sha256": "efa060c13cf48ee5990670809b6fce6f71f396fea115c9ddf89e3d5c5b7cbf12"
+    },
+    {
+      "file": "SagaGateTable.1792437883.pb",
+      "bytes": 2308,
+      "sha256": "25abf2bbe3420662fe00158105baabaafdaf94561f9fa7232ac9fd51dc341a51"
+    },
+    {
+      "file": "SagaLevelTable.1792437883.pb",
+      "bytes": 22195,
+      "sha256": "7e5d8f3ecc27aa46d2553c11bfd19c325f8abee948837c822109689b969e82b8"
+    },
+    {
+      "file": "SagaMapTable.1792437883.pb",
+      "bytes": 76,
+      "sha256": "f6d1fa0af143c1e7d0c4d9d7724c1e660e87bb30f4a602512807b48b4c4ec03d"
+    },
+    {
+      "file": "ScheduledSplashScreenTable.1792437883.pb",
+      "bytes": 2209,
+      "sha256": "c50d7d637a7c7d9bd69e42925090ee0b2e2f735ac06c27569cae2775cffc34b6"
+    },
+    {
+      "file": "ShopBonusTable.1792437883.pb",
+      "bytes": 242,
+      "sha256": "2d470fc8db507883c735cd87743949f890ea6d859a4d2ef791ea482dc4ede27e"
+    },
+    {
+      "file": "ShopSlotTable.1792524207.pb",
+      "bytes": 78018,
+      "sha256": "e6b4eb38125b0e585572710cd47b9b70469feb52606590cc2d2c4a8abfabfc5e"
+    },
+    {
+      "file": "ShopTable.1792524208.pb",
+      "bytes": 17876,
+      "sha256": "9b747c4fbf5785f8ea44a20ff4cbb4a0b0a01687c2088fae7f6a274cf55435a4"
+    },
+    {
+      "file": "soundTable_merged.1792437884.pb",
+      "bytes": 1590,
+      "sha256": "4eccf7341789e436aaf10eaf71c57fa35734ada4540f51d4bdeda8bf6eff1b2c"
+    },
+    {
+      "file": "SpawnableActionTable.1792437884.pb",
+      "bytes": 6100,
+      "sha256": "44a55730b0e4691ee57cb940fc935cc28a671f3c8fff129756371f635b8b6522"
+    },
+    {
+      "file": "SpawnableDefenderGroupInfoTable.1792437884.pb",
+      "bytes": 90998,
+      "sha256": "cb944a27ab5ae228f0416ece48fe7370688ca974045a7433aed161777fc37097"
+    },
+    {
+      "file": "SpawnableDefenderInfoTable.1792437884.pb",
+      "bytes": 89882,
+      "sha256": "6557b2b59578fb96f35dfe90689815150dc1a1fdd64f215cf2b8ebeed81f42ec"
+    },
+    {
+      "file": "SpawnableDefenderTable.1792437884.pb",
+      "bytes": 353331,
+      "sha256": "dc84e9567a572e58e1382760a6aeb38b5e941076b9a9c029a973443082ddb12e"
+    },
+    {
+      "file": "SpawnableTable.1792524208.pb",
+      "bytes": 21926,
+      "sha256": "379c2565eacb7daf59424b01a8e648a2add3fa09573f625fa00359bb4f82af4b"
+    },
+    {
+      "file": "SpawnGroupTable.1792437884.pb",
+      "bytes": 4971,
+      "sha256": "67aad9d32429f78a3c77dedce29122bd876338aa956a09297a1edcc878cec9d4"
+    },
+    {
+      "file": "StatGoalTable.1792437884.pb",
+      "bytes": 3357,
+      "sha256": "7e3b70ac823bda16becfbc11489ddb8240c83630593bf7a81bc587f632048c09"
+    },
+    {
+      "file": "StrongholdTable.1792437884.pb",
+      "bytes": 748,
+      "sha256": "69f19d49ab3e8200cb36b3fab9aa15e9d0baca98a3b6e5fa4725ff5e07a8ab06"
+    },
+    {
+      "file": "taskProgressionTable_merged.1792524208.pb",
+      "bytes": 393479,
+      "sha256": "9579cf62e43658b89377622d51ac39bd3a4e386f72eca2b713a4c2627c4ce780"
+    },
+    {
+      "file": "taskTable_merged.1792437884.pb",
+      "bytes": 237398,
+      "sha256": "a8e226624262cd7d3cc0e44a0cd6295cb407b9635d72b0cb563395a2368aeb69"
+    },
+    {
+      "file": "TerrainDataTable.1792437885.pb",
+      "bytes": 47521,
+      "sha256": "008b31e51f88580da9dd96e38c6ee3f056b248f095746dedc809a2703922e3dc"
+    },
+    {
+      "file": "TileActionTable.1792437885.pb",
+      "bytes": 468,
+      "sha256": "0f3f0e9a2cbcd527b11e2c648c5f3ebc6a73d68b88529649c16dd286d907768e"
+    },
+    {
+      "file": "TileCommanderTable.1792437885.pb",
+      "bytes": 2649,
+      "sha256": "9058929da5a6d4bf99120a5026524899fca0a1d7e98ae2beaa6ae957d474ae38"
+    },
+    {
+      "file": "tileDragonTable_merged.1792437885.pb",
+      "bytes": 430249,
+      "sha256": "bdb98fd9c85606e985258c99672d39649a94eeb6187682da07b408857856ba49"
+    },
+    {
+      "file": "TooltipTable.1792437885.pb",
+      "bytes": 31822,
+      "sha256": "3af9c93c439140fcb98fd40642bc4db387901d1ad1e05da276ac7a21893b0eab"
+    },
+    {
+      "file": "transientPropModderTable_merged.1792437885.pb",
+      "bytes": 33330,
+      "sha256": "5ac595a6a17d1fbee26142ffaeb1b346cec977e0c64578c0fa4446b55ff3ecc6"
+    },
+    {
+      "file": "TroopEffectivenessTable.1792437885.pb",
+      "bytes": 503,
+      "sha256": "22131be9af55d9de712c9c5385cffe50da0a6c136010a73e0dd6449a1d39ddda"
+    },
+    {
+      "file": "TroopTable.1792437885.pb",
+      "bytes": 944,
+      "sha256": "ea132d9b40f965d115038629e00c1a332fc7d4f13741a8c43f62c9e2702c6ee0"
+    },
+    {
+      "file": "VideoSubtitleTable.1792437877.pb",
+      "bytes": 1930,
+      "sha256": "9bfbc333980ecebb1d33390fbc8d21bb77a2c87d58a20c91ec44b615a649d599"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_BiomeBlend_Bitmap.1792437869.astc",
+      "bytes": 1722256,
+      "sha256": "4351284b6423da8f11e23563ecfce0859431269efcb39bf09aad538233c70304"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_BiomePalette.1792437868.png",
+      "bytes": 450,
+      "sha256": "2d81cf6046048b8d65388cbeb77b83997c343c3faaae864746b1978d9988ad02"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_BiomePaletteRamp_Bitmap.1792437869.astc",
+      "bytes": 1722256,
+      "sha256": "202a73f3e5a2eba2dde4d741b868cdf165ceed4ba1ea96eddbe585bcd1142882"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Client.description.1792437869.json",
+      "bytes": 3404,
+      "sha256": "2396bf95d52075ab2c37223ae73dd63186702d0036c9aa9c33c9b0e4d75e6845"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_ObstructionTeleport_BinaryMask_Client_x00013y00018.1792437868.pb",
+      "bytes": 1257,
+      "sha256": "191910f08036aeee5d1405109ea76d0c5c893366664c1e1ee969c0e8a3a5aee7"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_ObstructionTeleport_BinaryMask_Client_x00017y00014.1792437868.pb",
+      "bytes": 1257,
+      "sha256": "d6adcfce384148375f71967b6f0660f84f5548fc14c85997b06ddb5b3d9ae59c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Poi_Rtree_Client.1792437868.pb",
+      "bytes": 354504,
+      "sha256": "b7f673202f476d8a1fd67256dcab619a1814ae073881fa23fa20e40c62442619"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00008y00002.1792437868.pb",
+      "bytes": 486,
+      "sha256": "d851587b6098c3b33d7a949a8d1583e41da91d81a945bdb15626fbef4d570420"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00008y00003.1792437868.pb",
+      "bytes": 825,
+      "sha256": "94b2f97573f6870e2343860bfb9f5d55a8793020e5adc5505fdd7699ab79c689"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00008y00011.1792437868.pb",
+      "bytes": 382,
+      "sha256": "0c95dd7346a816132d70fe2291da1d394bfd18f35ab6c274a9ddfc056a7f6b08"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00009y00003.1792437868.pb",
+      "bytes": 538,
+      "sha256": "01ab6218307e94c6494a513a4fc2a8ec96b1652a07da0e04804bfd2969abf54b"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00009y00004.1792437868.pb",
+      "bytes": 961,
+      "sha256": "c3bb0abeaef6adb2f0f627e5ebe485bb76047d9acf479621f51613e8dad62b36"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00009y00024.1792437868.pb",
+      "bytes": 230,
+      "sha256": "ebc9a1ca6852c74e9e3caa45c370bd98a55ff0e1e4172c6826ea2dc2b3ff40b6"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00010y00002.1792437868.pb",
+      "bytes": 310,
+      "sha256": "a2fce9184d9e36f883f8cc0356dd89ebe41fc76d8541df96e462a06eb9edd627"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00010y00003.1792437868.pb",
+      "bytes": 224,
+      "sha256": "05c7998ad8de55f2fbc9036339e2a75f534b16d69bf69e5be0f670d13d44ae4c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00011y00017.1792437868.pb",
+      "bytes": 42,
+      "sha256": "e2e30bf415a0ff20c2b5b93fe3676489228bbfa9574cf545e0a51f8de09a5f1d"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00011y00019.1792437868.pb",
+      "bytes": 41,
+      "sha256": "80a77726f6189b0145202fc80217261d89822aa9ee1459391680cef698ce16bb"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00012y00017.1792437868.pb",
+      "bytes": 463,
+      "sha256": "86a186c71919eb53cb182489b21c6019477d4da35d9e4f7dd361e18c343344be"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00012y00018.1792437868.pb",
+      "bytes": 226,
+      "sha256": "f78b14ed7dd6a228768d4b7667a8ff5553297522d41f1b297e3e65f954e7da37"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00012y00019.1792437868.pb",
+      "bytes": 484,
+      "sha256": "78a85cc721bb1c164c63461aa505d10cfb3cfecf291cbb35746f9a22f8427357"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00013y00015.1792437868.pb",
+      "bytes": 409,
+      "sha256": "1924b3a32187475bb024ae40cf20d58cf7c728889db9e4763456c00f91ebbffc"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00013y00017.1792437868.pb",
+      "bytes": 42,
+      "sha256": "b79d2fdeb8b1472d30e5cf4c656997a8754204fa34115951ac3f4eead4f6abb9"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00013y00018.1792437868.pb",
+      "bytes": 42,
+      "sha256": "1bd53d44678953d8666aabb1a3edbfac77bec9e49a73ef30fa2986badadeb82c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00013y00019.1792437868.pb",
+      "bytes": 127,
+      "sha256": "9e6ed495f39383c42db9308a1c54f07e1e4e233a40f9d35919d94c1fb5bd63d2"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00014y00006.1792437868.pb",
+      "bytes": 352,
+      "sha256": "3ef9812901d2955f06010d1512573ab56029079dcbffbcd11a7c419fb8deade3"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00014y00013.1792437868.pb",
+      "bytes": 100,
+      "sha256": "d743609424a81c2893921e9a2e843eacc0cc463266b8aad5a6de7805897419c4"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00014y00014.1792437868.pb",
+      "bytes": 622,
+      "sha256": "0b2bde0a46aecfdab7ac5b3831cf2cd8cc423c52222a489a66f13984a28ef6ce"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00014y00017.1792437868.pb",
+      "bytes": 132,
+      "sha256": "7d7ef4d802c406b406cb1426ace7e6e2b9b2bf5c99ddfae89a607fd8fa16a2ad"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00014y00018.1792437868.pb",
+      "bytes": 462,
+      "sha256": "3a725a683705292d390ae0876837b1eceea70800bca786d4425183b3917d7a9f"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00014y00019.1792437868.pb",
+      "bytes": 563,
+      "sha256": "8c81addd50c61adac736c1694f0aad8b570f3d344b3c445f9cff690707c60bcf"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00014y00020.1792437868.pb",
+      "bytes": 474,
+      "sha256": "de510fd1320527409ac28f3683434f115a9cc580a93ced3f5318e791036e32a9"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00015y00006.1792437868.pb",
+      "bytes": 716,
+      "sha256": "10ed733e3f9c03b32c0349644a4eaa3be0a6607679461bd15fda9b740d52217c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00015y00012.1792437868.pb",
+      "bytes": 146,
+      "sha256": "67bad9c47ba860807154eca2b3152c7814c10535b996a3f94d8f1faa591e48eb"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00015y00016.1792437868.pb",
+      "bytes": 41,
+      "sha256": "f49f19e7566c19bc5da365353f6ae0584a237034ef2625a68f91e09c2bf6e587"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00015y00017.1792437868.pb",
+      "bytes": 506,
+      "sha256": "e1f55c91884cc41f8ae4f3805814ea5a4a8ae54673e6883da72f33d589363fff"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00015y00018.1792437868.pb",
+      "bytes": 41,
+      "sha256": "ae6a0069e969c8f5434024a76e88491930fa35ffc55f04fee9cbdcc09580fe1f"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00015y00019.1792437868.pb",
+      "bytes": 285,
+      "sha256": "dc9ab765421a67e2dde31710cdf0dd9b1b9295bbaae4a578223ef1134e8cf9c0"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00015y00020.1792437868.pb",
+      "bytes": 539,
+      "sha256": "fb02fa23c1e08cb38f6c532d4ea185398a989055d2456d48b76eedff21ac4c44"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00015y00021.1792437868.pb",
+      "bytes": 277,
+      "sha256": "fbb5244954f7269b1b690061549f8a58e823d96252a15234966fbdeb7d17fa42"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00015y00023.1792437868.pb",
+      "bytes": 462,
+      "sha256": "6c1576a9089723f069509b7ab16b01b633614b6c9afab25e1616e8b002c180cd"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00016y00007.1792437868.pb",
+      "bytes": 211,
+      "sha256": "098ab0c3b0ebc51a9b2108f09a66cddcbf5e437eec10645a03161f84f9924586"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00016y00008.1792437868.pb",
+      "bytes": 483,
+      "sha256": "f8ad78274bda4a3a86edd52a3d5754c69e46093f24de1ceae7f0875b4698548e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00016y00013.1792437868.pb",
+      "bytes": 255,
+      "sha256": "8a2cef6d096348e7ae4efda4ab6146cb7ad1fa0687a4ba4b2e44c8a1d639d364"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00016y00014.1792437868.pb",
+      "bytes": 42,
+      "sha256": "f42b6947e9d7b2a3c2bdc7ac1f821f574be1e2045501df3943f3732c7292b0ca"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00016y00016.1792437868.pb",
+      "bytes": 462,
+      "sha256": "0dd44aad2fd55b11ea1fff9310ff4347dd6053e4e759c8898545a86409a5b0b7"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00016y00017.1792437868.pb",
+      "bytes": 531,
+      "sha256": "be2df27e7344d9a4dbd33c300d15363fb9865f6bdc0a02680b52c1e47660db6f"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00016y00018.1792437868.pb",
+      "bytes": 503,
+      "sha256": "6df3ba08f779bb7d2acacfc10c2c64851f9f4b2df928412495727ed7e2da2903"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00016y00022.1792437868.pb",
+      "bytes": 554,
+      "sha256": "b2dd81c47abd7e1efcbba571d789f0c8030704a381c8604e58faecfc05ecf834"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00017y00007.1792437868.pb",
+      "bytes": 487,
+      "sha256": "ea142ae09449b5620111728b7d255cfac13c449210a5c4a4947f6151ad3aeaae"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00017y00008.1792437868.pb",
+      "bytes": 412,
+      "sha256": "e6602b37ed32d218e2ff6bfcf0e7e83f5517ac668a784d69a59cc7fd098b3c18"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00017y00009.1792437868.pb",
+      "bytes": 435,
+      "sha256": "b8ed4d2e40c764d61f596f96c79ad5930ed1997a8f02c199f03c2ef6676fc1e4"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00017y00011.1792437868.pb",
+      "bytes": 369,
+      "sha256": "109d27903b06c45a8cedd6279bfe45e4d7f14deb07328c2abe6f3b8570650fd4"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00017y00012.1792437868.pb",
+      "bytes": 296,
+      "sha256": "8cd0f46f3b65367a5c53b8c7169f6b24294bb08ab3209ad632d1bd78eff5db74"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00017y00013.1792437868.pb",
+      "bytes": 272,
+      "sha256": "5450b4ab1e6f23a2ac0efe600d72e3ebcdbb035cf6caa193f5559ee051467c2d"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00017y00014.1792437868.pb",
+      "bytes": 148,
+      "sha256": "c1571bf3ed8ac46ef1b9011701d1f9a1a272aa717aba4c176c61bb07119eddd3"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00017y00017.1792437868.pb",
+      "bytes": 578,
+      "sha256": "56cbd027a690082cd5114d1e15ecc637d06b088068ee050be41eeee4778e435f"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00017y00018.1792437868.pb",
+      "bytes": 406,
+      "sha256": "4ae24b447a2b1181aaf8b2d49c6db87fb623351c1849e367bd0a7fcad3665051"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00017y00019.1792437868.pb",
+      "bytes": 355,
+      "sha256": "5be4f28ed03b7dfe2d773c6a1982d6e0ce3c1b075b1037ade161d1a6643df680"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00018y00009.1792437868.pb",
+      "bytes": 362,
+      "sha256": "0c70d6ccde33bc24c8b90b6fd08f36b2fb70e9d67c18bc9b01cd7ef308710308"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00018y00010.1792437868.pb",
+      "bytes": 446,
+      "sha256": "11808ed8a5cbfbf9f7aeae46543a578296922156b7ff667ba7c26baa20db9382"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00018y00012.1792437868.pb",
+      "bytes": 379,
+      "sha256": "3db26debf6ede42e293b1946b5c7c655818a51930a81bf09809054f9d37e76e7"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00018y00013.1792437868.pb",
+      "bytes": 148,
+      "sha256": "e9dbf0b8f7a27fdf18a36c25230ef0d60823541f01a98b5d76fc3c2b1604d438"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00018y00020.1792437868.pb",
+      "bytes": 400,
+      "sha256": "57a0a27d49ab9160cc61f818267f5a42382271d7175aa745474f8040d43c8b5f"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00018y00021.1792437868.pb",
+      "bytes": 363,
+      "sha256": "84592f917a58fa4128223712eea94dd594f20836d4ae00c345a9492ece448d7e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00018y00022.1792437868.pb",
+      "bytes": 397,
+      "sha256": "7d0474272551483acdb110852d81905a8e6f80c0763c77b16ea54b7b7f07d4d1"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00018y00023.1792437868.pb",
+      "bytes": 446,
+      "sha256": "ea6a4bbaff6be991963cf8fb0b49f84cec1f41a8c01f996be5271533b5219f87"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00019y00012.1792437868.pb",
+      "bytes": 509,
+      "sha256": "e82347fc94af1a3db77c1e2eb38a36336f4b6727a58e19100b86b86b503ff7d7"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Region_Array2DPacked_Client_x00019y00014.1792437868.pb",
+      "bytes": 279,
+      "sha256": "dcdda13b4d69043301503d2d23a1b809c47d817150f9c8985d4960d358c17913"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00004y00009.1792437868.pb",
+      "bytes": 9035,
+      "sha256": "2dd299685be7d69ee5837a3bebc71a5837a78dca884f170fd00480c2c16c3081"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00005y00010.1792437868.pb",
+      "bytes": 18453,
+      "sha256": "1661d92d1cc0c4cdb5d217dca82f84ff2c9535a2b01e5c1cf8d8ab242e491bcb"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00005y00011.1792437868.pb",
+      "bytes": 16135,
+      "sha256": "5bc1ab90eb186fbb08c92a58eb07baaba045478f27c30781215675d6ccff8090"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00005y00012.1792437868.pb",
+      "bytes": 14843,
+      "sha256": "2e5db4e5e22e99bc0e761f8ce9df32fee436668119672c85802f4afdff4e2df5"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00005y00019.1792437868.pb",
+      "bytes": 11275,
+      "sha256": "01e92c34c908149be21ca8b61094ed8ae3bf91531b5a194af2913ebbe3493f67"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00006y00008.1792437868.pb",
+      "bytes": 18036,
+      "sha256": "ee4b397d9c35756a1592f0c9d12d4d9ba2546ffee5655af0f847b0dc4f1d6d45"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00006y00009.1792437868.pb",
+      "bytes": 16759,
+      "sha256": "2af09c907fd844ba0b31fc0c305683e51b63242c3b47116e5c30ea950a9ba44f"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00006y00010.1792437868.pb",
+      "bytes": 17519,
+      "sha256": "0981d9adb1fb6b6f7e0d2e2e15ef4a6f80ff5fb085199444186947c78f76b000"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00006y00011.1792437868.pb",
+      "bytes": 17863,
+      "sha256": "4c9e4281bd8ea4787139bdfc912e47f3196b2311f1f1418dc4d8c035c4c7be22"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00006y00012.1792437868.pb",
+      "bytes": 19596,
+      "sha256": "07b0085ad626ff3e82604895e1815f9cd9c838fe8bd4491d6933e0f31bdf717a"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00006y00019.1792437868.pb",
+      "bytes": 7461,
+      "sha256": "7ea7f337c2c0525b5b79cd82bf20f38879a55bb3acdc15c8232f05e38fceb6d7"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00006y00020.1792437868.pb",
+      "bytes": 17865,
+      "sha256": "205b1245a13b43c46f31e770234ffdcb07a4c10b28bb5d4f820f63e5cf66a633"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00006y00021.1792437868.pb",
+      "bytes": 11909,
+      "sha256": "e164429ff997751c07016cfb8a1a9841599ae436fb4b0eea47ce6b0ff6a45ee4"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00006y00022.1792437868.pb",
+      "bytes": 15049,
+      "sha256": "751ca40bad9499d79a007d1712a3c9b2e9978a24639d5f2a022ef7aac09d62b9"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00006y00023.1792437868.pb",
+      "bytes": 13847,
+      "sha256": "e9755e87b8b9de0a5faa003d7422ababb49009a2fa585412a267b9e529f55cf2"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00007y00007.1792437868.pb",
+      "bytes": 19443,
+      "sha256": "983e9087c30c8c4bec647bdfb886b02299e0e317fe8e29bc009ef1ce8a9f207c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00007y00008.1792437868.pb",
+      "bytes": 18983,
+      "sha256": "072abe45fcee84958487d4e88b64e2c19bc5c1da43d6f8ad52732f4a5d8f1afd"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00007y00009.1792437868.pb",
+      "bytes": 18938,
+      "sha256": "e94d4284448604110ea8e4972e7f26f4f986b6b774d4066e01e38f18fc9eb315"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00007y00010.1792437868.pb",
+      "bytes": 17489,
+      "sha256": "cee6d29e8408f7f68afb4d4faa857656570dc38a36da474cca8bd7dcef0f8236"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00007y00011.1792437868.pb",
+      "bytes": 17091,
+      "sha256": "38c2562a78795ba838152da5a2e0102365447d1bd5ddc00cf3b4fcd847298e13"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00007y00012.1792437868.pb",
+      "bytes": 17857,
+      "sha256": "d92fa8d4593c5215a7a9894f462518f313e9d1edbf650d8cb5a4d25b1a1ff918"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00007y00018.1792437868.pb",
+      "bytes": 7187,
+      "sha256": "521cdb508670fbb917fb0a1364f6d1aeda16016cc7f001a6e171f1a82a2b4245"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00007y00019.1792437868.pb",
+      "bytes": 6235,
+      "sha256": "c1f01d73cd27ba41400d526538152074c6416b9e6cef1d8dd0e446ecf20ac471"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00007y00020.1792437868.pb",
+      "bytes": 16781,
+      "sha256": "7e7df3efd1776f43513fa0c690275ec683f53b3794611cdd5b769513b729edd3"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00007y00021.1792437868.pb",
+      "bytes": 14228,
+      "sha256": "3a66e2f330851d23459d559e949c92793a225a5cabfa727d13bd971bff322723"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00007y00022.1792437868.pb",
+      "bytes": 15800,
+      "sha256": "a1c3e137a4cceb7f4a27ef536def73697b0d5635aed2f5eadc713e8098aa89bb"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00007y00023.1792437868.pb",
+      "bytes": 18576,
+      "sha256": "3eec26a213970a9074d49fbfbc7f80f85aafbfcea735040b26ac1ce8b70b5cb5"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00008y00002.1792437868.pb",
+      "bytes": 18507,
+      "sha256": "c7993f352f53c8dc15847971f83673e25854feaf2447fe052b97d0280729f1b7"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00008y00003.1792437868.pb",
+      "bytes": 15952,
+      "sha256": "c3d9b6f10dbc398af2498b25c796b0e18b2a32ccbd4790b4e813f307b82ed599"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00008y00004.1792437868.pb",
+      "bytes": 16762,
+      "sha256": "4f924959f6a33f21c76eeeaea5eeb1ad12a8fd4d9d0dafa702d6430e866765da"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00008y00007.1792437868.pb",
+      "bytes": 19026,
+      "sha256": "945441b6656e27391f57f79207153646572755fcc3891c28abb5807f29ebabbf"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00008y00008.1792437868.pb",
+      "bytes": 19394,
+      "sha256": "ade8d14957d056e749c8f4c7121794a25de0122433cbb0e3e6075b0d7b1eaaec"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00008y00009.1792437868.pb",
+      "bytes": 17875,
+      "sha256": "9ce2839f50cc9287bd1cf367e916bacbcd2b6ced0e54810dc3dc9fda73b63508"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00008y00010.1792437868.pb",
+      "bytes": 19188,
+      "sha256": "fbf7bf33997dcf45ed23f6954d4871b0a9ac94bab4796682f0e0504aa7a05b3b"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00008y00011.1792437868.pb",
+      "bytes": 15385,
+      "sha256": "2d215990955f1ea91ff35a4d1e7b26813ce8b8909c37d1886338067fb048bb78"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00008y00012.1792437868.pb",
+      "bytes": 14441,
+      "sha256": "170b99c0e2370622088753e8a11f1971f0e853ec6ddfc6aa530dacd1524728dc"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00008y00017.1792437868.pb",
+      "bytes": 6864,
+      "sha256": "09002d6ecc301ccd2cf34e901284ed59db8310d8186bbcbc85a140a0c8733e41"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00008y00018.1792437868.pb",
+      "bytes": 172,
+      "sha256": "840d0f8a355411bf11ab43c4be52eb701c693b77476a87bbc234e1af32addfb3"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00008y00019.1792437868.pb",
+      "bytes": 14512,
+      "sha256": "5d52e122a8bfd7d0bccbcb4a91fe11965d0f8d465e772cc7ef168f2974089a25"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00008y00020.1792437868.pb",
+      "bytes": 16696,
+      "sha256": "0d2c72d7c978669ecdc4fe14f31596f64c79db79934a94587595e55b0ca9710f"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00008y00021.1792437868.pb",
+      "bytes": 16555,
+      "sha256": "a3d9de88caa21964f8317b756838b7e8bac24d50f367cd674e354583593876e1"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00008y00022.1792437868.pb",
+      "bytes": 18757,
+      "sha256": "307f205418b046f7ed193d8b1e18aee848f4bae84163dbafdf742cea60ba795a"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00008y00023.1792437868.pb",
+      "bytes": 19752,
+      "sha256": "f2f31e432a8b3e88584148b5a6d0b8cc2eb34b11d8f49ca73fc3d5c6dd4506f3"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00009y00003.1792437868.pb",
+      "bytes": 15587,
+      "sha256": "d4a9d76046b09cd16b9caa6f712c082b368a8349397d73f2a0737121b375f820"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00009y00004.1792437868.pb",
+      "bytes": 14405,
+      "sha256": "a0a133d9d3e2cc5620a71fa675995ccddc9e8ede645d897551326f6a215f6547"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00009y00009.1792437868.pb",
+      "bytes": 18783,
+      "sha256": "7ba4de8295770624a5cc5d57fe6c54e80f2041c95a01916a91f9b2f8a86f3dfb"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00009y00011.1792437868.pb",
+      "bytes": 15527,
+      "sha256": "6fb7992f0c758b2efeae799b50c498741c282b6d7b93812d060e4851b0459fea"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00009y00012.1792437868.pb",
+      "bytes": 19815,
+      "sha256": "e04497d2e8f46e966c960a0035b0760f9e8e087bbc1409449e00a7012bb63574"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00009y00013.1792437868.pb",
+      "bytes": 21751,
+      "sha256": "07afc396d57ae1da287a58b2d24369f3659a1127cf44498dd5e0c56f34def0d8"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00009y00014.1792437868.pb",
+      "bytes": 18259,
+      "sha256": "ad53e1881c7e3e2b478cc505743e8cbea176aee0c8a3ad53ecb6eb56bf89a4d9"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00009y00016.1792437868.pb",
+      "bytes": 5342,
+      "sha256": "5ed6e62db2ae3657ea9fa6e0bb59d55ccc92e9e4db0adf2ca2945cadda15cad8"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00009y00017.1792437868.pb",
+      "bytes": 12740,
+      "sha256": "a2f2c8682bdf9e87f674eec7d8632cdbebe714c25f22680d029032a4b84d110b"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00009y00021.1792437868.pb",
+      "bytes": 17710,
+      "sha256": "3a73969fa59cbaeab512ba667b8b53d63f9a7daf4632722a9dcc191c38052edc"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00009y00022.1792437868.pb",
+      "bytes": 22297,
+      "sha256": "26f84fd1e3bec2597f84c3bf5539c9a523058ca325b6709c80e55b38a8a5c208"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00009y00023.1792437868.pb",
+      "bytes": 18955,
+      "sha256": "30fc20d97bde02f4d149d6f9babe809ee1839dd0022eb52954ef1b57a18905c3"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00009y00024.1792437868.pb",
+      "bytes": 18084,
+      "sha256": "b5ca910c739742e7911ca23f1cb543d1f760562bc9883a0f41f351a91b374dbe"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00010y00002.1792437868.pb",
+      "bytes": 20559,
+      "sha256": "d22110a04923fdd7ce3e6cfb7ec8163dc5c001ddc9f15ea28177acb12f40a3c3"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00010y00003.1792437868.pb",
+      "bytes": 17708,
+      "sha256": "2c43ff8485766810af40630ba39fc138ac30a310e7aae25b16193e482ce6ebe8"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00010y00004.1792437868.pb",
+      "bytes": 16189,
+      "sha256": "805e27f1452de0b3ae062022f06a851866e78246a2dd6e46692a4ba1ddc95547"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00010y00005.1792437868.pb",
+      "bytes": 16847,
+      "sha256": "b7a8839ca2ed2c3a1eca8f8aaf4b0b4544792c02f8355f5285b66306db49bab8"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00010y00006.1792437868.pb",
+      "bytes": 16823,
+      "sha256": "05d9e0b056ccc8a8b4a797a18c36221cb0335c0bc031584c30fda61e7ff8d5b8"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00010y00007.1792437868.pb",
+      "bytes": 19524,
+      "sha256": "1e9b2e18a4a2b2782f05f8cfd5238f03ee032d635d2e09ce2407c3cd9e60ca12"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00010y00008.1792437868.pb",
+      "bytes": 18797,
+      "sha256": "c5dbb84df1696a5c489d61b20f291dfe2c1c69f5efd0f3c4ed2eece4699d1541"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00010y00013.1792437868.pb",
+      "bytes": 20066,
+      "sha256": "a8e8e6ae7e0d4cd74c568d6d0a0c72208bebf4580a6bfa75164c90cf77216b47"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00010y00014.1792437868.pb",
+      "bytes": 19042,
+      "sha256": "1d31ee6e1417ed13a2fc553a70394abc1b08dbe96164907d1bcdb2116d732abe"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00010y00015.1792437868.pb",
+      "bytes": 19379,
+      "sha256": "eccf53599620957a98f182d5b3396f830c90626df6c2f65e28a0393322e9ce31"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00010y00017.1792437868.pb",
+      "bytes": 17337,
+      "sha256": "d496b35b01d4fa5881c8a206a53e9928790f0bf299cb92b0a7f0a7e51d50cc2f"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00010y00022.1792437868.pb",
+      "bytes": 22441,
+      "sha256": "8bf9dbbc3e2d6a101cdb207d25ddc1721216facf100739e19c2c33456e224f57"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00010y00023.1792437868.pb",
+      "bytes": 19550,
+      "sha256": "d4925547ce53e52e17a4201bc3960068c08d56ecaf23857e40cb3934c49d0d82"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00010y00024.1792437868.pb",
+      "bytes": 20197,
+      "sha256": "dd1483622678d05458d8065bc3bf25c8dbfc76a05de003b74a517a6e0837ae11"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00011y00002.1792437868.pb",
+      "bytes": 21212,
+      "sha256": "f47b1ad5d74a1453de8102698b037b58754e1e508a79b841eca6b394d79c66cf"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00011y00003.1792437868.pb",
+      "bytes": 16227,
+      "sha256": "fdc2fd9c6f35f150d9084d2a162ab4bd2fcc0137942c3903b83763530f3e5549"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00011y00005.1792437868.pb",
+      "bytes": 15618,
+      "sha256": "47abaf807fe3cab3949e40c1ccd426830790a6cab03d984374df5fa579ec3c39"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00011y00006.1792437868.pb",
+      "bytes": 17380,
+      "sha256": "0c91cd831898c5a87a48f59d0cd0a0fafa49075caf9724465f647e188879388c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00011y00007.1792437868.pb",
+      "bytes": 20776,
+      "sha256": "087e0885b84cf49b0d1107a969731a2ae3efb37e121c77959e3aea7549625919"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00011y00008.1792437868.pb",
+      "bytes": 17917,
+      "sha256": "cf3e7d3007b2895e2ca23a786e084fbddffdc9f2d982ae285797d23073d3bf7f"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00011y00009.1792437868.pb",
+      "bytes": 19854,
+      "sha256": "dc0ef2f0582fec7dd62375bcc7f7a3189758fb6425aa8f93d8a5c307f8eae00c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00011y00010.1792437868.pb",
+      "bytes": 19380,
+      "sha256": "e09636fca78b5eebacf09ee5dd1b37ba84da5a7b588499c27d00d4e708f5bd7c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00011y00011.1792437868.pb",
+      "bytes": 20620,
+      "sha256": "42bd599d91ab8e0c6024e6198ad6ac4607fd4809ba16dcb541c7612f3f6347ee"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00011y00012.1792437868.pb",
+      "bytes": 21707,
+      "sha256": "c6540f933ca01cab00b4dd982a6b63884af007bdde5d9b59eef42054684d6f0e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00011y00015.1792437868.pb",
+      "bytes": 17821,
+      "sha256": "e45ce910d0f70c6fb2720a48ba6492214bbce41cdd9ea86ee8ea9ea0f9a75267"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00011y00016.1792437868.pb",
+      "bytes": 18807,
+      "sha256": "d7a7227988cafb96ce8c000794bf8a4a7edc3bcc5e0f455e91f1a6d5eff0f5ee"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00011y00017.1792437868.pb",
+      "bytes": 19701,
+      "sha256": "8302ea7092bee03c439768415ac61f78a85ee4bfc08de74ba88f21a8a0fb9ff8"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00011y00018.1792437868.pb",
+      "bytes": 22468,
+      "sha256": "f537054789b89390cfec631e9fa6508071aef3a2d88680aa48b411efea398445"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00011y00022.1792437868.pb",
+      "bytes": 23022,
+      "sha256": "d7982cf9fb07fba96baae0bdf1c188a2cfbd065e820aeb280d3ac2509b82dbdf"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00011y00023.1792437868.pb",
+      "bytes": 20744,
+      "sha256": "78c56ab205fc321d6afdafd13e1bceba39d84144787225d64d5277fc4e7af59f"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00011y00024.1792437868.pb",
+      "bytes": 21027,
+      "sha256": "e2e465d8e1aeac8ab58b2c6c0aba06155535cafba80c615e748fb396a9018066"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00012y00005.1792437868.pb",
+      "bytes": 15489,
+      "sha256": "390343de9952784b9768b9273d0571ea7c603791335909c5b3b347f473a000e6"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00012y00006.1792437868.pb",
+      "bytes": 17926,
+      "sha256": "5d1bebf3bf0ad37c1933d625fdf786b8f05f1e0f072eb0462d4bca98f40847ce"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00012y00007.1792437868.pb",
+      "bytes": 19322,
+      "sha256": "6bac53575779c06134b3f317e9678bdb44d517d4d776bfd935e116e901d79445"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00012y00009.1792437868.pb",
+      "bytes": 17869,
+      "sha256": "7939393cd80e45832a8750e074a15af0aeaae171a8f36144cbd4b03f123d53ef"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00012y00010.1792437868.pb",
+      "bytes": 19800,
+      "sha256": "32c3a5b0320728640063be11b6cfc06a66935a240574be65f245bdacbaed5ad0"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00012y00011.1792437868.pb",
+      "bytes": 18907,
+      "sha256": "44cbbe90efd13ae127f40d94828e946a5b8bb8f56a42a8b09a74e6f84bbf1e82"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00012y00012.1792437868.pb",
+      "bytes": 24047,
+      "sha256": "0382cdcbf13ee32b3ced7f37adc561ed4b81985973fbd9b7625b644555e7a224"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00012y00013.1792437868.pb",
+      "bytes": 16647,
+      "sha256": "722205e282a01a6f81269ee0f9180bfea09e7609409c0492462761edebfae8fc"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00012y00014.1792437868.pb",
+      "bytes": 20330,
+      "sha256": "89aba9d2294bbd217d8859ced31846cc51765c50da4e0c8f5d89e46742780b85"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00012y00015.1792437868.pb",
+      "bytes": 17401,
+      "sha256": "8cff2e582a2745087818a2b77171114c49bf3d838a634e0e6a8e022aabcc2663"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00012y00016.1792437868.pb",
+      "bytes": 19639,
+      "sha256": "ef67bc0e44303578b34f90c256403cbb1029a22f37b930b435bf3032996995cf"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00012y00017.1792437868.pb",
+      "bytes": 24933,
+      "sha256": "ab583068ce1e95c996f8e6932f22c0fc00d390ba38fcd950ecbfd8f4e6d25548"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00012y00018.1792437868.pb",
+      "bytes": 23414,
+      "sha256": "597e996d7a6eef8430fa099dc9ad5b2744e662eb19ab551efd2fb9e7a5864bd0"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00012y00019.1792437868.pb",
+      "bytes": 16071,
+      "sha256": "6013d004a1b7bcf3c96d3ea297d78d4da1d96f73b3443339e43195016bcbaa9a"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00012y00020.1792437868.pb",
+      "bytes": 18327,
+      "sha256": "eeb3529317d365ab8a480845007416aacae74668cfb45e9a7890c48951c32ab5"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00013y00005.1792437868.pb",
+      "bytes": 15547,
+      "sha256": "c40eac6f0906f2c43c9b6f986045e0f47000d1f5ed44b13775bc426cd3d1b47e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00013y00006.1792437868.pb",
+      "bytes": 19765,
+      "sha256": "fc015b47ac9d60df4e8083862e486a7103929115083ac33bdf596f7df6dc81d8"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00013y00007.1792437868.pb",
+      "bytes": 19472,
+      "sha256": "c2e697117d4a12e4248e40360cdf369845681c77dc79c9f0971f6a58d26b7cc3"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00013y00009.1792437868.pb",
+      "bytes": 18974,
+      "sha256": "340fe3e3af735093bf17418529f323a7039c21f8f4e9093fe3f92de7374cf71b"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00013y00011.1792437868.pb",
+      "bytes": 18221,
+      "sha256": "2a9b43d0ca2fd9f496e5015b782487bec4a81a3c62e888e51020e1ae3031e091"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00013y00012.1792437868.pb",
+      "bytes": 20953,
+      "sha256": "2dca38a8e4a28434d5762c9a18cac490db8f9fad13f668b5740d6363a529eeca"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00013y00013.1792437868.pb",
+      "bytes": 14557,
+      "sha256": "7f7c06e5fd9c9b90ba6a1b5eb10f7a95812f6d020ebd521c1d0d8a8b45fc8d8b"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00013y00014.1792437868.pb",
+      "bytes": 17895,
+      "sha256": "74fbfa75ea535a7cafd020c908c95b95a95fed8253a034dac0868707c3e27efe"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00013y00015.1792437868.pb",
+      "bytes": 18531,
+      "sha256": "a45e55c1646c82831edf0c47b2a496b23baeeeef63a945203488bee6cfe2b7c2"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00013y00016.1792437868.pb",
+      "bytes": 19919,
+      "sha256": "b382e51403f920fe786e7c68eb12662bac80b83fe8379d472a89e2a0ddc5ccd2"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00013y00017.1792437868.pb",
+      "bytes": 13666,
+      "sha256": "601e36b79d974045fe4ef8e56f5759065284327da506a7f31eef3a77848b6af6"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00013y00018.1792437868.pb",
+      "bytes": 16901,
+      "sha256": "f4e44e60e3124914d3df19ee258dd2f6d5098b5dc728335c0052bf6ef226d00d"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00013y00019.1792437868.pb",
+      "bytes": 8136,
+      "sha256": "105f5473cb7ee96c6dcf4d55075f773e17e0147184d9694dd496f10501d2c01b"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00013y00020.1792437868.pb",
+      "bytes": 2448,
+      "sha256": "8fa52fd1e105b99069986c1470307567a4947f9b9ba72a1c1ff497146a6124a4"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00013y00022.1792437868.pb",
+      "bytes": 17927,
+      "sha256": "cba1a75150c1b97d2662fe3dc235687cd50edf2fff90fea18e135409a8d0dfba"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00013y00023.1792437868.pb",
+      "bytes": 19683,
+      "sha256": "73292b0e5958df826caca47ef7075fa63508a300d93f3faebce3045ad9eada83"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00013y00024.1792437868.pb",
+      "bytes": 16590,
+      "sha256": "267147b4696b6913c481a74ab2d3308b89de901c035c8e4e0a8ba74686d5411a"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00014y00005.1792437868.pb",
+      "bytes": 15050,
+      "sha256": "477a119790b54300f966ea09ba0f6ca1829c5efaee26ce156d54a2ceebd30eae"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00014y00006.1792437868.pb",
+      "bytes": 15973,
+      "sha256": "24b329cf82632bc4f9d6ac8957e54d9778c2b321d75047358c1ba692696dc794"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00014y00007.1792437868.pb",
+      "bytes": 20646,
+      "sha256": "3d21b2893847fcba91e6c24f8841dd15bf7dc1525c9c57d61e519f35d6969d34"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00014y00010.1792437868.pb",
+      "bytes": 17309,
+      "sha256": "6f1911a5ad2b858226c0d1ca57ab11bda66e92f38fbfa8c0499fed6229e1c759"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00014y00011.1792437868.pb",
+      "bytes": 18565,
+      "sha256": "d1e170038593dc288e39005309b3595d338f83e759bc39317128aa26ca645dfd"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00014y00013.1792437868.pb",
+      "bytes": 21475,
+      "sha256": "dacbfa319c7d1ddf259f98106d9f951a411db07e0fe112b5a40558f8532a09ce"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00014y00014.1792437868.pb",
+      "bytes": 18540,
+      "sha256": "5c577cd365aca3d5fb20b08f2e79dad79279ae33ed7d1ad88177d337f3b90ec0"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00014y00015.1792437868.pb",
+      "bytes": 21121,
+      "sha256": "856ab9b6b91c1dc16618e8305baa003281815230409daeae31f8ecd6bb117308"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00014y00016.1792437868.pb",
+      "bytes": 15676,
+      "sha256": "5ab99b5d56688073279357e7f361cf0781cdafba0401225bf68d0abba7a3137a"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00014y00017.1792437868.pb",
+      "bytes": 15476,
+      "sha256": "9d24263576b50e0124bb3caf4fc520f5d8a2569c54aca724e2afb4c5fd75e19e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00014y00018.1792437868.pb",
+      "bytes": 15519,
+      "sha256": "b2da5020fbb8914cd93a3c0ecca0be181cc3898affc17cc2fa0367f859040f55"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00014y00019.1792437868.pb",
+      "bytes": 13337,
+      "sha256": "c23274d35fb07d97404e9de6cc3a8d96c87cd0ed14b3bae5c9c5b2a12f015232"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00014y00020.1792437868.pb",
+      "bytes": 6381,
+      "sha256": "fb59b1eba1283d7ccd1ceecbf6e2a4dfa68285a85b39e2f7c6a22d720f7fbddb"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00014y00021.1792437868.pb",
+      "bytes": 10298,
+      "sha256": "e1c73d700b29c5911f3ffd76d0660eb02343ad81a6ce4ebf9186d32a094ce98b"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00014y00022.1792437868.pb",
+      "bytes": 21041,
+      "sha256": "4ee449cf7a8b5019263ed7e5da962126a995e5d1d30da6b0ffa6e972122c85a0"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00014y00023.1792437868.pb",
+      "bytes": 20669,
+      "sha256": "112368ba9b525428879d495506634cfe3213fceb65188b6caa4cb3d49092e848"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00014y00024.1792437868.pb",
+      "bytes": 18080,
+      "sha256": "e73c6c30945bab2be1f6eb51193ad659aa1e9c5e85673a3127dd9e0d2119eec3"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00015y00005.1792437868.pb",
+      "bytes": 16145,
+      "sha256": "67c868bfd4abd49271724758b3edb9a05195dacbc050c69c6fa8bf53ba3a63b5"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00015y00006.1792437868.pb",
+      "bytes": 15752,
+      "sha256": "f3193167b374294d79a53d20c1101f38af87ff8ef8768b2fba51705386913083"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00015y00007.1792437868.pb",
+      "bytes": 17083,
+      "sha256": "e9c4f3d52e392a839b3e23acd1ab31a404c0a2c2b73adfaaa637179adfdfae0b"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00015y00008.1792437868.pb",
+      "bytes": 17787,
+      "sha256": "b9bf55de896e48f6e436fe5b9aa8f19562d6fd5e6e2cfea9048fa34c9b89c7cf"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00015y00013.1792437868.pb",
+      "bytes": 20750,
+      "sha256": "729ac6ee051971197aeb1fd5d4e5bee5d635eae570d4319d8f839b1d4de4913a"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00015y00014.1792437868.pb",
+      "bytes": 19742,
+      "sha256": "60be8600f1774722ac3cf182ee7edc636e9b4131f7c876d11fffa618f5f23b0e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00015y00015.1792437868.pb",
+      "bytes": 18492,
+      "sha256": "695353e7206aa1975ab7af080d4f81745efccffafc3aa4686ada4b93d99657f3"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00015y00016.1792437868.pb",
+      "bytes": 14873,
+      "sha256": "4ee7fc32458fa739706e8060e8260b51c63b8b77467ceb2ed19ef6657ebed32e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00015y00017.1792437868.pb",
+      "bytes": 17349,
+      "sha256": "5fb95d64bba287e4d9b383902422a9d7678288021884c45804c7f5a324a32dfd"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00015y00018.1792437868.pb",
+      "bytes": 15853,
+      "sha256": "e4dd83ef43ed71508b30abae0c077641e60b2a519069a61581342ab08154b777"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00015y00019.1792437868.pb",
+      "bytes": 15166,
+      "sha256": "b1e417d341e9e118d55ae9b8d588fc89e46c377916a4363e05c2ee363e490ed9"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00015y00020.1792437868.pb",
+      "bytes": 6119,
+      "sha256": "82a724f712a5a1cc16922001b4769326921f8edfbcf8366562fc809cf5a2d270"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00015y00021.1792437868.pb",
+      "bytes": 11818,
+      "sha256": "9961db1eb703d964a4b297605e25420685396010665fd3e90080447000560a5c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00015y00022.1792437868.pb",
+      "bytes": 21021,
+      "sha256": "1388b9f6f727777ac38f7e06ea3e90ab47a061f22e958d8b4f7ea8e875696449"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00015y00023.1792437868.pb",
+      "bytes": 20587,
+      "sha256": "755cee088d06fa7354c2de19c82bc1713bd7ed25ab830e38f20094ea8bde3ba5"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00015y00024.1792437868.pb",
+      "bytes": 16879,
+      "sha256": "61436e7329672a5036cbfb41ab1057919de4495fe0f4bf9fd7fb4c62c2dc1838"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00015y00026.1792437868.pb",
+      "bytes": 18477,
+      "sha256": "24c8198b9857fe261f3d29055748402c55e0f6c3498a7ae252da5b1a61a0c234"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00016y00006.1792437868.pb",
+      "bytes": 14952,
+      "sha256": "d521927d13d8290d34d8b474be9503c44b8ecc180e02686e9c332aea3002d472"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00016y00007.1792437868.pb",
+      "bytes": 16411,
+      "sha256": "54717180900bcbac4fc57ff7dab442c09c2a2a95a9e5753f73a3bbf45a78f753"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00016y00008.1792437868.pb",
+      "bytes": 19020,
+      "sha256": "d791bd50a1993d549c0f678eb9a566e12220cb1c8fa6749d68639ed5a1272a4c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00016y00009.1792437868.pb",
+      "bytes": 19150,
+      "sha256": "71f74a5a4559d4744d4d13d3f0f42f2bf262d0edaf4b0a29a6aede906ce8e669"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00016y00013.1792437868.pb",
+      "bytes": 18084,
+      "sha256": "9fdc9021a01efdf9797a7a8483c3a774151dd22e3c12dd56785bb40a05b91975"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00016y00014.1792437868.pb",
+      "bytes": 15137,
+      "sha256": "a8744099cefba5d0dd68458607e5adf212c31f0b4e37f8243683aa13864588d9"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00016y00015.1792437868.pb",
+      "bytes": 20654,
+      "sha256": "6d8149f057ae1432eb1eed61633a09595e27d494b06739eb53a299c167ecd21e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00016y00016.1792437868.pb",
+      "bytes": 17825,
+      "sha256": "69e2a18cc45eb0441048db1c1d8bec02f544261a906249b5eb67bfd5bfb1f603"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00016y00017.1792437868.pb",
+      "bytes": 14933,
+      "sha256": "86cfc54dcd298cbdc39573bf3cae6223646e769e98a0d29bf2de363bcab94105"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00016y00018.1792437868.pb",
+      "bytes": 16173,
+      "sha256": "4eeec0f22400788ab1eb7054f7be91503adbaa6efcd6b8224e4931f4c31ad93f"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00016y00019.1792437868.pb",
+      "bytes": 17219,
+      "sha256": "8830dc588e6c627bec62ee90c1a3a6db9e70af3d659b4b898117f7e37a15972e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00016y00020.1792437868.pb",
+      "bytes": 2974,
+      "sha256": "b352bc5933365116c43108bb1f395a179c7eecaf304fafbcd49459fbe669cfe9"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00016y00021.1792437868.pb",
+      "bytes": 5890,
+      "sha256": "55239125803149e9276369ed660cfc55b151e9e6227e4d3410c83ff636e7124e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00016y00022.1792437868.pb",
+      "bytes": 16540,
+      "sha256": "2d431e46c41e08bcef9436c28bcebaeeb0c0f3a08a4568e409d3e00b4e2308f8"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00016y00023.1792437868.pb",
+      "bytes": 19231,
+      "sha256": "8e978c4194f977657b4ed4ead925ade2867632e309e618ea4b7daff5e482328c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00016y00024.1792437868.pb",
+      "bytes": 18002,
+      "sha256": "b9b644ec92d40e87747e8786b766014cb6920e620b54e02b7e03f56b0f5b2512"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00017y00007.1792437868.pb",
+      "bytes": 11920,
+      "sha256": "6b0d7d0732c2139486b7943fb7b88bc54ec2aa5250774475464a6942c0d06a75"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00017y00008.1792437868.pb",
+      "bytes": 16361,
+      "sha256": "117441f713e3c7e607f4e2d92d95214a7bda500c044349cabdd07dc293ea2c8d"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00017y00009.1792437868.pb",
+      "bytes": 18466,
+      "sha256": "b0432f34fe85964ccf6284a3ab08a9802f49fd4a6766bcc3e7f8281d8d895f4e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00017y00010.1792437868.pb",
+      "bytes": 7720,
+      "sha256": "8dd7bdbee31bff40cd7adcf0e07776eac4b125766821ac9b25416b78c77213e9"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00017y00012.1792437868.pb",
+      "bytes": 7212,
+      "sha256": "910e5403f38495b4d80ce985c71dbf79a717f62ffe7f64a8f1a0b078ef4d53e7"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00017y00013.1792437868.pb",
+      "bytes": 14182,
+      "sha256": "38831d9f51e253688caa063cad8875bf7cf90a5a865506948c9f1dac23ab6752"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00017y00014.1792437868.pb",
+      "bytes": 16858,
+      "sha256": "9ea16fbba18c850a506d75d0808ff6a36f6b5fdf2bd72fa9acf11ce89be4dad8"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00017y00015.1792437868.pb",
+      "bytes": 20094,
+      "sha256": "617bba3720f1e9507bff1645618ad74e439cc0cccfac8690f91ebcbc4ea8699a"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00017y00016.1792437868.pb",
+      "bytes": 20377,
+      "sha256": "662b24b4edb1dd869641a15b7ffc2817cc7e44d8ad8995af39f37972e3feb91a"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00017y00017.1792437868.pb",
+      "bytes": 17527,
+      "sha256": "be4592d2d03a71cbe3176812a233f4859e578d154e5a03cb1621ad7e70627cc0"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00017y00018.1792437868.pb",
+      "bytes": 15210,
+      "sha256": "095117e40ddc8d845c4e74d022094273717e803b4004a37fbaa6566e16b43fa9"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00017y00023.1792437868.pb",
+      "bytes": 12068,
+      "sha256": "09493f334761e86cb9d2fe3970baff0c01363dc97dcba6294873d2c53d78fb7c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00018y00012.1792437868.pb",
+      "bytes": 4533,
+      "sha256": "d6e285c8180d0a50eb77ac48b449fb91bbde348aab637419c152a1f25bdc73b7"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00018y00013.1792437868.pb",
+      "bytes": 18695,
+      "sha256": "0aea6bf83d977b662384cab1fb6e587651e7fe1678bbdfa322eebacc9b5780c5"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00018y00014.1792437868.pb",
+      "bytes": 10122,
+      "sha256": "ec3324cfd6d6f8fce5a5fea188ec6b3f4742bd01ceafd642c7ceebe003c9481c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00018y00015.1792437868.pb",
+      "bytes": 16334,
+      "sha256": "fd21edf8e0e3298988b6cb1556c3326a1cf4754daa5e2f8b378d3cf84f9dbf37"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00018y00020.1792437868.pb",
+      "bytes": 7773,
+      "sha256": "0843b6bd041c377031de615bced3d8490a20e622f8b226af7beace3004a1c567"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00018y00021.1792437868.pb",
+      "bytes": 3091,
+      "sha256": "4683126c83ca622d4655555483a60cd99dda2460233867d0a1cf9cd4fab67ec0"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00018y00022.1792437868.pb",
+      "bytes": 3342,
+      "sha256": "3b8dfd4e358227b011680ea38e66b4430f21ae867d32e6a1e06c7a471123591c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00018y00023.1792437868.pb",
+      "bytes": 12719,
+      "sha256": "f2e447f59074d6183ceb5ca9e29f8ebb24fb05d65780a538faef1bf7b17ea7e2"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00018y00024.1792437868.pb",
+      "bytes": 5926,
+      "sha256": "500cc750b1327457c29a789c31fc54adb78b31b928ce268f731ec93d58760931"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00019y00012.1792437868.pb",
+      "bytes": 8021,
+      "sha256": "97a422d1f5c9fcdea9250b1973f44a17733e95829acf295a5afa03455e0e6934"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00019y00013.1792437868.pb",
+      "bytes": 4288,
+      "sha256": "230873998d0f038f6ff029f11a38c6ae2f1eb8be2c285ef08d6556b5605f7b26"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00019y00014.1792437868.pb",
+      "bytes": 7081,
+      "sha256": "80c800a69411225c4e3c37058d16033a5970c5e7e964841b0ed8345f78e1ffa3"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Resource_Array2DPacked_Client_x00019y00023.1792437868.pb",
+      "bytes": 3967,
+      "sha256": "7568db6485c39a286309cfd7dcc5211398ca0384a7a44c71a1e70d0307f5c7bd"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00006y00011.1792437869.pb",
+      "bytes": 17743,
+      "sha256": "d1fa158ef4f5fef93b53f8eb83abe20c77eef6eb5be744211dcc23e2e9632ee1"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00006y00012.1792437869.pb",
+      "bytes": 9467,
+      "sha256": "ba717185bd17cd0fb6fcc2f2b733c26817d596652ff61d19bc2d4427d01a9807"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00007y00002.1792437869.pb",
+      "bytes": 15379,
+      "sha256": "20dbb2e0e120ac300cb489ee41ff97b7d8ee03888f8b7dd846bb648fe45e615b"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00007y00003.1792437869.pb",
+      "bytes": 24025,
+      "sha256": "da2bb18cc6ce6cc1695906c8b2861251d4873ffa5ef60cba9fec47a9bb9533d5"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00007y00004.1792437869.pb",
+      "bytes": 13800,
+      "sha256": "099795173d9f6261d5312aa3e8dd110e49163cfc97a4ed2226bcbd045b8ece02"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00007y00005.1792437869.pb",
+      "bytes": 12445,
+      "sha256": "f05d9a68998af30f0a0726172d7f8b0da6317901099d6c26a7cd95d7c259188e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00007y00008.1792437869.pb",
+      "bytes": 8610,
+      "sha256": "786d159f18e29284f11028d33147e31ea4279ddc26642049b47aee10f401bcb7"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00007y00009.1792437869.pb",
+      "bytes": 10208,
+      "sha256": "b21841e9c8d2c65e9c98939c7b57960b686b06bb2243c122fc52a54a182dfffe"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00007y00010.1792437869.pb",
+      "bytes": 13867,
+      "sha256": "169b36fb25cb9211d698ec56dc734ca8766db846baeac153bb58e7959413819d"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00007y00011.1792437869.pb",
+      "bytes": 20149,
+      "sha256": "0673f0d563f987590c8ee5d1680f51b5be559d1d7cf0c066789269862f7fefdb"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00007y00012.1792437869.pb",
+      "bytes": 18250,
+      "sha256": "32a0fe864ea16cc411b94ec5f47c96dc5c48d41db0c0878c9911682d04460a8f"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00007y00013.1792437869.pb",
+      "bytes": 17136,
+      "sha256": "bff738190e3fcfb2abd073a88d0711d03020355f1ccf8155cb6ac230d6ab6f34"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00007y00018.1792437869.pb",
+      "bytes": 6189,
+      "sha256": "9e57646b560681ce1a9a4d34559e232594e93ba6ec8faa8958541200f7262042"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00007y00019.1792437868.pb",
+      "bytes": 9747,
+      "sha256": "9112b82b4ca0770b7016546e7a7696d0ca1700f77f74bd603d66275fe6a6c209"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00007y00020.1792437868.pb",
+      "bytes": 12757,
+      "sha256": "0565254da07146723372054fbd2732714002cb200d35207d198ca1b911c3406f"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00007y00021.1792437868.pb",
+      "bytes": 15012,
+      "sha256": "14c83ccfc4cea770045e69d3d32f35db625f6550fc8daf4bc09a1d38c6a4b61e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00008y00002.1792437869.pb",
+      "bytes": 12064,
+      "sha256": "a2452ae103a179f62f4faa4bc6972aabdf4941d5466e89da5cca077018e1edc4"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00008y00003.1792437869.pb",
+      "bytes": 18297,
+      "sha256": "b2af7356993b9c70fdb3fd2cc3007886352be61d692f4f867937c2734ff92d64"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00008y00004.1792437869.pb",
+      "bytes": 21132,
+      "sha256": "4ec164c3c2c366f6d8b7c615cc07844cb5946cc33ad5e2d917abedcca9c862f5"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00008y00005.1792437869.pb",
+      "bytes": 17040,
+      "sha256": "7ce86e2bf75bd5ab59f99b4085179a1c560ccc58130099f4e01bcc67f8aeee83"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00008y00009.1792437869.pb",
+      "bytes": 13500,
+      "sha256": "2da0f1daa69d2ffe1133183eba28bccfceb4642902aba6dfcc8e5383a3eba647"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00008y00010.1792437869.pb",
+      "bytes": 11764,
+      "sha256": "cfb5e0699ee479b36804ff7fda3dc9cf2e5d43424c24d1004b4de8677b5e48d8"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00008y00011.1792437869.pb",
+      "bytes": 23981,
+      "sha256": "0a152b0ebea83ffe73b275a16e01d2ff831174275fa92b8c3210b152f4cf9d68"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00008y00012.1792437869.pb",
+      "bytes": 25924,
+      "sha256": "fd5d032d2293a17474c31901ac5cfd3079052e21b9629a2acf60dd74a0e3f66c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00008y00013.1792437869.pb",
+      "bytes": 24009,
+      "sha256": "ab9cacb68ad3f701aca7f50e04582fb2f043127525ecbaab042252e06d45a00c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00008y00017.1792437869.pb",
+      "bytes": 7515,
+      "sha256": "f6b70406ea27f27a9fc90fd796392e27347addaa70b6bbdb8a9a5f9725bdaad8"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00008y00018.1792437869.pb",
+      "bytes": 400,
+      "sha256": "bd31cc471163f29ccd88e8cbd6c4cad2a6d85588dc7734a95509b7817a5556f3"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00009y00002.1792437869.pb",
+      "bytes": 18478,
+      "sha256": "d04466cf1c0633a30008cbedfa2ea0e6afed332efb382a6aef67110d37ce0423"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00009y00003.1792437869.pb",
+      "bytes": 22599,
+      "sha256": "fcd61af2a6c99e643218cf95e1115fdb7734222867d56d5975779df0bf69f9b0"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00009y00004.1792437869.pb",
+      "bytes": 26113,
+      "sha256": "d3ae583a06b130bc2465005ea1e861c845ad655e934425c1d714f8734050ae96"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00009y00005.1792437869.pb",
+      "bytes": 26165,
+      "sha256": "aa7d8de89172ddd0c25a3b4921b69fde690decd2d47ac63ceb882878a175bc23"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00009y00009.1792437869.pb",
+      "bytes": 4498,
+      "sha256": "5a87a43bef8db33e66e2164dc518128f7b697445ea0411327ebe65d3332ed104"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00009y00010.1792437869.pb",
+      "bytes": 1039,
+      "sha256": "82ad81688088818c68747d721aca94ea3bd1c5b3ab5bc4c19edd2336dd06a4d9"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00009y00011.1792437869.pb",
+      "bytes": 24871,
+      "sha256": "d9db22e77c252ee4542494a3767112ca11f14aa2243619565801871c0af26457"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00009y00012.1792437869.pb",
+      "bytes": 25650,
+      "sha256": "f034c27428631d93f039d0284f1ba61e95c022f8bf98b5b0e3c7607e7f3621b1"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00009y00013.1792437869.pb",
+      "bytes": 11404,
+      "sha256": "5078facc75e09fec864dadbc3ae3e7963925817ee4d58eb0e93b98f322d93cb5"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00009y00014.1792437869.pb",
+      "bytes": 8311,
+      "sha256": "5c9cc5f6eb9dcf251fafa7b18edf1bd69d08e1a3e1956ea237cdf510146d3c67"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00009y00015.1792437869.pb",
+      "bytes": 18686,
+      "sha256": "7888497e3d6cf10e34947fecd48f860101734f1018cd67fd09c48dd7ebfdd255"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00009y00016.1792437869.pb",
+      "bytes": 1535,
+      "sha256": "a7609ff5418c7f311696006781d5b4ee15231c69d85269282b087b14fbb208b9"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00009y00017.1792437869.pb",
+      "bytes": 4793,
+      "sha256": "f4b69f2d26628f626619dd10f3b3555c11bbafc43d939d99c0a7900ab1867fd3"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00009y00018.1792437869.pb",
+      "bytes": 6021,
+      "sha256": "138ea3dec011b83cd6a9d1ae9111e9cc0f8e3d2cc1808a45fe8e3fbddfc68d94"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00010y00002.1792437869.pb",
+      "bytes": 3309,
+      "sha256": "3267de923384b44b8d3363a8020cef7d159ed285106a0bf308ace1596dc27824"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00010y00003.1792437869.pb",
+      "bytes": 13277,
+      "sha256": "12224ea2f3547aa13f7dbb6ced48e6e77beab920c40d7e28894ccb10e222df68"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00010y00004.1792437869.pb",
+      "bytes": 22615,
+      "sha256": "efc1f3deb416544a901b2578c09ce81311feaae0e014677ba13d53435a0ff001"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00010y00005.1792437869.pb",
+      "bytes": 39252,
+      "sha256": "241cc603801831441171fa10ab7d5f93155529ad415c0728abd1f84739be80fe"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00010y00006.1792437869.pb",
+      "bytes": 15342,
+      "sha256": "11bcf0401f4b07108197adbe98e69225fa486d27a5982d4399e71ae807c988b2"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00010y00007.1792437869.pb",
+      "bytes": 9895,
+      "sha256": "2b50352bbe633857348c0fa25ec1bc8b36b45372cf5d64360abfde13a6b05490"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00010y00008.1792437869.pb",
+      "bytes": 7879,
+      "sha256": "1d34d925d348f449ef3491c52b657a1d10d1d70ffd6f9a7239b5f7fe51585395"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00010y00009.1792437869.pb",
+      "bytes": 7084,
+      "sha256": "5c523770a7ec0405aad4f0ef5b0b2527f50e260ae7ec96786251b3b683144c50"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00010y00010.1792437869.pb",
+      "bytes": 1017,
+      "sha256": "e359440f4b2fa1135bc525f90e3465018dd007eae0b22717980aa2a6e89c2b89"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00010y00011.1792437869.pb",
+      "bytes": 13113,
+      "sha256": "36df033c04f3b1b9a3fd2d7f16460c33e48458f0ebab46c6a8006e3eb1346ae4"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00010y00012.1792437869.pb",
+      "bytes": 10770,
+      "sha256": "901dcc4e848277b83147cd1682e6148e79b8df970286c4a9bfbf725e21499525"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00010y00013.1792437869.pb",
+      "bytes": 6549,
+      "sha256": "2d58dc6add0949990988b088dbad5e64a4324eb7e1e28d7cb837501f85a85cf5"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00010y00014.1792437869.pb",
+      "bytes": 8668,
+      "sha256": "c127fb39c314323080f2ea21ff835516762469b9294cee616905f875e271ba8c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00010y00015.1792437869.pb",
+      "bytes": 5350,
+      "sha256": "a57ca265a64110125f7fc3c1133c2a7ce364fa3fb42f3cce8186aa3b5f52f2f7"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00010y00016.1792437869.pb",
+      "bytes": 3851,
+      "sha256": "5720902cfecf3fb822349607918277564df382f5ca5953cbd5b7b4fc65119b44"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00010y00017.1792437869.pb",
+      "bytes": 4113,
+      "sha256": "d6dd8cf3af79f7faba8f0b7c878d866ae8ca9e1659c3744dc2cdc3475e3b3628"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00010y00019.1792437868.pb",
+      "bytes": 4750,
+      "sha256": "4e77322d964b7a0cef2bc724e59da6efda00ba6398864a8f3a2fef90adc283c6"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00002.1792437869.pb",
+      "bytes": 2139,
+      "sha256": "dcb3ee34d18602990fea64b72fb26283488f45745e6053cd5020c8cf8590241a"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00003.1792437869.pb",
+      "bytes": 18206,
+      "sha256": "351237e4718c7e026a24f13a4793000661a12453f791fa9f3c9d21f3123fa0c5"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00004.1792437869.pb",
+      "bytes": 28471,
+      "sha256": "be4117ad3df3257e754a09ee93bedd9edc342ec70b79683e35a29e2dd06e6dc7"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00005.1792437869.pb",
+      "bytes": 24272,
+      "sha256": "45e44b5d054ba40d64f18dd3aa23b9d6a4cbbef589b7316c555a258b56c471a4"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00006.1792437869.pb",
+      "bytes": 13958,
+      "sha256": "e29feb1e56d675768123f56d85be259b3e5ae70e8e2b0162c8c63b2838656c8a"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00007.1792437869.pb",
+      "bytes": 4314,
+      "sha256": "ec9d87efec70245c186c7f10699573241c446af84603b19012ec8d2fdc005245"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00008.1792437869.pb",
+      "bytes": 11455,
+      "sha256": "add5a1d2690564364996720829a398293b77e953050caf4eaedd0b05775a51d1"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00009.1792437869.pb",
+      "bytes": 7653,
+      "sha256": "4e65a1eba4e4c7d434660d3913c25167555db677e87e83233929050d9755f56a"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00010.1792437869.pb",
+      "bytes": 9934,
+      "sha256": "1ff25ffb3da260a6f9b67b657b7d1e406fae5f5178f6da1604f45f9037bd5229"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00011.1792437869.pb",
+      "bytes": 5501,
+      "sha256": "bbea957011e92f5b4f9f0a5556365e5204859daac8768d2c76d5100f16441ef6"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00012.1792437869.pb",
+      "bytes": 17001,
+      "sha256": "d7acb9d53b5e76e366c72dd7ead7a2bf4a46b85a60f407441f2a8667307f04f2"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00013.1792437869.pb",
+      "bytes": 14688,
+      "sha256": "5c331f41893ccaad6fcf94c732dc51ab7bfd25c706c0afe33b7e861af5ff68c2"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00014.1792437869.pb",
+      "bytes": 6638,
+      "sha256": "21d988b922df5a16a29cecfe7112d0c2c0a489b109e3a9015cc0bec6d9a8705e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00015.1792437869.pb",
+      "bytes": 13962,
+      "sha256": "387d616da1cb03dea45ed7e97c9551995cb7a5f44c485de113e98bc9ee74fcab"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00016.1792437869.pb",
+      "bytes": 4354,
+      "sha256": "d8127648c8ed024d16abea3f82a04cd43a1fe0d29ebed448f7d1935b6cd8adc9"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00017.1792437869.pb",
+      "bytes": 3240,
+      "sha256": "4ec0d1c3688e06c6e43b3da7dc6ac89b8a5631ae472eabc362bc4819b7b6b5f0"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00018.1792437868.pb",
+      "bytes": 3819,
+      "sha256": "ed12208660d30c051b67ec4b42c378f7046c5b92a2af862e993a557a81b845a8"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00019.1792437868.pb",
+      "bytes": 6831,
+      "sha256": "1bd7be57681fa4c4c1ae6045952c83727079f228c085103a99f26f6d4d98881d"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00020.1792437868.pb",
+      "bytes": 4966,
+      "sha256": "be40c80160c5b612351f366143ad19973c48e585ccf6a3d152424d10a9ad9281"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00011y00021.1792437868.pb",
+      "bytes": 4651,
+      "sha256": "7dccd8d28e311a2a587ff4c9fc5874b157be74ba7b4bf7deb5f04df7bd5969f0"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00012y00008.1792437869.pb",
+      "bytes": 5119,
+      "sha256": "2ca7962113b294c1f8b96e83ff821bc584e1c3483bdc969f793900c4201f8f53"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00012y00009.1792437869.pb",
+      "bytes": 13915,
+      "sha256": "2673ef83ae9640b3f441aa8e8582145718aacd2a0ab48cce4c439b68863ed709"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00012y00010.1792437869.pb",
+      "bytes": 9540,
+      "sha256": "d112a44c05803e21a787672d1735c970eb57ab9e8c36cfa1e9e6d13ea3ea127d"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00012y00011.1792437869.pb",
+      "bytes": 8989,
+      "sha256": "6d8f4f618e11e6c0c35404f6f219a815395a1fac5c7882df236236f7f280218f"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00012y00012.1792437869.pb",
+      "bytes": 11637,
+      "sha256": "f125ea75362cf56fdccae5dddff94b6307be483acb83d4646e1f2fcbfd4e7d3b"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00012y00013.1792437869.pb",
+      "bytes": 19623,
+      "sha256": "82b0cbbbc623312654fdbde635bc3d4ae2454c644c04bc4457de0be1cc611dff"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00012y00014.1792437869.pb",
+      "bytes": 9222,
+      "sha256": "d453df905846dd2b282e96ffd82449b7e20248f234ca3ffed042f41cc4854812"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00012y00015.1792437869.pb",
+      "bytes": 10840,
+      "sha256": "a3ff8ea5250642e82cd38f5a9a58a7fc0afec8608d66f287cc04bde511190a3c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00012y00016.1792437869.pb",
+      "bytes": 3182,
+      "sha256": "04f5801098827f7d15035a280fedc82b21c52a19e88a813d5cfb0821505434de"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00012y00017.1792437869.pb",
+      "bytes": 1742,
+      "sha256": "19fc8f169a123f88b7a995af1767c493cd62b5bad80ede2105e7bb6fc0d592aa"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00012y00018.1792437868.pb",
+      "bytes": 2966,
+      "sha256": "d391ca176219d9128b0c8085fd7dda217ce5602e2795cb25a6c2f5ed17acbf25"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00012y00019.1792437868.pb",
+      "bytes": 7738,
+      "sha256": "dc38436695de95009c5fb9f6a7e470c364481350888ab52afe88749dce0fffb4"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00012y00020.1792437868.pb",
+      "bytes": 5462,
+      "sha256": "8fb407e8d5982f522ecbea977a2b685e79735316b779fbe81936efc0a365ad08"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00012y00021.1792437868.pb",
+      "bytes": 3722,
+      "sha256": "a0690d2105b12d4528488200fe62d52170ed52f1bb255bb13c18f6918cf53b49"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00013y00008.1792437869.pb",
+      "bytes": 11615,
+      "sha256": "cc0c0c3dad6fdf4f8049830717dcd875776da2e07374a2dabb2e70e967ae0511"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00013y00009.1792437869.pb",
+      "bytes": 11773,
+      "sha256": "abe5cf6bae1a7e72323c28ac0427db25a5615af2d1ce075e574df5e41af10d3e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00013y00010.1792437869.pb",
+      "bytes": 12597,
+      "sha256": "27cfbeb273cb1c9dca75bf1960bae0a5341237d501d5e2fb56ddff906bd9c336"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00013y00011.1792437869.pb",
+      "bytes": 9985,
+      "sha256": "cce65610eaedfbac366ecd567b85784060e6037fca7dd899997b35f3d8a0b1b1"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00013y00012.1792437869.pb",
+      "bytes": 11542,
+      "sha256": "1b0db6efddaa1bb79ac9bf031c7c1bc2298c66a310a84618b8de518d59d16f5c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00013y00013.1792437869.pb",
+      "bytes": 17993,
+      "sha256": "8e8aad083a941df9ed0e6ebace54077e8ea20924ca95f0143bfd77bca9628f8b"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00013y00014.1792437869.pb",
+      "bytes": 12430,
+      "sha256": "68e643bc667fff63d5a6fa14c3bca3ed9f7c21d71a1ef14191a0223ff5868677"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00013y00015.1792437869.pb",
+      "bytes": 5735,
+      "sha256": "a01e708dfdd53b6669469f2fe87e27b1bb54e01cf12b39b10ea9fe163331d340"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00013y00016.1792437869.pb",
+      "bytes": 24100,
+      "sha256": "e8ca960b3d0458d75167bad136284aa4334d923ee73e328f0cdb45ae64841093"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00013y00017.1792437869.pb",
+      "bytes": 28600,
+      "sha256": "323ddf61c7ec0aa6e1d7e313667d52dada12944623d5ae7c8f4284523eb19328"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00013y00018.1792437868.pb",
+      "bytes": 21526,
+      "sha256": "7a2293e9d3577dca6befdb412d3db89444df6cf5b0764b3a51920fa43939ed0b"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00013y00019.1792437868.pb",
+      "bytes": 1233,
+      "sha256": "d56e44e2e50bca4d7b79312de7b23f202060734b0c94cb85c47fcd7063fc2ac7"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00013y00020.1792437868.pb",
+      "bytes": 1606,
+      "sha256": "5c548077d7ede72ad27e2a8499dafe7f7f4da9c2d1fae5f45f19e0a114908e96"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00013y00021.1792437868.pb",
+      "bytes": 5081,
+      "sha256": "e7babb0f973bc5e8e253c9c1ca621bf6e37986b5d1634303ef04b33bf67d3ae0"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00013y00022.1792437868.pb",
+      "bytes": 5291,
+      "sha256": "0b7fa111dbb85341695cad4cb2a6a619fb9d0c8d26c37857cdae325c57eb25c8"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00014y00010.1792437869.pb",
+      "bytes": 12770,
+      "sha256": "4b351d17317142691881c504779f54c4f1fa6f70c2b94459384c9362d0192e88"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00014y00011.1792437869.pb",
+      "bytes": 12551,
+      "sha256": "7b4af01c593a1da2e9d99b0182877a17815c1e28ab938eb216cd1b7ee6435328"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00014y00012.1792437869.pb",
+      "bytes": 17042,
+      "sha256": "b1a4938141967916bc03949246397e68b101a46347a44b3a75b4b82dd24e277c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00014y00013.1792437869.pb",
+      "bytes": 4170,
+      "sha256": "18dac56634485a482a004928d800a8ad5d7cbc9f8811f9ed7afec08ae16db11e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00014y00014.1792437869.pb",
+      "bytes": 11081,
+      "sha256": "6bbcf0f7dec1ba96782a32fcf74bf1200f400db3c4a9248748507c83dc2fb66f"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00014y00015.1792437869.pb",
+      "bytes": 20086,
+      "sha256": "9f0157d85036a5dd143829121665fa60d7fc499be82ada4dd20b629b347c8569"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00014y00016.1792437869.pb",
+      "bytes": 26500,
+      "sha256": "3d560d8ab1e035388e1ae4b741c6e92426362253f872738afc22642da7ee0ab2"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00014y00017.1792437869.pb",
+      "bytes": 21579,
+      "sha256": "43c67ee5a0c8b45abb79f21682f8fb419b7f9a9388aee3f9fba2b47e90326fe1"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00014y00018.1792437868.pb",
+      "bytes": 24835,
+      "sha256": "0f98d97f3ca727b8935edf718cc530e490008ac9c6d05f9914aac9c26ba6cbfb"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00014y00019.1792437868.pb",
+      "bytes": 4545,
+      "sha256": "44a2ec0c67b4f73cebd45a686da245ed71bad60fe041d21e75ac3117ff0ae8b5"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00014y00020.1792437868.pb",
+      "bytes": 10615,
+      "sha256": "446e2fdf82be33a20e97fd05fe8cd335e81a14c1e92d60c331d4d9db6ea982c4"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00014y00021.1792437868.pb",
+      "bytes": 2362,
+      "sha256": "e14717f7d59b2205dbc9410a7a21a893a6e53b7bca48b1026c3286d212ef7132"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00014y00022.1792437868.pb",
+      "bytes": 4482,
+      "sha256": "267fa226e644d7a7bd2557eaaa7d396fe37cddb422a7d21d77d7cc9fac118978"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00014y00023.1792437868.pb",
+      "bytes": 6199,
+      "sha256": "21a421f85220d06fc507535854d999dffb542d02799001dd63653ee64bcadc17"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00015y00011.1792437869.pb",
+      "bytes": 13317,
+      "sha256": "861580935b4ecee5944b90e65fe2a169de6cdc36e74d452528b306e04c93bcdf"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00015y00012.1792437869.pb",
+      "bytes": 8739,
+      "sha256": "cdf3893dd20d266b61bf038036905aa4ba311468b3723ebdae2e4acad9d4d666"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00015y00013.1792437869.pb",
+      "bytes": 9451,
+      "sha256": "835a1e34ac97793078b3e496981c67dab397379aeae869cbf6d55bfb2639b261"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00015y00014.1792437869.pb",
+      "bytes": 19152,
+      "sha256": "49aac1534de419de508c68b95cf225d95505134e20c4a9ba25af98eaac584758"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00015y00015.1792437869.pb",
+      "bytes": 22292,
+      "sha256": "6c967d60ccc2fccbe02bd955723c8436494631d2fdfb4651852db40772260a95"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00015y00016.1792437869.pb",
+      "bytes": 25716,
+      "sha256": "608453235aac06bbc90db9aa0e7e1ebc77fd1598754d0ff3bd57bcf1997592f9"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00015y00017.1792437869.pb",
+      "bytes": 19241,
+      "sha256": "41cf833ce7de593be7b21d8a76dcd21385a397a659e7067a18250e5f6c2875cc"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00015y00018.1792437868.pb",
+      "bytes": 22826,
+      "sha256": "88f8e5c4e921c3f9c8df030eff77580ad3205a3cc42e35b15d78ebea5efc1626"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00015y00019.1792437868.pb",
+      "bytes": 2547,
+      "sha256": "dd9f7e6d3b21b8b1e28f246a5ab0466ec38c7450cff683f8a33dbb8bda12d57b"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00015y00020.1792437868.pb",
+      "bytes": 10396,
+      "sha256": "bb8859e63ab81d28019d54c9a78afb26810c9bc90bd227e76057b3620c1f0c93"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00015y00021.1792437868.pb",
+      "bytes": 2825,
+      "sha256": "0770fb102c16de50b02707f19a38c2990e4c1a4755795ca659e87fac936c4645"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00015y00022.1792437868.pb",
+      "bytes": 4038,
+      "sha256": "8e956d799814d4cb9249f1b54ed5f9318ff62543f41a573799021324bbb05889"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00015y00023.1792437868.pb",
+      "bytes": 5656,
+      "sha256": "4cfb2d92fb371789fef71076409b3f89f0e1cbe4fe68a54a99bb194d24751c38"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00015y00024.1792437868.pb",
+      "bytes": 18752,
+      "sha256": "58e2806358a083bc2fd3ab6d17fc7abddb4b601f9e6f36471d2744fa321e3f32"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00016y00011.1792437869.pb",
+      "bytes": 5659,
+      "sha256": "b134dbb02d91074762b6207e3482b2db6017570164dac6224490f562f5485e04"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00016y00012.1792437869.pb",
+      "bytes": 7446,
+      "sha256": "3f35917444ed0835ba84143b19cafa3bda5a291349d7f13fd98105ebec461e42"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00016y00013.1792437869.pb",
+      "bytes": 4989,
+      "sha256": "470cee569a6e37a75a9fd9fd28f0f634874253adc503b614e626705536820f85"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00016y00014.1792437869.pb",
+      "bytes": 24827,
+      "sha256": "dcfee818fa3d81c7c597943929443131727103bb05167cb7e4d57da86b9b69e5"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00016y00015.1792437869.pb",
+      "bytes": 7439,
+      "sha256": "119a5403e5bf6cf608504141187a7f5b7bfe532004a8ce0943d72132c712925e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00016y00016.1792437869.pb",
+      "bytes": 18707,
+      "sha256": "656c45d16915e99b6bc0fcd41d80bc440e4b07129b38e62c2eca75346ca33502"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00016y00017.1792437869.pb",
+      "bytes": 24543,
+      "sha256": "bc7b68b5bb451661b0a038deef7daa29b27c6d9ab197dba31309331b6a15d92f"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00016y00018.1792437868.pb",
+      "bytes": 22323,
+      "sha256": "96270a50c3f8efd5d827da5c5174a3afffc4e065713a3ab12c4fb6382050346a"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00016y00019.1792437868.pb",
+      "bytes": 12290,
+      "sha256": "ac33ca4cc7278359f715d16c1a8e2d26ebd9f2012706c7bd8126a62e9bf11a93"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00016y00020.1792437868.pb",
+      "bytes": 1779,
+      "sha256": "f548509dec3d33491536609c4a87c203dfd33ef12659d765e684d8009b271f56"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00016y00021.1792437868.pb",
+      "bytes": 2237,
+      "sha256": "389f14bc6790a5d82ab0b63a10d7c09dc678a78c433c839ec0a3f8b20308fee5"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00016y00022.1792437868.pb",
+      "bytes": 5525,
+      "sha256": "3fd6e7fe7c8ac6741ba0a13f8b6096f032b0f8295b2338299d8c4f7d809bad6d"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00016y00023.1792437868.pb",
+      "bytes": 8818,
+      "sha256": "555128eb4f12e26d5b86865fb4b43c62e9bfaa61f271290870fd3dde3a48ff69"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00016y00024.1792437868.pb",
+      "bytes": 12230,
+      "sha256": "d0f17b53f8cb26398ab3f9402728df95b6d76f1735bd7f30adfd4c86728aa575"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00017y00011.1792437869.pb",
+      "bytes": 4747,
+      "sha256": "95ab267ac36d41277c0158d8b1b95610dc999e453f34f5e259424a3ed25e262b"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00017y00012.1792437869.pb",
+      "bytes": 4147,
+      "sha256": "2f0626835557a42a60f86924d0ff8d4405e587513ac3dd8331a7a62c84c40022"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00017y00013.1792437869.pb",
+      "bytes": 9671,
+      "sha256": "a1d47913ae742262c1af296cf955ac54c9e163ece7c0373aadda55e5c0d6e75d"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00017y00014.1792437869.pb",
+      "bytes": 18904,
+      "sha256": "586d5216c69338af92f9eaab4a338bc0fe9f374eed5b4d214f7e9cb453d111ae"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00017y00015.1792437869.pb",
+      "bytes": 7613,
+      "sha256": "5144f48afa63a369d4e9acc383636e3358d9c27553149f6b46d6eb041d44d378"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00017y00016.1792437869.pb",
+      "bytes": 5696,
+      "sha256": "3af93fc69e1bf2a7d78197bcce8b8712ef2da0969869e2593efa2c1e475a9ca9"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00017y00017.1792437869.pb",
+      "bytes": 17577,
+      "sha256": "835802216d696bd35fcedee658a933813798954e108d31584fc3fd7cc132915c"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00017y00018.1792437868.pb",
+      "bytes": 18392,
+      "sha256": "55a75e18e3e4691579b6e074afca143ca83ec76ee036a315eb99ab58da3810fd"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00017y00019.1792437868.pb",
+      "bytes": 18501,
+      "sha256": "4887298508b3b0a572b87c73589cc10ae7a5fdd61cb658864ef804f9017cef5e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00017y00023.1792437868.pb",
+      "bytes": 2392,
+      "sha256": "23cf389fe16280ca12a6090bbb020b7895a0e7bd01c2379be9e74ea4f2fb6376"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00017y00024.1792437868.pb",
+      "bytes": 3499,
+      "sha256": "42774b9ce487b093c9e0e695d8546dc8def73b321fd3552aebfabcb60782ecc9"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00017y00025.1792437868.pb",
+      "bytes": 6732,
+      "sha256": "fbcf7337e9d26ae3d37ad25c45b068c069657a3229bcab143d422374feeb5ac7"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00018y00011.1792437869.pb",
+      "bytes": 8908,
+      "sha256": "76a7f18eacc97437edc780e185d5fb214aa66dec08f7b96e772b5806b77faac0"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00018y00012.1792437869.pb",
+      "bytes": 3131,
+      "sha256": "36dce80950bc34f8c4c7388856c1629e7d0b0d4d7f65168fc864104f849e5ed6"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00018y00013.1792437869.pb",
+      "bytes": 14737,
+      "sha256": "1003c30ad217f3ea75797671e31ceaf00eac8077d48641937ac4d4a9bae878f7"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00018y00014.1792437869.pb",
+      "bytes": 7019,
+      "sha256": "b6495495f6499fd69e952a6babe5b54f44f48629e960a06c83bbcede8b01bd50"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00018y00015.1792437869.pb",
+      "bytes": 4455,
+      "sha256": "e4e3cb6644963c7a96f291d1f030689fd241cbdd9bc207d510206f3dbd801adf"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00018y00016.1792437869.pb",
+      "bytes": 5620,
+      "sha256": "86d78c4533215a27646a1ecf6aabf45623ad054b08327d1c1ca023e3f2d9b544"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00018y00017.1792437869.pb",
+      "bytes": 15736,
+      "sha256": "c097d3ca44e808d95adb7e8d7ba6eab9849875e79861b1ccdf981113c4d06f80"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00018y00018.1792437868.pb",
+      "bytes": 12427,
+      "sha256": "be9b378681d5485541b268fece97b09356351dbc413f8174d9180cb1efe86d7e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00018y00019.1792437868.pb",
+      "bytes": 7501,
+      "sha256": "92ae12e0403b2038592ef4e4b96544ceb9c2d44680a81b4c5783fbc2e6c4fd43"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00018y00020.1792437868.pb",
+      "bytes": 5695,
+      "sha256": "88761e856f496287e4d857c5024d96672122cc1ee9df543a161dec7b461d5281"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00018y00021.1792437868.pb",
+      "bytes": 4369,
+      "sha256": "60f5d762cb78898493cf29db22ed71ba9729e0127c55020e8f6051cc2875a1dc"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00018y00022.1792437868.pb",
+      "bytes": 5185,
+      "sha256": "f2dd17444e35ac5dc0e975ecdcbeaa83b5f0bbb7e27558c9e116e02d7543b629"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00018y00023.1792437868.pb",
+      "bytes": 3909,
+      "sha256": "9364fa23f65eaaf50b6e620d96757b6fa3c9e3668b1c670c5c26ad96f9a49d91"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00018y00024.1792437868.pb",
+      "bytes": 2902,
+      "sha256": "922d1f96ca665da4b5051a1d3de10edca9dbe8452f14fd347706deac64f6f329"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00019y00012.1792437869.pb",
+      "bytes": 5856,
+      "sha256": "daf2898dcc08eda72b05eb4b3ce72667ebbbe741fdb1bd895fb0654ec7ae6524"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00019y00013.1792437869.pb",
+      "bytes": 1779,
+      "sha256": "875ce6efdf69086c3cd8a6a13ba4a5f400b6ffe5ab2d249e42821a2d72588c24"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00019y00014.1792437869.pb",
+      "bytes": 7425,
+      "sha256": "121cdddb90eb900d34abecd1b5194236ba9e302cc84bbca4310bffc0ee94616e"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00019y00015.1792437869.pb",
+      "bytes": 2518,
+      "sha256": "a0029dbcaf40f31535ace0c3136364802b2d4856920aaca6f368c336133c5fc1"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00019y00016.1792437869.pb",
+      "bytes": 7748,
+      "sha256": "0eabc252e29a3ae2e1e84798fec1561223c2958717c7f29649be3fb915b21dc2"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00019y00019.1792437868.pb",
+      "bytes": 3488,
+      "sha256": "32a199a6ed7847d95572c1a23a38ee39ad75eba7321cb532b9d58690d35afa10"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00019y00023.1792437868.pb",
+      "bytes": 3859,
+      "sha256": "adc225ca3bb6d7051d7cd4cb11e60c973657d59cc22d0cfd8a9b1eed2ae779cc"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_Terrain_Array2DPacked_x00020y00015.1792437869.pb",
+      "bytes": 2181,
+      "sha256": "ea459a47c64d714561228bfd9dc11e09059b82c8821d76198041ab176a72abb2"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_WorldMap_DiffuseAndSmoothness_Bitmap.1792437868.astc",
+      "bytes": 3064720,
+      "sha256": "9b616822abcfdeb6f52570509bdb1def1c1070649cbe595c52783dcbd451c8a5"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_WorldMap_Distance_Bitmap.1792437868.astc",
+      "bytes": 6888976,
+      "sha256": "dbc3ef5724d4aace594dd4abf2030710e9ad39b38e40affed46cae4c2c198a8f"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_WorldMap_MountainsAndShadow_Bitmap.1792437868.astc",
+      "bytes": 3064720,
+      "sha256": "81f4cfb89ac5578d3c57cdf0e8f98d51771f206ff4a83340c74f1172296f4fff"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_WorldMap_NormalsAndShadow_Bitmap.1792437868.astc",
+      "bytes": 3064720,
+      "sha256": "79f21152d06a9f0374436dbc05b5a79ad2761fe4581b2fffc5f0c66c893cbd37"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_WorldMap_RegionDistance_Bitmap.1792437868.astc",
+      "bytes": 3064720,
+      "sha256": "cf330f860192c334d952e1c1d99336af13908b9208343ad3c96bf33e89732221"
+    },
+    {
+      "file": "Westeros_Charlie_3_ScalingRuins_WorldMapRegionIndex_Bitmap.1792437869.r8",
+      "bytes": 105813,
+      "sha256": "b2b84c611e190cdc04276e07e762f2cb08e2ddb79202f55f172a819e94a2405b"
+    },
+    {
+      "file": "WildDragonTable.1792437885.pb",
+      "bytes": 2429,
+      "sha256": "e6a51f6336a38ce05323334d9e036c8d17bf8592b5201bd028754da984527760"
+    },
+    {
+      "file": "WorldMapLodTable.1792437885.pb",
+      "bytes": 494,
+      "sha256": "d90467d3d2874c427c8d72560799a9fdefa688ddfaa5a7fa1e1a9319ded2f763"
+    },
+    {
+      "file": "WorldMapTextLabelTable.1792437885.pb",
+      "bytes": 14832,
+      "sha256": "8c3290c2dc1a69beae3b386120351e152dfa3cd575bf4e5f3f4753be147ebf59"
+    }
+  ],
+  "builders": [
+    {
+      "file": "_harvest_ids.py",
+      "sha256": "3e0c6d09d0f9efed031f5bcb8bfcbcb0c0df69d801c7944390372925350d814b"
+    },
+    {
+      "file": "_build_map_nodes.py",
+      "sha256": "8f8457caf4dd7220e8adc21670ebe19586fa0a5cf9b5e1bb7724250c9cc0280d"
+    },
+    {
+      "file": "_build_worldmap_bg.py",
+      "sha256": "1e41ffbad85241e6ed63700e5b3af8c0d3334bde1e66de8eccba54f57a19e514"
+    },
+    {
+      "file": "_build_region_data.py",
+      "sha256": "016955790dc9b3b882c39bec2dfe51e90ff772aee03d9e21644e759c606b5b2e"
+    },
+    {
+      "file": "_build_terrain_data.py",
+      "sha256": "4e29df5d208bb2762d8abbba9a91f3c6b472a483aaa0c439b4631438f8213011"
+    },
+    {
+      "file": "_build_terrain_navigation.py",
+      "sha256": "fae96f88d9635c81ac32789ad9f497e827f2d783f40f3931b14d1b17b62b2b90"
+    },
+    {
+      "file": "_build_crossing_chains.py",
+      "sha256": "954e99a8e71739a1ede0415d46d5e2c5d31028b39a6be8434254302dfad39c0d"
+    },
+    {
+      "file": "_build_interactive_map.py",
+      "sha256": "2be61469ffc5636eabb369756a5f2d0f8b09cebaaad0d18525fdc655bc721d1f"
+    },
+    {
+      "file": "_pbdump.py",
+      "sha256": "084ac58af3c4bba323644bfff3e23cf076e7d10372cbef2438cee28d2ad858e7"
+    }
+  ],
+  "generated": [
+    {
+      "file": "interactive_map.html",
+      "sha256": "e71d2edf23858c203d6965a5a51e818b591341e28c59c9d4dfc2af4ca85f4961"
+    },
+    {
+      "file": "worldmap_background.jpg",
+      "sha256": "8d0877225d520280680e17fb80825669dfced83000e68bdd067a644bf3ecf769"
+    },
+    {
+      "file": "region_color_overlay.png",
+      "sha256": "23a1b389c53e1d87b4fcad6e7134a6bfcfa8f7fe7b0f9e4cc9784e9b947c79ed"
+    },
+    {
+      "file": "mountain_overlay.png",
+      "sha256": "b30ad0cba75d5cff057580d15059aea181220fc1de9fd587de2228e477d51b4f"
+    },
+    {
+      "file": "clean_map_nodes.csv",
+      "sha256": "3c6baab20b402402a9176e25dcfd93abc751c1b2bbea24dd0f7a5ffa538e16cb"
+    },
+    {
+      "file": "node_place_names.json",
+      "sha256": "9b8a195f151dd6e67d30fd380efa7335453dcc886959086fa8f09d52989f1e3f"
+    },
+    {
+      "file": "crossing_chains.json",
+      "sha256": "8de3c2f8a3af3616469f13b3a32f359e7b4422da97e461310a3cf56fb144e654"
+    },
+    {
+      "file": "terrain_navigation.json",
+      "sha256": "b32806c22c3d4be1cc9208f7c3754433a182b4d82eab38e20c9a4291461e4819"
+    }
+  ]
+}

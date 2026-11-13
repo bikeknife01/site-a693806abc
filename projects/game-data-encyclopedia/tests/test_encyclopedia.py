@@ -69,6 +69,30 @@ class EncyclopediaDataTests(unittest.TestCase):
         sea_snake = traces[("Corlys Velaryon", "The Sea Snake")]["tracks"]
         self.assertEqual(sea_snake["prog_talent_theseasnake_trig_02"][-1], 1.0)
 
+    def test_staged_poi_references_are_not_placements(self) -> None:
+        reference = json.loads((ROOT / "data/staged_poi_references.json").read_text(encoding="utf-8"))
+        self.assertEqual({item["name"] for item in reference["references"]}, {"Coldmoat", "Standfast"})
+        for item in reference["references"]:
+            self.assertEqual(item["lifecycle"], "staged")
+            self.assertEqual(item["campaign_reference"], "Alpha")
+            self.assertNotIn("coordinates", item)
+            self.assertEqual(item["region_description"], "PLACEHOLDER")
+            self.assertEqual(len(item["bonuses"]), 2)
+            self.assertTrue(all("unverified" in bonus["evidence"] for bonus in item["bonuses"]))
+
+    def test_commander_reference_tracks_have_traceable_progressions(self) -> None:
+        reference = json.loads((ROOT / "data/commanders.json").read_text(encoding="utf-8"))
+        audit = json.loads((ROOT / "data/commander_value_audit.json").read_text(encoding="utf-8"))
+        traces = {(item["commander"], item["talent"]): item for item in audit["talents"]}
+        self.assertEqual(len(reference["commanders"]), 5)
+        for commander in reference["commanders"]:
+            self.assertEqual(len(commander["talents"]), 3)
+            for talent in commander["talents"]:
+                trace = traces[(commander["name"], talent["name"])]
+                for row in talent["reviewed_tracks"]:
+                    self.assertIn(len(trace["tracks"][row["progression_id"]]), (1, 20))
+                    self.assertTrue(any(edge["to"] == row["progression_id"] for edge in trace["edges"]))
+
     def test_unique_and_present_stable_ids(self) -> None:
         self.assertEqual(len(self.data["dragons"]), 38)
         self.assertEqual(sum(dragon["evidence"]["class"] == "screenshot_confirmed" for dragon in self.data["dragons"]), 38)

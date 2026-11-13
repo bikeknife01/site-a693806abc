@@ -803,7 +803,7 @@ function decisionEvidence(data, result) {
 }
 
 function riskRegister(data, result, coverage, rosterPreflight = null, dragonsArmy = null) {
-  const risks = [];
+  const risks = [{ type: "commanders_not_modeled", detail: "Commander talents, trait synergies, assignment and Commander Army Size bonuses are not modeled; they may change formation comparisons and capacity." }];
   const noPower = result.formation.filter(pick => pick.progression.power == null).map(pick => pick.dragon.name);
   if (noPower.length) risks.push({ type: "unknown_power", detail: `Current Power is unknown for ${noPower.join(", ")}.` });
   if (dragonsArmy?.additional_troops_per_dragon === 0 && ["ingestion_default", "planner_default_assumption"].includes(dragonsArmy.basis)) {
@@ -1008,6 +1008,7 @@ export function planRecommendations(data, commonFormations, rawInput) {
       selection_policy: `Pareto filter, then lexicographic ordering by direct threat coverage, troop safety${input.troopPreservation ? ", weakest-lane level-curve capacity floor, documented preservation tier, total level-curve capacity proxy, exact preservation score" : `, documented objective fit${input.capacitySensitive ? ", level-curve capacity proxy" : ""}`}, counter reliability, explicit synergy, troop fit, lane fit, comparable known team Power, and diagnostic proxy score.`,
     },
     limitations: [
+      "Commander talents, trait synergies, assignment and Commander Army Size bonuses are not modeled; they may change formation comparisons and capacity.",
       "This planner enumerates documented mechanics; it is not a battle-outcome or win-rate simulator.",
       "Troop-preservation weights are ordinal planning policy, not estimated casualties or equivalent troop counts.",
       "Diagnostic proxy scores are search aids and are not treated as universal formation strength.",
